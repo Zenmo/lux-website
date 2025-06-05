@@ -122,6 +122,19 @@ val HolonBlockHeaderTextStyle = TextStyle.addVariant {
     Breakpoint.XL { applyHolonBlockFont(Breakpoint.XL) }
 }
 
+val HolonLineTextStyle = TextStyle.addVariant {
+    fun applyHolonLineFont(breakpoint: Breakpoint): Modifier {
+        val fonts = Fonts[breakpoint]
+        return Modifier.font { siteFont(fonts.title.copy(fontFamily = PublicRes.FontFamilies.HOLON_LINE)) }
+    }
+
+    Breakpoint.ZERO { applyHolonLineFont(Breakpoint.ZERO) }
+    Breakpoint.SM { applyHolonLineFont(Breakpoint.SM) }
+    Breakpoint.MD { applyHolonLineFont(Breakpoint.MD) }
+    Breakpoint.LG { applyHolonLineFont(Breakpoint.LG) }
+    Breakpoint.XL { applyHolonLineFont(Breakpoint.XL) }
+}
+
 
 val TitleTextStyle = TextStyle.addVariant {
     Breakpoint.ZERO {
