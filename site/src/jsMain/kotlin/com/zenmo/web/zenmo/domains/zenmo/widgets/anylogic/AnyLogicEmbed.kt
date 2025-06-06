@@ -53,7 +53,6 @@ fun AnyLogicEmbed(
     val containerId = remember { "anylogic-embed-${randomString(4u)}" }
 
     LaunchedEffect(modelId) {
-        dynamicImport<Unit>("https://anylogic.zenmo.com/assets/js-client-8.5.0/cloud-client.js")
         val client = CloudClient.create(apiKey.toHexDashString(), cloudUrl)
         val model = client.getModelById(modelId.toHexDashString()).await()
         val modelVersion = client.getLatestModelVersion(model).await()
@@ -67,17 +66,6 @@ fun AnyLogicEmbed(
                 id(containerId)
             }
     )
-}
-
-/**
- * This is a workaround to make browser imports work.
- * We can't use Webpack magic comment /* webpackIgnore: true */
- * because the Kotlin compiler strips all comments, even comments
- * in [kotlin.js.js]
- */
-suspend fun <T> dynamicImport(library: String): T {
-    val promise: Promise<T> = eval("import('$library')")
-    return promise.await()
 }
 
 fun randomString(length: UInt): String {
