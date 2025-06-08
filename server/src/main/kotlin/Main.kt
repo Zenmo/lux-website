@@ -3,6 +3,7 @@ package com.zenmo.server
 import org.http4k.core.HttpHandler
 import org.http4k.core.then
 import org.http4k.filter.DebuggingFilters
+import org.http4k.filter.ServerFilters
 import org.http4k.server.Undertow
 import org.http4k.server.asServer
 
@@ -23,6 +24,9 @@ fun startServer() {
     
     val app: HttpHandler = DebuggingFilters.PrintRequestAndResponse()
         .then(corsFilter)
+        // Catch errors must come after CORS Filter
+        // so that the error reaches the client
+        .then(ServerFilters.CatchAll())
         .then(JsServerFilter(
             JsServer(
                 clientId =  config.clientId,
