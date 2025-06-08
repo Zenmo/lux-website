@@ -47,14 +47,14 @@ fun LuxHomePage() {
             modifier = Modifier.gap(1.cssRem),
         ) {
             CardLink(
-                url = "${protocol}://drechtsteden.$LUX_DOMAIN",
+                url = "${protocol}//drechtsteden.$LUX_DOMAIN",
                 imageUrl = "/img/drechtsteden-rivier.jpg",
                 imageAltText = "Drechtsteden luchtfoto met rivier",
                 nlTitle = "Drechtsteden",
                 enTitle = "Drechtsteden"
             )
             CardLink(
-                url = "${protocol}://genius.$LUX_DOMAIN",
+                url = "${protocol}//genius.$LUX_DOMAIN",
                 imageUrl = "/img/tue-luchtfoto.png",
                 imageAltText = "TU/e Luchtfoto",
                 nlTitle = "Genius",
