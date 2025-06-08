@@ -3,6 +3,9 @@
     "version": "8.5.0",
     "description": "AnyLogic Cloud Client API",
     "main": "index.js",
+    "exports": [
+        "./index.js"
+    ],
     "type": "module",
     "author": "AnyLogic",
     "license": "Propietary"

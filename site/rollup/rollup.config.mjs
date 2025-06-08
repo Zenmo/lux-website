@@ -17,7 +17,7 @@ export default {
     plugins: [
         nodeResolve({
             modulePaths: [
-                "../anylogic-cloud-client"
+                "../../anylogic-cloud-client"
             ],
         }),
         dynamicImportVars({
