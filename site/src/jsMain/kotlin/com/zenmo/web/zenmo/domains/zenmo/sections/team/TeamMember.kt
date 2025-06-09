@@ -10,7 +10,14 @@ data class TeamMember(
     val email: String,
     val linkedIn: String,
     val twitter: String? = null,
-)
+) {
+    companion object {
+        val AUKE = ZenmoTeam[0]
+        val PETER_HOGEVEEN = ZenmoTeam[1]
+        val NAUD_LOOMANS = ZenmoTeam[2]
+        val ATE = ZenmoTeam[7]
+    }
+}
 
 // todo get socials and photos of team members
 // also i'd prefer to have a max of 2 sentences(what you do and interests/hobbies)
@@ -74,7 +81,7 @@ val ZenmoTeam = listOf(
                 Bij zijn afstuderen ontwikkelde hij zeer succesvol het ZEnMo Zero-model voor de provincie Noord-Brabant. 
                 Zijn kracht ligt in het begrijpen van zowel de technische kant als de belanghebbenden bij het vormgeven van innovatieve duurzame scenario's.
             """.trimIndent(),
-        email = "",
+        email = "naud@zenmo.com",
         linkedIn = "",
         twitter = "",
     ),
@@ -167,7 +174,7 @@ val ZenmoTeam = listOf(
         image = "avatars/blank.png",
         enShortBio = "",
         nlShortBio = "",
-        email = "",
+        email = "ate@zenmo.com",
         linkedIn = "",
         twitter = "",
     ),

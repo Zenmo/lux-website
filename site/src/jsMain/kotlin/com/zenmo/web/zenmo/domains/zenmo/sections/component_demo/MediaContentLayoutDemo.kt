@@ -133,11 +133,11 @@ fun MediaContentLayoutDemo() {
                     }
                     LangText(
                         en = """
-                            to true if you want the image to be displayed as is, without any modifications. 
+                             to true if you want the image to be displayed as is, without any modifications. 
                             Thus, the image will not be resized to fit the container, and will maintain its original dimensions.
                         """.trimIndent(),
                         nl = """
-                            in op true als je wilt dat de afbeelding wordt weergegeven zoals deze is, zonder enige aanpassingen. 
+                             in op true als je wilt dat de afbeelding wordt weergegeven zoals deze is, zonder enige aanpassingen. 
                             De afbeelding wordt dus niet aangepast om in de container te passen en behoudt zijn oorspronkelijke afmetingen.
                         """.trimIndent()
                     )
