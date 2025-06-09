@@ -1,3 +1,5 @@
+@file:JsModule("anylogic-cloud-client")
+
 package com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic
 
 import js.array.JsArray
@@ -50,14 +52,14 @@ external interface ExperimentTemplate {
     val dashboard: JsAny
 }
 
-interface Inputs {
+external interface Inputs {
     fun getInput(name: String): JsAny
     fun setInput(name: String, value: JsAny): Unit
     fun setRangeInput(name: String, min: JsNumber, max: JsNumber, step: JsNumber): Unit
     fun setNumberOfReplications(num: Int): Unit
 }
 
-interface Animation {
+external interface Animation {
 
 }
 

@@ -8,6 +8,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.components.graphics.FitWidthImageVariant
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
@@ -24,10 +25,15 @@ import org.jetbrains.compose.web.css.vh
 fun MediaContentLayout(
     imageUrl: String,
     imageModifier: Modifier = Modifier,
+    keepImageAsIs: Boolean = false,
     visualContent: @Composable () -> Unit = {
-        ImageContent(imageUrl, imageModifier)
+        ImageContent(
+            imageUrl = imageUrl,
+            modifier = imageModifier
+                .thenIf(keepImageAsIs, Modifier.objectFit(ObjectFit.Contain))
+        )
     },
-    title: @Composable () -> Unit = {},
+    title: @Composable (() -> Unit)? = null,
     description: @Composable () -> Unit = {},
     subtitle: @Composable () -> Unit = {},
     actionText: @Composable () -> Unit = {},
@@ -66,20 +72,22 @@ fun MediaContentLayout(
 
 @Composable
 private fun TextContent(
-    title: @Composable () -> Unit,
-    description: @Composable () -> Unit,
+    title: @Composable (() -> Unit)? = null,
     subtitle: @Composable () -> Unit,
+    description: @Composable () -> Unit,
     actionText: @Composable () -> Unit,
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .gap(1.cssRem),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement =
+            if (title == null) Arrangement.Top
+            else Arrangement.Center,
         horizontalAlignment = Alignment.Start
     ) {
         subtitle()
-        title()
+        title?.invoke()
         description()
         actionText()
     }

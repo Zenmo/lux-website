@@ -89,6 +89,7 @@ fun MediaContentLayoutDemo() {
                     )
                 },
                 reversed = false,
+                keepImageAsIs = false,
                 imageModifier = Modifier.height(
                     max(
                         50.vh,
@@ -119,6 +120,26 @@ fun MediaContentLayoutDemo() {
                     LangText(
                         en = " to swap the position of the image and text content. When set to false, the image content comes before the text content and vice versa.",
                         nl = " om de positie van de afbeelding en de tekstinhoud om te wisselen. Wanneer ingesteld op false, komt de afbeeldinginhoud voor de tekstinhoud en vice versa.",
+                    )
+                }
+
+                Li {
+                    LangText(
+                        en = "Set ",
+                        nl = "Stel ",
+                    )
+                    Code(CodeStyle.toAttrs()) {
+                        Text("keepImageAsIs")
+                    }
+                    LangText(
+                        en = """
+                             to true if you want the image to be displayed as is, without any modifications. 
+                            Thus, the image will not be resized to fit the container, and will maintain its original dimensions.
+                        """.trimIndent(),
+                        nl = """
+                             in op true als je wilt dat de afbeelding wordt weergegeven zoals deze is, zonder enige aanpassingen. 
+                            De afbeelding wordt dus niet aangepast om in de container te passen en behoudt zijn oorspronkelijke afmetingen.
+                        """.trimIndent()
                     )
                 }
 

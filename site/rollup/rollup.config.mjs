@@ -1,4 +1,5 @@
 import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
+import nodeResolve from "@rollup/plugin-node-resolve";
 
 /**
  * @type {import('rollup').RollupOptions}
@@ -14,8 +15,13 @@ export default {
     },
     preserveEntrySignatures: "allow-extension",
     plugins: [
+        nodeResolve({
+            modulePaths: [
+                "../../anylogic-cloud-client"
+            ],
+        }),
         dynamicImportVars({
             errorWhenNoFilesFound: true,
-        })
+        }),
     ]
 }
