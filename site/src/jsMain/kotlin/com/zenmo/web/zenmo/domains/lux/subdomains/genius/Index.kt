@@ -111,12 +111,12 @@ fun GeniusIndex() {
         }
 
         SectionContainer(
-            modifier = Modifier.margin(bottom = 3.cssRem),
+            modifier = Modifier.gap(5.cssRem).margin(bottom = 5.cssRem),
         ) {
             AnyLogicEmbed(
                 modelId = Uuid.parse("c31871aa-a043-49e6-8d91-fef9b2fc4643"), //todo replace with actual model ID for Genius
                 apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
-                modifier = Modifier.maxWidth(90.cssRem).margin(topBottom = 2.cssRem)
+                modifier = Modifier.maxWidth(90.cssRem).margin(topBottom = 4.cssRem)
             )
 
             MediaContentLayout(
