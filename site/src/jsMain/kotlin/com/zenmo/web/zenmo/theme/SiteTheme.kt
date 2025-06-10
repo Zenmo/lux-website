@@ -8,6 +8,7 @@ import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.button
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.overlay
+import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window
 
@@ -42,6 +43,17 @@ data class SitePalette(
     companion object {
         private val zenmoColorPalette = SitePalette()
 
+        // picked base color palette from the Brabant logo /lux/logos/Logo-balk
+        private val brabantColorPalette = SitePalette(
+            primary = Color.rgb(0xd01c1c),
+            onPrimary = Color.rgb(0xFFFFFF),
+            primaryContainer = Color.rgb(0xd01c1c),
+            secondary = Color.rgb(0xa7382f),
+            surfaceContainerLow = Color.rgb(0xfff0ee),
+            surface = Color.rgb(0xfff8f7),
+            onBackground = Color.rgb(0x3f2c29),
+        )
+
         private val luxColorPalette = SitePalette(
             primary = Color.rgb(0x004548), // dark teal
             onPrimary = Color.rgb(0xFFFFFF),
@@ -65,8 +77,11 @@ data class SitePalette(
 
             luxSpecificColorHues = LuxSpecificColorHues()
         )
-        val light = when (window.location.host) {
+
+        private val domain = window.location.host
+        val light = when (domain) {
             SiteGlobals.ZENMO_DOMAIN -> zenmoColorPalette
+            "${LuxSubdomains.BRABANT.domainName}.${SiteGlobals.LUX_DOMAIN}" -> brabantColorPalette
             else -> luxColorPalette
         }
     }
