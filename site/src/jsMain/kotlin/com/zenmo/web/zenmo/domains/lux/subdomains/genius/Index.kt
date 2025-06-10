@@ -68,8 +68,8 @@ fun GeniusIndex() {
             modifier = Modifier.gap(5.cssRem).margin(bottom = 5.cssRem),
         ) {
             AnyLogicEmbed(
-                modelId = Uuid.parse("c31871aa-a043-49e6-8d91-fef9b2fc4643"), //todo replace with actual model ID for Genius
-                apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
+                modelId = Uuid.parse("42e7ad8d-102f-4a32-808c-65bdd646a52a"),
+                apiKey = Uuid.parse("6764ad7a-0c33-4a0e-bd98-8255e8966419"),
                 modifier = Modifier.maxWidth(90.cssRem).margin(topBottom = 4.cssRem)
             )
 
