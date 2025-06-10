@@ -15,6 +15,7 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.toSitePalette
+import org.jetbrains.compose.web.attributes.ButtonType
 import org.jetbrains.compose.web.css.em
 import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.css.px
@@ -45,9 +46,11 @@ fun PrimaryButton(
     enText: String? = null,
     nlText: String? = null,
     icon: (@Composable () -> Unit)? = null,
-    onClick: (SyntheticMouseEvent) -> Unit,
+    type: ButtonType = ButtonType.Button,
+    onClick: (SyntheticMouseEvent) -> Unit = {},
 ) {
     Button(
+        type = type,
         modifier = modifier,
         onClick = onClick,
         variant = PrimaryButtonVariant.thenIf(icon != null, PrimaryButtonWithIconPadding),
