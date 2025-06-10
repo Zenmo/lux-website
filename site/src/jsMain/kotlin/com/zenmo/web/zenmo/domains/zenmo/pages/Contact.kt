@@ -10,6 +10,7 @@ import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.layouts.PageLayout
+import com.zenmo.web.zenmo.domains.zenmo.widgets.ContactForm
 import com.zenmo.web.zenmo.theme.font.DisplayTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.dom.Div
@@ -23,18 +24,7 @@ fun ContactPage() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Div(TextStyle.toModifier(DisplayTextStyle).toAttrs()) {
-                SpanText("Here, I will build a nice form.")
-            }
-
-            val ctx = rememberPageContext()
-            Button(
-                onClick = {
-                    ctx.router.tryRoutingTo("/")
-                },
-            ) {
-                Text("Go back to the homepage")
-            }
+            ContactForm()
         }
     }
 }

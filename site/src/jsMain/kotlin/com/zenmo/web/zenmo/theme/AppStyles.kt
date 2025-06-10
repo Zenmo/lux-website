@@ -22,6 +22,13 @@ import com.varabyte.kobweb.silk.theme.modifyStyle
 import com.zenmo.web.zenmo.utils.PublicRes
 import org.jetbrains.compose.web.css.*
 
+val defaultFonts = Modifier.fontFamily(
+    PublicRes.FontFamilies.POPPINS_REGULAR,
+    PublicRes.FontFamilies.POPPINS_MEDIUM,
+    PublicRes.FontFamilies.MONTSERRAT_REGULAR,
+    PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
+)
+
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) {
     // This site does not need scrolling itself, but this is a good demonstration for how you might enable this in your
@@ -35,12 +42,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
 
     ctx.stylesheet.apply {
         registerStyleBase("body") {
-            Modifier.fontFamily(
-                PublicRes.FontFamilies.POPPINS_REGULAR,
-                PublicRes.FontFamilies.POPPINS_MEDIUM,
-                PublicRes.FontFamilies.MONTSERRAT_REGULAR,
-                PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
-            )
+            defaultFonts
         }
     }
 
