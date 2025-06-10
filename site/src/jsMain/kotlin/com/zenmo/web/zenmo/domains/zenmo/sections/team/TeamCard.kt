@@ -55,7 +55,7 @@ val TeamCardImageContainerStyle = CssStyle {
 
 @Composable
 fun TeamCard(
-    teamMember: TeamMember,
+    zenmoTeam: ZenmoTeam,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -65,8 +65,8 @@ fun TeamCard(
         Box(TeamCardImageContainerStyle.toModifier()) {
             Image(
                 modifier = Modifier.fillMaxSize().objectFit(ObjectFit.Cover).clip(Circle()),
-                src = "/${teamMember.image}",
-                alt = "${teamMember.name} photo",
+                src = zenmoTeam.image,
+                alt = "${zenmoTeam.memberName} photo",
             )
         }
         H3(
@@ -77,7 +77,7 @@ fun TeamCard(
                 .margin(top = 1.5.cssRem, bottom = 0.5.cssRem)
                 .toAttrs()
         ) {
-            Text(teamMember.name)
+            Text(zenmoTeam.memberName)
         }
         Span(
             TextStyle.toModifier(
@@ -87,8 +87,8 @@ fun TeamCard(
                 .toAttrs()
         ) {
             LangText(
-                en = teamMember.enTitle,
-                nl = teamMember.nlTitle,
+                en = zenmoTeam.enTitle,
+                nl = zenmoTeam.nlTitle,
             )
         }
 //        P(
@@ -104,9 +104,9 @@ fun TeamCard(
 //        }
         Spacer()
         TeamMemberSocials(
-            email = teamMember.email,
-            linkedin = teamMember.linkedIn,
-            twitter = teamMember.twitter,
+            email = zenmoTeam.email,
+            linkedin = zenmoTeam.linkedIn,
+            twitter = zenmoTeam.twitter,
         )
     }
 }
