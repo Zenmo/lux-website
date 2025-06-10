@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.functions.max
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -13,9 +14,7 @@ import com.varabyte.kobweb.silk.components.graphics.FitWidthImageVariant
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.extendedBy
-import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vh
@@ -29,7 +28,9 @@ fun MediaContentLayout(
     visualContent: @Composable () -> Unit = {
         ImageContent(
             imageUrl = imageUrl,
+            keepImageAsIs = keepImageAsIs,
             modifier = imageModifier
+                .fillMaxWidth()
                 .thenIf(keepImageAsIs, Modifier.objectFit(ObjectFit.Contain))
         )
     },
@@ -39,11 +40,10 @@ fun MediaContentLayout(
     actionText: @Composable () -> Unit = {},
     reversed: Boolean = false,
 ) {
-    val breakpoint = rememberBreakpoint()
     SimpleGrid(
         numColumns(base = 1, md = 2, lg = 2, xl = 2),
         modifier = Modifier
-            .gap(if (breakpoint < Breakpoint.MD) 2.cssRem else 5.cssRem)
+            .gap(max(2.cssRem, 5.cssRem))
     ) {
         when (reversed) {
             true -> {
@@ -53,11 +53,15 @@ fun MediaContentLayout(
                     subtitle = subtitle,
                     actionText = actionText,
                 )
-                visualContent()
+                Box(Modifier.fillMaxSize()) {
+                    visualContent()
+                }
             }
 
             false -> {
-                visualContent()
+                Box(Modifier.fillMaxSize()) {
+                    visualContent()
+                }
                 TextContent(
                     title = title,
                     description = description,
@@ -112,10 +116,11 @@ val ImageContentStyleVariant = FitWidthImageVariant.extendedBy {
 private fun ImageContent(
     imageUrl: String,
     modifier: Modifier = Modifier,
+    keepImageAsIs: Boolean = false,
 ) {
     Image(
         src = imageUrl,
-        variant = ImageContentStyleVariant,
+        variant = if (keepImageAsIs) null else ImageContentStyleVariant,
         modifier = modifier
     )
 }

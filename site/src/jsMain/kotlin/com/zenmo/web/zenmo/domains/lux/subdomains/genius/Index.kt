@@ -5,39 +5,28 @@ import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiArrowBack
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiMail
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiPhone
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
-import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.MediaContentLayout
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.TeamCardImageContainerStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.TeamMember
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
-import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
-import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
-import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 import kotlin.uuid.Uuid
 
@@ -72,44 +61,9 @@ val GeniusHeaderStyle = CssStyle {
 
 @Composable
 fun GeniusIndex() {
-    Column(Modifier.fillMaxSize()) {
-        SectionContainer(
-            horizontalAlignment = Alignment.Start,
-            modifier = Modifier
-                .background(SitePalette.light.primary)
-                .color(SitePalette.light.onPrimary)
-                .then(GeniusHeaderStyle.toModifier())
-        ) {
-            IconButton(
-                onClick = {
-                    // todo navigate back to the previous page or lux.energy
-                },
-                modifier =
-                    Modifier
-                        .margin(top = 5.px)
-                        .background(SitePalette.light.primary.shifted(ColorMode.current, 0.2f))
-            ) {
-                MdiArrowBack()
-            }
-            Column {
-                HeaderText(
-                    enText = "Genius",
-                    nlText = "Genius",
-                    modifier = TextStyle.toModifier(HolonBlockHeaderTextStyle)
-                        .margin(0.cssRem)
-                )
-                Span(
-                    TextStyle.toModifier(HolonLineTextStyle)
-                        .margin(0.cssRem).toAttrs()
-                ) {
-                    LangText(
-                        en = "Design your own energy system",
-                        nl = "Ontwerp je eigen energiesysteem",
-                    )
-                }
-            }
-        }
-
+    LuxSubdomainPageLayout(
+        title = "Genius"
+    ) {
         SectionContainer(
             modifier = Modifier.gap(5.cssRem).margin(bottom = 5.cssRem),
         ) {
