@@ -12,6 +12,7 @@ enum class LuxSubdomains(val domainName: String) {
     GENIUS("genius"),
     HESSENPOORT("hessenpoort"),
     BRABANT("brabant"),
+    LOENEN("loenen"),
 }
 
 @Composable
@@ -21,5 +22,6 @@ fun LuxSubdomainRoutingComponent(subdomain: LuxSubdomains) {
         LuxSubdomains.GENIUS -> GeniusIndex()
         LuxSubdomains.HESSENPOORT -> DrechtstedenContent(subdomain.domainName)
         LuxSubdomains.BRABANT -> BrabantRouting()
+        LuxSubdomains.LOENEN -> LoenenIndex()
     }
 }
