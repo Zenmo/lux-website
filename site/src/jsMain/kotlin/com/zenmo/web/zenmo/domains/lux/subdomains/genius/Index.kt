@@ -21,7 +21,7 @@ import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.TeamCardImageContainerStyle
-import com.zenmo.web.zenmo.domains.zenmo.sections.team.TeamMember
+import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -79,15 +79,15 @@ fun GeniusIndex() {
                     Box(TeamCardImageContainerStyle.toModifier().size(22.cssRem)) {
                         Image(
                             modifier = Modifier.fillMaxSize().objectFit(ObjectFit.Cover).clip(Circle()),
-                            src = TeamMember.ATE.image,
-                            alt = "${TeamMember.ATE.name} photo",
+                            src = ZenmoTeam.ATE.image,
+                            alt = "${ZenmoTeam.ATE.memberName} photo",
                         )
                     }
                 },
                 title = {
                     HeaderText(
-                        enText = TeamMember.ATE.name,
-                        nlText = TeamMember.ATE.name,
+                        enText = ZenmoTeam.ATE.memberName,
+                        nlText = ZenmoTeam.ATE.memberName,
                         modifier = Modifier.margin(0.cssRem)
                     )
                 },
@@ -108,7 +108,7 @@ fun GeniusIndex() {
 
                         Row {
                             MdiMail(Modifier.padding(right = 0.25.cssRem))
-                            Text(TeamMember.ATE.email)
+                            Text(ZenmoTeam.ATE.email)
                         }
                     }
                 },

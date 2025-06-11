@@ -66,6 +66,6 @@ private fun TeamMembers() {
         numColumns(base = 1, sm = 2, md = 3, lg = 3, xl = 3),
         modifier = Modifier.gap(1.cssRem).fillMaxWidth().margin(bottom = 5.cssRem),
     ) {
-        ZenmoTeam.forEach { TeamCard(it) }
+        ZenmoTeam.entries.forEach { TeamCard(it) }
     }
 }
