@@ -10,6 +10,8 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.lightened
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.navigation.OpenLinkStrategy
+import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
@@ -64,7 +66,12 @@ fun CardLink(
     enDescription: String = "",
     nlDescription: String = "",
 ) {
-    Link(path = url, modifier = LinkNoStyle.toModifier()) {
+    Link(
+        path = url,
+        modifier = LinkNoStyle.toModifier(),
+        updateHistoryMode = UpdateHistoryMode.REPLACE,
+        openExternalLinksStrategy = OpenLinkStrategy.IN_PLACE,
+    ) {
         Column(
             CardLinkStyle.toModifier()
                 .then(modifier),

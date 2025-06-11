@@ -24,6 +24,7 @@ import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.cssRem
@@ -99,9 +100,7 @@ fun LuxSubdomainPageLayout(
                     .then(LayoutHeaderStyle.toModifier()),
             ) {
                 IconButton(
-                    onClick = {
-                        // todo navigate back to the previous page or lux.energy
-                    },
+                    onClick = { window.history.back() },
                     modifier =
                         Modifier
                             .margin(top = 5.px)
