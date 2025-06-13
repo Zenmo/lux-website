@@ -8,11 +8,11 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.lightened
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiError
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.PrimaryButton
 import com.zenmo.web.zenmo.theme.SitePalette
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
@@ -22,9 +22,7 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun ErrorWidget(
     errorMessage: String,
-    routeTo: String = "/"
 ) {
-    val ctx = rememberPageContext()
     Column(
         modifier = Modifier.fillMaxWidth().gap(1.cssRem),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -53,8 +51,6 @@ fun ErrorWidget(
             enText = "Return",
             nlText = "Terug",
             modifier = Modifier.margin(top = 1.cssRem)
-        ) {
-            ctx.router.navigateTo(routeTo)
-        }
+        ) { window.history.back() }
     }
 }
