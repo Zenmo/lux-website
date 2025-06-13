@@ -1,6 +1,10 @@
 package com.zenmo.web.zenmo.protected
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.foundation.layout.Box
+import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.core.AppGlobals
 import com.zenmo.web.zenmo.components.widgets.ErrorWidget
 import js.import.importAsync
@@ -29,7 +33,8 @@ fun ProtectedWrapper(entryPoint: String) {
 
     LaunchedEffect(Unit) {
         try {
-            privateModule = importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
+            privateModule =
+                importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
             status = LoadingState.SUCCESS
         } catch (e: Throwable) {
             /**
@@ -43,9 +48,11 @@ fun ProtectedWrapper(entryPoint: String) {
             }
 
             try {
-                val response = fetch(AppGlobals.getValue("BACKEND_URL") + "/" + fileName, RequestInit(
-                    credentials = RequestCredentials.include
-                ))
+                val response = fetch(
+                    AppGlobals.getValue("BACKEND_URL") + "/" + fileName, RequestInit(
+                        credentials = RequestCredentials.include
+                    )
+                )
                 status = when (response.status.toInt()) {
                     401 -> LoadingState.NOT_LOGGED_IN
                     403 -> LoadingState.NOT_ENOUGH_PRIVILEGES
@@ -58,11 +65,16 @@ fun ProtectedWrapper(entryPoint: String) {
         }
     }
 
-    when (status) {
-        LoadingState.PENDING -> Pending()
-        LoadingState.NOT_LOGGED_IN -> Login()
-        LoadingState.NOT_ENOUGH_PRIVILEGES -> NotEnoughPrivileges()
-        LoadingState.ERROR -> ErrorWidget(errorMessage = error?.toString() ?: "An unknown error occurred.")
-        LoadingState.SUCCESS -> privateModule!!.ProtectedComponent()
+    Box(
+        Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        when (status) {
+            LoadingState.PENDING -> Pending()
+            LoadingState.NOT_LOGGED_IN -> Login()
+            LoadingState.NOT_ENOUGH_PRIVILEGES -> NotEnoughPrivileges()
+            LoadingState.ERROR -> ErrorWidget(errorMessage = error?.toString() ?: "An unknown error occurred.")
+            LoadingState.SUCCESS -> privateModule!!.ProtectedComponent()
+        }
     }
 }
