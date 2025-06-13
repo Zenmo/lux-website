@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.pages
+package com.zenmo.web.zenmo.domains.lux.subdomains.brabant
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.navigation.BasePath
@@ -6,23 +6,15 @@ import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
-import com.zenmo.web.zenmo.components.widgets.CatchAllPage
-import com.zenmo.web.zenmo.domains.zenmo.pages.register
+import com.zenmo.web.zenmo.domains.lux.subdomains.brabant.pages.BrabantIndex
 import kotlinx.browser.window
-import com.zenmo.web.zenmo.domains.lux.pages.ComponentDemoPage
 
 @Composable
-fun LuxRoutingComponent() {
+fun BrabantRouting() {
     val router = Router()
     com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
-        ctx.router.register("/") { LuxHomePage() }
-        ctx.router.register(en = "/about", nl = "/over-ons") { AboutPage() }
-        if (window.location.host != "lux.energy") {
-            ctx.router.register("/component-demo") { ComponentDemoPage() }
-        }
-        ctx.router.register("/{...catch-all}") { CatchAllPage() }
+        ctx.router.register("/") { BrabantIndex() }
     }
-
     router.tryRoutingTo(
         BasePath.remove(window.location.href.removePrefix(window.origin)),
         UpdateHistoryMode.REPLACE

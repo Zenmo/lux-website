@@ -72,7 +72,7 @@ enum class ZenmoTeam(
                 Bij zijn afstuderen ontwikkelde hij zeer succesvol het ZEnMo Zero-model voor de provincie Noord-Brabant.
                 Zijn kracht ligt in het begrijpen van zowel de technische kant als de belanghebbenden bij het vormgeven van innovatieve duurzame scenario's.
             """.trimIndent(),
-        email = "",
+        email = "naud@zenmo.com",
         linkedIn = "",
         twitter = "",
     ),
@@ -180,7 +180,7 @@ enum class ZenmoTeam(
         linkedIn = "",
         twitter = "",
     ),
-    THIJIS(
+    THIJS(
         memberName = "Thijs Ratsma",
         enTitle = "Modeller",
         nlTitle = "Modelleur",
