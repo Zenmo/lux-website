@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.subdomains
+package com.zenmo.web.zenmo.protected.entrypoints.hessenpoort
 
 
 import androidx.compose.runtime.Composable
@@ -23,13 +23,18 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.TeamCardImageContainerSty
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import com.zenmo.web.zenmo.theme.SitePalette
+import energy.lux.site.shared.AccessPolicy
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Text
 import kotlin.uuid.Uuid
 
+@JsExport
+val accessPolicy = AccessPolicy.RoleBased("Hessenpoort")
 
+
+@JsExport
 @Composable
-fun HessenPoortIndex() {
+fun ProtectedComponent() {
     LuxSubdomainPageLayout(
         title = "Hessenpoort",
         backgroundColor = SitePalette.light.secondary,
