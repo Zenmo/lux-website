@@ -16,6 +16,9 @@ enum class LuxSubdomains(val domainName: String) {
     HILVERSUM("hilversum"),
     BUNDERBUURTEN("bunderbuurten"),
     LOENEN("loenen"),
+    ROTTERDAM_DEN_HAAG("rotterdam-den-haag"),
+    KAS_ALS_ENERGIEBRON("kas-als-energiebron"),
+    VRUCHTENBUURT("vruchtenbuurt"),
 }
 
 @Composable
@@ -29,5 +32,8 @@ fun LuxSubdomainRoutingComponent(subdomain: LuxSubdomains) {
         LuxSubdomains.HILVERSUM -> HilversumIndex()
         LuxSubdomains.BUNDERBUURTEN -> BunderbuurtenIndex()
         LuxSubdomains.LOENEN -> LoenenIndex()
+        LuxSubdomains.ROTTERDAM_DEN_HAAG -> RotterdamDenHaagIndex()
+        LuxSubdomains.KAS_ALS_ENERGIEBRON -> ProtectedWrapper("kasalsenergiebron")
+        LuxSubdomains.VRUCHTENBUURT -> VruchtenbuurtIndex()
     }
 }
