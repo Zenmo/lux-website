@@ -47,6 +47,7 @@ fun PrimaryButton(
     nlText: String? = null,
     icon: (@Composable () -> Unit)? = null,
     type: ButtonType = ButtonType.Button,
+    enabled: Boolean = true,
     onClick: (SyntheticMouseEvent) -> Unit = {},
 ) {
     Button(
@@ -54,6 +55,7 @@ fun PrimaryButton(
         modifier = modifier,
         onClick = onClick,
         variant = PrimaryButtonVariant.thenIf(icon != null, PrimaryButtonWithIconPadding),
+        enabled = enabled
     ) {
         Row(
             modifier = Modifier.gap(12.px),

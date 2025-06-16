@@ -1,9 +1,13 @@
 package com.zenmo.server
 
+import com.zenmo.server.contact.ContactController
+import com.zenmo.server.contact.MailService
 import org.http4k.core.HttpHandler
 import org.http4k.core.then
 import org.http4k.filter.DebuggingFilters
 import org.http4k.filter.ServerFilters
+import org.http4k.routing.bind
+import org.http4k.routing.routes
 import org.http4k.server.Undertow
 import org.http4k.server.asServer
 
@@ -15,11 +19,15 @@ fun startServer() {
     val config = Config()
 
     val oAuthSessions = InMemorySessionOAuthPersistence()
-    val routes = OAuthHandler(
+    val oAuthRoutes = OAuthHandler(
         baseUrl = config.baseUrl,
         clientId = config.clientId,
         clientSecret = config.clientSecret,
         oAuthSessions,
+    )
+
+    val contactRoute = routes(
+        "/api/contact" bind org.http4k.core.Method.POST to ContactController(MailService.create(config))::handler,
     )
     
     val app: HttpHandler = DebuggingFilters.PrintRequestAndResponse()
@@ -33,7 +41,7 @@ fun startServer() {
                 oAuthSessions = oAuthSessions,
             )
         ))
-        .then(routes)
+        .then(routes(oAuthRoutes, contactRoute))
 
     val port = 9000
     val server = app.asServer(Undertow(port)).start()

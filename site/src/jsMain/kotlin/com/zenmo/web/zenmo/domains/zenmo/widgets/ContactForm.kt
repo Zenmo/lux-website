@@ -1,6 +1,10 @@
 package com.zenmo.web.zenmo.domains.zenmo.widgets
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
@@ -13,16 +17,18 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.silk.components.forms.InputStyle
 import com.varabyte.kobweb.silk.style.addVariantBase
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.components.widgets.LoadingSpinner
 import com.zenmo.web.zenmo.components.widgets.Space
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.PrimaryButton
 import com.zenmo.web.zenmo.theme.defaultFonts
 import com.zenmo.web.zenmo.utils.paddingVertical
-import kotlinx.browser.window
+import kotlinx.coroutines.GlobalScope
 import org.jetbrains.compose.web.attributes.ButtonType
 import org.jetbrains.compose.web.attributes.InputType
 import org.jetbrains.compose.web.attributes.name
@@ -43,8 +49,17 @@ import org.jetbrains.compose.web.dom.Label
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.dom.TextArea
-import org.w3c.dom.HTMLFormElement
-import org.w3c.xhr.FormData
+import web.http.RequestInit
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.await
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.promise
+import web.abort.AbortSignal
+import web.form.FormData
+import web.html.HTMLFormElement
+import web.http.BodyInit
+import web.http.RequestMethod
+import web.http.fetch
 
 val ZenmoInputStyle = InputStyle.addVariantBase {
     Modifier
@@ -61,15 +76,49 @@ val ZenmoInputStyle = InputStyle.addVariantBase {
         .then(defaultFonts)
 }
 
+sealed class FormState {
+    object INITIAL : FormState()
+    object SUBMITTING : FormState()
+    class ERROR(val message: String) : FormState()
+    object SUCCESS : FormState()
+}
+
 @Composable
 fun ContactForm() {
-    Form(attrs = {
-        onSubmit { event ->
-            window.alert("Not implemented yet")
-            val formData = FormData(event.currentTarget as HTMLFormElement)
-            event.preventDefault()
+    var formState by remember { mutableStateOf<FormState>(FormState.INITIAL) }
+
+    Form(
+        attrs = {
+            onSubmit { event ->
+                event.preventDefault()
+                formState = FormState.SUBMITTING
+
+                val formData = FormData(event.currentTarget as HTMLFormElement)
+
+                GlobalScope.launch {
+                    try {
+                        val response = fetch(
+                            AppGlobals.getValue("BACKEND_URL") + "/api/contact", RequestInit(
+                                method = RequestMethod.POST,
+                                body = BodyInit(formData),
+                                signal = AbortSignal.timeout(8000.0)
+                            )
+                        )
+                        if (response.ok) {
+                            formState = FormState.SUCCESS
+                        } else {
+                            val errorText = "${response.status} ${response.statusText}"
+                            formState = FormState.ERROR(errorText)
+                        }
+                    // This catch isn't working.
+                    // The exception is bubbling up instead of being caught here.
+                    } catch (e: Exception) {
+                        formState = FormState.ERROR(e.toString())
+                    }
+                }
+            }
         }
-    }) {
+    ) {
         HeaderText(
             enText = "Send us a message",
             nlText = "Stuur ons een bericht",
@@ -149,7 +198,32 @@ fun ContactForm() {
                 type = ButtonType.Submit,
                 nlText = "Opsturen",
                 enText = "Send",
+                icon = if (formState is FormState.SUBMITTING) {
+                    { LoadingSpinner() }
+                } else null,
+                enabled = formState !is FormState.SUBMITTING,
             )
+
+            when (formState) {
+                FormState.INITIAL -> Unit
+                FormState.SUBMITTING -> LangText(
+                    en = "Submitting your message...",
+                    nl = "Bericht wordt verstuurd...",
+                )
+                is FormState.ERROR -> {
+                    LangText(
+                        en = "An error has occurred",
+                        nl = "Er is een fout opgetreden",
+                    )
+                    Br()
+                    val errorMessage = (formState as FormState.ERROR).message
+                    Text("Details: $errorMessage")
+                }
+                FormState.SUCCESS -> LangText(
+                    en = "Thank you for your message! We will get back to you soon.",
+                    nl = "Bedankt voor uw bericht! We nemen spoedig contact met u op.",
+                )
+            }
         }
     }
 }
