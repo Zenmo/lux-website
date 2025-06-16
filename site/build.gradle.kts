@@ -72,10 +72,13 @@ kotlin {
             languageSettings.optIn("kotlin.uuid.ExperimentalUuidApi")
         }
 
+        val wrappersVersion = "2025.6.5"
+
         jsMain.dependencies {
             implementation(project(":shared"))
-            implementation("org.jetbrains.kotlin-wrappers:kotlin-web:2025.5.8")
-            implementation("org.jetbrains.kotlin-wrappers:kotlin-js:2025.5.8")
+            implementation("org.jetbrains.kotlin-wrappers:kotlin-web:${wrappersVersion}")
+            implementation("org.jetbrains.kotlin-wrappers:kotlin-js:${wrappersVersion}")
+            implementation("org.jetbrains.kotlin-wrappers:kotlin-browser-js:${wrappersVersion}")
             implementation(libs.compose.runtime)
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
