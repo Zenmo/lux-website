@@ -1,17 +1,13 @@
 package com.zenmo.web.zenmo.domains.lux.components.layout
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.StyleVariable
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
@@ -48,29 +44,20 @@ val LayoutHeaderStyle = CssStyle {
     }
 }
 
-private val DomainHeaderBackgroundColorVar by StyleVariable<Color>()
-private val DomainHeaderFontColorVar by StyleVariable<Color>()
-val LayoutSectionContainerColorStyle = CssStyle.base {
-    Modifier
-        .background(DomainHeaderBackgroundColorVar.value())
-        .color(DomainHeaderFontColorVar.value())
-}
 
 @Composable
 fun LuxSubdomainPageLayout(
     title: String,
     enSubtitle: String = "Design your own energy system",
     nlSubtitle: String = "Ontwerp je eigen energiesysteem",
-    backgroundColor: Color = SitePalette.light.primary,
-    fontColor: Color = SitePalette.light.onPrimary,
     content: @Composable () -> Unit,
 ) {
     Column(Modifier.fillMaxSize()) {
         SectionContainer(
             horizontalAlignment = Alignment.Start,
-            modifier = LayoutSectionContainerColorStyle.toModifier()
-                .setVariable(DomainHeaderBackgroundColorVar, backgroundColor)
-                .setVariable(DomainHeaderFontColorVar, fontColor)
+            modifier = Modifier
+                .background(SitePalette.light.primary)
+                .color(SitePalette.light.onPrimary)
                 .then(LayoutHeaderStyle.toModifier()),
         ) {
             val protocol = window.location.protocol
@@ -78,21 +65,9 @@ fun LuxSubdomainPageLayout(
                 href = "$protocol//${SiteGlobals.LUX_DOMAIN}",
             ) {
                 Image(
-                    src = "/lux/logos/lux-sun-logo.png",
+                    src = "/lux/logos/lux-sun-logo.svg",
                     width = 60,
                     height = 60,
-                    modifier = Modifier
-                        .styleModifier {
-                            // using `fill` with svg didn't work, so using `mask` instead
-                            property("mask", "url(/lux/logos/lux-sun-logo.png) no-repeat center")
-                            property("mask-size", "contain")
-                            property(
-                                "background-color", when (backgroundColor) {
-                                    SitePalette.light.primary -> SitePalette.light.secondary
-                                    else -> SitePalette.light.primary
-                                }
-                            )
-                        }
                 )
             }
             Column {
