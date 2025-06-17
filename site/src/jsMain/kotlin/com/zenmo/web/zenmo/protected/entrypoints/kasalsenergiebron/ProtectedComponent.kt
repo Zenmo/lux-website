@@ -37,8 +37,6 @@ fun ProtectedComponent() {
         title = "Kas als Energiebron",
         enSubtitle = "Broekpolder",
         nlSubtitle = "Broekpolder",
-        backgroundColor = SitePalette.light.secondary,
-        fontColor = SitePalette.light.primary,
     ) {
         SectionContainer(
             modifier = Modifier.gap(5.cssRem).margin(topBottom = 5.cssRem),

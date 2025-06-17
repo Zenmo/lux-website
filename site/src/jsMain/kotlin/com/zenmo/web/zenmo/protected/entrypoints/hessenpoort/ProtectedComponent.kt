@@ -37,8 +37,6 @@ val accessPolicy = AccessPolicy.RoleBased("Hessenpoort")
 fun ProtectedComponent() {
     LuxSubdomainPageLayout(
         title = "Hessenpoort",
-        backgroundColor = SitePalette.light.secondary,
-        fontColor = SitePalette.light.primary,
     ) {
         SectionContainer(
             modifier = Modifier.gap(5.cssRem).margin(topBottom = 5.cssRem),
