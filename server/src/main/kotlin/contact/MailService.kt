@@ -35,7 +35,7 @@ class MailService(
 
         fun createMessage(config: Config, session: Session): MimeMessage {
             val message = MimeMessage(session)
-            message.setFrom(InternetAddress("website@zenmo.com"))
+            message.setFrom(InternetAddress("contactformulier@zenmo.com"))
             message.setRecipients(
                 Message.RecipientType.TO,
                 config.contactMailRecipients.map {
