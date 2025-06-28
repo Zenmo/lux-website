@@ -8,6 +8,7 @@ import com.zenmo.web.zenmo.domains.lux.pages.LuxRoutingComponent
 import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomainRoutingComponent
 import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.domains.zenmo.pages.ZenmoRoutingComponent
+import com.zenmo.web.zenmo.utils.setDomainFavicon
 import kotlinx.browser.window
 
 object SiteGlobals {
@@ -37,6 +38,7 @@ fun DomainRoutes() {
 
         else -> UnknownDomain(domain)
     }
+    setDomainFavicon()
 }
 
 
