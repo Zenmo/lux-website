@@ -7,16 +7,13 @@ import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.components.widgets.CatchAllPage
-import com.zenmo.web.zenmo.domains.zenmo.pages.register
 import kotlinx.browser.window
-import com.zenmo.web.zenmo.domains.lux.pages.ComponentDemoPage
 
 @Composable
 fun LuxRoutingComponent() {
     val router = Router()
     com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
-        ctx.router.register("/") { LuxHomePage() }
-        ctx.router.register(en = "/about", nl = "/over-ons") { AboutPage() }
+        ctx.router.register("/") { LuxEnergy() }
         if (window.location.host != "lux.energy") {
             ctx.router.register("/component-demo") { ComponentDemoPage() }
         }
