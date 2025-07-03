@@ -26,7 +26,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
 const val LUX_MUNICIPALITY_SECTION_ID = "lux-municipality"
-val LuxMunRowStyle = CssStyle {
+val LuxMunicipalityRowStyle = CssStyle {
     base {
         Modifier
             .maxWidth(100.percent)
@@ -55,13 +55,13 @@ val LuxMunRowStyle = CssStyle {
 fun LuxMunicipality() {
     val breakpoint = rememberBreakpoint()
     SectionContainer(
-        modifier = Modifier.gap(3.cssRem)
+        modifier = Modifier
             .id(LUX_MUNICIPALITY_SECTION_ID)
             .minHeight(150.vh),
         variant = LuxSectionContainerStyleVariant,
     ) {
         Row(
-            modifier = LuxMunRowStyle.toModifier(),
+            modifier = LuxMunicipalityRowStyle.toModifier(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             StartContent(breakpoint)
