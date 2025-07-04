@@ -9,6 +9,7 @@ import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxSection
 @Composable
 fun LuxProducts() {
     Column(Modifier.id(LuxSection.PRODUCTS.id)) {
+        LuxCompany()
         LuxResidentialArea()
         LuxMunicipality()
     }
