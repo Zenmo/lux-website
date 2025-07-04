@@ -41,7 +41,7 @@ FROM caddy:2.8.4
 WORKDIR /srv
 
 COPY --from=builder /app/site/.kobweb/site /srv
-COPY deploy/Caddyfile /etc/caddy/Caddyfile
+COPY deploy/static/Caddyfile /etc/caddy/Caddyfile
 EXPOSE 80
 
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]

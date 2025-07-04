@@ -29,7 +29,7 @@ jobs:
                         ~/.gradle
                         ~/.cache
                         ./.gradle
-                    key: frontend-compile
+                    key: static-compile
             -   name: Setup Gradle
                 uses: gradle/actions/setup-gradle@v3
             -   name: Make Gradle wrapper executable
@@ -62,7 +62,7 @@ jobs:
                         root-gradle
                         root-cache
                         app-gradle
-                    key: frontend
+                    key: static
 
             -   name: inject cache mounts into docker
                 uses: reproducible-containers/buildkit-cache-dance@v3.1.0
@@ -86,7 +86,8 @@ jobs:
             # see https://docs.docker.com/build/cache/backends/gha/
             -   name: Expose
                 uses: crazy-max/ghaction-github-runtime@v3
-            -   run: ./deploy/build.sh
+            -   run: ./deploy/static/build.sh
+            -   run: ./deploy/server/build.sh
 
     deploy:
         needs: build
