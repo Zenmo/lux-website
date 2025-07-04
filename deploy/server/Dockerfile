@@ -1,6 +1,3 @@
-# syntax=docker/dockerfile:1.7-labs
-
-# Use JDK to build the Kobweb project
 FROM eclipse-temurin:21 AS builder
 RUN apt-get update && apt-get install -y \
     npm \
@@ -34,14 +31,13 @@ ARG LUX_DOMAIN=lux.energy
 RUN --mount=type=cache,target=/root/.gradle \
     --mount=type=cache,target=/root/.cache \
     --mount=type=cache,target=/app/.gradle \
-    ./gradlew site:kobwebExport -PkobwebExportLayout=STATIC -PkobwebReuseServer=false -PkobwebBuildTarget=RELEASE
+    ./gradlew server:build -PkobwebBuildTarget=RELEASE
 
-# Use Caddy to serve static files
-FROM caddy:2.8.4
-WORKDIR /srv
-
-COPY --from=builder /app/site/.kobweb/site /srv
-COPY deploy/Caddyfile /etc/caddy/Caddyfile
+FROM eclipse-temurin:21
+WORKDIR /app
+COPY --from=builder /app/server/build/distributions/server.tar /app/server.tar
+RUN tar -xf server.tar && rm server.tar
 EXPOSE 80
+ENV PORT=80
 
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
+CMD ["./server/bin/server"]
