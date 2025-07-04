@@ -113,14 +113,16 @@ val ImageContentStyleVariant = FitWidthImageVariant.extendedBy {
 }
 
 @Composable
-private fun ImageContent(
+fun ImageContent(
     imageUrl: String,
     modifier: Modifier = Modifier,
     keepImageAsIs: Boolean = false,
+    alt: String = "Image content"
 ) {
     Image(
         src = imageUrl,
         variant = if (keepImageAsIs) null else ImageContentStyleVariant,
-        modifier = modifier
+        modifier = modifier,
+        alt = alt
     )
 }
