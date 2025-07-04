@@ -52,9 +52,9 @@ class JsServer(
     }
 
     override fun invoke(request: Request): Response {
-        val path = request.uri.path
+        val path = request.uri.path.removePrefix("/")
         val jsPath = path.removeSuffix(".map")
-        val jsResourceUri = resourceLoader.load(jsPath)
+        val jsResourceUri = resourceLoader.load(path)
         if (jsResourceUri == null) {
             return Response(NOT_FOUND).header("Content-Type", "text/javascript")
         }
