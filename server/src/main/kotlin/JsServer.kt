@@ -40,6 +40,17 @@ class JsServer(
     val oAuthSessions: InMemorySessionOAuthPersistence,
     val clientId: String,
 ): HttpHandler {
+    companion object {
+        fun create(config: Config, oAuthSessions: InMemorySessionOAuthPersistence): JsServer = JsServer(
+            resourceLoader = when (config.javaScriptFileSource) {
+                JavaScriptFileSource.CLASSPATH -> ResourceLoader.Classpath()
+                JavaScriptFileSource.DIRECTORY -> ResourceLoader.Directory("../site/build/rollup")
+            },
+            oAuthSessions = oAuthSessions,
+            clientId = config.clientId,
+        )
+    }
+
     override fun invoke(request: Request): Response {
         val path = request.uri.path
         val jsPath = path.removeSuffix(".map")

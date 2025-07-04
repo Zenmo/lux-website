@@ -40,3 +40,14 @@ kotlin {
     }
     jvmToolchain(21)
 }
+
+tasks.register<Copy>("copyJsResources") {
+    dependsOn(":site:npmRollup")
+
+    from(project(":site").layout.buildDirectory.dir("rollup"))
+    into(project.layout.projectDirectory.dir("src/main/resources"))
+}
+
+tasks.named("processResources") {
+    dependsOn("copyJsResources")
+}

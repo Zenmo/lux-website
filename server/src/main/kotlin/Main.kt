@@ -36,10 +36,7 @@ fun startServer() {
         // so that the error reaches the client
         .then(ServerFilters.CatchAll())
         .then(JsServerFilter(
-            JsServer(
-                clientId =  config.clientId,
-                oAuthSessions = oAuthSessions,
-            )
+            JsServer.create(config, oAuthSessions)
         ))
         .then(routes(oAuthRoutes, contactRoute))
 
