@@ -61,7 +61,8 @@ fun LuxMunicipality() {
         variant = LuxSectionContainerStyleVariant,
     ) {
         Row(
-            modifier = LuxMunicipalityRowStyle.toModifier(),
+            modifier = LuxMunicipalityRowStyle.toModifier()
+                .alignItems(AlignItems.Stretch),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             StartContent(breakpoint)
