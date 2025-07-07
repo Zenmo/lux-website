@@ -34,12 +34,14 @@ fun InlineLink(
     }
 }
 
+val BorderBottomModifier =
+    Modifier
+        .display(DisplayStyle.InlineBlock)
+        .borderBottom(2.px, LineStyle.Solid)
 
 val InlineLinkTextStyle = LinkStyle.addVariant {
     base {
-        Modifier
-            .display(DisplayStyle.InlineBlock)
-            .borderBottom(2.px, LineStyle.Solid)
+        BorderBottomModifier
             .transform { skewX((-10).deg) }
             .color(SitePalette.light.primary)
     }

@@ -46,7 +46,7 @@ fun LuxCompany(
             variant = LuxSectionContainerStyleVariant,
         ) {
             HeaderTextContent(breakpoint)
-            CarouselContent()
+            LuxCompanyImages()
             Div(
                 Modifier.fillMaxWidth()
                     .background(SitePalette.light.surfaceContainerLow)
@@ -149,7 +149,7 @@ fun LuxCompany(
                     """.trimIndent()
                 )
                 A(
-                    href = "#lux-energy-hub",
+                    href = "#$LUX_ENERGY_HUB_SECTION_ID",
                 ) {
                     B { Text("LUX Energy Hub.") }
                 }
@@ -236,14 +236,14 @@ private fun HeaderTextContent(breakpoint: Breakpoint) {
 }
 
 // todo replce with lux company images
-private val luxCompanyCarouselImages = listOf(
+private val listOfLuxCompanyImages = listOf(
     "/img/drechtsteden-rivier.jpg" to LuxSubdomains.DRECHTSTEDEN.domainName,
     "/img/tue-luchtfoto.png" to LuxSubdomains.GENIUS.domainName,
     "/img/tue-luchtfoto.png" to LuxSubdomains.LOENEN.domainName,
 )
 
 @Composable
-private fun CarouselContent() {
+private fun LuxCompanyImages() {
     Column {
         SimpleGrid(
             numColumns = numColumns(base = 3, md = 3, lg = 3, xl = 3),
@@ -251,7 +251,7 @@ private fun CarouselContent() {
                 .fillMaxWidth()
                 .gap(2.cssRem)
         ) {
-            luxCompanyCarouselImages.forEach { item ->
+            listOfLuxCompanyImages.forEach { item ->
                 ImageContent(
                     imageUrl = item.first,
                     alt = "${item.second} image",

@@ -288,7 +288,6 @@ private fun StartContent(breakpoint: Breakpoint) {
                                 gegevens en toekomstplannen.
                             """.trimIndent()
                 )
-                Text("👌")
             }
         }
     }

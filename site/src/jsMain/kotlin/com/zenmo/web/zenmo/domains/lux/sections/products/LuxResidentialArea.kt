@@ -113,7 +113,6 @@ fun LuxResidentialArea() {
                             en = "LUX residential area allows you to immediately load all public data about a neighborhood and make it part of an interactive simulation.",
                             nl = "Met Lux Residential Area kunt u onmiddellijk alle openbare gegevens over een buurt laden en onderdeel maken van een interactieve simulatie."
                         )
-                        Text("😎")
                     }
                 }
             }

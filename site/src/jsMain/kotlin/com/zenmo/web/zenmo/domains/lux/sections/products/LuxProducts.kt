@@ -10,6 +10,7 @@ import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxSection
 fun LuxProducts() {
     Column(Modifier.id(LuxSection.PRODUCTS.id)) {
         LuxCompany()
+        LuxEnergyHub()
         LuxResidentialArea()
         LuxMunicipality()
     }

@@ -127,7 +127,6 @@ fun LuxModels() {
 
 //todo use appropriate image for each model
 private val publicLuxModels = listOf(
-    LuxSubdomains.DRECHTSTEDEN to "/img/drechtsteden-rivier.jpg",
     LuxSubdomains.LOENEN to "/lux/images/models/loenen.png",
     LuxSubdomains.NEDERLAND to "/lux/images/models/nederland.png",
     LuxSubdomains.BRABANT to "/lux/images/models/brabant.png",
@@ -138,6 +137,7 @@ private val publicLuxModels = listOf(
 )
 
 private val privateLuxModels = listOf(
+    LuxSubdomains.DRECHTSTEDEN to "/img/drechtsteden-rivier.jpg",
     LuxSubdomains.GENIUS to "/lux/images/models/genius.png",
     LuxSubdomains.HESSENPOORT to "/lux/images/models/hessenpoort.png",
     LuxSubdomains.KAS_ALS_ENERGIEBRON to "/lux/images/models/kasals.png",
