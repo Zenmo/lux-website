@@ -17,6 +17,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.widgets.ImageContent
+import com.zenmo.web.zenmo.components.widgets.LangBlock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
@@ -176,23 +177,32 @@ private fun HeaderTextContent(breakpoint: Breakpoint) {
                 .toAttrs()
         ) {
             P {
-                LangText(
-                    en = """
-                    Companies are increasingly switching to electrical appliances, but at the same time
-                    more and more companies are being told by the grid operator that they cannot get the
-                    power they need. Of course, a company can then move or generate its own very
-                    expensive electricity with diesel generators, but 
-                """.trimIndent(),
-                    nl = """
-                    Bedrijven schakelen steeds vaker over op elektrische apparaten, maar tegelijkertijd
-                    krijgen steeds meer bedrijven te horen van de netbeheerder dat ze de benodigde
-                    stroom niet kunnen krijgen. Natuurlijk kan een bedrijf dan verhuizen of zelf heel
-                    dure elektriciteit opwekken met dieselgeneratoren, maar 
-                """.trimIndent()
-                )
-                B { Text("LUX company") }
-                LangText(
-                    en = " shows that much more is possible.",
+                LangBlock(
+                    en = {
+                        Text(
+
+                            """
+                                Companies are increasingly switching to electrical appliances, but at the same time
+                                more and more companies are being told by the grid operator that they cannot get the
+                                power they need. Of course, a company can then move or generate its own very
+                                expensive electricity with diesel generators, but 
+                            """.trimIndent()
+                        )
+                        B { Text("LUX company") }
+                        Text(" shows that much more is possible.")
+                    },
+                    nl = {
+                        Text(
+                            """
+                                Bedrijven schakelen steeds vaker over op elektrische apparaten, maar tegelijkertijd
+                                krijgen steeds meer bedrijven te horen van de netbeheerder dat ze de benodigde
+                                stroom niet kunnen krijgen. Natuurlijk kan een bedrijf dan verhuizen of zelf heel
+                                dure elektriciteit opwekken met dieselgeneratoren, maar 
+                            """.trimIndent()
+                        )
+                        B { Text("LUX company") }
+                        Text(" laat zien dat er veel meer mogelijk is.")
+                    }
                 )
             }
         }
@@ -204,31 +214,42 @@ private fun HeaderTextContent(breakpoint: Breakpoint) {
                 .toAttrs()
         ) {
             P {
-                LangText(
-                    en = """
+                LangBlock(
+                    en = {
+                        Text(
+                            """
                                 For example, a company can grow without having to increase its grid connection by
                                 installing a battery. A battery can also ensure that energy from your own solar panels is
                                 used more and can earn money by trading on the energy market. Finally, the grid
                                 operator will reward battery owners for preventing grid congestion in the future. With 
-                            """.trimIndent(),
-                    nl = """
+                            """.trimIndent()
+                        )
+                        B { Text("LUX company") }
+                        Text(
+                            """
+                             , you can calculate in no time whether a battery is a good idea for your company based on
+                              your own historical energy consumption and the future plans you set yourself.
+                            """.trimIndent()
+                        )
+                    },
+                    nl = {
+                        Text(
+                            """
                                 Zo kan een bedrijf groeien zonder dat het zijn netaansluiting hoeft te vergroten door
                                 een batterij te installeren. Een batterij kan er ook voor zorgen dat energie van je
                                 eigen zonnepanelen beter wordt benut en kan geld verdienen door te handelen op de
                                 energiemarkt. Tot slot zal de netbeheerder in de toekomst batterijbezitters belonen
                                 voor het voorkomen van netcongestie. Met 
                             """.trimIndent()
-                )
-                B { Text("LUX company") }
-                LangText(
-                    en = """
-                         , you can calculate in no time whether a battery is a good idea for your company based on
-                          your own historical energy consumption and the future plans you set yourself.
-                          """.trimIndent(),
-                    nl = """
-                        kun je in een mum van tijd berekenen of een batterij een goed idee is voor jouw bedrijf op 
-                        basis van je eigen historische energieverbruik en de toekomstplannen die je zelf stelt.
-                          """.trimIndent()
+                        )
+                        B { Text("LUX company") }
+                        Text(
+                            """
+                             , kun je in een mum van tijd berekenen of een batterij een goed idee is voor jouw bedrijf op 
+                             basis van je eigen historische energieverbruik en de toekomstplannen die je zelf stelt.
+                            """.trimIndent()
+                        )
+                    }
                 )
             }
         }

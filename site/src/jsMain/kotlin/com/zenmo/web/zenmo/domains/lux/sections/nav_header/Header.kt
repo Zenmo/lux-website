@@ -9,12 +9,9 @@ import com.varabyte.kobweb.compose.css.functions.RadialGradient
 import com.varabyte.kobweb.compose.css.functions.radialGradient
 import com.varabyte.kobweb.compose.css.functions.toImage
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.attrsModifier
+import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.before
@@ -22,6 +19,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -191,20 +189,28 @@ fun LuxHeader() {
                 }
             }
 
-            A(
-                href = "",
-                attrs = Modifier
-                    .borderRadius(16.px)
-                    .background(SitePalette.light.primary)
-                    .color(SitePalette.light.onPrimary)
-                    .padding(leftRight = 1.5.cssRem, topBottom = 0.65.cssRem)
-                    .textDecorationLine(TextDecorationLine.None)
-                    .toAttrs()
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.gap(1.cssRem)
             ) {
-                LangText(
-                    en = "BOOK A DEMO NOW!",
-                    nl = "BOEK NU EEN DEMO!"
-                )
+                A(
+                    href = "",
+                    attrs = Modifier
+                        .borderRadius(16.px)
+                        .background(SitePalette.light.primary)
+                        .color(SitePalette.light.onPrimary)
+                        .padding(leftRight = 1.5.cssRem, topBottom = 0.65.cssRem)
+                        .textDecorationLine(TextDecorationLine.None)
+                        .toAttrs()
+                ) {
+                    LangText(
+                        en = "BOOK A DEMO NOW!",
+                        nl = "BOEK NU EEN DEMO!"
+                    )
+                }
+
+                LanguageSwitchButton()
             }
         }
 

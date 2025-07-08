@@ -11,10 +11,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import com.zenmo.web.zenmo.components.widgets.BorderBottomModifier
-import com.zenmo.web.zenmo.components.widgets.InlineLink
-import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.components.widgets.*
 import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
@@ -35,36 +32,42 @@ fun LuxEnergyHub() {
         horizontalAlignment = Alignment.Start,
     ) {
         HeaderText(
-            enText = "Lux Energy HUB",
+            enText = "LUX Energy HUB",
             nlText = "LUX Energy HUB",
         )
 
         P(Modifier.margin(0.cssRem).toAttrs()) {
-            LangText(
-                en = """
-                    Business parks are the engine of the Dutch economy and are increasingly switching to
-                    sustainable electricity instead of fossil fuels. Unfortunately, more and more business
-                    parks are facing grid congestion that slows down sustainability and makes extremely
-                    expensive diesel generators necessary. It can even lead to companies having to close or
-                    relocate. Fortunately, 
-                """.trimIndent(),
-                nl = """
-                    Bedrijventerreinen zijn de motor van de Nederlandse economie en schakelen steeds vaker
-                    over op duurzame elektriciteit in plaats van fossiele brandstoffen. Helaas krijgen steeds
-                    meer bedrijventerreinen te maken met netcongestie die verduurzaming vertraagt en
-                    extreem dure dieselgeneratoren noodzakelijk maakt. Het kan zelfs leiden tot
-                    bedrijven die moeten sluiten of verhuizen. Gelukkig laat, 
-                """.trimIndent()
-            )
-            B {
-                LangText(
-                    en = "Lux shows energy hub ",
-                    nl = "Lux laat energiehubs zien "
-                )
-            }
-            LangText(
-                en = "solutions.",
-                nl = "oplossingen."
+            LangBlock(
+                en = {
+                    Text(
+                        """
+                        Business parks are the engine of the Dutch economy and are increasingly switching to
+                        sustainable electricity instead of fossil fuels. Unfortunately, more and more business
+                        parks are facing grid congestion that slows down sustainability and makes extremely
+                        expensive diesel generators necessary. It can even lead to companies having to close or
+                        relocate. Fortunately, 
+                    """.trimIndent()
+                    )
+                    B {
+                        Text(" Lux shows energy hub")
+                    }
+                    Text(" solutions.")
+                },
+                nl = {
+                    Text(
+                        """
+                        Bedrijventerreinen zijn de motor van de Nederlandse economie en schakelen steeds vaker
+                        over op duurzame elektriciteit in plaats van fossiele brandstoffen. Helaas krijgen steeds
+                        meer bedrijventerreinen te maken met netcongestie die verduurzaming vertraagt en
+                        extreem dure dieselgeneratoren noodzakelijk maakt. Het kan zelfs leiden tot
+                        bedrijven die moeten sluiten of verhuizen. Gelukkig laat, 
+                    """.trimIndent()
+                    )
+                    B {
+                        Text(" Lux laat energiehubs zien")
+                    }
+                    Text(" oplossingen.")
+                }
             )
         }
         VideoContent()
@@ -93,7 +96,7 @@ fun LuxEnergyHub() {
                 ) {
                     LangText(
                         en = """
-                            On the basis of the new Energy Act, the grid operator must provide transparency so that
+                            On the basis of the new Energiewet, the grid operators must provide transparency so that
                             companies that run into problems can think along about how to get more out of an
                             existing grid connection. It often turns out that a lot is possible. 
                         """.trimIndent(),
@@ -147,83 +150,114 @@ private fun TextContent() {
                 Modifier
                     .margin(0.cssRem).toAttrs()
             ) {
-                B {
-                    LangText(
-                        en = "LUX energy hub ",
-                        nl = "LUX-energiehub "
-                    )
-                }
-                LangText(
-                    en = "is for situations where ",
-                    nl = "is voor situaties waarin "
-                )
-                InlineLink(
-                    destinationUrl = "#$LUX_COMPANY_SECTION_ID",
-                    enLinkText = "LUX company",
-                    nlLinkText = "LUX bedrijf"
-                )
-                LangText(
-                    en = """
-                         does not go far enough. It originated at Eindhoven University of Technology and was designed for 
-                        a new energy system that does more with the existing electricity grid through local autonomy and
-                        smart use of storage. In jargon, it is based on modern concepts such as 
-                    """.trimIndent(),
-                    nl = """
-                         niet ver genoeg gaat. Het is ontstaan aan de Technische Universiteit Eindhoven en is ontworpen voor
-                        een nieuw energiesysteem dat meer doet met het bestaande elektriciteitsnet door lokale autonomie en
-                        slim gebruik van opslag. In jargon is het gebaseerd op moderne concepten zoals 
-                    """.trimIndent()
-                )
-                InlineLink(
-                    destinationUrl = "", //todo link to holons page?
-                    enLinkText = "holons",
-                    nlLinkText = "holons",
-                )
-                Text(", ")
-                Span(
-                    BorderBottomModifier
-                        .toAttrs()
-                ) {
-                    LangText(
-                        en = "integrated area development",
-                        nl = "geïntegreerde gebiedsontwikkeling"
-                    )
-                }
 
-                LangText(
-                    en = " and ",
-                    nl = " en "
-                )
+                LangBlock(
+                    en = {
+                        B {
+                            Text("LUX energy hub ")
+                        }
+                        Text("is for situations where ")
+                        InlineLink(
+                            destinationUrl = "#$LUX_COMPANY_SECTION_ID",
+                            enLinkText = "LUX company",
+                            nlLinkText = "LUX bedrijf"
+                        )
+                        Text(
+                            """
+                                 does not go far enough. It originated at Eindhoven University of Technology and was designed for 
+                                a new energy system that does more with the existing electricity grid through local autonomy and
+                                smart use of storage. In jargon, it is based on modern concepts such as 
+                            """.trimIndent()
+                        )
+                        InlineLink(
+                            destinationUrl = "", //todo link to holons page?
+                            enLinkText = "holons",
+                            nlLinkText = "holons",
+                        )
+                        Text(", ")
+                        Span(
+                            BorderBottomModifier
+                                .toAttrs()
+                        ) {
+                            Text("integrated area development")
+                        }
 
-                InlineLink(
-                    destinationUrl = "", //todo link to autonomous agents?
-                    enLinkText = "autonomous agents.",
-                    nlLinkText = "autonome agenten.",
-                )
+                        Text(" and ")
 
-                LangText(
-                    en = " For you, the result is an ",
-                    nl = " Voor u is het resultaat een "
-                )
-                Span(
-                    BorderBottomModifier
-                        .toAttrs()
-                ) {
-                    LangText(
-                        en = "interactive simulation tool",
-                        nl = "interactieve simulatie tool"
-                    )
-                }
+                        InlineLink(
+                            destinationUrl = "", //todo link to autonomous agents?
+                            enLinkText = "autonomous agents.",
+                            nlLinkText = "autonome agenten.",
+                        )
 
-                LangText(
-                    en = """
-                         with which you, together with other companies and possibly the grid operator and municipality, 
-                        can calculate ideas within seconds.
-                    """.trimIndent(),
-                    nl = """
-                         waarmee u, samen met andere bedrijven en mogelijk de netbeheerder en gemeente, ideeën binnen 
-                         enkele seconden kunt berekenen.
-                    """.trimIndent()
+                        Text(" For you, the result is an ")
+                        Span(
+                            BorderBottomModifier
+                                .toAttrs()
+                        ) {
+                            Text("interactive simulation tool")
+                        }
+
+                        Text(
+                            """
+                                 with which you, together with other companies and possibly the grid operator and municipality, 
+                                can calculate ideas within seconds.
+                            """.trimIndent()
+                        )
+                    },
+                    nl = {
+                        B {
+                            Text("LUX-energiehub ")
+                        }
+                        Text("is voor situaties waarin ")
+                        InlineLink(
+                            destinationUrl = "#$LUX_COMPANY_SECTION_ID",
+                            enLinkText = "LUX company",
+                            nlLinkText = "LUX bedrijf"
+                        )
+                        Text(
+                            """
+                                 niet ver genoeg gaat. Het is ontstaan aan de Technische Universiteit Eindhoven en is ontworpen voor
+                                een nieuw energiesysteem dat meer doet met het bestaande elektriciteitsnet door lokale autonomie en
+                                slim gebruik van opslag. In jargon is het gebaseerd op moderne concepten zoals 
+                            """.trimIndent()
+                        )
+                        InlineLink(
+                            destinationUrl = "", //todo link to holons page?
+                            enLinkText = "holons",
+                            nlLinkText = "holons",
+                        )
+                        Text(", ")
+                        Span(
+                            BorderBottomModifier
+                                .toAttrs()
+                        ) {
+                            Text("geïntegreerde gebiedsontwikkeling")
+                        }
+
+                        Text(" en ")
+
+                        InlineLink(
+                            destinationUrl = "", //todo link to autonomous agents?
+                            enLinkText = "autonomous agents.",
+                            nlLinkText = "autonome agenten.",
+                        )
+
+                        Text(" Voor u is het resultaat een ")
+                        Span(
+                            BorderBottomModifier
+                                .toAttrs()
+                        ) {
+                            Text("interactieve simulatie tool")
+                        }
+
+                        Text(
+                            """
+                                  waarmee u, samen met andere bedrijven en mogelijk de netbeheerder en gemeente, ideeën binnen 
+                                 enkele seconden kunt berekenen.
+                            """.trimIndent()
+                        )
+                    }
                 )
             }
         }
