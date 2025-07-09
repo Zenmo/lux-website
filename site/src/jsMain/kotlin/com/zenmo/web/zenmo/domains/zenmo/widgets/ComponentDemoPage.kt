@@ -12,6 +12,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.components.layouts.PageLayout
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.components.widgets.SectionContainerStyle
@@ -53,46 +54,51 @@ val DemoPageContainerVariant = SectionContainerStyle.addVariant {
  */
 @Composable
 fun ComponentDemoPage() {
-    SectionContainer {
-        Span(
-            TextStyle.toModifier(DisplayTextStyle)
-                .padding(top = 2.cssRem)
-                .toAttrs()
-        ) {
-            LangText(
-                en = "Demo of Components",
-                nl = "Demo van Componenten",
-            )
-        }
-        SectionContainer(
-            modifier = Modifier
-                .margin(topBottom = 2.cssRem)
-                .padding(leftRight = 4.cssRem),
-            variant = DemoPageContainerVariant,
-            verticalArrangement = Arrangement.spacedBy(4.cssRem)
-        ) {
-            PageHeadingsDemo()
-            SubHeadingsDemo()
-            Column(
-                modifier = Modifier.fillMaxWidth()
+    PageLayout(
+        title = "Components Demo",
+        header = {},
+        footer = {}
+    ) {
+        SectionContainer {
+            Span(
+                TextStyle.toModifier(DisplayTextStyle)
+                    .padding(top = 2.cssRem)
+                    .toAttrs()
             ) {
-                CustomizationNotes(
-                    enCustomizationNotes = """
+                LangText(
+                    en = "Demo of Components",
+                    nl = "Demo van Componenten",
+                )
+            }
+            SectionContainer(
+                modifier = Modifier
+                    .margin(topBottom = 2.cssRem)
+                    .padding(leftRight = 4.cssRem),
+                variant = DemoPageContainerVariant,
+                verticalArrangement = Arrangement.spacedBy(4.cssRem)
+            ) {
+                PageHeadingsDemo()
+                SubHeadingsDemo()
+                Column(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    CustomizationNotes(
+                        enCustomizationNotes = """
                     You can add some styling to these text components, give it a color maybe. 
                     Do this with the color modifier like shown below:
                 """.trimIndent(),
-                    nlCustomizationNotes = """
+                        nlCustomizationNotes = """
                     Je kunt wat styling toevoegen aan deze tekstcomponenten, geef het misschien een kleur.
                     Doe dit met de kleur-modifier zoals hieronder getoond:
                 """.trimIndent(),
-                )
-                Pre(
-                    attrs = Modifier
-                        .margin(top = 0.5.cssRem)
-                        .then(PreCodeStyle.toModifier()).toAttrs()
-                ) {
-                    Text(
-                        """
+                    )
+                    Pre(
+                        attrs = Modifier
+                            .margin(top = 0.5.cssRem)
+                            .then(PreCodeStyle.toModifier()).toAttrs()
+                    ) {
+                        Text(
+                            """
                     import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
                     import com.varabyte.kobweb.compose.ui.modifiers.color
                     import com.zenmo.web.zenmo.theme.SitePalette
@@ -105,21 +111,22 @@ fun ComponentDemoPage() {
                         modifier = Modifier.color(SitePalette.light.primary)
                     ) 
                     """.trimIndent()
+                        )
+                    }
+                    LangText(
+                        en = "NB: SitePalette contains custom color palette defined for the site's theme.",
+                        nl = "NB: SitePalette bevat een aangepast kleurenpalet dat is gedefinieerd voor het thema van de site",
                     )
                 }
-                LangText(
-                    en = "NB: SitePalette contains custom color palette defined for the site's theme.",
-                    nl = "NB: SitePalette bevat een aangepast kleurenpalet dat is gedefinieerd voor het thema van de site",
-                )
+                TextParagraphsDemo()
+                AnyLogicDemo()
+                MediaContentLayoutDemo()
+                InlineLinkDemo()
+                OrderedListDemo()
+                ImageWithCaptionDemo()
+                EmbedVideoDemo()
+                CardLinkDemo()
             }
-            TextParagraphsDemo()
-            AnyLogicDemo()
-            MediaContentLayoutDemo()
-            InlineLinkDemo()
-            OrderedListDemo()
-            ImageWithCaptionDemo()
-            EmbedVideoDemo()
-            CardLinkDemo()
         }
     }
 }
