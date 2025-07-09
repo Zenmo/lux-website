@@ -21,6 +21,9 @@ import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
+import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
+import com.zenmo.web.zenmo.theme.font.TextStyle
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
@@ -150,17 +153,7 @@ fun LuxHeader() {
         Row(
             HeaderInnerStyle.toModifier()
         ) {
-            A(
-                href = "",
-            ) {
-                Image(
-                    src = "/lux/logos/lux-sun-logo.svg",
-                    modifier = Modifier.attrsModifier {
-                        attr("width", "50px")
-                        attr("height", "50px")
-                    }
-                )
-            }
+            LuxLogo()
 
             Nav(
                 LuxNavStyle.toModifier().toAttrs()
@@ -235,5 +228,35 @@ fun LuxHeader() {
                 .setVariable(ActiveIndicatorLeftStyleVar, indicatorLeft)
                 .toAttrs()
         )
+    }
+}
+
+@Composable
+private fun LuxLogo() {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.gap(0.5.cssRem)
+    ) {
+        Image(
+            src = "/lux/logos/lux-sun-logo.svg",
+            modifier = Modifier.attrsModifier {
+                attr("width", "50px")
+                attr("height", "50px")
+            }
+        )
+        Div(
+            TextStyle.toModifier(HolonBlockHeaderTextStyle)
+                .fontSize(1.5.cssRem)
+                .color(SitePalette.light.primary)
+                .toAttrs()
+        ) {
+            Text("LUX ")
+            Span(
+                TextStyle.toModifier(HolonLineTextStyle)
+                    .toAttrs()
+            ) {
+                Text("Energy Twin")
+            }
+        }
     }
 }
