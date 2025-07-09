@@ -172,8 +172,8 @@ fun Hero() {
                             .toAttrs()
                     ) {
                         LangText(
-                            en = "With LUX, the integration of sustainable energy is fun and lucrative.✨",
-                            nl = "Met LUX is de integratie van duurzame energie leuk en lucratief.✨",
+                            en = "With LUX, the integration of sustainable energy is fun and lucrative.",
+                            nl = "Met LUX is de integratie van duurzame energie leuk en lucratief.",
                         )
                     }
                 }
@@ -192,8 +192,8 @@ fun Hero() {
                         .toAttrs()
                 ) {
                     LangText(
-                        en = "With LUX, the integration of sustainable energy is fun and lucrative.✨",
-                        nl = "Met LUX is de integratie van duurzame energie leuk en lucratief.✨",
+                        en = "With LUX, the integration of sustainable energy is fun and lucrative.",
+                        nl = "Met LUX is de integratie van duurzame energie leuk en lucratief.",
                     )
                 }
             }

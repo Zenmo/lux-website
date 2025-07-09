@@ -157,7 +157,7 @@ fun LuxMunicipality() {
                     P {
                         LangText(
                             en = "LUX is already being used by the ",
-                            nl = "Lux wordt al gebruikt door de"
+                            nl = "Lux wordt al gebruikt door de "
                         )
                         InlineLink(
                             destinationUrl = "",// link to Drechtsteden
@@ -167,7 +167,7 @@ fun LuxMunicipality() {
 
                         LangText(
                             en = " and the ",
-                            nl = " een de"
+                            nl = " een de "
                         )
 
                         InlineLink(
@@ -260,35 +260,46 @@ private fun StartContent(breakpoint: Breakpoint) {
             )
 
             P {
-                LangText(
-                    en = """
+                LangBlock(
+                    en = {
+                        Text(
+                            """
                                 LUX aims to create the new bottom-up energy system (based on the holon approach) for
                                 the whole of the Netherlands.  
                             """.trimIndent(),
-                    nl = """
-                                Lux wil het nieuwe bottom-up energiesysteem (gebaseerd op de Holon-aanpak) maken voor 
-                                heel Nederland.
-                            """.trimIndent()
-                )
-                B {
-                    LangText(
-                        en = "Municipalities, RES regions ",
-                        nl = "Gemeenten, RES -regio's "
-                    )
-                }
-                LangText(en = "and ", nl = "een ")
-                B { LangText(en = "Provinces ", nl = "Provincies ") }
-                LangText(
-                    en = """
+                        )
+                        B {
+                            Text(" Municipalities, RES regions ")
+                        }
+                        Text("and ")
+                        B { Text("Provinces ") }
+                        Text(
+                            """
                                 can make their own selection of their neighbourhoods and enrich the model with 
                                 non-public data and future plans.
+                            """.trimIndent()
+                        )
+                    },
+                    nl = {
+                        Text(
+                            """
+                                Lux wil het nieuwe bottom-up energiesysteem (gebaseerd op de Holon-aanpak) maken voor 
+                                heel Nederland.
                             """.trimIndent(),
-                    nl = """
-                                Kan hun eigen selectie van hun buurten maken en het model verrijken met niet-openbare 
+                        )
+                        B {
+                            Text(" Gemeenten, RES -regio's ")
+                        }
+                        Text("en een ")
+                        B { Text("Provincies ") }
+                        Text(
+                            """
+                                kan hun eigen selectie van hun buurten maken en het model verrijken met niet-openbare 
                                 gegevens en toekomstplannen.
                             """.trimIndent()
+                        )
+                    }
                 )
-                Text("👌")
             }
         }
     }
