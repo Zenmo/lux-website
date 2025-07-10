@@ -25,6 +25,7 @@ import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.*
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.styles.HeaderPaddingStyle
 import com.zenmo.web.zenmo.theme.styles.IconStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Header
@@ -46,10 +47,8 @@ val NavHeaderStyle = CssStyle<NavHeaderKind>(extraModifier = {
             .display(DisplayStyle.Flex)
             .justifyContent(JustifyContent.SpaceBetween)
             .alignItems(AlignItems.Center)
-            .padding(leftRight = 50.px, topBottom = 10.px)
             .zIndex(1)
     }
-    /*todo add padding modifiers for breakpoints*/
 }
 
 
@@ -69,7 +68,9 @@ private fun HamburgerButton(onClick: () -> Unit) {
 @Composable
 fun NavHeader() {
     Header(
-        attrs = NavHeaderStyle.toModifier().toAttrs()
+        attrs = NavHeaderStyle.toModifier()
+            .then(HeaderPaddingStyle.toModifier())
+            .toAttrs()
     ) {
 
         Row(

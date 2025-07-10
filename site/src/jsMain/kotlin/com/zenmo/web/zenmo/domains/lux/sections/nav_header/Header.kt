@@ -9,9 +9,12 @@ import com.varabyte.kobweb.compose.css.functions.RadialGradient
 import com.varabyte.kobweb.compose.css.functions.radialGradient
 import com.varabyte.kobweb.compose.css.functions.toImage
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.*
+import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.before
@@ -24,6 +27,7 @@ import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
+import com.zenmo.web.zenmo.theme.styles.HeaderPaddingStyle
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
@@ -147,6 +151,7 @@ fun LuxHeader() {
     Header(
         attrs = NavHeaderStyle.toModifier()
             .boxShadow(spreadRadius = 0.px, color = Color.transparent)
+            .then(HeaderPaddingStyle.toModifier())
             .then(HeaderBottomDividerLineStyle.toModifier())
             .toAttrs()
     ) {
@@ -164,20 +169,14 @@ fun LuxHeader() {
                         .toAttrs()
                 ) {
                     LuxSection.entries.forEach { section ->
-                        Li {
-                            val isActive = sectionInView == section.id
-                            A(
-                                href = section.href,
-                                attrs = Modifier
-                                    .thenIf(isActive, ActiveMenuStyle.toModifier())
-                                    .toAttrs()
-                            ) {
-                                LangText(
-                                    en = section.title.en,
-                                    nl = section.title.nl,
-                                )
-                            }
-                        }
+                        val isActive = sectionInView == section.id
+
+                        MenuSectionItem(
+                            href = section.href,
+                            enTitle = section.title.en,
+                            nlTitle = section.title.nl,
+                            isActive = isActive,
+                        )
                     }
                 }
             }
