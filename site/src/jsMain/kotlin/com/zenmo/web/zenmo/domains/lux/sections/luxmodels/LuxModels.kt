@@ -118,7 +118,7 @@ fun LuxModels() {
                     imageAltText = domainName,
                     nlTitle = domainName,
                     enTitle = domainName,
-                    modifier = Modifier.fillMaxHeight()
+                    modifier = Modifier.fillMaxHeight(),
                 )
             }
         }

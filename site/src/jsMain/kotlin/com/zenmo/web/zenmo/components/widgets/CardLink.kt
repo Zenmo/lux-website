@@ -65,6 +65,13 @@ fun CardLink(
     nlTitle: String = "",
     enDescription: String = "",
     nlDescription: String = "",
+    title: @Composable () -> Unit = {
+        SubHeaderText(
+            enText = enTitle,
+            nlText = nlTitle,
+            modifier = Modifier.margin(0.cssRem)
+        )
+    },
 ) {
     Link(
         path = url,
@@ -90,11 +97,7 @@ fun CardLink(
             Column(
                 Modifier.padding(1.cssRem).gap(1.cssRem)
             ) {
-                SubHeaderText(
-                    enText = enTitle,
-                    nlText = nlTitle,
-                    modifier = Modifier.margin(0.cssRem)
-                )
+                title()
                 P(
                     Modifier
                         .color(SitePalette.light.onBackground.lightened(0.5f))
