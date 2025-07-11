@@ -8,26 +8,41 @@ import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.css.functions.RadialGradient
 import com.varabyte.kobweb.compose.css.functions.radialGradient
 import com.varabyte.kobweb.compose.css.functions.toImage
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.*
+import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.components.icons.CloseIcon
+import com.varabyte.kobweb.silk.components.icons.HamburgerIcon
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
+import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SideMenuState
+import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
+import com.zenmo.web.zenmo.theme.styles.IconStyle
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.Header
+import org.jetbrains.compose.web.dom.Span
+import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.HTMLAnchorElement
 
 
@@ -37,14 +52,9 @@ val HeaderInnerStyle = CssStyle {
             .display(DisplayStyle.Flex)
             .justifyContent(JustifyContent.SpaceBetween)
             .alignItems(AlignItems.Center)
-            .width(80.percent)
             .margin(0.px, autoLength)
             .position(Position.Relative)
             .zIndex(5)
-    }
-    cssRule("* > a") {
-        Modifier
-            .textDecorationLine(TextDecorationLine.None)
     }
 }
 
@@ -93,38 +103,6 @@ val LuxActiveMenuIndicatorStyle = CssStyle {
 }
 
 
-val LuxNavStyle = CssStyle {
-    cssRule(" ul.main-menu") {
-        Modifier
-            .display(DisplayStyle.Flex)
-            .justifyContent(JustifyContent.Center)
-            .alignItems(AlignItems.Center)
-            .gap(10.px)
-            .position(Position.Relative)
-    }
-
-    cssRule(" ul.main-menu > li") {
-        Modifier
-            .listStyle(ListStyleType.None)
-            .position(Position.Relative)
-    }
-
-    cssRule(" ul.main-menu > li > a") {
-        Modifier
-            .padding(10.px)
-            .color(SitePalette.light.onBackground)
-    }
-}
-
-val ActiveMenuStyle = CssStyle {
-    base {
-        Modifier
-            .color(SitePalette.light.primary)
-            .fontWeight(FontWeight.Bold)
-    }
-}
-
-
 @Composable
 fun LuxHeader() {
     var sectionInView by remember { mutableStateOf(LuxSection.HOME.id) }
@@ -147,113 +125,116 @@ fun LuxHeader() {
     Header(
         attrs = NavHeaderStyle.toModifier()
             .boxShadow(spreadRadius = 0.px, color = Color.transparent)
+            .then(LuxHeaderPaddingStyle.toModifier())
             .then(HeaderBottomDividerLineStyle.toModifier())
             .toAttrs()
     ) {
         Row(
             HeaderInnerStyle.toModifier()
+                .fillMaxWidth()
+                .displayIfAtLeast(Breakpoint.MD),
         ) {
             LuxLogo()
-
-            Nav(
-                LuxNavStyle.toModifier().toAttrs()
-            ) {
-                Ul(
-                    Modifier
-                        .classNames("main-menu")
-                        .toAttrs()
-                ) {
-                    LuxSection.entries.forEach { section ->
-                        Li {
-                            val isActive = sectionInView == section.id
-                            A(
-                                href = section.href,
-                                attrs = Modifier
-                                    .thenIf(isActive, ActiveMenuStyle.toModifier())
-                                    .toAttrs()
-                            ) {
-                                LangText(
-                                    en = section.title.en,
-                                    nl = section.title.nl,
-                                )
-                            }
-                        }
-                    }
-                }
-            }
+            NavBar(sectionInView)
 
 
             Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.gap(1.cssRem)
+                verticalAlignment = Alignment.CenterVertically, modifier = Modifier.gap(1.cssRem)
             ) {
-                A(
-                    href = "",
-                    attrs = Modifier
-                        .borderRadius(16.px)
-                        .background(SitePalette.light.primary)
-                        .color(SitePalette.light.onPrimary)
-                        .padding(leftRight = 1.5.cssRem, topBottom = 0.65.cssRem)
-                        .textDecorationLine(TextDecorationLine.None)
-                        .toAttrs()
-                ) {
-                    LangText(
-                        en = "BOOK A DEMO NOW!",
-                        nl = "BOEK NU EEN DEMO!"
-                    )
-                }
-
+                BookADemoButton()
                 LanguageSwitchButton()
             }
         }
 
-        var indicatorWidth by remember { mutableStateOf(0.px) }
-        var indicatorLeft by remember { mutableStateOf(0.px) }
+        Box(
+            Modifier.displayIfAtLeast(Breakpoint.MD)
+        ) {
+            var indicatorWidth by remember { mutableStateOf(0.px) }
+            var indicatorLeft by remember { mutableStateOf(0.px) }
 
-        LaunchedEffect(sectionInView) {
-            val activeAnchor = document.querySelector("a[href='#$sectionInView']") as? HTMLAnchorElement
-            if (activeAnchor != null) {
-                val anchorRect = activeAnchor.getBoundingClientRect()
-                indicatorWidth = anchorRect.width.px
-                indicatorLeft = (anchorRect.left).px
+            LaunchedEffect(sectionInView) {
+                val activeAnchor = document.querySelector("a[href='#$sectionInView']") as? HTMLAnchorElement
+                if (activeAnchor != null) {
+                    val anchorRect = activeAnchor.getBoundingClientRect()
+                    indicatorWidth = anchorRect.width.px
+                    indicatorLeft = (anchorRect.left).px
+                }
             }
+
+
+            // needs a bit of fixing:
+            // this indicator abandons the active header when window is resized,
+            Span(
+                attrs = LuxActiveMenuIndicatorStyle.toModifier()
+                    .setVariable(ActiveIndicatorWidthStyleVar, indicatorWidth)
+                    .setVariable(ActiveIndicatorLeftStyleVar, indicatorLeft).toAttrs()
+            )
         }
 
+        Row(
+            Modifier.fillMaxWidth().displayUntil(Breakpoint.MD),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
+            Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterStart) {
+                LuxLogo()
+            }
 
-        // needs a bit of fixing:
-        // this indicator abandons the active header when window is resized,
-        Span(
-            attrs = LuxActiveMenuIndicatorStyle.toModifier()
-                .setVariable(ActiveIndicatorWidthStyleVar, indicatorWidth)
-                .setVariable(ActiveIndicatorLeftStyleVar, indicatorLeft)
-                .toAttrs()
-        )
+            Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterEnd) {
+                HamburgerButton(
+                    onClick = {
+                        menuState = when (menuState) {
+                            SideMenuState.OPEN -> SideMenuState.CLOSED
+                            else -> SideMenuState.OPEN
+                        }
+                    }, menuState = menuState
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun HamburgerButton(
+    onClick: () -> Unit, menuState: SideMenuState = SideMenuState.CLOSED
+) {
+    IconButton(
+        onClick = onClick
+    ) {
+        when (menuState) {
+            SideMenuState.OPEN -> {
+                CloseIcon(
+                    modifier = IconStyle.toModifier().color(SitePalette.light.onPrimary)
+                )
+            }
+
+            else -> {
+                HamburgerIcon(
+                    modifier = IconStyle.toModifier().color(SitePalette.light.onPrimary)
+                )
+            }
+        }
     }
 }
 
 @Composable
 private fun LuxLogo() {
     Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.gap(0.5.cssRem)
+        verticalAlignment = Alignment.CenterVertically, modifier = Modifier.gap(0.5.cssRem)
     ) {
         Image(
-            src = "/lux/logos/lux-sun-logo.svg",
-            modifier = Modifier.attrsModifier {
+            src = "/lux/logos/lux-sun-logo.svg", modifier = Modifier.attrsModifier {
                 attr("width", "50px")
                 attr("height", "50px")
-            }
-        )
+            })
         Div(
-            TextStyle.toModifier(HolonBlockHeaderTextStyle)
-                .fontSize(1.5.cssRem)
-                .color(SitePalette.light.primary)
+            TextStyle.toModifier(HolonBlockHeaderTextStyle).fontSize(1.5.cssRem).color(SitePalette.light.primary)
                 .toAttrs()
         ) {
             Text("LUX ")
             Span(
-                TextStyle.toModifier(HolonLineTextStyle)
-                    .toAttrs()
+                TextStyle.toModifier(HolonLineTextStyle).toAttrs()
             ) {
                 Text("Energy Twin")
             }
