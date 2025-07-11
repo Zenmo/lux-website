@@ -22,6 +22,8 @@ import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.ClipPath
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
+import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
+import com.zenmo.web.zenmo.theme.font.TextStyle
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
@@ -81,7 +83,7 @@ val LuxMaskedBlockStyle = CssStyle.base {
 }
 val LuxHeroMediaContentStyle = CssStyle.base {
     Modifier
-        .maxWidth(25.percent)
+        .maxWidth(30.percent)
         .width(Width.MaxContent)
         .textAlign(TextAlign.Right)
 }
@@ -169,11 +171,13 @@ fun Hero() {
                 ) {
                     P(
                         LuxHeroMediaContentInnerStyle.toModifier()
+                            .then(TextStyle.toModifier(HolonLineTextStyle))
+                            .fontSize(1.25.cssRem)
                             .toAttrs()
                     ) {
                         LangText(
-                            en = "With LUX, the integration of sustainable energy is fun and lucrative.",
-                            nl = "Met LUX is de integratie van duurzame energie leuk en lucratief.",
+                            en = "With LUX, the integration of sustainable energy becomes fun and lucrative.",
+                            nl = "Met LUX wordt de integratie van duurzame energie leuk en lucratief.",
                         )
                     }
                 }
