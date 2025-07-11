@@ -98,27 +98,15 @@ fun LuxCompany(
                 Modifier.fillMaxWidth().toAttrs()
             ) {
                 CallToActionAnchorButton {
-                    H3 {
-                        LangText(
-                            en = "Interested",
-                            nl = "Geïnteresseerd"
-                        )
-                        Br {}
-                        LangText(
-                            en = "in Demo/Costs?",
-                            nl = "in Demo/Kosten?"
-                        )
-                    }
-                    Span(
-                        DeEmphasizedTextStyle.toModifier()
-                            .fontSize(0.9.cssRem)
-                            .toAttrs()
-                    ) {
-                        LangText(
-                            en = "CONTACT US QUICKLY!",
-                            nl = "NEEM SNEL CONTACT OP!"
-                        )
-                    }
+                    LangText(
+                        en = "Interested",
+                        nl = "Geïnteresseerd"
+                    )
+                    Br {}
+                    LangText(
+                        en = "in Demo/Costs?",
+                        nl = "in Demo/Kosten?"
+                    )
                 }
             }
         }

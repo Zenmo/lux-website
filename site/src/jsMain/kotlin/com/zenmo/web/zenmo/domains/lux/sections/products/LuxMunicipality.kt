@@ -206,27 +206,15 @@ fun LuxMunicipality() {
 
                 Div {
                     CallToActionAnchorButton {
-                        H3 {
-                            LangText(
-                                en = "Experience  ",
-                                nl = "Ervaring "
-                            )
-                            Br {}
-                            LangText(
-                                en = "LUX today",
-                                nl = "LUX vandaag "
-                            )
-                        }
-                        Span(
-                            DeEmphasizedTextStyle.toModifier()
-                                .fontSize(0.9.cssRem)
-                                .toAttrs()
-                        ) {
-                            LangText(
-                                en = "BOOK A DEMO NOW!",
-                                nl = "BOEK NU EEN DEMO!"
-                            )
-                        }
+                        LangText(
+                            en = "Experience  ",
+                            nl = "Ervaring "
+                        )
+                        Br {}
+                        LangText(
+                            en = "LUX today",
+                            nl = "LUX vandaag "
+                        )
                     }
                 }
             }
