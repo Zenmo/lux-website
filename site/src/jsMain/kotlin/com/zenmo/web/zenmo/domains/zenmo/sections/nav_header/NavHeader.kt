@@ -46,10 +46,8 @@ val NavHeaderStyle = CssStyle<NavHeaderKind>(extraModifier = {
             .display(DisplayStyle.Flex)
             .justifyContent(JustifyContent.SpaceBetween)
             .alignItems(AlignItems.Center)
-            .padding(leftRight = 50.px, topBottom = 10.px)
             .zIndex(1)
     }
-    /*todo add padding modifiers for breakpoints*/
 }
 
 
@@ -69,7 +67,9 @@ private fun HamburgerButton(onClick: () -> Unit) {
 @Composable
 fun NavHeader() {
     Header(
-        attrs = NavHeaderStyle.toModifier().toAttrs()
+        attrs = NavHeaderStyle.toModifier()
+            .then(HeaderPaddingStyle.toModifier())
+            .toAttrs()
     ) {
 
         Row(
