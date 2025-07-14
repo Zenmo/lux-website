@@ -1,0 +1,18 @@
+
+[Container]
+ContainerName=website-static
+Image=ghcr.io/zenmo/zenmo-website-static:$BRANCH-$COMMIT
+
+Network=main.network
+Label=traefik.enable=true
+Label="traefik.http.routers.website-static.rule=Host(`nieuw.zenmo.com`) || Host(`test.zenmo.com`) || Host(`lux.energy`) || HostRegexp(`^[\\w-]+\\.lux\\.energy`)"
+Label=traefik.http.routers.website-static.tls.certResolver=DNSimpleChallenge
+Label=traefik.http.routers.website-static.tls.domains[0].main=zenmo.com
+Label=traefik.http.routers.website-static.tls.domains[0].sans=*.zenmo.com,*.lux.energy,lux.energy
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
