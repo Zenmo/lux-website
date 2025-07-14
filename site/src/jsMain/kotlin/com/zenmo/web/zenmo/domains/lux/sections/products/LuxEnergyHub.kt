@@ -111,27 +111,15 @@ fun LuxEnergyHub() {
 
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomStart) {
                 CallToActionAnchorButton {
-                    H3 {
-                        LangText(
-                            en = "Calculate  ",
-                            nl = "Bereken  "
-                        )
-                        Br {}
-                        LangText(
-                            en = "Your Energy Hub?",
-                            nl = "Uw Energie Hub?"
-                        )
-                    }
-                    Span(
-                        DeEmphasizedTextStyle.toModifier()
-                            .fontSize(0.9.cssRem)
-                            .toAttrs()
-                    ) {
-                        LangText(
-                            en = "BOOK A DEMO NOW!",
-                            nl = "BOEK NU EEN DEMO!"
-                        )
-                    }
+                    LangText(
+                        en = "Calculate  ",
+                        nl = "Bereken  "
+                    )
+                    Br {}
+                    LangText(
+                        en = "Your Energy Hub?",
+                        nl = "Uw Energie Hub?"
+                    )
                 }
             }
         }
