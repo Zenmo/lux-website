@@ -1,9 +1,12 @@
 package com.zenmo.web.zenmo.domains.lux.components
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.Transition
+import com.varabyte.kobweb.compose.css.functions.LinearGradient
+import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -12,10 +15,16 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
+import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.Span
 
 
 val CallToActionAnchorButtonStyle = CssStyle {
@@ -36,6 +45,12 @@ val CallToActionAnchorButtonStyle = CssStyle {
             .alignItems(AlignItems.Center)
             .transition(Transition.of("background-color", 0.3.s))
             .backgroundColor(SitePalette.light.primary)
+            .backgroundImage(
+                linearGradient(
+                    SitePalette.light.primary, SitePalette.light.secondary,
+                    LinearGradient.Direction.ToBottomRight
+                )
+            )
             .color(SitePalette.light.onPrimary)
             .borderRadius(16.px)
             .size(80.px)
@@ -58,8 +73,8 @@ val CallToActionAnchorButtonStyle = CssStyle {
 
     cssRule(":hover .anchor-icon-wrapper") {
         Modifier
-            .backgroundColor(SitePalette.light.secondary)
-            .color(SitePalette.light.primary)
+//            .backgroundColor(SitePalette.light.secondary)
+//            .color(SitePalette.light.primary)
     }
 
     cssRule(":hover .anchor-text-content:last-child") {
@@ -98,6 +113,18 @@ val LuxIconWrapperStyle = CssStyle {
 @Composable
 fun CallToActionAnchorButton(
     href: String = "",
+    subActionTextContent: @Composable () -> Unit = {
+        Span(
+            DeEmphasizedTextStyle.toModifier()
+                .fontSize(0.9.cssRem)
+                .toAttrs()
+        ) {
+            LangText(
+                en = "BOOK A DEMO NOW!",
+                nl = "BOEK NU EEN DEMO!"
+            )
+        }
+    },
     actionTextContent: @Composable () -> Unit = {},
 ) {
     A(href = href, attrs = CallToActionAnchorButtonStyle.toAttrs()) {
@@ -114,7 +141,14 @@ fun CallToActionAnchorButton(
             Modifier.classNames("anchor-text-content")
                 .toAttrs()
         ) {
-            actionTextContent()
+            H3(
+                TextStyle.toModifier(HolonLineTextStyle)
+                    .fontWeight(FontWeight.Bold)
+                    .toAttrs()
+            ) {
+                actionTextContent()
+            }
+            subActionTextContent()
         }
     }
 }
