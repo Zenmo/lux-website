@@ -33,8 +33,8 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SideMenu
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
-import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
+import com.zenmo.web.zenmo.utils.PublicRes
 import com.zenmo.web.zenmo.theme.styles.IconStyle
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -234,7 +234,9 @@ private fun LuxLogo() {
         ) {
             Text("LUX ")
             Span(
-                TextStyle.toModifier(HolonLineTextStyle).toAttrs()
+                Modifier
+                    .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
+                    .toAttrs()
             ) {
                 Text("Energy Twin")
             }

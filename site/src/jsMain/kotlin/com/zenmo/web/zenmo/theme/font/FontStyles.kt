@@ -9,6 +9,7 @@ import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.utils.PublicRes
+import org.jetbrains.compose.web.css.cssRem
 
 sealed interface TextComponentKind : ComponentKind
 
@@ -125,7 +126,14 @@ val HolonBlockHeaderTextStyle = TextStyle.addVariant {
 val HolonLineTextStyle = TextStyle.addVariant {
     fun applyHolonLineFont(breakpoint: Breakpoint): Modifier {
         val fonts = Fonts[breakpoint]
-        return Modifier.font { siteFont(fonts.title.copy(fontFamily = PublicRes.FontFamilies.HOLON_LINE)) }
+        return Modifier.font {
+            siteFont(
+                fonts.title.copy(
+                    fontFamily = PublicRes.FontFamilies.HOLON_LINE,
+                    fontSize = 2.cssRem
+                )
+            )
+        }
     }
 
     Breakpoint.ZERO { applyHolonLineFont(Breakpoint.ZERO) }
