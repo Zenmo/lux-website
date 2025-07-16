@@ -1,7 +1,7 @@
 
 [Container]
 ContainerName=website-server
-Image=ghcr.io/zenmo/zenmo-website-server:$BRANCH-$COMMIT
+Image=ghcr.io/zenmo/zenmo-website-server:$TAG
 
 Network=main.network
 Label=traefik.enable=true
