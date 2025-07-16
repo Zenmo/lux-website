@@ -5,8 +5,7 @@ set -ex
 cd $(dirname "$0")
 
 source ../git-vars.sh
-export BRANCH
-export COMMIT
+export TAG
 
 mkdir -p website
 
