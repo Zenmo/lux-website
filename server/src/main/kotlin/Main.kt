@@ -2,6 +2,8 @@ package com.zenmo.server
 
 import com.zenmo.server.contact.ContactController
 import com.zenmo.server.contact.MailService
+import com.zenmo.server.js.JsServer
+import com.zenmo.server.js.JsServerFilter
 import org.http4k.core.HttpHandler
 import org.http4k.core.then
 import org.http4k.filter.DebuggingFilters
@@ -35,9 +37,11 @@ fun startServer() {
         // Catch errors must come after CORS Filter
         // so that the error reaches the client
         .then(ServerFilters.CatchAll())
-        .then(JsServerFilter(
-            JsServer.create(config, oAuthSessions)
-        ))
+        .then(
+            JsServerFilter(
+                JsServer.create(config, oAuthSessions)
+            )
+        )
         .then(routes(oAuthRoutes, contactRoute))
 
     val port = 9000

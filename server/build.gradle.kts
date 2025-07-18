@@ -26,6 +26,8 @@ dependencies {
 
     // Implements Jakarta Email specification
     implementation("org.eclipse.angus:angus-mail:2.0.3")
+
+    testImplementation(kotlin("test"))
 }
 
 application {
@@ -40,6 +42,10 @@ kotlin {
         }
     }
     jvmToolchain(21)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.register<Copy>("copyJsResources") {
