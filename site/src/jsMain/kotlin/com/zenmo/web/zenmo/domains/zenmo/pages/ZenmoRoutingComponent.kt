@@ -32,6 +32,6 @@ fun ZenmoRoutingComponent() {
 }
 
 fun Router.register(nl: String, en: String, page: PageMethod) {
-    register(nl, page)
-    register(en, page)
+    register(route = nl, pageMethod = page)
+    register(route = en, pageMethod = page)
 }
