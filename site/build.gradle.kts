@@ -161,7 +161,6 @@ tasks.register("replaceScriptTag") {
 val webpackTasksToRemove = setOf(
     "jsBrowserDevelopmentWebpack",
     "jsBrowserProductionWebpack",
-    "jsBrowserWebpack",
     // this depends on jsBrowserProductionWebpack
     // but I'm unable to remove that dependency.
     // It seems a special kind of copy task.
