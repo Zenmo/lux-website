@@ -22,7 +22,11 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.overlay
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.*
+import com.zenmo.web.zenmo.components.SideMenuState
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.NavBar
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SideMenu
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SiteLogo
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.IconStyle

@@ -31,6 +31,8 @@ fun MenuSectionItem(
     enTitle: String,
     nlTitle: String,
     isActive: Boolean = false,
+    modifier: Modifier = Modifier
+        .padding(10.px),
 ) {
     Li(
         Modifier
@@ -39,8 +41,7 @@ fun MenuSectionItem(
     ) {
         A(
             href = href,
-            attrs = Modifier
-                .padding(10.px)
+            attrs = modifier
                 .color(SitePalette.light.onBackground)
                 .thenIf(isActive, ActiveMenuStyle.toModifier())
                 .textDecorationLine(TextDecorationLine.None)

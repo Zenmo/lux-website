@@ -26,16 +26,16 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.components.SideMenuState
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SideMenuState
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
-import com.zenmo.web.zenmo.utils.PublicRes
 import com.zenmo.web.zenmo.theme.styles.IconStyle
+import com.zenmo.web.zenmo.utils.PublicRes
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
@@ -189,6 +189,14 @@ fun LuxHeader() {
                             else -> SideMenuState.OPEN
                         }
                     }, menuState = menuState
+                )
+            }
+            if (menuState != SideMenuState.CLOSED) {
+                SideMenu(
+                    menuState = menuState,
+                    sectionInView = sectionInView,
+                    close = { menuState = menuState.close() },
+                    onAnimationEnd = { if (menuState == SideMenuState.CLOSING) menuState = SideMenuState.CLOSED }
                 )
             }
         }
