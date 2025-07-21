@@ -26,23 +26,18 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.components.SideMenuState
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SideMenuState
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
-import com.zenmo.web.zenmo.theme.font.TextStyle
-import com.zenmo.web.zenmo.utils.PublicRes
 import com.zenmo.web.zenmo.theme.styles.IconStyle
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Header
 import org.jetbrains.compose.web.dom.Span
-import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.HTMLAnchorElement
 
 
@@ -220,26 +215,9 @@ private fun HamburgerButton(
 
 @Composable
 private fun LuxLogo() {
-    Row(
-        verticalAlignment = Alignment.CenterVertically, modifier = Modifier.gap(0.5.cssRem)
-    ) {
-        Image(
-            src = "/lux/logos/lux-sun-logo.svg", modifier = Modifier.attrsModifier {
-                attr("width", "50px")
-                attr("height", "50px")
-            })
-        Div(
-            TextStyle.toModifier(HolonBlockHeaderTextStyle).fontSize(1.5.cssRem).color(SitePalette.light.primary)
-                .toAttrs()
-        ) {
-            Text("LUX ")
-            Span(
-                Modifier
-                    .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
-                    .toAttrs()
-            ) {
-                Text("Energy Twin")
-            }
-        }
-    }
+    Image(
+        src = "/lux/logos/lux-energy-twin.png", modifier = Modifier.attrsModifier {
+            attr("width", "200px")
+            attr("height", "80px")
+        })
 }
