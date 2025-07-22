@@ -20,8 +20,8 @@ fun Login() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SubHeaderText(
-            enText = "Login to continue",
-            nlText = "Log in om door te gaan",
+            enText = "Login to access",
+            nlText = "Log in om toegang te krijgen",
             modifier = Modifier.margin(0.cssRem)
         )
         LoginButton(userService)

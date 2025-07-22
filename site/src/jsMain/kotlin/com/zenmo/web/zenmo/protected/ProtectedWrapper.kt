@@ -17,7 +17,7 @@ external interface PrivateTextModule {
     fun ProtectedComponent()
 }
 
-private enum class LoadingState {
+enum class LoadingState {
     PENDING,
     NOT_LOGGED_IN,
     NOT_ENOUGH_PRIVILEGES,
@@ -26,7 +26,10 @@ private enum class LoadingState {
 }
 
 @Composable
-fun ProtectedWrapper(entryPoint: String) {
+fun ProtectedWrapper(
+    entryPoint: String,
+    onStatusChange: (LoadingState) -> Unit = { LoadingState.PENDING }
+) {
     var privateModule by remember { mutableStateOf<PrivateTextModule?>(null) }
     var error by remember { mutableStateOf<Throwable?>(null) }
     var status by remember { mutableStateOf(LoadingState.PENDING) }
@@ -36,6 +39,7 @@ fun ProtectedWrapper(entryPoint: String) {
             privateModule =
                 importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
             status = LoadingState.SUCCESS
+            onStatusChange.invoke(status)
         } catch (e: Throwable) {
             /**
              * We get no status code after import failure.
@@ -57,10 +61,13 @@ fun ProtectedWrapper(entryPoint: String) {
                     401 -> LoadingState.NOT_LOGGED_IN
                     403 -> LoadingState.NOT_ENOUGH_PRIVILEGES
                     else -> LoadingState.ERROR
+                }.also {
+                    onStatusChange.invoke(it)
                 }
             } catch (e: Throwable) {
                 status = LoadingState.ERROR
                 error = e
+                onStatusChange.invoke(status)
             }
         }
     }
