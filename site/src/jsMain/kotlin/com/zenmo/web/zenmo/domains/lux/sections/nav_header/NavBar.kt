@@ -59,7 +59,7 @@ fun NavBar(
 @Composable
 fun BookADemoButton() {
     A(
-        href = "",
+        href = "/book-demo",
         attrs = TextStyle.toModifier(HolonLineTextStyle)
             .fontSize(1.25.cssRem)
             .borderRadius(16.px)

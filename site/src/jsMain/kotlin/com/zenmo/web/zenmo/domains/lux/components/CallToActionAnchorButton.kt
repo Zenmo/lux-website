@@ -112,7 +112,7 @@ val LuxIconWrapperStyle = CssStyle {
 
 @Composable
 fun CallToActionAnchorButton(
-    href: String = "",
+    href: String = "/book-demo",
     subActionTextContent: @Composable () -> Unit = {
         Span(
             DeEmphasizedTextStyle.toModifier()

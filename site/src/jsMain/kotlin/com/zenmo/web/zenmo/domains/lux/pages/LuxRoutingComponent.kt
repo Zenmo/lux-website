@@ -18,6 +18,7 @@ fun LuxRoutingComponent() {
             ctx.router.register("/component-demo") { ComponentDemoPage() }
         }
         ctx.router.register("/{...catch-all}") { CatchAllPage() }
+        ctx.router.register("/book-demo") { BookADemoPage() }
     }
 
     router.tryRoutingTo(
