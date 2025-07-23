@@ -15,13 +15,11 @@ class DefaultJsLoader(
             return null
         }
 
+        val accessPolicy = accessPolicyEvaluator.eval(url)
         val connection = url.openConnection()
         val lastModified = connection.lastModified
         // immediately read into memory to prevent desync
         val content = connection.getInputStream().readBytes()
-
-        val filename = path.substringAfterLast('/')
-        val accessPolicy = accessPolicyEvaluator.eval(content.inputStream().reader(), filename)
 
         val cleanPath = path.replace(Regex("\\W"), "")
         val eTag = "$cleanPath-$lastModified"

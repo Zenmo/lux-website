@@ -8,23 +8,21 @@ import java.io.Reader
 import java.net.URL
 
 fun interface JsAccessPolicyEvaluator {
-    fun eval(sourceReader: Reader, fileName: String): AccessPolicy
-    fun eval(url: URL): AccessPolicy =
-        eval(url.openStream().reader(), url.toString().substringAfterLast("/"))
+    fun eval(url: URL): AccessPolicy
 }
 
-val getScriptAccessPolicy = JsAccessPolicyEvaluator { sourceReader, fileName ->
+val getScriptAccessPolicy = JsAccessPolicyEvaluator { url ->
     val context = Context.newBuilder("js")
         .option("js.esm-eval-returns-exports", "true")
         .allowIO(IOAccess.ALL) // allow imports
         .build()
 
-    val source = Source.newBuilder("js", sourceReader, fileName).build()
+    val source = Source.newBuilder("js", url).build()
     val output = context.eval(source)
     val jsAccessPolicy = output.getMember("accessPolicy")
     val jsonAccessPolicy = jsAccessPolicy.invokeMember("get").invokeMember("toJson")
 
-    println("JSON accessPolicy of $fileName: $jsonAccessPolicy")
+    println("JSON accessPolicy of $url: $jsonAccessPolicy")
 
     AccessPolicy.Companion.fromJson(jsonAccessPolicy.asString())
 }
