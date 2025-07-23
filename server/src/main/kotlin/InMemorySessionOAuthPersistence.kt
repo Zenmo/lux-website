@@ -1,20 +1,12 @@
 package com.zenmo.server
 
-import org.http4k.core.Request
-import org.http4k.core.Response
+import org.http4k.core.*
 import org.http4k.core.Status.Companion.FORBIDDEN
-import org.http4k.core.Uri
 import org.http4k.core.cookie.Cookie
+import org.http4k.core.cookie.SameSite
 import org.http4k.core.cookie.cookie
 import org.http4k.core.cookie.invalidateCookie
-import org.http4k.core.findSingle
-import org.http4k.core.queries
-import org.http4k.security.AccessToken
-import org.http4k.security.CrossSiteRequestForgeryToken
-import org.http4k.security.Nonce
-import org.http4k.security.OAuthCallbackError
-import org.http4k.security.OAuthPersistence
-import org.http4k.security.PkceChallengeAndVerifier
+import org.http4k.security.*
 import org.http4k.security.openid.IdToken
 import java.time.Clock
 import java.time.Duration
@@ -40,7 +32,7 @@ class InMemorySessionOAuthPersistence(
 
     override fun retrieveOriginalUri(request: Request): Uri? = request.cookie(originalUriName)?.value?.let(Uri::of)
 
-    override fun retrievePkce(request: Request)  = null
+    override fun retrievePkce(request: Request) = null
 
     override fun retrieveToken(request: Request) = (tryBearerToken(request)
         ?: tryCookieToken(request))
@@ -57,7 +49,8 @@ class InMemorySessionOAuthPersistence(
         sessionToAccessToken.remove(sessionId)
     }
 
-    override fun assignCsrf(redirect: Response, csrf: CrossSiteRequestForgeryToken) = redirect.cookie(expiring(csrfName, csrf.value))
+    override fun assignCsrf(redirect: Response, csrf: CrossSiteRequestForgeryToken) =
+        redirect.cookie(expiring(csrfName, csrf.value))
 
     override fun assignNonce(redirect: Response, nonce: Nonce): Response = redirect
 
@@ -68,7 +61,12 @@ class InMemorySessionOAuthPersistence(
 
     override fun assignPkce(redirect: Response, pkce: PkceChallengeAndVerifier) = redirect
 
-    override fun assignToken(request: Request, redirect: Response, accessToken: AccessToken, idToken: IdToken?): Response {
+    override fun assignToken(
+        request: Request,
+        redirect: Response,
+        accessToken: AccessToken,
+        idToken: IdToken?
+    ): Response {
         val sessionId = generateSessionId()
         sessionToAccessToken[sessionId] = accessToken
         if (idToken == null) {
@@ -77,7 +75,7 @@ class InMemorySessionOAuthPersistence(
         sessionToIdToken[sessionId] = idToken
 
         return redirect
-            .cookie(expiring(clientAuthCookie, sessionId))
+            .cookie(expiring(clientAuthCookie, sessionId).httpOnly().sameSite(SameSite.None).secure())
             // removing cookies doesn't seem to work
             .invalidateCookie(csrfName)
             .invalidateCookie(originalUriName)
@@ -95,9 +93,11 @@ class InMemorySessionOAuthPersistence(
         ?.removePrefix("Bearer ")
         ?.let { AccessToken(it) }
 
-    private fun expiring(name: String, value: String) = Cookie(name, value,
+    private fun expiring(name: String, value: String) = Cookie(
+        name, value,
         path = "/",
-        expires = clock.instant().plus(Duration.ofDays(1)))
+        expires = clock.instant().plus(Duration.ofDays(1))
+    )
 }
 
 fun generateSessionId(): String {
