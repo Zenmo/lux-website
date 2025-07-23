@@ -8,8 +8,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.protected.ProtectedWrapper
-import org.jetbrains.compose.web.dom.H1
-import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun DrechtstedenHomePage() {
@@ -23,7 +21,6 @@ fun DrechtstedenContent(subdomain: String) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        H1 { Text("${subdomain.uppercase()}😎") }
         ProtectedWrapper("drechtsteden")
     }
 }

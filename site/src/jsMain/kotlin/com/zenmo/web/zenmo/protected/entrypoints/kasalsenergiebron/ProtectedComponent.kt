@@ -35,8 +35,6 @@ val accessPolicy = AccessPolicy.RoleBased("Kas als Energiebron")
 fun ProtectedComponent() {
     LuxSubdomainPageLayout(
         title = "Kas als Energiebron",
-        enSubtitle = "Broekpolder",
-        nlSubtitle = "Broekpolder",
     ) {
         SectionContainer(
             modifier = Modifier.gap(5.cssRem).margin(topBottom = 5.cssRem),
