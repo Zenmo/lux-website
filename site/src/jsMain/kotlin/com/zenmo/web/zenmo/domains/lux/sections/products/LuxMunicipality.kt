@@ -11,6 +11,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -51,6 +52,7 @@ val LuxMunicipalityRowStyle = CssStyle {
     }
 }
 
+@OptIn(DelicateApi::class)
 @Composable
 fun LuxMunicipality() {
     val breakpoint = rememberBreakpoint()
@@ -231,7 +233,6 @@ private fun StartContent(breakpoint: Breakpoint) {
             .flexDirection(FlexDirection.Column)
             .alignItems(AlignItems.FlexStart)
             .maxWidth(if (breakpoint >= Breakpoint.MD) 40.percent else 100.percent)
-            .minHeight(150.vh)
             .toAttrs()
     ) {
         Div(
