@@ -10,7 +10,9 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.graphics.FitWidthImageVariant
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
@@ -21,11 +23,12 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.extendedBy
 import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import com.zenmo.web.zenmo.components.SideMenuState
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SideMenuState
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -49,13 +52,21 @@ val HeaderInnerStyle = CssStyle {
 }
 
 
+@OptIn(DelicateApi::class)
 @Composable
 fun LuxHeader() {
+    val breakpoint = rememberBreakpoint()
+    var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
+
     Header(
         attrs = NavHeaderStyle.toModifier()
             .boxShadow(spreadRadius = 0.px, color = Color.transparent)
             .then(LuxHeaderPaddingStyle.toModifier())
             .then(HeaderBottomDividerLineStyle.toModifier())
+            .thenIf(
+                breakpoint < Breakpoint.MD,
+                Modifier.height(70.px)
+            )
             .toAttrs()
     ) {
         Row(
@@ -65,7 +76,6 @@ fun LuxHeader() {
         ) {
             LuxLogo()
             NavBar()
-
             Row(
                 verticalAlignment = Alignment.CenterVertically, modifier = Modifier.gap(1.cssRem)
             ) {
@@ -81,28 +91,35 @@ fun LuxHeader() {
                 items = MenuItem.luxMenuItems
             )
         }
-
         Row(
             Modifier.fillMaxWidth().displayUntil(Breakpoint.MD),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
             Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterStart) {
                 LuxLogo()
             }
-
             Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterEnd) {
                 HamburgerButton(
                     onClick = {
                         menuState = when (menuState) {
-                            SideMenuState.OPEN -> SideMenuState.CLOSED
+                            SideMenuState.OPEN -> menuState.close()
                             else -> SideMenuState.OPEN
                         }
                     }, menuState = menuState
                 )
             }
         }
+    }
+    if (menuState != SideMenuState.CLOSED) {
+        SideMenu(
+            menuState = menuState,
+            close = { menuState = menuState.close() },
+            onAnimationEnd = {
+                if (menuState == SideMenuState.CLOSING)
+                    menuState = SideMenuState.CLOSED
+            }
+        )
     }
 }
 
@@ -111,18 +128,19 @@ private fun HamburgerButton(
     onClick: () -> Unit, menuState: SideMenuState = SideMenuState.CLOSED
 ) {
     IconButton(
-        onClick = onClick
+        onClick = onClick,
+        modifier = Modifier.background(SitePalette.light.secondary)
     ) {
         when (menuState) {
             SideMenuState.OPEN -> {
                 CloseIcon(
-                    modifier = IconStyle.toModifier().color(SitePalette.light.onPrimary)
+                    modifier = IconStyle.toModifier().color(SitePalette.light.onBackground)
                 )
             }
 
             else -> {
                 HamburgerIcon(
-                    modifier = IconStyle.toModifier().color(SitePalette.light.onPrimary)
+                    modifier = IconStyle.toModifier().color(SitePalette.light.onBackground)
                 )
             }
         }
