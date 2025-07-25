@@ -4,7 +4,6 @@ import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.JustifyContent
-import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.css.functions.RadialGradient
 import com.varabyte.kobweb.compose.css.functions.radialGradient
 import com.varabyte.kobweb.compose.css.functions.toImage
@@ -13,10 +12,10 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.graphics.FitWidthImageVariant
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.CloseIcon
 import com.varabyte.kobweb.silk.components.icons.HamburgerIcon
@@ -24,6 +23,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
+import com.varabyte.kobweb.silk.style.extendedBy
 import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
@@ -213,11 +213,44 @@ private fun HamburgerButton(
     }
 }
 
+val LuxLogoImageVariant = FitWidthImageVariant.extendedBy {
+    base {
+        Modifier
+            .display(DisplayStyle.Block)
+            .boxSizing(BoxSizing.BorderBox)
+    }
+
+    Breakpoint.ZERO {
+        Modifier
+            .width(120.px)
+            .height(50.px)
+    }
+
+    Breakpoint.SM {
+        Modifier
+            .width(120.px)
+            .height(50.px)
+    }
+
+    Breakpoint.MD {
+        Modifier
+            .width(120.px)
+            .height(60.px)
+    }
+    Breakpoint.LG {
+        Modifier
+            .width(200.px)
+            .height(80.px)
+    }
+
+    Breakpoint.XL {
+        Modifier
+            .width(200.px)
+            .height(80.px)
+    }
+}
+
 @Composable
-private fun LuxLogo() {
-    Image(
-        src = "/lux/logos/lux-energy-twin.png", modifier = Modifier.attrsModifier {
-            attr("width", "200px")
-            attr("height", "80px")
-        })
+fun LuxLogo() {
+    Image(src = "/lux/logos/lux-energy-twin.png", variant = LuxLogoImageVariant)
 }
