@@ -25,6 +25,7 @@ import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.zenmo.web.zenmo.components.layouts.PageLayout
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.home.LUX_OVERVIEW_SECTION_ID
 import com.zenmo.web.zenmo.domains.zenmo.sections.home.LuxInfoSection
 import com.zenmo.web.zenmo.domains.zenmo.sections.home.components.styles.ExtraContentDividerStyle
@@ -33,8 +34,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.home.components.styles.HomePag
 import com.zenmo.web.zenmo.domains.zenmo.sections.home.components.styles.HomePageVisualStyle
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.PrimaryButton
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.BodyLargeTextStyle
-import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
+import com.zenmo.web.zenmo.theme.font.BodyTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyleSecondaryColor
 import com.zenmo.web.zenmo.theme.styles.IconStyle
@@ -91,19 +91,16 @@ private fun AboutZenmoTextContent(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = if (breakpoint >= Breakpoint.MD) Alignment.Start else Alignment.CenterHorizontally
     ) {
-        Div(
-            TextStyle.toModifier(HolonBlockHeaderTextStyle)
+        HeaderText(
+            enText = "We are Zenmo simulations",
+            nlText = "Wij zijn Zenmo simulations",
+            modifier = Modifier
                 .textAlign(if (breakpoint > Breakpoint.SM) TextAlign.Start else TextAlign.Center)
                 .maxWidth(if (breakpoint >= Breakpoint.SM) 80.percent else 100.percent)
-                .toAttrs()
-        ) {
-            LangText(
-                nl = "Wij zijn Zenmo simulations",
-                en = "We are Zenmo simulations",
-            )
-        }
+        )
+
         Div(
-            TextStyle.toModifier(BodyLargeTextStyle, TextStyleSecondaryColor)
+            TextStyle.toModifier(BodyTextStyle, TextStyleSecondaryColor)
                 .margin(top = 1.cssRem, right = 1.cssRem)
                 .textAlign(if (breakpoint > Breakpoint.SM) TextAlign.Start else TextAlign.Center)
                 .toAttrs(),
@@ -176,7 +173,7 @@ private fun ExtraZenmoTextContent(
                 )
             }
             P(
-                attrs = TextStyle.toModifier(BodyLargeTextStyle, TextStyleSecondaryColor)
+                attrs = TextStyle.toModifier(BodyTextStyle, TextStyleSecondaryColor)
                     .maxWidth(if (breakpoint >= Breakpoint.SM) 75.percent else 100.percent)
                     .textAlign(TextAlign.Center)
                     .toAttrs()

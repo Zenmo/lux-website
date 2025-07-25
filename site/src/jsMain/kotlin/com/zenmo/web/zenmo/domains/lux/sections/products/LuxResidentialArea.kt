@@ -12,6 +12,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -27,7 +28,7 @@ import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
@@ -80,6 +81,7 @@ val LuxResRowStyle = CssStyle {
 }
 
 
+@OptIn(DelicateApi::class)
 @Composable
 fun LuxResidentialArea() {
     val breakpoint = rememberBreakpoint()
@@ -149,8 +151,8 @@ fun LuxResidentialArea() {
                         ScenarioExampleItem(
                             exampleNo = "0${index + 1}",
                             title = {
-                                H4(
-                                    TextStyle.toModifier(LabelLargeTextStyle)
+                                Span(
+                                    TextStyle.toModifier(LabelTextStyle)
                                         .fontWeight(FontWeight.Bold)
                                         .margin(0.px)
                                         .toAttrs()
