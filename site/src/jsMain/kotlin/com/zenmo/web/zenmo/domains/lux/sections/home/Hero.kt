@@ -1,8 +1,10 @@
 package com.zenmo.web.zenmo.domains.lux.sections.home
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.css.JustifyContent
+import com.varabyte.kobweb.compose.css.ObjectFit
+import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.Width
 import com.varabyte.kobweb.compose.dom.svg.Defs
 import com.varabyte.kobweb.compose.dom.svg.Path
 import com.varabyte.kobweb.compose.dom.svg.Svg
@@ -18,10 +20,11 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.ClipPath
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
+import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import kotlinx.browser.document
@@ -72,7 +75,6 @@ val LuxHeroMediaContentInnerStyle = CssStyle {
 
 val AllStyle = CssStyle.base {
     Modifier
-        .boxSizing(BoxSizing.BorderBox)
         .outline(style = LineStyle.None)
 }
 
@@ -100,7 +102,6 @@ val MaskedContentAtTopRightStyle = CssStyle.base {
 
 @Composable
 fun Hero() {
-    val breakpoint = rememberBreakpoint()
     Div(
         Modifier
             .id("hero-container")
@@ -122,11 +123,12 @@ fun Hero() {
                     .toAttrs()
             ) {
                 HeaderText(
-                    enText = "Create integrated energy plans for a company or area!",
-                    nlText = "Maak geïntegreerde energie plannen voor een bedrijf of gebied!",
+                    enText = "THIS IS LUX.",
+                    nlText = "DIT IS LUX.",
+                    customFont = HolonBlockHeaderTextStyle,
                     modifier = Modifier
-                        .maxWidth(if (breakpoint >= Breakpoint.MD) 70.percent else 100.percent)
                         .margin(0.px)
+                        .color(SitePalette.light.primary)
                 )
             }
 

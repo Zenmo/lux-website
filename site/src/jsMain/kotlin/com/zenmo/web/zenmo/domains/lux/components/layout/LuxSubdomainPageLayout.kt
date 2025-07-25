@@ -1,31 +1,31 @@
 package com.zenmo.web.zenmo.domains.lux.components.layout
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
+import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.layouts.PageLayout
-import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxHeaderPaddingStyle
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
+import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.pages.SiteGlobals
-import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
-import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
-import com.zenmo.web.zenmo.theme.font.TextStyle
 import kotlinx.browser.window
-import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.FlexDirection
-import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.A
-import org.jetbrains.compose.web.dom.Span
+import org.jetbrains.compose.web.dom.Header
 
 
 val LayoutHeaderStyle = CssStyle {
@@ -50,51 +50,57 @@ val LayoutHeaderStyle = CssStyle {
 @Composable
 fun LuxSubdomainPageLayout(
     title: String,
-    enSubtitle: String = "Design your own energy system",
-    nlSubtitle: String = "Ontwerp je eigen energiesysteem",
     content: @Composable ColumnScope.() -> Unit,
 ) {
     PageLayout(
         header = {
-            SectionContainer(
-                horizontalAlignment = Alignment.Start,
-                modifier = Modifier
-                    .background(SitePalette.light.primary)
-                    .color(SitePalette.light.onPrimary)
-                    .then(LayoutHeaderStyle.toModifier()),
-            ) {
-                val protocol = window.location.protocol
-                A(
-                    href = "$protocol//${SiteGlobals.LUX_DOMAIN}",
-                ) {
-                    Image(
-                        src = "/lux/logos/lux-sun-logo.svg",
-                        width = 60,
-                        height = 60,
-                    )
-                }
-                Column {
-                    HeaderText(
-                        enText = title,
-                        nlText = title,
-                        modifier = TextStyle.toModifier(HolonBlockHeaderTextStyle)
-                            .margin(0.cssRem)
-                    )
-                    Span(
-                        TextStyle.toModifier(HolonLineTextStyle)
-                            .margin(0.cssRem).toAttrs()
-                    ) {
-                        LangText(
-                            en = enSubtitle,
-                            nl = nlSubtitle,
-                        )
-                    }
-                }
-            }
+            LayoutHeader(title = title)
         },
         footer = {},
         title = title
     ) {
         content()
+    }
+}
+
+@Composable
+private fun LayoutHeader(
+    title: String,
+) {
+    Header(
+        attrs = NavHeaderStyle.toModifier()
+            .boxShadow(spreadRadius = 0.px, color = Color.transparent)
+            .then(LuxHeaderPaddingStyle.toModifier())
+            .then(HeaderBottomDividerLineStyle.toModifier())
+            .toAttrs()
+    ) {
+        Row(
+            HeaderInnerStyle.toModifier()
+                .fillMaxWidth().gap(1.cssRem),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            val protocol = window.location.protocol
+            Box(contentAlignment = Alignment.CenterStart) {
+                A(
+                    href = "$protocol//${SiteGlobals.LUX_DOMAIN}",
+                ) {
+                    LuxLogo()
+                }
+            }
+
+            Box(modifier = Modifier.flex(1), contentAlignment = Alignment.Center) {
+                SubHeaderText(
+                    enText = title,
+                    nlText = title,
+                    modifier = Modifier
+                        .margin(0.cssRem)
+                )
+            }
+
+            Box(modifier = Modifier.displayIfAtLeast(Breakpoint.MD), contentAlignment = Alignment.CenterEnd) {
+                LanguageSwitchButton()
+            }
+        }
     }
 }

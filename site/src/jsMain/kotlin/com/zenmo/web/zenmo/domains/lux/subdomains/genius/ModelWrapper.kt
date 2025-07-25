@@ -13,8 +13,8 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.protected.LoadingState
-import com.zenmo.web.zenmo.protected.ProtectedWrapper
+import com.zenmo.web.zenmo.components.widgets.ErrorWidget
+import com.zenmo.web.zenmo.protected.*
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 
@@ -28,7 +28,7 @@ val ProtectedWrapperStyle = CssStyle {
             .left(50.percent)
             .transform { translate((-50).percent, (-50).percent) }
             .width(40.percent)
-            .padding(topBottom = 20.px)
+            .padding(topBottom = 20.px, leftRight = 10.px)
     }
 
     Breakpoint.SM {
@@ -36,7 +36,7 @@ val ProtectedWrapperStyle = CssStyle {
     }
 
     Breakpoint.MD {
-        Modifier.width(40.percent)
+        Modifier.width(50.percent)
     }
 
     Breakpoint.LG {
@@ -58,13 +58,23 @@ val BlurModelImageStyle = CssStyle.base {
         .objectFit(ObjectFit.Companion.Cover)
 }
 
+val ModelWrapperStyle = CssStyle.base {
+    Modifier
+        .fillMaxWidth()
+        .display(DisplayStyle.Flex)
+        .justifyContent(JustifyContent.Center)
+        .position(Position.Relative)
+        .height(80.vh)
+        .padding(bottom = 3.cssRem)
+}
+
 @Composable
 fun ModelWrapper(
     imgUrl: String,
     entryPoint: String,
     modifier: Modifier = Modifier.padding(topBottom = 3.cssRem)
 ) {
-    var wrapperStatus by remember { mutableStateOf(LoadingState.PENDING) }
+    var wrapperStatus by remember { mutableStateOf<AccessStatus>(AccessStatus.Success) }
     Box(
         Modifier.Companion
             .fillMaxWidth()
@@ -72,7 +82,7 @@ fun ModelWrapper(
             .height(80.vh).then(modifier),
         contentAlignment = Alignment.Center
     ) {
-        if (wrapperStatus != LoadingState.SUCCESS) {
+        if (wrapperStatus != AccessStatus.Success) {
             Image(
                 src = imgUrl,
                 alt = "$entryPoint model teaser",
@@ -81,12 +91,31 @@ fun ModelWrapper(
         }
         Div(
             Modifier.Companion
-                .thenIf(wrapperStatus != LoadingState.SUCCESS, ProtectedWrapperStyle.toModifier())
+                .thenIf(wrapperStatus != AccessStatus.Success, ProtectedWrapperStyle.toModifier())
+                .thenIf(wrapperStatus == AccessStatus.Success, ModelWrapperStyle.toModifier())
                 .toAttrs()
         ) {
-            ProtectedWrapper(entryPoint, { status ->
-                wrapperStatus = status
-            })
+            ProtectedWrapper(
+                entryPoint = entryPoint,
+                fallbackContent = { status ->
+                    // we don't need to recompose the content if the status hasn't changed
+                    if (wrapperStatus != status) {
+                        wrapperStatus = status
+                    }
+
+                    when (status) {
+                        AccessStatus.Pending -> Pending()
+                        AccessStatus.NotLoggedIn -> Login()
+                        AccessStatus.NotEnoughPrivileges -> NotEnoughPrivileges(actionContent = {})
+                        is AccessStatus.Error -> {
+                            ErrorWidget(errorMessage = status.errorMessage, actionContent = {
+                                // todo trigger a retry or something
+                            })
+                        }
+
+                        AccessStatus.Success -> {}
+                    }
+                })
         }
     }
 }

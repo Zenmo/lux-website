@@ -10,11 +10,14 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
+import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.graphics.FitWidthImageVariant
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.extendedBy
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vh
@@ -53,13 +56,13 @@ fun MediaContentLayout(
                     subtitle = subtitle,
                     actionText = actionText,
                 )
-                Box(Modifier.fillMaxSize()) {
+                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     visualContent()
                 }
             }
 
             false -> {
-                Box(Modifier.fillMaxSize()) {
+                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     visualContent()
                 }
                 TextContent(
@@ -74,6 +77,7 @@ fun MediaContentLayout(
 }
 
 
+@OptIn(DelicateApi::class)
 @Composable
 private fun TextContent(
     title: @Composable (() -> Unit)? = null,
@@ -81,6 +85,7 @@ private fun TextContent(
     description: @Composable () -> Unit,
     actionText: @Composable () -> Unit,
 ) {
+    val breakpoint = rememberBreakpoint()
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -88,7 +93,9 @@ private fun TextContent(
         verticalArrangement =
             if (title == null) Arrangement.Top
             else Arrangement.Center,
-        horizontalAlignment = Alignment.Start
+        horizontalAlignment =
+            if (breakpoint < Breakpoint.MD) Alignment.CenterHorizontally
+            else Alignment.Start
     ) {
         subtitle()
         title?.invoke()
