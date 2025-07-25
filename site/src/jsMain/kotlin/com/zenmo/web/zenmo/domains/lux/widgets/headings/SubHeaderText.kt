@@ -6,27 +6,20 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyleVariant
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.pages.SiteGlobals
-import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextComponentKind
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.font.TitleTextStyle
-import kotlinx.browser.window
 import org.jetbrains.compose.web.dom.H3
 
 @Composable
 fun SubHeaderText(
     modifier: Modifier = Modifier,
-    customFont: CssStyleVariant<TextComponentKind>? = HolonLineTextStyle,
+    customFont: CssStyleVariant<TextComponentKind>? = null,
     enText: String,
     nlText: String,
 ) {
-    val font = when (window.location.host) {
-        SiteGlobals.ZENMO_DOMAIN -> TitleTextStyle
-        else -> customFont
-    }
     H3(
-        TextStyle.toModifier(font)
+        TextStyle.toModifier(customFont ?: TitleTextStyle)
             .then(modifier)
             .toAttrs()
     ) {

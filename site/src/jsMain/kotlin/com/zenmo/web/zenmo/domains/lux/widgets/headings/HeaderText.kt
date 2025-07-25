@@ -6,7 +6,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyleVariant
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.theme.font.DisplayTextStyle
+import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextComponentKind
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.dom.H1
@@ -19,7 +19,7 @@ fun HeaderText(
     nlText: String,
 ) {
     H1(
-        TextStyle.toModifier(customFont ?: DisplayTextStyle)
+        TextStyle.toModifier(customFont ?: HeaderTextStyle)
             .then(modifier)
             .toAttrs()
     ) {

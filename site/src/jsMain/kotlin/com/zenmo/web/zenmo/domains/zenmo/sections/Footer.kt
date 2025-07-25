@@ -13,7 +13,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.font.TextStylePrimaryColor
 import com.zenmo.web.zenmo.theme.toSitePalette
@@ -38,12 +38,12 @@ fun Footer(modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Div(TextStyle.toModifier(LabelLargeTextStyle).toAttrs()) {
+        Div(TextStyle.toModifier(LabelTextStyle).toAttrs()) {
             Text(value = COPY_RIGHT)
         }
         Link(
             path = DISCLAIMER_URL,
-            modifier = TextStyle.toModifier(LabelLargeTextStyle, TextStylePrimaryColor)
+            modifier = TextStyle.toModifier(LabelTextStyle, TextStylePrimaryColor)
         ) {
             LangText(
                 en = "Disclaimer",

@@ -10,14 +10,14 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.toSitePalette
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.px
 
 val OutlinePrimaryButtonStyle = CssStyle(extraModifier = {
-    TextStyle.toModifier(LabelLargeTextStyle).fontWeight(FontWeight.SemiBold)
+    TextStyle.toModifier(LabelTextStyle).fontWeight(FontWeight.SemiBold)
 }) {
     val colorPalette = colorMode.toSitePalette()
     base {

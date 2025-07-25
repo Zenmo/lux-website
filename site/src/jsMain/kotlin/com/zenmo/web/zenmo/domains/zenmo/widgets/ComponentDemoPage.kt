@@ -17,7 +17,7 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.components.widgets.SectionContainerStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.component_demo.*
-import com.zenmo.web.zenmo.theme.font.DisplayTextStyle
+import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
@@ -61,7 +61,7 @@ fun ComponentDemoPage() {
     ) {
         SectionContainer {
             Span(
-                TextStyle.toModifier(DisplayTextStyle)
+                TextStyle.toModifier(HeaderTextStyle)
                     .padding(top = 2.cssRem)
                     .toAttrs()
             ) {
