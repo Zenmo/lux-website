@@ -19,7 +19,9 @@ import com.varabyte.kobweb.silk.style.breakpoint.BreakpointSizes
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.modifyStyle
+import com.zenmo.web.zenmo.pages.SiteGlobals
 import com.zenmo.web.zenmo.utils.PublicRes
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
 
 val defaultFonts = Modifier.fontFamily(
@@ -27,6 +29,13 @@ val defaultFonts = Modifier.fontFamily(
     PublicRes.FontFamilies.POPPINS_MEDIUM,
     PublicRes.FontFamilies.MONTSERRAT_REGULAR,
     PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
+)
+
+val luxDefaultFonts = Modifier.fontFamily(
+    PublicRes.FontFamilies.MULI_MEDIUM,
+    PublicRes.FontFamilies.MULI_REGULAR,
+    PublicRes.FontFamilies.POPPINS_REGULAR,
+    PublicRes.FontFamilies.POPPINS_MEDIUM,
 )
 
 @InitSilk
@@ -42,7 +51,11 @@ fun initSiteStyles(ctx: InitSilkContext) {
 
     ctx.stylesheet.apply {
         registerStyleBase("body") {
-            defaultFonts
+            val domain = window.location.host
+            when (domain) {
+                SiteGlobals.ZENMO_DOMAIN -> defaultFonts
+                else -> luxDefaultFonts
+            }
         }
     }
 

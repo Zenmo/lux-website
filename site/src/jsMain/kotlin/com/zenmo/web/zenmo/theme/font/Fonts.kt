@@ -4,11 +4,18 @@ import com.varabyte.kobweb.compose.css.FontStyle
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.FontScope
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.zenmo.web.zenmo.pages.SiteGlobals
 import com.zenmo.web.zenmo.utils.PublicRes
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.CSSSizeValue
 import org.jetbrains.compose.web.css.CSSUnit
 import org.jetbrains.compose.web.css.cssRem
 
+data class SiteFontFamily(
+    val header: String,
+    val subHeader: String,
+    val body: String, // the default font used in the site
+)
 
 /**
  * Represents a font used in the site.
@@ -25,15 +32,10 @@ data class SiteFont(
  * doing this for UI consistency and to avoid hardcoding font values in the components.
  * */
 data class SiteFonts(
-    val display: SiteFont,
-    val subDisplay: SiteFont,
+    val header: SiteFont,
     val title: SiteFont,
-    val bodyLarge: SiteFont,
-    val bodyMedium: SiteFont,
-    val bodySmall: SiteFont,
-    val labelLarge: SiteFont,
-    val labelMedium: SiteFont,
-    val labelSmall: SiteFont
+    val body: SiteFont,
+    val label: SiteFont,
 )
 
 
@@ -68,87 +70,65 @@ object Fonts {
         }
     }
 
+    private val zenmoFontFamily = SiteFontFamily(
+        header = PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
+        subHeader = PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
+        body = PublicRes.FontFamilies.POPPINS_REGULAR,
+    )
+
+    private val luxFontFamily = SiteFontFamily(
+        header = PublicRes.FontFamilies.HOLON_BLOCK,
+        subHeader = PublicRes.FontFamilies.HOLON_LINE,
+        body = PublicRes.FontFamilies.MULI_REGULAR,
+    )
+
+    val domain = window.location.host
+    val siteFontFamily = when (domain) {
+        SiteGlobals.ZENMO_DOMAIN -> zenmoFontFamily
+        else -> luxFontFamily
+    }
+
     private val superLargeFonts = SiteFonts(
-        display = SiteFont(
-            fontFamily = PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
+        header = SiteFont(
+            fontFamily = siteFontFamily.header,
             fontWeight = FontWeight.ExtraBold,
             fontSize = 3.7.cssRem,
         ),
-        subDisplay = SiteFont(
-            fontFamily = PublicRes.FontFamilies.POPPINS_REGULAR,
-            fontWeight = FontWeight.Normal,
-            fontSize = 1.5.cssRem,
-        ),
         title = SiteFont(
-            fontFamily = PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
+            fontFamily = siteFontFamily.subHeader,
             fontWeight = FontWeight.Medium,
-            fontSize = 1.5.cssRem,
+            fontSize = 2.cssRem,
         ),
-        bodyLarge = SiteFont(
-            fontFamily = PublicRes.FontFamilies.POPPINS_REGULAR,
+        body = SiteFont(
+            fontFamily = siteFontFamily.body,
             fontWeight = FontWeight.Normal,
             fontSize = 1.25.cssRem,
         ),
-        bodyMedium = SiteFont(
-            fontFamily = PublicRes.FontFamilies.POPPINS_REGULAR,
-            fontWeight = FontWeight.Normal,
-            fontSize = 1.1.cssRem,
-        ),
-        bodySmall = SiteFont(
-            fontFamily = PublicRes.FontFamilies.POPPINS_REGULAR,
-            fontWeight = FontWeight.Normal,
-            fontSize = 1.cssRem,
-        ),
-        labelLarge = SiteFont(
-            fontFamily = PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
+        label = SiteFont(
+            fontFamily = siteFontFamily.body,
             fontWeight = FontWeight.Medium,
             fontSize = 0.9.cssRem,
-        ),
-        labelMedium = SiteFont(
-            fontFamily = PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
-            fontWeight = FontWeight.Medium,
-            fontSize = 0.875.cssRem,
-        ),
-        labelSmall = SiteFont(
-            fontFamily = PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
-            fontWeight = FontWeight.Medium,
-            fontSize = 0.875.cssRem,
         ),
     )
 
     private val largeFonts = SiteFonts(
-        display = superLargeFonts.display.copy(fontSize = 3.cssRem),
-        subDisplay = superLargeFonts.subDisplay.copy(fontSize = 1.35.cssRem),
+        header = superLargeFonts.header.copy(fontSize = 3.cssRem),
         title = superLargeFonts.title.copy(fontSize = 1.35.cssRem),
-        bodyLarge = superLargeFonts.bodyLarge.copy(fontSize = 1.15.cssRem),
-        bodyMedium = superLargeFonts.bodyMedium.copy(fontSize = 1.cssRem),
-        bodySmall = superLargeFonts.bodySmall.copy(fontSize = 0.9.cssRem),
-        labelLarge = superLargeFonts.labelLarge,
-        labelMedium = superLargeFonts.labelMedium,
-        labelSmall = superLargeFonts.labelSmall,
+        body = superLargeFonts.body.copy(fontSize = 1.15.cssRem),
+        label = superLargeFonts.label,
     )
 
     private val mediumFonts = SiteFonts(
-        display = superLargeFonts.display.copy(fontSize = 2.cssRem),
-        subDisplay = superLargeFonts.subDisplay.copy(fontSize = 1.2.cssRem),
+        header = superLargeFonts.header.copy(fontSize = 2.cssRem),
         title = superLargeFonts.title.copy(fontSize = 1.35.cssRem),
-        bodyLarge = superLargeFonts.bodyLarge.copy(fontSize = 1.cssRem),
-        bodyMedium = superLargeFonts.bodyMedium.copy(fontSize = 0.9.cssRem),
-        bodySmall = superLargeFonts.bodySmall,
-        labelLarge = superLargeFonts.labelLarge,
-        labelMedium = superLargeFonts.labelMedium,
-        labelSmall = superLargeFonts.labelSmall,
+        body = superLargeFonts.body.copy(fontSize = 1.cssRem),
+        label = superLargeFonts.label,
     )
 
     private val smallFonts = SiteFonts(
-        display = superLargeFonts.display.copy(fontSize = 1.8.cssRem),
-        subDisplay = superLargeFonts.subDisplay.copy(fontSize = 1.05.cssRem),
+        header = superLargeFonts.header.copy(fontSize = 1.8.cssRem),
         title = superLargeFonts.title.copy(fontSize = 1.35.cssRem),
-        bodyLarge = superLargeFonts.bodyLarge.copy(fontSize = 1.cssRem),
-        bodyMedium = superLargeFonts.bodyMedium.copy(fontSize = 0.9.cssRem),
-        bodySmall = superLargeFonts.bodySmall.copy(fontSize = 0.9.cssRem),
-        labelLarge = superLargeFonts.labelLarge,
-        labelMedium = superLargeFonts.labelMedium,
-        labelSmall = superLargeFonts.labelSmall,
+        body = superLargeFonts.body.copy(fontSize = 1.cssRem),
+        label = superLargeFonts.label,
     )
 }
