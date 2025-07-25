@@ -7,6 +7,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.core.AppGlobals
 import com.zenmo.web.zenmo.components.widgets.ErrorWidget
+import com.zenmo.web.zenmo.core.services.localization.LanguageManager
 import js.import.importAsync
 import web.http.RequestCredentials
 import web.http.RequestInit
@@ -17,29 +18,38 @@ external interface PrivateTextModule {
     fun ProtectedComponent()
 }
 
-enum class LoadingState {
-    PENDING,
-    NOT_LOGGED_IN,
-    NOT_ENOUGH_PRIVILEGES,
-    ERROR,
-    SUCCESS,
+sealed class AccessStatus {
+    data object Pending : AccessStatus()
+    data object NotLoggedIn : AccessStatus()
+    data object NotEnoughPrivileges : AccessStatus()
+    data class Error(val errorMessage: String) : AccessStatus()
+    data object Success : AccessStatus()
 }
 
 @Composable
 fun ProtectedWrapper(
     entryPoint: String,
-    onStatusChange: (LoadingState) -> Unit = { LoadingState.PENDING }
+    fallbackContent: @Composable (AccessStatus) -> Unit = {
+        when (it) {
+            AccessStatus.Pending -> Pending()
+            AccessStatus.NotLoggedIn -> Login()
+            AccessStatus.NotEnoughPrivileges -> NotEnoughPrivileges()
+            is AccessStatus.Error -> {
+                ErrorWidget(errorMessage = it.errorMessage)
+            }
+
+            AccessStatus.Success -> {} // does not happen here, self-contained in the module
+        }
+    }
 ) {
     var privateModule by remember { mutableStateOf<PrivateTextModule?>(null) }
-    var error by remember { mutableStateOf<Throwable?>(null) }
-    var status by remember { mutableStateOf(LoadingState.PENDING) }
+    var status by remember { mutableStateOf<AccessStatus>(AccessStatus.Pending) }
 
     LaunchedEffect(Unit) {
         try {
             privateModule =
                 importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
-            status = LoadingState.SUCCESS
-            onStatusChange.invoke(status)
+            status = AccessStatus.Success
         } catch (e: Throwable) {
             /**
              * We get no status code after import failure.
@@ -47,7 +57,12 @@ fun ProtectedWrapper(
              */
             val fileName = e.message?.substringAfterLast('/')
             if (fileName == null) {
-                error = e
+                status = AccessStatus.Error(
+                    LanguageManager.language.value.translate(
+                        en = "Failed to load module.",
+                        nl = "Kon de module niet laden."
+                    )
+                )
                 return@LaunchedEffect
             }
 
@@ -58,16 +73,22 @@ fun ProtectedWrapper(
                     )
                 )
                 status = when (response.status.toInt()) {
-                    401 -> LoadingState.NOT_LOGGED_IN
-                    403 -> LoadingState.NOT_ENOUGH_PRIVILEGES
-                    else -> LoadingState.ERROR
-                }.also {
-                    onStatusChange.invoke(it)
+                    401 -> AccessStatus.NotLoggedIn
+                    403 -> AccessStatus.NotEnoughPrivileges
+                    else -> AccessStatus.Error(
+                        LanguageManager.language.value.translate(
+                            en = "An error occurred while accessing module.",
+                            nl = "Er is een fout opgetreden bij het openen van de module."
+                        )
+                    )
                 }
             } catch (e: Throwable) {
-                status = LoadingState.ERROR
-                error = e
-                onStatusChange.invoke(status)
+                status = AccessStatus.Error(
+                    LanguageManager.language.value.translate(
+                        en = e.message,
+                        nl = e.message
+                    )
+                )
             }
         }
     }
@@ -77,11 +98,8 @@ fun ProtectedWrapper(
         contentAlignment = Alignment.Center
     ) {
         when (status) {
-            LoadingState.PENDING -> Pending()
-            LoadingState.NOT_LOGGED_IN -> Login()
-            LoadingState.NOT_ENOUGH_PRIVILEGES -> NotEnoughPrivileges()
-            LoadingState.ERROR -> ErrorWidget(errorMessage = error?.toString() ?: "An unknown error occurred.")
-            LoadingState.SUCCESS -> privateModule!!.ProtectedComponent()
+            AccessStatus.Success -> privateModule!!.ProtectedComponent()
+            else -> fallbackContent(status)
         }
     }
 }
