@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.domains.lux.subdomains.brabant.BrabantRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechtstedenRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.genius.Genius
-import com.zenmo.web.zenmo.protected.ProtectedWrapper
 
 
 enum class LuxSubdomains(val domainName: String) {
@@ -26,14 +25,14 @@ fun LuxSubdomainRoutingComponent(subdomain: LuxSubdomains) {
     when (subdomain) {
         LuxSubdomains.DRECHTSTEDEN -> DrechtstedenRouting()
         LuxSubdomains.GENIUS -> Genius()
-        LuxSubdomains.HESSENPOORT -> ProtectedWrapper("hessenpoort")
+        LuxSubdomains.HESSENPOORT -> Hessenpoort()
         LuxSubdomains.BRABANT -> BrabantRouting()
         LuxSubdomains.NEDERLAND -> NederlandIndex()
         LuxSubdomains.HILVERSUM -> HilversumIndex()
         LuxSubdomains.BUNDERBUURTEN -> BunderbuurtenIndex()
         LuxSubdomains.LOENEN -> LoenenIndex()
         LuxSubdomains.ROTTERDAM_DEN_HAAG -> RotterdamDenHaagIndex()
-        LuxSubdomains.KAS_ALS_ENERGIEBRON -> ProtectedWrapper("kasalsenergiebron")
+        LuxSubdomains.KAS_ALS_ENERGIEBRON -> KasAlsenErgiebron()
         LuxSubdomains.VRUCHTENBUURT -> VruchtenbuurtIndex()
     }
 }
