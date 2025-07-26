@@ -26,7 +26,7 @@ fun ProfileContactCard(
     name: String,
     imageUrl: String,
     email: String,
-    contactPhone: String? = null,
+    telephoneNumber: String? = null,
     enSubtitle: String? = null,
     nlSubtitle: String? = null,
     organization: @Composable () -> Unit = {},
@@ -55,6 +55,7 @@ fun ProfileContactCard(
                     enText = enSubtitle,
                     nlText = nlSubtitle,
                     modifier = Modifier.color(SitePalette.light.primary)
+                        .fontSize(1.3.cssRem)
                         .margin(0.cssRem)
                 )
             }
@@ -63,7 +64,7 @@ fun ProfileContactCard(
             Column(Modifier.gap(0.5.cssRem)) {
                 ContactInfo(
                     email = email,
-                    contact = contactPhone,
+                    telephoneNumber = telephoneNumber,
                 )
                 organization()
             }
@@ -76,13 +77,13 @@ fun ProfileContactCard(
 @Composable
 fun ContactInfo(
     email: String,
-    contact: String? = null,
+    telephoneNumber: String? = null,
 ) {
     Column(Modifier.gap(0.5.cssRem)) {
-        if (contact != null) {
+        if (telephoneNumber != null) {
             Row {
                 MdiPhone(Modifier.padding(right = 0.25.cssRem))
-                Text(contact)
+                Text(telephoneNumber)
             }
         }
         Row {

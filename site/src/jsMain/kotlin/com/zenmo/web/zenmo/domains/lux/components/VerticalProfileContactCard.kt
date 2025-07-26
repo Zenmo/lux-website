@@ -41,7 +41,7 @@ fun VerticalProfileContactCard(
     name: String,
     imageUrl: String,
     email: String,
-    contactPhone: String? = null,
+    telephoneNumber: String? = null,
     enSubtitle: String? = null,
     nlSubtitle: String? = null,
     organization: @Composable () -> Unit = {},
@@ -69,7 +69,7 @@ fun VerticalProfileContactCard(
         )
         ContactInfo(
             email = email,
-            contact = contactPhone,
+            telephoneNumber = telephoneNumber,
         )
         organization()
     }

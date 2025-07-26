@@ -13,6 +13,7 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.MediaContentLayout
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.components.widgets.ZenmoInlineLink
+import com.zenmo.web.zenmo.domains.lux.components.VerticalProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
@@ -97,16 +98,16 @@ fun VruchtenbuurtIndex() {
                     numColumns = numColumns(base = 1, md = 2, lg = 2, xl = 2),
                     modifier = Modifier.gap(4.cssRem).margin(topBottom = 3.cssRem)
                 ) {
-                    ContactCard(
+                    VerticalProfileContactCard(
                         name = ZenmoTeam.NAUD_LOOMANS.memberName,
-                        image = ZenmoTeam.NAUD_LOOMANS.image,
+                        imageUrl = ZenmoTeam.NAUD_LOOMANS.image,
                         email = ZenmoTeam.NAUD_LOOMANS.email,
                         organization = { ZenmoInlineLink() }
                     )
 
-                    ContactCard(
+                    VerticalProfileContactCard(
                         name = "Teodora Lazăr",
-                        image = "avatars/blank.png",
+                        imageUrl = "avatars/blank.png",
                         email = "t.lazar@student.tue.nl",
                         organization = {
                             Span(

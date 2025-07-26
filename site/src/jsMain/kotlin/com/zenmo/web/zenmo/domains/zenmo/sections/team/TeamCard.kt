@@ -22,7 +22,9 @@ import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.*
 import com.zenmo.web.zenmo.theme.styles.IconStyle
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.H3
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
@@ -50,11 +52,7 @@ val ProfileImageStyle = CssStyle.base {
         .borderRadius(
             50.percent
         )
-        .border(
-            width = 10.px,
-            color = Color.white,
-            style = LineStyle.Solid
-        )
+        .padding(10.px)
         .objectFit(ObjectFit.Cover).clip(Circle())
 }
 

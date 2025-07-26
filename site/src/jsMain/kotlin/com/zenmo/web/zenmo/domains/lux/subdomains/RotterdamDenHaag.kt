@@ -3,17 +3,16 @@ package com.zenmo.web.zenmo.domains.lux.subdomains
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiPhone
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.MediaContentLayout
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.components.widgets.ZenmoInlineLink
+import com.zenmo.web.zenmo.domains.lux.components.VerticalProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
@@ -22,7 +21,6 @@ import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Text
 import kotlin.uuid.Uuid
 
 @Composable
@@ -107,28 +105,18 @@ fun RotterdamDenHaagIndex() {
                     numColumns = numColumns(base = 1, md = 2, lg = 2, xl = 2),
                     modifier = Modifier.gap(4.cssRem).margin(topBottom = 3.cssRem)
                 ) {
-                    ContactCard(
+                    VerticalProfileContactCard(
                         name = ZenmoTeam.NAUD_LOOMANS.memberName,
-                        image = ZenmoTeam.NAUD_LOOMANS.image,
+                        imageUrl = ZenmoTeam.NAUD_LOOMANS.image,
                         email = ZenmoTeam.NAUD_LOOMANS.email,
-                        organization = {
-                            Row {
-                                MdiPhone(Modifier.padding(right = 0.25.cssRem))
-                                Text("+31 (6) 1524 9535")
-                            }
-                        }
+                        telephoneNumber = "+31 (6) 1524 9535",
                     )
 
-                    ContactCard(
+                    VerticalProfileContactCard(
                         name = ZenmoTeam.AUKE.memberName,
-                        image = ZenmoTeam.AUKE.image,
+                        imageUrl = ZenmoTeam.AUKE.image,
                         email = ZenmoTeam.AUKE.email,
-                        organization = {
-                            Row {
-                                MdiPhone(Modifier.padding(right = 0.25.cssRem))
-                                Text("+31 (6) 5161 4294")
-                            }
-                        }
+                        telephoneNumber = "+31 (6) 5161 4294",
                     )
                 }
             }
