@@ -11,7 +11,6 @@ import com.zenmo.web.zenmo.core.services.localization.Language
 import com.zenmo.web.zenmo.core.services.localization.LanguageManager
 import com.zenmo.web.zenmo.core.services.localization.LocalLanguage
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
-import com.zenmo.web.zenmo.theme.font.BodyLargeTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyleBrandColor
 import org.jetbrains.compose.web.css.cssRem
@@ -32,7 +31,6 @@ fun LanguageSwitchButton() {
                 Language.Dutch -> "NL"
             },
             modifier = TextStyle.toModifier(
-                BodyLargeTextStyle,
                 TextStyleBrandColor
             )
         )

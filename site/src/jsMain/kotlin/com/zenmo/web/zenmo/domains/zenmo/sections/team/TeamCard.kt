@@ -85,7 +85,7 @@ fun TeamCard(
         }
         Span(
             TextStyle.toModifier(
-                BodyLargeTextStyle, TextStylePrimaryColor
+                BodyTextStyle, TextStylePrimaryColor
             )
                 .textAlign(TextAlign.Center)
                 .toAttrs()

@@ -18,8 +18,8 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
+import com.zenmo.web.zenmo.theme.font.TitleTextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
@@ -142,7 +142,7 @@ fun CallToActionAnchorButton(
                 .toAttrs()
         ) {
             H3(
-                TextStyle.toModifier(HolonLineTextStyle)
+                TextStyle.toModifier(TitleTextStyle)
                     .fontWeight(FontWeight.Bold)
                     .toAttrs()
             ) {

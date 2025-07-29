@@ -27,3 +27,13 @@
     font-family: 'HolonBlock';
     src: url('holon_block.otf');
 }
+
+@font-face {
+    font-family: 'MuliRegular';
+    src: url('muli_regular.ttf')
+}
+
+@font-face {
+    font-family: 'MuliMedium';
+    src: url('muli_medium.ttf');
+}

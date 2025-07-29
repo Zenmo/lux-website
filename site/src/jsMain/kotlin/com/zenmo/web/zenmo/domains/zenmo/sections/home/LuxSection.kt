@@ -79,7 +79,7 @@ private fun LuxProductCards() {
 val AnchorLinkStyle = CssStyle(
     extraModifier = {
         TextStyle.toModifier(
-            DisplayTextStyle, TextStylePrimaryColor,
+            HeaderTextStyle, TextStylePrimaryColor,
         )
     }
 ) {
@@ -109,7 +109,7 @@ private fun TextContent(
             )
         }
         P(
-            TextStyle.toModifier(BodyLargeTextStyle, TextStyleSecondaryColor)
+            TextStyle.toModifier(BodyTextStyle, TextStyleSecondaryColor)
                 .maxWidth(if (breakpoint >= Breakpoint.SM) 80.percent else 100.percent)
                 .textAlign(TextAlign.Center)
                 .toAttrs(),
@@ -184,7 +184,7 @@ private fun LuxProductsTextHeader() {
         }
         Span(
             attrs = TextStyle.toModifier(
-                DisplayTextStyle, TextStylePrimaryColor
+                HeaderTextStyle, TextStylePrimaryColor
             ).toAttrs()
         ) {
             LangText(

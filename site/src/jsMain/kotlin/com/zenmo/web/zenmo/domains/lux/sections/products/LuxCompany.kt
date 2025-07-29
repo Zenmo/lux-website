@@ -10,6 +10,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiKeyboardArrowUp
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -28,7 +29,7 @@ import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.css.AlignItems
@@ -37,6 +38,7 @@ import org.jetbrains.compose.web.dom.*
 
 const val LUX_COMPANY_SECTION_ID = "lux-company"
 
+@OptIn(DelicateApi::class)
 @Composable
 fun LuxCompany(
 ) {
@@ -79,7 +81,7 @@ fun LuxCompany(
             }
             Row(
                 // borrow this lux municipality row style because why not :)
-                modifier = LuxMunicipalityRowStyle.toModifier()
+                modifier = LuxRegionRowStyle.toModifier()
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
@@ -366,7 +368,7 @@ private fun ExpandableInfoContent(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             H4(
-                TextStyle.toModifier(LabelLargeTextStyle)
+                TextStyle.toModifier(LabelTextStyle)
                     .fontWeight(FontWeight.Bold)
                     .fillMaxWidth()
                     .toAttrs()

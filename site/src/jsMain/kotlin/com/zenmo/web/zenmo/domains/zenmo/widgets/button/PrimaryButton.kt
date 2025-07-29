@@ -12,7 +12,7 @@ import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.thenIf
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.toSitePalette
 import org.jetbrains.compose.web.attributes.ButtonType
@@ -21,7 +21,7 @@ import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.css.px
 
 val PrimaryButtonVariant = ButtonStyle.addVariant(extraModifier = {
-    TextStyle.toModifier(LabelLargeTextStyle)
+    TextStyle.toModifier(LabelTextStyle)
 }) {
     val colorPalette = colorMode.toSitePalette()
     base {

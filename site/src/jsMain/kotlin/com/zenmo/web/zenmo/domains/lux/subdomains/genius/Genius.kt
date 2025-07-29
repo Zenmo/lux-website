@@ -139,7 +139,7 @@ private fun IntroContent() {
         Div {
             LangBlock(
                 en = {
-                    H1(TextStyle.toModifier(DisplayTextStyle).toAttrs()) {
+                    H1(TextStyle.toModifier(HeaderTextStyle).toAttrs()) {
                         Span(TextStyle.toModifier(HolonBlockHeaderTextStyle).toAttrs()) {
                             Text("GENIUS - ")
                         }
@@ -147,7 +147,7 @@ private fun IntroContent() {
                     }
                 },
                 nl = {
-                    H1(TextStyle.toModifier(DisplayTextStyle).toAttrs()) {
+                    H1(TextStyle.toModifier(HeaderTextStyle).toAttrs()) {
                         Span(TextStyle.toModifier(HolonBlockHeaderTextStyle).toAttrs()) {
                             Text("GENIUS - ")
                         }
