@@ -12,6 +12,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiMail
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.shapes.Circle
@@ -21,7 +22,9 @@ import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.*
 import com.zenmo.web.zenmo.theme.styles.IconStyle
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.H3
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
@@ -31,14 +34,6 @@ val TeamCardImageContainerStyle = CssStyle {
     base {
         Modifier
             .size(15.cssRem)
-            .borderRadius(
-                50.percent
-            )
-            .border(
-                width = 10.px,
-                color = Color.white,
-                style = LineStyle.Solid
-            )
     }
 
     Breakpoint.XL {
@@ -52,6 +47,15 @@ val TeamCardImageContainerStyle = CssStyle {
     }
 }
 
+val ProfileImageStyle = CssStyle.base {
+    Modifier.fillMaxSize()
+        .borderRadius(
+            50.percent
+        )
+        .padding(10.px)
+        .objectFit(ObjectFit.Cover).clip(Circle())
+}
+
 
 @Composable
 fun TeamCard(
@@ -59,12 +63,12 @@ fun TeamCard(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         modifier = Modifier.padding(16.px).margin(bottom = 0.5.cssRem)
     ) {
-        Box(TeamCardImageContainerStyle.toModifier()) {
+        Box(TeamCardImageContainerStyle.toModifier(), contentAlignment = Alignment.Center) {
             Image(
-                modifier = Modifier.fillMaxSize().objectFit(ObjectFit.Cover).clip(Circle()),
+                modifier = ProfileImageStyle.toModifier(),
                 src = zenmoTeam.image,
                 alt = "${zenmoTeam.memberName} photo",
             )
