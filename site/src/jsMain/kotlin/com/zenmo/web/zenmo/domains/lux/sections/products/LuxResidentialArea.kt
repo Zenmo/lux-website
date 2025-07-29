@@ -12,6 +12,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -80,6 +81,7 @@ val LuxResRowStyle = CssStyle {
 }
 
 
+@OptIn(DelicateApi::class)
 @Composable
 fun LuxResidentialArea() {
     val breakpoint = rememberBreakpoint()
@@ -95,7 +97,7 @@ fun LuxResidentialArea() {
                 Div(Modifier.fillMaxWidth().toAttrs()) {
                     HeaderText(
                         enText = "LUX Residential Area",
-                        nlText = "LUX Residential Area.",
+                        nlText = "LUX Residential Area",
                         modifier = LuxResHeaderTextStyle.toModifier()
                     )
                 }

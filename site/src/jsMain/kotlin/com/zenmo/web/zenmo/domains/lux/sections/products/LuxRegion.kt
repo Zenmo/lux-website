@@ -26,8 +26,8 @@ import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
-const val LUX_MUNICIPALITY_SECTION_ID = "lux-municipality"
-val LuxMunicipalityRowStyle = CssStyle {
+const val LUX_REGION_SECTION_ID = "lux-region"
+val LuxRegionRowStyle = CssStyle {
     base {
         Modifier
             .maxWidth(100.percent)
@@ -58,12 +58,12 @@ fun LuxMunicipality() {
     val breakpoint = rememberBreakpoint()
     SectionContainer(
         modifier = Modifier
-            .id(LUX_MUNICIPALITY_SECTION_ID)
+            .id(LUX_REGION_SECTION_ID)
             .minHeight(150.vh),
         variant = LuxSectionContainerStyleVariant,
     ) {
         Row(
-            modifier = LuxMunicipalityRowStyle.toModifier()
+            modifier = LuxRegionRowStyle.toModifier()
                 .alignItems(AlignItems.Stretch),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
@@ -162,7 +162,7 @@ fun LuxMunicipality() {
                             nl = "Lux wordt al gebruikt door de "
                         )
                         InlineLink(
-                            destinationUrl = "",// link to Drechtsteden
+                            destinationUrl = "",// todo link to Drechtsteden
                             enLinkText = "RES region Drechtsteden",
                             nlLinkText = "RES region Drechtsteden"
                         )
@@ -173,7 +173,7 @@ fun LuxMunicipality() {
                         )
 
                         InlineLink(
-                            destinationUrl = "",// link to brabant
+                            destinationUrl = "",// todo link to brabant
                             enLinkText = "Province of Brabant.",
                             nlLinkText = "Province of Brabant."
                         )
@@ -183,7 +183,7 @@ fun LuxMunicipality() {
                             nl = "Het werd ook gebruikt bij de "
                         )
                         InlineLink(
-                            destinationUrl = "",// link to PMIEK
+                            destinationUrl = "",// todo link to PMIEK
                             enLinkText = "PMIEK Zuid Holland.",
                             nlLinkText = "PMIEK Zuid Holland."
                         )
@@ -243,8 +243,8 @@ private fun StartContent(breakpoint: Breakpoint) {
                 .toAttrs()
         ) {
             HeaderText(
-                enText = "LUX Municipality, RES Region and Province",
-                nlText = "LUX Municipality, RES Region and Province",
+                enText = "LUX Region",
+                nlText = "LUX Regio",
                 modifier = Modifier.margin(0.px)
             )
 

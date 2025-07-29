@@ -10,6 +10,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiKeyboardArrowUp
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -37,6 +38,7 @@ import org.jetbrains.compose.web.dom.*
 
 const val LUX_COMPANY_SECTION_ID = "lux-company"
 
+@OptIn(DelicateApi::class)
 @Composable
 fun LuxCompany(
 ) {
@@ -79,7 +81,7 @@ fun LuxCompany(
             }
             Row(
                 // borrow this lux municipality row style because why not :)
-                modifier = LuxMunicipalityRowStyle.toModifier()
+                modifier = LuxRegionRowStyle.toModifier()
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
