@@ -10,7 +10,7 @@ import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.layouts.PageLayout
-import com.zenmo.web.zenmo.theme.font.DisplayTextStyle
+import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
@@ -23,7 +23,7 @@ fun WhatPage() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Div(TextStyle.toModifier(DisplayTextStyle).toAttrs()) {
+            Div(TextStyle.toModifier(HeaderTextStyle).toAttrs()) {
                 SpanText("We do very interesting things.")
             }
 

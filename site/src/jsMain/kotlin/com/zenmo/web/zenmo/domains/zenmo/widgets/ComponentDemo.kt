@@ -17,7 +17,7 @@ import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.font.TitleTextStyle
 import com.zenmo.web.zenmo.theme.styles.IconStyle
@@ -149,7 +149,7 @@ fun CustomizationNotes(
                 )
             }
             Div(
-                TextStyle.toModifier(LabelLargeTextStyle)
+                TextStyle.toModifier(LabelTextStyle)
                     .fillMaxWidth()
                     .margin(left = 0.5.cssRem)
                     .toAttrs()

@@ -28,7 +28,7 @@ import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
@@ -151,8 +151,8 @@ fun LuxResidentialArea() {
                         ScenarioExampleItem(
                             exampleNo = "0${index + 1}",
                             title = {
-                                H4(
-                                    TextStyle.toModifier(LabelLargeTextStyle)
+                                Span(
+                                    TextStyle.toModifier(LabelTextStyle)
                                         .fontWeight(FontWeight.Bold)
                                         .margin(0.px)
                                         .toAttrs()

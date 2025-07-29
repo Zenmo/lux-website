@@ -22,13 +22,13 @@ import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.em
 import org.jetbrains.compose.web.css.px
 
 val NavBarLinkVariant = LinkStyle.addVariant(
-    extraModifier = { TextStyle.toModifier(LabelLargeTextStyle) }
+    extraModifier = { TextStyle.toModifier(LabelTextStyle) }
 ) {
     val colorPalette = colorMode.toPalette()
     base {

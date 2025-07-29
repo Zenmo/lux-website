@@ -29,7 +29,7 @@ import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.LabelLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.css.AlignItems
@@ -368,7 +368,7 @@ private fun ExpandableInfoContent(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             H4(
-                TextStyle.toModifier(LabelLargeTextStyle)
+                TextStyle.toModifier(LabelTextStyle)
                     .fontWeight(FontWeight.Bold)
                     .fillMaxWidth()
                     .toAttrs()

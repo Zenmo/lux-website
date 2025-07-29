@@ -37,7 +37,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.Language
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.TeamCardImageContainerStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.DisplayTextStyle
+import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.Color
@@ -177,7 +177,7 @@ private fun IntroContent() {
         Div {
             LangBlock(
                 en = {
-                    H1(TextStyle.toModifier(DisplayTextStyle).toAttrs()) {
+                    H1(TextStyle.toModifier(HeaderTextStyle).toAttrs()) {
                         Span(TextStyle.toModifier(HolonBlockHeaderTextStyle).toAttrs()) {
                             Text("GENIUS - ")
                         }
@@ -185,7 +185,7 @@ private fun IntroContent() {
                     }
                 },
                 nl = {
-                    H1(TextStyle.toModifier(DisplayTextStyle).toAttrs()) {
+                    H1(TextStyle.toModifier(HeaderTextStyle).toAttrs()) {
                         Span(TextStyle.toModifier(HolonBlockHeaderTextStyle).toAttrs()) {
                             Text("GENIUS - ")
                         }

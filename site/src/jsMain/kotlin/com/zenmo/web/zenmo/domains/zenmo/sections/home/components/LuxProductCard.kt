@@ -21,7 +21,7 @@ import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.BodyLargeTextStyle
+import com.zenmo.web.zenmo.theme.font.BodyTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyleSecondaryColor
 import com.zenmo.web.zenmo.theme.font.TitleTextStyle
@@ -33,7 +33,7 @@ import org.jetbrains.compose.web.dom.Text
 
 val ProductCardStyle = CssStyle(
     extraModifier = {
-        TextStyle.toModifier(BodyLargeTextStyle)
+        TextStyle.toModifier(BodyTextStyle)
     }
 ) {
     val colors = colorMode.toPalette()
@@ -100,7 +100,7 @@ fun LuxProductCard(
 
         P(
             attrs =
-                TextStyle.toModifier(BodyLargeTextStyle, TextStyleSecondaryColor)
+                TextStyle.toModifier(BodyTextStyle, TextStyleSecondaryColor)
                     .margin(bottom = 0.6.cssRem)
                     .toAttrs(),
         ) {

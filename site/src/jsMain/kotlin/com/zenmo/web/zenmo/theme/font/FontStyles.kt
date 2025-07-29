@@ -16,7 +16,7 @@ sealed interface TextComponentKind : ComponentKind
 val TextStyle = CssStyle<TextComponentKind> {
     val defaultFonts = Fonts[Breakpoint.LG]
     base {
-        Modifier.font { defaultFonts.bodyLarge }
+        Modifier.font { defaultFonts.body }
     }
 }
 
@@ -39,81 +39,81 @@ val TextStyleBrandColor = TextStyle.addVariant {
 }
 
 
-val DisplayTextStyle = TextStyle.addVariant {
+val HeaderTextStyle = TextStyle.addVariant {
     Breakpoint.ZERO {
         val fontsSM = Fonts[Breakpoint.SM]
-        Modifier.font { siteFont(fontsSM.display) }
+        Modifier.font { siteFont(fontsSM.header) }
     }
     Breakpoint.SM {
         val fontsSM = Fonts[Breakpoint.SM]
-        Modifier.font { siteFont(fontsSM.display) }
+        Modifier.font { siteFont(fontsSM.header) }
     }
     Breakpoint.MD {
         val fontsMD = Fonts[Breakpoint.MD]
-        Modifier.font { siteFont(fontsMD.display) }
+        Modifier.font { siteFont(fontsMD.header) }
     }
     Breakpoint.LG {
         val fontsLG = Fonts[Breakpoint.LG]
-        Modifier.font { siteFont(fontsLG.display) }
+        Modifier.font { siteFont(fontsLG.header) }
     }
     Breakpoint.XL {
         val fontsXL = Fonts[Breakpoint.XL]
-        Modifier.font { siteFont(fontsXL.display) }
+        Modifier.font { siteFont(fontsXL.header) }
     }
 }
 
 
-val BodyLargeTextStyle = TextStyle.addVariant {
+val BodyTextStyle = TextStyle.addVariant {
     Breakpoint.ZERO {
         val fontsSM = Fonts[Breakpoint.SM]
-        Modifier.font { siteFont(fontsSM.bodyLarge) }
+        Modifier.font { siteFont(fontsSM.body) }
     }
     Breakpoint.SM {
         val fontsSM = Fonts[Breakpoint.SM]
-        Modifier.font { siteFont(fontsSM.bodyLarge) }
+        Modifier.font { siteFont(fontsSM.body) }
     }
     Breakpoint.MD {
         val fontsMD = Fonts[Breakpoint.MD]
-        Modifier.font { siteFont(fontsMD.bodyLarge) }
+        Modifier.font { siteFont(fontsMD.body) }
     }
     Breakpoint.LG {
         val fontsLG = Fonts[Breakpoint.LG]
-        Modifier.font { siteFont(fontsLG.bodyLarge) }
+        Modifier.font { siteFont(fontsLG.body) }
     }
     Breakpoint.XL {
         val fontsXL = Fonts[Breakpoint.XL]
-        Modifier.font { siteFont(fontsXL.bodyLarge) }
+        Modifier.font { siteFont(fontsXL.body) }
     }
 }
 
 
-val LabelLargeTextStyle = TextStyle.addVariant {
+val LabelTextStyle = TextStyle.addVariant {
     Breakpoint.ZERO {
         val fontsSM = Fonts[Breakpoint.SM]
-        Modifier.font { siteFont(fontsSM.labelLarge) }
+        Modifier.font { siteFont(fontsSM.label) }
     }
     Breakpoint.SM {
         val fontsSM = Fonts[Breakpoint.SM]
-        Modifier.font { siteFont(fontsSM.labelLarge) }
+        Modifier.font { siteFont(fontsSM.label) }
     }
     Breakpoint.MD {
         val fontsMD = Fonts[Breakpoint.MD]
-        Modifier.font { siteFont(fontsMD.labelLarge) }
+        Modifier.font { siteFont(fontsMD.label) }
     }
     Breakpoint.LG {
         val fontsLG = Fonts[Breakpoint.LG]
-        Modifier.font { siteFont(fontsLG.labelLarge) }
+        Modifier.font { siteFont(fontsLG.label) }
     }
     Breakpoint.XL {
         val fontsXL = Fonts[Breakpoint.XL]
-        Modifier.font { siteFont(fontsXL.labelLarge) }
+        Modifier.font { siteFont(fontsXL.label) }
     }
 }
 
 val HolonBlockHeaderTextStyle = TextStyle.addVariant {
     fun applyHolonBlockFont(breakpoint: Breakpoint): Modifier {
         val fonts = Fonts[breakpoint]
-        return Modifier.font { siteFont(fonts.display.copy(fontFamily = PublicRes.FontFamilies.HOLON_BLOCK)) }
+        return Modifier.font { siteFont(fonts.header.copy(fontFamily = PublicRes.FontFamilies.HOLON_BLOCK)) }
     }
 
     Breakpoint.ZERO { applyHolonBlockFont(Breakpoint.ZERO) }
