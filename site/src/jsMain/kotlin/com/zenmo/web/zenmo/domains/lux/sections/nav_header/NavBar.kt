@@ -13,6 +13,8 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
@@ -26,6 +28,7 @@ import org.jetbrains.compose.web.dom.Ul
 
 val NavListStyle = CssStyle.base {
     Modifier
+        .fillMaxHeight()
         .display(DisplayStyle.Flex)
         .justifyContent(JustifyContent.Center)
         .alignItems(AlignItems.Center)
@@ -35,22 +38,33 @@ val NavListStyle = CssStyle.base {
 
 
 @Composable
-fun NavBar(
-    sectionInView: String,
-) {
-    Nav {
+fun NavBar() {
+    Nav(
+        Modifier
+            .fillMaxHeight()
+            .toAttrs()
+    ) {
         Ul(
             NavListStyle.toModifier().toAttrs()
         ) {
-            LuxSection.entries.forEach { section ->
-                val isActive = sectionInView == section.id
+            MenuItem.luxMenuItems.forEach { item ->
+                when (item) {
+                    is MenuItem.Simple -> {
+                        LuxMenuItem(
+                            href = item.getPath,
+                            enTitle = item.title.en,
+                            nlTitle = item.title.nl,
+                            isActive = isPathActive(href = item.getPath),
+                        )
+                    }
 
-                MenuSectionItem(
-                    href = section.href,
-                    enTitle = section.title.en,
-                    nlTitle = section.title.nl,
-                    isActive = isActive,
-                )
+                    is MenuItem.WithSubs -> {
+                        LuxMenuItemWithSubs(
+                            titleText = item.title,
+                            subItems = item.subItems,
+                        )
+                    }
+                }
             }
         }
     }

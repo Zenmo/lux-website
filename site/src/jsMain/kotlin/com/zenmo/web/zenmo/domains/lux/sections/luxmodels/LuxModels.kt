@@ -17,7 +17,6 @@ import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxSection
 import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -46,7 +45,6 @@ fun LuxModels() {
         verticalArrangement = Arrangement.Center,
         modifier =
             Modifier
-                .id(LuxSection.MODELS.id)
                 .then(TopDividerLineStyle.toModifier())
                 .background(SitePalette.light.overlay)
                 .position(Position.Relative)

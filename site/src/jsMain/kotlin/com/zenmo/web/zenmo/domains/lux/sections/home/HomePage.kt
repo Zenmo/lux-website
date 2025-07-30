@@ -21,7 +21,6 @@ import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangBlock
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxSection
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -34,7 +33,6 @@ import org.jetbrains.compose.web.dom.*
 fun HomePage() {
     SectionContainer(
         modifier = Modifier
-            .id(LuxSection.HOME.id)
             .gap(7.cssRem),
         variant = LuxSectionContainerStyleVariant,
         verticalArrangement = Arrangement.Center,
