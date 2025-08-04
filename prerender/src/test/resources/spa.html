@@ -1,0 +1,35 @@
+<!-- minimal spa with client-side routing -->
+
+<h1>Loading SPA...</h1>
+<a href="/sub/page" data-link>Page 1</a>
+
+<script>
+    function renderPage() {
+        const path = document.location.pathname
+        if (path === "/") {
+            document.querySelector('h1').textContent = "Home page"
+        }
+        if (path === "/sub/page") {
+            document.querySelector('h1').textContent = "Sub page"
+        }
+    }
+
+    function navigate(event) {
+        if (!event.target.matches("[data-link]")) {
+            return
+        }
+
+        event.preventDefault();
+
+        const path = event.target.getAttribute("href");
+        history.pushState({}, "", path);
+        renderPage();
+    }
+
+    document.addEventListener("click", navigate);
+
+    // Handle browser back/forward buttons
+    window.addEventListener("popstate", renderPage);
+
+    renderPage()
+</script>

@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.kobwebx.markdown)
     id("com.dorongold.task-tree") version "4.0.1"
     id("com.github.node-gradle.node") version "7.1.0"
+    id("energy.lux.prerender") version "0.0.1"
 }
 
 group = "com.zenmo.web.zenmo"
@@ -187,4 +188,8 @@ project.afterEvaluate {
             task.dependsOn("npmRollup")
         }
     }
+}
+
+tasks.getByName<energy.lux.prerender.PreRenderTask>("preRender") {
+    entryPointUrl.set("http://${System.getenv("LUX_DOMAIN")}")
 }
