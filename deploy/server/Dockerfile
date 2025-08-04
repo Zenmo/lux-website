@@ -22,6 +22,10 @@ WORKDIR /app
 
 COPY . ./
 
+WORKDIR /app/prerender
+RUN ./gradlew publish
+WORKDIR /app
+
 RUN chmod +x ./gradlew
 # these arguments will be included in the javascript artifact
 # TODO: set per environment

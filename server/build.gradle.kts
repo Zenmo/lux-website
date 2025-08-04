@@ -2,7 +2,6 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.serialization")
     application
-//    id("com.gradleup.shadow") version "8.3.8"
 }
 
 dependencies {
@@ -19,7 +18,6 @@ dependencies {
     implementation(platform("org.http4k:http4k-bom:6.12.0.0"))
     implementation("org.http4k:http4k-core")
     implementation("org.http4k:http4k-server-undertow")
-    implementation("org.http4k:http4k-core")
     implementation("org.http4k:http4k-security-oauth")
     implementation("org.http4k:http4k-format-kotlinx-serialization")
     implementation("org.http4k:http4k-multipart")

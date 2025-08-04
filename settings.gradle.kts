@@ -1,6 +1,10 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        maven {
+            // to load our own prerender plugin
+            url = uri("$rootDir/prerender/build/maven-repo")
+        }
     }
 }
 

@@ -4,8 +4,8 @@
       <option name="env">
         <map>
           <entry key="BACKEND_URL" value="http://localhost:9000" />
-          <entry key="LUX_DOMAIN" value="lux.local:8080" />
-          <entry key="ZENMO_DOMAIN" value="zenmo.local:8080" />
+          <entry key="LUX_DOMAIN" value="lux.localhost:8080" />
+          <entry key="ZENMO_DOMAIN" value="zenmo.localhost:8080" />
         </map>
       </option>
       <option name="executionName" />
