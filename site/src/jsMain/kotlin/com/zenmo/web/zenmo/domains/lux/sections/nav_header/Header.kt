@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.JustifyContent
+import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.css.functions.RadialGradient
 import com.varabyte.kobweb.compose.css.functions.radialGradient
 import com.varabyte.kobweb.compose.css.functions.toImage
@@ -31,11 +32,13 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SideMenuState
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
+import com.zenmo.web.zenmo.pages.SiteGlobals
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.IconStyle
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Header
 import org.jetbrains.compose.web.dom.Span
 import org.w3c.dom.HTMLAnchorElement
@@ -53,8 +56,8 @@ val HeaderInnerStyle = CssStyle {
     }
 }
 
-private val ActiveIndicatorWidthStyleVar by StyleVariable<CSSLengthOrPercentageNumericValue>()
-private val ActiveIndicatorLeftStyleVar by StyleVariable<CSSLengthOrPercentageNumericValue>()
+val ActiveIndicatorWidthStyleVar by StyleVariable<CSSLengthOrPercentageNumericValue>()
+val ActiveIndicatorLeftStyleVar by StyleVariable<CSSLengthOrPercentageNumericValue>()
 
 val LuxActiveMenuIndicatorStyle = CssStyle {
     base {
@@ -251,6 +254,21 @@ val LuxLogoImageVariant = FitWidthImageVariant.extendedBy {
 }
 
 @Composable
-fun LuxLogo() {
-    Image(src = "/lux/logos/lux-energy-twin.png", variant = LuxLogoImageVariant)
+fun LuxLogo(
+    asLink: Boolean = false,
+    domain: String = SiteGlobals.LUX_DOMAIN
+) {
+    val protocol = window.location.protocol
+    A(
+        href = if (asLink) "$protocol//$domain" else null,
+        attrs = Modifier
+            .cursor(
+                if (asLink) Cursor.Pointer
+                else Cursor.Default
+            )
+            .toAttrs()
+
+    ) {
+        Image(src = "/lux/logos/lux-energy-twin.png", variant = LuxLogoImageVariant)
+    }
 }
