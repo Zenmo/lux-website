@@ -30,7 +30,7 @@ val DropdownContainerStyle = CssStyle {
             .top(100.percent)
             .margin(top = 1.percent)
             .right(0.percent)
-            .backgroundColor(SitePalette.light.surfaceContainerLow)
+            .backgroundColor(SitePalette.light.overlay)
             .borderRadius(r = 30.px)
             .display(DisplayStyle.None)
             .zIndex(10)

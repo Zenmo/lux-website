@@ -27,7 +27,7 @@ const val DISCLAIMER_URL = "#"
 
 val FooterStyle = CssStyle.base {
     Modifier
-        .backgroundColor(colorMode.toSitePalette().surfaceContainerLow)
+        .backgroundColor(colorMode.toSitePalette().overlay)
         .padding(topBottom = 1.5.cssRem, leftRight = 10.percent)
 }
 

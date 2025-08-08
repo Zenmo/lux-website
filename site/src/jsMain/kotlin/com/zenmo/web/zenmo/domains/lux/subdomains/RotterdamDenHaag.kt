@@ -36,7 +36,7 @@ fun RotterdamDenHaagIndex() {
                 enText = "DISCLAIMER: THIS IS A MOCK-UP VERSION",
                 nlText = "DISCLAIMER: DIT IS EEN MOCK-UP VERSIE",
                 modifier = Modifier.fillMaxWidth()
-                    .background(SitePalette.light.surfaceContainerLow)
+                    .background(SitePalette.light.overlay)
                     .textAlign(TextAlign.Center)
                     .margin(0.cssRem)
                     .padding(4.cssRem)

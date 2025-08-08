@@ -27,7 +27,7 @@ import org.jetbrains.compose.web.css.percent
 val OurTeamContainerVariant = SectionContainerStyle.addVariant {
     base {
         Modifier
-            .backgroundColor(colorMode.toSitePalette().surfaceContainerLow)
+            .backgroundColor(colorMode.toSitePalette().overlay)
     }
 }
 
