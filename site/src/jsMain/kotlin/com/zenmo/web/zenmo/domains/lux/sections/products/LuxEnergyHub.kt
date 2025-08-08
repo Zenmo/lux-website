@@ -8,6 +8,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
@@ -17,12 +18,12 @@ import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
 const val LUX_ENERGY_HUB_SECTION_ID = "lux-energy-hub"
 
+@OptIn(DelicateApi::class)
 @Composable
 fun LuxEnergyHub() {
     val breakpoint = rememberBreakpoint()
@@ -339,7 +340,6 @@ private fun QuestionExampleItem(
 private fun VideoContent() {
     Box(
         Modifier
-            .background(SitePalette.light.surfaceContainerLow)
             .fillMaxWidth()
             .height(400.px)
     ) {

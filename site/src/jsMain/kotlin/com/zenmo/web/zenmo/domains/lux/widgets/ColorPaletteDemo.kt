@@ -13,10 +13,7 @@ import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.components.widgets.Space
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
-import org.jetbrains.compose.web.css.backgroundColor
-import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
@@ -67,7 +64,7 @@ fun ColorPaletteDemo() {
 
         ColorDemoRow(
             modifier = Modifier
-                .backgroundColor(palette.surfaceContainerLow)
+                .backgroundColor(palette.overlay)
                 .color(palette.onBackground)
         ) {
             LangText(
@@ -75,12 +72,12 @@ fun ColorPaletteDemo() {
                 nl = "Achtergrondkleur",
             )
             Space()
-            Text(palette.surfaceContainerLow.toString())
+            Text(palette.overlay.toString())
         }
 
         ColorDemoRow(
             modifier = Modifier
-                .backgroundColor(palette.surface)
+                .backgroundColor(palette.background)
                 .color(palette.onBackground)
         ) {
             LangText(
@@ -88,7 +85,7 @@ fun ColorPaletteDemo() {
                 nl = "Bijna witte achtergrond",
             )
             Space()
-            Text(palette.surface.toString())
+            Text(palette.background.toString())
         }
     }
 }

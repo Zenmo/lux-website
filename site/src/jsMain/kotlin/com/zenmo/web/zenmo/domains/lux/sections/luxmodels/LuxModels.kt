@@ -48,7 +48,7 @@ fun LuxModels() {
             Modifier
                 .id(LuxSection.MODELS.id)
                 .then(TopDividerLineStyle.toModifier())
-                .background(SitePalette.light.surfaceContainerLow)
+                .background(SitePalette.light.overlay)
                 .position(Position.Relative)
                 .gap(5.cssRem),
         variant = LuxSectionContainerStyleVariant
@@ -155,8 +155,8 @@ private fun FilterChip(
             .gap(0.05.cssRem)
             .padding(0.5.cssRem, 1.cssRem)
             .textAlign(TextAlign.Center)
-            .background(SitePalette.light.primaryContainer)
-            .color(SitePalette.light.primary)
+            .background(SitePalette.light.primary)
+            .color(SitePalette.light.onPrimary)
             .borderRadius(16.px)
             .cursor(Cursor.Pointer)
             .onClick { onClick() }

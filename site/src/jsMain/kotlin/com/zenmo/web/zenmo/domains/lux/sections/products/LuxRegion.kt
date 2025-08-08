@@ -22,7 +22,6 @@ import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
@@ -299,7 +298,6 @@ private fun NaudVideo() {
     Box(
         Modifier
             .fillMaxWidth()
-            .background(SitePalette.light.surfaceContainerLow)
             .height(300.px)
     ) {
         Video(

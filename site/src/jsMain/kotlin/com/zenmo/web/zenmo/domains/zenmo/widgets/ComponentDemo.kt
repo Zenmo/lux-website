@@ -36,7 +36,7 @@ val PreCodeStyle = CssStyle {
             .margin(bottom = 1.cssRem)
             .borderRadius(4.px)
             .backgroundColor(SitePalette.light.onBackground)
-            .color(SitePalette.light.surface)
+            .color(SitePalette.light.background)
             .overflow { x(Overflow.Auto) }
     }
 }
@@ -131,7 +131,7 @@ fun CustomizationNotes(
             .fillMaxWidth()
             .margin(top = 0.5.em)
             .background(
-                color = SitePalette.light.surfaceContainerLow,
+                color = SitePalette.light.overlay,
             )
             .color(SitePalette.light.primary)
             .borderRadius(4.px)

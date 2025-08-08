@@ -52,7 +52,7 @@ fun LuxCompany(
             LuxCompanyImages()
             Div(
                 Modifier.fillMaxWidth()
-                    .background(SitePalette.light.surfaceContainerLow)
+                    .background(SitePalette.light.overlay)
                     .borderRadius(30.px)
                     .padding(
                         leftRight = if (breakpoint >= Breakpoint.MD) 10.cssRem else 2.cssRem,
@@ -120,7 +120,7 @@ fun LuxCompany(
                 Modifier.position(Position.Relative)
                     .then(TopDividerLineStyle.toModifier())
                     .then(HeaderBottomDividerLineStyle.toModifier())
-                    .background(SitePalette.light.surfaceContainerLow)
+                    .background(SitePalette.light.overlay)
                     .padding(topBottom = 3.cssRem)
                     .textAlign(TextAlign.Center),
         ) {
@@ -361,7 +361,7 @@ private fun ExpandableInfoContent(
                 .fillMaxWidth()
                 .gap(1.cssRem)
                 .padding(topBottom = 0.35.cssRem, leftRight = 1.cssRem)
-                .thenIf(expanded, Modifier.background(SitePalette.light.surfaceContainerLow))
+                .thenIf(expanded, Modifier.background(SitePalette.light.overlay))
                 .cursor(Cursor.Pointer)
                 .onClick(onClick),
             verticalAlignment = Alignment.CenterVertically,
@@ -402,7 +402,6 @@ private fun VideoAndActionContent(
 ) {
     Box(
         Modifier
-            .background(SitePalette.light.surfaceContainerLow)
             .height(300.px)
             .then(modifier)
     ) {

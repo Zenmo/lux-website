@@ -37,7 +37,7 @@ val ExtraContentDividerStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
-            .background(SitePalette.light.surfaceContainerLow)
+            .background(SitePalette.light.overlay)
     }
     Breakpoint.ZERO {
         Modifier
