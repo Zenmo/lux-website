@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components
+package com.zenmo.web.zenmo.domains.lux.components.model
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -10,7 +10,6 @@ import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.LuxTwinModel
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import com.zenmo.web.zenmo.theme.SitePalette
 import kotlinx.browser.window
@@ -19,7 +18,7 @@ import org.jetbrains.compose.web.dom.Span
 
 @Composable
 fun TwinModelsGrid(
-    models: List<LuxTwinModel>,
+    models: List<TwinModel>,
     path: String,
 ) {
     SimpleGrid(

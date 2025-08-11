@@ -12,11 +12,11 @@ import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.layouts.PageLayout
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxHeaderPaddingStyle
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.LuxTwinModel
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.DrechtstedenHeader
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
@@ -71,7 +71,7 @@ private fun TwinModelPageHeader(
         ) {
             LuxLogo(
                 asLink = true,
-                domain = "${LuxTwinModel.SubdomainModel.Drechtsteden.title}.${SiteGlobals.LUX_DOMAIN}"
+                domain = "${SubdomainModel.Drechtsteden.title}.${SiteGlobals.LUX_DOMAIN}"
             )
             SubHeaderText(
                 enText = enTitle,
