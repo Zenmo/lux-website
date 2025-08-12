@@ -21,10 +21,7 @@ import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
-import com.zenmo.web.zenmo.pages.SiteGlobals
-import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Header
 
 
@@ -80,13 +77,8 @@ private fun LayoutHeader(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            val protocol = window.location.protocol
             Box(contentAlignment = Alignment.CenterStart) {
-                A(
-                    href = "$protocol//${SiteGlobals.LUX_DOMAIN}",
-                ) {
-                    LuxLogo()
-                }
+                LuxLogo(asLink = true)
             }
 
             Box(modifier = Modifier.flex(1), contentAlignment = Alignment.Center) {

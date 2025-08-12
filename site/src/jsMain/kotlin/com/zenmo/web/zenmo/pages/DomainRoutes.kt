@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.core.Page
 import com.zenmo.web.zenmo.components.widgets.UnknownDomain
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.pages.LuxRoutingComponent
 import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomainRoutingComponent
-import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.domains.zenmo.pages.ZenmoRoutingComponent
 import com.zenmo.web.zenmo.utils.setDomainFavicon
 import kotlinx.browser.window
@@ -26,14 +26,11 @@ fun DomainRoutes() {
         domain == SiteGlobals.LUX_DOMAIN -> LuxRoutingComponent()
         domain == SiteGlobals.ZENMO_DOMAIN -> ZenmoRoutingComponent()
         domain.endsWith(luxSubdomainSuffix) -> {
-            val subdomain = domain.substringBefore(luxSubdomainSuffix)
-            if (LuxSubdomains.entries.any { it.domainName == subdomain }) {
-                LuxSubdomainRoutingComponent(
-                    LuxSubdomains.entries.first { it.domainName == subdomain }
-                )
-            } else {
-                UnknownDomain("LUX -> $subdomain")
-            }
+            val sub = domain.substringBefore(luxSubdomainSuffix)
+            SubdomainModel.allModels
+                .find { it.title.equals(sub, ignoreCase = true) }
+                ?.let { LuxSubdomainRoutingComponent(it) }
+                ?: UnknownDomain("LUX -> $sub")
         }
 
         else -> UnknownDomain(domain)
