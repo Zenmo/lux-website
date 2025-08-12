@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components
+package com.zenmo.web.zenmo.domains.lux.components.model
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.BoxShadow
@@ -16,7 +16,6 @@ import com.zenmo.web.zenmo.components.widgets.MediaContentLayout
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechstedenTwin
 import com.zenmo.web.zenmo.domains.lux.subdomains.genius.ModelWrapper
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
@@ -29,7 +28,7 @@ import org.jetbrains.compose.web.dom.P
 @OptIn(DelicateApi::class)
 @Composable
 fun ModelPageContent(
-    twin: DrechstedenTwin,
+    twin: TwinModel,
     enDescriptionParagraph: String,
     nlDescriptionParagraph: String,
     enSubDescriptionParagraph: String? = null,
@@ -40,6 +39,14 @@ fun ModelPageContent(
     nlSubHeaderText: String? = null,
     imageUrl: String? = null,
     metaContent: @Composable (() -> Unit)? = null,
+    modelContent: @Composable () -> Unit = {
+        if (twin.entryPoint != null) {
+            ModelWrapper(
+                imgUrl = twin.image,
+                entryPoint = twin.entryPoint,
+            )
+        }
+    },
     contactContent: @Composable () -> Unit,
 ) {
     val breakpoint = rememberBreakpoint()
@@ -114,11 +121,7 @@ fun ModelPageContent(
                 )
             }
         )
-
-        ModelWrapper(
-            imgUrl = twin.image,
-            entryPoint = twin.entryPoint,
-        )
+        modelContent()
         contactContent()
     }
 }

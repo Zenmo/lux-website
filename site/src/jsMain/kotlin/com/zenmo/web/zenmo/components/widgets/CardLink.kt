@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.lightened
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.OpenLinkStrategy
@@ -16,6 +15,7 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
@@ -72,6 +72,18 @@ fun CardLink(
             modifier = Modifier.margin(0.cssRem)
         )
     },
+    description: @Composable () -> Unit = {
+        P(
+            DeEmphasizedTextStyle.toModifier()
+                .margin(0.cssRem)
+                .toAttrs()
+        ) {
+            LangText(
+                en = enDescription,
+                nl = nlDescription,
+            )
+        }
+    },
 ) {
     Link(
         path = url,
@@ -98,17 +110,7 @@ fun CardLink(
                 Modifier.padding(1.cssRem).gap(1.cssRem)
             ) {
                 title()
-                P(
-                    Modifier
-                        .color(SitePalette.light.onBackground.lightened(0.5f))
-                        .margin(0.cssRem)
-                        .toAttrs()
-                ) {
-                    LangText(
-                        en = enDescription,
-                        nl = nlDescription,
-                    )
-                }
+                description()
             }
         }
     }
