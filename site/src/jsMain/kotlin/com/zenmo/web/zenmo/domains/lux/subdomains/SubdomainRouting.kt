@@ -1,38 +1,25 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains
 
 import androidx.compose.runtime.Composable
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.subdomains.brabant.BrabantRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechtstedenRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.genius.Genius
 
 
-enum class LuxSubdomains(val domainName: String) {
-    DRECHTSTEDEN("drechtsteden"),
-    GENIUS("genius"),
-    HESSENPOORT("hessenpoort"),
-    BRABANT("brabant"),
-    NEDERLAND("nederland"),
-    HILVERSUM("hilversum"),
-    BUNDERBUURTEN("bunderbuurten"),
-    LOENEN("loenen"),
-    ROTTERDAM_DEN_HAAG("rotterdam-den-haag"),
-    KAS_ALS_ENERGIEBRON("kas-als-energiebron"),
-    VRUCHTENBUURT("vruchtenbuurt"),
-}
-
 @Composable
-fun LuxSubdomainRoutingComponent(subdomain: LuxSubdomains) {
+fun LuxSubdomainRoutingComponent(subdomain: SubdomainModel) {
     when (subdomain) {
-        LuxSubdomains.DRECHTSTEDEN -> DrechtstedenRouting()
-        LuxSubdomains.GENIUS -> Genius()
-        LuxSubdomains.HESSENPOORT -> Hessenpoort()
-        LuxSubdomains.BRABANT -> BrabantRouting()
-        LuxSubdomains.NEDERLAND -> NederlandIndex()
-        LuxSubdomains.HILVERSUM -> HilversumIndex()
-        LuxSubdomains.BUNDERBUURTEN -> BunderbuurtenIndex()
-        LuxSubdomains.LOENEN -> LoenenIndex()
-        LuxSubdomains.ROTTERDAM_DEN_HAAG -> RotterdamDenHaagIndex()
-        LuxSubdomains.KAS_ALS_ENERGIEBRON -> KasAlsenErgiebron()
-        LuxSubdomains.VRUCHTENBUURT -> VruchtenbuurtIndex()
+        SubdomainModel.Drechtsteden -> DrechtstedenRouting()
+        SubdomainModel.Genius -> Genius()
+        SubdomainModel.Hessenpoort -> Hessenpoort()
+        SubdomainModel.Brabant -> BrabantRouting()
+        SubdomainModel.Nederland -> NederlandIndex()
+        SubdomainModel.Hilversum -> HilversumIndex()
+        SubdomainModel.Bunderbuurten -> BunderbuurtenIndex()
+        SubdomainModel.Loenen -> LoenenIndex()
+        SubdomainModel.RotterdamDenHaag -> RotterdamDenHaagIndex()
+        SubdomainModel.KasAlsEnergiebron -> KasAlsenErgiebron()
+        SubdomainModel.Vruchtenbuurt -> VruchtenbuurtIndex()
     }
 }

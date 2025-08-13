@@ -22,11 +22,11 @@ import com.zenmo.web.zenmo.components.widgets.LangBlock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
-import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.LabelTextStyle
@@ -248,9 +248,9 @@ private fun HeaderTextContent(breakpoint: Breakpoint) {
 
 // todo replce with lux company images
 private val listOfLuxCompanyImages = listOf(
-    "/img/drechtsteden-rivier.jpg" to LuxSubdomains.DRECHTSTEDEN.domainName,
-    "/img/tue-luchtfoto.png" to LuxSubdomains.GENIUS.domainName,
-    "/img/tue-luchtfoto.png" to LuxSubdomains.LOENEN.domainName,
+    "/img/drechtsteden-rivier.jpg" to SubdomainModel.Drechtsteden.title,
+    "/img/tue-luchtfoto.png" to SubdomainModel.Genius.title,
+    "/img/tue-luchtfoto.png" to SubdomainModel.Loenen.title,
 )
 
 @Composable

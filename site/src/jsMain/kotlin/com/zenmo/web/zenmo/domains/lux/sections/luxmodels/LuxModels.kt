@@ -7,33 +7,29 @@ import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiFilterAlt
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.components.model.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxSection
 import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
-import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomains
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.pages.SiteGlobals
 import com.zenmo.web.zenmo.theme.SitePalette
-import kotlinx.browser.window
-import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.Position
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 
 
-enum class FilterType {
+private enum class FilterType {
     ALL,
     PUBLIC,
     PRIVATE
@@ -53,7 +49,7 @@ fun LuxModels() {
                 .gap(5.cssRem),
         variant = LuxSectionContainerStyleVariant
     ) {
-        var luxModels by remember { mutableStateOf(publicLuxModels.plus(privateLuxModels)) }
+        var luxModels by remember { mutableStateOf(SubdomainModel.allModels) }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -79,94 +75,63 @@ fun LuxModels() {
                     nl = "Dit omvat zowel onze openbare als privémodellen."
                 )
             }
-            FilterChip(
-                onClick = {
-                    when (filterType) {
-                        FilterType.ALL -> {
-                            filterType = FilterType.PUBLIC
-                            luxModels = publicLuxModels
-                        }
-
-                        FilterType.PUBLIC -> {
-                            filterType = FilterType.PRIVATE
-                            luxModels = privateLuxModels
-                        }
-
-                        FilterType.PRIVATE -> {
-                            filterType = FilterType.ALL
-                            luxModels = publicLuxModels.plus(privateLuxModels)
-                        }
+            FilterChipRow(
+                onClick = { type ->
+                    filterType = type
+                    luxModels = when (type) {
+                        FilterType.ALL -> SubdomainModel.allModels
+                        FilterType.PUBLIC -> SubdomainModel.publicSubdomains
+                        FilterType.PRIVATE -> SubdomainModel.privateSubdomains
                     }
                 },
                 filterType = filterType
             )
         }
 
-        val LUX_DOMAIN = SiteGlobals.LUX_DOMAIN
-        val protocol = window.location.protocol
-        SimpleGrid(
-            numColumns = numColumns(base = 2, sm = 2, md = 4, lg = 4, xl = 4),
-            modifier = Modifier
-                .gap(2.cssRem)
-                .padding(bottom = 3.cssRem)
-        ) {
-            luxModels.forEach { (subdomain, imageUrl) ->
-                val domainName = subdomain.domainName.replaceFirstChar { it.uppercase() }
-                CardLink(
-                    url = "${protocol}//${subdomain.domainName}.$LUX_DOMAIN",
-                    imageUrl = imageUrl,
-                    imageAltText = domainName,
-                    nlTitle = domainName,
-                    enTitle = domainName,
-                    modifier = Modifier.fillMaxHeight(),
-                )
-            }
-        }
+        TwinModelsGrid(
+            models = luxModels,
+            path = ""
+        )
     }
 }
 
-//todo use appropriate image for each model
-private val publicLuxModels = listOf(
-    LuxSubdomains.LOENEN to "/lux/images/models/loenen.png",
-    LuxSubdomains.NEDERLAND to "/lux/images/models/nederland.png",
-    LuxSubdomains.BRABANT to "/lux/images/models/brabant.png",
-    LuxSubdomains.HILVERSUM to "/lux/images/models/hilversum.png",
-    LuxSubdomains.BUNDERBUURTEN to "/lux/images/models/bunderbuurten.png",
-    LuxSubdomains.ROTTERDAM_DEN_HAAG to "/lux/images/models/rotterdam.png",
-    LuxSubdomains.VRUCHTENBUURT to "/lux/images/models/vruchtenbuurt.png"
-)
-
-private val privateLuxModels = listOf(
-    LuxSubdomains.DRECHTSTEDEN to "/img/drechtsteden-rivier.jpg",
-    LuxSubdomains.GENIUS to "/lux/images/models/genius.png",
-    LuxSubdomains.HESSENPOORT to "/lux/images/models/hessenpoort.png",
-    LuxSubdomains.KAS_ALS_ENERGIEBRON to "/lux/images/models/kasals.png",
-)
-
 
 @Composable
-private fun FilterChip(
-    onClick: () -> Unit,
+private fun FilterChipRow(
+    onClick: (FilterType) -> Unit,
     filterType: FilterType = FilterType.ALL,
 ) {
-    Div(
-        Modifier
-            .display(DisplayStyle.Flex)
-            .gap(0.05.cssRem)
-            .padding(0.5.cssRem, 1.cssRem)
-            .textAlign(TextAlign.Center)
-            .background(SitePalette.light.primary)
-            .color(SitePalette.light.onPrimary)
-            .borderRadius(16.px)
-            .cursor(Cursor.Pointer)
-            .onClick { onClick() }
-            .toAttrs()
-    ) {
-        when (filterType) {
-            FilterType.ALL -> LangText(en = "All", nl = "Alle")
-            FilterType.PUBLIC -> LangText(en = "Public", nl = "Openbaar")
-            FilterType.PRIVATE -> LangText(en = "Private", nl = "Privé")
+    SimpleGrid(numColumns = numColumns(base = FilterType.entries.size), modifier = Modifier.gap(0.5.cssRem)) {
+        FilterType.entries.forEach { type ->
+            val isSelected = type == filterType
+            Div(
+                Modifier
+                    .display(DisplayStyle.Flex)
+                    .padding(0.25.cssRem, 0.5.cssRem)
+                    .textAlign(TextAlign.Center)
+                    .border(1.px, LineStyle.Solid, Colors.LightGrey)
+                    .color(SitePalette.light.onBackground)
+                    .thenIf(
+                        isSelected,
+                        Modifier
+                            .border(1.px, LineStyle.None, Colors.LightGrey)
+                            .background(SitePalette.light.primary)
+                            .color(SitePalette.light.onPrimary)
+                    )
+                    .borderRadius(12.px)
+                    .cursor(Cursor.Pointer)
+                    .onClick {
+                        onClick(type)
+                    }
+                    .justifyContent(JustifyContent.Center)
+                    .toAttrs()
+            ) {
+                when (type) {
+                    FilterType.ALL -> LangText(en = "All", nl = "Alle")
+                    FilterType.PUBLIC -> LangText(en = "Public", nl = "Openbaar")
+                    FilterType.PRIVATE -> LangText(en = "Private", nl = "Privé")
+                }
+            }
         }
-        MdiFilterAlt()
     }
 }
