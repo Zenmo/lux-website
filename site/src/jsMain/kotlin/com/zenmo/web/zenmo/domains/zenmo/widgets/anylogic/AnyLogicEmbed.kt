@@ -3,6 +3,10 @@ package com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import com.varabyte.kobweb.compose.dom.svg.Image
+import com.varabyte.kobweb.compose.dom.svg.Svg
+import com.varabyte.kobweb.compose.dom.svg.SvgId
+import com.varabyte.kobweb.compose.dom.svg.Symbol
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.aspectRatio
 import com.varabyte.kobweb.compose.ui.modifiers.maxHeight
@@ -11,12 +15,14 @@ import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
-import kotlinx.coroutines.await
+import com.zenmo.web.zenmo.pages.SiteGlobals.LUX_DOMAIN
+import kotlinx.browser.window
+import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Div
-import kotlin.js.Promise
 import kotlin.uuid.Uuid
 
 /**
@@ -60,12 +66,44 @@ fun AnyLogicEmbed(
         client.startAnimation(inputs, containerId).await()
     }
 
+    AnyLogicImageOverride()
+
     Div(
         attrs = AnyLogicEmbedStyle
             .toModifier().then(modifier).toAttrs {
                 id(containerId)
             }
     )
+}
+
+/**
+ * AnyLogic uses the SVG elements "symbol" and "use" to embed images.
+ * We can override the default images by giving a symbol the same ID
+ * and rendering it earlier in the DOM.
+ */
+@Composable
+fun AnyLogicImageOverride() {
+    Svg(
+        attrs = {
+            style {
+                display(DisplayStyle.None)
+            }
+        }
+    ) {
+        Symbol(
+            id = SvgId("control-panel-icon-anylogic-logo-full"),
+            attrs = {
+                viewBox(0, 0, 150, 50)
+            },
+        ) {
+            Image {
+                width(150)
+                height(50)
+                // need to set the domain or it will reference the AnyLogic Cloud domain.
+                href("${window.location.protocol}//$LUX_DOMAIN/lux/logos/lux-energy-twin.png")
+            }
+        }
+    }
 }
 
 fun randomString(length: UInt): String {
