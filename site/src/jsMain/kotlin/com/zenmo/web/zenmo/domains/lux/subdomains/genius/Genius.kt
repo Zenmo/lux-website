@@ -25,6 +25,7 @@ import com.zenmo.web.zenmo.components.widgets.LangBlock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
@@ -36,6 +37,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
+import com.zenmo.web.zenmo.utils.PublicRes
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
@@ -63,8 +65,8 @@ fun Genius() {
             TextContent()
 
             ModelWrapper(
-                imgUrl = "/lux/images/models/genius.png",
-                entryPoint = "genius"
+                imgUrl = SubdomainModel.Genius.image,
+                entryPoint = SubdomainModel.Genius.entryPoint!!
             )
 
             PartnerLogos()
@@ -139,7 +141,7 @@ private fun IntroContent() {
         Div {
             LangBlock(
                 en = {
-                    H1(TextStyle.toModifier(HeaderTextStyle).toAttrs()) {
+                    H1(TextStyle.toModifier(HeaderTextStyle).fontFamily(PublicRes.FontFamilies.HOLON_LINE).toAttrs()) {
                         Span(TextStyle.toModifier(HolonBlockHeaderTextStyle).toAttrs()) {
                             Text("GENIUS - ")
                         }
@@ -147,7 +149,7 @@ private fun IntroContent() {
                     }
                 },
                 nl = {
-                    H1(TextStyle.toModifier(HeaderTextStyle).toAttrs()) {
+                    H1(TextStyle.toModifier(HeaderTextStyle).fontFamily(PublicRes.FontFamilies.HOLON_LINE).toAttrs()) {
                         Span(TextStyle.toModifier(HolonBlockHeaderTextStyle).toAttrs()) {
                             Text("GENIUS - ")
                         }

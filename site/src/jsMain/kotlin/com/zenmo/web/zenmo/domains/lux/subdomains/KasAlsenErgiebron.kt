@@ -6,6 +6,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.genius.ModelWrapper
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -21,8 +22,8 @@ fun KasAlsenErgiebron() {
             variant = LuxSectionContainerStyleVariant
         ) {
             ModelWrapper(
-                imgUrl = "/lux/images/models/kasals.png",
-                entryPoint = "kasalsenergiebron"
+                imgUrl = SubdomainModel.KasAlsEnergiebron.image,
+                entryPoint = SubdomainModel.KasAlsEnergiebron.entryPoint!!
             )
 
             ProfileContactCard(

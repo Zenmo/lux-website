@@ -6,6 +6,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.genius.ModelWrapper
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -20,10 +21,9 @@ fun Hessenpoort() {
             modifier = Modifier.gap(5.cssRem),
             variant = LuxSectionContainerStyleVariant
         ) {
-
             ModelWrapper(
-                imgUrl = "/lux/images/models/hessenpoort.png",
-                entryPoint = "hessenpoort",
+                imgUrl = SubdomainModel.Hessenpoort.image,
+                entryPoint = SubdomainModel.Hessenpoort.entryPoint!!
             )
 
             ProfileContactCard(
