@@ -49,11 +49,11 @@ jobs:
             # see https://docs.docker.com/build/cache/backends/gha/
             -   name: Expose
                 uses: crazy-max/ghaction-github-runtime@v3
-            -   run: ./deploy/static/build.sh ${{ github.event_name == 'push' && '--push' || '' }}
-            -   run: ./deploy/server/build.sh ${{ github.event_name == 'push' && '--push' || '' }}
+            -   run: ./deploy/static/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
+            -   run: ./deploy/server/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
 
     deploy:
-        if: github.event_name == 'push'
+        if: github.event_name != 'pull_request'
         needs: build-images
         runs-on: ubuntu-latest
         steps:
