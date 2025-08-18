@@ -2,6 +2,7 @@ package com.zenmo.web.zenmo.domains.zenmo.navigation
 
 import com.zenmo.web.zenmo.pages.isLocalOrPreviewEnvironment
 
+//todo rename this to LocalizedText or something more generic
 data class MenuLanguage(
     val en: String,
     val nl: String,
@@ -71,6 +72,26 @@ sealed class MenuItem {
                 )
             }
         }
+
+        val luxMenuItems = listOf(
+            Simple(
+                path = "/",
+                title = MenuLanguage(en = "Home", nl = "Thuis")
+            ),
+            WithSubs(
+                title = MenuLanguage(en = "Application fields", nl = "Toepassingen"),
+                subItems = listOf(
+                    MenuLanguage(en = "LUX Company", nl = "LUX Bedrijf"),
+                    MenuLanguage(en = "LUX Energy Hub", nl = "LUX Energie Hub"),
+                    MenuLanguage(en = "LUX Residential Area", nl = "LUX Woongebied"),
+                    MenuLanguage(en = "LUX Region", nl = "LUX Regio"),
+                )
+            ),
+            Simple(
+                title = MenuLanguage(en = "Models", nl = "Modellen")
+            ),
+        )
+
     }
 }
 
