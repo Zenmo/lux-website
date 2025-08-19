@@ -2,8 +2,7 @@ on:
     workflow_dispatch:
     push:
         branches:
-            - main
-            - build-only-image
+            - production
     pull_request:
         types: [ opened, synchronize, reopened ]
 
