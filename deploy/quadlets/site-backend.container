@@ -1,15 +1,15 @@
 
 [Container]
-ContainerName=website-server-$ENVIRONMENT
-Image=ghcr.io/zenmo/zenmo-website-server:$TAG
+ContainerName=site-backend-$ENVIRONMENT
+Image=ghcr.io/zenmo/zenmo-site-backend:$TAG
 
 Network=main.network
 Label=traefik.enable=true
-Label=traefik.http.routers.website-server-$ENVIRONMENT.rule=Host(`$BACKEND_DOMAIN`)
-Label=traefik.http.routers.website-server-$ENVIRONMENT.tls.certResolver=DNSimpleChallenge
+Label=traefik.http.routers.site-backend-$ENVIRONMENT.rule=Host(`$BACKEND_DOMAIN`)
+Label=traefik.http.routers.site-backend-$ENVIRONMENT.tls.certResolver=DNSimpleChallenge
 # kinda ugly, happens to be correct
-Label=traefik.http.routers.website-server-$ENVIRONMENT.tls.domains[0].main=*.$ZENMO_DOMAIN
-Label=traefik.http.services.website-server-$ENVIRONMENT.loadbalancer.server.port=9000
+Label=traefik.http.routers.site-backend-$ENVIRONMENT.tls.domains[0].main=*.$ZENMO_DOMAIN
+Label=traefik.http.services.site-backend-$ENVIRONMENT.loadbalancer.server.port=9000
 
 EnvironmentFile=site-backend-$ENVIRONMENT.env
 Secret=CONTACTFORMULIER_AZURE_SMTP_PASSWORD,type=env,target=AZURE_SMTP_PASSWORD

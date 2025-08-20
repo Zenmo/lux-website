@@ -79,7 +79,7 @@ jobs:
                     ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
                     LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
                     TAG: ${{ needs.variables.outputs.TAG }}
-            -   run: ./deploy/server/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
+            -   run: ./deploy/backend/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
                 env:
                     BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
                     ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
