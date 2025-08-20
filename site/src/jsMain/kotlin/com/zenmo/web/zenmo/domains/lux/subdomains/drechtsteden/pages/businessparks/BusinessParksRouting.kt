@@ -7,7 +7,7 @@ import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
 fun businessParksRouting(
     ctx: InitKobwebContext
 ) {
-    val path = "/businessparks/"
+    val path = "/business-parks"
     with(ctx.router) {
         register("$path/${DrechtstedenTwinModel.AmbachtseZoom.name}") { AmbachtsePage() }
         register("$path/${DrechtstedenTwinModel.AmstelwijckBusinesspark.name}") { AmstelwijckPage() }
