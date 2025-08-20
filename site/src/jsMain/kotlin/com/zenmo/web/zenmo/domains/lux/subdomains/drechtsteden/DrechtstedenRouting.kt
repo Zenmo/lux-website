@@ -9,6 +9,7 @@ import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.DrechtstedenHomePage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.BusinessParksPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.MunicipalitiesPage
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.municipalitiesRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.ResRegionPage
 import kotlinx.browser.window
 
@@ -20,6 +21,8 @@ fun DrechtstedenRouting() {
         ctx.router.register("/res-region") { ResRegionPage() }
         ctx.router.register("/municipalities") { MunicipalitiesPage() }
         ctx.router.register("/business-parks") { BusinessParksPage() }
+
+        municipalitiesRouting(ctx)
     }
     router.tryRoutingTo(
         BasePath.remove(window.location.href.removePrefix(window.origin)),
