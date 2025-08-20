@@ -6,11 +6,13 @@ import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.DrechtstedenHomePage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.BusinessParksPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.businessParksRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.MunicipalitiesPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.municipalitiesRouting
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.DrechtstedenPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.ResRegionPage
 import kotlinx.browser.window
 
@@ -22,7 +24,7 @@ fun DrechtstedenRouting() {
         ctx.router.register("/res-region") { ResRegionPage() }
         ctx.router.register("/municipalities") { MunicipalitiesPage() }
         ctx.router.register("/business-parks") { BusinessParksPage() }
-
+        ctx.router.register("/res-region/${DrechtstedenTwinModel.DrechtstedenRes.name}") { DrechtstedenPage() }
         municipalitiesRouting(ctx)
         businessParksRouting(ctx)
     }
