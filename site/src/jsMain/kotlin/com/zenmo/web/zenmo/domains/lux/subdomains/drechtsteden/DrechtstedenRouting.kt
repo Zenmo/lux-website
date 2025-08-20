@@ -8,6 +8,7 @@ import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.DrechtstedenHomePage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.BusinessParksPage
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.businessParksRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.MunicipalitiesPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.municipalitiesRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.ResRegionPage
@@ -23,6 +24,7 @@ fun DrechtstedenRouting() {
         ctx.router.register("/business-parks") { BusinessParksPage() }
 
         municipalitiesRouting(ctx)
+        businessParksRouting(ctx)
     }
     router.tryRoutingTo(
         BasePath.remove(window.location.href.removePrefix(window.origin)),
