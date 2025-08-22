@@ -13,7 +13,7 @@ val corsPolicy = CorsPolicy(
     // value for production: https:\/\/((.*\.)?lux\.energy|zenmo\.com)
     // value for remote dev: https:\/\/((.*\.)?preview\.lux\.energy|preview\.zenmo\.com)
     OriginPolicy.Pattern(Regex(getenv("CORS_ORIGIN_PATTERN"))),
-    listOf("content-type"),
+    listOf("content-type", "authorization"),
     Method.entries,
     true
 )

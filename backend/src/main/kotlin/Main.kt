@@ -31,7 +31,9 @@ fun startServer() {
     val contactRoute = routes(
         "/api/contact" bind org.http4k.core.Method.POST to ContactController(MailService.create(config))::handler,
     )
-    
+
+    val anyLogicProxy = AnyLogicProxy()
+
     val app: HttpHandler = DebuggingFilters.PrintRequestAndResponse()
         .then(corsFilter)
         // Catch errors must come after CORS Filter
@@ -42,7 +44,13 @@ fun startServer() {
                 JsServer.create(config, oAuthSessions)
             )
         )
-        .then(routes(oAuthRoutes, contactRoute))
+        .then(
+            routes(
+                oAuthRoutes,
+                contactRoute,
+                anyLogicProxy,
+            )
+        )
 
     val port = 9000
     val server = app.asServer(Undertow(port)).start()
