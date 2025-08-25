@@ -1,44 +1,38 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components
 
-import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.*
-import com.varabyte.kobweb.compose.css.Transition
+import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.BoxSizing
+import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.ListStyleType
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.*
-import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.NarrowScreenHeaderComponents
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.WideScreenHeaderComponents
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuLanguage
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
-import kotlinx.browser.document
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.JustifyContent
-import org.jetbrains.compose.web.dom.Header
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Nav
 import org.jetbrains.compose.web.dom.Span
-import org.w3c.dom.HTMLElement
 
 @Composable
 fun DrechtstedenHeader() {
-    Header(
-        attrs = NavHeaderStyle.toModifier()
-            .boxShadow(spreadRadius = 0.px, color = Color.transparent)
-            .then(LuxHeaderPaddingStyle.toModifier())
-            .then(HeaderBottomDividerLineStyle.toModifier())
-            .toAttrs()
+    WideScreenHeaderComponents(
+        items = MenuItem.drechtstedenMenuItems
     ) {
         Row(
             HeaderInnerStyle.toModifier()
@@ -49,63 +43,10 @@ fun DrechtstedenHeader() {
             NavBar()
             LanguageSwitchButton()
         }
-
-        Box(
-            Modifier.displayIfAtLeast(Breakpoint.MD)
-        ) {
-            var indicatorWidth by remember { mutableStateOf(0.px) }
-            var indicatorLeft by remember { mutableStateOf(0.px) }
-            val activeItem = drechtstedenMenuItems.first { isPathActive(it.getPath) } as MenuItem.Simple
-
-            LaunchedEffect(activeItem) {
-                val element = document.getElementById(activeItem.title.en.lowercase()) as HTMLElement?
-                if (element != null) {
-                    val elementRect = element.getBoundingClientRect()
-                    indicatorWidth = elementRect.width.px
-                    indicatorLeft = elementRect.left.px
-                }
-            }
-
-            Span(
-                attrs = LuxActiveMenuIndicatorStyle.toModifier()
-                    .transition(Transition.None)
-                    .setVariable(ActiveIndicatorWidthStyleVar, indicatorWidth)
-                    .setVariable(ActiveIndicatorLeftStyleVar, indicatorLeft).toAttrs()
-            )
-        }
     }
+    NarrowScreenHeaderComponents(MenuItem.drechtstedenMenuItems)
 }
 
-val drechtstedenMenuItems = listOf(
-    MenuItem.Simple(
-        path = "/",
-        title = MenuLanguage(
-            en = "Home",
-            nl = "Thuis",
-        )
-    ),
-    MenuItem.Simple(
-        path = "/res-region",
-        title = MenuLanguage(
-            en = "RES Region",
-            nl = "RES Regio",
-        )
-    ),
-    MenuItem.Simple(
-        path = "/municipalities",
-        title = MenuLanguage(
-            en = "Municipalities",
-            nl = "Gemeentes",
-        )
-    ),
-    MenuItem.Simple(
-        path = "/business-parks",
-        title = MenuLanguage(
-            en = "Business Parks",
-            nl = "Bedrijventerreinen",
-        )
-    ),
-)
 
 @Composable
 private fun NavBar() {
@@ -119,7 +60,7 @@ private fun NavBar() {
             .gap(1.cssRem)
             .toAttrs()
     ) {
-        drechtstedenMenuItems.forEach { item ->
+        MenuItem.drechtstedenMenuItems.forEach { item ->
             Link(
                 path = item.getPath,
                 modifier = Modifier
