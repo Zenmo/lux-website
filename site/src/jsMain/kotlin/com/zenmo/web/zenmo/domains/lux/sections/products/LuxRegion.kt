@@ -1,14 +1,10 @@
 package com.zenmo.web.zenmo.domains.lux.sections.products
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.ObjectFit
-import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.framework.annotations.DelicateApi
@@ -21,33 +17,31 @@ import com.zenmo.web.zenmo.components.widgets.*
 import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
-const val LUX_REGION_SECTION_ID = "lux-region"
-val LuxRegionRowStyle = CssStyle {
+
+val LuxRegionStyle = CssStyle {
     base {
-        Modifier
-            .maxWidth(100.percent)
-            .display(DisplayStyle.Flex)
-            .flexWrap(FlexWrap.Nowrap)
-            .position(Position.Relative)
-            .gap(3.cssRem)
+        Modifier.fillMaxWidth()
     }
 
+    Breakpoint.ZERO {
+        Modifier.gap(3.cssRem)
+    }
     Breakpoint.SM {
-        Modifier.flexDirection(FlexDirection.Column)
-            .gap(1.cssRem)
+        Modifier.gap(3.cssRem)
     }
     Breakpoint.MD {
-        Modifier.flexDirection(FlexDirection.Row)
+        Modifier.gap(4.cssRem)
     }
     Breakpoint.LG {
-        Modifier.flexDirection(FlexDirection.Row)
+        Modifier.gap(5.cssRem)
     }
     Breakpoint.XL {
-        Modifier.flexDirection(FlexDirection.Row)
+        Modifier.gap(5.cssRem)
     }
 }
 
@@ -56,25 +50,20 @@ val LuxRegionRowStyle = CssStyle {
 fun LuxMunicipality() {
     val breakpoint = rememberBreakpoint()
     SectionContainer(
-        modifier = Modifier
-            .id(LUX_REGION_SECTION_ID)
-            .minHeight(150.vh),
         variant = LuxSectionContainerStyleVariant,
     ) {
-        Row(
-            modifier = LuxRegionRowStyle.toModifier()
-                .alignItems(AlignItems.Stretch),
-            horizontalArrangement = Arrangement.SpaceBetween,
+        Div(
+            ResponsiveRowStyle.toModifier()
+                .alignItems(AlignItems.Stretch).toAttrs(),
         ) {
             StartContent(breakpoint)
 
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .gap(if (breakpoint >= Breakpoint.MD) 2.cssRem else 1.cssRem),
+                modifier = LuxRegionStyle.toModifier(),
                 horizontalAlignment = Alignment.Start,
             ) {
-                NaudVideo()
+                //todo use video recorded by Naud about model for the whole of NL.
+                LuxVideo()
                 Div {
                     P(Modifier.margin(bottom = 0.px).toAttrs()) {
                         LangText(
@@ -126,7 +115,8 @@ fun LuxMunicipality() {
                 }
                 Box(Modifier.fillMaxWidth()) {
                     Image(
-                        src = "/img/drechtsteden-rivier.jpg",
+                        src = "/lux/images/nature_img.jpg",
+                        alt = "turbine",
                         variant = ImageContentStyleVariant,
                         modifier = CaptionImageStyle.toModifier()
                             .height(280.px)
@@ -290,28 +280,5 @@ private fun StartContent(breakpoint: Breakpoint) {
                 )
             }
         }
-    }
-}
-
-@Composable
-private fun NaudVideo() {
-    Box(
-        Modifier
-            .fillMaxWidth()
-            .height(300.px)
-    ) {
-        Video(
-            attrs = Modifier
-                .borderRadius(30.px)
-                .objectFit(ObjectFit.Cover)
-                .attrsModifier {
-                    //todo embed video recorded by Naud about model for the whole of NL.
-                    attr("src", "/lux/videos/energyTransitionOnVL.mp4")
-                    attr("alt", "Video recorded by Naud about model for the whole of NL.")
-                    attr("controls", "true")
-                    attr("width", "100%")
-                    attr("height", "100%")
-                }.toAttrs()
-        )
     }
 }
