@@ -29,6 +29,7 @@ val MenuLinkStyle = CssStyle {
     base {
         Modifier
             .fillMaxHeight()
+            .display(DisplayStyle.Flex)
             .padding(10.px)
             .textDecorationLine(TextDecorationLine.None)
     }
@@ -49,6 +50,7 @@ fun LuxMenuItem(
     nlTitle: String,
     isActive: Boolean = false,
     activeLinkVariant: CssStyleVariant<LinkKind>? = ActiveLinkStyleVariant,
+    linkModifier: Modifier = Modifier,
     modifier: Modifier = Modifier,
 ) {
     Li(
@@ -61,7 +63,7 @@ fun LuxMenuItem(
     ) {
         Link(
             path = href,
-            modifier = MenuLinkStyle.toModifier(),
+            modifier = MenuLinkStyle.toModifier().then(linkModifier),
             variant = if (isActive) activeLinkVariant else UncoloredLinkVariant,
         ) {
             LangText(
