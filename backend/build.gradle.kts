@@ -24,6 +24,8 @@ dependencies {
 
     // Implements Jakarta Email specification
     implementation("org.eclipse.angus:angus-mail:2.0.3")
+    implementation("org.http4k:http4k-format-jackson:4.41.0.0")
+
 
     testImplementation(kotlin("test"))
 }

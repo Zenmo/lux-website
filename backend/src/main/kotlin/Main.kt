@@ -32,7 +32,7 @@ fun startServer() {
         "/api/contact" bind org.http4k.core.Method.POST to ContactController(MailService.create(config))::handler,
     )
 
-    val anyLogicProxy = AnyLogicProxy()
+    val anyLogicProxy = AnyLogicProxy(oAuthSessions::retrieveIdToken)
 
     val app: HttpHandler = DebuggingFilters.PrintRequestAndResponse()
         .then(corsFilter)
