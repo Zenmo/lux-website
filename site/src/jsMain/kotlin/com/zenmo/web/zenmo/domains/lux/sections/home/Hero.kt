@@ -170,7 +170,6 @@ fun Hero() {
                     P(
                         LuxHeroMediaContentInnerStyle.toModifier()
                             .then(TextStyle.toModifier(HolonLineTextStyle))
-                            .fontSize(1.25.cssRem)
                             .toAttrs()
                     ) {
                         LangText(

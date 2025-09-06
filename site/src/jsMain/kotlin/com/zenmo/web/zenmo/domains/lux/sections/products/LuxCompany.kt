@@ -358,7 +358,6 @@ private fun TryConfiguratorCard() {
             A(
                 href = "/book-demo",
                 attrs = TextStyle.toModifier(HolonLineTextStyle)
-                    .fontSize(1.25.cssRem)
                     .borderRadius(16.px)
                     .background(SitePalette.light.secondary)
                     .color(SitePalette.light.onBackground)
