@@ -78,7 +78,6 @@ fun BookADemoButton() {
         href = "/book-demo",
         attrs = TextStyle.toModifier(HolonLineTextStyle)
             .displayIfAtLeast(Breakpoint.LG)
-            .fontSize(1.25.cssRem)
             .borderRadius(16.px)
             .backgroundImage(
                 linearGradient(

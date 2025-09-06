@@ -24,14 +24,12 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.SideMenuSlideInAnim
 import com.zenmo.web.zenmo.components.SideMenuState
-import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
-import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Nav
 import org.jetbrains.compose.web.dom.Ul
@@ -155,8 +153,7 @@ private fun SideMenuItem(
     val color = if (isActive) SitePalette.light.secondary else Colors.White
     Link(
         path = href,
-        modifier = TextStyle.toModifier(HolonBlockHeaderTextStyle)
-            .then(MenuLinkStyle.toModifier())
+        modifier = MenuLinkStyle.toModifier()
             .fillMaxWidth()
             .color(color),
         variant = if (isActive) ActiveLinkStyleVariant else UncoloredLinkVariant,
@@ -166,9 +163,10 @@ private fun SideMenuItem(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            LangText(
-                en = enTitle,
-                nl = nlTitle,
+            HeaderText(
+                enText = enTitle,
+                nlText = nlTitle,
+                modifier = Modifier.margin(0.px)
             )
             MdiArrowForwardIos(
                 modifier = Modifier
