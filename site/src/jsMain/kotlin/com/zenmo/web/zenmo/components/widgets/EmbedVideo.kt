@@ -104,23 +104,23 @@ val VideoContentStyle = CssStyle {
     }
 
     Breakpoint.ZERO {
-        Modifier.height(280.px)
+        Modifier.height(284.px)
     }
     Breakpoint.SM {
         Modifier
-            .height(280.px)
+            .height(284.px)
     }
     Breakpoint.MD {
         Modifier
-            .height(270.px)
+            .height(272.px)
     }
     Breakpoint.LG {
         Modifier
-            .height(350.px)
+            .height(328.px)
     }
     Breakpoint.XL {
         Modifier
-            .height(350.px)
+            .height(328.px)
     }
 }
 

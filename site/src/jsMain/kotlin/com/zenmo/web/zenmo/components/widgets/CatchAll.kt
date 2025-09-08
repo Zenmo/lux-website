@@ -1,38 +1,35 @@
 package com.zenmo.web.zenmo.components.widgets
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.size
-import com.varabyte.kobweb.compose.ui.modifiers.textAlign
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiArrowBack
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
-import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.H1
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun CatchAllPage() {
-    SectionContainer(
-        modifier = Modifier.textAlign(TextAlign.Center),
+    Column(
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        variant = LuxSectionContainerStyleVariant
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderText(
-            enText = "This page does not exist.",
-            nlText = "Deze pagina bestaat niet."
-        )
+        Div {
+            H1 { Text("¯\\_(-_-)_/¯") }
+            LangText(
+                en = "This page does not exist.",
+                nl = "Deze pagina bestaat niet."
+            )
+        }
         Link(
             path = "/",
             modifier = Modifier.textDecorationLine(TextDecorationLine.None)
-        ) {
-            IconButton(onClick = { }, modifier = Modifier.size(3.cssRem)) {
-                MdiArrowBack()
-            }
-        }
+        ) { H1 { Text("←") } }
     }
 }

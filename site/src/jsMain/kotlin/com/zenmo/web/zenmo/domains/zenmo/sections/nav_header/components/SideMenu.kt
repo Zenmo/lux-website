@@ -16,6 +16,7 @@ import com.varabyte.kobweb.silk.components.overlay.Overlay
 import com.varabyte.kobweb.silk.components.overlay.OverlayVars
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariant
+import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.active
@@ -24,8 +25,6 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.palette.overlay
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.colors.shifted
-import com.zenmo.web.zenmo.components.SideMenuSlideInAnim
-import com.zenmo.web.zenmo.components.SideMenuState
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
@@ -56,6 +55,27 @@ val SideMenuStyle = CssStyle {
     }
 }
 
+val SideMenuSlideInAnim = Keyframes {
+    from {
+        Modifier.translateX(100.percent)
+    }
+
+    to {
+        Modifier
+    }
+}
+
+enum class SideMenuState {
+    CLOSED,
+    OPEN,
+    CLOSING;
+
+    fun close() = when (this) {
+        CLOSED -> CLOSED
+        OPEN -> CLOSING
+        CLOSING -> CLOSING
+    }
+}
 
 @Composable
 fun SideMenu(

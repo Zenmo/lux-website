@@ -7,20 +7,18 @@ cd $(dirname "$0")
 source ../git-vars.sh
 export TAG
 
-OUTPUT_DIR=website-$ENVIRONMENT
-mkdir -p $OUTPUT_DIR
+mkdir -p website
 
 # Prepare Quadlet files
 for filename in *.container *.env; do
-    newfilename=${filename%.*}-$ENVIRONMENT.${filename##*.}
-    envsubst < "$filename" > "$OUTPUT_DIR/$newfilename"
+  envsubst < "$filename" > "website/$filename"
 done
 
-# Copy files to the Podman host
-scp -r $OUTPUT_DIR podman@podhost.zenmo.com:~/.config/containers/systemd/
+  # Copy files to the Podman host
+  scp -r website podman@podhost.zenmo.com:~/.config/containers/systemd/
 
-# Restart services
-ssh podman@podhost.zenmo.com "\
-    systemctl --user daemon-reload \
-    && systemctl --user restart site-static-$ENVIRONMENT \
-    && systemctl --user restart site-backend-$ENVIRONMENT"
+  # Restart services
+  ssh podman@podhost.zenmo.com "\
+      systemctl --user daemon-reload \
+      && systemctl --user restart site-static \
+      && systemctl --user restart site-backend"

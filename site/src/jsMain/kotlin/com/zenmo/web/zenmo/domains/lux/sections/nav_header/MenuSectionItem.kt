@@ -15,8 +15,6 @@ import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.CssStyleVariant
 import com.varabyte.kobweb.silk.style.addVariant
-import com.varabyte.kobweb.silk.style.animation.Keyframes
-import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
@@ -31,7 +29,6 @@ val MenuLinkStyle = CssStyle {
     base {
         Modifier
             .fillMaxHeight()
-            .display(DisplayStyle.Flex)
             .padding(10.px)
             .textDecorationLine(TextDecorationLine.None)
     }
@@ -52,7 +49,6 @@ fun LuxMenuItem(
     nlTitle: String,
     isActive: Boolean = false,
     activeLinkVariant: CssStyleVariant<LinkKind>? = ActiveLinkStyleVariant,
-    linkModifier: Modifier = Modifier,
     modifier: Modifier = Modifier,
 ) {
     Li(
@@ -65,7 +61,7 @@ fun LuxMenuItem(
     ) {
         Link(
             path = href,
-            modifier = MenuLinkStyle.toModifier().then(linkModifier),
+            modifier = MenuLinkStyle.toModifier(),
             variant = if (isActive) activeLinkVariant else UncoloredLinkVariant,
         ) {
             LangText(
@@ -118,25 +114,6 @@ val ActiveSubMenuLinkStyleVariant = LinkStyle.addVariant {
     }
 }
 
-val SubMenuAppearanceAnimKeyFrames = Keyframes {
-    0.percent {
-        Modifier
-            .opacity(0)
-            .transform {
-                translateY((10).px)
-            }
-            .scale(0.95)
-    }
-    100.percent {
-        Modifier
-            .opacity(1)
-            .transform {
-                translateY(0.px)
-            }
-            .scale(1.0)
-    }
-}
-
 @Composable
 fun LuxMenuItemWithSubs(titleText: MenuLanguage, subItems: List<MenuLanguage>) {
     val isMenuActive = subItems.any { isPathActive(href = it.en.asNavLinkPath(titleText.en)) }
@@ -154,12 +131,6 @@ fun LuxMenuItemWithSubs(titleText: MenuLanguage, subItems: List<MenuLanguage>) {
 
         Column(
             modifier = SubMenuStyle.toModifier()
-                .animation(
-                    SubMenuAppearanceAnimKeyFrames.toAnimation(
-                        duration = 300.ms,
-                        timingFunction = AnimationTimingFunction.EaseInOut
-                    )
-                )
         ) {
             subItems.forEach { subItem ->
                 val isActive = isPathActive(href = subItem.en.asNavLinkPath(titleText.en))

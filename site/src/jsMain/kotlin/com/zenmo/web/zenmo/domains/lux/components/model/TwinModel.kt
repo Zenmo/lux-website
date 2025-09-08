@@ -22,6 +22,19 @@ sealed class DrechtstedenTwinModel(val name: String, title: String, entryPoint: 
     }
 
     // RES REGION MODELS
+    data object Pmiek : DrechtstedenTwinModel(
+        "pmiek",
+        "Digital twin Drechtsteden - PMIEK",
+        "drechtsteden/resregion/pmiek",
+        "/lux/images/drechtsteden/res-region/pmiek.png"
+    )
+
+    data object Warmtetransitie : DrechtstedenTwinModel(
+        "warmtetransitie",
+        "Digital twin Drechtsteden - Warmtetransitie",
+        "drechtsteden/resregion/warmtetransitie",
+        "/lux/images/drechtsteden/res-region/warmtetransitie.png"
+    )
 
     data object DrechtstedenRes : DrechtstedenTwinModel(
         "drechtstedenres",
@@ -149,6 +162,8 @@ sealed class DrechtstedenTwinModel(val name: String, title: String, entryPoint: 
     companion object {
 
         val resRegionModels = listOf(
+            Pmiek,
+            Warmtetransitie,
             DrechtstedenRes
         )
         val municipalModels = listOf(

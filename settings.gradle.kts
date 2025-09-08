@@ -39,5 +39,5 @@ rootProject.name = "zenmo-website"
 
 include(":site")
 include(":remotedev")
-include(":backend")
+include(":server")
 include(":shared")

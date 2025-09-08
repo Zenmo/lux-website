@@ -1,43 +1,42 @@
 package com.zenmo.web.zenmo.domains.lux.sections.products
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.web.events.SyntheticMouseEvent
 import com.varabyte.kobweb.compose.css.*
-import com.varabyte.kobweb.compose.css.functions.RadialGradient
-import com.varabyte.kobweb.compose.css.functions.radialGradient
-import com.varabyte.kobweb.compose.css.functions.toImage
+import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Color.Companion.rgb
-import com.varabyte.kobweb.compose.ui.graphics.Colors
+import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.framework.annotations.DelicateApi
+import com.varabyte.kobweb.silk.components.icons.mdi.MdiKeyboardArrowUp
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
-import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import com.zenmo.web.zenmo.components.widgets.*
+import com.zenmo.web.zenmo.components.widgets.ImageContent
+import com.zenmo.web.zenmo.components.widgets.LangBlock
+import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.dom.*
 
+const val LUX_COMPANY_SECTION_ID = "lux-company"
 
 @OptIn(DelicateApi::class)
 @Composable
@@ -46,36 +45,70 @@ fun LuxCompany(
     val breakpoint = rememberBreakpoint()
     Column {
         SectionContainer(
+            modifier = Modifier.gap(5.cssRem).id(LUX_COMPANY_SECTION_ID).fillMaxWidth(),
             variant = LuxSectionContainerStyleVariant,
         ) {
             HeaderTextContent(breakpoint)
             LuxCompanyImages()
-            MoreAboutLuxCompany()
-            TryConfiguratorCard()
-            //todo use video of LUX company in action
             Div(
-                ResponsiveRowStyle
-                    .toModifier()
-                    .alignItems(com.varabyte.kobweb.compose.css.AlignItems.Companion.End)
-                    .padding(0.cssRem)
-                    .toAttrs(),
+                Modifier.fillMaxWidth()
+                    .background(SitePalette.light.overlay)
+                    .borderRadius(30.px)
+                    .padding(
+                        leftRight = if (breakpoint >= Breakpoint.MD) 10.cssRem else 2.cssRem,
+                        topBottom = 2.cssRem
+                    )
+                    .display(DisplayStyle.Block)
+                    .textAlign(TextAlign.Center)
+                    .toAttrs()
             ) {
-                LuxVideo()
-
+                P {
+                    LangText(
+                        en = """
+                            We are currently also working on a battery configurator that will allow you to compare
+                            and combine different installers and suppliers of hardware and software. We are looking
+                            for customers who provide feedback in exchange for the free use of this that helps
+                            improve the configurator.
+                        """.trimIndent(),
+                        nl = """
+                            We zijn momenteel ook bezig met een batterijconfigurator waarmee je verschillende
+                            installateurs en leveranciers van hardware en software kunt vergelijken en combineren.
+                            We zoeken klanten die feedback geven in ruil voor het gratis gebruik van deze configurator
+                            die helpt de configurator te verbeteren.
+                        """.trimIndent()
+                    )
+                }
+            }
+            Row(
+                // borrow this lux municipality row style because why not :)
+                modifier = LuxRegionRowStyle.toModifier()
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                VideoAndActionContent(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
                 Div(
                     Modifier.fillMaxWidth().toAttrs()
                 ) {
-                    CallToActionAnchorButton {
-                        LangText(
-                            en = "Interested",
-                            nl = "Geïnteresseerd"
-                        )
-                        Br {}
-                        LangText(
-                            en = "in Demo/Costs?",
-                            nl = "in Demo/Kosten?"
-                        )
-                    }
+                    MoreAboutLuxCompany()
+                }
+            }
+
+            Div(
+                Modifier.fillMaxWidth().toAttrs()
+            ) {
+                CallToActionAnchorButton {
+                    LangText(
+                        en = "Interested",
+                        nl = "Geïnteresseerd"
+                    )
+                    Br {}
+                    LangText(
+                        en = "in Demo/Costs?",
+                        nl = "in Demo/Kosten?"
+                    )
                 }
             }
         }
@@ -106,12 +139,11 @@ fun LuxCompany(
                         samenwerken met andere bedrijven. Daarom hebben we ook 
                     """.trimIndent()
                 )
-
-                InlineLink(
-                    destinationUrl = "lux-energy-hub",
-                    enLinkText = "LUX Energy Hub.",
-                    nlLinkText = "LUX Energy Hub."
-                )
+                A(
+                    href = "#$LUX_ENERGY_HUB_SECTION_ID",
+                ) {
+                    B { Text("LUX Energy Hub.") }
+                }
             }
         }
     }
@@ -131,7 +163,7 @@ private fun HeaderTextContent(breakpoint: Breakpoint) {
         )
         Div(
             Modifier
-                .margin(right = if (breakpoint > Breakpoint.MD) 20.percent else 0.percent)
+                .margin(right = if (breakpoint >= Breakpoint.MD) 20.percent else 0.percent)
                 .toAttrs()
         ) {
             P {
@@ -168,7 +200,7 @@ private fun HeaderTextContent(breakpoint: Breakpoint) {
             DeEmphasizedTextStyle
                 .toModifier()
                 .fontSize(0.9.cssRem)
-                .margin(left = if (breakpoint > Breakpoint.MD) 25.percent else 0.percent)
+                .margin(left = if (breakpoint >= Breakpoint.MD) 25.percent else 0.percent)
                 .toAttrs()
         ) {
             P {
@@ -216,193 +248,43 @@ private fun HeaderTextContent(breakpoint: Breakpoint) {
 
 // todo replce with lux company images
 private val listOfLuxCompanyImages = listOf(
-    "/lux/images/turbine.jpg" to "turbine",
-    "/lux/images/nature_img.jpg" to "nature",
-    "/lux/images/horizon_img.jpg" to "horizon",
+    "/img/drechtsteden-rivier.jpg" to SubdomainModel.Drechtsteden.title,
+    "/img/tue-luchtfoto.png" to SubdomainModel.Genius.title,
+    "/img/tue-luchtfoto.png" to SubdomainModel.Loenen.title,
 )
-
-val ImagesGridStyle = CssStyle {
-    base {
-        Modifier
-            .fillMaxWidth()
-    }
-    Breakpoint.ZERO {
-        Modifier
-            .gap(0.5.cssRem)
-    }
-    Breakpoint.SM {
-        Modifier
-            .gap(0.5.cssRem)
-    }
-    Breakpoint.MD {
-        Modifier
-            .gap(1.5.cssRem)
-    }
-    Breakpoint.LG {
-        Modifier
-            .gap(2.cssRem)
-    }
-    Breakpoint.XL {
-        Modifier
-            .gap(2.cssRem)
-    }
-}
-
-val LuxCompanyImageStyle = CssStyle {
-    Breakpoint.ZERO {
-        Modifier
-            .height(120.px)
-    }
-
-    Breakpoint.SM {
-        Modifier
-            .height(120.px)
-    }
-    Breakpoint.MD {
-        Modifier
-            .height(300.px)
-    }
-
-    Breakpoint.LG {
-        Modifier
-            .height(400.px)
-    }
-
-    Breakpoint.XL {
-        Modifier
-            .height(400.px)
-    }
-}
 
 @Composable
 private fun LuxCompanyImages() {
     Column {
         SimpleGrid(
             numColumns = numColumns(base = 3, md = 3, lg = 3, xl = 3),
-            modifier = ImagesGridStyle.toModifier()
+            modifier = Modifier
+                .fillMaxWidth()
+                .gap(2.cssRem)
         ) {
             listOfLuxCompanyImages.forEach { item ->
                 ImageContent(
                     imageUrl = item.first,
                     alt = "${item.second} image",
-                    modifier = LuxCompanyImageStyle.toModifier()
+                    modifier = Modifier
+                        .height(auto)
+                        .fillMaxHeight()
                 )
             }
         }
-    }
-}
-
-@Composable
-private fun TryConfiguratorCard() {
-    Div(
-        Modifier.fillMaxWidth()
-            .boxSizing(BoxSizing.BorderBox)
-            .borderRadius(30.px)
-            .background(
-                Background.of(
-                    image = com.varabyte.kobweb.compose.css.functions.linearGradient(
-                        angle = 180.deg
-                    ) {
-                        add(rgb(0x0f1222))
-                        add(rgb(0x1a1f36))
-                    }.toImage()
-                ),
-                Background.of(
-                    image = radialGradient(
-                        RadialGradient.Shape.Ellipse(800.px, 300.px),
-                        CSSPosition(90.percent, 0.percent)
-                    ) {
-                        add(rgba(255, 212, 0, 0.18f))
-                        add(Colors.Transparent, 60.percent)
-                    }.toImage()
-                ),
-                Background.of(
-                    image = radialGradient(
-                        RadialGradient.Shape.Ellipse(1200.px, 400.px),
-                        CSSPosition(10.percent, 0.percent)
-                    ) {
-                        add(rgba(21, 168, 107, 0.18f))
-                        add(Colors.Transparent, 60.percent)
-                    }.toImage()
-                )
-            )
-            .color(Colors.White)
-            .padding(2.5.cssRem)
-            .display(DisplayStyle.Block)
-            .textAlign(TextAlign.Center)
-            .toAttrs()
-    ) {
-        SubHeaderText(
-            enText = "Be part of our energy journey!",
-            nlText = "Doe mee met onze energie reis!",
-        )
-        P {
-            LangText(
-                en = """
-                            We are currently also working on a battery configurator that will allow you to compare
-                            and combine different installers and suppliers of hardware and software. We are looking
-                            for customers who provide feedback in exchange for the free use of this that helps
-                            improve the configurator.
-                        """.trimIndent(),
-                nl = """
-                            We zijn momenteel ook bezig met een batterijconfigurator waarmee je verschillende
-                            installateurs en leveranciers van hardware en software kunt vergelijken en combineren.
-                            We zoeken klanten die feedback geven in ruil voor het gratis gebruik van deze configurator
-                            die helpt de configurator te verbeteren.
-                        """.trimIndent()
-            )
-        }
-        Div(
-            Modifier.padding(top = 1.cssRem).toAttrs()
-        ) {
-            A(
-                href = "/book-demo",
-                attrs = TextStyle.toModifier(HolonLineTextStyle)
-                    .borderRadius(16.px)
-                    .background(SitePalette.light.secondary)
-                    .color(SitePalette.light.onBackground)
-                    .padding(leftRight = 1.5.cssRem, topBottom = 0.65.cssRem)
-                    .textDecorationLine(TextDecorationLine.None)
-                    .display(DisplayStyle.InlineBlock)
-                    .toAttrs()
-            ) {
-                LangText(
-                    en = "Try the Configurator",
-                    nl = "Probeer de Configurator",
-                )
-            }
-        }
-    }
-}
-
-val MoreAboutLuxGridGapStyle = CssStyle {
-    Breakpoint.ZERO {
-        Modifier.rowGap(1.cssRem)
-    }
-    Breakpoint.SM {
-        Modifier.rowGap(1.cssRem)
-    }
-
-    Breakpoint.MD {
-        Modifier.columnGap(2.5.cssRem)
-    }
-
-    Breakpoint.LG {
-        Modifier.columnGap(5.cssRem)
-    }
-
-    Breakpoint.XL {
-        Modifier.columnGap(5.cssRem)
     }
 }
 
 @Composable
 private fun MoreAboutLuxCompany() {
-    SimpleGrid(
-        numColumns = numColumns(base = 1, md = 2, lg = 2, xl = 2),
-        modifier = MoreAboutLuxGridGapStyle.toModifier()
+    var expandedItemIndex by remember { mutableStateOf(1) }
+
+    Column(
+        Modifier.fillMaxWidth()
+            .gap(1.cssRem),
+        horizontalAlignment = Alignment.Start
     ) {
-        InfoWithCaption(
+        ExpandableInfoContent(
             title = {
                 LangText(
                     en = "Smarter Energy Use Is Closer Than You Think",
@@ -427,8 +309,10 @@ private fun MoreAboutLuxCompany() {
                     )
                 }
             },
+            onClick = { expandedItemIndex = if (expandedItemIndex == 1) 0 else 1 },
+            expanded = expandedItemIndex == 1
         )
-        InfoWithCaption(
+        ExpandableInfoContent(
             title = {
                 LangText(
                     en = "Easily Share What Works with Others",
@@ -455,33 +339,84 @@ private fun MoreAboutLuxCompany() {
                     )
                 }
             },
+            onClick = { expandedItemIndex = if (expandedItemIndex == 2) 0 else 2 },
+            expanded = expandedItemIndex == 2
         )
     }
 }
 
 @Composable
-private fun InfoWithCaption(
+private fun ExpandableInfoContent(
     title: @Composable () -> Unit,
     body: @Composable () -> Unit,
+    onClick: (SyntheticMouseEvent) -> Unit = {},
+    expanded: Boolean = false,
 ) {
     Column(
         horizontalAlignment = Alignment.Start,
         modifier = Modifier.fillMaxWidth()
     ) {
-        H4(
-            TextStyle.toModifier(LabelTextStyle)
-                .fontWeight(FontWeight.Bold)
+        Row(
+            Modifier
                 .fillMaxWidth()
-                .toAttrs()
+                .gap(1.cssRem)
+                .padding(topBottom = 0.35.cssRem, leftRight = 1.cssRem)
+                .thenIf(expanded, Modifier.background(SitePalette.light.overlay))
+                .cursor(Cursor.Pointer)
+                .onClick(onClick),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            title()
+            H4(
+                TextStyle.toModifier(LabelTextStyle)
+                    .fontWeight(FontWeight.Bold)
+                    .fillMaxWidth()
+                    .toAttrs()
+            ) {
+                title()
+            }
+            MdiKeyboardArrowUp(
+                modifier = Modifier
+                    .thenIf(expanded, Modifier.transform { rotate(180.deg) })
+                    .transition(
+                        Transition.of("transform", 0.3.s)
+                    )
+            )
         }
-        Box(
-            modifier = Modifier
-                .fontSize(0.9.cssRem),
-            contentAlignment = Alignment.TopStart
-        ) {
-            body()
+        if (expanded) {
+            Box(
+                modifier = Modifier
+                    .padding(leftRight = 1.cssRem)
+                    .fontSize(0.9.cssRem),
+                contentAlignment = Alignment.TopStart
+            ) {
+                body()
+            }
         }
+    }
+}
+
+@Composable
+private fun VideoAndActionContent(
+    modifier: Modifier = Modifier
+) {
+    Box(
+        Modifier
+            .height(300.px)
+            .then(modifier)
+    ) {
+        Video(
+            attrs = Modifier
+                .borderRadius(30.px)
+                .objectFit(ObjectFit.Cover)
+                .attrsModifier {
+                    //todo use video of LUX company in action
+                    attr("src", "/lux/videos/energyTransitionOnVL.mp4")
+                    attr("alt", "Video of LUX company in action.")
+                    attr("controls", "true")
+                    attr("width", "100%")
+                    attr("height", "100%")
+                }.toAttrs()
+        )
     }
 }

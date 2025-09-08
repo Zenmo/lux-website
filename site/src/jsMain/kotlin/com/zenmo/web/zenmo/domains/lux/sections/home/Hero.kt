@@ -1,16 +1,15 @@
 package com.zenmo.web.zenmo.domains.lux.sections.home
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.Background
+import com.varabyte.kobweb.compose.css.JustifyContent
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.Width
-import com.varabyte.kobweb.compose.css.functions.linearGradient
-import com.varabyte.kobweb.compose.css.functions.toImage
 import com.varabyte.kobweb.compose.dom.svg.Defs
 import com.varabyte.kobweb.compose.dom.svg.Path
 import com.varabyte.kobweb.compose.dom.svg.Svg
 import com.varabyte.kobweb.compose.foundation.layout.Box
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
@@ -19,11 +18,13 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
+import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.ClipPath
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import kotlinx.browser.document
@@ -36,6 +37,29 @@ import org.jetbrains.compose.web.dom.Video
 
 
 private const val CLIP_PATH_ID = "heroSVGClipPath"
+
+val LuxHomeHeroStyle = CssStyle {
+    cssRule(" .lux-hero-title-wrap") {
+        Modifier
+            .display(DisplayStyle.Flex)
+            .fillMaxWidth()
+            .justifyContent(JustifyContent.SpaceBetween)
+            .margin(bottom = 32.px)
+    }
+
+    cssRule(" .lux-hero-media") {
+        Modifier
+            .aspectRatio(2, 1)
+    }
+
+    cssRule(" .lux-hero-media video") {
+        Modifier
+            .objectFit(ObjectFit.Cover)
+            .display(DisplayStyle.Block)
+            .fillMaxSize()
+            .borderRadius(24.px)
+    }
+}
 
 
 val LuxHeroMediaContentInnerStyle = CssStyle {
@@ -75,33 +99,6 @@ val MaskedContentAtTopRightStyle = CssStyle.base {
         .bottom(auto)
 }
 
-val LuxHeroContentStyle = CssStyle {
-    base {
-        Modifier.fillMaxWidth()
-            .objectFit(ObjectFit.Cover)
-            .display(DisplayStyle.Block)
-            .background(
-                Background.of(
-                    image = linearGradient(rgba(0, 0, 0, 0.5f), rgba(0, 0, 0, 0.5f)).toImage()
-                )
-            )
-    }
-    Breakpoint.ZERO {
-        Modifier.height(425.px)
-    }
-    Breakpoint.SM {
-        Modifier.height(425.px)
-    }
-    Breakpoint.MD {
-        Modifier.height(500.px)
-    }
-    Breakpoint.LG {
-        Modifier.height(600.px)
-    }
-    Breakpoint.XL {
-        Modifier.height(700.px)
-    }
-}
 
 @Composable
 fun Hero() {
@@ -114,48 +111,55 @@ fun Hero() {
             .toAttrs()
     ) {
         Div(
-            LuxMaskedBlockStyle.toModifier()
+            LuxHomeHeroStyle
+                .toModifier()
+                .then(LuxMaskedBlockStyle.toModifier())
                 .then(AllStyle.toModifier())
-                .display(DisplayStyle.Flex)
-                .flexDirection(FlexDirection.Column)
                 .toAttrs()
         ) {
-
-            HeaderText(
-                enText = "THIS IS LUX.",
-                nlText = "DIT IS LUX.",
-                modifier = Modifier
-                    .color(SitePalette.light.primary)
-            )
+            Div(
+                Modifier
+                    .classNames("lux-hero-title-wrap")
+                    .toAttrs()
+            ) {
+                HeaderText(
+                    enText = "THIS IS LUX.",
+                    nlText = "DIT IS LUX.",
+                    customFont = HolonBlockHeaderTextStyle,
+                    modifier = Modifier
+                        .margin(0.px)
+                        .color(SitePalette.light.primary)
+                )
+            }
 
             Div(
                 LuxMaskedBlockStyle.toModifier()
                     .toAttrs()
             ) {
-                Box(
+                Div(
                     Modifier
-                        .aspectRatio(2, 1)
+                        .classNames("lux-hero-media")
                         .styleModifier {
                             property(
                                 "clip-path", "url(#$CLIP_PATH_ID)"
                             )
                         }
+                        .toAttrs()
                 ) {
-                    Video(
-                        attrs = Modifier
-                            .objectFit(ObjectFit.Cover)
-                            .display(DisplayStyle.Block)
-                            .fillMaxSize()
-                            .borderRadius(24.px)
-                            .toAttrs {
-                                // todo replace this with a LUX video
-                                attr("src", "/lux/videos/hero_vid.mp4")
-                                attr("autoplay", "true")
-                                attr("loop", "true")
-                                attr("preload", "true")
-                                attr("width", "100%")
-                                attr("height", "100%")
-                            })
+                    // actually want this on auto-play with no controls & muted
+                    // but muted doesn't seem to work
+                    Video(attrs = {
+                        // todo replace this with a LUX video
+                        attr("src", "/lux/videos/energyTransitionOnVL.mp4")
+//                        attr("autoplay", "true")
+                        attr("loop", "true")
+                        attr("preload", "true")
+                        attr("playsInline", "true")
+                        attr("width", "100%")
+                        attr("height", "100%")
+                        attr("controls", "true")
+                        attr("muted", "true")
+                    })
                 }
 
                 Div(
@@ -164,12 +168,13 @@ fun Hero() {
                         .then(LuxHeroMediaContentStyle.toModifier())
                         .then(MaskedContentAtTopRightStyle.toModifier())
                         .then(AllStyle.toModifier())
-                        .displayIfAtLeast(Breakpoint.LG)
+                        .displayIfAtLeast(Breakpoint.MD)
                         .toAttrs()
                 ) {
                     P(
                         LuxHeroMediaContentInnerStyle.toModifier()
                             .then(TextStyle.toModifier(HolonLineTextStyle))
+                            .fontSize(1.25.cssRem)
                             .toAttrs()
                     ) {
                         LangText(
@@ -177,6 +182,25 @@ fun Hero() {
                             nl = "Met LUX wordt de integratie van duurzame energie leuk en lucratief.",
                         )
                     }
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .displayUntil(Breakpoint.MD),
+                contentAlignment = Alignment.Center
+            ) {
+                P(
+                    Modifier
+                        .maxWidth(70.percent)
+                        .textAlign(TextAlign.Center)
+                        .toAttrs()
+                ) {
+                    LangText(
+                        en = "With LUX, the integration of sustainable energy is fun and lucrative.",
+                        nl = "Met LUX is de integratie van duurzame energie leuk en lucratief.",
+                    )
                 }
             }
 

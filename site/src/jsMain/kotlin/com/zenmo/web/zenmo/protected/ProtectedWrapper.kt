@@ -47,12 +47,8 @@ fun ProtectedWrapper(
 
     LaunchedEffect(Unit) {
         try {
-            val entryPointParts = entryPoint.split("/")
             privateModule =
-                when (entryPointParts.size) {
-                    3 -> importAsync<PrivateTextModule>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/${entryPointParts[2]}/ProtectedComponent.export.mjs").await()
-                    else -> importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
-                }
+                importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
             status = AccessStatus.Success
         } catch (e: Throwable) {
             /**

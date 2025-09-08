@@ -33,6 +33,7 @@ import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
+const val LUX_RESIDENTIAL_SECTION_ID = "lux-residential-area"
 val LuxResHeaderTextStyle = CssStyle {
     base { Modifier.margin(0.px) }
 
@@ -85,9 +86,9 @@ val LuxResRowStyle = CssStyle {
 fun LuxResidentialArea() {
     val breakpoint = rememberBreakpoint()
     SectionContainer(
+        modifier = Modifier.gap(3.cssRem).id(LUX_RESIDENTIAL_SECTION_ID),
         variant = LuxSectionContainerStyleVariant,
     ) {
-        val pMaxWidth = if (breakpoint < Breakpoint.MD) 100.percent else 80.percent
         Column {
             Row(
                 modifier = LuxResRowStyle.toModifier(),
@@ -120,8 +121,7 @@ fun LuxResidentialArea() {
         }
         //todo replace this with visual for this product
         Image(
-            src = "/lux/images/horizon_img.jpg",
-            alt = "horizon",
+            src = "/img/drechtsteden-rivier.jpg",
             variant = ImageContentStyleVariant,
             modifier = CaptionImageStyle.toModifier()
                 .height(280.px)
@@ -134,7 +134,7 @@ fun LuxResidentialArea() {
                 Modifier.fillMaxWidth()
                     .toAttrs()
             ) {
-                P(Modifier.margin(0.px).maxWidth(pMaxWidth).toAttrs()) {
+                P(Modifier.margin(0.px).maxWidth(80.percent).toAttrs()) {
                     LangText(
                         en = "This allows you to quickly gain insight into the situation in the neighborhood and what this means for different future scenarios. For example:",
                         nl = "Hierdoor kunt u snel inzicht krijgen in de situatie in de buurt en wat dit betekent voor verschillende toekomstscenario's. Bijvoorbeeld:"
@@ -187,6 +187,7 @@ fun LuxResidentialArea() {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.Bottom
         ) {
+            val pMaxWidth = if (breakpoint < Breakpoint.MD) 100.percent else 80.percent
             Div(
                 Modifier.fillMaxWidth()
                     .toAttrs()

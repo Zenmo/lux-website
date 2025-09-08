@@ -1,15 +1,13 @@
 package com.zenmo.web.zenmo.domains.lux.sections.products
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.*
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
@@ -23,19 +21,20 @@ import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
+const val LUX_ENERGY_HUB_SECTION_ID = "lux-energy-hub"
 
 @OptIn(DelicateApi::class)
 @Composable
 fun LuxEnergyHub() {
     val breakpoint = rememberBreakpoint()
     SectionContainer(
+        modifier = Modifier.gap(3.cssRem).id(LUX_ENERGY_HUB_SECTION_ID),
         variant = LuxSectionContainerStyleVariant,
         horizontalAlignment = Alignment.Start,
     ) {
         HeaderText(
             enText = "LUX Energy HUB",
             nlText = "LUX Energy HUB",
-            modifier = Modifier.fillMaxWidth().margin(0.px)
         )
 
         P(Modifier.margin(0.cssRem).toAttrs()) {
@@ -72,8 +71,7 @@ fun LuxEnergyHub() {
                 }
             )
         }
-        //todo use 3min video demonstrating how LUX energy hub works
-        LuxVideo()
+        VideoContent()
         TextContent()
         Row(
             modifier = Modifier
@@ -149,7 +147,7 @@ private fun TextContent() {
                         }
                         Text("is for situations where ")
                         InlineLink(
-                            destinationUrl = "lux-company",
+                            destinationUrl = "#$LUX_COMPANY_SECTION_ID",
                             enLinkText = "LUX company",
                             nlLinkText = "LUX bedrijf"
                         )
@@ -202,7 +200,7 @@ private fun TextContent() {
                         }
                         Text("is voor situaties waarin ")
                         InlineLink(
-                            destinationUrl = "lux-company",
+                            destinationUrl = "#$LUX_COMPANY_SECTION_ID",
                             enLinkText = "LUX company",
                             nlLinkText = "LUX bedrijf"
                         )
@@ -335,5 +333,28 @@ private fun QuestionExampleItem(
                 nl = nlExample,
             )
         }
+    }
+}
+
+@Composable
+private fun VideoContent() {
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .height(400.px)
+    ) {
+        Video(
+            attrs = Modifier
+                .borderRadius(30.px)
+                .objectFit(ObjectFit.Cover)
+                .attrsModifier {
+                    //todo use 3min video demonstrating how LUX energy hub works
+                    attr("src", "/lux/videos/energyTransitionOnVL.mp4")
+                    attr("alt", "How LUX energy hub works")
+                    attr("controls", "true")
+                    attr("width", "100%")
+                    attr("height", "100%")
+                }.toAttrs()
+        )
     }
 }

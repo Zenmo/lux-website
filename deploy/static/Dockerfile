@@ -31,6 +31,7 @@ WORKDIR /app
 
 RUN chmod +x ./gradlew
 # these arguments will be included in the javascript artifact
+# TODO: set per environment
 ARG BACKEND_URL=https://site-backend.zenmo.com
 ARG ZENMO_DOMAIN=nieuw.zenmo.com
 ARG LUX_DOMAIN=lux.energy

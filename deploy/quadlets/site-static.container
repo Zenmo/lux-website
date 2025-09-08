@@ -1,15 +1,14 @@
 
 [Container]
-ContainerName=website-static-$ENVIRONMENT
+ContainerName=website-static
 Image=ghcr.io/zenmo/zenmo-website-static:$TAG
 
 Network=main.network
 Label=traefik.enable=true
-Label=traefik.http.routers.website-static-$ENVIRONMENT.priority=$TRAEFIK_PRIORITY
-Label="traefik.http.routers.website-static-$ENVIRONMENT.rule=Host(`$ZENMO_DOMAIN`) || Host(`$LUX_DOMAIN`) || HostRegexp(`$LUX_HOST_REGEXP`)"
-Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.certResolver=DNSimpleChallenge
-Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.domains[0].main=$ZENMO_DOMAIN
-Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.domains[0].sans=*.$ZENMO_DOMAIN,*.$LUX_DOMAIN,$LUX_DOMAIN
+Label="traefik.http.routers.website-static.rule=Host(`nieuw.zenmo.com`) || Host(`test.zenmo.com`) || Host(`lux.energy`) || HostRegexp(`^[\\w-]+\\.lux\\.energy`)"
+Label=traefik.http.routers.website-static.tls.certResolver=DNSimpleChallenge
+Label=traefik.http.routers.website-static.tls.domains[0].main=zenmo.com
+Label=traefik.http.routers.website-static.tls.domains[0].sans=*.zenmo.com,*.lux.energy,lux.energy
 
 [Service]
 Restart=always

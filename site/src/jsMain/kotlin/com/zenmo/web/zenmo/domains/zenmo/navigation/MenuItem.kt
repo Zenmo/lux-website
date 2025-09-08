@@ -92,36 +92,6 @@ sealed class MenuItem {
             ),
         )
 
-        val drechtstedenMenuItems = listOf(
-            Simple(
-                path = "/",
-                title = MenuLanguage(
-                    en = "Home",
-                    nl = "Thuis",
-                )
-            ),
-            Simple(
-                path = "/res-region",
-                title = MenuLanguage(
-                    en = "RES Region",
-                    nl = "RES Regio",
-                )
-            ),
-            Simple(
-                path = "/municipalities",
-                title = MenuLanguage(
-                    en = "Municipalities",
-                    nl = "Gemeentes",
-                )
-            ),
-            Simple(
-                path = "/business-parks",
-                title = MenuLanguage(
-                    en = "Business Parks",
-                    nl = "Bedrijventerreinen",
-                )
-            ),
-        )
     }
 }
 

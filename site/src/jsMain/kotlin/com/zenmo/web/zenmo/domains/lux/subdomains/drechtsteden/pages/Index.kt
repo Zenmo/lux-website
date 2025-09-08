@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.modifiers.width
@@ -29,11 +30,12 @@ fun DrechtstedenHomePage() {
         val breakpoint = rememberBreakpoint()
         Column {
             SectionContainer(
+                modifier = Modifier.gap(2.cssRem),
                 variant = LuxSectionContainerStyleVariant
             ) {
                 HeaderText(
-                    enText = "Digital Twins Drechtsteden",
-                    nlText = "Digital Twins Drechtsteden",
+                    enText = "Digital twins Drechtsteden",
+                    nlText = "Digital twins Drechtsteden",
                     modifier = Modifier.margin(0.cssRem)
                 )
                 P(

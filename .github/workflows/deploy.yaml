@@ -2,37 +2,12 @@ on:
     workflow_dispatch:
     push:
         branches:
-            - main
             - production
     pull_request:
         types: [ opened, synchronize, reopened ]
 
 jobs:
-    variables:
-        runs-on: ubuntu-latest
-        outputs:
-            BACKEND_DOMAIN: ${{ fromJson(steps.variables.outputs.result).BACKEND_DOMAIN }}
-            BACKEND_URL: ${{ fromJson(steps.variables.outputs.result).BACKEND_URL }}
-            ENVIRONMENT: ${{ fromJson(steps.variables.outputs.result).ENVIRONMENT }}
-            CORS_ORIGIN_PATTERN: ${{ fromJson(steps.variables.outputs.result).CORS_ORIGIN_PATTERN }}
-            LUX_DOMAIN: ${{ fromJson(steps.variables.outputs.result).LUX_DOMAIN }}
-            LUX_HOST_REGEXP: ${{ fromJson(steps.variables.outputs.result).LUX_HOST_REGEXP }}
-            TAG: ${{ fromJson(steps.variables.outputs.result).TAG }}
-            TRAEFIK_PRIORITY: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_PRIORITY }}
-            ZENMO_DOMAIN: ${{ fromJson(steps.variables.outputs.result).ZENMO_DOMAIN }}
-        steps:
-            -   uses: actions/checkout@v3
-            -   name: Variables
-                uses: actions/github-script@v6
-                id: variables
-                with:
-                    script: |
-                        const getVariables = require('./.github/workflows/get-variables/index.js')
-                        return getVariables(context)
-
     build-images:
-        needs:
-            - variables
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v4
@@ -74,23 +49,11 @@ jobs:
             -   name: Expose
                 uses: crazy-max/ghaction-github-runtime@v3
             -   run: ./deploy/static/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
-                env:
-                    BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
-                    ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
-                    LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
-                    TAG: ${{ needs.variables.outputs.TAG }}
-            -   run: ./deploy/backend/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
-                env:
-                    BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
-                    ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
-                    LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
-                    TAG: ${{ needs.variables.outputs.TAG }}
+            -   run: ./deploy/server/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
 
     deploy:
         if: github.event_name != 'pull_request'
-        needs:
-            - build-images
-            - variables
+        needs: build-images
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v4
@@ -100,13 +63,3 @@ jobs:
                     key: ${{ secrets.PODHOST_SSH_PRIVATE_KEY }}
                     known_hosts: podhost.zenmo.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKVeen0rfyMwiAoQCpIUJ/a2tpM35D/BdEDUyfRTxiXm
             -   run: ./deploy/quadlets/deploy.sh
-                env:
-                    BACKEND_DOMAIN: ${{ needs.variables.outputs.BACKEND_DOMAIN }}
-                    BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
-                    CORS_ORIGIN_PATTERN: ${{ needs.variables.outputs.CORS_ORIGIN_PATTERN }}
-                    ENVIRONMENT: ${{ needs.variables.outputs.ENVIRONMENT }}
-                    LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
-                    LUX_HOST_REGEXP: ${{ needs.variables.outputs.LUX_HOST_REGEXP }}
-                    TAG: ${{ needs.variables.outputs.TAG }}
-                    TRAEFIK_PRIORITY: ${{ needs.variables.outputs.TRAEFIK_PRIORITY }}
-                    ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}

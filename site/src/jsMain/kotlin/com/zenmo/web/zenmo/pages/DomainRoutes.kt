@@ -30,7 +30,7 @@ fun DomainRoutes() {
             SubdomainModel.allModels
                 .find { it.title.equals(sub, ignoreCase = true) }
                 ?.let { LuxSubdomainRoutingComponent(it) }
-                ?: UnknownDomain(sub)
+                ?: UnknownDomain("LUX -> $sub")
         }
 
         else -> UnknownDomain(domain)

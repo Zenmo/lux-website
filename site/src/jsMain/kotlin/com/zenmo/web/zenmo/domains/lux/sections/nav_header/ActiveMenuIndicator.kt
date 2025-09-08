@@ -5,14 +5,11 @@ import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.css.functions.RadialGradient
 import com.varabyte.kobweb.compose.css.functions.radialGradient
 import com.varabyte.kobweb.compose.css.functions.toImage
-import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
@@ -108,13 +105,10 @@ fun ActiveMenuIndicator(
             window.onresize = null
         }
     }
-    Box(
-        Modifier.displayIfAtLeast(Breakpoint.MD)
-    ) {
-        Span(
-            attrs = LuxActiveMenuIndicatorStyle.toModifier()
-                .setVariable(ActiveIndicatorWidthStyleVar, indicatorWidth)
-                .setVariable(ActiveIndicatorLeftStyleVar, indicatorLeft).toAttrs()
-        )
-    }
+
+    Span(
+        attrs = LuxActiveMenuIndicatorStyle.toModifier()
+            .setVariable(ActiveIndicatorWidthStyleVar, indicatorWidth)
+            .setVariable(ActiveIndicatorLeftStyleVar, indicatorLeft).toAttrs()
+    )
 }
