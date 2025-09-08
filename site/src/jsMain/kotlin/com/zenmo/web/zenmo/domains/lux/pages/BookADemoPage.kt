@@ -1,17 +1,19 @@
 package com.zenmo.web.zenmo.domains.lux.pages
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiArrowBack
 import com.zenmo.web.zenmo.components.layouts.PageLayout
 import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.cssRem
@@ -26,10 +28,10 @@ fun BookADemoPage() {
         footer = {},
         title = "Book a Demo",
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
+        SectionContainer(
+            modifier = Modifier.gap(1.cssRem).textAlign(TextAlign.Center),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
+            variant = LuxSectionContainerStyleVariant
         ) {
             H2 {
                 LangText(

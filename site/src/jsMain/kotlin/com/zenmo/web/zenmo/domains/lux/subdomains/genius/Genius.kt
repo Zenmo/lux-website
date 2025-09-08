@@ -31,16 +31,14 @@ import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxHeaderPaddingStyle
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
-import com.zenmo.web.zenmo.theme.font.HolonBlockHeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.utils.PublicRes
-import org.jetbrains.compose.web.css.Color
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
 @Composable
@@ -51,7 +49,6 @@ fun Genius() {
         title = "Genius"
     ) {
         SectionContainer(
-            modifier = Modifier.gap(5.cssRem),
             variant = LuxSectionContainerStyleVariant
         ) {
             IntroContent()
@@ -141,19 +138,33 @@ private fun IntroContent() {
         Div {
             LangBlock(
                 en = {
-                    H1(TextStyle.toModifier(HeaderTextStyle).fontFamily(PublicRes.FontFamilies.HOLON_LINE).toAttrs()) {
-                        Span(TextStyle.toModifier(HolonBlockHeaderTextStyle).toAttrs()) {
-                            Text("GENIUS - ")
-                        }
-                        Text("Grid Efficiency Network Integration for Universal Sustainability")
+                    H1(
+                        TextStyle.toModifier(HeaderTextStyle)
+                            .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
+                            .toAttrs()
+                    ) {
+                        HeaderText(
+                            enText = "GENIUS - ",
+                            nlText = "",
+                            modifier = Modifier.margin(0.px)
+                                .display(DisplayStyle.InlineBlock)
+                        )
+                        Text(" Grid Efficiency Network Integration for Universal Sustainability")
                     }
                 },
                 nl = {
-                    H1(TextStyle.toModifier(HeaderTextStyle).fontFamily(PublicRes.FontFamilies.HOLON_LINE).toAttrs()) {
-                        Span(TextStyle.toModifier(HolonBlockHeaderTextStyle).toAttrs()) {
-                            Text("GENIUS - ")
-                        }
-                        Text("Grid Efficiency Network Integratie voor Universele Duurzaamheid")
+                    H1(
+                        TextStyle.toModifier(HeaderTextStyle)
+                            .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
+                            .toAttrs()
+                    ) {
+                        HeaderText(
+                            enText = "",
+                            nlText = "GENIUS - ",
+                            modifier = Modifier.margin(0.px)
+                                .display(DisplayStyle.InlineBlock)
+                        )
+                        Text(" Grid Efficiency Network Integratie voor Universele Duurzaamheid")
                     }
                 }
             )
@@ -429,6 +440,7 @@ private fun PartnerLogos() {
             .borderRadius(30.px)
             .background(Colors.White)
             .padding(leftRight = 3.cssRem, topBottom = 5.cssRem)
+            .boxShadow(0.px, 0.px, 15.px, 15.px, rgba(0, 0, 0, 0.03f))
             .textAlign(TextAlign.Center),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

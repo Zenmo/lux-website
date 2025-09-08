@@ -110,18 +110,6 @@ val LabelTextStyle = TextStyle.addVariant {
     }
 }
 
-val HolonBlockHeaderTextStyle = TextStyle.addVariant {
-    fun applyHolonBlockFont(breakpoint: Breakpoint): Modifier {
-        val fonts = Fonts[breakpoint]
-        return Modifier.font { siteFont(fonts.header.copy(fontFamily = PublicRes.FontFamilies.HOLON_BLOCK)) }
-    }
-
-    Breakpoint.ZERO { applyHolonBlockFont(Breakpoint.ZERO) }
-    Breakpoint.SM { applyHolonBlockFont(Breakpoint.SM) }
-    Breakpoint.MD { applyHolonBlockFont(Breakpoint.MD) }
-    Breakpoint.LG { applyHolonBlockFont(Breakpoint.LG) }
-    Breakpoint.XL { applyHolonBlockFont(Breakpoint.XL) }
-}
 
 val HolonLineTextStyle = TextStyle.addVariant {
     fun applyHolonLineFont(breakpoint: Breakpoint): Modifier {
@@ -130,7 +118,7 @@ val HolonLineTextStyle = TextStyle.addVariant {
             siteFont(
                 fonts.title.copy(
                     fontFamily = PublicRes.FontFamilies.HOLON_LINE,
-                    fontSize = 2.cssRem
+                    fontSize = 1.25.cssRem
                 )
             )
         }

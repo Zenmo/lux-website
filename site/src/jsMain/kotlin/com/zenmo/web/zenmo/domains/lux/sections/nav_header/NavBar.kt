@@ -11,6 +11,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
@@ -75,7 +77,7 @@ fun BookADemoButton() {
     A(
         href = "/book-demo",
         attrs = TextStyle.toModifier(HolonLineTextStyle)
-            .fontSize(1.25.cssRem)
+            .displayIfAtLeast(Breakpoint.LG)
             .borderRadius(16.px)
             .backgroundImage(
                 linearGradient(

@@ -13,15 +13,12 @@ import com.varabyte.kobweb.compose.ui.modifiers.maxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.position
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.pages.SiteGlobals.LUX_DOMAIN
 import kotlinx.browser.window
-import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.Position
-import org.jetbrains.compose.web.css.display
-import org.jetbrains.compose.web.css.percent
-import org.jetbrains.compose.web.css.vh
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import kotlin.uuid.Uuid
 
@@ -54,7 +51,7 @@ fun AnyLogicEmbed(
     modifier: Modifier = Modifier,
     modelId: Uuid,
     apiKey: Uuid = anyLogicPublicApiKey,
-    cloudUrl: String = "https://anylogic.zenmo.com",
+    cloudUrl: String = "${AppGlobals.getValue("BACKEND_URL")}/anylogic-proxy",
 ) {
     val containerId = remember { "anylogic-embed-${randomString(4u)}" }
 

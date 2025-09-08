@@ -2,26 +2,32 @@ package com.zenmo.web.zenmo.components.widgets
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import org.jetbrains.compose.web.dom.H1
-import org.jetbrains.compose.web.dom.Text
+import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
+import com.zenmo.web.zenmo.domains.zenmo.widgets.button.PrimaryButton
+import com.zenmo.web.zenmo.pages.SiteGlobals
+import kotlinx.browser.window
 
 @Composable
 fun UnknownDomain(
     domain: String
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
+    SectionContainer(
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        variant = LuxSectionContainerStyleVariant
     ) {
-        H1 { Text("¯\\_(-_-)_/¯") }
-        LangText(
-            en = "Unknown Domain: $domain",
-            nl = "Onbekend Domein: $domain"
+        HeaderText(
+            enText = "Unknown Domain: $domain",
+            nlText = "Onbekend Domein: $domain"
+        )
+
+        val protocol = window.location.protocol
+        PrimaryButton(
+            enText = "Go to main Lux site",
+            nlText = "Ga naar de hoofd Lux site",
+            onClick = {
+                window.location.href = "${protocol}//${SiteGlobals.LUX_DOMAIN}"
+            }
         )
     }
 }
