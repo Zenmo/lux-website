@@ -6,7 +6,9 @@ const configPerBranch = {
         ENVIRONMENT: "production",
         LUX_DOMAIN: "lux.energy",
         LUX_HOST_REGEXP: "^[\\\\w-]+\\\\.lux\\\\.energy",
-        TRAEFIK_PRIORITY: 100,
+        // negative priority so other applications can route subdomains
+        // without explicitly setting priority
+        TRAEFIK_PRIORITY: -2000,
         ZENMO_DOMAIN: "nieuw.zenmo.com",
     },
     main: {
@@ -17,7 +19,7 @@ const configPerBranch = {
         LUX_DOMAIN: "test.lux.energy",
         LUX_HOST_REGEXP: "^[\\\\w-]+\\\\.test\\\\.lux\\\\.energy",
         // Higher priority for test because productions *.lux.energy shadows test.lux.energy
-        TRAEFIK_PRIORITY: 1000,
+        TRAEFIK_PRIORITY: -1000,
         ZENMO_DOMAIN: "test.zenmo.com",
     },
     pull_request: {
@@ -27,7 +29,7 @@ const configPerBranch = {
         CORS_ORIGIN_PATTERN: "https:\\/\\/((.*\\.)?lux\\.energy|(.*\\.)?zenmo\\.com)",
         LUX_DOMAIN: "lux.localhost:8080",
         LUX_HOST_REGEXP: "",
-        TRAEFIK_PRIORITY: 1,
+        TRAEFIK_PRIORITY: -10_000,
         ZENMO_DOMAIN: "zenmo.localhost:8080",
     }
 }
