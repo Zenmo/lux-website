@@ -21,5 +21,6 @@ fun LuxSubdomainRoutingComponent(subdomain: SubdomainModel) {
         SubdomainModel.RotterdamDenHaag -> RotterdamDenHaagIndex()
         SubdomainModel.KasAlsEnergiebron -> KasAlsenErgiebron()
         SubdomainModel.Vruchtenbuurt -> VruchtenbuurtIndex()
+        SubdomainModel.Cognizant -> Cognizant()
     }
 }

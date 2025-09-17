@@ -1,8 +1,6 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
@@ -10,7 +8,6 @@ import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.genius.ModelWrapper
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
-import org.jetbrains.compose.web.css.cssRem
 
 @Composable
 fun Hessenpoort() {
@@ -18,7 +15,6 @@ fun Hessenpoort() {
         title = "Hessenpoort",
     ) {
         SectionContainer(
-            modifier = Modifier.gap(5.cssRem),
             variant = LuxSectionContainerStyleVariant
         ) {
             ModelWrapper(
