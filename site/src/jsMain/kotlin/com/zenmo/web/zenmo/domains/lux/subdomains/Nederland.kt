@@ -2,14 +2,10 @@ package com.zenmo.web.zenmo.domains.lux.subdomains
 
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
-import org.jetbrains.compose.web.css.cssRem
 import kotlin.uuid.Uuid
 
 
@@ -27,7 +23,6 @@ fun NederlandIndex() {
                 AnyLogicEmbed(
                     modelId = Uuid.parse("0853040a-824d-4341-9d50-26bf4a3deb8f"),
                     apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
-                    modifier = Modifier.maxWidth(90.cssRem).margin(topBottom = 5.cssRem)
                 )
             }
         ) {}

@@ -8,10 +8,7 @@ import com.varabyte.kobweb.compose.dom.svg.Svg
 import com.varabyte.kobweb.compose.dom.svg.SvgId
 import com.varabyte.kobweb.compose.dom.svg.Symbol
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.aspectRatio
-import com.varabyte.kobweb.compose.ui.modifiers.maxHeight
-import com.varabyte.kobweb.compose.ui.modifiers.position
-import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -48,7 +45,7 @@ val AnyLogicEmbedStyle = CssStyle {
  */
 @Composable
 fun AnyLogicEmbed(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.maxWidth(90.cssRem).margin(topBottom = 4.cssRem),
     modelId: Uuid,
     apiKey: Uuid = anyLogicPublicApiKey,
     cloudUrl: String = "${AppGlobals.getValue("BACKEND_URL")}/anylogic-proxy",

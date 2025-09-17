@@ -5,7 +5,10 @@ import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -47,7 +50,6 @@ fun LoenenIndex() {
                 AnyLogicEmbed(
                     modelId = Uuid.parse("ba998ba3-05dc-45f6-ac6d-78279765375d"),
                     apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
-                    modifier = Modifier.maxWidth(90.cssRem).margin(topBottom = 5.cssRem)
                 )
             }
         ) {
