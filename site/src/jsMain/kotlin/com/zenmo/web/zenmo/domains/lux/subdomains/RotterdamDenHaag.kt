@@ -39,7 +39,6 @@ fun RotterdamDenHaagIndex() {
                 AnyLogicEmbed(
                     modelId = Uuid.parse("92952425-a78a-4e69-a896-6ccea66d4ce6"),
                     apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
-                    modifier = Modifier.maxWidth(90.cssRem).margin(topBottom = 5.cssRem)
                 )
             },
             metaContent = {
