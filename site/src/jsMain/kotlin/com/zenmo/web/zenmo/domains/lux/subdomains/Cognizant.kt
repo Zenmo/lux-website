@@ -5,6 +5,7 @@ import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import kotlin.uuid.Uuid
@@ -14,6 +15,10 @@ fun Cognizant() {
     LuxSubdomainPageLayout(
         title = "Cognizant",
     ) {
+        ModelInDevelopmentInfoWidget(
+            enDescription = "Note, his model is still in development.",
+            nlDescription = "Let op, dit model is nog in ontwikkeling."
+        )
         SectionContainer(
             variant = LuxSectionContainerStyleVariant
         ) {
