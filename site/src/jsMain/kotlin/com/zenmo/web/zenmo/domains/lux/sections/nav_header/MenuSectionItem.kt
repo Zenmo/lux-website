@@ -156,7 +156,7 @@ fun LuxMenuItemWithSubs(titleText: MenuLanguage, subItems: List<MenuLanguage>) {
             modifier = SubMenuStyle.toModifier()
                 .animation(
                     SubMenuAppearanceAnimKeyFrames.toAnimation(
-                        duration = 300.ms,
+                        duration = 200.ms,
                         timingFunction = AnimationTimingFunction.EaseInOut
                     )
                 )
@@ -178,6 +178,7 @@ fun LuxMenuItemWithSubs(titleText: MenuLanguage, subItems: List<MenuLanguage>) {
                         nlTitle = subItem.nl,
                         isActive = isActive,
                         activeLinkVariant = ActiveSubMenuLinkStyleVariant,
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }
