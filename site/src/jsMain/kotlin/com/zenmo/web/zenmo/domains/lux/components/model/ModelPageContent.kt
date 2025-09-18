@@ -24,7 +24,26 @@ import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
 
-
+/**
+ * Composable function to render the content of a model page.
+ *
+ * @param twin The `TwinModel` object containing information about the model, such as title, image, and entry point.
+ * @param enDescriptionParagraph The English description paragraph for the model.
+ * @param nlDescriptionParagraph The Dutch description paragraph for the model.
+ * @param enSubDescriptionParagraph (Optional) The English sub-description paragraph for the model.
+ * @param nlSubDescriptionParagraph (Optional) The Dutch sub-description paragraph for the model.
+ * @param enHeaderText (Optional) The English header text for the model. Defaults to the title of the `TwinModel`.
+ * @param nlHeaderText (Optional) The Dutch header text for the model. Defaults to the title of the `TwinModel`.
+ * @param enSubHeaderText (Optional) The English sub-header text for the model.
+ * @param nlSubHeaderText (Optional) The Dutch sub-header text for the model.
+ * @param imageUrl (Optional) The URL of the image to display. Defaults to the image in the `TwinModel`.
+ * @param metaContent (Optional) A composable lambda for rendering additional metadata content.
+ * @param modelContent (Optional) A composable lambda for rendering the model content. Defaults to rendering a `ModelWrapper`
+ *        if the `TwinModel` has an entry point.
+ * @param contactContent A composable lambda for rendering the contact content.
+ *
+ * @see
+ */
 @OptIn(DelicateApi::class)
 @Composable
 fun ModelPageContent(

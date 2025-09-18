@@ -88,6 +88,13 @@ sealed class SubdomainModel(
         isPrivate = false
     )
 
+    data object TutorialModel : SubdomainModel(
+        "tutorial",
+        "/lux/images/models/cognizant.png",
+        "tutorial",
+        isPrivate = true
+    )
+
     companion object {
         val allModels = listOf(
             Drechtsteden,
@@ -101,7 +108,8 @@ sealed class SubdomainModel(
             Loenen,
             RotterdamDenHaag,
             Vruchtenbuurt,
-            Cognizant
+            Cognizant,
+            TutorialModel
         )
         val publicSubdomains = allModels.filter { !it.isPrivate }
         val privateSubdomains = allModels.filter { it.isPrivate }
