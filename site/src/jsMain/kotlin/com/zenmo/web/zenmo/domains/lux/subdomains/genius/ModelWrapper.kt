@@ -27,16 +27,18 @@ val ProtectedWrapperStyle = CssStyle {
             .top(50.percent)
             .left(50.percent)
             .transform { translate((-50).percent, (-50).percent) }
-            .width(40.percent)
             .padding(topBottom = 20.px, leftRight = 10.px)
+    }
+    Breakpoint.ZERO {
+        Modifier.width(95.percent)
     }
 
     Breakpoint.SM {
-        Modifier.width(80.percent)
+        Modifier.width(95.percent)
     }
 
     Breakpoint.MD {
-        Modifier.width(50.percent)
+        Modifier.width(60.percent)
     }
 
     Breakpoint.LG {
