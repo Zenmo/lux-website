@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.products
+package com.zenmo.web.zenmo.domains.lux.sections.application_fields
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.FontWeight

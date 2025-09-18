@@ -23,7 +23,6 @@ import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 
@@ -50,6 +49,7 @@ fun LuxModels() {
         var luxModels by remember { mutableStateOf(SubdomainModel.allModels) }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
         Column(
+            Modifier.textAlign(TextAlign.Center),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             HeaderText(
@@ -58,19 +58,11 @@ fun LuxModels() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .margin(0.px)
-                    .textAlign(TextAlign.Center)
             )
-            P(
-                Modifier.textAlign(TextAlign.Center).toAttrs(),
-            ) {
+            P {
                 LangText(
                     en = "Find out more about our models.",
                     nl = "Lees meer over onze modellen."
-                )
-                Br { }
-                LangText(
-                    en = "This includes both our public and private models.",
-                    nl = "Dit omvat zowel onze openbare als privémodellen."
                 )
             }
             FilterChipRow(
