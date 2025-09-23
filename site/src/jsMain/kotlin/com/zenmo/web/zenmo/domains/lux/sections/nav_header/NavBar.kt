@@ -79,6 +79,7 @@ fun BookADemoButton() {
         attrs = TextStyle.toModifier(HolonLineTextStyle)
             .displayIfAtLeast(Breakpoint.LG)
             .borderRadius(16.px)
+//            .background(SitePalette.light.secondary)
             .backgroundImage(
                 linearGradient(
                     SitePalette.light.primary, SitePalette.light.secondary,
