@@ -7,9 +7,9 @@ sealed class SubdomainModel(
     title: String,
     image: String,
     entryPoint: String = "",
-    val isPrivate: Boolean,
+    isPrivate: Boolean,
     val applicationField: ApplicationField,
-) : TwinModel(title, entryPoint, image) {
+) : TwinModel(title, entryPoint, image, isPrivate) {
     override fun url(path: String, protocol: String, luxDomain: String): String {
         return "${protocol}//${title.lowercase()}.$luxDomain"
     }
@@ -86,7 +86,7 @@ sealed class SubdomainModel(
         "rotterdamdenhaag",
         "/lux/images/models/rotterdam.png",
         isPrivate = false,
-        applicationField = ApplicationField.LUX_REGION //todo confirm ApplicationField
+        applicationField = ApplicationField.LUX_REGION
     )
 
     data object Vruchtenbuurt : SubdomainModel(

@@ -1,8 +1,14 @@
 package com.zenmo.web.zenmo.domains.lux.components.model
 
 // RES REGION MODELS
-sealed class DrechtstedenTwinModel(val name: String, title: String, entryPoint: String, image: String) :
-    TwinModel(title, entryPoint, image) {
+sealed class DrechtstedenTwinModel(
+    val name: String,
+    title: String,
+    entryPoint: String,
+    image: String,
+    isPrivate: Boolean = true
+) :
+    TwinModel(title, entryPoint, image, isPrivate) {
 
     override fun url(path: String, protocol: String, luxDomain: String): String {
         val drechtstedenBase = "${protocol}//${SubdomainModel.Drechtsteden.title}.$luxDomain/$path"
