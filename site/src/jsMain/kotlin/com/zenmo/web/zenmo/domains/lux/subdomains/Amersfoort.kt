@@ -31,8 +31,7 @@ fun Amersfoort() {
         SectionContainer(
             variant = LuxSectionContainerStyleVariant
         ) {
-            var activeModelTabIndex by remember { mutableStateOf(0) }
-            val activeModel = AmersfoortTwinModel.amersfoortTwinModels[activeModelTabIndex]
+            var activeModelTabIndex by remember { mutableStateOf<Int?>(null) }
 
             HeaderText(
                 enText = "Digital Twins Amersfoort",
@@ -58,20 +57,23 @@ fun Amersfoort() {
                 }
             )
 
-            AnyLogicEmbed(
-                modelId = activeModel.modelId,
-                apiKey = activeModel.modelApiKey,
-            )
+            if (activeModelTabIndex != null) {
+                val activeModel = AmersfoortTwinModel.amersfoortTwinModels[activeModelTabIndex!!]
 
+                AnyLogicEmbed(
+                    modelId = activeModel.modelId,
+                    apiKey = activeModel.modelApiKey,
+                )
+                ProfileContactCard(
+                    name = ZenmoTeam.PETER_HOGEVEEN.memberName,
+                    imageUrl = ZenmoTeam.PETER_HOGEVEEN.image,
+                    email = ZenmoTeam.PETER_HOGEVEEN.email,
+                    telephoneNumber = "+31 652381249",
+                    enSubtitle = "Website and model development",
+                    nlSubtitle = "Website en model ontwikkeling",
+                )
+            }
 
-            ProfileContactCard(
-                name = ZenmoTeam.PETER_HOGEVEEN.memberName,
-                imageUrl = ZenmoTeam.PETER_HOGEVEEN.image,
-                email = ZenmoTeam.PETER_HOGEVEEN.email,
-                telephoneNumber = "+31 652381249",
-                enSubtitle = "Website and model development",
-                nlSubtitle = "Website en model ontwikkeling",
-            )
         }
     }
 }
@@ -79,7 +81,7 @@ fun Amersfoort() {
 
 @Composable
 private fun AmersfoortModelsTabRow(
-    activeModelTabIndex: Int,
+    activeModelTabIndex: Int?,
     onTabSelected: (Int) -> Unit,
 ) {
     val models = AmersfoortTwinModel.amersfoortTwinModels
