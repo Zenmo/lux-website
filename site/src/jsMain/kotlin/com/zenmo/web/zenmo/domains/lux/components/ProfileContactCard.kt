@@ -34,7 +34,7 @@ fun ProfileContactCard(
     MediaContentLayout(
         imageUrl = imageUrl,
         visualContent = {
-            Box(TeamCardImageContainerStyle.toModifier().size(22.cssRem)) {
+            Box(TeamCardImageContainerStyle.toModifier().size(18.cssRem)) {
                 Image(
                     modifier = ProfileImageStyle.toModifier(),
                     src = imageUrl,
@@ -46,7 +46,7 @@ fun ProfileContactCard(
             HeaderText(
                 enText = name,
                 nlText = name,
-                modifier = Modifier.margin(0.cssRem)
+                modifier = Modifier.margin(0.cssRem).fontSize(2.5.cssRem)
             )
         },
         subtitle = {
@@ -55,7 +55,7 @@ fun ProfileContactCard(
                     enText = enSubtitle,
                     nlText = nlSubtitle,
                     modifier = Modifier.color(SitePalette.light.primary)
-                        .fontSize(1.3.cssRem)
+                        .fontSize(1.15.cssRem)
                         .margin(0.cssRem)
                 )
             }
