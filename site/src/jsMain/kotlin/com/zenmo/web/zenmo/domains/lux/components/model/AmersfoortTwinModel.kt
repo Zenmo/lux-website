@@ -16,21 +16,21 @@ sealed class AmersfoortTwinModel(
 ) {
 
     data object AmersfoortOne : AmersfoortTwinModel(
-        "LUX HogeHoven",
+        "Hoge Hoven",
         "hogeHoven",
         "/lux/images/amersfoort/hogeHoven.png",
         modelId = Uuid.parse("88c97843-1272-4557-beec-09412ef2c32b"),
     )
 
     data object AmersfoortTwo : AmersfoortTwinModel(
-        "LUX Vermeerkwartier",
+        "Vermeerkwartier",
         "vermeerkwartier",
         "/lux/images/amersfoort/vermeerkwartier.png",
         modelId = Uuid.parse("c103efd9-a9dc-4aef-8f25-71e3bbf6aa3a"),
     )
 
     data object AmersfoortThree : AmersfoortTwinModel(
-        "LUX Schuilenburg",
+        "Schuilenburg",
         "schuilenburg",
         "/lux/images/amersfoort/schuilenburg.png",
         modelId = Uuid.parse("8c20b4a1-b085-4500-a003-386ee557239d"),
