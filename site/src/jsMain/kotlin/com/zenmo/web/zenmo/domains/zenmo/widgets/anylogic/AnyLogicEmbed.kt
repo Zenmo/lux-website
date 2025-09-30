@@ -1,18 +1,21 @@
 package com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.BoxShadow
 import com.varabyte.kobweb.compose.dom.svg.Image
 import com.varabyte.kobweb.compose.dom.svg.Svg
 import com.varabyte.kobweb.compose.dom.svg.SvgId
 import com.varabyte.kobweb.compose.dom.svg.Symbol
+import com.varabyte.kobweb.compose.foundation.layout.Box
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.components.widgets.LoadingSpinner
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.pages.SiteGlobals.LUX_DOMAIN
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
@@ -37,7 +40,18 @@ val AnyLogicEmbedStyle = CssStyle {
             // 8:5 Approaches the default aspect ratio in AnyLogic.
             // It is possible to create a model for a different aspect ratio.
             .aspectRatio(8, 5)
+            .boxShadow(
+                BoxShadow.of(0.px, 4.px, 8.px, 0.px, rgba(0, 0, 0, 0.2f)),
+                BoxShadow.of(0.px, 6.px, 20.px, 0.px, rgba(0, 0, 0, 0.19f))
+            )
     }
+}
+
+enum class AnyLogicModelStatus {
+    IDLE,
+    LOADING,
+    RUNNING,
+    FAILED
 }
 
 /**
@@ -51,23 +65,52 @@ fun AnyLogicEmbed(
     cloudUrl: String = "${AppGlobals.getValue("BACKEND_URL")}/anylogic-proxy",
 ) {
     val containerId = remember { "anylogic-embed-${randomString(4u)}" }
+    var status by remember { mutableStateOf(AnyLogicModelStatus.IDLE) }
 
     LaunchedEffect(modelId) {
-        val client = CloudClient.create(apiKey.toHexDashString(), cloudUrl)
-        val model = client.getModelById(modelId.toHexDashString()).await()
-        val modelVersion = client.getLatestModelVersion(model).await()
-        val inputs = client.createDefaultInputs(modelVersion)
-        client.startAnimation(inputs, containerId).await()
+        status = AnyLogicModelStatus.LOADING
+        try {
+            val client = CloudClient.create(apiKey.toHexDashString(), cloudUrl)
+            val model = client.getModelById(modelId.toHexDashString()).await()
+            val modelVersion = client.getLatestModelVersion(model).await()
+            val inputs = client.createDefaultInputs(modelVersion)
+            // need to mark status as running to render model before starting animation, because
+            // startAnimation(...).await() suspends for as long as the animation runs.
+            status = AnyLogicModelStatus.RUNNING
+            client.startAnimation(inputs, containerId).await()
+        } catch (e: Exception) {
+            console.error("Failed to load AnyLogic model", e)
+            status = AnyLogicModelStatus.FAILED
+        }
     }
 
-    AnyLogicImageOverride()
 
-    Div(
-        attrs = AnyLogicEmbedStyle
-            .toModifier().then(modifier).toAttrs {
-                id(containerId)
+    Box(
+        modifier = AnyLogicEmbedStyle
+            .toModifier().then(modifier),
+        contentAlignment = Alignment.Center
+    ) {
+        when (status) {
+            AnyLogicModelStatus.IDLE -> Unit
+
+            AnyLogicModelStatus.LOADING -> LoadingSpinner()
+
+            AnyLogicModelStatus.FAILED -> SubHeaderText(
+                enText = "Failed to load model",
+                nlText = "Laden van model mislukt",
+            )
+
+            AnyLogicModelStatus.RUNNING -> {
+                AnyLogicImageOverride()
+
+                Div(
+                    attrs = Modifier.fillMaxSize().toAttrs {
+                        id(containerId)
+                    }
+                )
             }
-    )
+        }
+    }
 }
 
 /**
