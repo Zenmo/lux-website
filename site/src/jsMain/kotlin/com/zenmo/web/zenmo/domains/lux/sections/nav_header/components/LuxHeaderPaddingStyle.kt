@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.nav_header
+package com.zenmo.web.zenmo.domains.lux.sections.nav_header.components
 
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.padding

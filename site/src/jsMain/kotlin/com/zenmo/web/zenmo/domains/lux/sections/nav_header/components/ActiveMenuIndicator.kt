@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.nav_header
+package com.zenmo.web.zenmo.domains.lux.sections.nav_header.components
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.*

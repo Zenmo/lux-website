@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.nav_header
+package com.zenmo.web.zenmo.domains.lux.sections.nav_header.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -18,7 +18,6 @@ import org.jetbrains.compose.web.dom.Header
 @Composable
 fun LuxHeaderComponent(
     modifier: Modifier = Modifier,
-    items: List<MenuItem>,
     content: @Composable () -> Unit,
 ) {
     Header(
@@ -33,7 +32,7 @@ fun LuxHeaderComponent(
         content()
 
         ActiveMenuIndicator(
-            items = items
+            items = MenuItem.menuItems()
         )
     }
 }

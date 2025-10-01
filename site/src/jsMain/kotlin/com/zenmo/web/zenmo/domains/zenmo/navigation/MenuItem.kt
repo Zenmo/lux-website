@@ -1,7 +1,10 @@
 package com.zenmo.web.zenmo.domains.zenmo.navigation
 
+import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.ApplicationField
+import com.zenmo.web.zenmo.pages.SiteGlobals
 import com.zenmo.web.zenmo.pages.isLocalOrPreviewEnvironment
+import kotlinx.browser.window
 
 //todo rename this to LocalizedText or something more generic
 data class MenuLanguage(
@@ -31,7 +34,7 @@ sealed class MenuItem {
     data class WithSubs(val path: String = "", val title: MenuLanguage, val subItems: List<MenuLanguage>) : MenuItem()
 
     companion object {
-        val zenmoMenuItems = buildList {
+        private val zenmoMenuItems = buildList {
             add(Simple(path = "/", title = MenuLanguage(en = "Home", nl = "Thuis")))
             add(
                 Simple(
@@ -74,7 +77,7 @@ sealed class MenuItem {
             }
         }
 
-        val luxMenuItems = listOf(
+        private val luxMenuItems = listOf(
             Simple(
                 path = "/",
                 title = MenuLanguage(en = "Home", nl = "Thuis")
@@ -93,7 +96,7 @@ sealed class MenuItem {
             ),
         )
 
-        val drechtstedenMenuItems = listOf(
+        private val drechtstedenMenuItems = listOf(
             Simple(
                 path = "/",
                 title = MenuLanguage(
@@ -123,6 +126,26 @@ sealed class MenuItem {
                 )
             ),
         )
+
+        fun menuItems(): List<MenuItem> {
+            val domain = window.location.host
+            val luxSubdomainSuffix = ".${SiteGlobals.LUX_DOMAIN}"
+
+            return when {
+                domain == SiteGlobals.LUX_DOMAIN -> luxMenuItems
+                domain == SiteGlobals.ZENMO_DOMAIN -> zenmoMenuItems
+                domain.endsWith(luxSubdomainSuffix) -> {
+                    val sub = domain.substringBefore(luxSubdomainSuffix)
+                    val model = SubdomainModel.allModels.find { it.title.equals(sub, ignoreCase = true) }
+                    when (model) {
+                        SubdomainModel.Drechtsteden -> drechtstedenMenuItems
+                        else -> emptyList()
+                    }
+                }
+
+                else -> emptyList()
+            }
+        }
     }
 }
 

@@ -14,10 +14,10 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.layouts.PageLayout
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxHeaderPaddingStyle
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxHeader
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderPaddingStyle
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.DrechtstedenHeader
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
@@ -42,7 +42,7 @@ fun DrechtstedenTwinLayout(
                     nlTitle = nlTwinPageHeaderTitle,
                 )
             } else {
-                DrechtstedenHeader()
+                LuxHeader()
             }
         },
         footer = {},

@@ -98,7 +98,7 @@ fun SideMenu(
                         .gap(1.5.cssRem),
                     horizontalAlignment = Alignment.Start
                 ) {
-                    MenuItem.zenmoMenuItems.forEach { item ->
+                    MenuItem.menuItems().forEach { item ->
                         when (item) {
                             is MenuItem.Simple -> {
                                 SideMenuNavLink(

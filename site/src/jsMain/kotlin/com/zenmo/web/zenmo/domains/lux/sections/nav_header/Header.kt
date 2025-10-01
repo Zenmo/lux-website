@@ -11,8 +11,11 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.NarrowScreenHeaderComponents
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.WideScreenHeaderComponents
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
+import com.zenmo.web.zenmo.pages.SiteGlobals
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
@@ -35,9 +38,7 @@ val HeaderInnerStyle = CssStyle {
 @OptIn(DelicateApi::class)
 @Composable
 fun LuxHeader() {
-    WideScreenHeaderComponents(
-        items = MenuItem.luxMenuItems
-    ) {
+    WideScreenHeaderComponents {
         Row(
             HeaderInnerStyle.toModifier()
                 .fillMaxWidth(),
@@ -47,10 +48,12 @@ fun LuxHeader() {
             Row(
                 verticalAlignment = Alignment.CenterVertically, modifier = Modifier.gap(1.cssRem)
             ) {
-                BookADemoButton()
+                if (window.location.host == SiteGlobals.LUX_DOMAIN) {
+                    BookADemoButton()
+                }
                 LanguageSwitchButton()
             }
         }
     }
-    NarrowScreenHeaderComponents(MenuItem.luxMenuItems)
+    NarrowScreenHeaderComponents()
 }
