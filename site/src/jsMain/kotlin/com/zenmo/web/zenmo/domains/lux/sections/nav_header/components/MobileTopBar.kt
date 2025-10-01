@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.nav_header
+package com.zenmo.web.zenmo.domains.lux.sections.nav_header.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -14,6 +14,7 @@ import com.varabyte.kobweb.silk.components.icons.CloseIcon
 import com.varabyte.kobweb.silk.components.icons.HamburgerIcon
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.SideMenuState
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.IconStyle

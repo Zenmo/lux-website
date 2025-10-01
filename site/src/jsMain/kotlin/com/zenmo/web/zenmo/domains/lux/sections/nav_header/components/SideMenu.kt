@@ -1,8 +1,9 @@
-package com.zenmo.web.zenmo.domains.lux.sections.nav_header
+package com.zenmo.web.zenmo.domains.lux.sections.nav_header.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import com.varabyte.kobweb.compose.css.BoxSizing
+import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.functions.blur
 import com.varabyte.kobweb.compose.css.functions.saturate
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -60,7 +61,6 @@ val MobileNavStyle = CssStyle {
 @Composable
 fun SideMenu(
     menuState: SideMenuState,
-    menuItems: List<MenuItem> = MenuItem.luxMenuItems,
     close: () -> Unit,
     onAnimationEnd: () -> Unit
 ) {
@@ -101,7 +101,7 @@ fun SideMenu(
                         .fillMaxWidth()
                         .toAttrs()
                 ) {
-                    menuItems.forEach { item ->
+                    MenuItem.menuItems().forEach { item ->
                         when (item) {
                             is MenuItem.Simple ->
                                 SideMenuItem(
@@ -170,7 +170,7 @@ private fun SideMenuItem(
             )
             MdiArrowForwardIos(
                 modifier = Modifier
-                    .fontSize(fontSize = com.varabyte.kobweb.compose.css.FontSize.XLarge)
+                    .fontSize(fontSize = FontSize.XLarge)
                     .color(color)
                     .padding(10.px)
             )

@@ -39,7 +39,7 @@ fun NavBar(
     Nav(
         attrs = modifier.toAttrs()
     ) {
-        MenuItem.zenmoMenuItems.forEach { item ->
+        MenuItem.menuItems().forEach { item ->
             when (item) {
                 is MenuItem.Simple -> {
                     NavBarLink(

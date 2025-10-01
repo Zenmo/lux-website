@@ -15,8 +15,8 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.layouts.PageLayout
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxHeaderPaddingStyle
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderPaddingStyle
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle

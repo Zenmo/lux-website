@@ -15,6 +15,8 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxMenuItem
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxMenuItemWithSubs
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -49,7 +51,7 @@ fun NavBar() {
         Ul(
             NavListStyle.toModifier().toAttrs()
         ) {
-            MenuItem.luxMenuItems.forEach { item ->
+            MenuItem.menuItems().forEach { item ->
                 when (item) {
                     is MenuItem.Simple -> {
                         LuxMenuItem(
