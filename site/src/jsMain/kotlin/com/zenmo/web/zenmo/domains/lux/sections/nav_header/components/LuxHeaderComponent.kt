@@ -18,6 +18,7 @@ import org.jetbrains.compose.web.dom.Header
 @Composable
 fun LuxHeaderComponent(
     modifier: Modifier = Modifier,
+    showsIndicator: Boolean = true,
     content: @Composable () -> Unit,
 ) {
     Header(
@@ -31,8 +32,11 @@ fun LuxHeaderComponent(
     ) {
         content()
 
-        ActiveMenuIndicator(
-            items = MenuItem.menuItems()
-        )
+        // this way we can use LuxHeaderComponent in other places without the indicator
+        if (MenuItem.menuItems().isNotEmpty() && showsIndicator) {
+            ActiveMenuIndicator(
+                items = MenuItem.menuItems()
+            )
+        }
     }
 }
