@@ -3,6 +3,7 @@ package com.zenmo.web.zenmo.domains.lux.sections.nav_header.components
 import MenuItemParentStyle
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.*
+import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.*
@@ -92,8 +93,9 @@ val SubMenuStyle = CssStyle {
                 style = LineStyle.Solid,
                 color = Colors.LightGrey
             )
-            .borderRadius(16.px)
+            .borderRadius(0.5.cssRem)
             .overflow(Overflow.Hidden)
+            .boxShadow(0.px, 0.px, 15.px, 1.px, rgba(0, 0, 0, 0.3f))
             .styleModifier {
                 property("display", "var(--dropdown-visibility, none)")
             }
@@ -103,7 +105,9 @@ val SubMenuStyle = CssStyle {
 val SubMenuItemHoverStyle = CssStyle {
     hover {
         Modifier
-            .fontWeight(FontWeight.Bold)
+            .background(SitePalette.light.overlay)
+            .color(SitePalette.light.primary)
+            .transition(Transition.of("background-color", duration = 200.ms))
     }
 }
 
