@@ -2,27 +2,22 @@ package com.zenmo.web.zenmo.domains.lux.components.layout
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
-import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.layouts.PageLayout
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
+import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuWidget
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderPaddingStyle
-import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderComponent
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
-import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.Header
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.cssRem
 
 
 val LayoutHeaderStyle = CssStyle {
@@ -64,35 +59,23 @@ fun LuxSubdomainPageLayout(
 private fun LayoutHeader(
     title: String,
 ) {
-    Header(
-        attrs = NavHeaderStyle.toModifier()
-            .boxShadow(spreadRadius = 0.px, color = Color.transparent)
-            .then(LuxHeaderPaddingStyle.toModifier())
-            .then(HeaderBottomDividerLineStyle.toModifier())
-            .toAttrs()
-    ) {
+    LuxHeaderComponent {
         Row(
-            HeaderInnerStyle.toModifier()
-                .fillMaxWidth().gap(1.cssRem),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Box(contentAlignment = Alignment.CenterStart) {
-                LuxLogo(asLink = true)
-            }
+            LuxLogo(asLink = true)
 
-            Box(modifier = Modifier.flex(1), contentAlignment = Alignment.Center) {
-                SubHeaderText(
-                    enText = title,
-                    nlText = title,
-                    modifier = Modifier
-                        .margin(0.cssRem)
-                )
-            }
+            SubHeaderText(
+                enText = title,
+                nlText = title,
+                modifier = Modifier
+                    .margin(0.cssRem)
+                    .displayIfAtLeast(Breakpoint.MD)
+            )
 
-            Box(modifier = Modifier.displayIfAtLeast(Breakpoint.MD), contentAlignment = Alignment.CenterEnd) {
-                LanguageSwitchButton()
-            }
+            NavBarActionsMenuWidget()
         }
     }
 }

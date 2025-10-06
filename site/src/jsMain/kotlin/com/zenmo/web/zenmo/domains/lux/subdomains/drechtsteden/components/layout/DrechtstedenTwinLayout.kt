@@ -4,27 +4,22 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
-import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.zenmo.web.zenmo.components.layouts.PageLayout
+import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuWidget
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxHeader
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderPaddingStyle
-import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderComponent
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.pages.SiteGlobals
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.Header
 
 @Composable
 fun DrechtstedenTwinLayout(
@@ -57,17 +52,11 @@ private fun TwinModelPageHeader(
     enTitle: String,
     nlTitle: String,
 ) {
-    Header(
-        attrs = NavHeaderStyle.toModifier()
-            .boxShadow(spreadRadius = 0.px, color = Color.transparent)
-            .then(LuxHeaderPaddingStyle.toModifier())
-            .then(HeaderBottomDividerLineStyle.toModifier())
-            .toAttrs()
-    ) {
+    LuxHeaderComponent(showsIndicator = false) {
         Row(
-            HeaderInnerStyle.toModifier()
-                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
         ) {
             LuxLogo(
                 asLink = true,
@@ -76,9 +65,11 @@ private fun TwinModelPageHeader(
             SubHeaderText(
                 enText = enTitle,
                 nlText = nlTitle,
-                modifier = Modifier.margin(0.px).textAlign(TextAlign.Center),
+                modifier = Modifier.margin(0.px)
+                    .textAlign(TextAlign.Center)
+                    .displayIfAtLeast(Breakpoint.MD),
             )
-            LanguageSwitchButton()
+            NavBarActionsMenuWidget()
         }
     }
 }

@@ -17,6 +17,8 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.layouts.PageLayout
@@ -24,21 +26,21 @@ import com.zenmo.web.zenmo.components.widgets.ImageContent
 import com.zenmo.web.zenmo.components.widgets.LangBlock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuWidget
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.HeaderInnerStyle
-import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderPaddingStyle
-import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderComponent
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.utils.PublicRes
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.dom.*
 
 @Composable
@@ -90,17 +92,11 @@ val HeaderLogoStyle = CssStyle {
 
 @Composable
 private fun GeniusHeader() {
-    Header(
-        attrs = NavHeaderStyle.toModifier()
-            .boxShadow(spreadRadius = 0.px, color = Color.transparent)
-            .then(LuxHeaderPaddingStyle.toModifier())
-            .then(HeaderBottomDividerLineStyle.toModifier())
-            .toAttrs()
-    ) {
+    LuxHeaderComponent(showsIndicator = false) {
         Row(
-            HeaderInnerStyle.toModifier()
-                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
         ) {
             Div {
                 Image(
@@ -110,9 +106,13 @@ private fun GeniusHeader() {
                 )
             }
 
-            Div {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.gap(1.cssRem)
+            ) {
                 Row(
-                    modifier = Modifier.gap(1.cssRem),
+                    modifier = Modifier.gap(1.cssRem)
+                        .displayIfAtLeast(Breakpoint.MD),
                 ) {
                     Image(
                         src = GeniusPartners.ZENMO.logoUrl,
@@ -125,8 +125,8 @@ private fun GeniusHeader() {
                         alt = "TU/e",
                         modifier = HeaderLogoStyle.toModifier()
                     )
-                    LanguageSwitchButton()
                 }
+                NavBarActionsMenuWidget()
             }
         }
     }

@@ -11,9 +11,9 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuWidget
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.NarrowScreenHeaderComponents
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.WideScreenHeaderComponents
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -51,7 +51,7 @@ fun LuxHeader() {
                 if (window.location.host == SiteGlobals.LUX_DOMAIN) {
                     BookADemoButton()
                 }
-                LanguageSwitchButton()
+                NavBarActionsMenuWidget()
             }
         }
     }
