@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.subdomains.genius
+package com.zenmo.web.zenmo.domains.lux.components
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.BoxSizing
