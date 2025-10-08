@@ -7,7 +7,7 @@ import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
 fun municipalitiesRouting(
     ctx: InitKobwebContext,
 ) {
-    val path = "/municipalities"
+    val path = "/business-parks"
     with(ctx.router) {
         register("$path/${DrechtstedenTwinModel.Alblasserdam.name}") {
             GemeenteAlblasserdamPage()
