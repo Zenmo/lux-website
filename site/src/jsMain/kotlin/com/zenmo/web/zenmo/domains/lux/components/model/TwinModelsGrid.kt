@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.cssRem
@@ -14,6 +15,12 @@ fun TwinModelsGrid(
     models: List<TwinModel>,
     path: String,
 ) {
+    if (models.isEmpty()) {
+        HeaderText(
+            enText = "No models available yet.",
+            nlText = "Nog geen modellen beschikbaar."
+        )
+    }
     SimpleGrid(
         numColumns = numColumns(base = 1, sm = 2, md = 2, lg = minOf(models.size, 3), xl = minOf(models.size, 3)),
         modifier = Modifier.Companion.gap(2.cssRem)
