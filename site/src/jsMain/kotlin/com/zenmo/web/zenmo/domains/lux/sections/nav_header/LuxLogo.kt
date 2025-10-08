@@ -55,7 +55,7 @@ val LuxLogoImageVariant = FitWidthImageVariant.extendedBy {
 
 @Composable
 fun LuxLogo(
-    asLink: Boolean = false,
+    asLink: Boolean = window.location.host != SiteGlobals.LUX_DOMAIN,
     domain: String = SiteGlobals.LUX_DOMAIN
 ) {
     val protocol = window.location.protocol
