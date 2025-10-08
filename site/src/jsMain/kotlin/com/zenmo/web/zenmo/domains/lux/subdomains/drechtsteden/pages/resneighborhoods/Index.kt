@@ -1,32 +1,28 @@
-package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities
+package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resneighborhoods
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
 import com.zenmo.web.zenmo.domains.lux.components.model.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
-import org.jetbrains.compose.web.css.cssRem
 
 @Composable
-fun MunicipalitiesPage() {
+fun ResNeighborhoodsPage() {
     DrechtstedenTwinLayout(
-        title = "Municipalities",
+        title = "Residential Neighborhoods",
     ) {
         SectionContainer(
-            modifier = Modifier.gap(2.cssRem),
             variant = LuxSectionContainerStyleVariant
         ) {
-            MunicipalitiesModels()
+            ResNeighborhoodModels()
         }
     }
 }
 
 @Composable
-fun MunicipalitiesModels() =
+fun ResNeighborhoodModels() =
     TwinModelsGrid(
-        models = DrechtstedenTwinModel.municipalModels,
+        models = DrechtstedenTwinModel.resNeighborhoodModels,
         path = "municipalities",
     )

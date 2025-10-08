@@ -145,6 +145,10 @@ sealed class DrechtstedenTwinModel(
         val resRegionModels = listOf(
             DrechtstedenRes
         )
+
+        val resNeighborhoodModels = listOf<DrechtstedenTwinModel>(
+
+        )
         val municipalModels = listOf(
             Alblasserdam,
             Hardinxveld,
