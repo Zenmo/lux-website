@@ -2,7 +2,7 @@ package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businesspa
 
 import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenBusinessPark
 import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
@@ -11,7 +11,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun DeGeerPage() {
-    val twinModel = DrechtstedenTwinModel.DeGeer
+    val twinModel = DrechtstedenBusinessPark.DeGeer
     DrechtstedenTwinLayout(
         title = twinModel.title,
         useTwinPageHeader = true,

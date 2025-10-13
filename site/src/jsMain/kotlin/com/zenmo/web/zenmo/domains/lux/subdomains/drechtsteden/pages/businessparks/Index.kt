@@ -12,7 +12,8 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenBusinessPark
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
 import com.zenmo.web.zenmo.domains.lux.components.model.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
@@ -57,13 +58,13 @@ fun BusinessParksPage() {
 @Composable
 fun BusinessParksModels() =
     TwinModelsGrid(
-        models = DrechtstedenTwinModel.businessParkModels,
+        models = DrechtstedenBusinessPark.models,
         path = "business-parks",
     )
 
 @Composable
 fun MunicipalitiesModels() =
     TwinModelsGrid(
-        models = DrechtstedenTwinModel.municipalModels,
+        models = DrechtstedenMunicipality.models,
         path = "business-parks",
     )
