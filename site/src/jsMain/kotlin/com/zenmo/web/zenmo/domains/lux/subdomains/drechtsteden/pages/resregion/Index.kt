@@ -14,7 +14,7 @@ import org.jetbrains.compose.web.css.cssRem
 @Composable
 fun ResRegionPage() {
     DrechtstedenTwinLayout(
-        title = "RES Region",
+        title = "Res Region",
     ) {
         SectionContainer(
             modifier = Modifier.gap(2.cssRem),

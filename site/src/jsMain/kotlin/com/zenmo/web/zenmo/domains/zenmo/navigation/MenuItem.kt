@@ -107,15 +107,15 @@ sealed class MenuItem {
             Simple(
                 path = "/res-region",
                 title = MenuLanguage(
-                    en = "RES Region",
-                    nl = "RES Regio",
+                    en = "Res Region",
+                    nl = "Res Regio",
                 )
             ),
             Simple(
-                path = "/municipalities",
+                path = "/res-neighborhoods",
                 title = MenuLanguage(
-                    en = "Municipalities",
-                    nl = "Gemeentes",
+                    en = "Res Neighborhoods",
+                    nl = "Woonwijken",
                 )
             ),
             Simple(
