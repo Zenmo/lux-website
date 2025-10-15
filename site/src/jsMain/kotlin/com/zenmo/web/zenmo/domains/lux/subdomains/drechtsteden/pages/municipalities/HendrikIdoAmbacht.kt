@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -12,7 +12,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun HendrikIdoAmbacht() {
-    val twinModel = DrechtstedenTwinModel.HendrikIdoAmbacht
+    val twinModel = DrechtstedenMunicipality.HendrikIdoAmbacht
     DrechtstedenTwinLayout(
         title = twinModel.title,
         useTwinPageHeader = true,

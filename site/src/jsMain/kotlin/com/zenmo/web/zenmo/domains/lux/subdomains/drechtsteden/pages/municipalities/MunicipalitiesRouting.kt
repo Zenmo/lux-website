@@ -1,7 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities
 
 import com.varabyte.kobweb.core.init.InitKobwebContext
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
 
 
 fun municipalitiesRouting(
@@ -9,18 +9,18 @@ fun municipalitiesRouting(
 ) {
     val path = "/business-parks"
     with(ctx.router) {
-        register("$path/${DrechtstedenTwinModel.Alblasserdam.name}") {
+        register("$path/${DrechtstedenMunicipality.Alblasserdam.name}") {
             GemeenteAlblasserdamPage()
         }
-        register("$path/${DrechtstedenTwinModel.Hardinxveld.name}") {
+        register("$path/${DrechtstedenMunicipality.Hardinxveld.name}") {
             HardinxveldPage()
         }
-        register("$path/${DrechtstedenTwinModel.SliedrechtMunicipality.name}") {
+        register("$path/${DrechtstedenMunicipality.SliedrechtMunicipality.name}") {
             GemeenteSliedrechtPage()
         }
-        register("$path/${DrechtstedenTwinModel.Dordrecht.name}") { Dordrecht() }
-        register("$path/${DrechtstedenTwinModel.Papendrecht.name}") { Papendrecht() }
-        register("$path/${DrechtstedenTwinModel.Zwijndrecht.name}") { Zwijndrecht() }
-        register("$path/${DrechtstedenTwinModel.HendrikIdoAmbacht.name}") { HendrikIdoAmbacht() }
+        register("$path/${DrechtstedenMunicipality.Dordrecht.name}") { Dordrecht() }
+        register("$path/${DrechtstedenMunicipality.Papendrecht.name}") { Papendrecht() }
+        register("$path/${DrechtstedenMunicipality.Zwijndrecht.name}") { Zwijndrecht() }
+        register("$path/${DrechtstedenMunicipality.HendrikIdoAmbacht.name}") { HendrikIdoAmbacht() }
     }
 }

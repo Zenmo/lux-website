@@ -1,7 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion
 
 import androidx.compose.runtime.Composable
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResRegion
 import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
@@ -9,7 +9,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.AukeNaudCon
 
 @Composable
 fun DrechtstedenPage() {
-    val twinModel = DrechtstedenTwinModel.DrechtstedenRes
+    val twinModel = DrechtstedenResRegion.DrechtstedenRes
     DrechtstedenTwinLayout(
         title = twinModel.title,
         useTwinPageHeader = true,

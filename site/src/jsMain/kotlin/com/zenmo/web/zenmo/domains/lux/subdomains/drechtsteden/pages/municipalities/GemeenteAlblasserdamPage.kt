@@ -2,7 +2,7 @@ package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipali
 
 import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
 import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
@@ -10,7 +10,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun GemeenteAlblasserdamPage() {
-    val twinModel = DrechtstedenTwinModel.Alblasserdam
+    val twinModel = DrechtstedenMunicipality.Alblasserdam
     DrechtstedenTwinLayout(
         title = twinModel.title,
         useTwinPageHeader = true,
