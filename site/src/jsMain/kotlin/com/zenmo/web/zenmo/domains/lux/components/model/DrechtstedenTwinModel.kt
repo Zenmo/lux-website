@@ -47,6 +47,35 @@ sealed class DrechtstedenTwinModel(
         "/lux/images/drechtsteden/municipalities/Gemeente_Sliedrecht_foto.png"
     )
 
+    data object Dordrecht : DrechtstedenTwinModel(
+        "dordrecht",
+        "Digital twin Dordrecht",
+        "drechtsteden/municipalities/dordrecht",
+        "/lux/images/drechtsteden/municipalities/dordrecht.png"
+    )
+
+    data object Papendrecht : DrechtstedenTwinModel(
+        "papendrecht",
+        "Digital twin Papendrecht",
+        "drechtsteden/municipalities/papendrecht",
+        "/lux/images/drechtsteden/municipalities/papendrecht.png"
+    )
+
+    data object Zwijndrecht : DrechtstedenTwinModel(
+        "zwijndrecht",
+        "Digital twin Zwijndrecht",
+        "drechtsteden/municipalities/zwijndrecht",
+        "/lux/images/drechtsteden/municipalities/zwijndrecht.png"
+    )
+
+    data object HendrikIdoAmbacht : DrechtstedenTwinModel(
+        "hendrikidoambacht",
+        "Digital twin Hendrik-Ido-Ambacht",
+        "drechtsteden/municipalities/hendrikidoambacht",
+        "/lux/images/drechtsteden/municipalities/hendrik_ido_ambacht.png"
+    )
+
+
     //  BUSINESS PARK MODELS
     data object AmbachtseZoom : DrechtstedenTwinModel(
         "ambachtsezoom",
@@ -128,7 +157,7 @@ sealed class DrechtstedenTwinModel(
     data object PapendrechtOosteind : DrechtstedenTwinModel(
         "papendrechtoosteind",
         "Digital twin Papendrecht Oosteind",
-        "drechtsteden/businessparks/papendrecht",
+        "drechtsteden/businessparks/papendrechtoosteind",
         "/lux/images/drechtsteden/business-parks/papendrecht_oosteind.png"
     )
 
@@ -139,6 +168,20 @@ sealed class DrechtstedenTwinModel(
         "/lux/images/drechtsteden/business-parks/FeaturedImageSliedrechtPagina.png"
     )
 
+    // RES NEIGHBORHOOD MODELS
+    data object OverTSpoor : DrechtstedenTwinModel(
+        "overtspoor",
+        "Digital twin Over 't Spoor",
+        "drechtsteden/resneighborhoods/overtspoor",
+        "/lux/images/drechtsteden/resneighborhoods/over_t_spoor.png"
+    )
+
+    data object Oostdonk : DrechtstedenTwinModel(
+        "oostdonk",
+        "Digital twin Oostdonk",
+        "drechtsteden/resneighborhoods/oostdonk",
+        "/lux/images/drechtsteden/resneighborhoods/oostdonk.png"
+    )
 
     companion object {
 
@@ -147,12 +190,17 @@ sealed class DrechtstedenTwinModel(
         )
 
         val resNeighborhoodModels = listOf<DrechtstedenTwinModel>(
-
+            OverTSpoor,
+            Oostdonk
         )
         val municipalModels = listOf(
             Alblasserdam,
             Hardinxveld,
-            SliedrechtMunicipality
+            SliedrechtMunicipality,
+            Dordrecht,
+            Papendrecht,
+            Zwijndrecht,
+            HendrikIdoAmbacht
         )
 
         val businessParkModels = listOf(

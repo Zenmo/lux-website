@@ -24,5 +24,5 @@ fun ResNeighborhoodsPage() {
 fun ResNeighborhoodModels() =
     TwinModelsGrid(
         models = DrechtstedenTwinModel.resNeighborhoodModels,
-        path = "municipalities",
+        path = "res-neighborhoods",
     )

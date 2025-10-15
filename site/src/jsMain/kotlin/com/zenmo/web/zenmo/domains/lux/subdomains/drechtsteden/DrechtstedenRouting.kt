@@ -12,6 +12,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businesspar
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.businessParksRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.municipalitiesRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resneighborhoods.ResNeighborhoodsPage
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resneighborhoods.resNeighborhoodsRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.DrechtstedenPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.ResRegionPage
 import kotlinx.browser.window
@@ -25,6 +26,7 @@ fun DrechtstedenRouting() {
         ctx.router.register("/res-neighborhoods") { ResNeighborhoodsPage() }
         ctx.router.register("/business-parks") { BusinessParksPage() }
         ctx.router.register("/res-region/${DrechtstedenTwinModel.DrechtstedenRes.name}") { DrechtstedenPage() }
+        resNeighborhoodsRouting(ctx)
         municipalitiesRouting(ctx)
         businessParksRouting(ctx)
     }

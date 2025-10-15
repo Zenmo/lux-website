@@ -18,5 +18,9 @@ fun municipalitiesRouting(
         register("$path/${DrechtstedenTwinModel.SliedrechtMunicipality.name}") {
             GemeenteSliedrechtPage()
         }
+        register("$path/${DrechtstedenTwinModel.Dordrecht.name}") { Dordrecht() }
+        register("$path/${DrechtstedenTwinModel.Papendrecht.name}") { Papendrecht() }
+        register("$path/${DrechtstedenTwinModel.Zwijndrecht.name}") { Zwijndrecht() }
+        register("$path/${DrechtstedenTwinModel.HendrikIdoAmbacht.name}") { HendrikIdoAmbacht() }
     }
 }
