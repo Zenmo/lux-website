@@ -1,9 +1,11 @@
 package com.zenmo.backend
 
+import com.zenmo.backend.anylogic.AnyLogicProxy
 import com.zenmo.backend.contact.ContactController
 import com.zenmo.backend.contact.MailService
 import com.zenmo.backend.js.JsServer
 import com.zenmo.backend.js.JsServerFilter
+import com.zenmo.backend.keycloak.KeycloakAuthClient
 import org.http4k.core.HttpHandler
 import org.http4k.core.then
 import org.http4k.filter.DebuggingFilters
@@ -32,7 +34,11 @@ fun startServer() {
         "/api/contact" bind org.http4k.core.Method.POST to ContactController(MailService.create(config))::handler,
     )
 
-    val anyLogicProxyRoutes = AnyLogicProxy(oAuthSessions::retrieveIdToken).routes()
+    val anyLogicProxyRoutes = AnyLogicProxy(
+        idTokenProvider = oAuthSessions::retrieveIdToken,
+        accessTokenProvider = oAuthSessions::retrieveToken,
+        keycloakAuthClient = KeycloakAuthClient()
+    ).routes()
 
     val app: HttpHandler = DebuggingFilters.PrintRequestAndResponse()
         .then(corsFilter)
