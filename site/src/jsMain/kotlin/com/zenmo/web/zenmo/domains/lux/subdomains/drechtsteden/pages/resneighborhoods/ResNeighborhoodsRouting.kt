@@ -11,5 +11,6 @@ fun resNeighborhoodsRouting(
     with(ctx.router) {
         register("$path/${DrechtstedenResNeighborhood.Oostdonk.name}") { Oostdonk() }
         register("$path/${DrechtstedenResNeighborhood.OverTSpoor.name}") { OverTSpoor() }
+        register("$path/${DrechtstedenResNeighborhood.Kerkbuurt.name}") { Kerkbuurt() }
     }
 }
