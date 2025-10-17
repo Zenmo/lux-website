@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -83,10 +85,11 @@ fun CardLink(
             )
         }
     },
+    metaContent: @Composable () -> Unit = { }
 ) {
     Link(
         path = url,
-        modifier = LinkNoStyle.toModifier(),
+        modifier = LinkNoStyle.toModifier().fillMaxSize(),
         updateHistoryMode = UpdateHistoryMode.REPLACE,
         openExternalLinksStrategy = OpenLinkStrategy.IN_PLACE,
     ) {
@@ -94,12 +97,17 @@ fun CardLink(
             CardLinkStyle.toModifier()
                 .then(modifier),
         ) {
-            Img(
-                src = imageUrl,
-                alt = imageAltText,
-                attrs = CardLinkImageStyle.toModifier().toAttrs()
-            )
-
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.TopEnd,
+            ) {
+                Img(
+                    src = imageUrl,
+                    alt = imageAltText,
+                    attrs = CardLinkImageStyle.toModifier().toAttrs()
+                )
+                metaContent()
+            }
             Column(
                 Modifier.padding(1.cssRem).gap(1.cssRem).fillMaxSize(),
                 verticalArrangement = Arrangement.Bottom,

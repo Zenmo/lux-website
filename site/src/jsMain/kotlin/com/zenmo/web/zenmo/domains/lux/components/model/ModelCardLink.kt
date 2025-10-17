@@ -6,23 +6,28 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.ApplicationField
 import com.zenmo.web.zenmo.theme.SitePalette
-import org.jetbrains.compose.web.css.Color
-import org.jetbrains.compose.web.css.cssRem
+import com.zenmo.web.zenmo.utils.PublicRes
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.css.keywords.auto
-import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Span
 
 @Composable
 fun ModelCardLink(
     model: TwinModel,
     url: String,
-    modifier: Modifier = Modifier.Companion.fillMaxHeight(),
+    modifier: Modifier = Modifier.fillMaxHeight(),
 ) {
     CardLink(
         url = url,
@@ -35,10 +40,10 @@ fun ModelCardLink(
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.Companion.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Span(
-                    Modifier.Companion.color(SitePalette.Companion.light.primary)
+                    Modifier.color(SitePalette.light.primary)
                         .toAttrs()
                 ) {
                     LangText(
@@ -49,8 +54,41 @@ fun ModelCardLink(
 
                 if (model.isPrivate) LockIcon()
             }
+        },
+        metaContent = {
+            if (model is SubdomainModel) {
+                ApplicationFieldLabel(model.applicationField)
+            }
         }
     )
+}
+
+
+val ApplicationFieldLabelStyle = CssStyle.base {
+    Modifier
+        .background(Colors.White)
+        .padding(leftRight = 0.5.cssRem, topBottom = 0.25.cssRem)
+        .borderRadius(3.cssRem)
+        .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
+        .boxShadow(0.px, 0.px, 5.px, 0.px, rgba(0, 0, 0, 0.3f))
+}
+
+@Composable
+private fun ApplicationFieldLabel(field: ApplicationField) {
+    Div(
+        Modifier.padding(1.cssRem)
+            .toAttrs()
+    ) {
+        Span(
+            ApplicationFieldLabelStyle.toModifier()
+                .toAttrs()
+        ) {
+            LangText(
+                nl = field.nlFieldName,
+                en = field.enFieldName,
+            )
+        }
+    }
 }
 
 @Composable
