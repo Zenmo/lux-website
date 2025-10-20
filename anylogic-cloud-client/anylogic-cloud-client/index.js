@@ -78,7 +78,7 @@ class FullScreenUtils {
     }
 }
 
-class Inputs  {
+class Inputs {
     constructor(modelVersion, experiment) {
         this.modelVersion = modelVersion;
         this.outputs = modelVersion.experimentTemplate.outputs;
@@ -116,7 +116,7 @@ class Inputs  {
         } else if (input.type !== "FIXED_RANGE_INTEGER" && input.type !== "FIXED_RANGE_DOUBLE") {
             throw new Error(`Input parameter "${name}" is not numeric, so range input is not available for it`);
         }
-        input.value =`{"min":${min},"max":${max},"step":${step}}`;
+        input.value = `{"min":${min},"max":${max},"step":${step}}`;
     }
 
     _findInput(name) {
@@ -210,7 +210,7 @@ class MultiRunOutputs {
 
         this.outputColumns = resultData
             .filter(d => d.outputs.length > 0)
-            .map(d => ({ name: d.outputs[0].name, value: JSON.parse(d.value) }));
+            .map(d => ({name: d.outputs[0].name, value: JSON.parse(d.value)}));
 
         this.outputNames = this.outputColumns.map(e => e.name);
 
@@ -312,7 +312,7 @@ class Animation {
     setValue(pathToField, value) {
         if (this.version.greaterOrEquals(this.cloudClient.VERSION_SUPPORTING_EXTENDED_ANIMATION_API)) {
             let url = `${this.nodeUrl}/set-value?pathtofield=${pathToField}`;
-            return this.cloudClient._apiRequest(url, "POST", { data: Utils._convertToString(value) })
+            return this.cloudClient._apiRequest(url, "POST", {data: Utils._convertToString(value)})
                 .then(() => this);
         } else {
             throw new Error(this._versionDoesNotSupportMessage("Set value"));
@@ -728,7 +728,7 @@ class CloudClient {
         return this._apiRequest(this.OPEN_API_URL + "/versions/" + inputs.modelVersion.id + "/runs/animation", "POST", requestData).then(info => {
             const bundleUrl = `${info.bundleUrl}/standalone/`;
             const host = this.HOST_URL;
-            const responseInfo = { ...info, bundleUrl, host };
+            const responseInfo = {...info, bundleUrl, host};
             this._setBaseTag(bundleUrl);
 
             return this._loadAnimation(responseInfo, divId).then(() => {
@@ -763,11 +763,11 @@ class CloudClient {
         return new ModelRun(this, inputs, inputs.modelVersion, type);
     }
 
-    _formatGETParams( params ){
+    _formatGETParams(params) {
         return "?" + Object
             .keys(params)
-            .map(function(key){
-                return key+"="+encodeURIComponent(params[key])
+            .map(function (key) {
+                return key + "=" + encodeURIComponent(params[key])
             })
             .join("&")
     }
@@ -775,6 +775,7 @@ class CloudClient {
     _apiRequest(url, type, params, noAuth) {
         return new Promise((resolve, reject) => {
             let xhttp = new XMLHttpRequest();
+            xhttp.withCredentials = true;
             if (!type) type = "GET";
             if (!params) params = {};
             xhttp.open(type, url, true);
@@ -817,7 +818,7 @@ class CloudClient {
     _loadStyle(src) {
         return new Promise((resolve, reject) => {
             const linkElement = document.createElement("link");
-            linkElement.rel  = "stylesheet";
+            linkElement.rel = "stylesheet";
             linkElement.href = src;
             linkElement.onload = () => resolve();
             linkElement.onerror = () => reject(src);
@@ -867,9 +868,13 @@ class ALVersion {
     compare(other) {
         let res;
         res = this.major - other.major;
-        if(res !== 0) { return res; }
+        if (res !== 0) {
+            return res;
+        }
         res = this.minor - other.minor;
-        if(res !== 0) { return res; }
+        if (res !== 0) {
+            return res;
+        }
         res = this.extra - other.extra;
         return res;
     }
@@ -920,7 +925,7 @@ class Hash {
     _state = new Int32Array(8); // hash state
     _temp = new Int32Array(64); // temporary state
     _buffer = new Uint8Array(128); // buffer for data to hash
-    _bufferLength  = 0; // number of bytes in buffer
+    _bufferLength = 0; // number of bytes in buffer
     _bytesHashed = 0; // number of total bytes hashed
 
     finished = false; // indicates whether the hash was finalized
@@ -1008,12 +1013,12 @@ class Hash {
             }
             this._buffer[padLength - 8] = (bitLenHi >>> 24) & 0xff;
             this._buffer[padLength - 7] = (bitLenHi >>> 16) & 0xff;
-            this._buffer[padLength - 6] = (bitLenHi >>>  8) & 0xff;
-            this._buffer[padLength - 5] = (bitLenHi >>>  0) & 0xff;
+            this._buffer[padLength - 6] = (bitLenHi >>> 8) & 0xff;
+            this._buffer[padLength - 5] = (bitLenHi >>> 0) & 0xff;
             this._buffer[padLength - 4] = (bitLenLo >>> 24) & 0xff;
             this._buffer[padLength - 3] = (bitLenLo >>> 16) & 0xff;
-            this._buffer[padLength - 2] = (bitLenLo >>>  8) & 0xff;
-            this._buffer[padLength - 1] = (bitLenLo >>>  0) & 0xff;
+            this._buffer[padLength - 2] = (bitLenLo >>> 8) & 0xff;
+            this._buffer[padLength - 1] = (bitLenLo >>> 0) & 0xff;
 
             this._hashBlocks(this._temp, this._state, this._buffer, 0, padLength);
 
@@ -1023,8 +1028,8 @@ class Hash {
         for (let i = 0; i < 8; i++) {
             out[i * 4 + 0] = (this._state[i] >>> 24) & 0xff;
             out[i * 4 + 1] = (this._state[i] >>> 16) & 0xff;
-            out[i * 4 + 2] = (this._state[i] >>>  8) & 0xff;
-            out[i * 4 + 3] = (this._state[i] >>>  0) & 0xff;
+            out[i * 4 + 2] = (this._state[i] >>> 8) & 0xff;
+            out[i * 4 + 3] = (this._state[i] >>> 0) & 0xff;
         }
 
         return this;
@@ -1061,7 +1066,7 @@ class Hash {
             for (i = 0; i < 16; i++) {
                 j = pos + i * 4;
                 w[i] = (((p[j] & 0xff) << 24) | ((p[j + 1] & 0xff) << 16) |
-                    ((p[j + 2] & 0xff) <<  8) | (p[j + 3] & 0xff));
+                    ((p[j + 2] & 0xff) << 8) | (p[j + 3] & 0xff));
             }
 
             for (i = 16; i < 64; i++) {
@@ -1108,4 +1113,4 @@ class Hash {
     }
 }
 
-export { CloudClient }
+export {CloudClient}
