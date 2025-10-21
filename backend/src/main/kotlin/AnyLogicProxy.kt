@@ -3,9 +3,9 @@ package com.zenmo.backend
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import org.http4k.client.JavaHttpClient
-import org.http4k.core.HttpHandler
 import org.http4k.core.Method
 import org.http4k.core.Request
+import org.http4k.core.Response
 import org.http4k.core.Uri
 import org.http4k.format.Jackson
 import org.http4k.routing.RoutingHttpHandler
@@ -14,49 +14,61 @@ import org.http4k.routing.path
 import org.http4k.security.openid.IdToken
 
 
-fun AnyLogicProxy(idTokenProvider: (Request) -> IdToken?): RoutingHttpHandler {
-    val httpClient = JavaHttpClient()
-    val anylogicUpstream = Uri.of("https://anylogic.zenmo.com")
+class AnyLogicProxy(
+    private val idTokenProvider: (Request) -> IdToken?
+) {
+    private val httpClient = JavaHttpClient()
+    private val anylogicUpstream = Uri.of("https://anylogic.zenmo.com")
+    private val animationStartPathRegex = Regex("api/open/8\\.5\\.0/versions/[^/]+/runs/animation")
 
-    fun injectTokenIfPresent(body: String, idToken: IdToken?): String? {
-        if (idToken == null || body.isBlank()) return null
+    fun routes(): RoutingHttpHandler {
+        return "/anylogic-proxy/{path:.*}" bind ::proxyHandler
+    }
+
+    private fun proxyHandler(request: Request): Response {
+        val path = request.path("path") ?: ""
+        val targetUri = anylogicUpstream.path("/$path").query(request.uri.query)
+
+        val forwardReq = when {
+            request.method == Method.POST && path.matches(animationStartPathRegex) -> {
+                val bodyWithToken = injectTokenAsInputParameter(request.bodyString(), idTokenProvider(request))
+                request.uri(targetUri).body(bodyWithToken)
+            }
+
+            else -> request.uri(targetUri) // passthrough
+        }
+
+        return httpClient(forwardReq)
+    }
+
+    /**
+     * Injects the user's ID token into the AnyLogic request body if needed.
+     *
+     * - Parses the JSON,
+     * - finds the "inputs" array,
+     * - and updates the value of item named "p_userIdToken" with the provided ID token.
+     * - If no token or matching input exists, the body is returned unchanged.
+     *
+     * In short — it makes sure AnyLogic knows who’s running the model without breaking anything else.
+     */
+    private fun injectTokenAsInputParameter(body: String, idToken: IdToken?): String {
+        if (idToken == null || body.isBlank()) {
+            return body
+        }
 
         val root = Jackson.parse(body) as ObjectNode
         val inputs = root.get("inputs") as? ArrayNode
+            ?: throw IllegalStateException("AnyLogic request body missing 'inputs' array")
 
         var tokenInjected = false
-        inputs?.forEach { node ->
+
+        inputs.forEach { node ->
             if (node is ObjectNode && node.get("name")?.asText() == "p_userIdToken") {
                 node.put("value", idToken.toString())
                 tokenInjected = true
             }
         }
 
-        return if (tokenInjected) Jackson.asFormatString(root) else null
+        return if (tokenInjected) Jackson.asFormatString(root) else body
     }
-
-    val proxyHandler: HttpHandler = { req ->
-        val path = req.path("path") ?: ""
-        val targetUri = anylogicUpstream.path("/$path").query(req.uri.query)
-
-        val forwardReq = when {
-            req.method == Method.POST &&
-                    path.matches(Regex("api/open/8\\.5\\.0/versions/[^/]+/runs/animation")) -> {
-                val bodyWithToken = injectTokenIfPresent(req.bodyString(), idTokenProvider(req))
-                if (bodyWithToken != null) {
-                    req.uri(targetUri)
-                        .header("Content-Type", "application/json")
-                        .body(bodyWithToken)
-                } else {
-                    req.uri(targetUri)
-                }
-            }
-
-            else -> req.uri(targetUri) // passthrough
-        }
-
-        httpClient(forwardReq)
-    }
-
-    return "/anylogic-proxy/{path:.*}" bind proxyHandler
 }
