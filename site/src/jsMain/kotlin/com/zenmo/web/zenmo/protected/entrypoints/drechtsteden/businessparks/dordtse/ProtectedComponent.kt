@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.protected.entrypoints.drechtsteden.municipalities.dordtse
+package com.zenmo.web.zenmo.protected.entrypoints.drechtsteden.businessparks.dordtse
 
 import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
