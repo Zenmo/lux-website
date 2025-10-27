@@ -118,6 +118,14 @@ sealed class SubdomainModel(
         applicationField = ApplicationField.LUX_RESIDENTIAL_AREA
     )
 
+    data object Borchwerf : SubdomainModel(
+        "borchwerf",
+        "/lux/images/models/borchwerf.png",
+        "borchwerf",
+        isPrivate = true,
+        applicationField = ApplicationField.LUX_RESIDENTIAL_AREA
+    )
+
     companion object {
         val allModels = listOf(
             Drechtsteden,
@@ -134,6 +142,7 @@ sealed class SubdomainModel(
             Cognizant,
             PreZero,
             Amersfoort,
+            Borchwerf,
         )
         val publicSubdomains = allModels.filter { !it.isPrivate }
         val privateSubdomains = allModels.filter { it.isPrivate }
