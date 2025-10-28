@@ -52,7 +52,7 @@ fun startServer() {
             )
         )
 
-    val port = 9000
+    val port = config.port
     val server = app.asServer(Undertow(port)).start()
     println("Listening on port $port")
 }
