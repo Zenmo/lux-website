@@ -60,6 +60,6 @@ external interface Inputs {
 }
 
 external interface Animation {
-
+    fun stop()
 }
 
