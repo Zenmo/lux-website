@@ -1,7 +1,7 @@
 const configPerBranch = {
     production: {
-        BACKEND_DOMAIN: "site-backend.zenmo.com",
-        BACKEND_URL: "https://site-backend.zenmo.com",
+        BACKEND_DOMAIN: "site-backend.lux.energy",
+        BACKEND_URL: "https://site-backend.lux.energy",
         CORS_ORIGIN_PATTERN: "https:\\/\\/((.*\\.)?lux\\.energy|(.*\\.)?zenmo\\.com)",
         ENVIRONMENT: "production",
         LUX_DOMAIN: "lux.energy",
@@ -12,8 +12,8 @@ const configPerBranch = {
         ZENMO_DOMAIN: "nieuw.zenmo.com",
     },
     main: {
-        BACKEND_DOMAIN: "site-backend.test.zenmo.com",
-        BACKEND_URL: "https://site-backend.test.zenmo.com",
+        BACKEND_DOMAIN: "site-backend.test.lux.energy",
+        BACKEND_URL: "https://site-backend.test.lux.energy",
         ENVIRONMENT: "test",
         CORS_ORIGIN_PATTERN: "https:\\/\\/((.*\\.)?lux\\.energy|(.*\\.)?zenmo\\.com)",
         LUX_DOMAIN: "test.lux.energy",
