@@ -58,6 +58,12 @@ enum class AnyLogicModelStatus {
 
 /**
  * Embed a simulation from AnyLogic Cloud
+ *
+ * @param modelId The UUID of the AnyLogic model to embed
+ * @param apiKey The API key for AnyLogic Cloud access
+ * @param cloudUrl The AnyLogic Cloud proxy endpoint
+ * @param inputs Custom inputs to pass to the model simulation. These will override
+ *               the default inputs from the model configuration.
  */
 @Composable
 fun AnyLogicEmbed(
@@ -65,12 +71,13 @@ fun AnyLogicEmbed(
     modelId: Uuid,
     apiKey: Uuid = anyLogicPublicApiKey,
     cloudUrl: String = "${AppGlobals.getValue("BACKEND_URL")}/anylogic-proxy",
+    inputs: Map<String, Any> = emptyMap()
 ) {
     val containerId = remember { "anylogic-embed-${randomString(4u)}" }
     var status by remember { mutableStateOf(AnyLogicModelStatus.IDLE) }
     val scope = rememberCoroutineScope()
 
-    DisposableEffect(modelId) {
+    DisposableEffect(modelId, inputs) {
         var animation: Animation? = null
 
         val cleanupHandlers = registerPageUnloadHandlers {
@@ -83,11 +90,16 @@ fun AnyLogicEmbed(
                 val client = CloudClient.create(apiKey.toHexDashString(), cloudUrl)
                 val model = client.getModelById(modelId.toHexDashString()).await()
                 val modelVersion = client.getLatestModelVersion(model).await()
-                val inputs = client.createDefaultInputs(modelVersion)
+                val inputsObj = client.createDefaultInputs(modelVersion)
+
+                inputs.forEach { (key, value) ->
+                    inputsObj.setInput(key, value.asDynamic())
+                }
+
                 // need to mark status as running to render model before starting animation, because
                 // startAnimation(...).await() suspends for as long as the animation runs.
                 status = AnyLogicModelStatus.RUNNING
-                animation = client.startAnimation(inputs, containerId).await()
+                animation = client.startAnimation(inputsObj, containerId).await()
             } catch (e: Exception) {
                 console.error("Failed to load AnyLogic model", e)
                 status = AnyLogicModelStatus.FAILED
