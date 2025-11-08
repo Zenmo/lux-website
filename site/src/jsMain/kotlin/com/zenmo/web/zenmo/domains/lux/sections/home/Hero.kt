@@ -33,7 +33,6 @@ import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Video
-import org.w3c.dom.HTMLVideoElement
 
 
 private const val CLIP_PATH_ID = "heroSVGClipPath"
@@ -152,7 +151,7 @@ fun Hero() {
                                 ref {
                                     // muted doesn't work when set via attr()
                                     it.muted = true
-                                    onDispose {  }
+                                    onDispose { }
                                 }
                                 // todo replace this with a LUX video
                                 attr("src", "/lux/videos/hero_vid.mp4")

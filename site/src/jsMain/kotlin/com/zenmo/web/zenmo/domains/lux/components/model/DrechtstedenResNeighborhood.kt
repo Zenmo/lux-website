@@ -21,7 +21,18 @@ sealed class DrechtstedenResNeighborhood(
         "/lux/images/drechtsteden/resneighborhoods/oostdonk.png"
     )
 
+    data object Kerkbuurt : DrechtstedenTwinModel(
+        "kerkbuurt",
+        "Digital twin Kerkbuurt",
+        "drechtsteden/resneighborhoods/kerkbuurt",
+        "/lux/images/drechtsteden/resneighborhoods/kerkbuurt.png"
+    )
+
     companion object {
-        val models = listOf(OverTSpoor, Oostdonk)
+        val models = listOf(
+            OverTSpoor,
+            Oostdonk,
+            Kerkbuurt
+        )
     }
 }
