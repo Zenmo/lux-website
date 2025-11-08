@@ -1,6 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.genius
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -136,6 +137,7 @@ private fun IntroContent() {
                     H1(
                         TextStyle.toModifier(HeaderTextStyle)
                             .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
+                            .textTransform(TextTransform.None)
                             .toAttrs()
                     ) {
                         HeaderText(
@@ -151,6 +153,7 @@ private fun IntroContent() {
                     H1(
                         TextStyle.toModifier(HeaderTextStyle)
                             .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
+                            .textTransform(TextTransform.None)
                             .toAttrs()
                     ) {
                         HeaderText(
