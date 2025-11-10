@@ -12,6 +12,9 @@ dependencies {
     // to decode and validate Keycloak access tokens with user info.
     implementation("com.nimbusds:nimbus-jose-jwt:9.39.2")
 
+    implementation("org.keycloak:keycloak-authz-client:26.0.7")
+    implementation(fileTree("libs") { include("*.jar") })
+
     implementation("org.graalvm.polyglot:js:24.2.1")
     implementation("org.graalvm.polyglot:polyglot:24.2.1")
 

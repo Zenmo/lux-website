@@ -9,6 +9,7 @@ data class Config(
     val baseUrl: String = getenv("BASE_URL") ?: "http://localhost:$port",
     val clientId: String = getEnvRequired("CLIENT_ID"),
     val clientSecret: String = getEnvRequired("CLIENT_SECRET"),
+    val anylogicApiKey: String = getEnvRequired("ANYLOGIC_API_KEY"),
 
     val smtpConfig: SmtpConfig = SmtpConfig.create(),
     val contactMailRecipients: List<String> = getEnvRequired("CONTACT_MAIL_RECIPIENTS")
