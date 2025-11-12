@@ -4,7 +4,9 @@ import com.zenmo.backend.contact.ContactController
 import com.zenmo.backend.contact.MailService
 import com.zenmo.backend.js.JsServer
 import com.zenmo.backend.js.JsServerFilter
+import org.http4k.core.Filter
 import org.http4k.core.HttpHandler
+import org.http4k.core.Request
 import org.http4k.core.then
 import org.http4k.filter.DebuggingFilters
 import org.http4k.filter.ServerFilters
@@ -34,7 +36,7 @@ fun startServer() {
 
     val anyLogicProxyRoutes = AnyLogicProxy(oAuthSessions::retrieveIdToken).routes()
 
-    val app: HttpHandler = DebuggingFilters.PrintRequestAndResponse()
+    val app: HttpHandler = printShortAccessLog
         .then(corsFilter)
         // Catch errors must come after CORS Filter
         // so that the error reaches the client
@@ -57,3 +59,16 @@ fun startServer() {
     println("Listening on port $port")
 }
 
+/**
+ * Logs a short line for every request like "200 GET /main.mjs"
+ */
+val printShortAccessLog: Filter = Filter { next -> { request: Request ->
+        val response = next(request)
+        val statusCode = response.status.code
+        val method = request.method.name
+        val path = request.uri.path
+
+        println("$statusCode $method $path")
+        response
+    }
+}
