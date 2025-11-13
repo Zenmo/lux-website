@@ -57,20 +57,29 @@ fun <T> RadioRow(
     ) {
         options.forEach { (optionValue, displayName) ->
             val isSelected = optionValue == value
-            Div(
-                SelectableItemStyle.toModifier()
-                    .thenIf(
-                        isSelected,
-                        ActiveSelectableItemStyle.toModifier()
-                    )
-                    .onClick {
-                        onChange(optionValue)
-                    }
-                    .padding(0.25.cssRem, 0.75.cssRem)
-                    .toAttrs()
-            ) {
-                content(optionValue, displayName)
-            }
+            RadioItem(
+                onClick = { onChange(optionValue) },
+                isSelected = isSelected,
+                content = { content(optionValue, displayName) }
+            )
         }
     }
+}
+
+@Composable
+fun RadioItem(
+    onClick: () -> Unit,
+    isSelected: Boolean,
+    content: @Composable () -> Unit
+) {
+    Div(
+        SelectableItemStyle.toModifier()
+            .thenIf(
+                isSelected,
+                ActiveSelectableItemStyle.toModifier()
+            )
+            .onClick { onClick() }
+            .padding(0.25.cssRem, 0.75.cssRem)
+            .toAttrs()
+    ) { content() }
 }
