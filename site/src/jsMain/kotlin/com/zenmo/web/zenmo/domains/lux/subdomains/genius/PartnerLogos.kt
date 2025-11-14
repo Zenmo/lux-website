@@ -213,6 +213,7 @@ enum class GeniusPartners(
     CUBE(
         "CUBE",
         "/lux/logos/genius/cube.jpg",
+        "https://cubecharging.com/"
     ),
     ENERZIEN(
         "Enerzien",
