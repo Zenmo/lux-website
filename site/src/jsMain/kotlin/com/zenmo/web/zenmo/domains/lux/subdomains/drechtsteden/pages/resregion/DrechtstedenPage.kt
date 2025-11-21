@@ -19,7 +19,7 @@ fun DrechtstedenPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            imageUrl = "/lux/images/drechtsteden/res-region/drechtsteden_2.png",
+            imageUrl = twinModel.image,
             enDescriptionParagraph = """
                                 Below is a mock-up of the digital twin for the sustainability of the Drechtsteden. 
                                 This area is working on a smart energy system. The digital twin will assist in 

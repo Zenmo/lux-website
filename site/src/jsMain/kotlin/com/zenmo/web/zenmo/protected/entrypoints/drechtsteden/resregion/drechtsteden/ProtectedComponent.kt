@@ -12,7 +12,7 @@ val accessPolicy = AccessPolicy.RoleBased("Drechtsteden")
 @Composable
 fun ProtectedComponent() {
     AnyLogicEmbed(
-        modelId = Uuid.parse("7a0d7106-d508-49f0-b7c8-be2d1dcffe83"),
+        modelId = Uuid.parse("fc879bf3-c6ae-41f5-90f6-af2726e03da7"),
         apiKey = Uuid.parse("633268fe-104e-4dfd-a91b-9257c781ae69"),
     )
 }
