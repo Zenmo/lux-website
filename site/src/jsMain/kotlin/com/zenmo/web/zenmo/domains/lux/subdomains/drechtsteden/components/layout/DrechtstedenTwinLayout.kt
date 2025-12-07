@@ -52,14 +52,13 @@ private fun TwinModelPageHeader(
     enTitle: String,
     nlTitle: String,
 ) {
-    LuxHeaderComponent(showsIndicator = false) {
+    LuxHeaderComponent {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
             LuxLogo(
-                asLink = true,
                 domain = "${SubdomainModel.Drechtsteden.title}.${SiteGlobals.LUX_DOMAIN}"
             )
             SubHeaderText(
