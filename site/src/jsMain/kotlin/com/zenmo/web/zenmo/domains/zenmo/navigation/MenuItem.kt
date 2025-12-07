@@ -10,21 +10,34 @@ import com.zenmo.web.zenmo.core.services.localization.LocalizedText
  * */
 sealed class MenuItem {
     data class Simple(
-        val path: String = "",
         val title: LocalizedText,
+        val path: String = title.en.asNavLinkPath(),
         val descriptionParagraph: LocalizedText? = null
-    ) : MenuItem() {
-        val getPath: String
-            get() = path.ifEmpty { title.en.asNavLinkPath() }
-    }
+    ) : MenuItem()
 
     /**
      * Represents a menu item with sub-items.
-     * The [title] is the main title of the menu item,
-     * and [subItems] is a list of menu items.
+     * [title] is the main title of the menu item,
+     * [subItems] is a list of menu items.
      * */
     data class WithSubs(val title: LocalizedText, val subItems: List<Simple>) : MenuItem()
 
+}
+
+
+fun MenuItem.WithSubs.withGeneratedPaths(): MenuItem.WithSubs {
+
+    val children = subItems.map { child ->
+        if (child.path == child.title.en.asNavLinkPath()) {
+            // child path is default, generate sub-menu path with parent title as base
+            child.copy(path = child.title.en.asNavLinkPath(title.en))
+        } else {
+            // explicit path, keep as is
+            child
+        }
+    }
+
+    return copy(subItems = children)
 }
 
 

@@ -30,7 +30,7 @@ object ZenmoMenu {
                     MenuItem.Simple(title = LocalizedText(en = "Jobs", nl = "Banen")),
                     MenuItem.Simple(title = LocalizedText(en = "History", nl = "Geschiedenis")),
                 )
-            )
+            ).withGeneratedPaths()
         )
         add(
             MenuItem.Simple(

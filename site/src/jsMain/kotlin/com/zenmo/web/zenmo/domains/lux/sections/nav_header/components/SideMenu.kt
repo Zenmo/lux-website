@@ -31,7 +31,6 @@ import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuFactory
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
-import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
@@ -108,10 +107,10 @@ fun SideMenu(
                         when (item) {
                             is MenuItem.Simple ->
                                 SideMenuItem(
-                                    href = item.getPath,
+                                    href = item.path,
                                     enTitle = item.title.en,
                                     nlTitle = item.title.nl,
-                                    isActive = isPathActive(href = item.getPath),
+                                    isActive = isPathActive(href = item.path),
                                 )
 
                             is MenuItem.WithSubs -> {
@@ -129,10 +128,10 @@ fun SideMenu(
                                     ) {
                                         item.subItems.forEach { subItem ->
                                             SideMenuItem(
-                                                href = subItem.title.en.asNavLinkPath(item.title.en),
+                                                href = subItem.path,
                                                 enTitle = subItem.title.en,
                                                 nlTitle = subItem.title.nl,
-                                                isActive = isPathActive(href = subItem.title.en.asNavLinkPath(item.title.en)),
+                                                isActive = isPathActive(href = subItem.path),
                                             )
                                         }
                                     }

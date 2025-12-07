@@ -2,55 +2,51 @@ package com.zenmo.web.zenmo.domains.lux.sections.nav_header.components
 
 import MenuItemParentStyle
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.*
-import com.varabyte.kobweb.compose.css.Transition
+import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.FontSize
+import com.varabyte.kobweb.compose.css.ListStyleType
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.*
-import com.varabyte.kobweb.compose.ui.graphics.Colors
+import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
+import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.mdi.MdiExpandMore
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkKind
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
-import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.CssStyleVariant
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.animation.toAnimation
-import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuLanguage
-import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
+import com.zenmo.web.zenmo.domains.lux.styles.*
+import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.AnimatedIconStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.styles.IconStyle
+import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Li
-
-val MenuLinkStyle = CssStyle {
-    base {
-        Modifier
-            .fillMaxHeight()
-            .display(DisplayStyle.Flex)
-            .padding(10.px)
-            .textDecorationLine(TextDecorationLine.None)
-    }
-}
-
-val ActiveLinkStyleVariant = LinkStyle.addVariant {
-    base {
-        Modifier
-            .color(SitePalette.light.primary)
-            .fontWeight(FontWeight.Bold)
-    }
-}
+import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Ul
 
 @Composable
 fun LuxMenuItem(
     href: String,
-    enTitle: String,
-    nlTitle: String,
+    menuTitle: LocalizedText,
+    subText: LocalizedText? = null,
+    showSubText: Boolean = subText != null,
     isActive: Boolean = false,
     activeLinkVariant: CssStyleVariant<LinkKind>? = ActiveLinkStyleVariant,
     linkModifier: Modifier = Modifier,
@@ -58,10 +54,11 @@ fun LuxMenuItem(
 ) {
     Li(
         Modifier
-            .id(enTitle.lowercase())
+            .id(menuTitle.en.lowercase())
             .listStyle(ListStyleType.None)
             .position(Position.Relative)
             .then(modifier)
+            .fontSize(FontSize.Medium)
             .toAttrs(),
     ) {
         Link(
@@ -69,56 +66,34 @@ fun LuxMenuItem(
             modifier = MenuLinkStyle.toModifier().then(linkModifier),
             variant = if (isActive) activeLinkVariant else UncoloredLinkVariant,
         ) {
-            LangText(
-                en = enTitle,
-                nl = nlTitle,
-            )
-        }
-    }
-}
-
-val SubMenuStyle = CssStyle {
-    base {
-        Modifier
-            .display(DisplayStyle.Block)
-            .position(Position.Absolute)
-            .top(100.percent)
-            .left((-16).px)
-            .width(240.px)
-            .zIndex(222)
-            .transformOrigin(TransformOrigin.of(50.percent, 0.percent))
-            .background(SitePalette.light.background)
-            .border(
-                width = 0.3.px,
-                style = LineStyle.Solid,
-                color = Colors.LightGrey
-            )
-            .borderRadius(0.5.cssRem)
-            .overflow(Overflow.Hidden)
-            .boxShadow(0.px, 0.px, 15.px, 1.px, rgba(0, 0, 0, 0.3f))
-            .styleModifier {
-                property("display", "var(--dropdown-visibility, none)")
+            Column(
+                Modifier.gap(0.25.cssRem)
+            ) {
+                LangText(
+                    en = menuTitle.en,
+                    nl = menuTitle.nl,
+                )
+                if (showSubText && subText != null) {
+                    P(
+                        Modifier.margin(0.px)
+                            .then(DeEmphasizedTextStyle.toModifier())
+                            .toAttrs()
+                    ) {
+                        LangText(
+                            en = subText.en,
+                            nl = subText.nl,
+                        )
+                    }
+                }
             }
-    }
-}
-
-val SubMenuItemHoverStyle = CssStyle {
-    hover {
-        Modifier
-            .background(SitePalette.light.overlay)
-            .color(SitePalette.light.primary)
-            .transition(Transition.of("background-color", duration = 200.ms))
+        }
     }
 }
 
 val ActiveSubMenuLinkStyleVariant = LinkStyle.addVariant {
     base {
         Modifier
-            .color(SitePalette.light.onPrimary)
-    }
-    hover {
-        Modifier
-            .fontWeight(FontWeight.Normal)
+            .color(SitePalette.light.onBackground)
     }
 }
 
@@ -142,48 +117,69 @@ val SubMenuAppearanceAnimKeyFrames = Keyframes {
 }
 
 @Composable
-fun LuxMenuItemWithSubs(titleText: MenuLanguage, subItems: List<MenuLanguage>) {
-    val isMenuActive = subItems.any { isPathActive(href = it.en.asNavLinkPath(titleText.en)) }
+fun LuxMenuItemWithSubs(titleText: LocalizedText, subItems: List<MenuItem.Simple>) {
+    val isMenuActive = subItems.any { isPathActive(href = it.path) }
 
     Box(
         modifier = MenuItemParentStyle.toModifier()
+            .then(LuxSubMenuItemParentHoverStyle.toModifier())
     ) {
-        LuxMenuItem(
-            href = subItems.first().en.asNavLinkPath(titleText.en),
-            enTitle = titleText.en,
-            nlTitle = titleText.nl,
-            isActive = isMenuActive,
-            modifier = Modifier.cursor(cursor = Cursor.None)
-        )
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.thenIf(
+                isMenuActive,
+                Modifier.background(SitePalette.light.overlay)
+                    .luxBorderRadius()
+            )
+        ) {
+            LuxMenuItem(
+                href = "",
+                menuTitle = titleText,
+                isActive = isMenuActive,
+                modifier = Modifier.cursor(cursor = Cursor.None)
+            )
+            MdiExpandMore(
+                modifier = IconStyle.toModifier()
+                    .then(AnimatedIconStyle.toModifier())
+            )
+        }
 
-        Column(
-            modifier = SubMenuStyle.toModifier()
+        Div(
+            SubmenuContainerStyle.toModifier()
                 .animation(
                     SubMenuAppearanceAnimKeyFrames.toAnimation(
                         duration = 200.ms,
                         timingFunction = AnimationTimingFunction.EaseInOut
                     )
                 )
+                .toAttrs()
         ) {
-            subItems.forEach { subItem ->
-                val isActive = isPathActive(href = subItem.en.asNavLinkPath(titleText.en))
-                Box(
-                    modifier = Modifier.fillMaxSize().padding(8.px)
-                        .then(SubMenuItemHoverStyle.toModifier())
-                        .thenIf(
-                            isActive,
-                            Modifier.background(SitePalette.light.primary)
-                        ),
-                    contentAlignment = Alignment.CenterStart
+            Column(
+                modifier = SubMenuContentStyle.toModifier()
+            ) {
+                Ul(
+                    Modifier
+                        .padding(1.cssRem)
+                        .width(400.px).toAttrs()
                 ) {
-                    LuxMenuItem(
-                        href = subItem.en.asNavLinkPath(titleText.en),
-                        enTitle = subItem.en,
-                        nlTitle = subItem.nl,
-                        isActive = isActive,
-                        activeLinkVariant = ActiveSubMenuLinkStyleVariant,
-                        modifier = Modifier.fillMaxWidth()
-                    )
+                    subItems.forEach { subItem ->
+                        val isActive = isPathActive(href = subItem.path)
+                        LuxMenuItem(
+                            href = subItem.path,
+                            menuTitle = subItem.title,
+                            subText = subItem.descriptionParagraph,
+                            isActive = isActive,
+                            activeLinkVariant = ActiveSubMenuLinkStyleVariant,
+                            modifier = Modifier.fillMaxWidth().padding(0.5.cssRem)
+                                .then(SubMenuItemHoverStyle.toModifier())
+                                .thenIf(
+                                    isActive,
+                                    Modifier.background(SitePalette.light.overlay)
+                                        .luxBorderRadius(LuxCornerRadius.lg)
+                                )
+                        )
+                    }
                 }
             }
         }

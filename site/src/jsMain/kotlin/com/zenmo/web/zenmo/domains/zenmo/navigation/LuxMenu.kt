@@ -10,7 +10,7 @@ object LuxMenu {
             subItems = ApplicationArea.entries.map { field ->
                 MenuItem.Simple(title = field.areaTitle, descriptionParagraph = field.shortDescription)
             }
-        ),
-        MenuItem.Simple(title = LocalizedText("Use Cases", "Toepassingsgevallen"))
+        ).withGeneratedPaths(),
+        MenuItem.Simple(title = LocalizedText("Example Models", "Voorbeeldmodellen"))
     )
 }

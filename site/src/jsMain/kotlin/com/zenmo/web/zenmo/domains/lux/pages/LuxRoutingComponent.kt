@@ -21,7 +21,7 @@ fun LuxRoutingComponent() {
         ctx.router.register(ApplicationArea.LUX_RESIDENTIAL_AREA.fieldRoute()) { LuxEnergyLayout { LuxResidentialArea() } }
         ctx.router.register(ApplicationArea.LUX_ENERGY_HUB.fieldRoute()) { LuxEnergyLayout { LuxEnergyHub() } }
         ctx.router.register(ApplicationArea.LUX_REGION.fieldRoute()) { LuxEnergyLayout { LuxMunicipality() } }
-        ctx.router.register("/use-cases") { LuxEnergyLayout { LuxModels() } }
+        ctx.router.register("/example-models") { LuxEnergyLayout { LuxModels() } }
 
         if (window.location.host != "lux.energy") {
             ctx.router.register("/component-demo") { ComponentDemoPage() }
