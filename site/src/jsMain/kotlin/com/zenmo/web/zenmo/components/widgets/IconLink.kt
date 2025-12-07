@@ -12,7 +12,11 @@ import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.zenmo.web.zenmo.theme.SitePalette
-import org.jetbrains.compose.web.css.*
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
+import org.jetbrains.compose.web.css.AlignContent
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.JustifyContent
+import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.keywords.auto
 
 @Composable
@@ -41,7 +45,7 @@ val IconLinkVariant = LinkStyle.addVariant {
             .justifyContent(JustifyContent.Center)
             .display(DisplayStyle.Flex)
             .padding(0.5.cssRem)
-            .borderRadius(50.percent)
+            .luxBorderRadius()
             .background(SitePalette.light.onPrimary)
             .color(SitePalette.light.primary)
     }

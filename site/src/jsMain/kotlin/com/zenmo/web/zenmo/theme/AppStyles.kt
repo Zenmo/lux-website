@@ -1,11 +1,13 @@
 package com.zenmo.web.zenmo.theme
 
+import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.components.forms.ButtonStyle
 import com.varabyte.kobweb.silk.components.forms.ButtonVars
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
@@ -20,6 +22,7 @@ import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.modifyStyle
 import com.zenmo.web.zenmo.pages.SiteGlobals
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import com.zenmo.web.zenmo.utils.PublicRes
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
@@ -32,11 +35,11 @@ val defaultFonts = Modifier.fontFamily(
 )
 
 val luxDefaultFonts = Modifier.fontFamily(
-    PublicRes.FontFamilies.MULI_MEDIUM,
-    PublicRes.FontFamilies.MULI_REGULAR,
-    PublicRes.FontFamilies.POPPINS_REGULAR,
-    PublicRes.FontFamilies.POPPINS_MEDIUM,
+    PublicRes.FontFamilies.HOLON_LINE,
 )
+
+val isZenmoDomain: Boolean
+    get() = window.location.host == SiteGlobals.ZENMO_DOMAIN
 
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) {
@@ -51,10 +54,9 @@ fun initSiteStyles(ctx: InitSilkContext) {
 
     ctx.stylesheet.apply {
         registerStyleBase("body") {
-            val domain = window.location.host
-            when (domain) {
-                SiteGlobals.ZENMO_DOMAIN -> defaultFonts
-                else -> luxDefaultFonts
+            when (isZenmoDomain) {
+                true -> defaultFonts
+                else -> luxDefaultFonts.fontSize(FontSize.Large)
             }
         }
     }
@@ -68,7 +70,15 @@ fun initSiteStyles(ctx: InitSilkContext) {
         )
         modifyStyle(ButtonStyle) {
             base {
-                Modifier.borderRadius(30.px)
+                Modifier
+                    .thenIf(
+                        !isZenmoDomain,
+                        Modifier.luxBorderRadius()
+                    )
+                    .thenIf(
+                        isZenmoDomain,
+                        Modifier.borderRadius(30.px)
+                    )
                     .color(SitePalette.light.onPrimary)
             }
         }

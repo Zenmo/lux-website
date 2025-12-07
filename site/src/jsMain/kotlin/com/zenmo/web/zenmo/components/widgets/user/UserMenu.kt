@@ -18,8 +18,13 @@ import com.zenmo.web.zenmo.core.services.auth.UserService
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.TextStyle
+import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import energy.lux.site.shared.UserInfo
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.LineStyle
+import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.B
 import org.jetbrains.compose.web.dom.Text
 
@@ -40,9 +45,13 @@ fun UserMenu(
             .background(SitePalette.Companion.light.background)
             .overflow(Overflow.Companion.Hidden)
             .top(10.px)
-            .borderRadius(0.5.cssRem)
-            .zIndex(20)
-            .boxShadow(0.px, 0.px, 15.px, 1.px, rgba(0, 0, 0, 0.3f)),
+            .luxBorderRadius(LuxCornerRadius.lg)
+            .border(
+                width = 0.3.px,
+                style = LineStyle.Solid,
+                color = Colors.LightGrey
+            )
+            .zIndex(20),
     ) {
         if (userInfo != null) {
             UserInfo(userInfo = userInfo)
@@ -69,7 +78,7 @@ private fun UserInfo(userInfo: UserInfo) {
         Box(
             modifier = Modifier.Companion
                 .padding(1.cssRem, 1.5.cssRem)
-                .borderRadius(0.5.cssRem)
+                .luxBorderRadius()
                 .background(SitePalette.Companion.light.overlay)
                 .color(SitePalette.Companion.light.primary),
             contentAlignment = Alignment.Center,
