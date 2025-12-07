@@ -26,6 +26,7 @@ import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.zenmo.web.zenmo.components.SideMenuSlideInAnim
 import com.zenmo.web.zenmo.components.SideMenuState
+import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuFactory
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
@@ -98,7 +99,7 @@ fun SideMenu(
                         .gap(1.5.cssRem),
                     horizontalAlignment = Alignment.Start
                 ) {
-                    MenuItem.menuItems().forEach { item ->
+                    MenuFactory.menuItems().forEach { item ->
                         when (item) {
                             is MenuItem.Simple -> {
                                 SideMenuNavLink(
@@ -112,10 +113,9 @@ fun SideMenu(
 
                             is MenuItem.WithSubs -> {
                                 ExpandableSideMenuItem(
-                                    title = item.title,
-                                    subItems = item.subItems,
+                                    menu = item,
                                     isAnySubItemActive = item.subItems.any { subItem ->
-                                        isPathActive(href = subItem.en.asNavLinkPath(item.title.en))
+                                        isPathActive(href = subItem.title.en.asNavLinkPath(item.title.en))
                                     },
                                     onClick = { close() }
                                 )

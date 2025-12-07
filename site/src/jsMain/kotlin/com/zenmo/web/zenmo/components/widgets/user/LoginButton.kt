@@ -13,7 +13,7 @@ import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.zenmo.web.zenmo.components.widgets.IconLink
 import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuItem
 import com.zenmo.web.zenmo.core.services.auth.UserService
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuLanguage
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
 
@@ -35,7 +35,7 @@ fun LoginButton(userService: UserService) {
         modifier = Modifier.fillMaxWidth()
     ) {
         NavBarActionsMenuItem(
-            title = MenuLanguage(
+            title = LocalizedText(
                 en = "Log In",
                 nl = "Inloggen",
             ),

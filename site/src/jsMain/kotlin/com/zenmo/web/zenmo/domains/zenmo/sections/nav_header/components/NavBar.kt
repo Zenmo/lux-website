@@ -10,6 +10,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.palette.overlay
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
+import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuFactory
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.widgets.MenuItemWithSubs
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -39,7 +40,7 @@ fun NavBar(
     Nav(
         attrs = modifier.toAttrs()
     ) {
-        MenuItem.menuItems().forEach { item ->
+        MenuFactory.menuItems().forEach { item ->
             when (item) {
                 is MenuItem.Simple -> {
                     NavBarLink(
@@ -50,7 +51,7 @@ fun NavBar(
                     )
                 }
 
-                is MenuItem.WithSubs -> MenuItemWithSubs(item.title, item.subItems)
+                is MenuItem.WithSubs -> MenuItemWithSubs(item)
             }
         }
     }

@@ -14,7 +14,7 @@ import com.varabyte.kobweb.silk.components.icons.mdi.MdiExpandMore
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuLanguage
+import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.IconStyle
@@ -50,8 +50,7 @@ val AnimatedDropdownStyle = CssStyle {
 
 @Composable
 fun ExpandableSideMenuItem(
-    title: MenuLanguage,
-    subItems: List<MenuLanguage>,
+    menu: MenuItem.WithSubs,
     isAnySubItemActive: Boolean,
     onClick: () -> Unit
 ) {
@@ -87,7 +86,7 @@ fun ExpandableSideMenuItem(
                             rotate(if (isExpanded) 90.deg else 0.deg)
                         }
                 )
-                LangText(en = title.en, nl = title.nl)
+                LangText(en = menu.title.en, nl = menu.title.nl)
             }
 
             MdiExpandMore(
@@ -106,12 +105,12 @@ fun ExpandableSideMenuItem(
                     .padding(left = 1.cssRem)
                     .gap(1.5.cssRem)
             ) {
-                subItems.forEach { subItem ->
+                menu.subItems.forEach { subItem ->
                     SideMenuNavLink(
-                        href = subItem.en.asNavLinkPath(title.en),
-                        en = subItem.en,
-                        nl = subItem.nl,
-                        isActive = isPathActive(href = subItem.en.asNavLinkPath(title.en)),
+                        href = subItem.title.en.asNavLinkPath(menu.title.en),
+                        en = subItem.title.en,
+                        nl = subItem.title.nl,
+                        isActive = isPathActive(href = subItem.title.en.asNavLinkPath(menu.title.en)),
                         onClick = onClick,
                         hasBullet = true
                     )

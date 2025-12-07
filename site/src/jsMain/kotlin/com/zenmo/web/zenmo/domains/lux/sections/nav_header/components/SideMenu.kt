@@ -25,8 +25,11 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.SideMenuSlideInAnim
 import com.zenmo.web.zenmo.components.SideMenuState
+import com.zenmo.web.zenmo.domains.lux.styles.ActiveLinkStyleVariant
+import com.zenmo.web.zenmo.domains.lux.styles.MenuLinkStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
+import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuFactory
 import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
@@ -101,7 +104,7 @@ fun SideMenu(
                         .fillMaxWidth()
                         .toAttrs()
                 ) {
-                    MenuItem.menuItems().forEach { item ->
+                    MenuFactory.menuItems().forEach { item ->
                         when (item) {
                             is MenuItem.Simple ->
                                 SideMenuItem(
@@ -126,10 +129,10 @@ fun SideMenu(
                                     ) {
                                         item.subItems.forEach { subItem ->
                                             SideMenuItem(
-                                                href = subItem.en.asNavLinkPath(item.title.en),
-                                                enTitle = subItem.en,
-                                                nlTitle = subItem.nl,
-                                                isActive = isPathActive(href = subItem.en.asNavLinkPath(item.title.en)),
+                                                href = subItem.title.en.asNavLinkPath(item.title.en),
+                                                enTitle = subItem.title.en,
+                                                nlTitle = subItem.title.nl,
+                                                isActive = isPathActive(href = subItem.title.en.asNavLinkPath(item.title.en)),
                                             )
                                         }
                                     }
