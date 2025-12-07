@@ -17,11 +17,11 @@ fun LuxRoutingComponent() {
     val router = Router()
     com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
         ctx.router.register("/") { LuxEnergyLayout { HomePage() } }
-        ctx.router.register(ApplicationField.LUX_COMPANY.fieldRoute()) { LuxEnergyLayout { LuxCompany() } }
-        ctx.router.register(ApplicationField.LUX_RESIDENTIAL_AREA.fieldRoute()) { LuxEnergyLayout { LuxResidentialArea() } }
-        ctx.router.register(ApplicationField.LUX_ENERGY_HUB.fieldRoute()) { LuxEnergyLayout { LuxEnergyHub() } }
-        ctx.router.register(ApplicationField.LUX_REGION.fieldRoute()) { LuxEnergyLayout { LuxMunicipality() } }
-        ctx.router.register("/models") { LuxEnergyLayout { LuxModels() } }
+        ctx.router.register(ApplicationArea.LUX_COMPANY.fieldRoute()) { LuxEnergyLayout { LuxCompany() } }
+        ctx.router.register(ApplicationArea.LUX_RESIDENTIAL_AREA.fieldRoute()) { LuxEnergyLayout { LuxResidentialArea() } }
+        ctx.router.register(ApplicationArea.LUX_ENERGY_HUB.fieldRoute()) { LuxEnergyLayout { LuxEnergyHub() } }
+        ctx.router.register(ApplicationArea.LUX_REGION.fieldRoute()) { LuxEnergyLayout { LuxMunicipality() } }
+        ctx.router.register("/use-cases") { LuxEnergyLayout { LuxModels() } }
 
         if (window.location.host != "lux.energy") {
             ctx.router.register("/component-demo") { ComponentDemoPage() }

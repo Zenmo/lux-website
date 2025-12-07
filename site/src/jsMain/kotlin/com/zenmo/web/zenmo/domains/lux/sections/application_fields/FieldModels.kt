@@ -17,7 +17,7 @@ import com.zenmo.web.zenmo.theme.SitePalette
 
 @Composable
 fun FieldModels(
-    applicationField: ApplicationField
+    applicationArea: ApplicationArea
 ) {
     SectionContainer(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -34,7 +34,7 @@ fun FieldModels(
             modifier = Modifier
         )
         TwinModelsGrid(
-            models = SubdomainModel.allModels.filter { it.applicationField == applicationField },
+            models = SubdomainModel.allModels.filter { it.applicationArea == applicationArea },
             path = ""
         )
     }
