@@ -6,18 +6,15 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.height
-import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.style.ComponentKind
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.CssStyleVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.keywords.auto
-import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 sealed interface SectionComponentKind : ComponentKind
@@ -26,9 +23,8 @@ sealed interface SectionComponentKind : ComponentKind
 val SectionContainerStyle = CssStyle<SectionComponentKind> {
     base {
         Modifier
-            .width(100.percent)
+            .fillMaxWidth()
             .height(auto)
-            .maxWidth(130.cssRem)
     }
     Breakpoint.ZERO {
         Modifier.padding(leftRight = 16.px)
