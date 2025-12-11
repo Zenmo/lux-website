@@ -6,7 +6,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import org.jetbrains.compose.web.css.deg
 
 val LuxSubMenuItemParentHoverStyle = CssStyle {
-    cssRule(":hover  div span ") {
+    cssRule(":hover  .material-icons ") {
         Modifier.Companion
             .transform {
                 rotate(180.deg)

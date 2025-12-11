@@ -36,6 +36,7 @@ fun NavBarActionsMenuWidget() {
             Box(
                 modifier = Modifier.position(Position.Absolute)
                     .top(100.percent).right(0.px)
+                    .width(300.px)
                     .animation(
                         SubMenuAppearanceAnimKeyFrames.toAnimation(
                             duration = 200.ms,
