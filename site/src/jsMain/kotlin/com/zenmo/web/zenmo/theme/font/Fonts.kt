@@ -79,7 +79,7 @@ object Fonts {
     private val luxFontFamily = SiteFontFamily(
         header = PublicRes.FontFamilies.HOLON_BLOCK,
         subHeader = PublicRes.FontFamilies.HOLON_LINE,
-        body = PublicRes.FontFamilies.MULI_REGULAR,
+        body = PublicRes.FontFamilies.HOLON_LINE,
     )
 
     val domain = window.location.host
