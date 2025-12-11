@@ -8,18 +8,18 @@ import org.jetbrains.compose.web.css.px
 
 val LuxHeaderPaddingStyle = CssStyle {
     Breakpoint.ZERO {
-        Modifier.padding(leftRight = 15.px, topBottom = 10.px)
+        Modifier.padding(leftRight = 15.px)
     }
     Breakpoint.SM {
-        Modifier.padding(leftRight = 15.px, topBottom = 10.px)
+        Modifier.padding(leftRight = 15.px)
     }
     Breakpoint.MD {
-        Modifier.padding(leftRight = 134.px, topBottom = 15.px)
+        Modifier.padding(leftRight = 100.px)
     }
     Breakpoint.LG {
-        Modifier.padding(leftRight = 250.px, topBottom = 15.px)
+        Modifier.padding(leftRight = 200.px)
     }
     Breakpoint.XL {
-        Modifier.padding(leftRight = 250.px, topBottom = 15.px)
+        Modifier.padding(leftRight = 250.px)
     }
 }

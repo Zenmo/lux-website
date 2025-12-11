@@ -15,7 +15,7 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.ApplicationField
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.ApplicationArea
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.utils.PublicRes
 import org.jetbrains.compose.web.css.*
@@ -57,7 +57,7 @@ fun ModelCardLink(
         },
         metaContent = {
             if (model is SubdomainModel) {
-                ApplicationFieldLabel(model.applicationField)
+                ApplicationFieldLabel(model.applicationArea)
             }
         }
     )
@@ -74,7 +74,7 @@ val ApplicationFieldLabelStyle = CssStyle.base {
 }
 
 @Composable
-private fun ApplicationFieldLabel(field: ApplicationField) {
+private fun ApplicationFieldLabel(field: ApplicationArea) {
     Div(
         Modifier.padding(1.cssRem)
             .toAttrs()
@@ -84,8 +84,8 @@ private fun ApplicationFieldLabel(field: ApplicationField) {
                 .toAttrs()
         ) {
             LangText(
-                nl = field.nlFieldName,
-                en = field.enFieldName,
+                nl = field.areaTitle.nl,
+                en = field.areaTitle.en,
             )
         }
     }

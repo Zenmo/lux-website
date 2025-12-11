@@ -12,7 +12,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuLanguage
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.ms
@@ -34,7 +34,7 @@ val ActionsMenuItemStyle = CssStyle {
 @Composable
 fun NavBarActionsMenuItem(
     modifier: Modifier = Modifier,
-    title: MenuLanguage,
+    title: LocalizedText,
     onClick: () -> Unit,
     trailingContent: @Composable () -> Unit,
 ) {

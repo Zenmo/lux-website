@@ -13,8 +13,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuLanguage
-import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
+import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.NavBarLink
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 
@@ -26,15 +25,17 @@ val MainMenuItemHoverStyle = CssStyle {
 }
 
 @Composable
-fun MenuItemWithSubs(titleText: MenuLanguage, subItems: List<MenuLanguage>) {
-    val isMenuActive = subItems.any { isPathActive(href = it.en.asNavLinkPath(titleText.en)) }
+fun MenuItemWithSubs(
+    menu: MenuItem.WithSubs,
+) {
+    val isMenuActive = menu.subItems.any { isPathActive(href = it.path) }
     Box(
         modifier = MenuItemParentStyle.toModifier()
     ) {
         NavBarLink(
             href = "/",
-            en = titleText.en,
-            nl = titleText.nl,
+            en = menu.title.en,
+            nl = menu.title.nl,
             isActive = isMenuActive,
             modifier = MainMenuItemHoverStyle.toModifier()
         )
@@ -42,16 +43,16 @@ fun MenuItemWithSubs(titleText: MenuLanguage, subItems: List<MenuLanguage>) {
         Column(
             modifier = DropdownContainerStyle.toModifier()
         ) {
-            subItems.forEach { menu ->
+            menu.subItems.forEach { sub ->
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     NavBarLink(
-                        href = menu.en.asNavLinkPath(titleText.en),
-                        en = menu.en,
-                        nl = menu.nl,
-                        isActive = isPathActive(href = menu.en.asNavLinkPath(titleText.en)),
+                        href = sub.path,
+                        en = sub.title.en,
+                        nl = sub.title.nl,
+                        isActive = isPathActive(href = sub.path),
                     )
                 }
             }

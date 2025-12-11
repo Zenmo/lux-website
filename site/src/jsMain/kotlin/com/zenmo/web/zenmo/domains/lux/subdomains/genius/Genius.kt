@@ -88,7 +88,7 @@ val HeaderLogoStyle = CssStyle {
 
 @Composable
 private fun GeniusHeader() {
-    LuxHeaderComponent(showsIndicator = false) {
+    LuxHeaderComponent {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,

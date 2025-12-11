@@ -3,6 +3,7 @@ package com.zenmo.web.zenmo.domains.zenmo.widgets.button
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.forms.ButtonStyle
 import com.varabyte.kobweb.silk.style.addVariant
@@ -10,6 +11,8 @@ import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.isZenmoDomain
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.css.keywords.auto
 
@@ -38,7 +41,14 @@ val IconButtonVariant = ButtonStyle.addVariant {
             .justifyContent(JustifyContent.Center)
             .display(DisplayStyle.Flex)
             .padding(0.5.cssRem)
-            .borderRadius(50.percent)
+            .thenIf(
+                !isZenmoDomain,
+                Modifier.luxBorderRadius()
+            )
+            .thenIf(
+                isZenmoDomain,
+                Modifier.borderRadius(50.percent)
+            )
     }
     hover {
         Modifier.background(SitePalette.light.primary)

@@ -14,8 +14,6 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuWidget
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.NarrowScreenHeaderComponents
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.WideScreenHeaderComponents
-import com.zenmo.web.zenmo.pages.SiteGlobals
-import kotlinx.browser.window
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
@@ -44,13 +42,10 @@ fun LuxHeader() {
                 .fillMaxWidth(),
         ) {
             LuxLogo()
-            NavBar()
             Row(
                 verticalAlignment = Alignment.CenterVertically, modifier = Modifier.gap(1.cssRem)
             ) {
-                if (window.location.host == SiteGlobals.LUX_DOMAIN) {
-                    BookADemoButton()
-                }
+                NavBar()
                 NavBarActionsMenuWidget()
             }
         }

@@ -5,13 +5,13 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.scale
 import com.zenmo.web.zenmo.core.services.localization.LanguageManager
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuLanguage
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
 
 @Composable
 fun SiteLanguageButton() {
     NavBarActionsMenuItem(
-        title = MenuLanguage(
+        title = LocalizedText(
             en = "Language",
             nl = "Taal",
         ),

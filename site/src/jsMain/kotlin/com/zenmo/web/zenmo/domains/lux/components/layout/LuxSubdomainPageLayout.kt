@@ -65,7 +65,7 @@ private fun LayoutHeader(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            LuxLogo(asLink = true)
+            LuxLogo()
 
             SubHeaderText(
                 enText = title,

@@ -6,7 +6,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
 import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
@@ -18,7 +17,6 @@ import org.jetbrains.compose.web.dom.Header
 @Composable
 fun LuxHeaderComponent(
     modifier: Modifier = Modifier,
-    showsIndicator: Boolean = true,
     content: @Composable () -> Unit,
 ) {
     Header(
@@ -31,12 +29,5 @@ fun LuxHeaderComponent(
             .toAttrs()
     ) {
         content()
-
-        // this way we can use LuxHeaderComponent in other places without the indicator
-        if (MenuItem.menuItems().isNotEmpty() && showsIndicator) {
-            ActiveMenuIndicator(
-                items = MenuItem.menuItems()
-            )
-        }
     }
 }
