@@ -19,6 +19,7 @@ data class LuxSpecificColorHues(
     val luxRed: Color = Color.rgb(0xF8285A),
     val luxYellow: Color = Color.rgb(0xFFC300),
     val luxGreen: Color = Color.rgb(0x28A745),
+    val luxBlackRussian: Color = Color.rgb(0x0d1719),
 )
 
 data class SitePalette(
