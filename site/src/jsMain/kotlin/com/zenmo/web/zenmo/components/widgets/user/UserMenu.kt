@@ -41,7 +41,7 @@ fun UserMenu(
     Column(
         modifier = Modifier.Companion
             .position(Position.Companion.Relative)
-            .width(16.cssRem)
+            .fillMaxWidth()
             .background(SitePalette.Companion.light.background)
             .overflow(Overflow.Companion.Hidden)
             .top(10.px)
