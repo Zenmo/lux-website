@@ -8,7 +8,5 @@ object PublicRes {
         const val MONTSERRAT_MEDIUM = "MontserratMedium"
         const val HOLON_LINE = "HolonLine"
         const val HOLON_BLOCK = "HolonBlock"
-        const val MULI_REGULAR = "MuliRegular"
-        const val MULI_MEDIUM = "MuliMedium"
     }
 }
