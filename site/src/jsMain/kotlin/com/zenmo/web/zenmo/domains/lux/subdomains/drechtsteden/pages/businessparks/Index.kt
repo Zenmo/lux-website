@@ -14,9 +14,9 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenBusinessPark
 import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
-import com.zenmo.web.zenmo.domains.lux.components.model.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
+import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.LineStyle

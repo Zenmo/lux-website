@@ -15,6 +15,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.ExperimentalComposeWebApi
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
@@ -53,7 +54,7 @@ fun <T> RadioRow(
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.Companion.gap(0.5.cssRem)
+        modifier = Modifier.Companion.gap(0.5.cssRem).fillMaxHeight()
     ) {
         options.forEach { (optionValue, displayName) ->
             val isSelected = optionValue == value
@@ -78,8 +79,9 @@ fun RadioItem(
                 isSelected,
                 ActiveSelectableItemStyle.toModifier()
             )
+            .luxBorderRadius()
             .onClick { onClick() }
-            .padding(0.25.cssRem, 0.75.cssRem)
+            .padding(0.75.cssRem)
             .toAttrs()
     ) { content() }
 }

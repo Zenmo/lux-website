@@ -1,20 +1,20 @@
 package com.zenmo.web.zenmo.domains.lux.sections.luxmodels
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
-import com.zenmo.web.zenmo.domains.lux.components.model.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.RadioRow
+import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.Position
@@ -36,7 +36,6 @@ fun LuxModels() {
         verticalArrangement = Arrangement.Center,
         modifier =
             Modifier
-                .then(TopDividerLineStyle.toModifier())
                 .background(SitePalette.light.overlay)
                 .position(Position.Relative)
                 .gap(5.cssRem),
@@ -45,20 +44,23 @@ fun LuxModels() {
         var luxModels by remember { mutableStateOf(SubdomainModel.allModels) }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
         Column(
-            Modifier.textAlign(TextAlign.Center),
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(36.px),
         ) {
             HeaderText(
-                enText = "Models",
-                nlText = "Models",
+                enText = "Example Models",
+                nlText = "Voorbeeldmodellen",
                 modifier = Modifier
-                    .fillMaxWidth()
                     .margin(0.px)
             )
-            P {
+            P(
+                Modifier
+                    .margin(0.px)
+                    .toAttrs()
+            ) {
                 LangText(
-                    en = "Find out more about our models.",
-                    nl = "Lees meer over onze modellen."
+                    en = "Explore our collection of energy models for different regions and applications.",
+                    nl = "Ontdek onze collectie energiemodellen voor verschillende regio's en toepassingen."
                 )
             }
 
@@ -77,7 +79,13 @@ fun LuxModels() {
                 when (option) {
                     FilterType.ALL -> LangText(en = "All", nl = "Alle")
                     FilterType.PUBLIC -> LangText(en = "Public", nl = "Openbaar")
-                    FilterType.PRIVATE -> LangText(en = "Private", nl = "Privé")
+                    FilterType.PRIVATE -> Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.px)
+                    ) {
+                        MdiLock(Modifier.fontSize(16.px))
+                        LangText(en = "Private", nl = "Privé")
+                    }
                 }
             }
         }
