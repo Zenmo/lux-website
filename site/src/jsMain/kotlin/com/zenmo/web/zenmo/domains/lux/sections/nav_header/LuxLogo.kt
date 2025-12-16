@@ -7,15 +7,18 @@ import com.varabyte.kobweb.compose.ui.modifiers.boxSizing
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.silk.components.graphics.FitWidthImageVariant
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
+import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.extendedBy
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.A
 
 val LuxLogoImageVariant = FitWidthImageVariant.extendedBy {
     base {
@@ -58,8 +61,14 @@ val LuxLogoImageVariant = FitWidthImageVariant.extendedBy {
 fun LuxLogo(
     domain: String = SiteGlobals.LUX_DOMAIN
 ) {
-    val protocol = window.location.protocol
-    A(href = "$protocol//$domain") {
+    val location = window.location
+    val sameOrigin = location.hostname == domain
+
+    Link(
+        path = if (sameOrigin) "/" else "${location.protocol}//$domain",
+        variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
+        openExternalLinksStrategy = OpenLinkStrategy.IN_PLACE
+    ) {
         Image(src = "/lux/logos/lux-energy-twin.png", variant = LuxLogoImageVariant)
     }
 }
