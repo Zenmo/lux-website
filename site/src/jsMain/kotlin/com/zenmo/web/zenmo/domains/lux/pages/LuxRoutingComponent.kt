@@ -7,6 +7,7 @@ import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.components.widgets.CatchAllPage
+import com.zenmo.web.zenmo.domains.lux.sections.about_us.AboutUs
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.*
 import com.zenmo.web.zenmo.domains.lux.sections.home.HomePage
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.LuxModels
@@ -22,6 +23,7 @@ fun LuxRoutingComponent() {
         ctx.router.register(ApplicationArea.LUX_ENERGY_HUB.fieldRoute()) { LuxEnergyLayout { LuxEnergyHub() } }
         ctx.router.register(ApplicationArea.LUX_REGION.fieldRoute()) { LuxEnergyLayout { LuxMunicipality() } }
         ctx.router.register("/example-models") { LuxEnergyLayout { LuxModels() } }
+        ctx.router.register("/about-us") { LuxEnergyLayout { AboutUs() } }
 
         if (window.location.host != "lux.energy") {
             ctx.router.register("/component-demo") { ComponentDemoPage() }
