@@ -15,7 +15,7 @@ plugins {
     id("energy.lux.prerender") version "0.0.1"
 }
 
-group = "com.zenmo.web.zenmo"
+group = "energy.lux.site.frontend"
 version = "1.0.0"
 
 val BACKEND_URL = System.getenv("BACKEND_URL")
@@ -51,7 +51,7 @@ kotlin {
 
     // This example is frontend only. However, for a fullstack app, you can uncomment the includeServer parameter
     // and the `jvmMain` source set below.
-    configAsKobwebApplication("zenmo-site" /*, includeServer = true*/)
+    configAsKobwebApplication("lux-energy" /*, includeServer = true*/)
 
     js {
         browser()
@@ -121,15 +121,17 @@ tasks.register("replaceMainFunction") {
     doLast {
         val file = project.layout.buildDirectory.file("generated/kobweb/app/src/jsMain/kotlin/main.kt").get().asFile
         val content = file.readText()
-        file.writeText(content.replace(
-            "public fun main()",
-            """
+        file.writeText(
+            content.replace(
+                "public fun main()",
+                """
                 @JsExport
                 val accessPolicy = energy.lux.site.shared.AccessPolicy.Public()
             
                 @JsExport public fun $mainFunctionName()
                 """.trimIndent()
-        ))
+            )
+        )
     }
 }
 
@@ -141,7 +143,8 @@ tasks.register("replaceScriptTag") {
     tasks.named<DefaultTask>("kobwebStart").get().dependsOn(this)
 
     doLast {
-        val file = project.layout.buildDirectory.file("generated/kobweb/app/src/jsMain/resources/index.html").get().asFile
+        val file =
+            project.layout.buildDirectory.file("generated/kobweb/app/src/jsMain/resources/index.html").get().asFile
         val content = file.readText()
         val newContent = content
             .replace(
@@ -151,7 +154,8 @@ tasks.register("replaceScriptTag") {
                     import {$mainFunctionName} from "$jsSrc"
                     $mainFunctionName()
                     </script>
-                """.trimIndent())
+                """.trimIndent()
+            )
 
         file.writeText(newContent)
     }
