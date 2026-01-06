@@ -5,25 +5,25 @@ import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.framework.annotations.DelicateApi
-import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
 import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResNeighborhood
 import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResRegion
+import com.zenmo.web.zenmo.domains.lux.components.model.SimpleTwin
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
+import com.zenmo.web.zenmo.domains.lux.widgets.ModelCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.pages.SiteGlobals
-import com.zenmo.web.zenmo.theme.SitePalette
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Span
 
 @OptIn(DelicateApi::class)
 @Composable
@@ -79,66 +79,33 @@ fun DrechtstedenHomePage() {
                 modifier = Modifier.fillMaxWidth()
                     .gap(1.5.cssRem)
             ) {
-                CardLink(
+
+                ModelCard(
                     url = DrechtstedenResRegion.DrechtstedenRes.url(
                         path = "res-region",
                         protocol = window.location.protocol,
                         luxDomain = SiteGlobals.LUX_DOMAIN
                     ),
-                    imageUrl = DrechtstedenResRegion.DrechtstedenRes.image,
-                    imageAltText = "RES-regio image",
-                    nlTitle = "RES-Regio",
-                    enTitle = "RES Region",
-                    modifier = Modifier.fillMaxHeight(),
-                    description = {
-                        Span(
-                            Modifier.color(SitePalette.light.primary)
-                                .toAttrs()
-                        ) {
-                            LangText(
-                                nl = "Bekijk »",
-                                en = "View »",
-                            )
-                        }
-                    },
+                    model = SimpleTwin(
+                        modelTitle = "RES-Regio",
+                        modelImage = DrechtstedenResRegion.DrechtstedenRes.image,
+                    ),
                 )
-                CardLink(
+
+                ModelCard(
                     url = "/res-neighborhoods",
-                    imageUrl = DrechtstedenResNeighborhood.OverTSpoor.image,
-                    imageAltText = "Woonwijken image",
-                    nlTitle = "Woonwijken",
-                    enTitle = "Residential neighborhoods",
-                    modifier = Modifier.fillMaxHeight(),
-                    description = {
-                        Span(
-                            Modifier.color(SitePalette.light.primary)
-                                .toAttrs()
-                        ) {
-                            LangText(
-                                nl = "Bekijk »",
-                                en = "View »",
-                            )
-                        }
-                    },
+                    model = SimpleTwin(
+                        modelTitle = "Woonwijken",
+                        modelImage = DrechtstedenResNeighborhood.OverTSpoor.image,
+                    ),
                 )
-                CardLink(
+
+                ModelCard(
                     url = "/business-parks",
-                    imageUrl = DrechtstedenMunicipality.Dordrecht.image,
-                    imageAltText = "Bedrijventerreinen image",
-                    nlTitle = "Bedrijventerreinen",
-                    enTitle = "Business parks",
-                    modifier = Modifier.fillMaxHeight(),
-                    description = {
-                        Span(
-                            Modifier.color(SitePalette.light.primary)
-                                .toAttrs()
-                        ) {
-                            LangText(
-                                nl = "Bekijk »",
-                                en = "View »",
-                            )
-                        }
-                    },
+                    model = SimpleTwin(
+                        modelTitle = "Bedrijventerreinen",
+                        modelImage = DrechtstedenMunicipality.Dordrecht.image,
+                    ),
                 )
             }
         }

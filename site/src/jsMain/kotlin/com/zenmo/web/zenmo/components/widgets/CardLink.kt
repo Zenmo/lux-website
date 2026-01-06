@@ -9,17 +9,20 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.isZenmoDomain
+import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Img
 import org.jetbrains.compose.web.dom.P
@@ -28,6 +31,7 @@ val CardLinkStyle = CssStyle {
     base {
         Modifier
             .borderRadius(24.px)
+            .thenIf(!isZenmoDomain, Modifier.luxBorderRadius(LuxCornerRadius.lg))
             .background(Color.white)
             .boxShadow(0.px, 2.px, 4.px, 0.px, rgba(0, 0, 0, 0.24f))
             .overflow(Overflow.Hidden)
@@ -40,12 +44,6 @@ val CardLinkStyle = CssStyle {
     }
 }
 
-val CardLinkImageStyle = CssStyle.base {
-    Modifier
-        .fillMaxWidth()
-        .height(140.px)
-        .objectFit(ObjectFit.Cover)
-}
 
 val LinkNoStyle = CssStyle {
     base {
@@ -98,13 +96,14 @@ fun CardLink(
                 .then(modifier),
         ) {
             Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.TopEnd,
+                modifier = Modifier.fillMaxWidth()
+                    .height(225.px).overflow(Overflow.Hidden),
+                contentAlignment = Alignment.Center,
             ) {
                 Img(
                     src = imageUrl,
                     alt = imageAltText,
-                    attrs = CardLinkImageStyle.toModifier().toAttrs()
+                    attrs = Modifier.fillMaxSize().objectFit(ObjectFit.Cover).toAttrs()
                 )
                 metaContent()
             }

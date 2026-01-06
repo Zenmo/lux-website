@@ -11,7 +11,7 @@ object LuxMenu {
                 MenuItem.Simple(title = field.areaTitle, descriptionParagraph = field.shortDescription)
             }
         ).withGeneratedPaths(),
-        MenuItem.Simple(title = LocalizedText("Example Models", "Voorbeeldmodellen")),
+        MenuItem.Simple(title = LocalizedText("Models", "Modellen")),
         MenuItem.Simple(title = LocalizedText("About Us", "Over Ons")),
     )
 }

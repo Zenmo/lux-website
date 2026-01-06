@@ -1,7 +1,9 @@
 package com.zenmo.web.zenmo.domains.lux.sections.application_fields
 
+import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
+import com.zenmo.web.zenmo.theme.LuxSpecificColorHues
 import web.window.window
 
 
@@ -47,4 +49,11 @@ enum class ApplicationArea(
             return entries.firstOrNull { it.fieldRoute() == path }
         }
     }
+}
+
+fun ApplicationArea.tagColor(): Color = when (this) {
+    ApplicationArea.LUX_COMPANY -> LuxSpecificColorHues().luxYellow
+    ApplicationArea.LUX_ENERGY_HUB -> LuxSpecificColorHues().luxGreen
+    ApplicationArea.LUX_RESIDENTIAL_AREA -> LuxSpecificColorHues().luxRed
+    ApplicationArea.LUX_REGION -> LuxSpecificColorHues().luxBlue
 }

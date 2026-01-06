@@ -2,7 +2,10 @@ package com.zenmo.web.zenmo.domains.lux.subdomains
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.border
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -11,8 +14,8 @@ import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.components.model.AmersfoortTwinModel
-import com.zenmo.web.zenmo.domains.lux.components.model.ModelCardLink
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.widgets.ModelCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
@@ -91,10 +94,10 @@ private fun AmersfoortModelsTabRow(
     ) {
         models.forEachIndexed { index, model ->
             val isActive = index == activeModelTabIndex
-            ModelCardLink(
+            ModelCard(
                 url = "",
                 model = model,
-                modifier = Modifier.fillMaxHeight()
+                modifier = Modifier
                     .onClick {
                         onTabSelected(index)
                     }
@@ -105,7 +108,6 @@ private fun AmersfoortModelsTabRow(
                             style = LineStyle.Solid,
                             color = SitePalette.light.primary
                         )
-                            .borderRadius(24.px)
                     )
             )
         }
