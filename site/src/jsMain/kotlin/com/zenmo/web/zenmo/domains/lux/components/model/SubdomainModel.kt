@@ -96,6 +96,13 @@ sealed class SubdomainModel(
         applicationArea = ApplicationArea.LUX_RESIDENTIAL_AREA
     )
 
+    data object Kronenberg : SubdomainModel(
+        "kronenberg",
+        "/lux/images/kronenberg/Skyline-Kronenberg-Jan-Janssen-square.jpg",
+        isPrivate = false,
+        applicationArea = ApplicationArea.LUX_RESIDENTIAL_AREA
+    )
+
     data object Cognizant : SubdomainModel(
         "cognizant",
         "/lux/images/models/cognizant.png",
@@ -141,6 +148,7 @@ sealed class SubdomainModel(
             Nederland,
             Hessenpoort,
             KasAlsEnergiebron,
+            Kronenberg,
             Hilversum,
             Bunderbuurten,
             Loenen,
