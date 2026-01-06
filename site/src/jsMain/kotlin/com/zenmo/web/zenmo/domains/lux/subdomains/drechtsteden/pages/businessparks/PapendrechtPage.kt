@@ -21,8 +21,8 @@ fun PapendrechtPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Papendrecht Oosteind",
-            nlHeaderText = "Zero - Bedrijventerrein Papendrecht Oosteind",
+            enHeaderText = "Bedrijventerrein Papendrecht Oosteind",
+            nlHeaderText = "Bedrijventerrein Papendrecht Oosteind",
             enDescriptionParagraph = """
                 Below you can find the digital twin for the sustainability of the Papendrecht Oosteind business park. 
                 The companies on this business park are exploring whether they can share energy and invest in 

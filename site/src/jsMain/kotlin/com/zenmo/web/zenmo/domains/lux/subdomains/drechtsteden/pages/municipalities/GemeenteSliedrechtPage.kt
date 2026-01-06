@@ -21,8 +21,8 @@ fun GemeenteSliedrechtPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerreinen Gemeente Sliedrecht",
-            nlHeaderText = "Zero - Bedrijventerreinen Gemeente Sliedrecht",
+            enHeaderText = "Bedrijventerreinen Gemeente Sliedrecht",
+            nlHeaderText = "Bedrijventerreinen Gemeente Sliedrecht",
             enDescriptionParagraph = """
                 Below you can find the digital twin for the sustainability of the business parks in the Municipality 
                 of Alblasserdam. The companies in this municipality are exploring whether they can share energy and 

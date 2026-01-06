@@ -29,7 +29,7 @@ import kotlin.uuid.Uuid
 @Composable
 fun LoenenIndex() {
     LuxSubdomainPageLayout(
-        title = "Zero - Digital twin Loenen",
+        title = "Digital twin Loenen",
     ) {
         ModelPageContent(
             twin = SubdomainModel.Loenen,

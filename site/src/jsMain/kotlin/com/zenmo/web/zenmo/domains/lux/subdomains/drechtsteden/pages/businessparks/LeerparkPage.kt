@@ -21,8 +21,8 @@ fun LeerparkPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Leerpark",
-            nlHeaderText = "Zero - Bedrijventerrein Leerpark",
+            enHeaderText = "Bedrijventerrein Leerpark",
+            nlHeaderText = "Bedrijventerrein Leerpark",
             enDescriptionParagraph = """
                 Below you can view the digital twin for the sustainability of the Leerpark business park. The companies 
                 in this business park are exploring whether they can share energy and invest in sustainable technologies 

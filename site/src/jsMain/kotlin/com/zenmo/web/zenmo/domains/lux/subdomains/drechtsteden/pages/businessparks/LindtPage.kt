@@ -21,8 +21,8 @@ fun LindtPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Groote Lindt",
-            nlHeaderText = "Zero - Bedrijventerrein Groote Lindt",
+            enHeaderText = "Bedrijventerrein Groote Lindt",
+            nlHeaderText = "Bedrijventerrein Groote Lindt",
             enDescriptionParagraph = """
                 Below you can find the digital twin for the sustainability of the Groote Lindt business park in 
                 Zwijndrecht. The companies on this business park are exploring whether they can share energy and 

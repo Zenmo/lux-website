@@ -21,8 +21,8 @@ fun AmstelwijckPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Amstelwijck Businesspark",
-            nlHeaderText = "Zero - Bedrijventerrein Amstelwijck Businesspark",
+            enHeaderText = "Bedrijventerrein Amstelwijck Businesspark",
+            nlHeaderText = "Bedrijventerrein Amstelwijck Businesspark",
             enDescriptionParagraph = """
                 Below you can view the digital twin for the sustainability of the Amstelwijck Businesspark. 
                 The companies on this business park are exploring whether they can share energy and invest in 

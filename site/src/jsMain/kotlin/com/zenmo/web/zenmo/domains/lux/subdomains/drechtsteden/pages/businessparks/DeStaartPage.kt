@@ -21,8 +21,8 @@ fun DeStaartPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein De Staart",
-            nlHeaderText = "Zero - Bedrijventerrein De Staart",
+            enHeaderText = "Bedrijventerrein De Staart",
+            nlHeaderText = "Bedrijventerrein De Staart",
             enDescriptionParagraph = """
                 Below you can view the digital twin for the sustainability of business park De Staart. The companies 
                 located here are exploring how they can share energy and invest in sustainable technologies together. 

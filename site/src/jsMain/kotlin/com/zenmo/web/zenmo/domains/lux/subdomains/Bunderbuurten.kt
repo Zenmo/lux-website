@@ -14,7 +14,7 @@ import kotlin.uuid.Uuid
 @Composable
 fun BunderbuurtenIndex() {
     LuxSubdomainPageLayout(
-        title = "Zero - Bunderbuurten Veghel",
+        title = "Bunderbuurten Veghel",
     ) {
         ModelPageContent(
             twin = SubdomainModel.Bunderbuurten,

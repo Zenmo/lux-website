@@ -21,8 +21,8 @@ fun AntoniapolderPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Antoniapolder",
-            nlHeaderText = "Zero - Bedrijventerrein Antoniapolder",
+            enHeaderText = "Bedrijventerrein Antoniapolder",
+            nlHeaderText = "Bedrijventerrein Antoniapolder",
             enDescriptionParagraph = """
                 Below you can view the digital twin for the sustainability of the Antoniapolder and Groenoord business 
                 parks in Hendrik-Ido-Ambacht. The companies in this business park are exploring whether they can share 
