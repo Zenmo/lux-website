@@ -21,8 +21,8 @@ fun SliedrechtPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Sliedrecht",
-            nlHeaderText = "Zero - Bedrijventerrein Sliedrecht",
+            enHeaderText = "Bedrijventerrein Sliedrecht",
+            nlHeaderText = "Bedrijventerrein Sliedrecht",
             enDescriptionParagraph = """
                 Below you can view the digital twin for the sustainability of the business parks Nijverwaard, 
                 Stationspark, and Kwadrant in Sliedrecht. The companies on these business parks are exploring 

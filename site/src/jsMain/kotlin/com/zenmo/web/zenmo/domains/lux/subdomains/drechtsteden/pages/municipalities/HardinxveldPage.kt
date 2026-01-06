@@ -20,8 +20,8 @@ fun HardinxveldPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerreinen Gemeente Hardinxveld-Giessendam",
-            nlHeaderText = "Zero - Bedrijventerreinen Gemeente Hardinxveld-Giessendam",
+            enHeaderText = "Bedrijventerreinen Gemeente Hardinxveld-Giessendam",
+            nlHeaderText = "Bedrijventerreinen Gemeente Hardinxveld-Giessendam",
             enDescriptionParagraph = """
                 Below you can find the digital twin for the sustainability of the business parks in the municipality 
                 of Hardinxveld-Giessendam. The companies in this municipality are exploring whether they can share 

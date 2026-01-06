@@ -24,8 +24,8 @@ fun DeGeerPage() {
         )
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein De Geer",
-            nlHeaderText = "Zero - Bedrijventerrein De Geer",
+            enHeaderText = "Bedrijventerrein De Geer",
+            nlHeaderText = "Bedrijventerrein De Geer",
             enDescriptionParagraph = """
                 Below you can view the digital twin for the sustainability of business park De Geer in Zwijndrecht. The 
                 companies on this business park are exploring whether they can share energy and invest in sustainable 

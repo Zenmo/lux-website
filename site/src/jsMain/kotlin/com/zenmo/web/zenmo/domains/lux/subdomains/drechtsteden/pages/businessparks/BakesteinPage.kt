@@ -24,8 +24,8 @@ fun BakesteinPage() {
         )
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Bakestein",
-            nlHeaderText = "Zero - Bedrijventerrein Bakestein",
+            enHeaderText = "Bedrijventerrein Bakestein",
+            nlHeaderText = "Bedrijventerrein Bakestein",
             enDescriptionParagraph = """
                 Below you can view the digital twin for the sustainability of the Bakestein business park in Zwijndrecht. 
                 The companies on this business park are exploring whether they can share energy and invest in sustainable 

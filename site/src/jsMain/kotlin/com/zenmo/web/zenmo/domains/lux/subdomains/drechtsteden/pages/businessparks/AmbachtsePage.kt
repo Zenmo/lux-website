@@ -21,8 +21,8 @@ fun AmbachtsePage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Ambachtse zoom",
-            nlHeaderText = "Zero - Bedrijventerrein Ambachtse zoom",
+            enHeaderText = "Bedrijventerrein Ambachtse zoom",
+            nlHeaderText = "Bedrijventerrein Ambachtse zoom",
             enDescriptionParagraph = """
                 Below you can find the digital twin for the sustainability of the Ambachtse zoom business park. 
                 The companies on this business park are exploring whether they can share energy and invest in 

@@ -20,8 +20,8 @@ fun GemeenteAlblasserdamPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerreinen Gemeente Alblasserdam",
-            nlHeaderText = "Zero - Bedrijventerreinen Gemeente Alblasserdam",
+            enHeaderText = "Bedrijventerreinen Gemeente Alblasserdam",
+            nlHeaderText = "Bedrijventerreinen Gemeente Alblasserdam",
             enDescriptionParagraph = """
                 Below you can find the digital twin for the sustainability of the business parks in the Municipality 
                 of Alblasserdam. The companies in this municipality are exploring whether they can share energy and 

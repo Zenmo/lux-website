@@ -21,8 +21,8 @@ fun NieuweWegPage() {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
             twin = twinModel,
-            enHeaderText = "Zero - Bedrijventerrein Nieuwe Weg",
-            nlHeaderText = "Zero - Bedrijventerrein Nieuwe Weg",
+            enHeaderText = "Bedrijventerrein Nieuwe Weg",
+            nlHeaderText = "Bedrijventerrein Nieuwe Weg",
             enDescriptionParagraph = """
                 Below you can find the digital twin for the sustainability of the Nieuwe Weg business park in 
                 Hardinxveld-Giesendam. The companies on this business park are exploring whether they can share energy 
