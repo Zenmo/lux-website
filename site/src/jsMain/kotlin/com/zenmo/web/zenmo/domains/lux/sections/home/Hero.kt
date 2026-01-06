@@ -124,7 +124,7 @@ fun Hero() {
 
             HeaderText(
                 enText = "THIS IS LUX.",
-                nlText = "DIT IS LUX.",
+                nlText = "DIT IS LUX. en het is luek",
                 modifier = Modifier
                     .color(SitePalette.light.primary)
             )
