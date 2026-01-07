@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.subdomains.brabant.BrabantRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechtstedenRouting
+import com.zenmo.web.zenmo.domains.lux.subdomains.empowered.EmpoweredRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.genius.Genius
 
 
@@ -11,6 +12,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.genius.Genius
 fun LuxSubdomainRoutingComponent(subdomain: SubdomainModel) {
     when (subdomain) {
         SubdomainModel.Drechtsteden -> DrechtstedenRouting()
+        SubdomainModel.Empowered -> EmpoweredRouting()
         SubdomainModel.Genius -> Genius()
         SubdomainModel.Hessenpoort -> Hessenpoort()
         SubdomainModel.Brabant -> BrabantRouting()
