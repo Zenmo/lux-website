@@ -35,7 +35,7 @@ fun EmpoweredRouting() {
 }
 
 val empoweredMenuItems = listOf(
-    MenuItem.Simple(path = "/", title = LocalizedText("Home", "Thuis")),
+    MenuItem.Simple(path = "/", title = LocalizedText("EmPowerED", "EmPowerED")),
     MenuItem.Simple(path = "/bronckhorst", title = LocalizedText("Bronckhorst", "Bronckhorst")),
     MenuItem.Simple(path = "/nijmegen-hengstdal", title = LocalizedText("Nijmegen Hengstdal", "Nijmegen Hengstdal")),
 )
