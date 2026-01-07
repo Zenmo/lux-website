@@ -86,17 +86,9 @@ fun KronenbergIndex() {
                 }
             )
 
-            P {
-                LangText(
-                    en = "Come back soon to see more.",
-                    nl = "Kom binnenkort terug om meer te zien.",
-                )
-            }
-
-//         AnyLogicEmbed(
-//             modelId = Uuid.parse("00000000-0000-0000-0000-000000000000"),
-//             apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
-//          )
+            AnyLogicEmbed(
+                modelId = Uuid.parse("c8d7bd27-5b4a-43b1-bbcb-5ead4fe98696"),
+            )
 
             Column(
                 modifier = Modifier.fillMaxWidth().gap(1.cssRem),

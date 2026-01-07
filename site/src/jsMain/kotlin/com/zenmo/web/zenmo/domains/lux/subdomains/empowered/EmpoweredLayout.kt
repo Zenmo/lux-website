@@ -11,7 +11,7 @@ fun EmpoweredLayout(
     PageLayout(
         header = { LuxHeader() },
         footer = {},
-        title = "Empowered",
+        title = "EmPowerED",
     ) {
         content()
     }

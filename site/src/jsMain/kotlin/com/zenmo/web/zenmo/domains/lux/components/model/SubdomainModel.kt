@@ -23,7 +23,7 @@ sealed class SubdomainModel(
     )
 
     data object Empowered : SubdomainModel(
-        "empowered",
+        "EmPowerEd",
         image = "",
         isPrivate = false,
         applicationArea = ApplicationArea.LUX_REGION,
