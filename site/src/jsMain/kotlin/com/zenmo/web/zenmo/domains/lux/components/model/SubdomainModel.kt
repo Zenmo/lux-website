@@ -22,6 +22,13 @@ sealed class SubdomainModel(
         applicationArea = ApplicationArea.LUX_REGION
     )
 
+    data object Empowered : SubdomainModel(
+        "empowered",
+        image = "",
+        isPrivate = false,
+        applicationArea = ApplicationArea.LUX_REGION,
+    )
+
     data object Genius : SubdomainModel(
         "genius",
         "/lux/images/models/genius.png",
@@ -143,6 +150,7 @@ sealed class SubdomainModel(
     companion object {
         val allModels = listOf(
             Drechtsteden,
+            Empowered,
             Genius,
             Brabant,
             Nederland,

@@ -1,6 +1,7 @@
 package com.zenmo.web.zenmo.domains.zenmo.navigation
 
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.subdomains.empowered.empoweredMenuItems
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window
 
@@ -19,6 +20,7 @@ object MenuFactory {
                 }
                 when (model) {
                     SubdomainModel.Drechtsteden -> DrechtstedenMenu.items
+                    SubdomainModel.Empowered -> empoweredMenuItems
                     else -> emptyList()
                 }
             }
