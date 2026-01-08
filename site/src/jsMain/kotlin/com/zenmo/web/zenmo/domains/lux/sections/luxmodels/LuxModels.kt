@@ -1,6 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.sections.luxmodels
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -9,11 +10,16 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
+import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenModels
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.components.model.drechtstedenModels
+import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.EmptyResults
+import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.SearchBar
+import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.filterAndSearchModels
 import com.zenmo.web.zenmo.domains.lux.widgets.RadioRow
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -22,9 +28,10 @@ import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Span
 
 
-private enum class FilterType {
+enum class FilterType {
     ALL,
     PUBLIC,
     PRIVATE
@@ -43,7 +50,9 @@ fun LuxModels() {
                 .gap(5.cssRem),
         variant = LuxSectionContainerStyleVariant
     ) {
-        val allModels = SubdomainModel.allModels + DrechtstedenModels.models
+        var query by remember { mutableStateOf("") }
+
+        val allModels = SubdomainModel.allModels + drechtstedenModels
         var luxModels by remember { mutableStateOf(allModels) }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
         Column(
@@ -67,34 +76,65 @@ fun LuxModels() {
                 )
             }
 
-            RadioRow(
-                value = filterType,
-                options = FilterType.entries.associateWith { it.name },
-                onChange = { type ->
-                    filterType = type
-                    luxModels = when (type) {
-                        FilterType.ALL -> allModels
-                        FilterType.PUBLIC -> allModels.filter { !it.isPrivate }
-                        FilterType.PRIVATE -> allModels.filter { it.isPrivate }
-                    }
+            SearchBar(
+                query = query,
+                onQueryChange = { searchQuery ->
+                    query = searchQuery
+                    luxModels = filterAndSearchModels(
+                        models = allModels,
+                        query = query,
+                        filterType = filterType
+                    )
                 }
-            ) { option, _ ->
-                when (option) {
-                    FilterType.ALL -> LangText(en = "All", nl = "Alle")
-                    FilterType.PUBLIC -> LangText(en = "Public", nl = "Openbaar")
-                    FilterType.PRIVATE -> Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.px)
-                    ) {
-                        MdiLock(Modifier.fontSize(16.px))
-                        LangText(en = "Private", nl = "Privé")
+            )
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Span(
+                    attrs = DeEmphasizedTextStyle.toModifier()
+                        .textTransform(TextTransform.Uppercase)
+                        .padding(bottom = 8.px)
+                        .toAttrs()
+                ) {
+                    LangText(
+                        en = "Access",
+                        nl = "Toegang"
+                    )
+                }
+                RadioRow(
+                    value = filterType,
+                    options = FilterType.entries.associateWith { it.name },
+                    onChange = { type ->
+                        filterType = type
+                        luxModels = filterAndSearchModels(
+                            models = allModels,
+                            query = query,
+                            filterType = filterType
+                        )
+                    }
+                ) { option, _ ->
+                    when (option) {
+                        FilterType.ALL -> LangText(en = "All", nl = "Alle")
+                        FilterType.PUBLIC -> LangText(en = "Public", nl = "Openbaar")
+                        FilterType.PRIVATE -> Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(4.px)
+                        ) {
+                            MdiLock(Modifier.fontSize(16.px))
+                            LangText(en = "Private", nl = "Privé")
+                        }
                     }
                 }
             }
         }
 
-        TwinModelsGrid(
-            models = luxModels,
-        )
+        if (luxModels.isNotEmpty()) {
+            TwinModelsGrid(
+                models = luxModels,
+            )
+        } else {
+            EmptyResults()
+        }
     }
 }

@@ -2,7 +2,6 @@ package com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.BoxShadow
-import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.dom.svg.Image
 import com.varabyte.kobweb.compose.dom.svg.Svg
 import com.varabyte.kobweb.compose.dom.svg.SvgId
@@ -14,8 +13,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.selectors.after
-import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LoadingSpinner
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
@@ -49,18 +46,6 @@ val AnyLogicEmbedStyle = CssStyle {
                 BoxShadow.of(0.px, 4.px, 8.px, 0.px, rgba(0, 0, 0, 0.2f)),
                 BoxShadow.of(0.px, 6.px, 20.px, 0.px, rgba(0, 0, 0, 0.19f))
             )
-    }
-
-    val sharedModifier = Modifier
-        .boxSizing(BoxSizing.BorderBox)
-        .margin(0.px)
-        .padding(0.px)
-
-    before {
-        sharedModifier
-    }
-    after {
-        sharedModifier
     }
 }
 
