@@ -11,8 +11,8 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenModels
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
-import com.zenmo.web.zenmo.domains.lux.components.model.drechtstedenModels
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.widgets.RadioRow
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
@@ -43,7 +43,7 @@ fun LuxModels() {
                 .gap(5.cssRem),
         variant = LuxSectionContainerStyleVariant
     ) {
-        val allModels = SubdomainModel.allModels + drechtstedenModels
+        val allModels = SubdomainModel.allModels + DrechtstedenModels.models
         var luxModels by remember { mutableStateOf(allModels) }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
         Column(
