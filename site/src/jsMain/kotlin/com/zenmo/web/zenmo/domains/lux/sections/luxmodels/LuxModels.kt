@@ -12,6 +12,7 @@ import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.components.model.drechtstedenModels
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.widgets.RadioRow
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
@@ -29,6 +30,7 @@ private enum class FilterType {
     PRIVATE
 }
 
+
 @Composable
 fun LuxModels() {
     SectionContainer(
@@ -41,7 +43,8 @@ fun LuxModels() {
                 .gap(5.cssRem),
         variant = LuxSectionContainerStyleVariant
     ) {
-        var luxModels by remember { mutableStateOf(SubdomainModel.allModels) }
+        val allModels = SubdomainModel.allModels + drechtstedenModels
+        var luxModels by remember { mutableStateOf(allModels) }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -70,9 +73,9 @@ fun LuxModels() {
                 onChange = { type ->
                     filterType = type
                     luxModels = when (type) {
-                        FilterType.ALL -> SubdomainModel.allModels
-                        FilterType.PUBLIC -> SubdomainModel.publicSubdomains
-                        FilterType.PRIVATE -> SubdomainModel.privateSubdomains
+                        FilterType.ALL -> allModels
+                        FilterType.PUBLIC -> allModels.filter { !it.isPrivate }
+                        FilterType.PRIVATE -> allModels.filter { it.isPrivate }
                     }
                 }
             ) { option, _ ->
@@ -92,7 +95,6 @@ fun LuxModels() {
 
         TwinModelsGrid(
             models = luxModels,
-            path = ""
         )
     }
 }

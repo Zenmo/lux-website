@@ -25,11 +25,12 @@ fun ResRegionPage() {
     }
 }
 
+const val resRegionPath = "/res-region"
+
 @Composable
 fun ResRegionModels() =
     TwinModelsGrid(
         models = DrechtstedenResRegion.models,
-        path = "res-region",
     )
 
 

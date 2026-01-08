@@ -168,7 +168,5 @@ sealed class SubdomainModel(
             Borchwerf,
             Veenendaal,
         )
-        val publicSubdomains = allModels.filter { !it.isPrivate }
-        val privateSubdomains = allModels.filter { it.isPrivate }
     }
 }

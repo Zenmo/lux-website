@@ -6,21 +6,21 @@ import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
 
 fun municipalitiesRouting(
     ctx: InitKobwebContext,
+    basePath: String,
 ) {
-    val path = "/business-parks"
     with(ctx.router) {
-        register("$path/${DrechtstedenMunicipality.Alblasserdam.name}") {
+        register("$basePath/${DrechtstedenMunicipality.Alblasserdam.name}") {
             GemeenteAlblasserdamPage()
         }
-        register("$path/${DrechtstedenMunicipality.Hardinxveld.name}") {
+        register("$basePath/${DrechtstedenMunicipality.Hardinxveld.name}") {
             HardinxveldPage()
         }
-        register("$path/${DrechtstedenMunicipality.SliedrechtMunicipality.name}") {
+        register("$basePath/${DrechtstedenMunicipality.SliedrechtMunicipality.name}") {
             GemeenteSliedrechtPage()
         }
-        register("$path/${DrechtstedenMunicipality.Dordrecht.name}") { Dordrecht() }
-        register("$path/${DrechtstedenMunicipality.Papendrecht.name}") { Papendrecht() }
-        register("$path/${DrechtstedenMunicipality.Zwijndrecht.name}") { Zwijndrecht() }
-        register("$path/${DrechtstedenMunicipality.HendrikIdoAmbacht.name}") { HendrikIdoAmbacht() }
+        register("$basePath/${DrechtstedenMunicipality.Dordrecht.name}") { Dordrecht() }
+        register("$basePath/${DrechtstedenMunicipality.Papendrecht.name}") { Papendrecht() }
+        register("$basePath/${DrechtstedenMunicipality.Zwijndrecht.name}") { Zwijndrecht() }
+        register("$basePath/${DrechtstedenMunicipality.HendrikIdoAmbacht.name}") { HendrikIdoAmbacht() }
     }
 }

@@ -7,49 +7,49 @@ sealed class DrechtstedenMunicipality(
     image: String,
 ) : DrechtstedenTwinModel(name, title, entryPoint, image) {
 
-    data object Alblasserdam : DrechtstedenTwinModel(
+    data object Alblasserdam : DrechtstedenMunicipality(
         "alblasserdam",
         "Digital twin Gemeente Alblasserdam",
         "drechtsteden/municipalities/alblasserdam",
         "/lux/images/drechtsteden/municipalities/Gemeente_Alblasserdam_foto.png"
     )
 
-    data object Hardinxveld : DrechtstedenTwinModel(
+    data object Hardinxveld : DrechtstedenMunicipality(
         "hardinxveld",
         "Digital twin Gemeente Hardinxveld-Giessendam",
         "drechtsteden/municipalities/hardinxveld",
         "/lux/images/drechtsteden/municipalities/Gemeente_Hardinxveld-Giessendam_foto.png"
     )
 
-    data object SliedrechtMunicipality : DrechtstedenTwinModel(
+    data object SliedrechtMunicipality : DrechtstedenMunicipality(
         "sliedrechtmunicipality",
         "Digital twin Gemeente Sliedrecht",
         "drechtsteden/municipalities/sliedrecht",
         "/lux/images/drechtsteden/municipalities/Gemeente_Sliedrecht_foto.png"
     )
 
-    data object Dordrecht : DrechtstedenTwinModel(
+    data object Dordrecht : DrechtstedenMunicipality(
         "dordrecht",
         "Digital twin Dordrecht",
         "drechtsteden/municipalities/dordrecht",
         "/lux/images/drechtsteden/municipalities/dordrecht.png"
     )
 
-    data object Papendrecht : DrechtstedenTwinModel(
+    data object Papendrecht : DrechtstedenMunicipality(
         "papendrecht",
         "Digital twin Papendrecht",
         "drechtsteden/municipalities/papendrecht",
         "/lux/images/drechtsteden/municipalities/papendrecht.png"
     )
 
-    data object Zwijndrecht : DrechtstedenTwinModel(
+    data object Zwijndrecht : DrechtstedenMunicipality(
         "zwijndrecht",
         "Digital twin Zwijndrecht",
         "drechtsteden/municipalities/zwijndrecht",
         "/lux/images/drechtsteden/municipalities/zwijndrecht.png"
     )
 
-    data object HendrikIdoAmbacht : DrechtstedenTwinModel(
+    data object HendrikIdoAmbacht : DrechtstedenMunicipality(
         "hendrikidoambacht",
         "Digital twin Hendrik-Ido-Ambacht",
         "drechtsteden/municipalities/hendrikidoambacht",

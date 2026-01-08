@@ -55,16 +55,16 @@ fun BusinessParksPage() {
     }
 }
 
+const val businessParksPath = "/business-parks"
+
 @Composable
 fun BusinessParksModels() =
     TwinModelsGrid(
         models = DrechtstedenBusinessPark.models,
-        path = "business-parks",
     )
 
 @Composable
 fun MunicipalitiesModels() =
     TwinModelsGrid(
         models = DrechtstedenMunicipality.models,
-        path = "business-parks",
     )

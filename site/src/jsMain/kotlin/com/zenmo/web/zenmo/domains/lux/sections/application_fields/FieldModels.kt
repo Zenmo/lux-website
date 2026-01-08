@@ -35,7 +35,6 @@ fun FieldModels(
         )
         TwinModelsGrid(
             models = SubdomainModel.allModels.filter { it.applicationArea == applicationArea },
-            path = ""
         )
     }
 }

@@ -5,23 +5,23 @@ import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenBusinessPark
 
 
 fun businessParksRouting(
-    ctx: InitKobwebContext
+    ctx: InitKobwebContext,
+    basePath: String,
 ) {
-    val path = "/business-parks"
     with(ctx.router) {
-        register("$path/${DrechtstedenBusinessPark.AmbachtseZoom.name}") { AmbachtsePage() }
-        register("$path/${DrechtstedenBusinessPark.AmstelwijckBusinesspark.name}") { AmstelwijckPage() }
-        register("$path/${DrechtstedenBusinessPark.Antoniapolder.name}") { AntoniapolderPage() }
-        register("$path/${DrechtstedenBusinessPark.Bakestein.name}") { BakesteinPage() }
-        register("$path/${DrechtstedenBusinessPark.DeGeer.name}") { DeGeerPage() }
-        register("$path/${DrechtstedenBusinessPark.DeStaart.name}") { DeStaartPage() }
-        register("$path/${DrechtstedenBusinessPark.DordtseKil12AmstelwijckWest.name}") { DordtseKilIPage() }
-        register("$path/${DrechtstedenBusinessPark.DordtseKil34.name}") { DordtseKilIIIPage() }
-        register("$path/${DrechtstedenBusinessPark.GrooteLindtV2.name}") { LindtPage() }
-        register("$path/${DrechtstedenBusinessPark.Leerpark.name}") { LeerparkPage() }
-        register("$path/${DrechtstedenBusinessPark.NieuweWeg.name}") { NieuweWegPage() }
-        register("$path/${DrechtstedenBusinessPark.PapendrechtOosteind.name}") { PapendrechtPage() }
-        register("$path/${DrechtstedenBusinessPark.SliedrechtBusinesspark.name}") { SliedrechtPage() }
+        register("$basePath/${DrechtstedenBusinessPark.AmbachtseZoom.name}") { AmbachtsePage() }
+        register("$basePath/${DrechtstedenBusinessPark.AmstelwijckBusinesspark.name}") { AmstelwijckPage() }
+        register("$basePath/${DrechtstedenBusinessPark.Antoniapolder.name}") { AntoniapolderPage() }
+        register("$basePath/${DrechtstedenBusinessPark.Bakestein.name}") { BakesteinPage() }
+        register("$basePath/${DrechtstedenBusinessPark.DeGeer.name}") { DeGeerPage() }
+        register("$basePath/${DrechtstedenBusinessPark.DeStaart.name}") { DeStaartPage() }
+        register("$basePath/${DrechtstedenBusinessPark.DordtseKil12AmstelwijckWest.name}") { DordtseKilIPage() }
+        register("$basePath/${DrechtstedenBusinessPark.DordtseKil34.name}") { DordtseKilIIIPage() }
+        register("$basePath/${DrechtstedenBusinessPark.GrooteLindtV2.name}") { LindtPage() }
+        register("$basePath/${DrechtstedenBusinessPark.Leerpark.name}") { LeerparkPage() }
+        register("$basePath/${DrechtstedenBusinessPark.NieuweWeg.name}") { NieuweWegPage() }
+        register("$basePath/${DrechtstedenBusinessPark.PapendrechtOosteind.name}") { PapendrechtPage() }
+        register("$basePath/${DrechtstedenBusinessPark.SliedrechtBusinesspark.name}") { SliedrechtPage() }
     }
 
 }

@@ -7,7 +7,7 @@ sealed class DrechtstedenResRegion(
     image: String,
 ) : DrechtstedenTwinModel(name, title, entryPoint, image) {
 
-    data object DrechtstedenRes : DrechtstedenTwinModel(
+    data object DrechtstedenRes : DrechtstedenResRegion(
         "drechtstedenres",
         "Digital twin Drechtsteden",
         "drechtsteden/resregion/drechtsteden",

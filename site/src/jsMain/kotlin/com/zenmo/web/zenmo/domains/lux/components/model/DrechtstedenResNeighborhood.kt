@@ -7,21 +7,21 @@ sealed class DrechtstedenResNeighborhood(
     image: String,
 ) : DrechtstedenTwinModel(name, title, entryPoint, image) {
 
-    data object OverTSpoor : DrechtstedenTwinModel(
+    data object OverTSpoor : DrechtstedenResNeighborhood(
         "overtspoor",
         "Digital twin Over 't Spoor",
         "drechtsteden/resneighborhoods/overtspoor",
         "/lux/images/drechtsteden/resneighborhoods/over_t_spoor.png"
     )
 
-    data object Oostdonk : DrechtstedenTwinModel(
+    data object Oostdonk : DrechtstedenResNeighborhood(
         "oostdonk",
         "Digital twin Oostdonk",
         "drechtsteden/resneighborhoods/oostdonk",
         "/lux/images/drechtsteden/resneighborhoods/oostdonk.png"
     )
 
-    data object Kerkbuurt : DrechtstedenTwinModel(
+    data object Kerkbuurt : DrechtstedenResNeighborhood(
         "kerkbuurt",
         "Digital twin Kerkbuurt",
         "drechtsteden/resneighborhoods/kerkbuurt",

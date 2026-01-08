@@ -20,9 +20,10 @@ fun ResNeighborhoodsPage() {
     }
 }
 
+const val resNeighbourhoodsPath = "/res-neighborhoods"
+
 @Composable
 fun ResNeighborhoodModels() =
     TwinModelsGrid(
         models = DrechtstedenResNeighborhood.models,
-        path = "res-neighborhoods",
     )
