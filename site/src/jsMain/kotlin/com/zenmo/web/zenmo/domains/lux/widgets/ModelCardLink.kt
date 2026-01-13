@@ -23,6 +23,7 @@ import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
 import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
 import com.zenmo.web.zenmo.domains.lux.components.model.TwinModel
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
@@ -137,9 +138,12 @@ fun ModelCard(
             }
         },
         description = {
-            if (model is SubdomainModel) {
-                ApplicationFieldLabel(model.applicationArea)
+            val area = when (model) {
+                is SubdomainModel -> model.applicationArea
+                is DrechtstedenTwinModel -> ApplicationArea.LUX_REGION
+                else -> null
             }
+            area?.let { ApplicationFieldLabel(it) }
         },
         metaContent = {
             Box(

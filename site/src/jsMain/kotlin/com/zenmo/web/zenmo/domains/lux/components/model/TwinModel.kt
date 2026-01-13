@@ -10,4 +10,8 @@ sealed class TwinModel(
     open fun url(path: String, protocol: String, luxDomain: String): String {
         return "${protocol}//$luxDomain/$path/${title.lowercase()}"
     }
+
+    val searchTokens: List<String>
+        get() = listOf(title)
+
 }
