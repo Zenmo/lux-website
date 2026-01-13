@@ -17,6 +17,9 @@ import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResRegion
 import com.zenmo.web.zenmo.domains.lux.components.model.SimpleTwin
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.businessParksPath
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resneighborhoods.resNeighbourhoodsPath
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.resRegionPath
 import com.zenmo.web.zenmo.domains.lux.widgets.ModelCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.pages.SiteGlobals
@@ -82,7 +85,7 @@ fun DrechtstedenHomePage() {
 
                 ModelCard(
                     url = DrechtstedenResRegion.DrechtstedenRes.url(
-                        path = "res-region",
+                        path = resRegionPath,
                         protocol = window.location.protocol,
                         luxDomain = SiteGlobals.LUX_DOMAIN
                     ),
@@ -93,7 +96,7 @@ fun DrechtstedenHomePage() {
                 )
 
                 ModelCard(
-                    url = "/res-neighborhoods",
+                    url = resNeighbourhoodsPath,
                     model = SimpleTwin(
                         modelTitle = "Woonwijken",
                         modelImage = DrechtstedenResNeighborhood.OverTSpoor.image,
@@ -101,7 +104,7 @@ fun DrechtstedenHomePage() {
                 )
 
                 ModelCard(
-                    url = "/business-parks",
+                    url = businessParksPath,
                     model = SimpleTwin(
                         modelTitle = "Bedrijventerreinen",
                         modelImage = DrechtstedenMunicipality.Dordrecht.image,

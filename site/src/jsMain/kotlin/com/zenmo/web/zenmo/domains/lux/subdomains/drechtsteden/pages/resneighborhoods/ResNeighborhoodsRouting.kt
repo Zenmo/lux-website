@@ -6,11 +6,11 @@ import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResNeighborh
 
 fun resNeighborhoodsRouting(
     ctx: InitKobwebContext,
+    basePath: String,
 ) {
-    val path = "/res-neighborhoods"
     with(ctx.router) {
-        register("$path/${DrechtstedenResNeighborhood.Oostdonk.name}") { Oostdonk() }
-        register("$path/${DrechtstedenResNeighborhood.OverTSpoor.name}") { OverTSpoor() }
-        register("$path/${DrechtstedenResNeighborhood.Kerkbuurt.name}") { Kerkbuurt() }
+        register("$basePath/${DrechtstedenResNeighborhood.Oostdonk.name}") { Oostdonk() }
+        register("$basePath/${DrechtstedenResNeighborhood.OverTSpoor.name}") { OverTSpoor() }
+        register("$basePath/${DrechtstedenResNeighborhood.Kerkbuurt.name}") { Kerkbuurt() }
     }
 }
