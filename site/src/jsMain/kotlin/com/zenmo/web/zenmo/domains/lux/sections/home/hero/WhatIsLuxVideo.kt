@@ -11,6 +11,8 @@ import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiPlayArrow
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.core.services.localization.Language
+import com.zenmo.web.zenmo.core.services.localization.LocalLanguage
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
@@ -40,6 +42,10 @@ fun WhatIsLuxVideo() {
             var videoRef by remember { mutableStateOf<HTMLVideoElement?>(null) }
             var isPlaying by remember { mutableStateOf(false) }
 
+            val videoSrc = when (LocalLanguage.current) {
+                Language.English -> "Hessenpoort_ENG.mp4"
+                Language.Dutch -> "Hessenpoort_NL.mp4"
+            }
             Video(
                 attrs = Modifier
                     .fillMaxSize()
@@ -59,8 +65,7 @@ fun WhatIsLuxVideo() {
                                 isPlaying = false
                             }
                         }
-                        // todo use what is lux video
-                        attr("src", "/lux/videos/lux_hero_movie.mp4")
+                        attr("src", "/lux/videos/$videoSrc")
                         attr("poster", "/lux/images/what_is_lux_poster.png")
                         attr("width", "100%")
                         attr("height", "100%")
