@@ -13,6 +13,7 @@ val accessPolicy = AccessPolicy.RoleBased("PreZero")
 fun ProtectedComponent() {
     AnyLogicEmbed(
         modelId = Uuid.parse("72d47601-ffb6-4b66-b7a1-81cb289c6f4e"),
-        apiKey = Uuid.parse("aec12288-c1ec-4dee-89f6-ef4238fd860c"), //todo use api key for prezero
+        // AnyLogic user prezero@zenmo.com
+        apiKey = Uuid.parse("451b1277-4660-4eb7-bf5c-4275a947fe57"),
     )
 }
