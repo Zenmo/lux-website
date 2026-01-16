@@ -5,21 +5,21 @@ import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.hessenpoort
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun Hessenpoort() {
     LuxSubdomainPageLayout(
-        title = "Hessenpoort",
+        title = hessenpoort.label.nl,
     ) {
         SectionContainer(
             variant = LuxSectionContainerStyleVariant
         ) {
             ModelWrapper(
-                imgUrl = SubdomainModel.Hessenpoort.image,
-                entryPoint = SubdomainModel.Hessenpoort.entryPoint!!
+                imgUrl = hessenpoort.imageUrl,
+                entryPoint = hessenpoort.entryPoint
             )
 
             ProfileContactCard(

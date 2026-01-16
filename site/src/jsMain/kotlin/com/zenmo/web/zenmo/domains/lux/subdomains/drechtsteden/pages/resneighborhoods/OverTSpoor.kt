@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResNeighborhood
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -12,12 +11,11 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun OverTSpoor() {
-    val twinModel = DrechtstedenResNeighborhood.OverTSpoor
     DrechtstedenTwinLayout(
-        title = twinModel.title,
+        title = overTSpoor.label.nl,
         useTwinPageHeader = true,
-        enTwinPageHeaderTitle = twinModel.title,
-        nlTwinPageHeaderTitle = twinModel.title,
+        enTwinPageHeaderTitle = overTSpoor.label.en,
+        nlTwinPageHeaderTitle = overTSpoor.label.nl,
     ) {
 
         SectionContainer(
@@ -25,8 +23,8 @@ fun OverTSpoor() {
         ) {
 
             ModelWrapper(
-                imgUrl = twinModel.image,
-                entryPoint = twinModel.entryPoint!!,
+                imgUrl = overTSpoor.imageUrl,
+                entryPoint = overTSpoor.entryPoint,
             )
 
             ProfileContactCard(

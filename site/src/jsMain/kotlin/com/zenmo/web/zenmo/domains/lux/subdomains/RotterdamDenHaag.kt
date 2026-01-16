@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.zenmo.web.zenmo.domains.lux.components.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
-import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.rotterdamDenHaag
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.AukeNaudContactCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
@@ -17,11 +17,11 @@ import kotlin.uuid.Uuid
 @Composable
 fun RotterdamDenHaagIndex() {
     LuxSubdomainPageLayout(
-        title = "Warmte in regio Rotterdam-Den Haag"
+        title = rotterdamDenHaag.label.nl,
     ) {
         ModelPageContent(
-            twin = SubdomainModel.RotterdamDenHaag,
-            imageUrl = "/lux/images/Mock-up-MRDH.png",
+            modelLabel = rotterdamDenHaag.label,
+            pageImageSrc = "/lux/images/Mock-up-MRDH.png",
             enDescriptionParagraph = """
                 Below is a mock-up of the digital twin for the sustainability of the heat system 
                 in the Rotterdam-Den Haag metropolitan region. This tool allows for comparison of 
@@ -37,7 +37,7 @@ fun RotterdamDenHaagIndex() {
             """.trimIndent(),
             modelContent = {
                 AnyLogicEmbed(
-                    modelId = Uuid.parse("92952425-a78a-4e69-a896-6ccea66d4ce6"),
+                    modelId = rotterdamDenHaag.modelId,
                     apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
                 )
             },

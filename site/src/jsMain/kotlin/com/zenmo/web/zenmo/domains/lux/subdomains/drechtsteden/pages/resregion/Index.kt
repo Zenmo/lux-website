@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResRegion
+import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
@@ -25,12 +25,11 @@ fun ResRegionPage() {
     }
 }
 
-const val resRegionPath = "/res-region"
 
 @Composable
 fun ResRegionModels() =
     TwinModelsGrid(
-        models = DrechtstedenResRegion.models,
+        models = resRegionModels.map { it.toTwinModelCardItem() },
     )
 
 

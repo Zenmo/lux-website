@@ -25,7 +25,7 @@ import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuWidget
 import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.genius
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderComponent
@@ -60,8 +60,8 @@ fun Genius() {
             TextContent()
 
             ModelWrapper(
-                imgUrl = SubdomainModel.Genius.image,
-                entryPoint = SubdomainModel.Genius.entryPoint!!
+                imgUrl = genius.imageUrl,
+                entryPoint = genius.entryPoint
             )
 
             PartnerLogos()

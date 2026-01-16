@@ -16,6 +16,7 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.veenendaal
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.widgets.RadioItem
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -24,13 +25,12 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Text
-import kotlin.uuid.Uuid
 
 
 @Composable
 fun Veenendaal() {
     LuxSubdomainPageLayout(
-        title = "Home",
+        title = veenendaal.label.nl,
     ) {
         var selectedOptions by remember { mutableStateOf(setOf(selectableInputsOptions.keys.first())) }
         var currentSimulationOptions by remember { mutableStateOf(selectedOptions) }
@@ -83,7 +83,7 @@ fun Veenendaal() {
                     contentAlignment = Alignment.Center
                 ) {
                     AnyLogicEmbed(
-                        modelId = Uuid.parse("0bec54a4-af5d-47fd-8af1-dfb3af0457f6"),
+                        modelId = veenendaal.modelId,
                         inputs = selectableInputsOptions.keys.associateWith { option ->
                             (option in currentSimulationOptions)
                         },
