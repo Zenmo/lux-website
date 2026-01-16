@@ -16,6 +16,9 @@ import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.percent
+import org.w3c.dom.SMOOTH
+import org.w3c.dom.ScrollBehavior
+import org.w3c.dom.ScrollToOptions
 
 
 @Composable
@@ -27,6 +30,24 @@ fun PageLayout(
 ) {
     LaunchedEffect(title) {
         document.title = documentTitleByDomain(title)
+        /**
+         * Jumps to the top when navigating to a new page.
+         *
+         * The call is deferred with `requestAnimationFrame` so it runs after the DOM is
+         * committed and layout is finalized. In Firefox, calling `scrollTo` during
+         * composition is ignored (even without scroll behavior) because the
+         * scroll container has no stable geometry yet. Deferring to the next paint frame
+         * makes the scroll reliable and consistent across browsers.
+         */
+        window.requestAnimationFrame {
+            window.scrollTo(
+                ScrollToOptions(
+                    0.0,
+                    0.0,
+                    ScrollBehavior.SMOOTH
+                )
+            )
+        }
     }
     Box(
         Modifier
