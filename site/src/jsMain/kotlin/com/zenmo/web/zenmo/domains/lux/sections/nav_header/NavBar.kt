@@ -9,10 +9,10 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.core.MenuFactory
+import com.zenmo.web.zenmo.core.models.MenuItem
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxMenuItem
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxMenuItemWithSubs
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuFactory
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.Position
@@ -41,20 +41,20 @@ fun NavBar() {
         Ul(
             NavListStyle.toModifier().toAttrs()
         ) {
-            MenuFactory.menuItems().forEach { item ->
-                when (item) {
+            MenuFactory.menuItems().forEach { menuItem ->
+                when (menuItem) {
                     is MenuItem.Simple -> {
                         LuxMenuItem(
-                            href = item.path,
-                            menuTitle = item.title,
-                            isActive = isPathActive(href = item.path),
+                            href = menuItem.nav.path,
+                            menuTitle = menuItem.nav.label,
+                            isActive = isPathActive(href = menuItem.nav.path),
                         )
                     }
 
                     is MenuItem.WithSubs -> {
                         LuxMenuItemWithSubs(
-                            titleText = item.title,
-                            subItems = item.subItems,
+                            titleText = menuItem.title,
+                            subItems = menuItem.subItems,
                         )
                     }
                 }

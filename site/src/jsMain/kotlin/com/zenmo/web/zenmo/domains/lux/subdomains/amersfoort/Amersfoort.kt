@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.subdomains
+package com.zenmo.web.zenmo.domains.lux.subdomains.amersfoort
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -13,7 +13,7 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
-import com.zenmo.web.zenmo.domains.lux.components.model.AmersfoortTwinModel
+import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.widgets.ModelCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -90,13 +90,12 @@ private fun AmersfoortModelsTabRow(
     val models = AmersfoortTwinModel.amersfoortTwinModels
     SimpleGrid(
         numColumns = numColumns(base = 1, sm = 2, md = 3, lg = 3, xl = 3),
-        modifier = Modifier.Companion.gap(2.cssRem)
+        modifier = Modifier.gap(2.cssRem)
     ) {
         models.forEachIndexed { index, model ->
             val isActive = index == activeModelTabIndex
             ModelCard(
-                url = "",
-                model = model,
+                model = model.toTwinModelCardItem(),
                 modifier = Modifier
                     .onClick {
                         onTabSelected(index)

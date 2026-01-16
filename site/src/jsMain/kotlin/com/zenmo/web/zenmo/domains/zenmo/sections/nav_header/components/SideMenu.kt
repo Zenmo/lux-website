@@ -26,8 +26,8 @@ import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.zenmo.web.zenmo.components.SideMenuSlideInAnim
 import com.zenmo.web.zenmo.components.SideMenuState
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuFactory
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
+import com.zenmo.web.zenmo.core.MenuFactory
+import com.zenmo.web.zenmo.core.models.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.IconStyle
@@ -102,10 +102,9 @@ fun SideMenu(
                         when (item) {
                             is MenuItem.Simple -> {
                                 SideMenuNavLink(
-                                    href = item.path,
-                                    en = item.title.en,
-                                    nl = item.title.nl,
-                                    isActive = isPathActive(href = item.path),
+                                    href = item.nav.path,
+                                    label = item.nav.label,
+                                    isActive = isPathActive(href = item.nav.path),
                                     onClick = { close() }
                                 )
                             }
@@ -114,7 +113,7 @@ fun SideMenu(
                                 ExpandableSideMenuItem(
                                     menu = item,
                                     isAnySubItemActive = item.subItems.any { subItem ->
-                                        isPathActive(href = subItem.path)
+                                        isPathActive(href = subItem.nav.path)
                                     },
                                     onClick = { close() }
                                 )

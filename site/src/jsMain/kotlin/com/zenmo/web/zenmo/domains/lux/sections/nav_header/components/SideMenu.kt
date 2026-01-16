@@ -25,12 +25,13 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.SideMenuSlideInAnim
 import com.zenmo.web.zenmo.components.SideMenuState
+import com.zenmo.web.zenmo.core.MenuFactory
+import com.zenmo.web.zenmo.core.models.MenuItem
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.styles.ActiveLinkStyleVariant
 import com.zenmo.web.zenmo.domains.lux.styles.MenuLinkStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuFactory
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
@@ -107,10 +108,9 @@ fun SideMenu(
                         when (item) {
                             is MenuItem.Simple ->
                                 SideMenuItem(
-                                    href = item.path,
-                                    enTitle = item.title.en,
-                                    nlTitle = item.title.nl,
-                                    isActive = isPathActive(href = item.path),
+                                    href = item.nav.path,
+                                    label = item.nav.label,
+                                    isActive = isPathActive(href = item.nav.path),
                                 )
 
                             is MenuItem.WithSubs -> {
@@ -128,10 +128,9 @@ fun SideMenu(
                                     ) {
                                         item.subItems.forEach { subItem ->
                                             SideMenuItem(
-                                                href = subItem.path,
-                                                enTitle = subItem.title.en,
-                                                nlTitle = subItem.title.nl,
-                                                isActive = isPathActive(href = subItem.path),
+                                                href = subItem.nav.path,
+                                                label = subItem.nav.label,
+                                                isActive = isPathActive(href = subItem.nav.path),
                                             )
                                         }
                                     }
@@ -148,8 +147,7 @@ fun SideMenu(
 @Composable
 private fun SideMenuItem(
     href: String,
-    enTitle: String,
-    nlTitle: String,
+    label: LocalizedText,
     isActive: Boolean,
 ) {
     val color = if (isActive) SitePalette.light.secondary else Colors.White
@@ -166,8 +164,8 @@ private fun SideMenuItem(
             modifier = Modifier.fillMaxWidth()
         ) {
             HeaderText(
-                enText = enTitle,
-                nlText = nlTitle,
+                enText = label.en,
+                nlText = label.nl,
                 modifier = Modifier.margin(0.px)
             )
             MdiArrowForwardIos(

@@ -21,6 +21,7 @@ import com.varabyte.kobweb.silk.theme.colors.palette.overlay
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.colors.shifted
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
@@ -81,8 +82,7 @@ val ActiveNavBarLinkVariant = CssStyle {
 @Composable
 fun NavBarLink(
     href: String,
-    en: String,
-    nl: String,
+    label: LocalizedText,
     modifier: Modifier = Modifier,
     isActive: Boolean,
 ) {
@@ -101,7 +101,7 @@ fun NavBarLink(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            LangText(en = en, nl = nl)
+            LangText(en = label.en, nl = label.nl)
         }
     }
 }

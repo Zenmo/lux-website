@@ -25,10 +25,10 @@ import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.core.models.MenuItem
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.styles.*
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.AnimatedIconStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -118,7 +118,7 @@ val SubMenuAppearanceAnimKeyFrames = Keyframes {
 
 @Composable
 fun LuxMenuItemWithSubs(titleText: LocalizedText, subItems: List<MenuItem.Simple>) {
-    val isMenuActive = subItems.any { isPathActive(href = it.path) }
+    val isMenuActive = subItems.any { isPathActive(href = it.nav.path) }
 
     Box(
         modifier = MenuItemParentStyle.toModifier()
@@ -164,10 +164,10 @@ fun LuxMenuItemWithSubs(titleText: LocalizedText, subItems: List<MenuItem.Simple
                         .width(400.px).toAttrs()
                 ) {
                     subItems.forEach { subItem ->
-                        val isActive = isPathActive(href = subItem.path)
+                        val isActive = isPathActive(href = subItem.nav.path)
                         LuxMenuItem(
-                            href = subItem.path,
-                            menuTitle = subItem.title,
+                            href = subItem.nav.path,
+                            menuTitle = subItem.nav.label,
                             subText = subItem.descriptionParagraph,
                             isActive = isActive,
                             activeLinkVariant = ActiveSubMenuLinkStyleVariant,
