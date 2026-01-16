@@ -2,7 +2,7 @@ package com.zenmo.web.zenmo.components.widgets
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.*
-import com.varabyte.kobweb.compose.css.TransitionTimingFunction
+import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -17,6 +17,7 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -60,14 +61,13 @@ fun CardLink(
     url: String,
     imageUrl: String = "",
     imageAltText: String = "",
-    enTitle: String = "",
-    nlTitle: String = "",
+    label: LocalizedText = LocalizedText("", ""),
     enDescription: String = "",
     nlDescription: String = "",
     title: @Composable () -> Unit = {
         SubHeaderText(
-            enText = enTitle,
-            nlText = nlTitle,
+            enText = label.en,
+            nlText = label.nl,
             modifier = Modifier.margin(0.cssRem)
         )
     },

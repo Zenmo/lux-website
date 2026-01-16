@@ -12,6 +12,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.graphics.lightened
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -23,12 +24,10 @@ import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenTwinModel
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
-import com.zenmo.web.zenmo.domains.lux.components.model.TwinModel
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.domains.lux.core.TwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.ApplicationArea
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.tagColor
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.getApplicationAreaColor
 import com.zenmo.web.zenmo.domains.lux.styles.HoverBoxShadowStyle
 import com.zenmo.web.zenmo.domains.lux.styles.cubicBezierTransition
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -38,7 +37,6 @@ import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Span
-import org.jetbrains.compose.web.dom.Text
 
 const val metaContentClassName = "meta-content"
 
@@ -94,16 +92,15 @@ val ModelCardLinkStyle = CssStyle {
 
 @Composable
 fun ModelCard(
-    model: TwinModel,
-    url: String,
+    model: TwinModelCardItem,
+    showLock: Boolean = false,
     modifier: Modifier = Modifier,
 ) {
     CardLink(
-        url = url,
-        imageUrl = model.image,
-        imageAltText = model.title,
-        nlTitle = model.title,
-        enTitle = model.title,
+        url = model.url,
+        imageUrl = model.imageUrl,
+        imageAltText = model.label.en,
+        label = model.label,
         modifier = ModelCardLinkStyle.toModifier()
             .then(HoverBoxShadowStyle.toModifier())
                 then (modifier),
@@ -120,10 +117,10 @@ fun ModelCard(
                         .width(80.percent)
                         .toAttrs()
                 ) {
-                    Text(model.title)
+                    LangText(model.label.en, model.label.nl)
                 }
 
-                if (model.isPrivate) {
+                if (showLock) {
                     RoundedIcon(
                         icon = {
                             MdiLock(
@@ -138,12 +135,10 @@ fun ModelCard(
             }
         },
         description = {
-            val area = when (model) {
-                is SubdomainModel -> model.applicationArea
-                is DrechtstedenTwinModel -> ApplicationArea.LUX_REGION
-                else -> null
-            }
-            area?.let { ApplicationFieldLabel(it) }
+            ApplicationFieldLabel(
+                label = model.applicationArea.areaTitle,
+                labelColor = getApplicationAreaColor(model.applicationArea)
+            )
         },
         metaContent = {
             Box(
@@ -160,21 +155,24 @@ fun ModelCard(
 
 
 @Composable
-private fun ApplicationFieldLabel(field: ApplicationArea) {
+private fun ApplicationFieldLabel(
+    label: LocalizedText,
+    labelColor: Color
+) {
     Div(
         Modifier
             .display(DisplayStyle.InlineBlock)
             .padding(5.px, 8.px)
             .justifyContent(JustifyContent.Center)
-            .backgroundColor(field.tagColor().lightened(0.85f))
+            .backgroundColor(labelColor.lightened(0.85f))
             .luxBorderRadius()
-            .color(field.tagColor())
+            .color(labelColor)
             .fontSize(FontSize.Small)
             .toAttrs()
     ) {
         LangText(
-            en = field.areaTitle.en,
-            nl = field.areaTitle.nl
+            en = label.en,
+            nl = label.nl
         )
     }
 }
