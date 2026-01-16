@@ -44,9 +44,9 @@ fun NavBar(
             when (item) {
                 is MenuItem.Simple -> {
                     NavBarLink(
-                        href = item.nav.path,
-                        label = item.nav.label,
-                        isActive = isPathActive(href = item.nav.path),
+                        href = item.route.path,
+                        label = item.route.label,
+                        isActive = isPathActive(href = item.route.path),
                     )
                 }
 

@@ -15,34 +15,34 @@ enum class LuxApplicationArea(
     override val pageComponent: @Composable () -> Unit,
 ) : Route, SimpleMenuItem, ApplicationArea {
     LUX_COMPANY(
-        label = LocalizedText("LUX Company", "LUX Bedrijf"),
+        label = LocalizedText("LUX Bedrijf", "LUX Company"),
         shortDescription = LocalizedText(
+            "Korte beschrijving over LUX Bedrijf",
             "Short description about LUX Company",
-            "Korte beschrijving over LUX Bedrijf"
         ),
         pageComponent = { LuxCompany() }
     ),
     LUX_ENERGY_HUB(
-        label = LocalizedText("LUX Energy Hub", "LUX Energie Hub"),
+        label = LocalizedText("LUX Energie Hub", "LUX Energy Hub"),
         shortDescription = LocalizedText(
+            "Korte beschrijving over LUX Energie Hub",
             "Short description for LUX Energy Hub",
-            "Korte beschrijving over LUX Energie Hub"
         ),
         pageComponent = { LuxEnergyHub() }
     ),
     LUX_RESIDENTIAL_AREA(
-        label = LocalizedText("LUX Residential Area", "LUX Woongebied"),
+        label = LocalizedText("LUX Woongebied", "LUX Residential Area"),
         shortDescription = LocalizedText(
+            "Korte beschrijving over LUX Woongebied",
             "Short description for LUX Residential Area",
-            "Korte beschrijving over LUX Woongebied"
         ),
         pageComponent = { LuxResidentialArea() }
     ),
     LUX_REGION(
-        label = LocalizedText("LUX Region", "LUX Regio"),
+        label = LocalizedText("LUX Regio", "LUX Region"),
         shortDescription = LocalizedText(
+            "Korte beschrijving over LUX Regio",
             "Short description for LUX Region",
-            "Korte beschrijving over LUX Regio"
         ),
         pageComponent = { LuxMunicipality() }
     );

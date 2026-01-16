@@ -11,7 +11,7 @@ val drechtstedenNavMenu = buildList {
         MenuItem.Simple(
             RoutedMenuItem(
                 path = "/",
-                label = LocalizedText("Drechtsteden", "Drechtsteden"),
+                label = LocalizedText("Drechtsteden"),
                 pageComponent = { DrechtstedenHomePage() }
             )
         )

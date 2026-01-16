@@ -1,9 +1,9 @@
 package com.zenmo.web.zenmo.core
 
 import com.zenmo.web.zenmo.core.models.MenuItem
-import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.drechtsteden
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.empowered
-import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.subdomainModels
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.subdomains
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.luxNavMenu
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.drechtstedenNavMenu
 import com.zenmo.web.zenmo.domains.lux.subdomains.empowered.empoweredMenuItems
@@ -21,11 +21,11 @@ object MenuFactory {
 
             domain.endsWith(".${SiteGlobals.LUX_DOMAIN}") -> {
                 val subdomain = domain.substringBefore(".${SiteGlobals.LUX_DOMAIN}")
-                val model = subdomainModels.find {
+                val model = subdomains.find {
                     it.subdomain.equals(subdomain, ignoreCase = true)
                 }
                 when (model) {
-                    drechtsteden -> drechtstedenNavMenu
+                    PrivateSubdomainModel.DRECHTSTEDEN -> drechtstedenNavMenu
                     empowered -> empoweredMenuItems
                     else -> emptyList()
                 }

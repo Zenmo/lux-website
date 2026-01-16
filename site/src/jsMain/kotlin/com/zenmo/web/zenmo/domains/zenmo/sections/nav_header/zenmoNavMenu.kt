@@ -14,7 +14,7 @@ import com.zenmo.web.zenmo.pages.isLocalOrPreviewEnvironment
 val zenmoNavMenu = buildList {
     add(
         MenuItem.Simple(
-            nav = RoutedMenuItem(
+            route = RoutedMenuItem(
                 path = "/",
                 label = LocalizedText(en = "Home", nl = "Thuis"),
                 pageComponent = { HomePage() }
@@ -48,20 +48,20 @@ val zenmoNavMenu = buildList {
             title = LocalizedText(en = "About us", nl = "Over ons"),
             subItems = listOf(
                 MenuItem.Simple(
-                    nav = RoutedMenuItem(
+                    route = RoutedMenuItem(
                         label = LocalizedText(en = "Our Team", nl = "Ons Team"),
                         pageComponent = { OurTeamPage() }
                     )
                 ),
                 MenuItem.Simple(
-                    nav = RoutedMenuItem(
+                    route = RoutedMenuItem(
                         label = LocalizedText(en = "Jobs", nl = "Banen"),
                         pageComponent = { } // todo add a jobs page
                     )
                 ),
 
                 MenuItem.Simple(
-                    nav = RoutedMenuItem(
+                    route = RoutedMenuItem(
                         label = LocalizedText(en = "History", nl = "Geschiedenis"),
                         pageComponent = { } // todo add a page for zenmo history
                     )
@@ -71,7 +71,7 @@ val zenmoNavMenu = buildList {
     )
     add(
         MenuItem.Simple(
-            nav = RoutedMenuItem(
+            route = RoutedMenuItem(
                 label = LocalizedText(en = "Contact", nl = "Contact"),
                 pageComponent = { ContactPage() }
             )
@@ -81,7 +81,7 @@ val zenmoNavMenu = buildList {
     if (isLocalOrPreviewEnvironment()) {
         add(
             MenuItem.Simple(
-                nav = RoutedMenuItem(
+                route = RoutedMenuItem(
                     label = LocalizedText(en = "Component Demo", nl = "Component Demo"),
                     pageComponent = { ComponentDemoPage() }
                 )

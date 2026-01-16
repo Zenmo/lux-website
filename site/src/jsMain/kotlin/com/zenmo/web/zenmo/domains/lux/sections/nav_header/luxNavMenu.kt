@@ -9,10 +9,10 @@ import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.LuxModels
 
 val luxNavMenu = listOf(
     MenuItem.WithSubs(
-        title = LocalizedText("Application Areas", "Toepassingsgebieden"),
+        title = LocalizedText(en = "Application Areas", nl = "Toepassingsgebieden"),
         subItems = LuxApplicationArea.entries.map { field ->
             MenuItem.Simple(
-                nav = RoutedMenuItem(
+                route = RoutedMenuItem(
                     path = field.path,
                     label = field.label,
                     pageComponent = field.pageComponent,
@@ -22,13 +22,13 @@ val luxNavMenu = listOf(
         }
     ),
     MenuItem.Simple(
-        nav = RoutedMenuItem(
+        route = RoutedMenuItem(
             label = LocalizedText(en = "Models", nl = "Modellen"),
             pageComponent = { LuxModels() }
         )
     ),
     MenuItem.Simple(
-        nav = RoutedMenuItem(
+        route = RoutedMenuItem(
             label = LocalizedText(en = "About Us", nl = "Over Ons"),
             pageComponent = { AboutUs() }
         )

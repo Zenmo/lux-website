@@ -9,7 +9,7 @@ import com.zenmo.web.zenmo.core.services.localization.LocalizedText
  */
 sealed class MenuItem {
     data class Simple(
-        val nav: NavigableMenuItem,
+        val route: RoutedMenuItem,
         val descriptionParagraph: LocalizedText? = null
     ) : MenuItem()
 
@@ -18,9 +18,15 @@ sealed class MenuItem {
      * @see com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.zenmoNavMenu
      * */
     data class WithSubs(val title: LocalizedText, val subItems: List<Simple>) : MenuItem()
-
 }
 
+private fun MenuItem.asRoutes(): List<RoutedMenuItem> = when (this) {
+    is MenuItem.Simple -> listOf(this.route)
+    is MenuItem.WithSubs -> this.subItems.map { it.route }
+}
+
+fun List<MenuItem>.asRoutes(): List<RoutedMenuItem> =
+    this.flatMap { it.asRoutes() }
 
 fun String.asNavLinkPath(
     base: String = ""

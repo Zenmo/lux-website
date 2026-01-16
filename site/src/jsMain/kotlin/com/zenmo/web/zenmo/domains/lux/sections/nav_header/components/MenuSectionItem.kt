@@ -118,7 +118,7 @@ val SubMenuAppearanceAnimKeyFrames = Keyframes {
 
 @Composable
 fun LuxMenuItemWithSubs(titleText: LocalizedText, subItems: List<MenuItem.Simple>) {
-    val isMenuActive = subItems.any { isPathActive(href = it.nav.path) }
+    val isMenuActive = subItems.any { isPathActive(href = it.route.path) }
 
     Box(
         modifier = MenuItemParentStyle.toModifier()
@@ -164,10 +164,10 @@ fun LuxMenuItemWithSubs(titleText: LocalizedText, subItems: List<MenuItem.Simple
                         .width(400.px).toAttrs()
                 ) {
                     subItems.forEach { subItem ->
-                        val isActive = isPathActive(href = subItem.nav.path)
+                        val isActive = isPathActive(href = subItem.route.path)
                         LuxMenuItem(
-                            href = subItem.nav.path,
-                            menuTitle = subItem.nav.label,
+                            href = subItem.route.path,
+                            menuTitle = subItem.route.label,
                             subText = subItem.descriptionParagraph,
                             isActive = isActive,
                             activeLinkVariant = ActiveSubMenuLinkStyleVariant,

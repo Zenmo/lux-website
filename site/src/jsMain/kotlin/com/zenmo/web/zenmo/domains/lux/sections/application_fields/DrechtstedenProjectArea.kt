@@ -16,18 +16,18 @@ enum class DrechtstedenProjectArea(
     override val pageComponent: @Composable () -> Unit,
 ) : Route, SimpleMenuItem, ApplicationArea {
     RES_REGION(
-        path = "/res-region",
-        label = LocalizedText("Residential Region", "Woonregio"),
+        path = "/region",
+        label = LocalizedText(en = "Region", nl = "Regio"),
         pageComponent = { ResRegionPage() }
     ),
     RES_NEIGHBORHOODS(
         path = "/res-neighborhoods",
-        label = LocalizedText("Residential Neighborhoods", "Woonwijken"),
+        label = LocalizedText(en = "Residential Neighborhoods", nl = "Woonwijken"),
         pageComponent = { ResNeighborhoodsPage() }
     ),
     BUSINESS_PARKS(
         path = "/business-parks",
-        label = LocalizedText("Business Parks", "Bedrijventerreinen"),
+        label = LocalizedText(en = "Business Parks", nl = "Bedrijventerreinen"),
         pageComponent = { BusinessParksPage() }
     ),
 }

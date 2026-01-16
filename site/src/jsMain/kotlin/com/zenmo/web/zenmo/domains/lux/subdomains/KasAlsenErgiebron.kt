@@ -5,12 +5,13 @@ import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
-import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.kasalsenergiebron
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun KasAlsenErgiebron() {
+    val kasalsenergiebron = PrivateSubdomainModel.KASALSENERGIEBRON
     LuxSubdomainPageLayout(
         title = kasalsenergiebron.label.nl,
     ) {

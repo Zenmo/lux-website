@@ -13,7 +13,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.zenmo.web.zenmo.components.layouts.PageLayout
 import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuWidget
-import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.drechtsteden
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxHeader
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.LuxLogo
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderComponent
@@ -59,7 +59,7 @@ private fun TwinModelPageHeader(
             modifier = Modifier.fillMaxWidth()
         ) {
             LuxLogo(
-                domain = "${drechtsteden.subdomain}.${SiteGlobals.LUX_DOMAIN}"
+                domain = "${PrivateSubdomainModel.DRECHTSTEDEN.subdomain}.${SiteGlobals.LUX_DOMAIN}"
             )
             SubHeaderText(
                 enText = enTitle,

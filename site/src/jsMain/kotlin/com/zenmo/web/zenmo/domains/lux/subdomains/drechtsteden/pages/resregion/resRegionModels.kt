@@ -6,7 +6,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechtstedenTwinM
 
 
 val drechtstedenRes = DrechtstedenTwinModel(
-    path = "drechtstedenres",
+    projectPath = "drechtstedenres",
     label = LocalizedText(nl = "Digital twin Drechtsteden"),
     applicationArea = DrechtstedenProjectArea.RES_REGION,
     entryPoint = "drechtsteden/resregion/drechtsteden",

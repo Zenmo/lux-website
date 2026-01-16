@@ -45,9 +45,9 @@ fun NavBar() {
                 when (menuItem) {
                     is MenuItem.Simple -> {
                         LuxMenuItem(
-                            href = menuItem.nav.path,
-                            menuTitle = menuItem.nav.label,
-                            isActive = isPathActive(href = menuItem.nav.path),
+                            href = menuItem.route.path,
+                            menuTitle = menuItem.route.label,
+                            isActive = isPathActive(href = menuItem.route.path),
                         )
                     }
 
