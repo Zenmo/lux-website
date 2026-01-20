@@ -3,6 +3,7 @@ package com.zenmo.web.zenmo.theme.styles
 import com.varabyte.kobweb.compose.css.CSSLengthOrPercentageNumericValue
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
+import com.varabyte.kobweb.compose.ui.styleModifier
 import org.jetbrains.compose.web.css.px
 
 
@@ -27,4 +28,8 @@ fun Modifier.luxBorderRadius(
     bottomRight(0.px)
     topLeft(0.px)
     topRight(0.px)
+}.cornerShapeBevel()
+
+private fun Modifier.cornerShapeBevel() = this.styleModifier {
+    property("corner-bottom-left-shape", "bevel")
 }
