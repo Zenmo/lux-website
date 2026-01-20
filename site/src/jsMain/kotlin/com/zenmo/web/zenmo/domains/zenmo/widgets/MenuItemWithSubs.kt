@@ -13,7 +13,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
+import com.zenmo.web.zenmo.core.models.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.NavBarLink
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 
@@ -28,14 +28,13 @@ val MainMenuItemHoverStyle = CssStyle {
 fun MenuItemWithSubs(
     menu: MenuItem.WithSubs,
 ) {
-    val isMenuActive = menu.subItems.any { isPathActive(href = it.path) }
+    val isMenuActive = menu.subItems.any { isPathActive(href = it.route.path) }
     Box(
         modifier = MenuItemParentStyle.toModifier()
     ) {
         NavBarLink(
             href = "/",
-            en = menu.title.en,
-            nl = menu.title.nl,
+            label = menu.title,
             isActive = isMenuActive,
             modifier = MainMenuItemHoverStyle.toModifier()
         )
@@ -49,10 +48,9 @@ fun MenuItemWithSubs(
                     contentAlignment = Alignment.Center
                 ) {
                     NavBarLink(
-                        href = sub.path,
-                        en = sub.title.en,
-                        nl = sub.title.nl,
-                        isActive = isPathActive(href = sub.path),
+                        href = sub.route.path,
+                        label = sub.route.label,
+                        isActive = isPathActive(href = sub.route.path),
                     )
                 }
             }

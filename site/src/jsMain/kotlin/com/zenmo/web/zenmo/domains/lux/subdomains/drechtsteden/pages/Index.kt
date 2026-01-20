@@ -11,19 +11,17 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResNeighborhood
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResRegion
-import com.zenmo.web.zenmo.domains.lux.components.model.SimpleTwin
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.domains.lux.core.TwinModelCardItem
+import com.zenmo.web.zenmo.domains.lux.core.isPrivate
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.DrechtstedenProjectArea
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.businessParksPath
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resneighborhoods.resNeighbourhoodsPath
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.resRegionPath
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.dordrecht
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resneighborhoods.overTSpoor
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.drechtstedenRes
 import com.zenmo.web.zenmo.domains.lux.widgets.ModelCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.pages.SiteGlobals
-import kotlinx.browser.window
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.P
@@ -84,31 +82,36 @@ fun DrechtstedenHomePage() {
             ) {
 
                 ModelCard(
-                    url = DrechtstedenResRegion.DrechtstedenRes.url(
-                        path = resRegionPath,
-                        protocol = window.location.protocol,
-                        luxDomain = SiteGlobals.LUX_DOMAIN
+                    model = TwinModelCardItem(
+                        label = LocalizedText("RES-Regio"),
+                        url = drechtstedenRes.url,
+                        applicationArea = DrechtstedenProjectArea.RES_REGION,
+                        imageUrl = drechtstedenRes.imageUrl,
+                        isPrivate = drechtstedenRes.isPrivate,
                     ),
-                    model = SimpleTwin(
-                        modelTitle = "RES-Regio",
-                        modelImage = DrechtstedenResRegion.DrechtstedenRes.image,
-                    ),
+                    showLock = drechtstedenRes.isPrivate
                 )
 
                 ModelCard(
-                    url = resNeighbourhoodsPath,
-                    model = SimpleTwin(
-                        modelTitle = "Woonwijken",
-                        modelImage = DrechtstedenResNeighborhood.OverTSpoor.image,
+                    model = TwinModelCardItem(
+                        label = LocalizedText("Woonwijken"),
+                        url = DrechtstedenProjectArea.RES_NEIGHBORHOODS.url,
+                        applicationArea = DrechtstedenProjectArea.RES_NEIGHBORHOODS,
+                        imageUrl = overTSpoor.imageUrl,
+                        isPrivate = overTSpoor.isPrivate,
                     ),
+                    showLock = overTSpoor.isPrivate
                 )
 
                 ModelCard(
-                    url = businessParksPath,
-                    model = SimpleTwin(
-                        modelTitle = "Bedrijventerreinen",
-                        modelImage = DrechtstedenMunicipality.Dordrecht.image,
+                    model = TwinModelCardItem(
+                        label = LocalizedText("Bedrijventerreinen"),
+                        url = DrechtstedenProjectArea.BUSINESS_PARKS.url,
+                        applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
+                        imageUrl = dordrecht.imageUrl,
+                        isPrivate = dordrecht.isPrivate,
                     ),
+                    showLock = dordrecht.isPrivate
                 )
             }
         }

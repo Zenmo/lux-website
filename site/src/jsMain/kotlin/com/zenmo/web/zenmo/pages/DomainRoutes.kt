@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.core.Page
 import com.zenmo.web.zenmo.components.widgets.UnknownDomain
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.subdomains
 import com.zenmo.web.zenmo.domains.lux.pages.LuxRoutingComponent
 import com.zenmo.web.zenmo.domains.lux.subdomains.LuxSubdomainRoutingComponent
 import com.zenmo.web.zenmo.domains.zenmo.pages.ZenmoRoutingComponent
@@ -27,9 +27,10 @@ fun DomainRoutes() {
         domain == SiteGlobals.ZENMO_DOMAIN -> ZenmoRoutingComponent()
         domain.endsWith(luxSubdomainSuffix) -> {
             val sub = domain.substringBefore(luxSubdomainSuffix)
-            SubdomainModel.allModels
-                .find { it.title.equals(sub, ignoreCase = true) }
-                ?.let { LuxSubdomainRoutingComponent(it) }
+
+            subdomains
+                .find { it.subdomain.equals(sub, ignoreCase = true) }
+                ?.let { LuxSubdomainRoutingComponent(it.subdomain) }
                 ?: UnknownDomain(sub)
         }
 
@@ -39,8 +40,6 @@ fun DomainRoutes() {
 }
 
 
-fun isLocalOrPreviewEnvironment(): Boolean {
-    return listOf("preview", "local").any { envKeyword ->
-        SiteGlobals.LUX_DOMAIN.contains(envKeyword) || SiteGlobals.ZENMO_DOMAIN.contains(envKeyword)
-    }
-}
+fun isLocalOrPreviewEnvironment() =
+    listOf("preview", "local").any { it in window.location.host }
+

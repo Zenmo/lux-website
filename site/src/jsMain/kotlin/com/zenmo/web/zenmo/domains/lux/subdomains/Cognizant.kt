@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.cognizant
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -13,7 +14,7 @@ import kotlin.uuid.Uuid
 @Composable
 fun Cognizant() {
     LuxSubdomainPageLayout(
-        title = "Cognizant",
+        title = cognizant.label.nl,
     ) {
         ModelInDevelopmentInfoWidget(
             enDescription = "Note, his model is still in development.",
@@ -23,7 +24,7 @@ fun Cognizant() {
             variant = LuxSectionContainerStyleVariant
         ) {
             AnyLogicEmbed(
-                modelId = Uuid.parse("7cfc3e4a-608c-4e2c-a834-4d290174ee9e"),
+                modelId = cognizant.modelId,
                 apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
             )
 

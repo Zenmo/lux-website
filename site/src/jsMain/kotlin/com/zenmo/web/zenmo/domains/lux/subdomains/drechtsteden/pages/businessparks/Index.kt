@@ -12,10 +12,10 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenBusinessPark
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.drechtstedenMunicipalityModels
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.toTwinModelCardItems
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -55,16 +55,15 @@ fun BusinessParksPage() {
     }
 }
 
-const val businessParksPath = "/business-parks"
 
 @Composable
 fun BusinessParksModels() =
     TwinModelsGrid(
-        models = DrechtstedenBusinessPark.models,
+        models = drechtstedenBusinessParkModels.toTwinModelCardItems(),
     )
 
 @Composable
 fun MunicipalitiesModels() =
     TwinModelsGrid(
-        models = DrechtstedenMunicipality.models,
+        models = drechtstedenMunicipalityModels.toTwinModelCardItems(),
     )

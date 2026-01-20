@@ -14,6 +14,7 @@ import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.zenmo.web.zenmo.components.widgets.CardLink
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.zenmo.widgets.ComponentDemo
 import com.zenmo.web.zenmo.domains.zenmo.widgets.PreCodeStyle
 import org.jetbrains.compose.web.css.cssRem
@@ -63,8 +64,7 @@ fun CardLinkDemo() {
                 url = "/",
                 imageUrl = "avatars/Auke_Hoekstra.jpg",
                 imageAltText = "Auke Hoekstra",
-                enTitle = "Auke Hoekstra",
-                nlTitle = "Auke Hoekstra",
+                label = LocalizedText("Auke Hoekstra"),
                 enDescription = "Auke Hoekstra is a well-known figure in the field of sustainable energy.",
                 nlDescription = "Auke Hoekstra is een bekende figuur op het gebied van duurzame energie.",
                 modifier = Modifier.width(280.px)
@@ -117,8 +117,7 @@ fun CardLinkDemo() {
                         url = "/",
                         imageUrl = "avatars/Auke_Hoekstra.jpg",
                         imageAltText = "Auke Hoekstra",
-                        enTitle = "Auke Hoekstra",
-                        nlTitle = "Auke Hoekstra",
+                        label = LocalizedText("Auke Hoekstra"),
                         enDescription = "Auke Hoekstra is a well-known figure in the field of sustainable energy.",
                         nlDescription = "Auke Hoekstra is een bekende figuur op het gebied van duurzame energie.",
                     )

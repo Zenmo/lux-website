@@ -1,9 +1,8 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks
 
 import androidx.compose.runtime.Composable
+import com.zenmo.web.zenmo.domains.lux.components.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenBusinessPark
-import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -11,16 +10,15 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun SliedrechtPage() {
-    val twinModel = DrechtstedenBusinessPark.SliedrechtBusinesspark
     DrechtstedenTwinLayout(
-        title = twinModel.title,
+        title = sliedrechtBusinesspark.label.nl,
         useTwinPageHeader = true,
-        enTwinPageHeaderTitle = twinModel.title,
-        nlTwinPageHeaderTitle = twinModel.title,
+        enTwinPageHeaderTitle = sliedrechtBusinesspark.label.en,
+        nlTwinPageHeaderTitle = sliedrechtBusinesspark.label.nl,
     ) {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
-            twin = twinModel,
+            modelLabel = sliedrechtBusinesspark.label,
             enHeaderText = "Bedrijventerrein Sliedrecht",
             nlHeaderText = "Bedrijventerrein Sliedrecht",
             enDescriptionParagraph = """
@@ -37,6 +35,7 @@ fun SliedrechtPage() {
             """.trimIndent(),
             enSubHeaderText = "Design your own energy system",
             nlSubHeaderText = "Ontwerp je eigen energiesysteem",
+            pageImageSrc = sliedrechtBusinesspark.imageUrl
         ) {
             ProfileContactCard(
                 name = ZenmoTeam.GILLIS.memberName,

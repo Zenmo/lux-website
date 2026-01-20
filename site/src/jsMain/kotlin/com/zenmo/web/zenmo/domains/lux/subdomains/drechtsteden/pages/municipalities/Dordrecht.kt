@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -12,20 +11,19 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun Dordrecht() {
-    val twinModel = DrechtstedenMunicipality.Dordrecht
     DrechtstedenTwinLayout(
-        title = twinModel.title,
+        title = dordrecht.label.nl,
         useTwinPageHeader = true,
-        enTwinPageHeaderTitle = twinModel.title,
-        nlTwinPageHeaderTitle = twinModel.title,
+        enTwinPageHeaderTitle = dordrecht.label.en,
+        nlTwinPageHeaderTitle = dordrecht.label.nl,
     ) {
         SectionContainer(
             variant = LuxSectionContainerStyleVariant
         ) {
 
             ModelWrapper(
-                imgUrl = twinModel.image,
-                entryPoint = twinModel.entryPoint!!,
+                imgUrl = dordrecht.imageUrl,
+                entryPoint = dordrecht.entryPoint,
             )
 
             ProfileContactCard(

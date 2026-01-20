@@ -13,6 +13,7 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.thenIf
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.IconStyle
 import org.jetbrains.compose.web.css.px
@@ -22,8 +23,7 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun SideMenuNavLink(
     href: String,
-    en: String,
-    nl: String,
+    label: LocalizedText,
     isActive: Boolean,
     onClick: () -> Unit,
     hasBullet: Boolean = false,
@@ -46,7 +46,7 @@ fun SideMenuNavLink(
                             .thenIf(isActive, Modifier.color(SitePalette.light.primary))
                     )
             }
-            LangText(en = en, nl = nl)
+            LangText(en = label.en, nl = label.nl)
         }
     }
 }

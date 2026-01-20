@@ -5,21 +5,22 @@ import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun Borchwerf() {
+    val borchwerf = PrivateSubdomainModel.BORCHWERF
     LuxSubdomainPageLayout(
-        title = "Borchwerf",
+        title = borchwerf.label.nl,
     ) {
         SectionContainer(
             variant = LuxSectionContainerStyleVariant
         ) {
             ModelWrapper(
-                imgUrl = SubdomainModel.Borchwerf.image,
-                entryPoint = SubdomainModel.Borchwerf.entryPoint!!,
+                imgUrl = borchwerf.imageUrl,
+                entryPoint = borchwerf.entryPoint,
             )
 
             ProfileContactCard(

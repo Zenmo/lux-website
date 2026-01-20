@@ -9,7 +9,7 @@ import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.button
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.overlay
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.brabant
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window
 
@@ -80,7 +80,7 @@ data class SitePalette(
         private val domain = window.location.host
         val light = when (domain) {
             SiteGlobals.ZENMO_DOMAIN -> zenmoColorPalette
-            "${SubdomainModel.Brabant.title}.${SiteGlobals.LUX_DOMAIN}" -> brabantColorPalette
+            "${brabant.subdomain}.${SiteGlobals.LUX_DOMAIN}" -> brabantColorPalette
             else -> luxColorPalette
         }
     }

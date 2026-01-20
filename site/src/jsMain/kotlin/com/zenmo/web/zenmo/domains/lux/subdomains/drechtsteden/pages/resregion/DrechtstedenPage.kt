@@ -1,25 +1,23 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion
 
 import androidx.compose.runtime.Composable
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenResRegion
-import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
+import com.zenmo.web.zenmo.domains.lux.components.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.AukeNaudContactCard
 
 @Composable
 fun DrechtstedenPage() {
-    val twinModel = DrechtstedenResRegion.DrechtstedenRes
     DrechtstedenTwinLayout(
-        title = twinModel.title,
+        title = drechtstedenRes.label.nl,
         useTwinPageHeader = true,
-        enTwinPageHeaderTitle = twinModel.title,
-        nlTwinPageHeaderTitle = twinModel.title,
+        enTwinPageHeaderTitle = drechtstedenRes.label.en,
+        nlTwinPageHeaderTitle = drechtstedenRes.label.nl,
     ) {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
-            twin = twinModel,
-            imageUrl = twinModel.image,
+            modelLabel = drechtstedenRes.label,
+            pageImageSrc = drechtstedenRes.imageUrl,// todo replace with model image
             enDescriptionParagraph = """
                                 Below is a mock-up of the digital twin for the sustainability of the Drechtsteden. 
                                 This area is working on a smart energy system. The digital twin will assist in 
