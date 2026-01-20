@@ -2,10 +2,10 @@ package com.zenmo.web.zenmo.domains.lux.subdomains
 
 
 import androidx.compose.runtime.Composable
+import com.zenmo.web.zenmo.domains.lux.components.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
-import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.bunderbuurten
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import kotlin.uuid.Uuid
@@ -17,8 +17,8 @@ fun BunderbuurtenIndex() {
         title = "Bunderbuurten Veghel",
     ) {
         ModelPageContent(
-            twin = SubdomainModel.Bunderbuurten,
-            imageUrl = "/lux/images/Bunderbuurten-Veghel.png",
+            modelLabel = bunderbuurten.label,
+            pageImageSrc = "/lux/images/Bunderbuurten-Veghel.png",
             enDescriptionParagraph = """
                 Below you can find the mock-up of the digital twin for the sustainability of the 
                 Bunderbuurten in Veghel. The digital twin helps to investigate choices and policies 
@@ -37,7 +37,7 @@ fun BunderbuurtenIndex() {
             """.trimIndent(),
             modelContent = {
                 AnyLogicEmbed(
-                    modelId = Uuid.parse("da90dd57-a9fb-47b2-9496-345255fda37a"),
+                    modelId = bunderbuurten.modelId,
                     apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
                 )
             }

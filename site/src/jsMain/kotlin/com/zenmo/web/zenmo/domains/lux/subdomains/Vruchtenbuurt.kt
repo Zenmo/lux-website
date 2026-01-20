@@ -13,10 +13,10 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.zenmo.web.zenmo.components.widgets.ZenmoInlineLink
+import com.zenmo.web.zenmo.domains.lux.components.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.components.VerticalProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
-import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.vruchtenbuurt
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -29,11 +29,11 @@ import kotlin.uuid.Uuid
 @Composable
 fun VruchtenbuurtIndex() {
     LuxSubdomainPageLayout(
-        title = "Digital twin Vruchtenbuurt"
+        title = vruchtenbuurt.label.nl,
     ) {
         ModelPageContent(
-            twin = SubdomainModel.Vruchtenbuurt,
-            imageUrl = "/lux/images/Digital-twin-Vruchtenbuurt.png",
+            modelLabel = vruchtenbuurt.label,
+            pageImageSrc = "/lux/images/Digital-twin-Vruchtenbuurt.png",
             enDescriptionParagraph = """
                 See below the mock-up of the digital twin for the sustainability of the Vruchtenbuurt in 
                 The Hague. In the Vruchtenbuurt, the energy cooperative Sterk Op Stroom is working on a 
@@ -48,7 +48,7 @@ fun VruchtenbuurtIndex() {
             """.trimIndent(),
             modelContent = {
                 AnyLogicEmbed(
-                    modelId = Uuid.parse("cca6eb2b-fb91-4825-bee2-d5e12d0a3880"),
+                    modelId = vruchtenbuurt.modelId,
                     apiKey = Uuid.parse("17e0722f-25c4-4549-85c3-d36509f5c710"),
                 )
             }

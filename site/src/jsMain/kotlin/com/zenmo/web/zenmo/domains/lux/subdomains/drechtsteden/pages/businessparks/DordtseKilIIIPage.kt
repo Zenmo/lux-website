@@ -1,9 +1,8 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks
 
 import androidx.compose.runtime.Composable
+import com.zenmo.web.zenmo.domains.lux.components.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenBusinessPark
-import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -11,19 +10,18 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun DordtseKilIIIPage() {
-    val twinModel = DrechtstedenBusinessPark.DordtseKil34
     DrechtstedenTwinLayout(
-        title = twinModel.title,
+        title = dordtseKil34.label.nl,
         useTwinPageHeader = true,
-        enTwinPageHeaderTitle = twinModel.title,
-        nlTwinPageHeaderTitle = twinModel.title,
+        enTwinPageHeaderTitle = dordtseKil34.label.en,
+        nlTwinPageHeaderTitle = dordtseKil34.label.nl,
     ) {
         ModelInDevelopmentInfoWidget(
             enDescription = "Note, this model is still in development.",
             nlDescription = "Let op, dit model is nog in ontwikkeling.",
         )
         ModelPageContent(
-            twin = twinModel,
+            modelLabel = dordtseKil34.label,
             enHeaderText = "Bedrijventerreinen Dordtse Kil III & IV",
             nlHeaderText = "Bedrijventerreinen Dordtse Kil III & IV",
             enDescriptionParagraph = """
@@ -40,6 +38,7 @@ fun DordtseKilIIIPage() {
             """.trimIndent(),
             enSubHeaderText = "Design your own energy system",
             nlSubHeaderText = "Ontwerp je eigen energiesysteem",
+            pageImageSrc = dordtseKil34.imageUrl
         ) {
             ProfileContactCard(
                 name = ZenmoTeam.ATE.memberName,

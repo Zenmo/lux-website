@@ -42,7 +42,7 @@ fun LuxHero(
                     ref {
                         // muted doesn't work when set via attr()
                         it.muted = true
-                        it.playbackRate = 0.5
+                        it.playbackRate = 0.75
 
                         onDispose {}
                     }

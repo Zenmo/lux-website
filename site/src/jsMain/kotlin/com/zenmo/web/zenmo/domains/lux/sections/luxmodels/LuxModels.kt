@@ -13,13 +13,14 @@ import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
-import com.zenmo.web.zenmo.domains.lux.components.model.drechtstedenModels
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.subdomainModels
+import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.EmptyResults
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.SearchBar
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.filterAndSearchModels
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.drechtstedenModels
 import com.zenmo.web.zenmo.domains.lux.widgets.RadioRow
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -52,7 +53,7 @@ fun LuxModels() {
     ) {
         var query by remember { mutableStateOf("") }
 
-        val allModels = SubdomainModel.allModels + drechtstedenModels
+        val allModels = (subdomainModels + drechtstedenModels).map { it.toTwinModelCardItem() }
         var luxModels by remember { mutableStateOf(allModels) }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
         Column(
@@ -60,8 +61,8 @@ fun LuxModels() {
             verticalArrangement = Arrangement.spacedBy(36.px),
         ) {
             HeaderText(
-                enText = "Example Models",
-                nlText = "Voorbeeldmodellen",
+                enText = "Models",
+                nlText = "Modellen",
                 modifier = Modifier
                     .margin(0.px)
             )

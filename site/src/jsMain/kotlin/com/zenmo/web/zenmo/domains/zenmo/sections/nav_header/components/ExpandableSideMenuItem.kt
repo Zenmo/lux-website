@@ -14,8 +14,7 @@ import com.varabyte.kobweb.silk.components.icons.mdi.MdiExpandMore
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
-import com.zenmo.web.zenmo.domains.zenmo.navigation.asNavLinkPath
+import com.zenmo.web.zenmo.core.models.MenuItem
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.IconStyle
 import org.jetbrains.compose.web.css.*
@@ -107,10 +106,9 @@ fun ExpandableSideMenuItem(
             ) {
                 menu.subItems.forEach { subItem ->
                     SideMenuNavLink(
-                        href = subItem.title.en.asNavLinkPath(menu.title.en),
-                        en = subItem.title.en,
-                        nl = subItem.title.nl,
-                        isActive = isPathActive(href = subItem.title.en.asNavLinkPath(menu.title.en)),
+                        href = subItem.route.path,
+                        label = subItem.route.label,
+                        isActive = isPathActive(href = subItem.route.path),
                         onClick = onClick,
                         hasBullet = true
                     )

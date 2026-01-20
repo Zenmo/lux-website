@@ -7,10 +7,9 @@ import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.components.widgets.CatchAllPage
-import com.zenmo.web.zenmo.domains.lux.sections.about_us.AboutUs
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.*
+import com.zenmo.web.zenmo.core.models.asRoutes
 import com.zenmo.web.zenmo.domains.lux.sections.home.HomePage
-import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.LuxModels
+import com.zenmo.web.zenmo.domains.lux.sections.nav_header.luxNavMenu
 import kotlinx.browser.window
 
 @Composable
@@ -18,12 +17,11 @@ fun LuxRoutingComponent() {
     val router = Router()
     com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
         ctx.router.register("/") { LuxEnergyLayout { HomePage() } }
-        ctx.router.register(ApplicationArea.LUX_COMPANY.fieldRoute()) { LuxEnergyLayout { LuxCompany() } }
-        ctx.router.register(ApplicationArea.LUX_RESIDENTIAL_AREA.fieldRoute()) { LuxEnergyLayout { LuxResidentialArea() } }
-        ctx.router.register(ApplicationArea.LUX_ENERGY_HUB.fieldRoute()) { LuxEnergyLayout { LuxEnergyHub() } }
-        ctx.router.register(ApplicationArea.LUX_REGION.fieldRoute()) { LuxEnergyLayout { LuxMunicipality() } }
-        ctx.router.register("/models") { LuxEnergyLayout { LuxModels() } }
-        ctx.router.register("/about-us") { LuxEnergyLayout { AboutUs() } }
+
+        ctx.registerRoutesOfMenu(
+            routes = luxNavMenu.asRoutes(),
+            layoutWrapper = { _, content -> LuxEnergyLayout { content() } }
+        )
 
         if (window.location.host != "lux.energy") {
             ctx.router.register("/component-demo") { ComponentDemoPage() }
@@ -38,4 +36,3 @@ fun LuxRoutingComponent() {
     )
     router.renderActivePage { DeferringHost { it() } }
 }
-

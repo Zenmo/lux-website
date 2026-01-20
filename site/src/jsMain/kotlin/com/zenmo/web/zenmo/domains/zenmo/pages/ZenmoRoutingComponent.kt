@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.navigation.*
 import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.components.widgets.CatchAllPage
-import com.zenmo.web.zenmo.domains.zenmo.pages.aboutUs.OurTeamPage
+import com.zenmo.web.zenmo.core.models.asRoutes
+import com.zenmo.web.zenmo.domains.lux.pages.registerRoutesOfMenu
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.zenmoNavMenu
 import com.zenmo.web.zenmo.domains.zenmo.widgets.ComponentDemoPage
 import kotlinx.browser.window
 
@@ -12,11 +14,14 @@ import kotlinx.browser.window
 fun ZenmoRoutingComponent() {
     val router = Router()
     com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
-        ctx.router.register("/") { HomePage() }
-        ctx.router.register("/contact") { ContactPage() }
-        ctx.router.register("/customers") { CustomersPage() }
-        ctx.router.register("/about-us/our-team") { OurTeamPage() }
-        ctx.router.register("/what-we-do") { WhatPage() }
+
+        ctx.registerRoutesOfMenu(
+            routes = zenmoNavMenu.asRoutes()
+                // remove component demo to avoid registering its route twice
+                .dropLast(1),
+
+            )
+
         if (window.location.host != "zenmo.com") {
             ctx.router.register("/component-demo") { ComponentDemoPage() }
         }

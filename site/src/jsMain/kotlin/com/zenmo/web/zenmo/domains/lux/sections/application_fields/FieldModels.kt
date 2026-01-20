@@ -7,7 +7,8 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.components.model.SubdomainModel
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.subdomainModels
+import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
@@ -34,7 +35,9 @@ fun FieldModels(
             modifier = Modifier
         )
         TwinModelsGrid(
-            models = SubdomainModel.allModels.filter { it.applicationArea == applicationArea },
+            models = subdomainModels
+                .map { it.toTwinModelCardItem() }
+                .filter { it.applicationArea == applicationArea },
         )
     }
 }

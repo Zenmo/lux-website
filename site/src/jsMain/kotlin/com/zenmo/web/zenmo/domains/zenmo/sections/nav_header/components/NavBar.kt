@@ -10,8 +10,8 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.palette.overlay
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuFactory
-import com.zenmo.web.zenmo.domains.zenmo.navigation.MenuItem
+import com.zenmo.web.zenmo.core.MenuFactory
+import com.zenmo.web.zenmo.core.models.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.widgets.MenuItemWithSubs
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.JustifyContent
@@ -44,10 +44,9 @@ fun NavBar(
             when (item) {
                 is MenuItem.Simple -> {
                     NavBarLink(
-                        href = item.path,
-                        en = item.title.en,
-                        nl = item.title.nl,
-                        isActive = isPathActive(href = item.path),
+                        href = item.route.path,
+                        label = item.route.label,
+                        isActive = isPathActive(href = item.route.path),
                     )
                 }
 

@@ -1,6 +1,6 @@
 package com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components
 
-import com.zenmo.web.zenmo.domains.lux.components.model.TwinModel
+import com.zenmo.web.zenmo.domains.lux.core.TwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.FilterType
 
 
@@ -12,10 +12,10 @@ import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.FilterType
  * each model’s title (case-insensitive).
  */
 fun filterAndSearchModels(
-    models: List<TwinModel>,
+    models: List<TwinModelCardItem>,
     query: String,
     filterType: FilterType
-): List<TwinModel> {
+): List<TwinModelCardItem> {
     val queryString = query.trim().lowercase()
 
     return models

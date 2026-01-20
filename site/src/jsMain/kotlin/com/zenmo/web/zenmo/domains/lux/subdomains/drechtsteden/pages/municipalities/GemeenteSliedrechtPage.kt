@@ -1,9 +1,8 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities
 
 import androidx.compose.runtime.Composable
+import com.zenmo.web.zenmo.domains.lux.components.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
-import com.zenmo.web.zenmo.domains.lux.components.model.DrechtstedenMunicipality
-import com.zenmo.web.zenmo.domains.lux.components.model.ModelPageContent
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -11,16 +10,15 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 @Composable
 fun GemeenteSliedrechtPage() {
-    val twinModel = DrechtstedenMunicipality.SliedrechtMunicipality
     DrechtstedenTwinLayout(
-        title = twinModel.title,
+        title = sliedrechtMunicipality.label.nl,
         useTwinPageHeader = true,
-        enTwinPageHeaderTitle = twinModel.title,
-        nlTwinPageHeaderTitle = twinModel.title,
+        enTwinPageHeaderTitle = sliedrechtMunicipality.label.en,
+        nlTwinPageHeaderTitle = sliedrechtMunicipality.label.nl,
     ) {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(
-            twin = twinModel,
+            modelLabel = sliedrechtMunicipality.label,
             enHeaderText = "Bedrijventerreinen Gemeente Sliedrecht",
             nlHeaderText = "Bedrijventerreinen Gemeente Sliedrecht",
             enDescriptionParagraph = """
@@ -35,6 +33,7 @@ fun GemeenteSliedrechtPage() {
                 en investeren in duurzame technieken. De digital twin zal helpen bij het ontwerpen van deze duurzame 
                 energiesystemen en het maken van de juiste beslissingen.
             """.trimIndent(),
+            pageImageSrc = sliedrechtMunicipality.imageUrl
         ) {
             ProfileContactCard(
                 name = ZenmoTeam.ATE.memberName,

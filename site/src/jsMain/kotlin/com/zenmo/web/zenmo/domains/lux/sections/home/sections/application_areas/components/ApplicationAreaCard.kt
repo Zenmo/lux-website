@@ -33,36 +33,36 @@ import org.jetbrains.compose.web.dom.P
 
 var ApplicationAreaCardStyle = CssStyle {
     base {
-        Modifier.Companion
+        Modifier
             .padding(48.px)
             .background(Colors.White)
             .luxBorderRadius(LuxCornerRadius.lg)
-            .cursor(Cursor.Companion.Pointer)
+            .cursor(Cursor.Pointer)
             .cubicBezierTransition()
     }
 
     cssRule(" .area-link") {
-        Modifier.Companion
+        Modifier
             .gap(8.px)
             .cubicBezierTransition()
     }
 
     cssRule(":hover .area-link") {
-        Modifier.Companion
-            .background(SitePalette.Companion.light.primary.lightened(0.9f))
+        Modifier
+            .background(SitePalette.light.primary.lightened(0.9f))
             .gap(16.px)
     }
 }
 
 @Composable
 fun ApplicationAreaCard(
-    item: ApplicationAreaItem,
+    areaItem: ApplicationAreaItem,
 ) {
     val (
         applicationArea,
         description,
         icon
-    ) = item
+    ) = areaItem
 
     Column(
         ApplicationAreaCardStyle.toModifier().then(HoverBoxShadowStyle.toModifier()),
@@ -70,9 +70,9 @@ fun ApplicationAreaCard(
         verticalArrangement = Arrangement.spacedBy(24.px)
     ) {
         Box(
-            Modifier.Companion.size(64.px)
+            Modifier.size(64.px)
                 .luxBorderRadius()
-                .background(SitePalette.Companion.light.primary.lightened(0.9f)),
+                .background(SitePalette.light.primary.lightened(0.9f)),
             contentAlignment = Alignment.Center
         ) {
             icon()
@@ -80,7 +80,7 @@ fun ApplicationAreaCard(
         HeaderText(
             enText = applicationArea.areaTitle.en,
             nlText = applicationArea.areaTitle.nl,
-            modifier = Modifier.Companion.margin(0.cssRem)
+            modifier = Modifier.margin(0.cssRem)
         )
         P(
             DeEmphasizedTextStyle.toModifier()
@@ -94,15 +94,15 @@ fun ApplicationAreaCard(
         }
 
         Link(
-            path = applicationArea.fieldRoute(),
+            path = applicationArea.path,
             variant = UncoloredLinkVariant.then(UndecoratedLinkVariant),
         ) {
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.Companion
+                modifier = Modifier
                     .padding(8.px, 16.px)
-                    .color(SitePalette.Companion.light.primary)
+                    .color(SitePalette.light.primary)
                     .luxBorderRadius()
                     .classNames("area-link")
             ) {
