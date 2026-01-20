@@ -84,7 +84,7 @@ fun DrechtstedenHomePage() {
                 ModelCard(
                     model = TwinModelCardItem(
                         label = LocalizedText("RES-Regio"),
-                        url = drechtstedenRes.url,
+                        url = DrechtstedenProjectArea.RES_REGION.path,
                         applicationArea = DrechtstedenProjectArea.RES_REGION,
                         imageUrl = drechtstedenRes.imageUrl,
                         isPrivate = drechtstedenRes.isPrivate,
@@ -95,7 +95,7 @@ fun DrechtstedenHomePage() {
                 ModelCard(
                     model = TwinModelCardItem(
                         label = LocalizedText("Woonwijken"),
-                        url = DrechtstedenProjectArea.RES_NEIGHBORHOODS.url,
+                        url = DrechtstedenProjectArea.RES_NEIGHBORHOODS.path,
                         applicationArea = DrechtstedenProjectArea.RES_NEIGHBORHOODS,
                         imageUrl = overTSpoor.imageUrl,
                         isPrivate = overTSpoor.isPrivate,
@@ -106,7 +106,7 @@ fun DrechtstedenHomePage() {
                 ModelCard(
                     model = TwinModelCardItem(
                         label = LocalizedText("Bedrijventerreinen"),
-                        url = DrechtstedenProjectArea.BUSINESS_PARKS.url,
+                        url = DrechtstedenProjectArea.BUSINESS_PARKS.path,
                         applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
                         imageUrl = dordrecht.imageUrl,
                         isPrivate = dordrecht.isPrivate,

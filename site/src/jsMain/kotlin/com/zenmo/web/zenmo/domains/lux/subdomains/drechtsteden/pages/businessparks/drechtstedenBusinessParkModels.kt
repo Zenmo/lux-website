@@ -5,7 +5,7 @@ import com.zenmo.web.zenmo.domains.lux.sections.application_fields.DrechtstedenP
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechtstedenTwinModel
 
 val ambachtseZoom = DrechtstedenTwinModel(
-    projectPath = "ambachtsezoom",
+    projectPath = "/ambachtsezoom",
     label = LocalizedText(nl = "Digital twin Ambachtse Zoom"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/ambachtse",
@@ -13,7 +13,7 @@ val ambachtseZoom = DrechtstedenTwinModel(
     pageComponent = { AmbachtsePage() }
 )
 val amstelwijckBusinesspark = DrechtstedenTwinModel(
-    projectPath = "amstelwijckbusinesspark",
+    projectPath = "/amstelwijckbusinesspark",
     label = LocalizedText(nl = "Digital twin Amstelwijck Businesspark"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/amstelwijck",
@@ -21,7 +21,7 @@ val amstelwijckBusinesspark = DrechtstedenTwinModel(
     pageComponent = { AmstelwijckPage() }
 )
 val antoniapolder = DrechtstedenTwinModel(
-    projectPath = "antoniapolder",
+    projectPath = "/antoniapolder",
     label = LocalizedText(nl = "Digital twin Antoniapolder"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/antoniapolder",
@@ -29,7 +29,7 @@ val antoniapolder = DrechtstedenTwinModel(
     pageComponent = { AntoniapolderPage() }
 )
 val bakestein = DrechtstedenTwinModel(
-    projectPath = "bakestein",
+    projectPath = "/bakestein",
     label = LocalizedText(nl = "Digital twin Bakestein"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/bakestein",
@@ -37,7 +37,7 @@ val bakestein = DrechtstedenTwinModel(
     pageComponent = { BakesteinPage() }
 )
 val deGeer = DrechtstedenTwinModel(
-    projectPath = "degeer",
+    projectPath = "/degeer",
     label = LocalizedText(nl = "Digital twin De Geer"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/degeer",
@@ -45,7 +45,7 @@ val deGeer = DrechtstedenTwinModel(
     pageComponent = { DeGeerPage() }
 )
 val deStaart = DrechtstedenTwinModel(
-    projectPath = "destaart",
+    projectPath = "/destaart",
     label = LocalizedText(nl = "Digital twin De Staart"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/destaart",
@@ -53,7 +53,7 @@ val deStaart = DrechtstedenTwinModel(
     pageComponent = { DeStaartPage() }
 )
 val dordtseKil12AmstelwijckWest = DrechtstedenTwinModel(
-    projectPath = "dordtsekil12amstelwijckwest",
+    projectPath = "/dordtsekil12amstelwijckwest",
     label = LocalizedText(nl = "Digital twin Dordtse Kil I & II en Amstelwijck West"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/dordtseamstelwijck",
@@ -61,7 +61,7 @@ val dordtseKil12AmstelwijckWest = DrechtstedenTwinModel(
     pageComponent = { DordtseKilIPage() }
 )
 val dordtseKil34 = DrechtstedenTwinModel(
-    projectPath = "dordtsekil34",
+    projectPath = "/dordtsekil34",
     label = LocalizedText(nl = "Digital twin Dordtse Kil III & IV"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/dordtse",
@@ -69,7 +69,7 @@ val dordtseKil34 = DrechtstedenTwinModel(
     pageComponent = { DordtseKilIIIPage() }
 )
 val grooteLindtV2 = DrechtstedenTwinModel(
-    projectPath = "grootelindtv2",
+    projectPath = "/grootelindtv2",
     label = LocalizedText(nl = "Digital twin Groote Lindt v2"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/groote",
@@ -77,7 +77,7 @@ val grooteLindtV2 = DrechtstedenTwinModel(
     pageComponent = { LindtPage() }
 )
 val leerpark = DrechtstedenTwinModel(
-    projectPath = "leerpark",
+    projectPath = "/leerpark",
     label = LocalizedText(nl = "Digital twin Leerpark"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/leerpark",
@@ -85,7 +85,7 @@ val leerpark = DrechtstedenTwinModel(
     pageComponent = { LeerparkPage() }
 )
 val nieuweWeg = DrechtstedenTwinModel(
-    projectPath = "nieuweweg",
+    projectPath = "/nieuweweg",
     label = LocalizedText(nl = "Digital twin Nieuwe Weg"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/nieuweweg",
@@ -93,7 +93,7 @@ val nieuweWeg = DrechtstedenTwinModel(
     pageComponent = { NieuweWegPage() }
 )
 val papendrechtOosteind = DrechtstedenTwinModel(
-    projectPath = "papendrechtoosteind",
+    projectPath = "/papendrechtoosteind",
     label = LocalizedText(nl = "Digital twin Papendrecht Oosteind"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/papendrechtoosteind",
@@ -101,7 +101,7 @@ val papendrechtOosteind = DrechtstedenTwinModel(
     pageComponent = { PapendrechtPage() }
 )
 val sliedrechtBusinesspark = DrechtstedenTwinModel(
-    projectPath = "sliedrechtbusinesspark",
+    projectPath = "/sliedrechtbusinesspark",
     label = LocalizedText(nl = "Digital twin Sliedrecht"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/businessparks/sliedrecht",

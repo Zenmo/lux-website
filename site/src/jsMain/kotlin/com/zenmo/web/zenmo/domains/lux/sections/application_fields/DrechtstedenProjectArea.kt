@@ -6,7 +6,7 @@ import com.zenmo.web.zenmo.core.models.SimpleMenuItem
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.BusinessParksPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resneighborhoods.ResNeighborhoodsPage
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.ResRegionPage
+import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.DrechtstedenRegioIndex
 
 enum class DrechtstedenProjectArea(
     override val label: LocalizedText,
@@ -18,7 +18,7 @@ enum class DrechtstedenProjectArea(
     RES_REGION(
         path = "/region",
         label = LocalizedText(en = "Region", nl = "Regio"),
-        pageComponent = { ResRegionPage() }
+        pageComponent = { DrechtstedenRegioIndex() }
     ),
     RES_NEIGHBORHOODS(
         path = "/res-neighborhoods",

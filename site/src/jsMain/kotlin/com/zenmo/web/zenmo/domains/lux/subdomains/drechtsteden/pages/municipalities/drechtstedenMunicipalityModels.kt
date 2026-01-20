@@ -6,7 +6,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechtstedenTwinM
 
 
 val alblasserdam = DrechtstedenTwinModel(
-    projectPath = "alblasserdam",
+    projectPath = "/alblasserdam",
     label = LocalizedText(nl = "Digital twin Gemeente Alblasserdam"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/municipalities/alblasserdam",
@@ -15,7 +15,7 @@ val alblasserdam = DrechtstedenTwinModel(
 )
 
 val hardinxveld = DrechtstedenTwinModel(
-    projectPath = "hardinxveld",
+    projectPath = "/hardinxveld",
     label = LocalizedText(nl = "Digital twin Gemeente Hardinxveld-Giessendam"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/municipalities/hardinxveld",
@@ -23,7 +23,7 @@ val hardinxveld = DrechtstedenTwinModel(
     pageComponent = { HardinxveldPage() }
 )
 val sliedrechtMunicipality = DrechtstedenTwinModel(
-    projectPath = "sliedrechtmunicipality",
+    projectPath = "/sliedrechtmunicipality",
     label = LocalizedText(nl = "Digital twin Gemeente Sliedrecht"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/municipalities/sliedrecht",
@@ -31,7 +31,7 @@ val sliedrechtMunicipality = DrechtstedenTwinModel(
     pageComponent = { GemeenteSliedrechtPage() }
 )
 val dordrecht = DrechtstedenTwinModel(
-    projectPath = "dordrecht",
+    projectPath = "/dordrecht",
     label = LocalizedText(nl = "Digital twin Dordrecht"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/municipalities/dordrecht",
@@ -39,7 +39,7 @@ val dordrecht = DrechtstedenTwinModel(
     pageComponent = { Dordrecht() }
 )
 val papendrecht = DrechtstedenTwinModel(
-    projectPath = "papendrecht",
+    projectPath = "/papendrecht",
     label = LocalizedText(nl = "Digital twin Papendrecht"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/municipalities/papendrecht",
@@ -47,7 +47,7 @@ val papendrecht = DrechtstedenTwinModel(
     pageComponent = { Papendrecht() }
 )
 val zwijndrecht = DrechtstedenTwinModel(
-    projectPath = "zwijndrecht",
+    projectPath = "/zwijndrecht",
     label = LocalizedText(nl = "Digital twin Zwijndrecht"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/municipalities/zwijndrecht",
@@ -55,7 +55,7 @@ val zwijndrecht = DrechtstedenTwinModel(
     pageComponent = { Zwijndrecht() }
 )
 val hendrikIdoAmbacht = DrechtstedenTwinModel(
-    projectPath = "hendrikidoambacht",
+    projectPath = "/hendrikidoambacht",
     label = LocalizedText(nl = "Digital twin Hendrik-Ido-Ambacht"),
     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
     entryPoint = "drechtsteden/municipalities/hendrikidoambacht",
