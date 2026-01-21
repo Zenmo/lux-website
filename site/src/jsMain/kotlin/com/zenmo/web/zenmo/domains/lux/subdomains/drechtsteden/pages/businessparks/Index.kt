@@ -13,7 +13,6 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.municipalities.drechtstedenMunicipalityModels
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.toTwinModelCardItems
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
@@ -31,27 +30,23 @@ val BusinessParkHeaderStyle = CssStyle.base {
 
 @Composable
 fun BusinessParksPage() {
-    DrechtstedenTwinLayout(
-        title = "Business Parks",
+    SectionContainer(
+        variant = LuxSectionContainerStyleVariant,
+        horizontalAlignment = Alignment.Start
     ) {
-        SectionContainer(
-            variant = LuxSectionContainerStyleVariant,
-            horizontalAlignment = Alignment.Start
-        ) {
-            HeaderText(
-                enText = "Business parks per municipality",
-                nlText = "Bedrijventerreinen per gemeente",
-                modifier = BusinessParkHeaderStyle.toModifier()
-            )
-            MunicipalitiesModels()
+        HeaderText(
+            enText = "Business parks per municipality",
+            nlText = "Bedrijventerreinen per gemeente",
+            modifier = BusinessParkHeaderStyle.toModifier()
+        )
+        MunicipalitiesModels()
 
-            HeaderText(
-                enText = "Business parks",
-                nlText = "Bedrijventerreinen",
-                modifier = BusinessParkHeaderStyle.toModifier()
-            )
-            BusinessParksModels()
-        }
+        HeaderText(
+            enText = "Business parks",
+            nlText = "Bedrijventerreinen",
+            modifier = BusinessParkHeaderStyle.toModifier()
+        )
+        BusinessParksModels()
     }
 }
 

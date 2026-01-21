@@ -29,27 +29,27 @@ import org.jetbrains.compose.web.dom.P
 
 val ModelInDevelopmentInfoWidgetStyle = CssStyle {
     base {
-        Modifier.Companion
+        Modifier
             .boxSizing(BoxSizing.BorderBox)
             .background(SitePalette.light.secondary.lightened(0.5f))
             .borderLeft(.5.cssRem, LineStyle.Solid, SitePalette.light.secondary)
     }
     Breakpoint.ZERO {
-        Modifier.Companion.padding(20.px)
+        Modifier.padding(20.px)
     }
 
     Breakpoint.SM {
-        Modifier.Companion.padding(20.px)
+        Modifier.padding(20.px)
     }
 
     Breakpoint.MD {
-        Modifier.Companion.padding(leftRight = 134.px, topBottom = 20.px)
+        Modifier.padding(leftRight = 134.px, topBottom = 20.px)
     }
     Breakpoint.LG {
-        Modifier.Companion.padding(leftRight = 250.px, topBottom = 30.px)
+        Modifier.padding(leftRight = 250.px, topBottom = 30.px)
     }
     Breakpoint.XL {
-        Modifier.Companion.padding(leftRight = 250.px, topBottom = 30.px)
+        Modifier.padding(leftRight = 250.px, topBottom = 30.px)
     }
 }
 
@@ -72,7 +72,7 @@ fun ModelInDevelopmentInfoWidget(
         modifier = ModelInDevelopmentInfoWidgetStyle.toModifier()
             .thenIf(
                 !visible,
-                Modifier.Companion.display(DisplayStyle.Companion.None)
+                Modifier.display(DisplayStyle.None)
             ),
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Top,
@@ -80,10 +80,10 @@ fun ModelInDevelopmentInfoWidget(
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.Top,
-            modifier = Modifier.Companion.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             H3(
-                Modifier.Companion
+                Modifier
                     .flex(1)
                     .margin(0.px)
                     .toAttrs()
@@ -95,8 +95,8 @@ fun ModelInDevelopmentInfoWidget(
             }
 
             CloseIcon(
-                modifier = Modifier.Companion.fontSize(FontSize.Companion.Larger)
-                    .cursor(Cursor.Companion.Pointer)
+                modifier = Modifier.fontSize(FontSize.Larger)
+                    .cursor(Cursor.Pointer)
                     .onClick { visible = false },
             )
         }
