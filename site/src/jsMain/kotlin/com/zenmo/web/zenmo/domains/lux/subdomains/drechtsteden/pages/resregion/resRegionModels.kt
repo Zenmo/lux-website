@@ -6,12 +6,12 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechtstedenTwinM
 
 
 val drechtstedenRes = DrechtstedenTwinModel(
-    projectPath = "drechtstedenres",
+    projectPath = "",
     label = LocalizedText(nl = "Digital twin Drechtsteden"),
     applicationArea = DrechtstedenProjectArea.RES_REGION,
     entryPoint = "drechtsteden/resregion/drechtsteden",
     imageUrl = "/lux/images/drechtsteden/res-region/drechtsteden.png",
-    pageComponent = { DrechtstedenPage() }
+    pageComponent = { DrechtstedenRegioIndex() }
 )
 
 

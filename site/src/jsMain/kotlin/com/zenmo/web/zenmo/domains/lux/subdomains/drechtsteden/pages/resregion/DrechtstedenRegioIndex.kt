@@ -7,12 +7,9 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.components.layout
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.AukeNaudContactCard
 
 @Composable
-fun DrechtstedenPage() {
+fun DrechtstedenRegioIndex() {
     DrechtstedenTwinLayout(
         title = drechtstedenRes.label.nl,
-        useTwinPageHeader = true,
-        enTwinPageHeaderTitle = drechtstedenRes.label.en,
-        nlTwinPageHeaderTitle = drechtstedenRes.label.nl,
     ) {
         ModelInDevelopmentInfoWidget()
         ModelPageContent(

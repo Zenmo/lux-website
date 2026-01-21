@@ -6,11 +6,9 @@ import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
-import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.pages.registerRoutesOfMenu
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.DrechtstedenProjectArea
 import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.DrechtstedenHomePage
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.DrechtstedenPage
 import kotlinx.browser.window
 
 @Composable
@@ -21,11 +19,17 @@ fun DrechtstedenRouting() {
         DrechtstedenProjectArea.entries.forEach { area ->
             ctx.router.register(area.path) { area.pageComponent() }
         }
-        ctx.router.register(
-            "${DrechtstedenProjectArea.RES_REGION.path}/${PrivateSubdomainModel.DRECHTSTEDEN.subdomain}"
-        ) { DrechtstedenPage() }
         ctx.registerRoutesOfMenu(
-            routes = drechtstedenModels.map { it.asRoutedMenuItem() }
+            routes = drechtstedenModels
+                /*
+                 * drop projects that have the same paths as the drechtsteden project areas
+                 * to avoid duplicate route registrations
+                 * for example, both the RES_REGION area and [drechtstedenRes] twin model use "/region"
+                 * */
+                .filter { model ->
+                    DrechtstedenProjectArea.entries.any { it.path == model.projectPath }
+                }
+                .map { it.asRoutedMenuItem() }
         )
     }
 
