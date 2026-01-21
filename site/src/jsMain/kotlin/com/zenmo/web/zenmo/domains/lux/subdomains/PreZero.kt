@@ -19,7 +19,7 @@ fun PreZero() {
             variant = LuxSectionContainerStyleVariant
         ) {
             ModelWrapper(
-                imgUrl = prezero.imageUrl,
+                imgUrl = "/lux/images/models/prezero.png",
                 entryPoint = prezero.entryPoint
             )
 

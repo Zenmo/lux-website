@@ -33,7 +33,7 @@ val brabant = PublicSubdomainTwinModel(
     subdomain = "brabant",
     subdomainComponent = { BrabantRouting() },
     label = LocalizedText(en = "Brabant", nl = "Brabant"),
-    imageUrl = "/lux/images/models/brabant.png",
+    imageUrl = "/lux/images/model_thumbnails/ModelThumbnailBrabant.jpg",
     modelId = Uuid.parse("973255f2-d5fb-4daa-b835-852388716ca7"),
     applicationArea = LuxApplicationArea.LUX_REGION
 )
@@ -50,7 +50,7 @@ val hilversum = PublicSubdomainTwinModel(
     subdomain = "hilversum",
     subdomainComponent = { HilversumIndex() },
     label = LocalizedText(en = "Hilversum", nl = "Hilversum"),
-    imageUrl = "/lux/images/models/hilversum.png",
+    imageUrl = "/lux/images/model_thumbnails/ModelThumbnailHilversum.jpg",
     modelId = Uuid.parse("00edc3d3-2942-486a-93ae-26f809872a54"),
     applicationArea = LuxApplicationArea.LUX_REGION
 )
@@ -58,7 +58,7 @@ val bunderbuurten = PublicSubdomainTwinModel(
     subdomain = "bunderbuurten",
     subdomainComponent = { BunderbuurtenIndex() },
     label = LocalizedText(en = "Bunder Neighbourhoods", nl = "Bunderbuurten"),
-    imageUrl = "/lux/images/models/bunderbuurten.png",
+    imageUrl = "/lux/images/model_thumbnails/ModelThumbnailBunderbuurtenVeghel.jpg",
     modelId = Uuid.parse("da90dd57-a9fb-47b2-9496-345255fda37a"),
     applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
 )
@@ -66,7 +66,7 @@ val loenen = PublicSubdomainTwinModel(
     subdomain = "loenen",
     subdomainComponent = { LoenenIndex() },
     label = LocalizedText(en = "Loenen", nl = "Loenen"),
-    imageUrl = "/lux/images/models/loenen.png",
+    imageUrl = "/lux/images/model_thumbnails/ModelThumbnailLoenen.jpg",
     modelId = Uuid.parse("ba998ba3-05dc-45f6-ac6d-78279765375d"),
     applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
 )
@@ -82,7 +82,7 @@ val vruchtenbuurt = PublicSubdomainTwinModel(
     subdomain = "vruchtenbuurt",
     subdomainComponent = { VruchtenbuurtIndex() },
     label = LocalizedText(en = "Vruchtenbuurt", nl = "Vruchtenbuurt"),
-    imageUrl = "/lux/images/models/vruchtenbuurt.png",
+    imageUrl = "/lux/images/model_thumbnails/ModelThumbnailVruchtenbuurt.jpg",
     modelId = Uuid.parse("cca6eb2b-fb91-4825-bee2-d5e12d0a3880"),
     applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
 )
@@ -90,7 +90,7 @@ val cognizant = PublicSubdomainTwinModel(
     subdomain = "cognizant",
     subdomainComponent = { Cognizant() },
     label = LocalizedText(en = "Cognizant", nl = "Cognizant"),
-    imageUrl = "/lux/images/models/cognizant.png",
+    imageUrl = "/lux/images/model_thumbnails/ModelThumbnailCognizant.png",
     modelId = Uuid.parse("7cfc3e4a-608c-4e2c-a834-4d290174ee9e"),
     applicationArea = LuxApplicationArea.LUX_COMPANY
 )

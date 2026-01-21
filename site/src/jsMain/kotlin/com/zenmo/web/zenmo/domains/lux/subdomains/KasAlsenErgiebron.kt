@@ -19,7 +19,7 @@ fun KasAlsenErgiebron() {
             variant = LuxSectionContainerStyleVariant
         ) {
             ModelWrapper(
-                imgUrl = kasalsenergiebron.imageUrl,
+                imgUrl = "/lux/images/models/kasals.png",
                 entryPoint = kasalsenergiebron.entryPoint
             )
 

@@ -32,7 +32,7 @@ enum class PrivateSubdomainModel(
         subdomain = "genius",
         subdomainComponent = { Genius() },
         label = LocalizedText(nl = "Genius"),
-        imageUrl = "/lux/images/models/genius.png",
+        imageUrl = "/lux/images/model_thumbnails/GENIUS5.jpg",
         entryPoint = "genius",
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB
     ),
@@ -40,7 +40,7 @@ enum class PrivateSubdomainModel(
         subdomain = "hessenpoort",
         subdomainComponent = { Hessenpoort() },
         label = LocalizedText(nl = "Hessenpoort"),
-        imageUrl = "/lux/images/models/hessenpoort.png",
+        imageUrl = "/lux/images/model_thumbnails/Hessenpoort2.jpg",
         entryPoint = "hessenpoort",
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB
     ),
@@ -48,7 +48,7 @@ enum class PrivateSubdomainModel(
         subdomain = "kasalsenergiebron",
         subdomainComponent = { KasAlsenErgiebron() },
         label = LocalizedText(nl = "Kas Als Energiebron"),
-        imageUrl = "/lux/images/models/kasals.png",
+        imageUrl = "/lux/images/model_thumbnails/kasalsenergiebron6.jpg",
         entryPoint = "kasalsenergiebron",
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB
     ),
@@ -56,7 +56,7 @@ enum class PrivateSubdomainModel(
         subdomain = "prezero",
         subdomainComponent = { PreZero() },
         label = LocalizedText(nl = "PreZero"),
-        imageUrl = "/lux/images/models/prezero.png",
+        imageUrl = "/lux/images/model_thumbnails/ModelThumbnailPreZero.png",
         entryPoint = "prezero",
         applicationArea = LuxApplicationArea.LUX_COMPANY
     ),
