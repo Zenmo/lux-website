@@ -8,7 +8,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -27,6 +26,7 @@ import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.em
 import org.jetbrains.compose.web.css.px
+import web.window.window
 
 val NavBarLinkVariant = LinkStyle.addVariant(
     extraModifier = { TextStyle.toModifier(LabelTextStyle) }
@@ -106,8 +106,7 @@ fun NavBarLink(
     }
 }
 
-@Composable
 fun isPathActive(href: String): Boolean {
-    val currentPage = rememberPageContext()
-    return currentPage.route.path == href
+    val path = window.location.pathname
+    return path == href || (href != "/" && path.startsWith(href))
 }

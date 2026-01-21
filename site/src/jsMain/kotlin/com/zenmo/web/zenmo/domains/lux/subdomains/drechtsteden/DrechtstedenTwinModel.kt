@@ -14,7 +14,7 @@ import kotlinx.browser.window
 
 data class DrechtstedenTwinModel(
     val projectPath: String,
-    override val path: String = "${applicationArea.path}/$projectPath",
+    override val path: String = "${applicationArea.path}$projectPath",
     override val label: LocalizedText,
     override val applicationArea: DrechtstedenProjectArea,
     override val imageUrl: String,
