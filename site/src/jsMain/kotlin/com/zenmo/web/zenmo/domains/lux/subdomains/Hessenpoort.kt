@@ -19,7 +19,7 @@ fun Hessenpoort() {
             variant = LuxSectionContainerStyleVariant
         ) {
             ModelWrapper(
-                imgUrl = hessenpoort.imageUrl,
+                imgUrl = "/lux/images/models/hessenpoort.png",
                 entryPoint = hessenpoort.entryPoint
             )
 

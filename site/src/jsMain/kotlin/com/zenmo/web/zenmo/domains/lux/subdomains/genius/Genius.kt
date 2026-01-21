@@ -61,7 +61,7 @@ fun Genius() {
 
             val genius = PrivateSubdomainModel.GENUIS
             ModelWrapper(
-                imgUrl = genius.imageUrl,
+                imgUrl = "/lux/images/models/genius.png",
                 entryPoint = genius.entryPoint
             )
 
