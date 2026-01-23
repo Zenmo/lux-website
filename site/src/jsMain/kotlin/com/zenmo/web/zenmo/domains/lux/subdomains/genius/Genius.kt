@@ -23,12 +23,12 @@ import com.zenmo.web.zenmo.components.widgets.LangBlock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.components.widgets.navbar_actions.NavBarActionsMenuWidget
-import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
-import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.components.LuxHeaderComponent
+import com.zenmo.web.zenmo.domains.lux.subdomains.components.ModelWrapper
+import com.zenmo.web.zenmo.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
@@ -67,14 +67,7 @@ fun Genius() {
 
             PartnerLogos()
 
-            ProfileContactCard(
-                name = ZenmoTeam.ATE.memberName,
-                imageUrl = ZenmoTeam.ATE.image,
-                email = ZenmoTeam.ATE.email,
-                telephoneNumber = "+31 6 14910380",
-                enSubtitle = "Website and model development",
-                nlSubtitle = "Website en model ontwikkeling",
-            )
+            ZenmoModellerProfileCard(ZenmoTeam.ATE)
         }
     }
 }

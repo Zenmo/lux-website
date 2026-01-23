@@ -5,8 +5,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.anyLogicPublicApiKey
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -30,16 +29,13 @@ fun SubdomainModelPage(
     Column(
         modifier = Modifier.fillMaxSize(),
     ) {
-        SectionContainer(
-            variant = LuxSectionContainerStyleVariant
-        ) {
+        LuxSectionContainer {
             introContent()
             mediaContent()
             anylogicRender()
             extraContent()
         }
-        SectionContainer(
-            variant = LuxSectionContainerStyleVariant,
+        LuxSectionContainer(
             modifier = Modifier.backgroundColor(SitePalette.light.overlay)
         ) {
             footerContent()

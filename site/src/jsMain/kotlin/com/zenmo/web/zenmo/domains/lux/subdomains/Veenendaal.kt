@@ -14,10 +14,10 @@ import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiPlayArrow
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.veenendaal
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import com.zenmo.web.zenmo.domains.lux.widgets.RadioItem
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
@@ -100,14 +100,7 @@ fun Veenendaal() {
                     }
                 }
             }
-            ProfileContactCard(
-                name = ZenmoTeam.PETER_HOGEVEEN.memberName,
-                imageUrl = ZenmoTeam.PETER_HOGEVEEN.image,
-                email = ZenmoTeam.PETER_HOGEVEEN.email,
-                telephoneNumber = "+31 652381249",
-                enSubtitle = "Website and model development",
-                nlSubtitle = "Website en model ontwikkeling",
-            )
+            ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
         }
     }
 }

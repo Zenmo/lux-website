@@ -18,6 +18,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.widgets.InlineLink
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
@@ -42,6 +43,19 @@ fun ProfileContactCard(
     name: String,
     imageUrl: String,
     email: String,
+    captionText: LocalizedText = LocalizedText(
+        en = "Website and model development",
+        nl = "Website en model ontwikkeling"
+    ),
+    captionRender: @Composable () -> Unit = {
+        SubHeaderText(
+            enText = captionText.en,
+            nlText = captionText.nl,
+            modifier = Modifier.color(SitePalette.light.primary)
+                .fontSize(1.15.cssRem)
+                .margin(0.cssRem)
+        )
+    },
     cardArrangementDirection: ProfileCardArrangementDirection,
 ) {
     val breakpoint = rememberBreakpoint()
@@ -73,13 +87,7 @@ fun ProfileContactCard(
             horizontalAlignment = if (isVertical)
                 Alignment.CenterHorizontally else Alignment.Start
         ) {
-            SubHeaderText(
-                enText = "Website and model development",
-                nlText = "Website en model ontwikkeling",
-                modifier = Modifier.color(SitePalette.light.primary)
-                    .fontSize(1.15.cssRem)
-                    .margin(0.cssRem)
-            )
+            captionRender()
             HeaderText(
                 enText = name,
                 nlText = name,
