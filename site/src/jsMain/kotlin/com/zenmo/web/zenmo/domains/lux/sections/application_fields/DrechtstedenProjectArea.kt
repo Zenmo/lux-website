@@ -4,9 +4,6 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.core.models.Route
 import com.zenmo.web.zenmo.core.models.SimpleMenuItem
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.businessparks.BusinessParksPage
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resneighborhoods.ResNeighborhoodsPage
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.pages.resregion.DrechtstedenRegioIndex
 
 enum class DrechtstedenProjectArea(
     override val label: LocalizedText,
@@ -18,16 +15,16 @@ enum class DrechtstedenProjectArea(
     RES_REGION(
         path = "/region",
         label = LocalizedText(en = "Region", nl = "Regio"),
-        pageComponent = { DrechtstedenRegioIndex() }
+        pageComponent = { com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resregion.DrechtstedenRegioIndex() }
     ),
     RES_NEIGHBORHOODS(
         path = "/res-neighborhoods",
         label = LocalizedText(en = "Residential Neighborhoods", nl = "Woonwijken"),
-        pageComponent = { ResNeighborhoodsPage() }
+        pageComponent = { com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resneighborhoods.ResNeighborhoodsPage() }
     ),
     BUSINESS_PARKS(
         path = "/business-parks",
         label = LocalizedText(en = "Business Parks", nl = "Bedrijventerreinen"),
-        pageComponent = { BusinessParksPage() }
+        pageComponent = { com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.businessparks.BusinessParksPage() }
     ),
 }

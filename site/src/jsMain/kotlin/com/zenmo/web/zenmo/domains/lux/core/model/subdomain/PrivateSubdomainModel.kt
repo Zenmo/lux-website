@@ -4,12 +4,12 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.core.PrivateTwinModel
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
-import com.zenmo.web.zenmo.domains.lux.subdomains.Borchwerf
-import com.zenmo.web.zenmo.domains.lux.subdomains.Hessenpoort
-import com.zenmo.web.zenmo.domains.lux.subdomains.KasAlsenErgiebron
-import com.zenmo.web.zenmo.domains.lux.subdomains.PreZero
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.DrechtstedenRouting
-import com.zenmo.web.zenmo.domains.lux.subdomains.genius.Genius
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Borchwerf
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Hessenpoort
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.KasAlsenErgiebron
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.PreZero
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.genius.Genius
 
 
 enum class PrivateSubdomainModel(

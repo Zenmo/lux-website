@@ -20,7 +20,6 @@ import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.EmptyResults
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.SearchBar
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.filterAndSearchModels
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.drechtstedenModels
 import com.zenmo.web.zenmo.domains.lux.widgets.RadioRow
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -53,7 +52,8 @@ fun LuxModels() {
     ) {
         var query by remember { mutableStateOf("") }
 
-        val allModels = (subdomainModels + drechtstedenModels).map { it.toTwinModelCardItem() }
+        val allModels =
+            (subdomainModels + com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.drechtstedenModels).map { it.toTwinModelCardItem() }
         var luxModels by remember { mutableStateOf(allModels) }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
         Column(

@@ -5,8 +5,8 @@ import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainMode
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.empowered
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.subdomains
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.luxNavMenu
-import com.zenmo.web.zenmo.domains.lux.subdomains.drechtsteden.drechtstedenNavMenu
-import com.zenmo.web.zenmo.domains.lux.subdomains.empowered.empoweredMenuItems
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.drechtstedenNavMenu
+import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.empowered.empoweredMenuItems
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.zenmoNavMenu
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window

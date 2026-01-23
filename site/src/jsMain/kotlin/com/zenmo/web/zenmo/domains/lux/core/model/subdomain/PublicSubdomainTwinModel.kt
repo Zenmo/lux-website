@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.core.PublicTwinModel
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
-import com.zenmo.web.zenmo.domains.lux.subdomains.*
-import com.zenmo.web.zenmo.domains.lux.subdomains.amersfoort.Amersfoort
-import com.zenmo.web.zenmo.domains.lux.subdomains.brabant.BrabantRouting
-import com.zenmo.web.zenmo.domains.lux.subdomains.empowered.EmpoweredRouting
+import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.*
+import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.amersfoort.Amersfoort
+import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.brabant.BrabantRouting
+import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.empowered.EmpoweredRouting
 import kotlin.uuid.Uuid
 
 data class PublicSubdomainTwinModel(
