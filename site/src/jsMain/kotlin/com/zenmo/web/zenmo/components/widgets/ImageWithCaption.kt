@@ -7,10 +7,14 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.theme.isZenmoDomain
+import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -22,6 +26,10 @@ val CaptionImageStyle = CssStyle {
             .fillMaxWidth()
             .height(425.px)
             .borderRadius(30.px)
+            .thenIf(
+                !isZenmoDomain,
+                Modifier.luxBorderRadius(LuxCornerRadius.xl)
+            )
             .objectFit(ObjectFit.Cover)
     }
 }
