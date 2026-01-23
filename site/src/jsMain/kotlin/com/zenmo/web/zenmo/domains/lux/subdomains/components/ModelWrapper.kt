@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.components
+package com.zenmo.web.zenmo.domains.lux.subdomains.components
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.BoxSizing
@@ -15,6 +15,9 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.ErrorWidget
 import com.zenmo.web.zenmo.protected.*
+import com.zenmo.web.zenmo.theme.isZenmoDomain
+import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
+import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 
@@ -22,8 +25,9 @@ val ProtectedWrapperStyle = CssStyle {
     base {
         Modifier
             .backgroundColor(rgba(0, 0, 0, 0.4f))
+            .thenIf(!isZenmoDomain, Modifier.luxBorderRadius(LuxCornerRadius.lg))
             .color(Colors.White)
-            .position(Position.Companion.Absolute)
+            .position(Position.Absolute)
             .top(50.percent)
             .left(50.percent)
             .transform { translate((-50).percent, (-50).percent) }
@@ -52,12 +56,12 @@ val ProtectedWrapperStyle = CssStyle {
 
 val BlurModelImageStyle = CssStyle.base {
     Modifier
-        .boxSizing(BoxSizing.Companion.BorderBox)
+        .boxSizing(BoxSizing.BorderBox)
         .filter(blur(10.px))
         .styleModifier { property("-webkit-filter", "blur(10px)") }
         .fillMaxWidth()
         .fillMaxHeight()
-        .objectFit(ObjectFit.Companion.Cover)
+        .objectFit(ObjectFit.Cover)
 }
 
 val ModelWrapperStyle = CssStyle.base {
@@ -78,13 +82,13 @@ fun ModelWrapper(
 ) {
     var wrapperStatus by remember { mutableStateOf<AccessStatus>(AccessStatus.Success) }
     Box(
-        Modifier.Companion
+        Modifier
             .fillMaxWidth()
-            .position(Position.Companion.Relative)
+            .position(Position.Relative)
             .height(80.vh).then(modifier),
         contentAlignment = Alignment.Center
     ) {
-        if (wrapperStatus != AccessStatus.Success) {
+        if (wrapperStatus !is AccessStatus.Success) {
             Image(
                 src = imgUrl,
                 alt = "$entryPoint model teaser",
@@ -92,9 +96,9 @@ fun ModelWrapper(
             )
         }
         Div(
-            Modifier.Companion
-                .thenIf(wrapperStatus != AccessStatus.Success, ProtectedWrapperStyle.toModifier())
-                .thenIf(wrapperStatus == AccessStatus.Success, ModelWrapperStyle.toModifier())
+            Modifier
+                .thenIf(wrapperStatus !is AccessStatus.Success, ProtectedWrapperStyle.toModifier())
+                .thenIf(wrapperStatus is AccessStatus.Success, ModelWrapperStyle.toModifier())
                 .toAttrs()
         ) {
             ProtectedWrapper(

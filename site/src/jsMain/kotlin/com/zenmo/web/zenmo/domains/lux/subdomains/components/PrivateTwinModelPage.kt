@@ -1,7 +1,6 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.components
 
 import androidx.compose.runtime.Composable
-import com.zenmo.web.zenmo.domains.lux.components.ModelWrapper
 import kotlin.uuid.Uuid
 
 @Composable
