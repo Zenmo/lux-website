@@ -10,10 +10,9 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.MediaContentLayout
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.components.widgets.ZenmoInlineLink
-import com.zenmo.web.zenmo.domains.lux.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.kronenberg
+import com.zenmo.web.zenmo.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -81,12 +80,7 @@ fun KronenbergIndex() {
                     nlText = "Website en model ontwikkeling",
                     modifier = Modifier.margin(0.cssRem),
                 )
-                ProfileContactCard(
-                    name = ZenmoTeam.NAUD_LOOMANS.memberName,
-                    imageUrl = ZenmoTeam.NAUD_LOOMANS.image,
-                    email = ZenmoTeam.NAUD_LOOMANS.email,
-                    organization = { ZenmoInlineLink() },
-                )
+                ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)
             }
         }
     }

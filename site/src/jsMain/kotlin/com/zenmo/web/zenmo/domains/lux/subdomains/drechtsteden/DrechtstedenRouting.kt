@@ -39,7 +39,7 @@ fun DrechtstedenRouting() {
     router.renderActivePage { DeferringHost { it() } }
 }
 
-fun InitKobwebContext.drechtstdenRouting(
+private fun InitKobwebContext.drechtstdenRouting(
     routes: List<RoutedMenuItem>
 ) = this.registerRoutesOfMenu(
     routes = routes,

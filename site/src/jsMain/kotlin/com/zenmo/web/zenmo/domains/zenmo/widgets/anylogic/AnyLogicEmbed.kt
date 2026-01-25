@@ -67,7 +67,7 @@ enum class AnyLogicModelStatus {
  */
 @Composable
 fun AnyLogicEmbed(
-    modifier: Modifier = Modifier.maxWidth(90.cssRem).margin(topBottom = 4.cssRem),
+    modifier: Modifier = Modifier.maxWidth(90.cssRem),
     modelId: Uuid,
     apiKey: Uuid = anyLogicPublicApiKey,
     cloudUrl: String = "${AppGlobals.getValue("BACKEND_URL")}/anylogic-proxy",
