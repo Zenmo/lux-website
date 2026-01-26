@@ -13,8 +13,8 @@ import com.zenmo.web.zenmo.core.models.asRoutes
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.pages.registerRoutesOfMenu
 import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.empowered.pages.Bronckhorst
-import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.empowered.pages.EmpoweredIndex
 import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.empowered.pages.NijmegenHengstdal
+import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.empowered.pages.empowered.EmpoweredIndex
 import kotlinx.browser.window
 
 @Composable

@@ -24,7 +24,7 @@ val empowered = PublicSubdomainTwinModel(
     subdomain = "empowered",
     subdomainComponent = { EmpoweredRouting() },
     label = LocalizedText(en = "EmPowerEd", nl = "EmPowerEd"),
-    imageUrl = "",
+    imageUrl = "/lux/images/model_thumbnails/Empowered.jpg",
     modelId = Uuid.parse("3801076e-44db-4b42-a27f-5be2b6c82a5c"),
     applicationArea = LuxApplicationArea.LUX_REGION
 )
