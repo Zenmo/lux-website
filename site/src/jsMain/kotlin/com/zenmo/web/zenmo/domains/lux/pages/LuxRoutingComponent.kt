@@ -8,6 +8,7 @@ import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.components.widgets.CatchAllPage
 import com.zenmo.web.zenmo.core.models.asRoutes
+import com.zenmo.web.zenmo.domains.lux.components.layout.LuxEnergyLayout
 import com.zenmo.web.zenmo.domains.lux.sections.home.HomePage
 import com.zenmo.web.zenmo.domains.lux.sections.nav_header.luxNavMenu
 import kotlinx.browser.window

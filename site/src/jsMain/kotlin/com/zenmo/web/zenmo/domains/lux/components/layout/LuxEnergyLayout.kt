@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.pages
+package com.zenmo.web.zenmo.domains.lux.components.layout
 
 import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.components.layouts.PageLayout
