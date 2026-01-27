@@ -17,8 +17,8 @@ dependencyResolutionManagement {
 
 plugins {
     // can't read from toml file, must hardcode
-    kotlin("multiplatform") version "2.2.0" apply false
-    kotlin("plugin.serialization") version "2.2.0" apply false
+    kotlin("multiplatform") version "2.2.21" apply false
+    kotlin("plugin.serialization") version "2.2.21" apply false
 }
 
 // The following block registers dependencies to enable Kobweb snapshot support. It is safe to delete or comment out

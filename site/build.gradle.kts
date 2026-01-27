@@ -10,9 +10,9 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
-    id("com.dorongold.task-tree") version "4.0.1"
     id("com.github.node-gradle.node") version "7.1.0"
-    id("energy.lux.prerender") version "0.0.1"
+    // Disabled, does not work yet
+    //id("energy.lux.prerender") version "0.0.1"
 }
 
 group = "com.zenmo.web.zenmo"
@@ -190,6 +190,7 @@ project.afterEvaluate {
     }
 }
 
-tasks.getByName<energy.lux.prerender.PreRenderTask>("preRender") {
-    entryPointUrl.set("http://${System.getenv("LUX_DOMAIN")}")
-}
+// Disabled, does not work yet
+//tasks.getByName<energy.lux.prerender.PreRenderTask>("preRender") {
+//    entryPointUrl.set("http://${System.getenv("LUX_DOMAIN")}")
+//}

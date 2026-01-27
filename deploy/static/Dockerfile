@@ -1,49 +1,67 @@
-# syntax=docker/dockerfile:1.7-labs
+FROM eclipse-temurin:24 AS builder
 
-# Use JDK to build the Kobweb project
-FROM eclipse-temurin:21 AS builder
+WORKDIR /app
+
 RUN apt-get update && apt-get install -y \
-    npm \
-    libglib2.0-0t64 \
-    libnss3 \
-    libnspr4 \
-    libdbus-1-3 \
-    libatk1.0-0t64 \
-    libatk-bridge2.0-0t64 \
-    libatspi2.0-0t64 \
-    libx11-6 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxext6 \
-    libxfixes3 \
-    libxrandr2 \
-    libgbm1 \
-    libxkbcommon0 \
-    libasound2t64
+    npm
 
-WORKDIR /app
+# pre-rendering disabled until it's useful
+#    libglib2.0-0t64 \
+#    libnss3 \
+#    libnspr4 \
+#    libdbus-1-3 \
+#    libatk1.0-0t64 \
+#    libatk-bridge2.0-0t64 \
+#    libatspi2.0-0t64 \
+#    libx11-6 \
+#    libxcomposite1 \
+#    libxdamage1 \
+#    libxext6 \
+#    libxfixes3 \
+#    libxrandr2 \
+#    libgbm1 \
+#    libxkbcommon0 \
+#    libasound2t64
+#
+#WORKDIR /app/prerender
+#RUN ./gradlew publish
 
-COPY . ./
+# Create a cache layer with dependencies
+# Need to copy all the gradle subprojects
+COPY --parents \
+    gradle \
+    gradlew \
+    gradle.properties \
+    settings.gradle.kts \
+    site/build.gradle.kts \
+    site/.kobweb \
+    shared/build.gradle.kts \
+    backend/build.gradle.kts \
+    remotedev/build.gradle.kts \
+    ./
 
-WORKDIR /app/prerender
-RUN ./gradlew publish
-WORKDIR /app
+# Cache gradle dependencies in a docker layer
+RUN ./gradlew site:dependencies
 
-RUN chmod +x ./gradlew
-# these arguments will be included in the javascript artifact
-ARG BACKEND_URL=https://site-backend.zenmo.com
-ARG ZENMO_DOMAIN=nieuw.zenmo.com
-ARG LUX_DOMAIN=lux.energy
-RUN --mount=type=cache,target=/root/.gradle \
-    --mount=type=cache,target=/root/.cache \
-    --mount=type=cache,target=/app/.gradle \
-    ./gradlew site:kobwebExport -PkobwebExportLayout=STATIC -PkobwebReuseServer=false -PkobwebBuildTarget=RELEASE
+COPY site/rollup site/rollup
+
+# Cache Rollup dependencies in a docker layer
+RUN ./gradlew site:npmInstall
+
+# Copy source code
+COPY shared shared
+COPY site site
+
+# BACKEND_URL is used in index.html
+ARG BACKEND_URL=https://site-backend.lux.energy
+# -PkobwebBuildTarget=RELEASE removes hot reload elements and styles from index.html
+RUN ./gradlew site:jsProcessResources -PkobwebBuildTarget=RELEASE
 
 # Use Caddy to serve static files
 FROM caddy:2.8.4
 WORKDIR /srv
 
-COPY --from=builder /app/site/.kobweb/site /srv
+COPY --from=builder /app/site/build/processedResources/js/main/public /srv/
 COPY deploy/static/Caddyfile /etc/caddy/Caddyfile
 EXPOSE 80
 

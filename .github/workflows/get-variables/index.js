@@ -42,7 +42,11 @@ const configPerBranch = {
 module.exports = (context) => {
     // const branch = context.payload.pull_request?.head?.ref ?? context.ref.match(/refs\/heads\/(.+)/)[1]
 
-    const configKey = context.eventName === "pull_request" ? "pull_request" : context.ref.match(/refs\/heads\/(.+)/)[1]
+    let configKey = context.eventName === "pull_request" ? "pull_request" : context.ref.match(/refs\/heads\/(.+)/)[1]
+
+    if (configKey === "gradle-docker-layer-cache") {
+        configKey = "main"
+    }
 
     if (!Object.keys(configPerBranch).includes(configKey)) {
         throw Error(`No config for branch ${configKey}`)

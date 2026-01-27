@@ -27,5 +27,5 @@ tasks.shadowJar {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(24)
 }
