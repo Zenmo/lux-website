@@ -1,42 +1,49 @@
-FROM eclipse-temurin:21 AS builder
+# Build artifact
+FROM eclipse-temurin:24 AS builder
+
+WORKDIR /app
+
+# Npm to install Rollup
 RUN apt-get update && apt-get install -y \
-    npm \
-    libglib2.0-0t64 \
-    libnss3 \
-    libnspr4 \
-    libdbus-1-3 \
-    libatk1.0-0t64 \
-    libatk-bridge2.0-0t64 \
-    libatspi2.0-0t64 \
-    libx11-6 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxext6 \
-    libxfixes3 \
-    libxrandr2 \
-    libgbm1 \
-    libxkbcommon0 \
-    libasound2t64
+        npm
 
-WORKDIR /app
+# Create a cache layer with dependencies
+# Need to copy all the gradle subprojects
+COPY --parents \
+    gradle \
+    gradlew \
+    gradle.properties \
+    settings.gradle.kts \
+    site/build.gradle.kts \
+    site/.kobweb \
+    shared/build.gradle.kts \
+    backend/build.gradle.kts \
+    remotedev/build.gradle.kts \
+    ./
 
-COPY . ./
+# Cache gradle dependencies in a docker layer
+RUN ./gradlew backend:dependencies
 
-WORKDIR /app/prerender
-RUN ./gradlew publish
-WORKDIR /app
+COPY site/rollup site/rollup
 
-RUN chmod +x ./gradlew
+# Cache Rollup dependencies in a docker layer
+RUN ./gradlew site:npmInstall
+
+# Copy source code
+COPY shared shared
+COPY backend backend
+COPY site site
+COPY anylogic-cloud-client anylogic-cloud-client
+
 # these arguments will be included in the javascript artifact
-ARG BACKEND_URL=https://site-backend.zenmo.com
+ARG BACKEND_URL=https://site-backend.lux.energy
 ARG ZENMO_DOMAIN=nieuw.zenmo.com
 ARG LUX_DOMAIN=lux.energy
-RUN --mount=type=cache,target=/root/.gradle \
-    --mount=type=cache,target=/root/.cache \
-    --mount=type=cache,target=/app/.gradle \
-    ./gradlew backend:build -PkobwebBuildTarget=RELEASE
+# -PkobwebBuildTarget=RELEASE removes hot reload code from the JavaScript
+RUN ./gradlew backend:build -PkobwebBuildTarget=RELEASE
 
-FROM eclipse-temurin:21
+# New image without source code files to run the backend
+FROM eclipse-temurin:24
 WORKDIR /app
 COPY --from=builder /app/backend/build/distributions/backend.tar /app/backend.tar
 RUN tar -xf backend.tar && rm backend.tar

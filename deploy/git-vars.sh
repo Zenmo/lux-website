@@ -6,4 +6,4 @@ COMMIT=$(git rev-parse --short HEAD)
 # prefer run number in GitHub Actions, otherwise use commit hash
 VERSION=${GITHUB_RUN_NUMBER:-$COMMIT}
 
-TAG=$BRANCH-$VERSION
+TAG=${TAG:-$BRANCH-$VERSION}

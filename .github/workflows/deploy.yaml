@@ -3,6 +3,7 @@ on:
     push:
         branches:
             - main
+            - gradle-docker-layer-cache
             - production
     pull_request:
         types: [ opened, synchronize, reopened ]
@@ -30,37 +31,16 @@ jobs:
                         const getVariables = require('./.github/workflows/get-variables/index.js')
                         return getVariables(context)
 
-    build-images:
+    build-static:
         needs:
             - variables
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v4
+
             ## Buildx is needed for caching
             -   name: Set up Buildx
-                uses: docker/setup-buildx-action@v2
-
-            # Docker layer cache works almost automatically, but cache mounts need more setup
-            -   name: Cache
-                uses: actions/cache@v3
-                id: cache
-                with:
-                    path: |
-                        root-gradle
-                        root-cache
-                        app-gradle
-                    key: static
-
-            -   name: inject cache mounts into docker
-                uses: reproducible-containers/buildkit-cache-dance@v3.1.0
-                with:
-                    cache-map: |
-                        {
-                            "root-gradle": "/root/.gradle",
-                            "root-cache": "/root/.cache",
-                            "app-gradle": "/app/.gradle"
-                        }
-                    skip-extraction: ${{ steps.cache.outputs.cache-hit }}
+                uses: docker/setup-buildx-action@v3
 
             -   name: Login to GitHub Container Registry
                 uses: docker/login-action@v3
@@ -73,12 +53,38 @@ jobs:
             # see https://docs.docker.com/build/cache/backends/gha/
             -   name: Expose
                 uses: crazy-max/ghaction-github-runtime@v3
+
             -   run: ./deploy/static/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
                 env:
                     BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
                     ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
                     LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
                     TAG: ${{ needs.variables.outputs.TAG }}
+
+
+    build-backend:
+        needs:
+            - variables
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v4
+
+            ## Buildx is needed for caching
+            -   name: Set up Buildx
+                uses: docker/setup-buildx-action@v3
+
+            -   name: Login to GitHub Container Registry
+                uses: docker/login-action@v3
+                with:
+                    registry: ghcr.io
+                    username: ${{ github.actor }}
+                    password: ${{ secrets.GITHUB_TOKEN }}
+
+            # exposes ACTIONS_CACHE_URL and ACTIONS_RUNTIME_TOKEN
+            # see https://docs.docker.com/build/cache/backends/gha/
+            -   name: Expose
+                uses: crazy-max/ghaction-github-runtime@v3
+
             -   run: ./deploy/backend/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
                 env:
                     BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
@@ -89,7 +95,8 @@ jobs:
     deploy:
         if: github.event_name != 'pull_request'
         needs:
-            - build-images
+            - build-backend
+            - build-static
             - variables
         runs-on: ubuntu-latest
         steps:
