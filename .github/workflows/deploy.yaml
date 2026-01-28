@@ -68,6 +68,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v4
+                with:
+                    submodules: true
+                    token: ${{ secrets.LUX_WEBSITE_PRIVATE_PAT }}
 
             ## Buildx is needed for caching
             -   name: Set up Buildx
