@@ -39,7 +39,6 @@ fun ErrorWidget(
         SubHeaderText(
             enText = "Error",
             nlText = "Fout",
-            modifier = Modifier.margin(0.cssRem)
         )
         P(
             Modifier

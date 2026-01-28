@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.silk.components.icons.mdi.IconStyle
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiHelp
@@ -27,15 +26,14 @@ fun FaqsHeaderText() {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             MdiHelp(
-                Modifier.Companion
+                Modifier
                     .fontSize(48.px)
-                    .color(SitePalette.Companion.light.primary).padding(right = 0.5.cssRem),
+                    .color(SitePalette.light.primary).padding(right = 0.5.cssRem),
                 style = IconStyle.OUTLINED
             )
             HeaderText(
                 enText = "Frequently Asked Questions",
                 nlText = "Veelgestelde Vragen",
-                modifier = Modifier.Companion.margin(0.px)
             )
         }
         P {

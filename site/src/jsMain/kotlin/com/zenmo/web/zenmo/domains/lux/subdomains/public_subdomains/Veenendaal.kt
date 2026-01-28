@@ -47,7 +47,6 @@ fun Veenendaal() {
             HeaderText(
                 enText = "Digital Twins Veenendaal",
                 nlText = "Digital Twins Veenendaal",
-                modifier = Modifier.margin(0.cssRem)
             )
             Column(
                 modifier = Modifier.fillMaxWidth(),

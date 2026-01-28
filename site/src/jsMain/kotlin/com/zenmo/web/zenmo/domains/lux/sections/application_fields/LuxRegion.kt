@@ -30,7 +30,7 @@ fun LuxMunicipality() {
         HeaderText(
             enText = "LUX Region",
             nlText = "LUX Regio",
-            modifier = Modifier.fillMaxWidth().margin(0.px)
+            modifier = Modifier.fillMaxWidth()
         )
 
         Div {

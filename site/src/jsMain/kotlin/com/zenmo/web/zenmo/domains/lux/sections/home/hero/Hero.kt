@@ -16,7 +16,10 @@ import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Video
 
@@ -77,14 +80,15 @@ fun LuxHero(
 @Composable
 private fun TitleWithTagline() {
     Column(
-        modifier = Modifier.color(Colors.White).textAlign(TextAlign.Center),
+        modifier = Modifier.color(Colors.White)
+            .textAlign(TextAlign.Center)
+            .gap(1.cssRem),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         HeaderText(
             enText = "LUX Energy Twin",
             nlText = "LUX Energy Twin",
-            modifier = Modifier.margin(0.px)
         )
         SubHeaderText(
             enText = "Local power, global impact!",

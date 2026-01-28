@@ -4,10 +4,8 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.P
 
 @Composable
@@ -18,7 +16,6 @@ fun EmpoweredHeader() {
         HeaderText(
             enText = "EmPowerED",
             nlText = "EmPowerED",
-            modifier = Modifier.margin(0.cssRem)
         )
         P {
             LangText(

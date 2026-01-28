@@ -8,7 +8,10 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.color
+import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiSearch
 import com.zenmo.web.zenmo.components.widgets.LangText
@@ -32,8 +35,8 @@ fun EmptyResults() {
         SubHeaderText(
             enText = "No Models Found",
             nlText = "Geen Modellen Gevonden",
+            fontWeight = FontWeight.Bold,
             modifier = Modifier
-                .fontWeight(FontWeight.Bold)
                 .textTransform(TextTransform.Uppercase)
         )
 

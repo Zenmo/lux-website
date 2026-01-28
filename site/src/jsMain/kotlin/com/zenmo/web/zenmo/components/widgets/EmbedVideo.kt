@@ -78,8 +78,7 @@ private fun TextContent(
         SubHeaderText(
             enText = enTitle,
             nlText = nlTitle,
-            modifier = Modifier.fontWeight(FontWeight.Bold)
-                .margin(0.cssRem)
+            fontWeight = FontWeight.Bold
         )
         P(
             Modifier.color(

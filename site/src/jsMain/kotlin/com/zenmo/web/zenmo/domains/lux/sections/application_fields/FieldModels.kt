@@ -32,7 +32,6 @@ fun FieldModels(
         HeaderText(
             enText = "Models",
             nlText = "Modellen",
-            modifier = Modifier
         )
         TwinModelsGrid(
             models = subdomainModels

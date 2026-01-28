@@ -71,7 +71,6 @@ private fun LayoutHeader(
                 enText = title,
                 nlText = title,
                 modifier = Modifier
-                    .margin(0.cssRem)
                     .displayIfAtLeast(Breakpoint.MD)
             )
 

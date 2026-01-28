@@ -3,7 +3,10 @@ package com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.background
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.rotterdamDenHaag
@@ -25,7 +28,6 @@ fun RotterdamDenHaagIndex() {
             modifier = Modifier.fillMaxWidth()
                 .background(SitePalette.light.overlay)
                 .textAlign(TextAlign.Center)
-                .margin(0.cssRem)
                 .padding(4.cssRem)
         )
         SubdomainModelPage(

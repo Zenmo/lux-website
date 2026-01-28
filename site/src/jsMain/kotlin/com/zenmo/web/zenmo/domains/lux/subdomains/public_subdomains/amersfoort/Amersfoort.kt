@@ -40,7 +40,6 @@ fun Amersfoort() {
                 HeaderText(
                     enText = "Digital Twins Amersfoort",
                     nlText = "Digital Twins Amersfoort",
-                    modifier = Modifier.margin(0.cssRem)
                 )
 
                 P {

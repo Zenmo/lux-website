@@ -3,10 +3,7 @@ package com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.genius.com
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
@@ -17,8 +14,6 @@ import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.utils.PublicRes
-import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.P
@@ -33,14 +28,12 @@ fun GeniusIntroTextBlock() {
                     H1(
                         TextStyle.toModifier(HeaderTextStyle)
                             .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
-                            .textTransform(TextTransform.Companion.None)
+                            .textTransform(TextTransform.None)
                             .toAttrs()
                     ) {
                         HeaderText(
                             enText = "GENIUS - ",
                             nlText = "",
-                            modifier = Modifier.Companion.margin(0.px)
-                                .display(DisplayStyle.Companion.InlineBlock)
                         )
                         Text(" Grid Efficiency Network Integration for Universal Sustainability")
                     }
@@ -49,14 +42,12 @@ fun GeniusIntroTextBlock() {
                     H1(
                         TextStyle.toModifier(HeaderTextStyle)
                             .fontFamily(PublicRes.FontFamilies.HOLON_LINE)
-                            .textTransform(TextTransform.Companion.None)
+                            .textTransform(TextTransform.None)
                             .toAttrs()
                     ) {
                         HeaderText(
                             enText = "",
                             nlText = "GENIUS - ",
-                            modifier = Modifier.Companion.margin(0.px)
-                                .display(DisplayStyle.Companion.InlineBlock)
                         )
                         Text(" Grid Efficiency Network Integratie voor Universele Duurzaamheid")
                     }

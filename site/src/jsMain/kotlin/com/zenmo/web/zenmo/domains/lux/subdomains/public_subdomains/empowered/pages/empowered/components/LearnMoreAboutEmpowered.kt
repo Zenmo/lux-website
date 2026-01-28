@@ -49,7 +49,6 @@ fun LearnMoreAboutEmpowered() {
             nlText = "Meer Informatie",
             modifier = Modifier
                 .textTransform(TextTransform.Uppercase)
-                .margin(0.cssRem)
         )
         Span(
             DeEmphasizedTextStyle.toModifier().toAttrs()

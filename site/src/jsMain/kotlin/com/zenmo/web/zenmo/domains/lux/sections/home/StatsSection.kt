@@ -118,7 +118,6 @@ fun StatsCard(statItem: StatItem) {
         HeaderText(
             enText = statItem.value,
             nlText = statItem.value,
-            modifier = Modifier.margin(0.cssRem)
         )
 
         Box(

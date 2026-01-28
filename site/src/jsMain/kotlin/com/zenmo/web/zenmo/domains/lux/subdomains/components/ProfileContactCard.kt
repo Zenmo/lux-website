@@ -51,9 +51,8 @@ fun ProfileContactCard(
         SubHeaderText(
             enText = captionText.en,
             nlText = captionText.nl,
-            modifier = Modifier.color(SitePalette.light.primary)
-                .fontSize(1.15.cssRem)
-                .margin(0.cssRem)
+            textColor = SitePalette.light.primary,
+            modifier = Modifier.fontSize(1.15.cssRem)
         )
     },
     cardArrangementDirection: ProfileCardArrangementDirection,
@@ -91,8 +90,7 @@ fun ProfileContactCard(
             HeaderText(
                 enText = name,
                 nlText = name,
-                modifier = Modifier.margin(0.cssRem)
-                    .fontSize(2.5.cssRem)
+                modifier = Modifier.fontSize(2.5.cssRem)
             )
             if (email.isNotBlank()) {
                 Row {
