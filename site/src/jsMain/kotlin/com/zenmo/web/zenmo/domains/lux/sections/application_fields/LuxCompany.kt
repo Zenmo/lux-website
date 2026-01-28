@@ -31,7 +31,6 @@ import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.*
@@ -265,7 +264,7 @@ private fun TryConfiguratorCard() {
         ) {
             A(
                 href = "/book-demo",
-                attrs = TextStyle.toModifier(HolonLineTextStyle)
+                attrs = TextStyle.toModifier()
                     .borderRadius(16.px)
                     .background(SitePalette.light.secondary)
                     .color(SitePalette.light.onBackground)
