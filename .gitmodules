@@ -1,0 +1,3 @@
+[submodule "site/src/jsMain/kotlin/com/zenmo/web/zenmo/protected/entrypoints"]
+	path = site/src/jsMain/kotlin/com/zenmo/web/zenmo/protected/entrypoints
+	url = ../lux-website-private.git

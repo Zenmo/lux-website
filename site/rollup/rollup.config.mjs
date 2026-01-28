@@ -24,8 +24,6 @@ export default {
                 path.resolve(rootProjectDir, "anylogic-cloud-client")
             ],
         }),
-        dynamicImportVars({
-            errorWhenNoFilesFound: true,
-        }),
+        dynamicImportVars(),
     ]
 }
