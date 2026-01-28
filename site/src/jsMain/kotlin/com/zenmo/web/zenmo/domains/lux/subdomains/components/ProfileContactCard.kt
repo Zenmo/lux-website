@@ -94,13 +94,15 @@ fun ProfileContactCard(
                 modifier = Modifier.margin(0.cssRem)
                     .fontSize(2.5.cssRem)
             )
-            Row {
-                MdiMail(Modifier.padding(right = 0.25.cssRem))
-                InlineLink(
-                    destinationUrl = "mailto:$email",
-                    enLinkText = email,
-                    nlLinkText = email,
-                )
+            if (email.isNotBlank()) {
+                Row {
+                    MdiMail(Modifier.padding(right = 0.25.cssRem))
+                    InlineLink(
+                        destinationUrl = "mailto:$email",
+                        enLinkText = email,
+                        nlLinkText = email,
+                    )
+                }
             }
         }
     }
