@@ -41,7 +41,7 @@ kotlin {
             languageSettings.optIn("kotlin.time.ExperimentalTime")
         }
     }
-    jvmToolchain(21)
+    jvmToolchain(24)
 }
 
 tasks.test {
