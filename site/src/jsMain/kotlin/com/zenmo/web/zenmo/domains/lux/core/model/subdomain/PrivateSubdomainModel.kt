@@ -6,7 +6,7 @@ import com.zenmo.web.zenmo.domains.lux.core.PrivateTwinModel
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Borchwerf
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Hessenpoort
-import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.KasAlsenErgiebron
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.KasAlsEnergiebron
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.PreZero
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.genius.Genius
@@ -44,9 +44,9 @@ enum class PrivateSubdomainModel(
         entryPoint = "hessenpoort",
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB
     ),
-    KASALSENERGIEBRON(
+    KAS_ALS_ENERGIEBRON(
         subdomain = "kasalsenergiebron",
-        subdomainComponent = { KasAlsenErgiebron() },
+        subdomainComponent = { KasAlsEnergiebron() },
         label = LocalizedText(nl = "Kas Als Energiebron"),
         imageUrl = "/lux/images/model_thumbnails/kasalsenergiebron6.jpg",
         entryPoint = "kasalsenergiebron",
