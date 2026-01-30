@@ -65,7 +65,7 @@ fun Step02() {
             ) {
                 B {
                     LangText(
-                        en = "Public Data Includes:",
+                        en = "Public data includes:",
                         nl = "Het gaat daarbij om:",
                     )
                 }

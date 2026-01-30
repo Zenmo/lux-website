@@ -18,9 +18,9 @@ import org.jetbrains.compose.web.css.em
 
 @Composable
 fun ApplicationAreaCTAButton(
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     path: String = "/book-demo",
-    bgColor: CSSColorValue = SitePalette.Companion.light.primary,
+    bgColor: CSSColorValue = SitePalette.light.primary,
     textColor: CSSColorValue = Colors.White,
     text: LocalizedText = LocalizedText(
         en = "Contact us",
@@ -36,7 +36,7 @@ fun ApplicationAreaCTAButton(
     Link(
         path = path,
         variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
-        modifier = Modifier.Companion
+        modifier = Modifier
             .background(bgColor).color(textColor)
             .padding(leftRight = 2.25.em, topBottom = 1.1.em)
             .luxBorderRadius()

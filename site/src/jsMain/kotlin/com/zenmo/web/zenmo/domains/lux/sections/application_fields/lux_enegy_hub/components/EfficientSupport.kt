@@ -15,7 +15,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
 import com.zenmo.web.zenmo.domains.lux.styles.mutedWhite
 import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
@@ -79,11 +79,11 @@ fun EfficientSupport() {
             }
 
             Div(
-                ResponsiveRowStyle
+                ResponsiveFlexStyle
                     .toModifier()
+                    .gap(16.px)
                     .justifyContent(JustifyContent.Center)
                     .fillMaxWidth()
-                    .gap(16.px)
                     .toAttrs(),
             ) {
                 ApplicationAreaCTAButton(

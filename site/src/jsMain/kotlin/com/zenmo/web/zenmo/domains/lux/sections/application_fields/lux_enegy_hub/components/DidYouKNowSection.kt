@@ -16,9 +16,8 @@ import com.varabyte.kobweb.silk.theme.shapes.clip
 import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
-import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
-import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
+import com.zenmo.web.zenmo.domains.lux.styles.secondaryGradientBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
@@ -47,16 +46,11 @@ fun DidYouKNowSection() {
 @Composable
 private fun DidYouKnowBanner() {
     Div(
-        ResponsiveRowStyle.toModifier()
-            .responsiveGap()
+        ResponsiveFlexStyle.toModifier()
             .alignItems(AlignItems.FlexStart)
-            .fillMaxWidth()
             .luxBorderRadius(LuxCornerRadius.xl)
             .padding(clamp(32.px, 5.vw, 64.px))
-            .verticalLinearBackground(
-                topColor = SitePalette.light.secondary,
-                bottomColor = SitePalette.light.secondary.darkened(0.2f)
-            )
+            .secondaryGradientBackground()
             .toAttrs()
     ) {
         Box(

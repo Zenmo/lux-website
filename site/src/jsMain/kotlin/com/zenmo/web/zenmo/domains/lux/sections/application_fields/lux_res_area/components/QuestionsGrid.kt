@@ -33,12 +33,12 @@ private val questions = listOf(
         nl = "Hoe gaan we om met netcongestie?"
     ),
     LocalizedText(
-        en = "Where are heat networks the solutions and where are (hybrid) heat pumps a better option?",
-        nl = "Waar zijn warmtenetten de oplossingen en waar zijn (hybride) warmtepompen een betere opties?"
+        en = "Where are district heating the solutions and where are (hybrid) heat pumps a better option?",
+        nl = "Waar zijn warmtenetten de oplossingen en waar zijn (hybride) warmtepompen een betere optie?"
     ),
     LocalizedText(
         en = "How do we facilitate energy cooperatives?",
-        nl = "Hoe faciliteren we energie coöperaties?"
+        nl = "Hoe faciliteren we energiecoöperaties?"
     ),
     LocalizedText(
         en = "Which sustainable options are attractive in your residential area?",
