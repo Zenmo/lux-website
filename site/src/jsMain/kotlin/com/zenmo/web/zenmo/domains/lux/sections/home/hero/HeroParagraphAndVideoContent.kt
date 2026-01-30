@@ -12,7 +12,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Div
 
@@ -22,7 +22,7 @@ fun HeroParagraphAndVideoContent(
     breakpoint: Breakpoint
 ) {
     Div(
-        ResponsiveRowStyle
+        ResponsiveFlexStyle
             .toModifier()
             .color(Colors.White)
             .gap(1.5.cssRem)

@@ -92,7 +92,7 @@ val cognizant = PublicSubdomainTwinModel(
     label = LocalizedText(en = "Cognizant", nl = "Cognizant"),
     imageUrl = "/lux/images/model_thumbnails/ModelThumbnailCognizant.png",
     modelId = Uuid.parse("7cfc3e4a-608c-4e2c-a834-4d290174ee9e"),
-    applicationArea = LuxApplicationArea.LUX_COMPANY
+    applicationArea = LuxApplicationArea.LUX_BUSINESS
 )
 val kronenberg = PublicSubdomainTwinModel(
     subdomain = "kronenberg",

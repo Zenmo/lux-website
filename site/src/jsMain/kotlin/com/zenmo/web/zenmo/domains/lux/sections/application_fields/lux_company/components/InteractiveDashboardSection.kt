@@ -100,7 +100,7 @@ fun InteractiveDashboardSection() {
                     nl = "Leveranciers Offertes"
                 ),
                 description = LocalizedText(
-                    en = "Vraag offertes aan bij leveranciers",
+                    en = "Request quotes from most prominent suppliers as pre-selection options",
                     nl = "Vraag offertes aan bij vooraf geselecteerde toonaangevende leveranciers"
                 )
             )

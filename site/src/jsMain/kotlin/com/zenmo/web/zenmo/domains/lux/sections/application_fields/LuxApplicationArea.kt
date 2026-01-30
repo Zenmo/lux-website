@@ -6,27 +6,29 @@ import com.zenmo.web.zenmo.core.models.SimpleMenuItem
 import com.zenmo.web.zenmo.core.models.asNavLinkPath
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.LuxCompany
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.LuxEnergyHub
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.LuxResidentialArea
+import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 enum class LuxApplicationArea(
     val shortDescription: LocalizedText,
+    val contactPerson: ZenmoTeam,
     override val label: LocalizedText,
     override val areaTitle: LocalizedText = label,
     override val path: String = label.en.asNavLinkPath("application-areas"),
     override val url: String = path,
     override val pageComponent: @Composable () -> Unit,
 ) : Route, SimpleMenuItem, ApplicationArea {
-    LUX_COMPANY(
-        label = LocalizedText("LUX Bedrijf", "LUX Company"),
+    LUX_BUSINESS(
+        label = LocalizedText("LUX Bedrijf", "LUX Business"),
+        contactPerson = ZenmoTeam.PETER_HOGEVEEN,
         shortDescription = LocalizedText(
             "Korte beschrijving over LUX Bedrijf",
-            "Short description about LUX Company",
+            "Short description about LUX Business",
         ),
         pageComponent = { LuxCompany() }
     ),
     LUX_ENERGY_HUB(
         label = LocalizedText("LUX Energie Hub", "LUX Energy Hub"),
+        contactPerson = ZenmoTeam.AUKE,
         shortDescription = LocalizedText(
             "Korte beschrijving over LUX Energie Hub",
             "Short description for LUX Energy Hub",
@@ -35,6 +37,7 @@ enum class LuxApplicationArea(
     ),
     LUX_RESIDENTIAL_AREA(
         label = LocalizedText("LUX Woongebied", "LUX Residential Area"),
+        contactPerson = ZenmoTeam.PETER_HOGEVEEN,
         shortDescription = LocalizedText(
             "Korte beschrijving over LUX Woongebied",
             "Short description for LUX Residential Area",
@@ -43,6 +46,7 @@ enum class LuxApplicationArea(
     ),
     LUX_REGION(
         label = LocalizedText("LUX Regio", "LUX Region"),
+        contactPerson = ZenmoTeam.NAUD_LOOMANS,
         shortDescription = LocalizedText(
             "Korte beschrijving over LUX Regio",
             "Short description for LUX Region",

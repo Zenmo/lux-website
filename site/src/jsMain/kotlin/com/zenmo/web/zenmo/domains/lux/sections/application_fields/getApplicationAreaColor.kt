@@ -5,7 +5,7 @@ import com.zenmo.web.zenmo.theme.LuxSpecificColorHues
 import com.zenmo.web.zenmo.theme.SitePalette
 
 fun getApplicationAreaColor(area: ApplicationArea): Color = when (area) {
-    LuxApplicationArea.LUX_COMPANY -> LuxSpecificColorHues().luxYellow
+    LuxApplicationArea.LUX_BUSINESS -> LuxSpecificColorHues().luxYellow
     LuxApplicationArea.LUX_ENERGY_HUB -> LuxSpecificColorHues().luxGreen
     LuxApplicationArea.LUX_RESIDENTIAL_AREA -> LuxSpecificColorHues().luxRed
     LuxApplicationArea.LUX_REGION -> LuxSpecificColorHues().luxBlue

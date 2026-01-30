@@ -5,54 +5,46 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.ImageContent
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
-import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 
 @Composable
-fun LuxCompanyHero(
-    breakpoint: Breakpoint
-) {
+fun LuxCompanyHero() {
     LuxSectionContainer(
         modifier = Modifier.alignItems(AlignItems.FlexStart)
     ) {
-        Column {
-            HeaderText(
-                enText = "LUX Company",
-                nlText = "LUX Company",
-            )
-            Div(
-                ResponsiveRowStyle.toModifier()
-                    .thenIf(
-                        breakpoint < Breakpoint.MD,
-                        Modifier.flexDirection(FlexDirection.Column)
-                    )
-                    .alignItems(AlignItems.FlexStart)
-                    .responsiveGap()
-                    .toAttrs()
-            ) {
-                HeroTextContent()
-                Box(Modifier.fillMaxWidth()) {
-                    ImageContent(
-                        imageUrl = "/lux/images/horizon_img.jpg",
-                        alt = "horizon",
-                    )
-                }
+        HeaderText(
+            enText = LuxApplicationArea.LUX_BUSINESS.label.en,
+            nlText = LuxApplicationArea.LUX_BUSINESS.label.nl,
+        )
+        Div(
+            ResponsiveFlexStyle.toModifier()
+                .alignItems(AlignItems.FlexStart)
+                .toAttrs()
+        ) {
+            HeroTextContent()
+            Box(Modifier.fillMaxWidth()) {
+                ImageContent(
+                    imageUrl = "/lux/images/horizon_img.jpg",
+                    alt = "horizon",
+                )
             }
         }
     }

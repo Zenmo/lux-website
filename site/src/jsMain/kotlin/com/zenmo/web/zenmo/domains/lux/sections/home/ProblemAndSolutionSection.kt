@@ -19,7 +19,7 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.LuxSpecificColorHues
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -37,7 +37,7 @@ fun ProblemAndSolutionSection() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Div(
-            ResponsiveRowStyle
+            ResponsiveFlexStyle
                 .toModifier()
                 .alignItems(AlignItems.FlexStart)
                 .toAttrs()
