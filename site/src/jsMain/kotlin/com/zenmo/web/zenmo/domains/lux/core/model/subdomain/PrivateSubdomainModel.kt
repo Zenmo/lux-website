@@ -58,7 +58,7 @@ enum class PrivateSubdomainModel(
         label = LocalizedText(nl = "PreZero"),
         imageUrl = "/lux/images/model_thumbnails/ModelThumbnailPreZero.png",
         entryPoint = "prezero",
-        applicationArea = LuxApplicationArea.LUX_COMPANY
+        applicationArea = LuxApplicationArea.LUX_BUSINESS
     ),
     BORCHWERF(
         subdomain = "borchwerf",
