@@ -11,7 +11,7 @@ import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.vw
 
-val ResponsiveRowStyle = CssStyle {
+val ResponsiveFlexStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()

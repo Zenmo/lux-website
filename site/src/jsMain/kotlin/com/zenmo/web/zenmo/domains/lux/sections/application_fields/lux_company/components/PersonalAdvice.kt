@@ -8,19 +8,16 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiBalance
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
-import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
 import com.zenmo.web.zenmo.domains.lux.styles.mutedWhite
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.LuxSpecificColorHues
@@ -28,7 +25,6 @@ import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.AlignItems
-import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
@@ -38,22 +34,15 @@ import org.jetbrains.compose.web.dom.Span
 
 
 @Composable
-fun PersonalAdvice(
-    breakpoint: Breakpoint
-) {
+fun PersonalAdvice() {
     LuxSectionContainer(
         modifier = Modifier
             .background(LuxSpecificColorHues().luxBlackRussian)
             .color(Colors.White)
     ) {
         Div(
-            ResponsiveRowStyle.toModifier()
+            ResponsiveFlexStyle.toModifier()
                 .alignItems(AlignItems.Start)
-                .responsiveGap()
-                .thenIf(
-                    breakpoint < Breakpoint.MD,
-                    Modifier.flexDirection(FlexDirection.Column)
-                )
                 .toAttrs()
         ) {
             PersonalAdviceText()
