@@ -15,8 +15,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
-import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -34,9 +33,8 @@ import org.jetbrains.compose.web.dom.P
 @Composable
 fun ResAreaPersonalAdvice() {
     Div(
-        ResponsiveRowStyle.toModifier()
+        ResponsiveFlexStyle.toModifier()
             .alignItems(AlignItems.Center)
-            .responsiveGap()
             .toAttrs()
     ) {
         Column(

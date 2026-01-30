@@ -6,6 +6,8 @@ import com.zenmo.web.zenmo.core.models.SimpleMenuItem
 import com.zenmo.web.zenmo.core.models.asNavLinkPath
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.LuxCompany
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.LuxEnergyHub
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.LuxResidentialArea
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 enum class LuxApplicationArea(

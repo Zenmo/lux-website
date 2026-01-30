@@ -13,7 +13,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
@@ -32,11 +32,10 @@ fun EnergyHubProcessBlock(
     content: @Composable ColumnScope.() -> Unit
 ) {
     Div(
-        ResponsiveRowStyle.toModifier()
+        ResponsiveFlexStyle.toModifier()
             .background(SitePalette.light.overlay)
             .gap(24.px)
             .alignItems(AlignItems.FlexStart)
-            .fillMaxWidth()
             .luxBorderRadius(LuxCornerRadius.xl)
             .padding(clamp(24.px, 5.vw, 40.px))
             .toAttrs()
