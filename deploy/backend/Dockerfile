@@ -1,11 +1,10 @@
 # Build artifact
 FROM eclipse-temurin:24 AS builder
 
-WORKDIR /app
-
-# Npm to install Rollup
 RUN apt-get update && apt-get install -y \
-        npm
+    npm
+
+WORKDIR /app
 
 # Create a cache layer with dependencies
 # Need to copy all the gradle subprojects
