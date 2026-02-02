@@ -24,10 +24,6 @@ import org.w3c.dom.Window
 
 private const val COLOR_MODE_KEY = "zenmo:colorMode"
 
-@OptIn(ExperimentalJsExport::class)
-@JsExport
-val accessPolicy = AccessPolicy.Public()
-
 @InitSilk
 fun initColorMode(ctx: InitSilkContext) {
     ctx.config.initialColorMode = ColorMode.LIGHT

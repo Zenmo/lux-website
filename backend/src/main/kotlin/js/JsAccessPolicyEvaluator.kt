@@ -20,6 +20,9 @@ val getScriptAccessPolicy = JsAccessPolicyEvaluator { url ->
     val source = Source.newBuilder("js", url).build()
     val output = context.eval(source)
     val jsAccessPolicy = output.getMember("accessPolicy")
+    if (jsAccessPolicy == null) {
+        throw Exception("Can't serve javascript module because it does not have an exported member accessPolicy: $url")
+    }
     val jsonAccessPolicy = jsAccessPolicy.invokeMember("get").invokeMember("toJson")
 
     println("JSON accessPolicy of $url: $jsonAccessPolicy")
