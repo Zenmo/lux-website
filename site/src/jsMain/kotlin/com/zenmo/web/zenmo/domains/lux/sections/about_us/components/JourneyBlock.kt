@@ -31,24 +31,24 @@ import org.jetbrains.compose.web.dom.P
 
 val AboutUsHorizontalPaddingStyle = CssStyle {
     Breakpoint.ZERO {
-        Modifier.Companion
+        Modifier
             .padding(leftRight = 1.5.cssRem)
     }
     Breakpoint.SM {
-        Modifier.Companion
+        Modifier
             .padding(leftRight = 1.5.cssRem)
     }
     Breakpoint.MD {
-        Modifier.Companion
+        Modifier
             .padding(leftRight = 3.cssRem)
     }
     Breakpoint.LG {
-        Modifier.Companion
+        Modifier
             .padding(leftRight = 4.cssRem)
     }
 
     Breakpoint.XL {
-        Modifier.Companion
+        Modifier
             .padding(leftRight = 4.cssRem)
     }
 }
@@ -60,14 +60,14 @@ fun JourneyBlock(
     textContent: @Composable () -> Unit,
     journeyDescription: LocalizedText,
     yearText: @Composable () -> Unit,
-    modifier: Modifier = Modifier.Companion,
-    yearBoxModifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
+    yearBoxModifier: Modifier = Modifier,
 ) {
     Row(
         modifier = AboutUsHorizontalPaddingStyle.toModifier()
             .fillMaxWidth()
             .gap(2.cssRem)
-            .thenIf(breakpoint >= Breakpoint.MD, Modifier.Companion.gap(4.cssRem))
+            .thenIf(breakpoint >= Breakpoint.MD, Modifier.gap(4.cssRem))
             .then(modifier),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Top
@@ -75,20 +75,19 @@ fun JourneyBlock(
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.Start,
-            modifier = Modifier.Companion.fillMaxWidth().gap(1.cssRem)
+            modifier = Modifier.fillMaxWidth().gap(1.cssRem)
         ) {
             SubHeaderText(
                 enText = title.en,
                 nlText = title.nl,
-                modifier = Modifier.Companion
+                textColor = SitePalette.light.primary,
+                modifier = Modifier
                     .fontFamily(PublicRes.FontFamilies.HOLON_BLOCK)
-                    .textTransform(TextTransform.Companion.Uppercase)
-                    .margin(0.cssRem)
-                    .color(SitePalette.Companion.light.primary)
+                    .textTransform(TextTransform.Uppercase)
             )
             Box(
-                Modifier.Companion.color(Colors.Black.copyf(alpha = 0.8f))
-                    .textAlign(TextAlign.Companion.Justify)
+                Modifier.color(Colors.Black.copyf(alpha = 0.8f))
+                    .textAlign(TextAlign.Justify)
             ) {
                 textContent()
             }
@@ -98,8 +97,8 @@ fun JourneyBlock(
             description = journeyDescription,
             yearText = yearText,
             breakpoint = breakpoint,
-            modifier = Modifier.Companion.width(35.percent)
-                .thenIf(breakpoint <= Breakpoint.LG, Modifier.Companion.width(40.percent))
+            modifier = Modifier.width(35.percent)
+                .thenIf(breakpoint <= Breakpoint.LG, Modifier.width(40.percent))
                 .then(yearBoxModifier)
         )
     }
@@ -109,24 +108,24 @@ fun JourneyBlock(
 private fun YearBox(
     description: LocalizedText,
     yearText: @Composable () -> Unit,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     breakpoint: Breakpoint
 ) {
     Column(
-        modifier = Modifier.Companion
-            .alignSelf(AlignSelf.Companion.Stretch)
+        modifier = Modifier
+            .alignSelf(AlignSelf.Stretch)
             .luxBorderRadius(LuxCornerRadius.xl)
             .padding(3.cssRem)
-            .thenIf(breakpoint < Breakpoint.MD, Modifier.Companion.display(DisplayStyle.Companion.None))
+            .thenIf(breakpoint < Breakpoint.MD, Modifier.display(DisplayStyle.None))
             .then(modifier),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         yearText()
         P(
-            Modifier.Companion.margin(0.cssRem)
-                .textAlign(TextAlign.Companion.Center)
-                .thenIf(breakpoint > Breakpoint.MD, Modifier.Companion.width(90.percent))
+            Modifier
+                .textAlign(TextAlign.Center)
+                .thenIf(breakpoint > Breakpoint.MD, Modifier.width(90.percent))
                 .toAttrs()
         ) {
             LangText(

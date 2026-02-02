@@ -37,33 +37,31 @@ fun WhyLux(breakpoint: Breakpoint) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.Companion.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
                 .background(LuxSpecificColorHues().luxBlackRussian)
-                .flexWrap(FlexWrap.Companion.Wrap)
+                .flexWrap(FlexWrap.Wrap)
                 .luxBorderRadius(LuxCornerRadius.xl)
-                .overflow(Overflow.Companion.Hidden)
+                .overflow(Overflow.Hidden)
         ) {
             Column(
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.Start,
-                modifier = Modifier.Companion
+                modifier = Modifier
                     .padding(3.cssRem)
-                    .thenIf(breakpoint < Breakpoint.MD, Modifier.Companion.padding(2.cssRem))
+                    .thenIf(breakpoint < Breakpoint.MD, Modifier.padding(2.cssRem))
                     .gap(1.cssRem)
                     .width(60.percent)
-                    .thenIf(breakpoint < Breakpoint.MD, Modifier.Companion.width(100.percent))
+                    .thenIf(breakpoint < Breakpoint.MD, Modifier.width(100.percent))
             ) {
                 HeaderText(
                     enText = "Why LUX?",
                     nlText = "Waarom LUX?",
-                    modifier = Modifier.Companion
-                        .margin(0.cssRem)
-                        .color(Colors.White)
+                    textColor = Colors.White
                 )
 
                 Div(
-                    Modifier.Companion.color(Colors.White.copyf(alpha = 0.8f))
-                        .textAlign(TextAlign.Companion.Justify)
+                    Modifier.color(Colors.White.copyf(alpha = 0.8f))
+                        .textAlign(TextAlign.Justify)
                         .toAttrs()
                 ) {
                     LangBlock(
@@ -111,10 +109,10 @@ fun WhyLux(breakpoint: Breakpoint) {
                 }
 
                 Div(
-                    Modifier.Companion.padding(16.px, 24.px)
+                    Modifier.padding(16.px, 24.px)
                         .background(Colors.White.copyf(alpha = 0.10f))
-                        .color(SitePalette.Companion.light.secondary)
-                        .alignSelf(AlignSelf.Companion.Stretch)
+                        .color(SitePalette.light.secondary)
+                        .alignSelf(AlignSelf.Stretch)
                         .luxBorderRadius(LuxCornerRadius.lg)
                         .toAttrs()
                 ) {
@@ -133,15 +131,15 @@ fun WhyLux(breakpoint: Breakpoint) {
             }
 
             Box(
-                modifier = Modifier.Companion.width(40.percent)
-                    .alignSelf(AlignSelf.Companion.Stretch)
-                    .thenIf(breakpoint < Breakpoint.MD, Modifier.Companion.height(350.px).fillMaxWidth())
+                modifier = Modifier.width(40.percent)
+                    .alignSelf(AlignSelf.Stretch)
+                    .thenIf(breakpoint < Breakpoint.MD, Modifier.height(350.px).fillMaxWidth())
             ) {
                 Img(
                     src = "/lux/images/zenmo_baby.png",
                     alt = "Zenmo Baby",
-                    attrs = Modifier.Companion.fillMaxSize()
-                        .objectFit(ObjectFit.Companion.Cover)
+                    attrs = Modifier.fillMaxSize()
+                        .objectFit(ObjectFit.Cover)
                         .toAttrs()
                 )
             }

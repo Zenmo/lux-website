@@ -35,7 +35,7 @@ fun LuxEnergyHub() {
         HeaderText(
             enText = "LUX Energy HUB",
             nlText = "LUX Energy HUB",
-            modifier = Modifier.fillMaxWidth().margin(0.px)
+            modifier = Modifier.fillMaxWidth()
         )
 
         P(Modifier.margin(0.cssRem).toAttrs()) {

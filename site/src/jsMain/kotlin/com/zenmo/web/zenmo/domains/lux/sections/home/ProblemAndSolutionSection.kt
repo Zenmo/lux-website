@@ -92,7 +92,7 @@ private fun FeatureColumn(
         HeaderText(
             enText = title.en,
             nlText = title.nl,
-            modifier = Modifier.margin(0.cssRem).width(90.percent)
+            modifier = Modifier.width(90.percent)
         )
         Column(
             modifier = Modifier.gap(16.px).width(90.percent)

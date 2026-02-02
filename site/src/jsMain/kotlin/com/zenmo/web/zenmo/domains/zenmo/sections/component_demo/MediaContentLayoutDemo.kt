@@ -3,9 +3,7 @@ package com.zenmo.web.zenmo.domains.zenmo.sections.component_demo
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.functions.max
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.height
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
@@ -17,7 +15,6 @@ import com.zenmo.web.zenmo.domains.zenmo.widgets.ComponentDemo
 import com.zenmo.web.zenmo.domains.zenmo.widgets.button.PrimaryButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.OutlinePrimaryButtonStyle
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.*
@@ -191,17 +188,13 @@ fun MediaContentLayoutDemo() {
                 HeaderText(
                     enText = "Media Content Layout",
                     nlText = "Media Inhoudsindeling",
-                    // don't know why this is, but there's an extra topBottom margin
-                    // on every text element which isn't needed
-                    modifier = Modifier.margin(0.cssRem)
                 )
             },
             subtitle = {
                 SubHeaderText(
                     enText = "Media item",
                     nlText = "Media -item",
-                    modifier = Modifier.color(SitePalette.light.primary)
-                        .margin(0.cssRem)
+                    textColor = SitePalette.light.primary
                 )
             },
             description = {

@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
@@ -34,7 +33,7 @@ fun DrechtstedenHomePage() {
         HeaderText(
             enText = "Digital Twins Drechtsteden",
             nlText = "Digital Twins Drechtsteden",
-            modifier = Modifier.margin(0.cssRem).fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         )
         P {
             LangText(

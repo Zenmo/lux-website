@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.domains.lux.styles.HeaderBottomDividerLineStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.NavHeaderStyle
-import com.zenmo.web.zenmo.theme.font.HolonLineTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.px
@@ -21,7 +20,7 @@ fun LuxHeaderComponent(
 ) {
     Header(
         attrs = NavHeaderStyle.toModifier()
-            .then(TextStyle.toModifier(HolonLineTextStyle))
+            .then(TextStyle.toModifier())
             .boxShadow(spreadRadius = 0.px, color = Color.transparent)
             .then(LuxHeaderPaddingStyle.toModifier())
             .then(HeaderBottomDividerLineStyle.toModifier())

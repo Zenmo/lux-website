@@ -6,7 +6,6 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.zenmo.web.zenmo.components.widgets.user.LoginIconButton
 import com.zenmo.web.zenmo.core.services.auth.UserService
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
@@ -22,7 +21,6 @@ fun Login() {
         SubHeaderText(
             enText = "Login to access",
             nlText = "Log in om toegang te krijgen",
-            modifier = Modifier.margin(0.cssRem)
         )
         LoginIconButton(userService)
     }

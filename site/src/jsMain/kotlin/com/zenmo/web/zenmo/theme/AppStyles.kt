@@ -59,6 +59,10 @@ fun initSiteStyles(ctx: InitSilkContext) {
                 else -> luxDefaultFonts.fontSize(FontSize.Large)
             }
         }
+
+        registerStyleBase("h1, h2, h3, h4, h5, h6") {
+            Modifier.margin(0.cssRem)
+        }
     }
 
     ctx.theme.apply {
