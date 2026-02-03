@@ -13,23 +13,18 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiHome
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLayers
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLocationOn
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiMap
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
-import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.styles.TopDividerLineStyle
 import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -51,9 +46,8 @@ fun MultiScaleAnalysis() {
             nlText = "Multi-schaal Analyse",
         )
         Div(
-            ResponsiveRowStyle.toModifier()
+            ResponsiveFlexStyle.toModifier()
                 .alignItems(AlignItems.Center)
-                .responsiveGap()
                 .toAttrs()
         ) {
             TextContent()
@@ -62,10 +56,8 @@ fun MultiScaleAnalysis() {
     }
 }
 
-@OptIn(DelicateApi::class)
 @Composable
 private fun TextContent() {
-    val breakpoint = rememberBreakpoint()
     Column(Modifier.fillMaxWidth()) {
         P {
             LangText(
@@ -82,15 +74,7 @@ private fun TextContent() {
             )
         }
 
-        P(
-            Modifier
-                .fillMaxWidth()
-                .thenIf(
-                    breakpoint > Breakpoint.MD,
-                    Modifier.maxWidth(80.percent)
-                )
-                .toAttrs()
-        ) {
+        P {
             LangText(
                 en = """
                     The results of the LUX residential area or LUX energy hub are then used to improve the results for 

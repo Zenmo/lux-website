@@ -19,10 +19,9 @@ import com.zenmo.web.zenmo.components.widgets.LangBlock
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
-import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
 import com.zenmo.web.zenmo.domains.lux.styles.mutedWhite
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.LuxSpecificColorHues
@@ -39,9 +38,8 @@ import org.jetbrains.compose.web.dom.Text
 fun LuxRegionHero() {
     LuxSectionContainer {
         Div(
-            ResponsiveRowStyle.toModifier()
+            ResponsiveFlexStyle.toModifier()
                 .alignItems(AlignItems.FlexStart)
-                .responsiveGap()
                 .toAttrs()
         ) {
             TextContent()

@@ -13,8 +13,7 @@ import com.varabyte.kobweb.silk.components.icons.mdi.MdiCategory
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
-import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.styles.secondaryGradientBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
@@ -38,9 +37,8 @@ fun MoreThanAMap() {
             nlText = "Meer dan een kaart",
         )
         Div(
-            ResponsiveRowStyle.toModifier()
+            ResponsiveFlexStyle.toModifier()
                 .alignItems(AlignItems.FlexStart)
-                .responsiveGap()
                 .toAttrs()
         ) {
             BeyondStaticMaps()
