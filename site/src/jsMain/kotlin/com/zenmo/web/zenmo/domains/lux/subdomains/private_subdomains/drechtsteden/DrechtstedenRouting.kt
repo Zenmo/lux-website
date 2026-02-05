@@ -10,13 +10,14 @@ import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.core.models.RoutedMenuItem
 import com.zenmo.web.zenmo.core.models.asRoutes
 import com.zenmo.web.zenmo.core.services.localization.LocalLanguage
+import com.zenmo.web.zenmo.domains.lux.core.createLuxRouter
 import com.zenmo.web.zenmo.domains.lux.pages.registerRoutesOfMenu
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.components.layout.DrechtstedenTwinLayout
 import kotlinx.browser.window
 
 @Composable
 fun DrechtstedenRouting() {
-    val router = Router()
+    val router = createLuxRouter()
     com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
         ctx.drechtstdenRouting(drechtstedenNavMenu.asRoutes())
         ctx.drechtstdenRouting(
