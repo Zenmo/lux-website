@@ -10,6 +10,6 @@ fun getApplicationAreaColor(area: ApplicationArea): Color = when (area) {
     LuxApplicationArea.LUX_RESIDENTIAL_AREA -> LuxSpecificColorHues().luxRed
     LuxApplicationArea.LUX_REGION -> LuxSpecificColorHues().luxBlue
     DrechtstedenProjectArea.BUSINESS_PARKS -> SitePalette.Companion.light.primary
-    DrechtstedenProjectArea.RES_NEIGHBORHOODS -> LuxSpecificColorHues().luxBlackRussian
+    DrechtstedenProjectArea.RESIDENTIAL_AREAS -> LuxSpecificColorHues().luxBlackRussian
     DrechtstedenProjectArea.RES_REGION -> SitePalette.Companion.light.secondary.darkened(0.4f)
 }
