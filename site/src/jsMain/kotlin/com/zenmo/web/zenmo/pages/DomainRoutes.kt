@@ -42,4 +42,3 @@ fun DomainRoutes() {
 
 fun isLocalOrPreviewEnvironment() =
     listOf("preview", "local").any { it in window.location.host }
-
