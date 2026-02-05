@@ -58,3 +58,8 @@ tasks.register<Copy>("copyJsResources") {
 tasks.named("processResources") {
     dependsOn("copyJsResources")
 }
+
+tasks.withType<AbstractArchiveTask>().configureEach {
+    // We use these timestamps to set the Last-Modified header
+    isPreserveFileTimestamps = true
+}
