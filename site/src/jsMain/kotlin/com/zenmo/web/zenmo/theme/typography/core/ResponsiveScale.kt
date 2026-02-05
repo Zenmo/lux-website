@@ -7,12 +7,14 @@ data class ResponsiveScale(
     val sm: Double,
     val md: Double,
     val lg: Double,
-    val xl: Double
+    val xl: Double,
+    val xxl: Double = xl,
 ) {
     fun at(bp: Breakpoint) = when (bp) {
         Breakpoint.ZERO, Breakpoint.SM -> sm
         Breakpoint.MD -> md
         Breakpoint.LG -> lg
         Breakpoint.XL -> xl
+        Breakpoint.XXL -> xxl
     }.cssRem
 }
