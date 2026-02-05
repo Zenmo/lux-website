@@ -19,7 +19,7 @@ data class ApplicationAreaItem(
     companion object {
         val luxApplicationAreas = listOf(
             ApplicationAreaItem(
-                luxApplicationArea = LuxApplicationArea.LUX_COMPANY,
+                luxApplicationArea = LuxApplicationArea.LUX_BUSINESS,
                 description = LocalizedText(
                     en = "More and more companies are discovering that they can grow their business with batteries, even if the grid operator does not make extra capacity available.",
                     nl = "Steeds meer bedrijven ontdekken dat ze hun bedrijf kunnen laten groeien met batterijen, zelfs als de netbeheerder geen extra capaciteit beschikbaar stelt."
