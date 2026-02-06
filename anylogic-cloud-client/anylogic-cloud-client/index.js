@@ -267,7 +267,12 @@ class Animation {
     }
 
     stop() {
-        this.svgClient.stop("STOPPED");
+        try {
+            this.svgClient.stop("STOPPED");
+        } catch (e) {
+            console.error("Error when stopping the animation. This usually happens when the HTML element is no longer on the page. Details: ", e);
+            // fall through to clean up on the server side
+        }
         this.cloudClient._apiRequest(`${this.nodeUrl}/stop`, "POST");
         if (this.onStopped)
             this.onStopped(this);
@@ -729,7 +734,6 @@ class CloudClient {
             const bundleUrl = `${info.bundleUrl}/standalone/`;
             const host = this.HOST_URL;
             const responseInfo = { ...info, bundleUrl, host };
-            this._setBaseTag(bundleUrl);
 
             return this._loadAnimation(responseInfo, divId).then(() => {
                 const svgClient = window.AnimationSVG.client;
