@@ -11,5 +11,5 @@ import kotlinx.browser.window
  */
 sealed interface SubdomainTwinModel : Subdomain, TwinModelCard {
     override val url: String
-        get() = "${window.location.protocol}//${subdomain}.${SiteGlobals.LUX_DOMAIN}"
+        get() = "//${subdomain}.${SiteGlobals.LUX_DOMAIN}"
 }
