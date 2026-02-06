@@ -12,6 +12,10 @@ import com.zenmo.web.zenmo.domains.lux.sections.application_fields.DrechtstedenP
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window
 
+private val drechtstedenFullDomain = "${PrivateSubdomainModel.DRECHTSTEDEN.subdomain}.${SiteGlobals.LUX_DOMAIN}"
+
+private val isCurrentDomainDrechtsteden = window.location.host == drechtstedenFullDomain
+
 data class DrechtstedenTwinModel(
     val projectPath: String,
     override val path: String = "${applicationArea.path}$projectPath",
@@ -21,11 +25,13 @@ data class DrechtstedenTwinModel(
     override val entryPoint: String,
     override val pageComponent: @Composable () -> Unit,
 ) : Route, TwinModelCard, PrivateTwinModel {
-
-    private val protocol = window.location.protocol
-
     override val url: String
-        get() = "${protocol}//${PrivateSubdomainModel.DRECHTSTEDEN.subdomain}.${SiteGlobals.LUX_DOMAIN}$path"
+        get() = if (isCurrentDomainDrechtsteden) {
+            // Using only the path prevents a full page reload when navigating
+            path
+        } else {
+            "//${drechtstedenFullDomain}$path"
+        }
 }
 
 fun DrechtstedenTwinModel.asRoutedMenuItem() =

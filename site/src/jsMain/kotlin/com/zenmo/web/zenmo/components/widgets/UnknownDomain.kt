@@ -21,12 +21,11 @@ fun UnknownDomain(
             nlText = "Onbekend Domein: $domain"
         )
 
-        val protocol = window.location.protocol
         PrimaryButton(
             enText = "Go to main Lux site",
             nlText = "Ga naar de hoofd Lux site",
             onClick = {
-                window.location.href = "${protocol}//${SiteGlobals.LUX_DOMAIN}"
+                window.location.href = "//${SiteGlobals.LUX_DOMAIN}"
             }
         )
     }
