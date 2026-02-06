@@ -19,23 +19,23 @@ val LuxSectionContainerStyleVariant = SectionContainerStyle.addVariant {
     }
 
     Breakpoint.ZERO {
-        Modifier.Companion.padding(leftRight = 15.px, topBottom = 50.px)
+        Modifier.padding(leftRight = 15.px, topBottom = 50.px)
             .gap(3.cssRem)
     }
     Breakpoint.SM {
-        Modifier.Companion.padding(leftRight = 15.px, topBottom = 50.px)
+        Modifier.padding(leftRight = 15.px, topBottom = 50.px)
             .gap(3.cssRem)
     }
     Breakpoint.MD {
-        Modifier.Companion.padding(leftRight = 134.px, topBottom = 100.px)
+        Modifier.padding(leftRight = 134.px, topBottom = 100.px)
             .gap(4.cssRem)
     }
     Breakpoint.LG {
-        Modifier.Companion.padding(leftRight = 250.px, topBottom = 120.px)
+        Modifier.padding(leftRight = 250.px, topBottom = 120.px)
             .gap(5.cssRem)
     }
     Breakpoint.XL {
-        Modifier.Companion.padding(leftRight = 250.px, topBottom = 120.px)
+        Modifier.padding(leftRight = 250.px, topBottom = 120.px)
             .gap(5.cssRem)
     }
 }
