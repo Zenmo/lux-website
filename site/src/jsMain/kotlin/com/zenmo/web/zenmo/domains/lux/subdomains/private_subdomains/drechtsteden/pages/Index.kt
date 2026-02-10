@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
@@ -34,7 +33,7 @@ fun DrechtstedenHomePage() {
         HeaderText(
             enText = "Digital Twins Drechtsteden",
             nlText = "Digital Twins Drechtsteden",
-            modifier = Modifier.margin(0.cssRem).fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         )
         P {
             LangText(
@@ -79,7 +78,10 @@ fun DrechtstedenHomePage() {
 
             ModelCard(
                 model = TwinModelCardItem(
-                    label = LocalizedText("RES-Regio"),
+                    label = LocalizedText(
+                        nl = "RES Regio",
+                        en = "RES Region"
+                    ),
                     url = DrechtstedenProjectArea.RES_REGION.url,
                     applicationArea = DrechtstedenProjectArea.RES_REGION,
                     imageUrl = drechtstedenRes.imageUrl,
@@ -90,9 +92,12 @@ fun DrechtstedenHomePage() {
 
             ModelCard(
                 model = TwinModelCardItem(
-                    label = LocalizedText("Woonwijken"),
-                    url = DrechtstedenProjectArea.RES_NEIGHBORHOODS.url,
-                    applicationArea = DrechtstedenProjectArea.RES_NEIGHBORHOODS,
+                    label = LocalizedText(
+                        nl = "Woonwijken",
+                        en = "Residential Areas",
+                    ),
+                    url = DrechtstedenProjectArea.RESIDENTIAL_AREAS.url,
+                    applicationArea = DrechtstedenProjectArea.RESIDENTIAL_AREAS,
                     imageUrl = overTSpoor.imageUrl,
                     isPrivate = overTSpoor.isPrivate,
                 ),
@@ -101,7 +106,10 @@ fun DrechtstedenHomePage() {
 
             ModelCard(
                 model = TwinModelCardItem(
-                    label = LocalizedText("Bedrijventerreinen"),
+                    label = LocalizedText(
+                        nl = "Bedrijventerreinen",
+                        en = "Business Parks",
+                    ),
                     url = DrechtstedenProjectArea.BUSINESS_PARKS.url,
                     applicationArea = DrechtstedenProjectArea.BUSINESS_PARKS,
                     imageUrl = dordrecht.imageUrl,

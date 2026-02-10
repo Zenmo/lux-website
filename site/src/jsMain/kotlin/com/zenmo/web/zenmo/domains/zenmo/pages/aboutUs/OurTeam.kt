@@ -43,15 +43,13 @@ fun OurTeamPage() {
                 SubHeaderText(
                     enText = "Our Team",
                     nlText = "Onze Team",
-                    modifier = Modifier.margin(bottom = 0.5.cssRem)
                 )
                 HeaderText(
                     enText = "Meet the lovely people behind Zenmo",
                     nlText = "Ontmoet de geweldige mensen achter Zenmo",
                     modifier = Modifier
                         .width(50.percent)
-                        .textAlign(TextAlign.Center)
-                        .margin(0.cssRem),
+                        .textAlign(TextAlign.Center),
                 )
             }
             TeamMembers()

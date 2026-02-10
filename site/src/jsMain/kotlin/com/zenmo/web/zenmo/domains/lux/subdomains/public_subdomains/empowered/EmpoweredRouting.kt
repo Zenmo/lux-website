@@ -11,6 +11,7 @@ import com.zenmo.web.zenmo.core.models.MenuItem
 import com.zenmo.web.zenmo.core.models.RoutedMenuItem
 import com.zenmo.web.zenmo.core.models.asRoutes
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.domains.lux.core.createLuxRouter
 import com.zenmo.web.zenmo.domains.lux.pages.registerRoutesOfMenu
 import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.empowered.pages.Bronckhorst
 import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.empowered.pages.NijmegenHengstdal
@@ -19,7 +20,7 @@ import kotlinx.browser.window
 
 @Composable
 fun EmpoweredRouting() {
-    val router = Router()
+    val router = createLuxRouter()
     initKobweb(router) { ctx ->
         ctx.registerRoutesOfMenu(
             routes = empoweredMenuItems.asRoutes(),

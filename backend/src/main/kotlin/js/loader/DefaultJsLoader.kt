@@ -3,12 +3,13 @@ package com.zenmo.backend.js.loader
 import com.zenmo.backend.js.JsAccessPolicyEvaluator
 import com.zenmo.backend.js.getScriptAccessPolicy
 import org.http4k.routing.ResourceLoader
+import java.security.MessageDigest
 import java.time.Instant
 
 class DefaultJsLoader(
     private val resourceLoader: ResourceLoader,
     private val accessPolicyEvaluator: JsAccessPolicyEvaluator = getScriptAccessPolicy,
-): JsLoader {
+) : JsLoader {
     override fun load(path: String): JsResult? {
         val url = resourceLoader.load(path)
         if (url == null) {
@@ -20,9 +21,7 @@ class DefaultJsLoader(
         val lastModified = connection.lastModified
         // immediately read into memory to prevent desync
         val content = connection.getInputStream().readBytes()
-
-        val cleanPath = path.replace(Regex("\\W"), "")
-        val eTag = "$cleanPath-$lastModified"
+        val eTag = createETag(content)
 
         return JsResult(
             lastModified = Instant.ofEpochMilli(lastModified),
@@ -31,4 +30,7 @@ class DefaultJsLoader(
             eTag = eTag,
         )
     }
+
+    private fun createETag(content: ByteArray): String =
+        content.contentHashCode().toString(32)
 }

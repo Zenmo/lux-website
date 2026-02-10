@@ -64,7 +64,7 @@ class AnyLogicProxy(
 
         inputs.forEach { node ->
             if (node is ObjectNode && node.get("name")?.asText() == "p_userIdToken") {
-                node.put("value", idToken.toString())
+                node.put("value", idToken.value)
                 tokenInjected = true
             }
         }

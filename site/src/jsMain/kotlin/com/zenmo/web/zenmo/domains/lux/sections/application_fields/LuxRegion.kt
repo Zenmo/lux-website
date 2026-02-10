@@ -13,7 +13,7 @@ import com.zenmo.web.zenmo.components.widgets.*
 import com.zenmo.web.zenmo.domains.lux.components.CallToActionAnchorButton
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.cssRem
@@ -30,7 +30,7 @@ fun LuxMunicipality() {
         HeaderText(
             enText = "LUX Region",
             nlText = "LUX Regio",
-            modifier = Modifier.fillMaxWidth().margin(0.px)
+            modifier = Modifier.fillMaxWidth()
         )
 
         Div {
@@ -213,7 +213,7 @@ fun LuxMunicipality() {
         }
 
         Div(
-            ResponsiveRowStyle.toModifier()
+            ResponsiveFlexStyle.toModifier()
                 .alignItems(AlignItems.Stretch).toAttrs(),
         ) {
             Div(

@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -15,7 +14,7 @@ fun BrabantIndex() {
         HeaderText(
             enText = "Brabant",
             nlText = "Brabant",
-            modifier = Modifier.color(SitePalette.light.primary)
+            textColor = SitePalette.light.primary
         )
     }
 }

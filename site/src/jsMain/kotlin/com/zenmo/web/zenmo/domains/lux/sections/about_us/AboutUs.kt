@@ -153,7 +153,7 @@ fun AboutUs() {
                     HeaderText(
                         enText = "2008",
                         nlText = "2008",
-                        modifier = Modifier.color(SitePalette.light.primary)
+                        textColor = SitePalette.light.primary
                     )
                 },
                 yearBoxModifier = Modifier.background(SitePalette.light.secondary),
@@ -232,7 +232,7 @@ fun AboutUs() {
                     HeaderText(
                         enText = "2018",
                         nlText = "2018",
-                        modifier = Modifier.color(SitePalette.light.primary)
+                        textColor = SitePalette.light.primary
                     )
                 },
                 yearBoxModifier = Modifier.background(SitePalette.light.primary.toRgb().copyf(alpha = 0.10f)),
@@ -309,7 +309,7 @@ fun AboutUs() {
                     HeaderText(
                         enText = "2022",
                         nlText = "2022",
-                        modifier = Modifier.color(Colors.White)
+                        textColor = Colors.White
                     )
                 },
                 yearBoxModifier = Modifier.background(LuxSpecificColorHues().luxBlackRussian).color(Colors.White),

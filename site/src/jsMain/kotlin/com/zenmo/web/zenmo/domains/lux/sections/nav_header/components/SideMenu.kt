@@ -118,7 +118,8 @@ fun SideMenu(
                                     SubHeaderText(
                                         enText = item.title.en,
                                         nlText = item.title.nl,
-                                        modifier = Modifier.margin(0.px).padding(10.px).color(Colors.White)
+                                        modifier = Modifier.padding(10.px),
+                                        textColor = Colors.White
                                     )
                                     Column(
                                         Modifier
@@ -166,7 +167,6 @@ private fun SideMenuItem(
             HeaderText(
                 enText = label.en,
                 nlText = label.nl,
-                modifier = Modifier.margin(0.px)
             )
             MdiArrowForwardIos(
                 modifier = Modifier

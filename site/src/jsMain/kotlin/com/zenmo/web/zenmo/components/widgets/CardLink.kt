@@ -68,7 +68,6 @@ fun CardLink(
         SubHeaderText(
             enText = label.en,
             nlText = label.nl,
-            modifier = Modifier.margin(0.cssRem)
         )
     },
     description: @Composable () -> Unit = {

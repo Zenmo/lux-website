@@ -2,7 +2,6 @@ package com.zenmo.web.zenmo.domains.lux.subdomains.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.functions.clamp
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -19,7 +18,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveRowStyle
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ProfileImageStyle
@@ -29,7 +28,6 @@ import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.keywords.auto
-import org.jetbrains.compose.web.css.vw
 import org.jetbrains.compose.web.dom.Div
 
 enum class ProfileCardArrangementDirection {
@@ -51,9 +49,8 @@ fun ProfileContactCard(
         SubHeaderText(
             enText = captionText.en,
             nlText = captionText.nl,
-            modifier = Modifier.color(SitePalette.light.primary)
-                .fontSize(1.15.cssRem)
-                .margin(0.cssRem)
+            textColor = SitePalette.light.primary,
+            modifier = Modifier.fontSize(1.15.cssRem)
         )
     },
     cardArrangementDirection: ProfileCardArrangementDirection,
@@ -62,9 +59,8 @@ fun ProfileContactCard(
     val isVertical = cardArrangementDirection == ProfileCardArrangementDirection.VERTICAL ||
             breakpoint < Breakpoint.MD
     Div(
-        ResponsiveRowStyle.toModifier()
+        ResponsiveFlexStyle.toModifier()
             .width(auto)
-            .gap(clamp(2.cssRem, 5.vw, 5.cssRem))
             .justifyContent(JustifyContent.Start)
             .thenIf(
                 isVertical,
@@ -91,8 +87,7 @@ fun ProfileContactCard(
             HeaderText(
                 enText = name,
                 nlText = name,
-                modifier = Modifier.margin(0.cssRem)
-                    .fontSize(2.5.cssRem)
+                modifier = Modifier.fontSize(2.5.cssRem)
             )
             if (email.isNotBlank()) {
                 Row {

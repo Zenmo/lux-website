@@ -80,7 +80,6 @@ fun ApplicationAreaCard(
         HeaderText(
             enText = applicationArea.areaTitle.en,
             nlText = applicationArea.areaTitle.nl,
-            modifier = Modifier.margin(0.cssRem)
         )
         P(
             DeEmphasizedTextStyle.toModifier()

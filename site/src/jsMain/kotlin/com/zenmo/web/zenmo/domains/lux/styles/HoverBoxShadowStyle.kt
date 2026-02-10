@@ -10,12 +10,12 @@ import org.jetbrains.compose.web.css.px
 
 val HoverBoxShadowStyle = CssStyle {
     hover {
-        Modifier.Companion
+        Modifier
             .boxShadow(
-                BoxShadow.Companion.of(
+                BoxShadow.of(
                     0.px, 20.px, 25.px, (-5).px, Colors.Black.copyf(alpha = 0.1f)
                 ),
-                BoxShadow.Companion.of(
+                BoxShadow.of(
                     0.px, 10.px, 10.px, (-5).px, Colors.Black.copyf(alpha = 0.04f)
                 ),
             )

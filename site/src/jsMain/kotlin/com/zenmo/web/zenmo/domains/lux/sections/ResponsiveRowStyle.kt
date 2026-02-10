@@ -6,46 +6,43 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.vw
 
-val ResponsiveRowStyle = CssStyle {
+val ResponsiveFlexStyle = CssStyle {
     base {
         Modifier
             .fillMaxWidth()
             .display(DisplayStyle.Flex)
             .alignItems(AlignItems.Center)
+            .responsiveGap()
     }
 
     Breakpoint.ZERO {
         Modifier
             .flexDirection(FlexDirection.Column)
-            .gap(3.cssRem)
     }
 
     Breakpoint.SM {
         Modifier
             .flexDirection(FlexDirection.Column)
-            .gap(3.cssRem)
     }
     Breakpoint.MD {
         Modifier
-            .flexDirection(FlexDirection.Row)
-            .gap(3.cssRem)
+            .flexDirection(FlexDirection.Column)
     }
 
     Breakpoint.LG {
         Modifier
             .flexDirection(FlexDirection.Row)
-            .justifyContent(JustifyContent.SpaceBetween)
-            .gap(7.cssRem)
     }
 
     Breakpoint.XL {
         Modifier
             .flexDirection(FlexDirection.Row)
-            .justifyContent(JustifyContent.SpaceBetween)
-            .gap(7.cssRem)
     }
 }
 
-fun Modifier.responsiveGap() = this.gap(clamp(2.cssRem, 5.vw, 5.cssRem))
+fun Modifier.responsiveGap() = this.gap(clamp(2.5.cssRem, 5.vw, 5.5.cssRem))

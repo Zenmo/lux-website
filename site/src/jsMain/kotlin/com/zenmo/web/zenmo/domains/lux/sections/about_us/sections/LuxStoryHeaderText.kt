@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.gap
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -34,7 +33,6 @@ fun LuxStoryHeaderText(breakpoint: Breakpoint) {
         HeaderText(
             enText = "Our Story",
             nlText = "Ons Verhaal",
-            modifier = Modifier.Companion.margin(0.cssRem)
         )
         P(
             Modifier.Companion

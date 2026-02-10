@@ -49,8 +49,6 @@ fun LuxBasicsSection(
                 HeaderText(
                     enText = "LUX Basics",
                     nlText = "LUX Basics",
-                    modifier = Modifier
-                        .margin(0.cssRem)
                 )
                 P {
                     LangText(

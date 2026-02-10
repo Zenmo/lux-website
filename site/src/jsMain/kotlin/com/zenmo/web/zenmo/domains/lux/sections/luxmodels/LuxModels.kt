@@ -63,8 +63,6 @@ fun LuxModels() {
             HeaderText(
                 enText = "Models",
                 nlText = "Modellen",
-                modifier = Modifier
-                    .margin(0.px)
             )
             P(
                 Modifier

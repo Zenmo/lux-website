@@ -17,9 +17,9 @@ enum class DrechtstedenProjectArea(
         label = LocalizedText(en = "Region", nl = "Regio"),
         pageComponent = { com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resregion.DrechtstedenRegioIndex() }
     ),
-    RES_NEIGHBORHOODS(
-        path = "/res-neighborhoods",
-        label = LocalizedText(en = "Residential Neighborhoods", nl = "Woonwijken"),
+    RESIDENTIAL_AREAS(
+        path = "/residential-areas",
+        label = LocalizedText(en = "Residential Areas", nl = "Woonwijken"),
         pageComponent = { com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resneighborhoods.ResNeighborhoodsPage() }
     ),
     BUSINESS_PARKS(
