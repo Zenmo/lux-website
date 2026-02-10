@@ -10,6 +10,8 @@ import org.http4k.routing.bind
 /**
  * Quick debug endpoint to get your own ID token.
  * To be replaced with a more comprehensive solution to get full profile information.
+ *
+ * TODO: move to UserInfoController
  */
 class IdTokenController(
     private val oAuthSessions: InMemorySessionOAuthPersistence
