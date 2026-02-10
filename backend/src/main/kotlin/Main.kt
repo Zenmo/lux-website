@@ -34,6 +34,8 @@ fun startServer() {
         "/api/contact" bind org.http4k.core.Method.POST to ContactController(MailService.create(config))::handler,
     )
 
+    val idTokenRoute = IdTokenController(oAuthSessions).route()
+
     val anyLogicProxyRoutes = AnyLogicProxy(oAuthSessions::retrieveIdToken).routes()
 
     val app: HttpHandler = printShortAccessLog
@@ -51,6 +53,7 @@ fun startServer() {
                 oAuthRoutes,
                 contactRoute,
                 anyLogicProxyRoutes,
+                idTokenRoute,
             )
         )
 
@@ -72,3 +75,4 @@ val printShortAccessLog: Filter = Filter { next -> { request: Request ->
         response
     }
 }
+
