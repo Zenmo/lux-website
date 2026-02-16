@@ -1,6 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.components
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.functions.clamp
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -15,21 +16,18 @@ import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaVideo
 import com.zenmo.web.zenmo.domains.lux.styles.secondaryGradientBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
-import org.jetbrains.compose.web.css.AlignItems
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.vw
-import org.jetbrains.compose.web.dom.Br
-import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Text
+import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.dom.*
 
 
 @Composable
@@ -39,7 +37,40 @@ fun DidYouKNowSection() {
             .background(SitePalette.light.overlay),
     ) {
         DidYouKnowBanner()
-        AchievingMore()
+        Column(
+            modifier = Modifier.gap(1.5.cssRem)
+                .textAlign(TextAlign.Center),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            SubHeaderText(
+                enText = "We can do much more with the existing capacity grid.",
+                nlText = "We kunnen veel meer met het bestaande elektriciteitsnet.",
+            )
+
+            Span(
+                Modifier
+                    .padding(5.px, 8.px)
+                    .justifyContent(JustifyContent.Center)
+                    .backgroundColor(SitePalette.light.primary)
+                    .color(Colors.White)
+                    .luxBorderRadius()
+                    .toAttrs()
+            ) {
+                LangText(
+                    en = "LUX Energy Hub shows how!",
+                    nl = "LUX Energy Hub laat zien hoe!"
+                )
+            }
+            ApplicationAreaVideo(
+                src = "/lux/videos/EnergyHubDashboardMovie.mp4",
+                poster = "/lux/images/energyHubMoviePoster.png",
+                videoTitle = LocalizedText(
+                    en = "Energy Hub Dashboard",
+                    nl = "Energy Hub Dashboard"
+                ),
+            )
+        }
+        EnergyHubExampleFeatures()
     }
 }
 
@@ -79,11 +110,6 @@ private fun DidYouKnowBanner() {
                         en = "Did you know that the electricity grid has an average of 80% capacity left? ",
                         nl = "Wist je dat het elektriciteitsnet gemiddeld genomen 80% capaciteit over heeft? "
                     )
-                    InlineLink(
-                        destinationUrl = "/",
-                        enLinkText = "[link to BCG study]",
-                        nlLinkText = "[link to BCG study]"
-                    )
                     Br { }
                     Br { }
                     LangText(
@@ -118,19 +144,6 @@ private fun DidYouKnowBanner() {
                         nlLinkText = "Zie hier voor onze analyse."
                     )
                 }
-            }
-
-            P {
-                LangText(
-                    en = """
-                        So we can do much more with the existing capacity of the electricity grid. LUX Energy Hub 
-                        shows how!
-                    """.trimIndent(),
-                    nl = """
-                        We kunnen dus veel meer doen met de bestaande capaciteit van het elektriciteitsnet. 
-                        LUX-energiehub laat zien hoe!
-                    """.trimIndent()
-                )
             }
         }
     }
