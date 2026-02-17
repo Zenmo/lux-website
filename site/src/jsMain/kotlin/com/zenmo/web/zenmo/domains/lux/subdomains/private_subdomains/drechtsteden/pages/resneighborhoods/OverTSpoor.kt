@@ -3,6 +3,7 @@ package com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsted
 import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.components.DrechtstedenTwinModelPage
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.components.ResidentialAreaModelPageText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 
@@ -10,6 +11,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 fun OverTSpoor() {
     DrechtstedenTwinModelPage(
         twin = overTSpoor,
+        introContent = { ResidentialAreaModelPageText() },
         footerContent = {
             ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)
         }
