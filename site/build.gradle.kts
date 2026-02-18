@@ -85,6 +85,7 @@ kotlin {
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.mdi)
+            implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
         }
 
@@ -121,15 +122,17 @@ tasks.register("replaceMainFunction") {
     doLast {
         val file = project.layout.buildDirectory.file("generated/kobweb/app/src/jsMain/kotlin/main.kt").get().asFile
         val content = file.readText()
-        file.writeText(content.replace(
-            "public fun main()",
-            """
+        file.writeText(
+            content.replace(
+                "public fun main()",
+                """
                 @JsExport
                 val accessPolicy = energy.lux.site.shared.AccessPolicy.Public()
             
                 @JsExport public fun $mainFunctionName()
                 """.trimIndent()
-        ))
+            )
+        )
     }
 }
 
@@ -141,7 +144,8 @@ tasks.register("replaceScriptTag") {
     tasks.named<DefaultTask>("kobwebStart").get().dependsOn(this)
 
     doLast {
-        val file = project.layout.buildDirectory.file("generated/kobweb/app/src/jsMain/resources/index.html").get().asFile
+        val file =
+            project.layout.buildDirectory.file("generated/kobweb/app/src/jsMain/resources/index.html").get().asFile
         val content = file.readText()
         val newContent = content
             .replace(
@@ -151,7 +155,8 @@ tasks.register("replaceScriptTag") {
                     import {$mainFunctionName} from "$jsSrc"
                     $mainFunctionName()
                     </script>
-                """.trimIndent())
+                """.trimIndent()
+            )
 
         file.writeText(newContent)
     }

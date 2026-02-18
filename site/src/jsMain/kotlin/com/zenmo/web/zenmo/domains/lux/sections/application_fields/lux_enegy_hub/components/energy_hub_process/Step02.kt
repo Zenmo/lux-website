@@ -24,33 +24,35 @@ fun Step02() {
     EnergyHubProcessBlock(
         step = "02",
         title = LocalizedText(
-            en = "Initial Dashboard Setup",
-            nl = "Initiële Dashboardopstelling",
+            en = "Initialize the tool",
+            nl = " Initialiseer de tool",
         ),
         content = {
             P {
                 LangBlock(
                     en = {
-                        Text("For a modest amount (depending on the size and complexity of the area),")
+                        Text(
+                            """
+                            To initialize LUX energy hub, public data is loaded into LUX and some base scenario’s can 
+                            be defined. This can done by yourself or
+                        """.trimIndent()
+                        )
                         B {
                             Text(" Zenmo ")
                         }
-                        Text("loads all public data about the area with LUX energy hub.")
+                        Text("can help you with that.")
                     },
                     nl = {
                         Text(
                             """
-                            Voor een bescheiden bedrag (afhankelijk van de omvang en complexiteit van het gebied) laadt
+                            Om LUX Energy Hub te initialiseren, publieke data wordt ingeladen en een aantal scenario’s 
+                            kunnen gedefinieerd worden. Dit kan gedaan worden door de Local Hero, maar
                         """.trimIndent()
                         )
                         B {
                             Text(" Zenmo ")
                         }
-                        Text(
-                            """
-                            met LUX-energiehub alle publieke gegevens rond het gebied in.
-                        """.trimIndent()
-                        )
+                        Text("kan hier ook goed bij helpen.")
                     }
                 )
             }
@@ -73,30 +75,15 @@ fun Step02() {
                 P {
                     LangText(
                         en = """
-                            [List of public data] and data from the network operator (at Alliander, for example, the 
-                            Energy Neighbourhood Scan).
+                           Geographical data of buildings, locations of chargers, public energy data, and public grid 
+                           and transformer data.
                         """.trimIndent(),
                         nl = """
-                            [Lijst publieke gegevens] en gegevens netbeheerder (bijAlliander bijvoorbeeld de Energie 
-                            Buurtscan).
+                            Geografische data van gebouwen, locaties van laders, publieke energiedata, publieke 
+                            netdata (ligging kabels en trafostations) 
                             """.trimIndent()
                     )
                 }
-            }
-
-            P {
-                LangText(
-                    en = """
-                        With this, we set up an interactive dashboard of the energy hub together with a number of basic 
-                        scenarios. However, keep in mind: without company-specific data, these scenarios are still 
-                        mainly illustrative.
-                    """.trimIndent(),
-                    nl = """
-                        Daarmee stellen wij een interactief dashboard van de energiehub samen met aantal 
-                        basisscenario’s in. Bedenkt echter wel: zonder bedrijfsspecifieke gegevens zijn deze scenario’s 
-                        nog vooral illustratief.
-                    """.trimIndent()
-                )
             }
         }
     )

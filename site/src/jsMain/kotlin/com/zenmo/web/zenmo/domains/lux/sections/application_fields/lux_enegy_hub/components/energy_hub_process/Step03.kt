@@ -15,6 +15,7 @@ import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.P
 
 @Composable
@@ -22,19 +23,34 @@ fun Step03() {
     EnergyHubProcessBlock(
         step = "03",
         title = LocalizedText(
-            en = "Gathering Company Data",
-            nl = "Verzamelen Bedrijfsgegevens",
+            en = "Gathering company data",
+            nl = "Verzamelen van energie gegevens",
         ),
         content = {
             P {
                 LangText(
                     en = """
-                        Armed with the interactive LUX dashboard, the local hero explores possible options and 
-                        approaches other entrepreneurs or the business association.
+                        The local hero identifies and gathers the energy dynamics of the involved stakeholders. Crucial 
+                        in this step is to identify the largest energy players of the area and gather their measurement 
+                        data and future scenario’s.
                     """.trimIndent(),
                     nl = """
-                        Gewapend met het interactieve LUX dashboard verkent de local hero mogelijke opties en benadert 
-                        hij of zij andere ondernemers of de bedrijfsvereniging.
+                        The Local Hero verzamelt meetdata en overige informatie van het energiesysteem. Belangrijk is 
+                        dat eerst de grote energiespelers binnen de energiehub geidentificeerd worden zodat de 
+                        dataverzameling zich op die partijen kan focussen.
+                    """.trimIndent()
+                )
+                Br { }
+                Br { }
+                LangText(
+                    en = """
+                        The data can easily be loaded into the LUX data portal that is directly connected to the energy 
+                        twin. Any data uploaded their will show up immediately in the model and exploration can begin!
+                    """.trimIndent(),
+                    nl = """
+                        De toekomstplannen van die bedrijven worden ook meegenomen, die koment terug via de scenario’s 
+                        in het dashboard van LUX. Alle verzamelde input kan in een online portal geladen worden voor 
+                        automatiscshe koppelingen met LUX Energy Hub. 
                     """.trimIndent()
                 )
             }
@@ -62,19 +78,6 @@ fun Step03() {
                         """.trimIndent()
                     )
                 }
-            }
-
-            P {
-                LangText(
-                    en = """
-                     Our form can streamline that process considerably, but it is up to the local hero to find a point 
-                     of contact for each company who agrees.
-                    """.trimIndent(),
-                    nl = """
-                        Ons invulformulier kan dat proces vergaand stroomlijnen maar het is aan de local hero om per 
-                        bedrijf een aanspreekpunt te vinden die akkoord geeft.
-                    """.trimIndent()
-                )
             }
         }
     )

@@ -63,6 +63,10 @@ fun initSiteStyles(ctx: InitSilkContext) {
         registerStyleBase("h1, h2, h3, h4, h5, h6") {
             Modifier.margin(0.cssRem)
         }
+
+        registerStyleBase("p") {
+            Modifier.lineHeight(1.5)
+        }
     }
 
     ctx.theme.apply {

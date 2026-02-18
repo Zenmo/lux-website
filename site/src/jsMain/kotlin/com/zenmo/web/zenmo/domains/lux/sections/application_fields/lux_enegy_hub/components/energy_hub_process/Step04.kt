@@ -11,7 +11,6 @@ import com.varabyte.kobweb.silk.components.icons.mdi.MdiDocumentScanner
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLan
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
-import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -29,20 +28,23 @@ fun Step04() {
     EnergyHubProcessBlock(
         step = "04",
         title = LocalizedText(
-            en = "Scenarios Become Reliable",
-            nl = "Scenario's Worden Betrouwbaar",
+            en = "Explore and design realistic scenario’s",
+            nl = "Verken haalbare toekomstplannen voor de energiehub",
         ),
         content = {
             P {
                 LangText(
                     en = """
-                        As more business data becomes available, the scenarios quickly become more reliable, especially 
-                        when the grid operator—in line with the new Energy Act—makes data on grid load available.
+                        Now all data is implemented LUX Energy Hub can be used to gain insight in the energy profiles 
+                        of the companies, explore what current or expected problems may come up and find smart 
+                        solutions in the form of collaborations, smart management of consumption, heating, charging, 
+                        batteries, etcetera.  
                     """.trimIndent(),
                     nl = """
-                    Naarmate er meer bedrijfsgegevens beschikbaar komen worden de scenario’s snel betrouwbaarder, zeker 
-                    wanneer de netbeheerder - in lijn met de nieuwe energiewet - gegevens over netbelasting ter 
-                    beschikking stelt.
+                        Nu alle data in de tool zit kan LUX Energy Hub gebruikt worden om inzicht te krijgen in alle 
+                        energiedynamieken van de bedrijven, om te verkennen wat huidige of verwachte (net)problemen er 
+                        zijn, en om slimme oplossingen daarvoor te vinden in de vorm van bijvoorbeeld groepscontracten 
+                        of slimme sturing van verbruik, verwarming, laden, batterijen, etcetera. 
                     """.trimIndent()
                 )
             }
@@ -61,7 +63,6 @@ fun Step04() {
                         en = "Shows that it has to be done now",
                         nl = "Laat zien dat het nu al moet",
                     ),
-                    link = "" //todo add links
                 )
 
                 ScenarioCard(
@@ -74,7 +75,6 @@ fun Step04() {
                         en = "Shows that it is on the schedule",
                         nl = "Laat zien dat het op de planning staat",
                     ),
-                    link = ""
                 )
 
                 ScenarioCard(
@@ -87,7 +87,6 @@ fun Step04() {
                         en = "Already contains exactly the right data",
                         nl = "Bevat al precies de goede gegevens",
                     ),
-                    link = ""
                 )
             }
         }
@@ -99,7 +98,6 @@ private fun ScenarioCard(
     icon: @Composable () -> Unit,
     title: LocalizedText,
     description: LocalizedText,
-    link: String
 ) {
     Column(
         Modifier
@@ -131,11 +129,6 @@ private fun ScenarioCard(
                 nl = description.nl
             )
             Text(" ")
-            InlineLink(
-                destinationUrl = link,
-                enLinkText = "[link]",
-                nlLinkText = "[link]"
-            )
         }
     }
 }
