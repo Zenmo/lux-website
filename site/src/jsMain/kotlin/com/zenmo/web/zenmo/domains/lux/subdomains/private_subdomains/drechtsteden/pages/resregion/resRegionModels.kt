@@ -8,7 +8,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtstede
 val drechtstedenRes =
     DrechtstedenTwinModel(
         projectPath = "",
-        label = LocalizedText(nl = "Digital twin Drechtsteden"),
+        label = LocalizedText(nl = "Energy Twin Drechtsteden"),
         applicationArea = DrechtstedenProjectArea.RES_REGION,
         entryPoint = "drechtsteden/resregion/drechtsteden",
         imageUrl = "/lux/images/drechtsteden/res-region/drechtsteden.png",
