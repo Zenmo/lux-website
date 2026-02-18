@@ -7,7 +7,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtstede
 val overTSpoor =
     DrechtstedenTwinModel(
         projectPath = "/overtspoor",
-        label = LocalizedText(nl = "Digital twin Over 't Spoor"),
+        label = LocalizedText(nl = "Energy Twin Over 't Spoor"),
         applicationArea = DrechtstedenProjectArea.RESIDENTIAL_AREAS,
         entryPoint = "drechtsteden/resneighborhoods/overtspoor",
         imageUrl = "/lux/images/drechtsteden/resneighborhoods/over_t_spoor.png",
@@ -16,7 +16,7 @@ val overTSpoor =
 val oostdonk =
     DrechtstedenTwinModel(
         projectPath = "/oostdonk",
-        label = LocalizedText(nl = "Digital twin Oostdonk"),
+        label = LocalizedText(nl = "Energy Twin Oostdonk"),
         applicationArea = DrechtstedenProjectArea.RESIDENTIAL_AREAS,
         entryPoint = "drechtsteden/resneighborhoods/oostdonk",
         imageUrl = "/lux/images/drechtsteden/resneighborhoods/oostdonk.png",
@@ -25,7 +25,7 @@ val oostdonk =
 val kerkbuurt =
     DrechtstedenTwinModel(
         projectPath = "/kerkbuurt",
-        label = LocalizedText(nl = "Digital twin Kerkbuurt"),
+        label = LocalizedText(nl = "Energy Twin Kerkbuurt"),
         applicationArea = DrechtstedenProjectArea.RESIDENTIAL_AREAS,
         entryPoint = "drechtsteden/resneighborhoods/kerkbuurt",
         imageUrl = "/lux/images/drechtsteden/resneighborhoods/kerkbuurt.png",
