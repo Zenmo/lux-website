@@ -17,6 +17,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LoadingSpinner
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.pages.SiteGlobals.LUX_DOMAIN
+import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.css.*
@@ -100,6 +101,7 @@ fun AnyLogicEmbed(
                 // startAnimation(...).await() suspends for as long as the animation runs.
                 status = AnyLogicModelStatus.RUNNING
                 animation = client.startAnimation(inputsObj, containerId).await()
+                blockBackspace()
             } catch (e: Exception) {
                 console.error("Failed to load AnyLogic model", e)
                 status = AnyLogicModelStatus.FAILED
@@ -204,6 +206,19 @@ fun randomString(length: UInt): String {
     return buildString {
         repeat(length.toInt()) {
             append(chars.random())
+        }
+    }
+}
+
+/**
+ * Block the user from navigating to other agents on the AnyLogic canvas.
+ */
+private fun blockBackspace() {
+    val anyLogicKeyDownFn = document.onkeydown
+
+    document.onkeydown = { event ->
+        if (event.key !== "Backspace") {
+            anyLogicKeyDownFn?.invoke(event)
         }
     }
 }
