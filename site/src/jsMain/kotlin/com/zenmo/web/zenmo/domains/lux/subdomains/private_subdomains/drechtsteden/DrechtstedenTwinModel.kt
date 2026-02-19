@@ -8,7 +8,7 @@ import com.zenmo.web.zenmo.domains.lux.core.PrivateTwinModel
 import com.zenmo.web.zenmo.domains.lux.core.TwinModelCard
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.DrechtstedenProjectArea
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.pages.SiteGlobals
 import kotlinx.browser.window
 
@@ -18,9 +18,9 @@ private val isCurrentDomainDrechtsteden = window.location.host == drechtstedenFu
 
 data class DrechtstedenTwinModel(
     val projectPath: String,
+    override val applicationArea: LuxApplicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
     override val path: String = "${applicationArea.path}$projectPath",
     override val label: LocalizedText,
-    override val applicationArea: DrechtstedenProjectArea,
     override val imageUrl: String,
     override val entryPoint: String,
     override val pageComponent: @Composable () -> Unit,
