@@ -22,12 +22,12 @@ fun PreZero() {
                 P {
                     LangText(
                         nl = """
-                            Afvalverwerker PreZero op bedrijventerrein Hessenpoort wilde uitbreiden.
+                            Afvalverwerker PreZero op bedrijventerrein Hessenpoort in Zwolle wilde uitbreiden.
                             De bestaande aansluiting op het elektriciteitsnet had niet genoeg capaciteit 
                             om de geplande machines aan te sluiten.
                         """,
                         en = """
-                            Waste processor PreZero on the Hessenpoort business park wanted to expand.
+                            Waste processor PreZero on the Hessenpoort business park in Zwolle wanted to expand.
                             The existing connection to the electricity grid had insufficient capacity 
                             to connect the planned machines.
                         """,
