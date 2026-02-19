@@ -5,6 +5,7 @@ import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.core.PrivateTwinModel
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Borchwerf
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.DeWieken
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Hessenpoort
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.KasAlsEnergiebron
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.PreZero
@@ -66,6 +67,14 @@ enum class PrivateSubdomainModel(
         label = LocalizedText(nl = "Borchwerf"),
         imageUrl = "/lux/images/models/borchwerf.png",
         entryPoint = "borchwerf",
-        applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
-    )
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+    ),
+    DE_WIEKEN(
+        subdomain = "dewieken",
+        subdomainComponent = { DeWieken() },
+        label = LocalizedText(nl = "De Wieken"),
+        imageUrl = "/lux/images/models/borchwerf.png",
+        entryPoint = "dewieken",
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+    ),
 }
