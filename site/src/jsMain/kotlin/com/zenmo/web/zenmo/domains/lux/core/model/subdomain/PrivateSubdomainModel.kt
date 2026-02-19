@@ -9,6 +9,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.DeWieken
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Hessenpoort
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.KasAlsEnergiebron
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.PreZero
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Vaanpark
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.genius.Genius
 
@@ -73,8 +74,16 @@ enum class PrivateSubdomainModel(
         subdomain = "dewieken",
         subdomainComponent = { DeWieken() },
         label = LocalizedText(nl = "De Wieken"),
-        imageUrl = "/lux/images/models/borchwerf.png",
+        imageUrl = "/lux/images/models/dewieken.png",
         entryPoint = "dewieken",
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+    ),
+    VAANPARK(
+        subdomain = "vaanpark",
+        subdomainComponent = { Vaanpark() },
+        label = LocalizedText(nl = "Vaanpark"),
+        imageUrl = "/lux/images/models/vaanpark.png",
+        entryPoint = "vaanpark",
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
     ),
 }
