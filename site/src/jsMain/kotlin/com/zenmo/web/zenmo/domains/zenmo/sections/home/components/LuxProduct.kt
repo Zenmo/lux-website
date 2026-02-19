@@ -38,15 +38,15 @@ val LuxProducts = listOf(
                 """.trimIndent(),
     ),
     LuxProduct(
-        productTitle = "LUX Residential Area",
+        productTitle = "LUX Neighbourhood",
         enDescription =
             """
-                LUX Residential Area provides solutions for getting residential areas off gas, reducing energy costs, 
+                LUX Neighbourhood provides solutions for getting residential areas off gas, reducing energy costs, 
                 and addressing grid congestion through heat networks or hybrid heat pumps.
                 """.trimIndent(),
         nlDescription =
             """
-                LUX Residential Area biedt oplossingen om woonwijken van het gas af te krijgen, de energiekosten te 
+                LUX Woonwijk biedt oplossingen om woonwijken van het gas af te krijgen, de energiekosten te 
                 verlagen en congestie op het net aan te pakken door middel van warmtenetten of hybride warmtepompen.
                 """.trimIndent()
     ),

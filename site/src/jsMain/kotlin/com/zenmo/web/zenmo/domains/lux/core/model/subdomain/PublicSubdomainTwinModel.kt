@@ -60,7 +60,7 @@ val bunderbuurten = PublicSubdomainTwinModel(
     label = LocalizedText(en = "Bunder Neighbourhoods", nl = "Bunderbuurten"),
     imageUrl = "/lux/images/model_thumbnails/ModelThumbnailBunderbuurtenVeghel.jpg",
     modelId = Uuid.parse("da90dd57-a9fb-47b2-9496-345255fda37a"),
-    applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
 val loenen = PublicSubdomainTwinModel(
     subdomain = "loenen",
@@ -68,7 +68,7 @@ val loenen = PublicSubdomainTwinModel(
     label = LocalizedText(en = "Loenen", nl = "Loenen"),
     imageUrl = "/lux/images/model_thumbnails/ModelThumbnailLoenen.jpg",
     modelId = Uuid.parse("ba998ba3-05dc-45f6-ac6d-78279765375d"),
-    applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
 val rotterdamDenHaag = PublicSubdomainTwinModel(
     subdomain = "rotterdamdenhaag",
@@ -84,7 +84,7 @@ val vruchtenbuurt = PublicSubdomainTwinModel(
     label = LocalizedText(en = "Vruchtenbuurt", nl = "Vruchtenbuurt"),
     imageUrl = "/lux/images/model_thumbnails/ModelThumbnailVruchtenbuurt.jpg",
     modelId = Uuid.parse("cca6eb2b-fb91-4825-bee2-d5e12d0a3880"),
-    applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
 val cognizant = PublicSubdomainTwinModel(
     subdomain = "cognizant",
@@ -100,7 +100,7 @@ val kronenberg = PublicSubdomainTwinModel(
     label = LocalizedText(en = "Kronenberg", nl = "EnergieKronenberg"),
     imageUrl = "/lux/images/kronenberg/Skyline-Kronenberg-Jan-Janssen-square.jpg",
     modelId = Uuid.parse("c8d7bd27-5b4a-43b1-bbcb-5ead4fe98696"),
-    applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
 val amersfoort = PublicSubdomainTwinModel(
     subdomain = "amersfoort",
@@ -108,7 +108,7 @@ val amersfoort = PublicSubdomainTwinModel(
     label = LocalizedText(en = "Amersfoort", nl = "Amersfoort"),
     imageUrl = "/lux/images/models/amersfoort.jpg",
     modelId = Uuid.parse("88c97843-1272-4557-beec-09412ef2c32b"),
-    applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
 val veenendaal = PublicSubdomainTwinModel(
     subdomain = "veenendaal",
@@ -116,7 +116,7 @@ val veenendaal = PublicSubdomainTwinModel(
     label = LocalizedText(en = "Veenendaal", nl = "Veenendaal"),
     imageUrl = "/lux/images/models/veenendaal.jpg",
     modelId = Uuid.parse("0bec54a4-af5d-47fd-8af1-dfb3af0457f6"),
-    applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
 
 val publicSubdomainModels = listOf(

@@ -17,14 +17,14 @@ class ModelSearchTest {
                 label = LocalizedText("Amsterdam"),
                 imageUrl = "",
                 url = "",
-                applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA,
+                applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
                 isPrivate = false
             ),
             TwinModelCardItem(
                 label = LocalizedText("Rotterdam"),
                 imageUrl = "",
                 url = "",
-                applicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA,
+                applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
                 isPrivate = false
             ),
         )

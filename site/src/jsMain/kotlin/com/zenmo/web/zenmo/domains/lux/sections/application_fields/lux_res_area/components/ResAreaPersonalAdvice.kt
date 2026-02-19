@@ -15,6 +15,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -32,34 +33,38 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun ResAreaPersonalAdvice() {
-    Div(
-        ResponsiveFlexStyle.toModifier()
-            .alignItems(AlignItems.Center)
-            .toAttrs()
+    LuxSectionContainer(
+        modifier = Modifier.background(SitePalette.light.overlay),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .gap(1.cssRem)
+        Div(
+            ResponsiveFlexStyle.toModifier()
+                .alignItems(AlignItems.Center)
+                .toAttrs()
         ) {
-            HeaderText(
-                enText = "Need Personal Advice?",
-                nlText = "Persoonlijk Advies Nodig?",
-            )
-            P {
-                LangText(
-                    en = """
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .gap(1.cssRem)
+            ) {
+                HeaderText(
+                    enText = "Need Personal Advice?",
+                    nlText = "Persoonlijk Advies Nodig?",
+                )
+                P {
+                    LangText(
+                        en = """
                         If your situation is unique or if you want personal advice, that is also possible. Possibly as 
                         a next step.
                     """.trimIndent(),
-                    nl = """
+                        nl = """
                         Als jouw situatie uniek is of als je persoonlijk advies wilt kan dat ook. Eventueel als
                         vervolgstap.
                     """.trimIndent()
-                )
+                    )
+                }
             }
+            ImpartialAdviceCard()
         }
-        ImpartialAdviceCard()
     }
 }
 

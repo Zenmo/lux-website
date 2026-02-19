@@ -35,7 +35,7 @@ data class ApplicationAreaItem(
                 icon = { MdiLan(Modifier.featureIcon(size = 32.px)) }
             ),
             ApplicationAreaItem(
-                luxApplicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA,
+                luxApplicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
                 description = LocalizedText(
                     en = "How do we get residential areas off gas while reducing energy costs? Automated solutions for dealing with grid congestion in neighborhoods.",
                     nl = "Hoe krijgen we woonwijken van het gas af terwijl we de energiekosten verlagen? Geautomatiseerde oplossingen voor het omgaan met netcongestie in wijken."

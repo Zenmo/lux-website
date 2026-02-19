@@ -1,20 +1,29 @@
 package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.components
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.foundation.layout.Box
+import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.framework.annotations.DelicateApi
+import com.varabyte.kobweb.silk.components.icons.mdi.IconStyle
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiHelp
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.home.CardGridStyle
-import com.zenmo.web.zenmo.domains.lux.styles.HoverBoxShadowStyle
+import com.zenmo.web.zenmo.domains.lux.styles.mutedWhite
+import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
+import com.zenmo.web.zenmo.theme.LuxSpecificColorHues
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
@@ -25,25 +34,29 @@ import org.jetbrains.compose.web.dom.P
 
 private val questions = listOf(
     LocalizedText(
-        en = "How do we get residential areas off the gas and at the same time reduce energy costs?",
-        nl = "Hoe krijgen we woonwijken van het gas af en verlagen we tegelijkertijd de energiekosten?"
+        en = "How large is the congestion problem really in this neighborhood?",
+        nl = "Hoe groot is het congestieprobleem echt in deze buurt?"
     ),
     LocalizedText(
-        en = "How do we deal with grid congestion?",
-        nl = "Hoe gaan we om met netcongestie?"
+        en = "How much CO₂ do we save if we take this neighborhood off natural gas?",
+        nl = "Hoeveel CO₂ besparen we als we deze buurt van het gas halen?"
     ),
     LocalizedText(
-        en = "Where are district heating the solutions and where are (hybrid) heat pumps a better option?",
-        nl = "Waar zijn warmtenetten de oplossingen en waar zijn (hybride) warmtepompen een betere optie?"
+        en = "What is the maximum potential of PV, and what share of it would be consumed locally?",
+        nl = "Wat is de maximale potentie van PV en welk deel gaat naar lokale consumptie?"
     ),
     LocalizedText(
-        en = "How do we facilitate energy cooperatives?",
-        nl = "Hoe faciliteren we energiecoöperaties?"
+        en = "Which heating solutions are suitable here, and which are not?",
+        nl = "Welke warmteoplossingen passen hier wel en niet?"
     ),
     LocalizedText(
-        en = "Which sustainable options are attractive in your residential area?",
-        nl = "Welke duurzame opties zijn in jouw woonwijk aantrekkelijk?"
+        en = "What would be the grid impact of smart charging control and vehicle-to-grid?",
+        nl = "Wat zou de netimpact zijn met slimme aansturing van laden en vehicle-to-grid?"
     ),
+    LocalizedText(
+        en = "Can we successfully decarbonize this neighborhood using community batteries?",
+        nl = "Kunnen we met buurtbatterijen deze buurt wel verduurzamen?"
+    )
 )
 
 
@@ -51,19 +64,51 @@ private val questions = listOf(
 @Composable
 fun QuestionsGrid() {
     val breakpoint = rememberBreakpoint()
-    Div(
-        CardGridStyle.toModifier()
-            .height(auto)
-            .alignSelf(AlignSelf.Stretch)
-            .thenIf(
-                breakpoint < Breakpoint.MD,
-                Modifier.display(DisplayStyle.Flex)
-                    .flexDirection(FlexDirection.Column)
-            )
-            .toAttrs()
+    LuxSectionContainer(
+        Modifier.alignItems(AlignItems.FlexStart)
+            .gap(1.5.cssRem)
+            .background(LuxSpecificColorHues().luxBlackRussian)
+            .color(Colors.White),
     ) {
-        questions.forEach { question ->
-            QuestionItem(question)
+        Column {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Box(
+                    Modifier
+                        .size(48.px)
+                        .margin(right = 12.px)
+                        .luxBorderRadius()
+                        .verticalLinearBackground()
+                        .color(Colors.White),
+                    contentAlignment = Alignment.Center
+                ) { MdiHelp(style = IconStyle.OUTLINED) }
+                HeaderText(
+                    enText = "Typical questions",
+                    nlText = "Typische vragen",
+                )
+            }
+            P {
+                LangText(
+                    en = "LUX Neighborhood has helped municipalities address:",
+                    nl = "Typische vragen waar LUX Woonbuurten gemeenten bij heeft geholpen:"
+                )
+            }
+        }
+        Div(
+            CardGridStyle.toModifier()
+                .height(auto)
+                .alignSelf(AlignSelf.Stretch)
+                .thenIf(
+                    breakpoint < Breakpoint.MD,
+                    Modifier.display(DisplayStyle.Flex)
+                        .flexDirection(FlexDirection.Column)
+                )
+                .toAttrs()
+        ) {
+            questions.forEach { question ->
+                QuestionItem(question)
+            }
         }
     }
 }
@@ -76,10 +121,10 @@ private fun QuestionItem(
         modifier = Modifier.fillMaxWidth()
             .padding(32.px)
             .gap(12.px)
-            .background(SitePalette.light.overlay)
+            .background(Colors.White.copyf(alpha = 0.1f))
+            .mutedWhite()
             .luxBorderRadius(LuxCornerRadius.lg)
             .borderLeft(4.px, LineStyle.Solid, SitePalette.light.primary)
-            .then(HoverBoxShadowStyle.toModifier())
     ) {
         MdiHelp(Modifier.color(SitePalette.light.primary))
         P(
