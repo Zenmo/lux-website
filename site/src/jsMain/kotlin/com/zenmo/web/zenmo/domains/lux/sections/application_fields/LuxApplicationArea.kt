@@ -8,7 +8,7 @@ import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.LuxCompany
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.LuxEnergyHub
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_region.LuxRegion
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.LuxResidentialArea
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.LuxNeighbourhood
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 enum class LuxApplicationArea(
@@ -24,8 +24,8 @@ enum class LuxApplicationArea(
         label = LocalizedText("LUX Bedrijf", "LUX Business"),
         contactPerson = ZenmoTeam.PETER_HOGEVEEN,
         shortDescription = LocalizedText(
-            "Korte beschrijving over LUX Bedrijf",
-            "Short description about LUX Business",
+            "Inzicht in batterijwaarde en energieflexibiliteit",
+            "Insight into battery value and energy flexibility",
         ),
         pageComponent = { LuxCompany() }
     ),
@@ -33,26 +33,26 @@ enum class LuxApplicationArea(
         label = LocalizedText("LUX Energie Hub", "LUX Energy Hub"),
         contactPerson = ZenmoTeam.AUKE,
         shortDescription = LocalizedText(
-            "Korte beschrijving over LUX Energie Hub",
-            "Short description for LUX Energy Hub",
+            "Lokale energie- en netcongestie-analyse",
+            "Local energy and grid congestion analysis",
         ),
         pageComponent = { LuxEnergyHub() }
     ),
-    LUX_RESIDENTIAL_AREA(
-        label = LocalizedText("LUX Woongebied", "LUX Residential Area"),
+    LUX_NEIGHBOURHOOD(
+        label = LocalizedText("LUX Woonwijk", "LUX Neighbourhood"),
         contactPerson = ZenmoTeam.PETER_HOGEVEEN,
         shortDescription = LocalizedText(
-            "Korte beschrijving over LUX Woongebied",
-            "Short description for LUX Residential Area",
+            "Energie- en netanalyse voor woonwijken",
+            "Energy and grid analysis for residential neighbourhoods",
         ),
-        pageComponent = { LuxResidentialArea() }
+        pageComponent = { LuxNeighbourhood() }
     ),
     LUX_REGION(
         label = LocalizedText("LUX Regio", "LUX Region"),
         contactPerson = ZenmoTeam.NAUD_LOOMANS,
         shortDescription = LocalizedText(
-            "Korte beschrijving over LUX Regio",
-            "Short description for LUX Region",
+            "Regionale energie- en congestiescenario’s",
+            "Regional energy and congestion scenarios",
         ),
         pageComponent = { LuxRegion() }
     );

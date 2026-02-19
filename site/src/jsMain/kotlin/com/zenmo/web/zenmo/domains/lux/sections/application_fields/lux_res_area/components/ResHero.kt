@@ -1,83 +1,82 @@
 package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.components
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.functions.clamp
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiHelp
-import com.varabyte.kobweb.silk.theme.shapes.Circle
-import com.varabyte.kobweb.silk.theme.shapes.clip
+import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.components.widgets.ImageContent
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
-import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
-import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
-import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.vw
+import org.jetbrains.compose.web.dom.Br
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 
 
 @Composable
 fun ResHero() {
-    LuxSectionContainer(
-        modifier = Modifier.alignItems(AlignItems.Start)
-    ) {
-        HeaderText(
-            enText = LuxApplicationArea.LUX_RESIDENTIAL_AREA.areaTitle.en,
-            nlText = LuxApplicationArea.LUX_RESIDENTIAL_AREA.areaTitle.nl,
-        )
-        QuestionsGrid()
-        GetAnswersBanner()
+    LuxSectionContainer {
+        Div(
+            ResponsiveFlexStyle.toModifier()
+                .alignItems(AlignItems.FlexStart)
+                .toAttrs()
+        ) {
+            TextContent()
+            Box(Modifier.fillMaxWidth()) {
+                ImageContent(
+                    imageUrl = "/lux/images/horizon_img.jpg",
+                    alt = "horizon",
+                )
+            }
+        }
     }
 }
 
 @Composable
-private fun GetAnswersBanner() {
+private fun TextContent() {
     Column(
-        Modifier
-            .fillMaxWidth()
-            .color(Colors.White)
-            .gap(1.cssRem)
-            .luxBorderRadius(LuxCornerRadius.xl)
-            .padding(clamp(32.px, 5.vw, 64.px))
-            .verticalLinearBackground()
+        modifier = Modifier.fillMaxWidth()
+            .gap(1.5.cssRem)
     ) {
-        Box(
-            Modifier
-                .size(80.px)
-                .background(SitePalette.light.secondary)
-                .color(Colors.Black)
-                .clip(shape = Circle())
-                .flexShrink(0),
-            contentAlignment = Alignment.Center
-        ) {
-            MdiHelp(Modifier.fontSize(40.px))
-        }
-
-        SubHeaderText(
-            enText = "Get Answers",
-            nlText = "Krijg Antwoorden",
+        HeaderText(
+            enText = LuxApplicationArea.LUX_NEIGHBOURHOOD.areaTitle.en,
+            nlText = LuxApplicationArea.LUX_NEIGHBOURHOOD.areaTitle.nl,
         )
-
-        P {
+        P(
+            Modifier.margin(0.px)
+                .padding(left = 24.px)
+                .borderLeft(4.px, LineStyle.Solid, SitePalette.light.primary)
+                .toAttrs()
+        ) {
             LangText(
                 en = """
-                    You will get an answer to these questions and many more with LUX residential area. And this in an 
-                    automated way that greatly reduces costs compared to a standard consultancy project.
+                    Municipalities, energy cooperatives, and residents face many challenges related to the energy 
+                    transition and grid congestion in residential neighborhoods.
                 """.trimIndent(),
                 nl = """
-                    Op deze vragen en nog veel meer krijg je een antwoord met LUX-woonwijk. En dat op een
-                    geautomatiseerde manier die de kosten sterk verlaagt ten opzichte van een standaard adviesproject.
+                    Gemeenten, energiecooperaties, en bewoners zitten met veel vraagstukken over de verduurzaming en 
+                    netcongestie in woonwijken.
+                """.trimIndent()
+            )
+            Br { }
+            LangText(
+                en = """
+                    LUX Neighbourhood simulates real data from a neighborhood’s energy system, including homes, 
+                    schools, shops, district heating networks, and more.
+                """.trimIndent(),
+                nl = """
+                    LUX Woonwijk simuleert de echte data van het energiesysteem van een buurt met huizen, scholen, 
+                    winkels, warmtenetten, etcetera.
                 """.trimIndent()
             )
         }

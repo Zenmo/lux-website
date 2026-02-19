@@ -62,12 +62,12 @@ private fun TextContent() {
         P {
             LangText(
                 en = """
-                    If you select a specific neighbourhood, you will end up in LUX residential area or LUX energy hub 
+                    If you select a specific neighbourhood, you will end up in LUX Neighbourhood or LUX energy hub 
                     in which buildings and appliances (such as solar panels and electric vehicles) are modelled 
                     separately to make the scenarios much more detailed.
                 """.trimIndent(),
                 nl = """
-                    Als je een specifieke buurt selecteert komt u terecht in LUX-woonwijk of LUX-energiehub waarin 
+                    Als je een specifieke buurt selecteert komt u terecht in LUX Woonwijk of LUX-energiehub waarin 
                     gebouwen en apparaten (zoals zonnepanelen en elektrische voertuigen) apart gemodelleerd worden om 
                     de scenario’s veel gedetailleerder te maken.
                 """.trimIndent()
@@ -77,11 +77,11 @@ private fun TextContent() {
         P {
             LangText(
                 en = """
-                    The results of the LUX residential area or LUX energy hub are then used to improve the results for 
+                    The results of the LUX Neighborhood or LUX energy hub are then used to improve the results for 
                     the entire area when you zoom out again.
                 """.trimIndent(),
                 nl = """
-                    De resultaten van LUX-woonwijk of LUX-energiehub worden vervolgens gebruikt om als je terug 
+                    De resultaten van LUX Woonwijk of LUX-energiehub worden vervolgens gebruikt om als je terug 
                     uitzoomt de uitkomsten voor het gehele gebied te verbeteren.
                 """.trimIndent()
             )

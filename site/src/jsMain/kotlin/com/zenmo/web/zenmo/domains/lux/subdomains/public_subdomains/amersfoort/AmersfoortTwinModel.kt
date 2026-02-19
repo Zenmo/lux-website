@@ -13,7 +13,7 @@ data class AmersfoortTwinModel(
     override val url: String = "",
     override val imageUrl: String,
     override val modelId: Uuid,
-    override val applicationArea: ApplicationArea = LuxApplicationArea.LUX_RESIDENTIAL_AREA,
+    override val applicationArea: ApplicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
     val modelApiKey: Uuid = anyLogicPublicApiKey,
 ) : PublicTwinModel, TwinModelCard {
 
