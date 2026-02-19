@@ -12,7 +12,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.OpenLinkStrategy
-import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
@@ -87,7 +86,6 @@ fun CardLink(
     Link(
         path = url,
         modifier = LinkNoStyle.toModifier().fillMaxSize(),
-        updateHistoryMode = UpdateHistoryMode.REPLACE,
         openExternalLinksStrategy = OpenLinkStrategy.IN_PLACE,
     ) {
         Column(
