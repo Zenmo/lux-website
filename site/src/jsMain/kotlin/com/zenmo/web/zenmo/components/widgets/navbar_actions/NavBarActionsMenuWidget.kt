@@ -1,6 +1,7 @@
 package com.zenmo.web.zenmo.components.widgets.navbar_actions
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -14,6 +15,7 @@ import com.zenmo.web.zenmo.domains.zenmo.widgets.button.IconButton
 import energy.lux.site.shared.UserInfo
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.*
+import org.w3c.dom.HTMLElement
 
 
 @Composable
@@ -21,16 +23,23 @@ fun NavBarActionsMenuWidget() {
     val userService = UserService()
     var userInfo by remember { mutableStateOf<UserInfo?>(null) }
     var showDropdown by remember { mutableStateOf(false) }
+    var backingElement by remember { mutableStateOf<HTMLElement?>(null) }
 
     LaunchedEffect(Unit) {
-        document.body?.onclick = {
-            showDropdown = false
+        document.body?.onclick = { event ->
+            val isClickInMenu = backingElement?.contains(event.target as HTMLElement) ?: false
+
+            if (!isClickInMenu) {
+                showDropdown = false
+            }
         }
         userInfo = userService.userInfo()
     }
 
-
-    Column(modifier = Modifier.position(Position.Relative)) {
+    Column(
+        ref = ref { backingElement = it },
+        modifier = Modifier.position(Position.Relative)
+    ) {
         NavBarActionsMenuButton(onClick = { showDropdown = !showDropdown })
         if (showDropdown) {
             Box(
