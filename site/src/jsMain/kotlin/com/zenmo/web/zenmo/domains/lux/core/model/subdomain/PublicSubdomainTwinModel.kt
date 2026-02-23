@@ -90,7 +90,7 @@ val cognizant = PublicSubdomainTwinModel(
     subdomain = "cognizant",
     subdomainComponent = { Cognizant() },
     label = LocalizedText(en = "Cognizant", nl = "Cognizant"),
-    imageUrl = "/lux/images/model_thumbnails/ModelThumbnailCognizant.png",
+    imageUrl = "/lux/images/cognizant-immersive-room.jpg",
     modelId = Uuid.parse("7cfc3e4a-608c-4e2c-a834-4d290174ee9e"),
     applicationArea = LuxApplicationArea.LUX_BUSINESS
 )
