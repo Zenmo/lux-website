@@ -9,11 +9,9 @@ import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.L
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.LuxEnergyHub
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_region.LuxRegion
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.LuxNeighbourhood
-import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 enum class LuxApplicationArea(
     val shortDescription: LocalizedText,
-    val contactPerson: ZenmoTeam,
     override val label: LocalizedText,
     override val areaTitle: LocalizedText = label,
     override val path: String = label.en.asNavLinkPath("application-areas"),
@@ -22,7 +20,6 @@ enum class LuxApplicationArea(
 ) : Route, SimpleMenuItem, ApplicationArea {
     LUX_BUSINESS(
         label = LocalizedText("LUX Bedrijf", "LUX Business"),
-        contactPerson = ZenmoTeam.PETER_HOGEVEEN,
         shortDescription = LocalizedText(
             "Inzicht in batterijwaarde en energieflexibiliteit",
             "Insight into battery value and energy flexibility",
@@ -31,7 +28,6 @@ enum class LuxApplicationArea(
     ),
     LUX_ENERGY_HUB(
         label = LocalizedText("LUX Energie Hub", "LUX Energy Hub"),
-        contactPerson = ZenmoTeam.AUKE,
         shortDescription = LocalizedText(
             "Lokale energie- en netcongestie-analyse",
             "Local energy and grid congestion analysis",
@@ -40,7 +36,6 @@ enum class LuxApplicationArea(
     ),
     LUX_NEIGHBOURHOOD(
         label = LocalizedText("LUX Woonwijk", "LUX Neighbourhood"),
-        contactPerson = ZenmoTeam.PETER_HOGEVEEN,
         shortDescription = LocalizedText(
             "Energie- en netanalyse voor woonwijken",
             "Energy and grid analysis for residential neighbourhoods",
@@ -49,7 +44,6 @@ enum class LuxApplicationArea(
     ),
     LUX_REGION(
         label = LocalizedText("LUX Regio", "LUX Region"),
-        contactPerson = ZenmoTeam.NAUD_LOOMANS,
         shortDescription = LocalizedText(
             "Regionale energie- en congestiescenario’s",
             "Regional energy and congestion scenarios",
