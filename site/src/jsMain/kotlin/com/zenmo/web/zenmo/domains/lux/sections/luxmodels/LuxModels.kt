@@ -1,34 +1,29 @@
 package com.zenmo.web.zenmo.domains.lux.sections.luxmodels
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.background
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.subdomainModels
 import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
-import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
-import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
-import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.EmptyResults
-import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.SearchBar
-import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.filterAndSearchModels
-import com.zenmo.web.zenmo.domains.lux.widgets.RadioRow
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
+import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.*
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
-import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Span
 
 
 enum class FilterType {
@@ -40,17 +35,13 @@ enum class FilterType {
 
 @Composable
 fun LuxModels() {
-    SectionContainer(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+    LuxSectionContainer(
         modifier =
             Modifier
                 .background(SitePalette.light.overlay)
-                .position(Position.Relative)
-                .gap(5.cssRem),
-        variant = LuxSectionContainerStyleVariant
     ) {
         var query by remember { mutableStateOf("") }
+        var selectedAreaOptions by remember { mutableStateOf(emptySet<LuxApplicationArea>()) }
 
         val allModels =
             (subdomainModels + com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.drechtstedenModels).map { it.toTwinModelCardItem() }
@@ -82,49 +73,41 @@ fun LuxModels() {
                     luxModels = filterAndSearchModels(
                         models = allModels,
                         query = query,
-                        filterType = filterType
+                        filterType = filterType,
+                        areas = selectedAreaOptions
                     )
                 }
             )
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
+            Div(
+                ResponsiveFlexStyle.toModifier()
+                    .gap(0.5.cssRem)
+                    .toAttrs()
             ) {
-                Span(
-                    attrs = DeEmphasizedTextStyle.toModifier()
-                        .textTransform(TextTransform.Uppercase)
-                        .padding(bottom = 8.px)
-                        .toAttrs()
-                ) {
-                    LangText(
-                        en = "Access",
-                        nl = "Toegang"
-                    )
-                }
-                RadioRow(
-                    value = filterType,
-                    options = FilterType.entries.associateWith { it.name },
-                    onChange = { type ->
+                ModelAccessFilter(
+                    filterType = filterType,
+                    onFilterChange = { type ->
                         filterType = type
                         luxModels = filterAndSearchModels(
                             models = allModels,
                             query = query,
-                            filterType = filterType
+                            filterType = filterType,
+                            areas = selectedAreaOptions
                         )
                     }
-                ) { option, _ ->
-                    when (option) {
-                        FilterType.ALL -> LangText(en = "All", nl = "Alle")
-                        FilterType.PUBLIC -> LangText(en = "Public", nl = "Openbaar")
-                        FilterType.PRIVATE -> Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.px)
-                        ) {
-                            MdiLock(Modifier.fontSize(16.px))
-                            LangText(en = "Private", nl = "Privé")
-                        }
+                )
+                ModelAreaFilter(
+                    selectedOptions = selectedAreaOptions,
+                    onSelectionChange = {
+                        selectedAreaOptions = it
+                        luxModels = filterAndSearchModels(
+                            models = allModels,
+                            query = query,
+                            filterType = filterType,
+                            areas = selectedAreaOptions
+                        )
                     }
-                }
+                )
             }
         }
 
