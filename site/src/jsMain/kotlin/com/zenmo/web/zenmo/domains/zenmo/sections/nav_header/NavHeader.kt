@@ -23,7 +23,7 @@ import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.overlay
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.zenmo.web.zenmo.components.SideMenuState
-import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageSwitchButton
+import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.LanguageToggleButton
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.NavBar
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SideMenu
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.SiteLogo
@@ -90,7 +90,7 @@ fun NavHeader() {
             ) {
                 NavBar()
             }
-            LanguageSwitchButton()
+            LanguageToggleButton()
         }
 
 
@@ -104,7 +104,7 @@ fun NavHeader() {
             var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
 
             Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterStart) {
-                LanguageSwitchButton()
+                LanguageToggleButton()
             }
 
             Box(modifier = Modifier.flex(1), contentAlignment = Alignment.Center) {
