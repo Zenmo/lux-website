@@ -14,6 +14,7 @@ import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.components.icons.mdi.IconStyle
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiHelp
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.widgets.LangText
@@ -71,21 +72,21 @@ fun QuestionsGrid() {
             .color(Colors.White),
     ) {
         Column {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
+            Row {
                 Box(
                     Modifier
+                        .displayIfAtLeast(Breakpoint.MD)
                         .size(48.px)
                         .margin(right = 12.px)
+                        .flexShrink(0)
                         .luxBorderRadius()
                         .verticalLinearBackground()
                         .color(Colors.White),
                     contentAlignment = Alignment.Center
                 ) { MdiHelp(style = IconStyle.OUTLINED) }
                 HeaderText(
-                    enText = "Typical questions",
-                    nlText = "Typische vragen",
+                    enText = "What LUX Neighbourhood solves",
+                    nlText = "Wat LUX Woonwijk oplost",
                 )
             }
             P {

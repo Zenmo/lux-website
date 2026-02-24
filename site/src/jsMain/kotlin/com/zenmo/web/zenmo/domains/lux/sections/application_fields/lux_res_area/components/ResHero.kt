@@ -34,7 +34,7 @@ fun ResHero() {
             TextContent()
             Box(Modifier.fillMaxWidth()) {
                 ImageContent(
-                    imageUrl = "/lux/images/horizon_img.jpg",
+                    imageUrl = "/lux/images/lux_neighbourhood.png",
                     alt = "horizon",
                 )
             }
