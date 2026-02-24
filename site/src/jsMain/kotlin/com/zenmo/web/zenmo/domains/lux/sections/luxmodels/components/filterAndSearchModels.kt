@@ -1,20 +1,22 @@
 package com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components
 
 import com.zenmo.web.zenmo.domains.lux.core.TwinModelCardItem
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.FilterType
 
 
 /**
- * Filters and searches a list of models based on visibility and title.
+ * Filters and searches a list of models based on visibility, matching title, and application area.
  *
- * Applies the selected [filterType] and
+ * Applies the selected [filterType], filters by [areas] if specified, and
  * optionally narrows the result by matching the [query] against
  * each model’s title (case-insensitive).
  */
 fun filterAndSearchModels(
     models: List<TwinModelCardItem>,
     query: String,
-    filterType: FilterType
+    filterType: FilterType,
+    areas: Set<LuxApplicationArea>
 ): List<TwinModelCardItem> {
     val queryString = query.trim().lowercase()
 
@@ -33,6 +35,10 @@ fun filterAndSearchModels(
             model.searchTokens.any { sTokens ->
                 sTokens.lowercase().contains(queryString)
             }
+        }
+        .filter { model ->
+            if (areas.isEmpty()) return@filter true
+            model.applicationArea in areas
         }
         .toList()
 }
