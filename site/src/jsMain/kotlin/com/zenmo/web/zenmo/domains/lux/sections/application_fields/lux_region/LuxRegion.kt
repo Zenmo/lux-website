@@ -7,6 +7,7 @@ import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.empowered
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.hilversum
 import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.FieldModels
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaContactPerson
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_region.components.*
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -22,6 +23,7 @@ fun LuxRegion() {
         MultiScaleAnalysis()
         ConsistentInterface()
         FieldModels(
+            applicationArea = LuxApplicationArea.LUX_REGION,
             featuredModels = listOf(
                 PrivateSubdomainModel.DRECHTSTEDEN.toTwinModelCardItem(),
                 empowered.toTwinModelCardItem(),

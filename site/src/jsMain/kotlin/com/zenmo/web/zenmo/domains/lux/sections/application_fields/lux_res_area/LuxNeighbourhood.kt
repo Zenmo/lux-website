@@ -8,6 +8,7 @@ import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.kronenberg
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.loenen
 import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.FieldModels
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaContactPerson
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.components.LuxNeighbourhoodFactAndDemo
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.components.QuestionsGrid
@@ -27,6 +28,7 @@ fun LuxNeighbourhood() {
         GetLuxNeighbourhoodSection()
         ResAreaPersonalAdvice()
         FieldModels(
+            applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
             featuredModels = listOf(
                 bunderbuurten.toTwinModelCardItem(),
                 loenen.toTwinModelCardItem(),

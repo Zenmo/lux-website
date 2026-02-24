@@ -9,6 +9,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
@@ -17,6 +18,7 @@ import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.*
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.drechtstedenModels
 import com.zenmo.web.zenmo.domains.lux.widgets.TwinModelsGrid
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
@@ -40,13 +42,29 @@ fun LuxModels() {
             Modifier
                 .background(SitePalette.light.overlay)
     ) {
+        val ctx = rememberPageContext()
+        val areaParam = ctx.route.queryParams["area"]
         var query by remember { mutableStateOf("") }
-        var selectedAreaOptions by remember { mutableStateOf(emptySet<LuxApplicationArea>()) }
-
-        val allModels =
-            (subdomainModels + com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.drechtstedenModels).map { it.toTwinModelCardItem() }
-        var luxModels by remember { mutableStateOf(allModels) }
+        var selectedAreaOptions by remember {
+            mutableStateOf(
+                areaParam
+                    ?.let { runCatching { LuxApplicationArea.valueOf(it) }.getOrNull() }
+                    ?.let { setOf(it) }
+                    ?: emptySet()
+            )
+        }
+        val allModels = (subdomainModels + drechtstedenModels)
+            .map { it.toTwinModelCardItem() }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
+
+        val luxModels = remember(query, filterType, selectedAreaOptions) {
+            filterAndSearchModels(
+                models = allModels,
+                query = query,
+                filterType = filterType,
+                areas = selectedAreaOptions
+            )
+        }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(36.px),
@@ -68,15 +86,7 @@ fun LuxModels() {
 
             SearchBar(
                 query = query,
-                onQueryChange = { searchQuery ->
-                    query = searchQuery
-                    luxModels = filterAndSearchModels(
-                        models = allModels,
-                        query = query,
-                        filterType = filterType,
-                        areas = selectedAreaOptions
-                    )
-                }
+                onQueryChange = { query = it }
             )
 
             Div(
@@ -86,27 +96,11 @@ fun LuxModels() {
             ) {
                 ModelAccessFilter(
                     filterType = filterType,
-                    onFilterChange = { type ->
-                        filterType = type
-                        luxModels = filterAndSearchModels(
-                            models = allModels,
-                            query = query,
-                            filterType = filterType,
-                            areas = selectedAreaOptions
-                        )
-                    }
+                    onFilterChange = { filterType = it }
                 )
                 ModelAreaFilter(
                     selectedOptions = selectedAreaOptions,
-                    onSelectionChange = {
-                        selectedAreaOptions = it
-                        luxModels = filterAndSearchModels(
-                            models = allModels,
-                            query = query,
-                            filterType = filterType,
-                            areas = selectedAreaOptions
-                        )
-                    }
+                    onSelectionChange = { selectedAreaOptions = it }
                 )
             }
         }

@@ -28,10 +28,13 @@ import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
+import org.w3c.dom.url.URLSearchParams
+import kotlin.js.json
 
 
 @Composable
 fun FieldModels(
+    applicationArea: LuxApplicationArea,
     featuredModels: List<TwinModelCardItem>,
     showMoreModelsLink: Boolean,
 ) {
@@ -55,7 +58,7 @@ fun FieldModels(
                         nl = "Ontdek meer praktijkvoorbeelden en gedetailleerde simulaties."
                     )
                 }
-                BrowseAllModelsLink()
+                BrowseAllModelsLink(applicationArea)
             }
         }
         TwinModelsGrid(
@@ -65,9 +68,16 @@ fun FieldModels(
 }
 
 @Composable
-private fun BrowseAllModelsLink() {
+private fun BrowseAllModelsLink(
+    applicationArea: LuxApplicationArea
+) {
+    val path = buildString {
+        append(luxModelsMenuItem.route.path)
+        append("?")
+        append(URLSearchParams(json("area" to applicationArea.name)))
+    }
     Link(
-        path = luxModelsMenuItem.route.path,
+        path = path,
         variant = UncoloredLinkVariant.then(UndecoratedLinkVariant),
     ) {
         Row(
