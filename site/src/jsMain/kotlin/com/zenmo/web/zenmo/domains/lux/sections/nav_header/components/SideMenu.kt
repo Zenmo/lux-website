@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.FontSize
+import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.functions.blur
 import com.varabyte.kobweb.compose.css.functions.saturate
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -89,6 +90,10 @@ fun SideMenu(
                     .then(FrostedNavStyle.toModifier())
                     .alignItems(AlignItems.Stretch)
                     .onAnimationEnd { onAnimationEnd() }
+                    .overflow(
+                        overflowY = Overflow.Scroll,
+                        overflowX = Overflow.Auto
+                    )
                     .toAttrs()
             ) {
                 Ul(
@@ -167,6 +172,7 @@ private fun SideMenuItem(
             HeaderText(
                 enText = label.en,
                 nlText = label.nl,
+                modifier = Modifier.fontSize(2.cssRem)
             )
             MdiArrowForwardIos(
                 modifier = Modifier
