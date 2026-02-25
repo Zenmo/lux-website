@@ -4,12 +4,7 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.core.PrivateTwinModel
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
-import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Borchwerf
-import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.DeWieken
-import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Hessenpoort
-import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.KasAlsEnergiebron
-import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.PreZero
-import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.Vaanpark
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.*
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.genius.Genius
 
@@ -84,6 +79,14 @@ enum class PrivateSubdomainModel(
         label = LocalizedText(nl = "Vaanpark"),
         imageUrl = "/lux/images/models/vaanpark.png",
         entryPoint = "vaanpark",
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+    ),
+    BIJSTERHUIZEN(
+        subdomain = "bijsterhuizen",
+        subdomainComponent = { Bijsterhuizen() },
+        label = LocalizedText(nl = "Bijsterhuizen"),
+        imageUrl = "/lux/images/models/bijsterhuizen.png",
+        entryPoint = "bijsterhuizen",
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
     ),
 }
