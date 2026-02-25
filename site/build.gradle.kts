@@ -24,7 +24,6 @@ val jsSrc = "$BACKEND_URL/main.export.mjs"
 kobweb {
     app {
         index {
-            description.set("Powered by Kobweb")
             head.add {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
             }
