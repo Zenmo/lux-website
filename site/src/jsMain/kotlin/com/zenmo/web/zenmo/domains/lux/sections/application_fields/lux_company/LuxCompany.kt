@@ -8,6 +8,7 @@ import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainMode
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.cognizant
 import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.FieldModels
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaContactPerson
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.components.*
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -26,6 +27,7 @@ fun LuxCompany(
         PersonalAdvice()
         UniqueFeature()
         FieldModels(
+            applicationArea = LuxApplicationArea.LUX_BUSINESS,
             featuredModels = listOf(
                 cognizant.toTwinModelCardItem(),
                 PrivateSubdomainModel.PREZERO.toTwinModelCardItem(),
