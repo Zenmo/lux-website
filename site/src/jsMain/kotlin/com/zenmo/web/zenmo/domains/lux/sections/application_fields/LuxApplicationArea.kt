@@ -18,14 +18,6 @@ enum class LuxApplicationArea(
     override val url: String = path,
     override val pageComponent: @Composable () -> Unit,
 ) : Route, SimpleMenuItem, ApplicationArea {
-    LUX_BUSINESS(
-        label = LocalizedText("LUX Bedrijf", "LUX Business"),
-        shortDescription = LocalizedText(
-            "Inzicht in batterijwaarde en energieflexibiliteit",
-            "Insight into battery value and energy flexibility",
-        ),
-        pageComponent = { LuxCompany() }
-    ),
     LUX_ENERGY_HUB(
         label = LocalizedText("LUX Energie Hub", "LUX Energy Hub"),
         shortDescription = LocalizedText(
@@ -33,6 +25,14 @@ enum class LuxApplicationArea(
             "Local energy and grid congestion analysis",
         ),
         pageComponent = { LuxEnergyHub() }
+    ),
+    LUX_REGION(
+        label = LocalizedText("LUX Regio", "LUX Region"),
+        shortDescription = LocalizedText(
+            "Regionale energie- en congestiescenario’s",
+            "Regional energy and congestion scenarios",
+        ),
+        pageComponent = { LuxRegion() }
     ),
     LUX_NEIGHBOURHOOD(
         label = LocalizedText("LUX Woonwijk", "LUX Neighbourhood"),
@@ -42,14 +42,14 @@ enum class LuxApplicationArea(
         ),
         pageComponent = { LuxNeighbourhood() }
     ),
-    LUX_REGION(
-        label = LocalizedText("LUX Regio", "LUX Region"),
+    LUX_BUSINESS(
+        label = LocalizedText("LUX Bedrijf", "LUX Business"),
         shortDescription = LocalizedText(
-            "Regionale energie- en congestiescenario’s",
-            "Regional energy and congestion scenarios",
+            "Inzicht in batterijwaarde en energieflexibiliteit",
+            "Insight into battery value and energy flexibility",
         ),
-        pageComponent = { LuxRegion() }
-    );
+        pageComponent = { LuxCompany() }
+    ),
 }
 
 
