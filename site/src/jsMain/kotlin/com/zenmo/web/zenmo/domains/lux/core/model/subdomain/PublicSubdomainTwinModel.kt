@@ -78,6 +78,14 @@ val rotterdamDenHaag = PublicSubdomainTwinModel(
     modelId = Uuid.parse("92952425-a78a-4e69-a896-6ccea66d4ce6"),
     applicationArea = LuxApplicationArea.LUX_REGION
 )
+val tuinzigt = PublicSubdomainTwinModel(
+    subdomain = "tuinzigt",
+    subdomainComponent = { Tuinzigt() },
+    label = LocalizedText("Tuinzigt"),
+    imageUrl = "/lux/images/models/tuinzigt.jpg",
+    modelId = Uuid.parse("a9257c2c-347e-486f-9fc2-84854555781b"),
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
+)
 val vruchtenbuurt = PublicSubdomainTwinModel(
     subdomain = "vruchtenbuurt",
     subdomainComponent = { VruchtenbuurtIndex() },
@@ -127,6 +135,7 @@ val publicSubdomainModels = listOf(
     bunderbuurten,
     loenen,
     rotterdamDenHaag,
+    tuinzigt,
     vruchtenbuurt,
     cognizant,
     kronenberg,
