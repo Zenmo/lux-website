@@ -6,16 +6,13 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.background
-import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
-import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.subdomainModels
 import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
-import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.*
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.drechtstedenModels
@@ -24,7 +21,6 @@ import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 
 
@@ -67,7 +63,7 @@ fun LuxModels() {
         }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(36.px),
+            verticalArrangement = Arrangement.spacedBy(1.cssRem),
         ) {
             HeaderText(
                 enText = "Models",
@@ -89,20 +85,14 @@ fun LuxModels() {
                 onQueryChange = { query = it }
             )
 
-            Div(
-                ResponsiveFlexStyle.toModifier()
-                    .gap(0.5.cssRem)
-                    .toAttrs()
-            ) {
-                ModelAccessFilter(
-                    filterType = filterType,
-                    onFilterChange = { filterType = it }
-                )
-                ModelAreaFilter(
-                    selectedOptions = selectedAreaOptions,
-                    onSelectionChange = { selectedAreaOptions = it }
-                )
-            }
+            ModelAccessFilter(
+                filterType = filterType,
+                onFilterChange = { filterType = it }
+            )
+            ModelAreaFilter(
+                selectedOptions = selectedAreaOptions,
+                onSelectionChange = { selectedAreaOptions = it }
+            )
         }
 
         if (luxModels.isNotEmpty()) {
