@@ -6,6 +6,7 @@ import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.core.models.asRoutes
+import com.zenmo.web.zenmo.core.registerLocalizedRoute
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxEnergyLayout
 import com.zenmo.web.zenmo.domains.lux.core.createLuxRouter
 import com.zenmo.web.zenmo.domains.lux.sections.home.HomePage
@@ -16,7 +17,9 @@ import kotlinx.browser.window
 fun LuxRoutingComponent() {
     val router = createLuxRouter()
     com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
-        ctx.router.register("/") { LuxEnergyLayout { HomePage() } }
+        ctx.router.registerLocalizedRoute("/") {
+            LuxEnergyLayout { HomePage() }
+        }
 
         ctx.registerRoutesOfMenu(
             routes = luxNavMenu.asRoutes(),
@@ -24,9 +27,11 @@ fun LuxRoutingComponent() {
         )
 
         if (window.location.host != "lux.energy") {
-            ctx.router.register("/component-demo") { ComponentDemoPage() }
+            ctx.router.registerLocalizedRoute("/component-demo") {
+                ComponentDemoPage()
+            }
         }
-        ctx.router.register("/book-demo") { BookADemoPage() }
+        ctx.router.registerLocalizedRoute("/book-demo") { BookADemoPage() }
     }
 
     router.tryRoutingTo(

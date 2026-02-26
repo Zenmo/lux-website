@@ -1,6 +1,7 @@
 package com.zenmo.web.zenmo.core.models
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.navigation.PageMethod
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 
 /**

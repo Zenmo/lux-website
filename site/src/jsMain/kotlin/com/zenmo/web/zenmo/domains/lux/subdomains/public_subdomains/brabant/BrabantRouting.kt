@@ -7,6 +7,7 @@ import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
+import com.zenmo.web.zenmo.core.registerLocalizedRoute
 import com.zenmo.web.zenmo.domains.lux.core.createLuxRouter
 import com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains.brabant.pages.BrabantIndex
 import kotlinx.browser.window
@@ -15,7 +16,7 @@ import kotlinx.browser.window
 fun BrabantRouting() {
     val router = createLuxRouter()
     initKobweb(router) { ctx ->
-        ctx.router.register("/") { BrabantIndex() }
+        ctx.router.registerLocalizedRoute("/") { BrabantIndex() }
     }
     router.tryRoutingTo(
         BasePath.remove(window.location.href.removePrefix(window.origin)),

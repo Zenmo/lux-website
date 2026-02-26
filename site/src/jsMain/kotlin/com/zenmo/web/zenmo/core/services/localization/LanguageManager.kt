@@ -23,16 +23,14 @@ object LanguageManager {
 
     val language: State<Language> get() = _language
 
-
     private fun getLanguageFromLocalStorage(): Language? {
         val storedLang = window.localStorage.getItem(LANGUAGE_MODE_KEY)
         return storedLang?.let { Language.fromCodeToLanguage(it) }
     }
 
-    private fun getLanguageFromUrl(): Language? {
-        val urlParams = URLSearchParams(window.location.search)
-        val urlLang = urlParams.get("lang")?.trim()
-        return urlLang?.let { Language.fromCodeToLanguage(it) }
+    private fun getLanguageFromPath(): Language? {
+        val firstPathComponent = window.location.pathname.split("/").getOrNull(1)
+        return firstPathComponent?.let { Language.fromUrlPathCodeToLanguage(it) }
     }
 
     private fun getLanguageFromNavigator(): Language {
@@ -41,8 +39,8 @@ object LanguageManager {
     }
 
     private fun getLanguage(): Language {
-        return getLanguageFromLocalStorage()
-            ?: getLanguageFromUrl()
+        return getLanguageFromPath()
+            ?: getLanguageFromLocalStorage()
             ?: getLanguageFromNavigator()
     }
 
@@ -50,12 +48,11 @@ object LanguageManager {
     // making this publicly available for testing purposes
     fun setLanguage(newLanguage: Language) {
         _language.value = newLanguage
-        val langCode = Language.toCodeFromLanguage(newLanguage)
+        val langCode = newLanguage.shortCode
         window.localStorage.setItem(LANGUAGE_MODE_KEY, langCode)
         val htmlElement = document.documentElement as HTMLElement
         htmlElement.lang = langCode
     }
 
     fun toggleLanguage() = setLanguage(Language.toggleLanguage(_language.value))
-
 }

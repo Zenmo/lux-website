@@ -3,7 +3,6 @@ package com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsted
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.init.InitKobwebContext
 import com.varabyte.kobweb.navigation.BasePath
-import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
@@ -19,8 +18,8 @@ import kotlinx.browser.window
 fun DrechtstedenRouting() {
     val router = createLuxRouter()
     com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
-        ctx.drechtstdenRouting(drechtstedenNavMenu.asRoutes())
-        ctx.drechtstdenRouting(
+        ctx.drechtstedenRouting(drechtstedenNavMenu.asRoutes())
+        ctx.drechtstedenRouting(
             routes = drechtstedenModels
                 /*
                  * If a project's [projectPath] is blank, it means it uses the same path as the project area.
@@ -40,7 +39,7 @@ fun DrechtstedenRouting() {
     router.renderActivePage { DeferringHost { it() } }
 }
 
-private fun InitKobwebContext.drechtstdenRouting(
+private fun InitKobwebContext.drechtstedenRouting(
     routes: List<RoutedMenuItem>
 ) = this.registerRoutesOfMenu(
     routes = routes,
