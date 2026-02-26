@@ -5,6 +5,7 @@ import com.varabyte.kobweb.navigation.*
 import com.varabyte.kobweb.silk.defer.DeferringHost
 import com.zenmo.web.zenmo.components.widgets.CatchAllPage
 import com.zenmo.web.zenmo.core.models.asRoutes
+import com.zenmo.web.zenmo.core.registerLocalizedRoute
 import com.zenmo.web.zenmo.domains.lux.core.createLuxRouter
 import com.zenmo.web.zenmo.domains.lux.pages.registerRoutesOfMenu
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.zenmoNavMenu
@@ -24,7 +25,7 @@ fun ZenmoRoutingComponent() {
             )
 
         if (window.location.host != "zenmo.com") {
-            ctx.router.register("/component-demo") { ComponentDemoPage() }
+            ctx.router.registerLocalizedRoute("/component-demo") { ComponentDemoPage() }
         }
     }
 
@@ -34,9 +35,4 @@ fun ZenmoRoutingComponent() {
     )
 
     router.renderActivePage { DeferringHost { it() } }
-}
-
-fun Router.register(nl: String, en: String, page: PageMethod) {
-    register(route = nl, pageMethod = page)
-    register(route = en, pageMethod = page)
 }

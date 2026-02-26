@@ -3,6 +3,7 @@ package com.zenmo.web.zenmo.domains.lux.pages
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.init.InitKobwebContext
 import com.zenmo.web.zenmo.core.models.RoutedMenuItem
+import com.zenmo.web.zenmo.core.registerLocalizedRoute
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 
 
@@ -22,7 +23,7 @@ fun InitKobwebContext.registerRoutesOfMenu(
     with(this.router) {
         routes
             .forEach { item ->
-                register(item.path) {
+                registerLocalizedRoute(item.path) {
                     layoutWrapper(item.label) {
                         item.pageComponent()
                     }
