@@ -1,7 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.pages
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.core.init.InitKobwebContext
+import com.varabyte.kobweb.navigation.Router
 import com.zenmo.web.zenmo.core.models.RoutedMenuItem
 import com.zenmo.web.zenmo.core.registerLocalizedRoute
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
@@ -15,19 +15,16 @@ import com.zenmo.web.zenmo.core.services.localization.LocalizedText
  * together with the page content, allowing layouts to use route information
  * for titles, breadcrumbs, or navigation context.
  */
-fun InitKobwebContext.registerRoutesOfMenu(
+fun Router.registerRoutesOfMenu(
     routes: List<RoutedMenuItem>,
     layoutWrapper: @Composable (title: LocalizedText, content: @Composable () -> Unit) -> Unit =
         { _, content -> content() }
 ) {
-    with(this.router) {
-        routes
-            .forEach { item ->
-                registerLocalizedRoute(item.path) {
-                    layoutWrapper(item.label) {
-                        item.pageComponent()
-                    }
-                }
+    routes.forEach { item ->
+        registerLocalizedRoute(item.path) {
+            layoutWrapper(item.label) {
+                item.pageComponent()
             }
+        }
     }
 }

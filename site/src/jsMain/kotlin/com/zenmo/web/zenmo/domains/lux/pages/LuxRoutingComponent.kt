@@ -16,22 +16,22 @@ import kotlinx.browser.window
 @Composable
 fun LuxRoutingComponent() {
     val router = createLuxRouter()
-    com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
-        ctx.router.registerLocalizedRoute("/") {
-            LuxEnergyLayout { HomePage() }
-        }
+    router.registerLocalizedRoute("/") {
+        LuxEnergyLayout { HomePage() }
+    }
+    router.registerLocalizedRoute("/book-demo") {
+        BookADemoPage()
+    }
 
-        ctx.registerRoutesOfMenu(
-            routes = luxNavMenu.asRoutes(),
-            layoutWrapper = { _, content -> LuxEnergyLayout { content() } }
-        )
+    router.registerRoutesOfMenu(
+        routes = luxNavMenu.asRoutes(),
+        layoutWrapper = { _, content -> LuxEnergyLayout { content() } }
+    )
 
-        if (window.location.host != "lux.energy") {
-            ctx.router.registerLocalizedRoute("/component-demo") {
-                ComponentDemoPage()
-            }
+    if (window.location.host != "lux.energy") {
+        router.registerLocalizedRoute("/component-demo") {
+            ComponentDemoPage()
         }
-        ctx.router.registerLocalizedRoute("/book-demo") { BookADemoPage() }
     }
 
     router.tryRoutingTo(
