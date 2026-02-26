@@ -15,18 +15,15 @@ import kotlinx.browser.window
 @Composable
 fun ZenmoRoutingComponent() {
     val router = createLuxRouter()
-    com.varabyte.kobweb.core.init.initKobweb(router) { ctx ->
 
-        ctx.registerRoutesOfMenu(
-            routes = zenmoNavMenu.asRoutes()
-                // remove component demo to avoid registering its route twice
-                .dropLast(1),
+    router.registerRoutesOfMenu(
+        routes = zenmoNavMenu.asRoutes()
+            // remove component demo to avoid registering its route twice
+            .dropLast(1),
+        )
 
-            )
-
-        if (window.location.host != "zenmo.com") {
-            ctx.router.registerLocalizedRoute("/component-demo") { ComponentDemoPage() }
-        }
+    if (window.location.host != "zenmo.com") {
+        router.registerLocalizedRoute("/component-demo") { ComponentDemoPage() }
     }
 
     router.tryRoutingTo(
