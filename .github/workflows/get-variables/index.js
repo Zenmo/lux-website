@@ -10,6 +10,8 @@ const configPerBranch = {
         // without explicitly setting priority
         TRAEFIK_PRIORITY: -2000,
         ZENMO_DOMAIN: "nieuw.zenmo.com",
+        POSTGRES_URL: "jdbc:postgresql://10.0.4.150:5432/postgres",
+        POSTGRES_USER: "lux_website",
     },
     main: {
         BACKEND_DOMAIN: "site-backend.test.lux.energy",
@@ -21,6 +23,8 @@ const configPerBranch = {
         // Higher priority for test because productions *.lux.energy shadows test.lux.energy
         TRAEFIK_PRIORITY: -1000,
         ZENMO_DOMAIN: "test.zenmo.com",
+        POSTGRES_URL: "jdbc:postgresql://10.0.4.150:5432/postgres",
+        POSTGRES_USER: "lux_website",
     },
     pull_request: {
         BACKEND_DOMAIN: "localhost",
@@ -31,6 +35,8 @@ const configPerBranch = {
         LUX_HOST_REGEXP: "",
         TRAEFIK_PRIORITY: -10_000,
         ZENMO_DOMAIN: "zenmo.localhost:8080",
+        POSTGRES_URL: "jdbc:postgresql://localhost:5432/postgres",
+        POSTGRES_USER: "postgres",
     }
 }
 

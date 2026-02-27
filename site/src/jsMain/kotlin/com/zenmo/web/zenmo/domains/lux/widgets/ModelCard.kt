@@ -19,6 +19,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiOpenInNew
+import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
@@ -37,6 +38,7 @@ import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Span
+import kotlin.js.Date
 
 const val metaContentClassName = "meta-content"
 
@@ -93,6 +95,7 @@ val ModelCardLinkStyle = CssStyle {
 @Composable
 fun ModelCard(
     model: TwinModelCardItem,
+    lastModifiedDate: Date? = null,
     showLock: Boolean = false,
     modifier: Modifier = Modifier,
 ) {
@@ -135,10 +138,21 @@ fun ModelCard(
             }
         },
         description = {
-            ApplicationFieldLabel(
-                label = model.applicationArea.areaTitle,
-                labelColor = getApplicationAreaColor(model.applicationArea)
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                ApplicationFieldLabel(
+                    label = model.applicationArea.areaTitle,
+                    labelColor = getApplicationAreaColor(model.applicationArea)
+                )
+                if (lastModifiedDate != null) {
+                    SpanText(
+                        text = "• ${lastModifiedDate.modelCardLastModifiedDateText()}",
+                        modifier = DeEmphasizedTextStyle.toModifier()
+                            .padding(left = 8.px)
+                    )
+                }
+            }
         },
         metaContent = {
             Box(
@@ -190,4 +204,8 @@ private fun RoundedIcon(
             .then(modifier),
         contentAlignment = Alignment.Center
     ) { icon() }
+}
+
+private fun Date.modelCardLastModifiedDateText(): String {
+    return this.toLocaleString("en", js("{month: 'short', year: 'numeric'}"))
 }
