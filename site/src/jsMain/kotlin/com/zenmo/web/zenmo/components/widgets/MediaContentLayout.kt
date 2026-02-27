@@ -4,21 +4,22 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
-import com.varabyte.kobweb.compose.ui.modifiers.flexWrap
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.thenIf
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
 import org.jetbrains.compose.web.css.FlexDirection
-import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.dom.Div
 
 
 @OptIn(DelicateApi::class)
@@ -39,21 +40,14 @@ fun MediaContentLayout(
     actionText: @Composable () -> Unit = {},
     reversed: Boolean = false,
 ) {
-    val breakpoint = rememberBreakpoint()
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
+    Div(
+        ResponsiveFlexStyle.toModifier()
             .responsiveGap()
-            .thenIf(
-                breakpoint < Breakpoint.MD,
-                Modifier.flexWrap(FlexWrap.Wrap)
-            )
             .thenIf(
                 reversed,
                 Modifier.flexDirection(FlexDirection.RowReverse)
-            ),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
+            )
+            .toAttrs(),
     ) {
         Box(
             modifier = Modifier.fillMaxWidth(),
