@@ -42,7 +42,7 @@ val nederland = PublicSubdomainTwinModel(
     subdomain = "nederland",
     subdomainComponent = { NederlandIndex() },
     label = LocalizedText(en = "Netherlands", nl = "Nederland"),
-    imageUrl = "/lux/images/models/nederland.png",
+    imageUrl = "/lux/images/model_thumbnails/nederland.jpg",
     modelId = Uuid.parse("0853040a-824d-4341-9d50-26bf4a3deb8f"),
     applicationArea = LuxApplicationArea.LUX_REGION
 )
@@ -82,7 +82,7 @@ val tuinzigt = PublicSubdomainTwinModel(
     subdomain = "tuinzigt",
     subdomainComponent = { Tuinzigt() },
     label = LocalizedText("Tuinzigt"),
-    imageUrl = "/lux/images/models/tuinzigt.jpg",
+    imageUrl = "/lux/images/model_thumbnails/tuinzigt.jpg",
     modelId = Uuid.parse("a9257c2c-347e-486f-9fc2-84854555781b"),
     applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
@@ -98,7 +98,7 @@ val cognizant = PublicSubdomainTwinModel(
     subdomain = "cognizant",
     subdomainComponent = { Cognizant() },
     label = LocalizedText(en = "Cognizant", nl = "Cognizant"),
-    imageUrl = "/lux/images/cognizant-immersive-room.jpg",
+    imageUrl = "/lux/images/model_thumbnails/cognizant-immersive-room.jpg",
     modelId = Uuid.parse("7cfc3e4a-608c-4e2c-a834-4d290174ee9e"),
     applicationArea = LuxApplicationArea.LUX_BUSINESS
 )
@@ -114,7 +114,7 @@ val amersfoort = PublicSubdomainTwinModel(
     subdomain = "amersfoort",
     subdomainComponent = { Amersfoort() },
     label = LocalizedText(en = "Amersfoort", nl = "Amersfoort"),
-    imageUrl = "/lux/images/models/amersfoort.jpg",
+    imageUrl = "/lux/images/model_thumbnails/amersfoort.jpg",
     modelId = Uuid.parse("88c97843-1272-4557-beec-09412ef2c32b"),
     applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
@@ -122,7 +122,7 @@ val veenendaal = PublicSubdomainTwinModel(
     subdomain = "veenendaal",
     subdomainComponent = { Veenendaal() },
     label = LocalizedText(en = "Veenendaal", nl = "Veenendaal"),
-    imageUrl = "/lux/images/models/veenendaal.jpg",
+    imageUrl = "/lux/images/model_thumbnails/veenendaal.jpg",
     modelId = Uuid.parse("0bec54a4-af5d-47fd-8af1-dfb3af0457f6"),
     applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )

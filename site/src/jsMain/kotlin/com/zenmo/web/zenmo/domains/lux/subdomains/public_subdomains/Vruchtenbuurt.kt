@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.components.widgets.MediaContentLayout
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.vruchtenbuurt
 import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
@@ -12,7 +13,9 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.components.ProfileCardArrangem
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.ProfileContactCard
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.SubdomainModelPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.ZenmoModellerProfileCard
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
+import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.dom.P
 
 @Composable
@@ -23,22 +26,34 @@ fun VruchtenbuurtIndex() {
         SubdomainModelPage(
             modelId = vruchtenbuurt.modelId,
             introContent = {
-                P {
-                    LangText(
-                        en = """
+                MediaContentLayout(
+                    imageUrl = vruchtenbuurt.imageUrl,
+                    title = {
+                        HeaderText(
+                            enText = vruchtenbuurt.label.en,
+                            nlText = vruchtenbuurt.label.nl,
+                            textColor = SitePalette.light.primary,
+                        )
+                    },
+                    description = {
+                        P {
+                            LangText(
+                                en = """
                             See below the mock-up of the digital twin for the sustainability of the Vruchtenbuurt in 
                             The Hague. In the Vruchtenbuurt, the energy cooperative Sterk Op Stroom is working on a 
                             smart energy system. The digital twin will assist in designing these sustainable energy 
                             systems and making the right decisions.
                         """.trimIndent(),
-                        nl = """
+                                nl = """
                             Bekijk hieronder de mock-up van de digital twin voor de verduurzaming van het de 
                             Vruchtenbuurt in den Haag. In de Vruchtenbuurt werkt de energie coöperatie Sterk Op 
                             Stroom aan een slim energiesysteem. De digital twin zal helpen bij het ontwerpen van 
                             deze duurzame energiesystemen en het maken van de juiste beslissingen.
                         """.trimIndent(),
-                    )
-                }
+                            )
+                        }
+                    }
+                )
             },
             footerContent = {
                 SimpleGrid(

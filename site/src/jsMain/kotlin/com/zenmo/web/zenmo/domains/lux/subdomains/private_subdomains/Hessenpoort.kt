@@ -34,7 +34,7 @@ fun Hessenpoort() {
                     title = {
                         HeaderText(
                             enText = "Hessenpoort Business Park",
-                            nlText = "Bedrijventerrein Hessenpoort"
+                            nlText = "Bedrijventerrein Hessenpoort",
                         )
                     },
                     description = {
