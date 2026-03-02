@@ -11,6 +11,7 @@ import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.CSSColorValue
@@ -34,7 +35,7 @@ fun ApplicationAreaCTAButton(
     },
 ) {
     Link(
-        path = path,
+        path = localizedUrl(path),
         variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
         modifier = Modifier
             .background(bgColor).color(textColor)

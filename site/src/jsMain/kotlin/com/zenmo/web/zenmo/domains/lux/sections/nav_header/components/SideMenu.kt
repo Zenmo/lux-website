@@ -113,9 +113,9 @@ fun SideMenu(
                         when (item) {
                             is MenuItem.Simple ->
                                 SideMenuItem(
-                                    href = item.route.path,
+                                    href = item.route.url,
                                     label = item.route.label,
-                                    isActive = isPathActive(href = item.route.path),
+                                    isActive = isPathActive(href = item.route.url),
                                 )
 
                             is MenuItem.WithSubs -> {
@@ -134,9 +134,9 @@ fun SideMenu(
                                     ) {
                                         item.subItems.forEach { subItem ->
                                             SideMenuItem(
-                                                href = subItem.route.path,
+                                                href = subItem.route.url,
                                                 label = subItem.route.label,
-                                                isActive = isPathActive(href = subItem.route.path),
+                                                isActive = isPathActive(href = subItem.route.url),
                                             )
                                         }
                                     }

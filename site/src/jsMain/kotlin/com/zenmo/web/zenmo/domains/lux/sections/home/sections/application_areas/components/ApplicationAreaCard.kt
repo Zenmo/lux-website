@@ -93,7 +93,7 @@ fun ApplicationAreaCard(
         }
 
         Link(
-            path = applicationArea.path,
+            path = applicationArea.url,
             variant = UncoloredLinkVariant.then(UndecoratedLinkVariant),
         ) {
             Row(

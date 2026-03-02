@@ -4,12 +4,13 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.core.models.Route
 import com.zenmo.web.zenmo.core.models.SimpleMenuItem
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 
 enum class DrechtstedenProjectArea(
     override val label: LocalizedText,
     override val areaTitle: LocalizedText = label,
     override val path: String,
-    override val url: String = path,
+    override val url: String = localizedUrl(path),
     override val pageComponent: @Composable () -> Unit,
 ) : Route, SimpleMenuItem, ApplicationArea {
     RES_REGION(

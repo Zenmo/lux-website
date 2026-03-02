@@ -5,6 +5,7 @@ import com.zenmo.web.zenmo.core.models.Route
 import com.zenmo.web.zenmo.core.models.SimpleMenuItem
 import com.zenmo.web.zenmo.core.models.asNavLinkPath
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.LuxCompany
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.LuxEnergyHub
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_region.LuxRegion
@@ -15,7 +16,7 @@ enum class LuxApplicationArea(
     override val label: LocalizedText,
     override val areaTitle: LocalizedText = label,
     override val path: String = label.en.asNavLinkPath("application-areas"),
-    override val url: String = path,
+    override val url: String = localizedUrl(path),
     override val pageComponent: @Composable () -> Unit,
 ) : Route, SimpleMenuItem, ApplicationArea {
     LUX_ENERGY_HUB(

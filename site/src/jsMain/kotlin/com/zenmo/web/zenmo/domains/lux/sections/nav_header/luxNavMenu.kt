@@ -13,6 +13,7 @@ private val applicationAreasMenuItem = MenuItem.WithSubs(
         MenuItem.Simple(
             route = RoutedMenuItem(
                 path = field.path,
+                url = field.url,
                 label = field.label,
                 pageComponent = field.pageComponent,
             ),

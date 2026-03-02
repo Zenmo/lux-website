@@ -16,6 +16,7 @@ import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.domains.lux.sections.DeEmphasizedTextStyle
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.font.TextStyle
@@ -112,7 +113,7 @@ val LuxIconWrapperStyle = CssStyle {
 
 @Composable
 fun CallToActionAnchorButton(
-    href: String = "/book-demo",
+    href: String = localizedUrl("/book-demo"),
     subActionTextContent: @Composable () -> Unit = {
         Span(
             DeEmphasizedTextStyle.toModifier()

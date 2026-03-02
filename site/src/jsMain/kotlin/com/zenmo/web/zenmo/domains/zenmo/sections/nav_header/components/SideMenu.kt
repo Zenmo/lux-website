@@ -102,9 +102,9 @@ fun SideMenu(
                         when (item) {
                             is MenuItem.Simple -> {
                                 SideMenuNavLink(
-                                    href = item.route.path,
+                                    href = item.route.url,
                                     label = item.route.label,
-                                    isActive = isPathActive(href = item.route.path),
+                                    isActive = isPathActive(href = item.route.url),
                                     onClick = { close() }
                                 )
                             }
@@ -113,7 +113,7 @@ fun SideMenu(
                                 ExpandableSideMenuItem(
                                     menu = item,
                                     isAnySubItemActive = item.subItems.any { subItem ->
-                                        isPathActive(href = subItem.route.path)
+                                        isPathActive(href = subItem.route.url)
                                     },
                                     onClick = { close() }
                                 )

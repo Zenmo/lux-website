@@ -13,6 +13,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangBlock
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.domains.lux.sections.home.CardGridStyle
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
@@ -76,9 +77,9 @@ fun FaqFallBack() {
                         "Can't find what you're looking for? ",
                     )
                     InlineLink(
+                        destinationUrl = localizedUrl("/book-demo"),
                         enLinkText = "Contact us",
                         nlLinkText = "",
-                        destinationUrl = "/book-demo",
                     )
                     Text(
                         " for support!"
@@ -89,9 +90,9 @@ fun FaqFallBack() {
                         "Kun je niet vinden wat je zoekt? ",
                     )
                     InlineLink(
+                        destinationUrl = localizedUrl("/book-demo"),
                         enLinkText = "",
                         nlLinkText = "Neem contact met ons op",
-                        destinationUrl = "/book-demo",
                     )
                     Text(
                         " voor ondersteuning!"

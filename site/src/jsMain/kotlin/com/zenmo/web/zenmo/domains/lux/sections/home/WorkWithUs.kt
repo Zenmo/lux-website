@@ -14,6 +14,7 @@ import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.components.widgets.SectionContainer
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
 import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -46,7 +47,7 @@ fun WorkWithUs() {
                 )
             }
             Link(
-                path = "/book-demo",
+                path = localizedUrl("/book-demo"),
                 variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
                 modifier = Modifier
                     .background(SitePalette.light.secondary).color(Colors.Black)

@@ -28,7 +28,7 @@ val MainMenuItemHoverStyle = CssStyle {
 fun MenuItemWithSubs(
     menu: MenuItem.WithSubs,
 ) {
-    val isMenuActive = menu.subItems.any { isPathActive(href = it.route.path) }
+    val isMenuActive = menu.subItems.any { isPathActive(href = it.route.url) }
     Box(
         modifier = MenuItemParentStyle.toModifier()
     ) {
@@ -48,9 +48,9 @@ fun MenuItemWithSubs(
                     contentAlignment = Alignment.Center
                 ) {
                     NavBarLink(
-                        href = sub.route.path,
+                        href = sub.route.url,
                         label = sub.route.label,
-                        isActive = isPathActive(href = sub.route.path),
+                        isActive = isPathActive(href = sub.route.url),
                     )
                 }
             }

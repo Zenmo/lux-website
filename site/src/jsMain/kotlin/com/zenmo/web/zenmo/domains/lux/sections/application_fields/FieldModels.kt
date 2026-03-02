@@ -72,7 +72,7 @@ private fun BrowseAllModelsLink(
     applicationArea: LuxApplicationArea
 ) {
     val path = buildString {
-        append(luxModelsMenuItem.route.path)
+        append(luxModelsMenuItem.route.url)
         append("?")
         append(URLSearchParams(json("area" to applicationArea.name)))
     }
