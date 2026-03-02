@@ -23,11 +23,11 @@ fun Cognizant() {
             modelId = cognizant.modelId,
             introContent = {
                 Image(
-                    src = "/lux/images/cognizant-immersive-room.jpg",
+                    src = cognizant.imageUrl,
                     alt = "cognizant immersive room",
                     modifier = Modifier.maxWidth(70.cssRem)
                 )
-                Column (
+                Column(
                     modifier = Modifier.maxWidth(50.cssRem)
                 ) {
                     P {

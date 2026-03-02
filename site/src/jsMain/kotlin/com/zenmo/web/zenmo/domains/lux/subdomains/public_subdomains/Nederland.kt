@@ -3,11 +3,14 @@ package com.zenmo.web.zenmo.domains.lux.subdomains.public_subdomains
 
 import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.components.widgets.MediaContentLayout
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.nederland
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.SubdomainModelPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.ZenmoModellerProfileCard
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
+import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.dom.P
 
 
@@ -19,12 +22,24 @@ fun NederlandIndex() {
         SubdomainModelPage(
             modelId = nederland.modelId,
             introContent = {
-                P {
-                    LangText(
-                        en = "Below is a mock-up of the digital twin for the Netherlands",
-                        nl = "Bekijk hieronder de mock-up van de digital twin voor Nederland",
-                    )
-                }
+                MediaContentLayout(
+                    imageUrl = nederland.imageUrl,
+                    title = {
+                        HeaderText(
+                            enText = nederland.label.en,
+                            nlText = nederland.label.nl,
+                            textColor = SitePalette.light.primary,
+                        )
+                    },
+                    description = {
+                        P {
+                            LangText(
+                                en = "Below is a mock-up of the digital twin for the Netherlands",
+                                nl = "Bekijk hieronder de mock-up van de digital twin voor Nederland",
+                            )
+                        }
+                    }
+                )
             },
             footerContent = {
                 ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)
