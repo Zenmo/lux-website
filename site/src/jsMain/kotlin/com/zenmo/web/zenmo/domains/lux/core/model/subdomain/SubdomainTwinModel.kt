@@ -1,8 +1,8 @@
 package com.zenmo.web.zenmo.domains.lux.core.model.subdomain
 
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.domains.lux.core.TwinModelCard
 import com.zenmo.web.zenmo.pages.SiteGlobals
-import kotlinx.browser.window
 
 
 /**
@@ -11,5 +11,5 @@ import kotlinx.browser.window
  */
 sealed interface SubdomainTwinModel : Subdomain, TwinModelCard {
     override val url: String
-        get() = "//${subdomain}.${SiteGlobals.LUX_DOMAIN}"
+        get() = localizedUrl("${subdomain}.${SiteGlobals.LUX_DOMAIN}", "/")
 }

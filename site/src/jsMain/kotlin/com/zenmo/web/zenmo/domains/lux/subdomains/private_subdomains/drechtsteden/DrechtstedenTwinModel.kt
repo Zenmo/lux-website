@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.core.models.Route
 import com.zenmo.web.zenmo.core.models.RoutedMenuItem
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.domains.lux.core.PrivateTwinModel
 import com.zenmo.web.zenmo.domains.lux.core.TwinModelCard
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
@@ -26,12 +27,7 @@ data class DrechtstedenTwinModel(
     override val pageComponent: @Composable () -> Unit,
 ) : Route, TwinModelCard, PrivateTwinModel {
     override val url: String
-        get() = if (isCurrentDomainDrechtsteden) {
-            // Using only the path prevents a full page reload when navigating
-            path
-        } else {
-            "//${drechtstedenFullDomain}$path"
-        }
+        get() = localizedUrl(drechtstedenFullDomain, path)
 }
 
 fun DrechtstedenTwinModel.asRoutedMenuItem() =

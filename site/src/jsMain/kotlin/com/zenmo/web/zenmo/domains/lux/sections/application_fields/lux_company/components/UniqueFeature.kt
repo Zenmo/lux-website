@@ -54,7 +54,7 @@ fun UniqueFeature() {
                         en = {
                             Text("A unique feature of LUX company is that it can be combined with ")
                             InlineLink(
-                                destinationUrl = LuxApplicationArea.LUX_ENERGY_HUB.path,
+                                destinationUrl = LuxApplicationArea.LUX_ENERGY_HUB.url,
                                 enLinkText = LuxApplicationArea.LUX_ENERGY_HUB.label.en,
                                 nlLinkText = LuxApplicationArea.LUX_ENERGY_HUB.label.nl
                             )
@@ -65,7 +65,7 @@ fun UniqueFeature() {
                                 "Een unieke eigenschap van LUX company is dat het gecombineerd kan worden met "
                             )
                             InlineLink(
-                                destinationUrl = LuxApplicationArea.LUX_ENERGY_HUB.path,
+                                destinationUrl = LuxApplicationArea.LUX_ENERGY_HUB.url,
                                 enLinkText = "LUX energy hub",
                                 nlLinkText = "LUX energy hub"
                             )

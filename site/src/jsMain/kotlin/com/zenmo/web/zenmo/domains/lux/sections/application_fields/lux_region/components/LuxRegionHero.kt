@@ -118,7 +118,7 @@ private fun ProvenInPractice() {
     ) {
         P {
             InlineLink(
-                destinationUrl = LuxApplicationArea.LUX_ENERGY_HUB.path,
+                destinationUrl = LuxApplicationArea.LUX_ENERGY_HUB.url,
                 enLinkText = LuxApplicationArea.LUX_ENERGY_HUB.label.en,
                 nlLinkText = LuxApplicationArea.LUX_ENERGY_HUB.label.nl,
             )

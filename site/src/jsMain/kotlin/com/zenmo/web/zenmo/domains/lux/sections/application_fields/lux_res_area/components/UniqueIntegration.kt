@@ -58,7 +58,7 @@ fun UniqueIntegration() {
                         )
                         Text(" ")
                         InlineLink(
-                            destinationUrl = LuxApplicationArea.LUX_REGION.path,
+                            destinationUrl = LuxApplicationArea.LUX_REGION.url,
                             enLinkText = LuxApplicationArea.LUX_REGION.areaTitle.en,
                             nlLinkText = LuxApplicationArea.LUX_REGION.areaTitle.nl,
                         )
@@ -75,7 +75,7 @@ fun UniqueIntegration() {
                     nl = {
                         Text("Een unieke mogelijkheid van LUX Woonwijk is de combinatie met ")
                         InlineLink(
-                            destinationUrl = LuxApplicationArea.LUX_REGION.path,
+                            destinationUrl = LuxApplicationArea.LUX_REGION.url,
                             enLinkText = LuxApplicationArea.LUX_REGION.areaTitle.en,
                             nlLinkText = LuxApplicationArea.LUX_REGION.areaTitle.nl,
                         )

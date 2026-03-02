@@ -106,9 +106,9 @@ fun ExpandableSideMenuItem(
             ) {
                 menu.subItems.forEach { subItem ->
                     SideMenuNavLink(
-                        href = subItem.route.path,
+                        href = subItem.route.url,
                         label = subItem.route.label,
-                        isActive = isPathActive(href = subItem.route.path),
+                        isActive = isPathActive(href = subItem.route.url),
                         onClick = onClick,
                         hasBullet = true
                     )

@@ -15,8 +15,8 @@ import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.extendedBy
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.pages.SiteGlobals
-import kotlinx.browser.window
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.px
 
@@ -61,11 +61,8 @@ val LuxLogoImageVariant = FitWidthImageVariant.extendedBy {
 fun LuxLogo(
     domain: String = SiteGlobals.LUX_DOMAIN
 ) {
-    val location = window.location
-    val sameOrigin = location.hostname == domain
-
     Link(
-        path = if (sameOrigin) "/" else "${location.protocol}//$domain",
+        path = localizedUrl(domain, "/"),
         variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
         openExternalLinksStrategy = OpenLinkStrategy.IN_PLACE
     ) {
