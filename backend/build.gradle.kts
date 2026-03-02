@@ -4,6 +4,8 @@ plugins {
     application
 }
 
+val exposed_version = libs.versions.exposed.get()
+
 dependencies {
     implementation(project(":shared"))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:${libs.versions.kotlinx.serialization.get()}")
@@ -21,10 +23,14 @@ dependencies {
     implementation("org.http4k:http4k-security-oauth")
     implementation("org.http4k:http4k-format-kotlinx-serialization")
     implementation("org.http4k:http4k-multipart")
+    implementation("org.postgresql:postgresql:42.7.7")
 
     // Implements Jakarta Email specification
     implementation("org.eclipse.angus:angus-mail:2.0.3")
     implementation("org.http4k:http4k-format-jackson:4.41.0.0")
+    implementation("org.jetbrains.exposed:exposed-core:${exposed_version}")
+    implementation("org.jetbrains.exposed:exposed-jdbc:${exposed_version}")
+    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:${exposed_version}")
 
 
     testImplementation(kotlin("test"))

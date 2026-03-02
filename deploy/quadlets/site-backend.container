@@ -14,6 +14,7 @@ Label=traefik.http.services.site-backend-$ENVIRONMENT.loadbalancer.server.port=8
 EnvironmentFile=site-backend-$ENVIRONMENT.env
 Secret=CONTACTFORMULIER_AZURE_SMTP_PASSWORD,type=env,target=AZURE_SMTP_PASSWORD
 Secret=WEBSITE_CLIENT_SECRET,type=env,target=CLIENT_SECRET
+Secret=ANYLOGIC_POSTGRES_PASSWORD,type=env,target=ANYLOGIC_POSTGRES_PASSWORD
 
 [Service]
 Restart=always
