@@ -1,11 +1,11 @@
 package com.zenmo.web.zenmo.core.services.localization
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import kotlinx.browser.document
 import kotlinx.browser.window
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import org.w3c.dom.HTMLElement
-import org.w3c.dom.url.URLSearchParams
 
 
 /**
@@ -19,9 +19,9 @@ object LanguageManager {
     - local storage,
     - navigator, or
     - URL parameters */
-    private val _language = mutableStateOf(getLanguage())
+    private val _language = MutableStateFlow(getLanguage())
 
-    val language: State<Language> get() = _language
+    val language: StateFlow<Language> = _language.asStateFlow()
 
     private fun getLanguageFromLocalStorage(): Language? {
         val storedLang = window.localStorage.getItem(LANGUAGE_MODE_KEY)
