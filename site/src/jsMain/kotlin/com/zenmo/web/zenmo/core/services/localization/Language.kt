@@ -1,5 +1,8 @@
 package com.zenmo.web.zenmo.core.services.localization
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.compositionLocalOf
 
 
@@ -37,3 +40,12 @@ sealed class Language {
 }
 
 val LocalLanguage = compositionLocalOf<Language> { error("Unknown Language") }
+
+@Composable
+fun LanguageProvider(content: @Composable () -> Unit) {
+    val language = LanguageManager.language.collectAsState()
+
+    CompositionLocalProvider(LocalLanguage provides language.value) {
+        content()
+    }
+}

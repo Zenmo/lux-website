@@ -9,6 +9,7 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.core.services.localization.Language
 import com.zenmo.web.zenmo.core.services.localization.LanguageManager
@@ -25,10 +26,29 @@ import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
+import web.window.window
 
+typealias LanguageChangeHandler = (newLanguage: Language) -> Unit
 
 @Composable
 fun LanguageToggleButton() {
+    val router = rememberPageContext().router
+    val onChange: LanguageChangeHandler = { newLanguage ->
+        val previousLanguage = LanguageManager.language.value
+        LanguageManager.setLanguage(newLanguage)
+
+        val oldPath = window.location.pathname
+        val newPath = oldPath.replace(
+            Regex("^/${previousLanguage.shortCode}/(?<rest>.*)")
+        ) {
+            "/${newLanguage.shortCode}/${it.groups["rest"]?.value ?: ""}"
+        }
+
+        if (newPath != oldPath) {
+            router.tryRoutingTo(newPath)
+        }
+    }
+
     Row(
         modifier = Modifier
             .overflow(Overflow.Clip)
@@ -46,12 +66,12 @@ fun LanguageToggleButton() {
         val language = LocalLanguage.current
         LanguageOptionButton(
             label = "EN",
-            onSelect = { LanguageManager.setLanguage(Language.English) },
+            onSelect = { onChange(Language.English) },
             isSelected = language == Language.English,
         )
         LanguageOptionButton(
             label = "NL",
-            onSelect = { LanguageManager.setLanguage(Language.Dutch) },
+            onSelect = { onChange(Language.Dutch) },
             isSelected = language == Language.Dutch,
         )
     }
