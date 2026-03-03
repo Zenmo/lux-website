@@ -1,5 +1,6 @@
 package com.zenmo.backend
 
+import com.zenmo.backend.anylogic.ModelsController
 import com.zenmo.backend.contact.ContactController
 import com.zenmo.backend.contact.MailService
 import com.zenmo.backend.js.JsServer
@@ -8,7 +9,6 @@ import org.http4k.core.Filter
 import org.http4k.core.HttpHandler
 import org.http4k.core.Request
 import org.http4k.core.then
-import org.http4k.filter.DebuggingFilters
 import org.http4k.filter.ServerFilters
 import org.http4k.routing.bind
 import org.http4k.routing.routes
@@ -34,6 +34,10 @@ fun startServer() {
         "/api/contact" bind org.http4k.core.Method.POST to ContactController(MailService.create(config))::handler,
     )
 
+    val lastModifiedDateRoute = routes(
+        "/api/anylogic-models" bind org.http4k.core.Method.GET to ModelsController()::handler,
+    )
+
     val idTokenRoute = IdTokenController(oAuthSessions).route()
 
     val anyLogicProxyRoutes = AnyLogicProxy(oAuthSessions::retrieveIdToken).routes()
@@ -54,6 +58,7 @@ fun startServer() {
                 contactRoute,
                 anyLogicProxyRoutes,
                 idTokenRoute,
+                lastModifiedDateRoute,
             )
         )
 
@@ -65,7 +70,8 @@ fun startServer() {
 /**
  * Logs a short line for every request like "200 GET /main.mjs"
  */
-val printShortAccessLog: Filter = Filter { next -> { request: Request ->
+val printShortAccessLog: Filter = Filter { next ->
+    { request: Request ->
         val response = next(request)
         val statusCode = response.status.code
         val method = request.method.name
