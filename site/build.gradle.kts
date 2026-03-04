@@ -46,6 +46,7 @@ kotlin {
     compilerOptions {
         compilerOptions.freeCompilerArgs.add("-Xir-per-file")
         compilerOptions.freeCompilerArgs.add("-Xir-minimized-member-names=false")
+        freeCompilerArgs.add("-Xexplicit-backing-fields")
     }
 
     // This example is frontend only. However, for a fullstack app, you can uncomment the includeServer parameter
@@ -86,6 +87,7 @@ kotlin {
             implementation(libs.silk.icons.mdi)
             implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
+            implementation(libs.viewmodel.compose)
         }
 
         val commonTest by getting {
