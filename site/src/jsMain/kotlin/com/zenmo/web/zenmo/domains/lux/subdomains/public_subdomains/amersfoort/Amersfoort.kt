@@ -9,18 +9,24 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
+import com.zenmo.web.zenmo.components.widgets.ImageContent
 import com.zenmo.web.zenmo.components.widgets.LangText
+import com.zenmo.web.zenmo.domains.lux.components.HorizontalLine
 import com.zenmo.web.zenmo.domains.lux.components.layout.LuxSubdomainPageLayout
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.amersfoort
 import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.StartAnylogicSimulationOverlay
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.SubdomainModelPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import com.zenmo.web.zenmo.domains.lux.widgets.ModelCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
+import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.dom.Br
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 import kotlin.uuid.Uuid
 
@@ -37,32 +43,54 @@ fun Amersfoort() {
         SubdomainModelPage(
             modelId = Uuid.NIL,
             introContent = {
-                HeaderText(
-                    enText = "Digital Twins Amersfoort",
-                    nlText = "Digital Twins Amersfoort",
-                )
-
-                P {
-                    LangText(
-                        en = """
-                        This is an overview page of all digital twins created in collaboration with Amersfoort.
-                    """.trimIndent(),
-                        nl = """
-                        Dit is een overzichtspagina van alle digital twins gemaakt in samenwerking met de Amersfoort
-                    """.trimIndent()
+                Div {
+                    HeaderText(
+                        enText = "Digital Twins Amersfoort",
+                        nlText = "Digital Twins Amersfoort",
+                        textColor = SitePalette.light.primary,
                     )
+
+                    P {
+                        LangText(
+                            en = """
+                                The municipality of Amersfoort was interested in the differences in energy dynamics 
+                                per neighborhood and used LUX Neighbourhood to explore some scenarios. These public 
+                                models only include public data. 
+                            """.trimIndent(),
+                            nl = """
+                                De gemeente Amersfoort was geïnteresseerd in de verschillen in energiedynamiek per 
+                                wijk en heeft LUX Woonwijk gebruikt om enkele scenario's te verkennen. Deze publieke 
+                                modellen bevatten alleen openbare data.
+                            """.trimIndent()
+                        )
+                        Br { }
+                        LangText(
+                            en = """
+                                They allowed the municipality to explore the potential of solar panels on rooftops and 
+                                to what the impact in terms of grid-load with certain electrification scenarios. 
+                            """.trimIndent(),
+                            nl = """
+                                Ze stelden de gemeente in staat om het potentieel van zonnepanelen op daken te 
+                                verkennen en wat de impact zou zijn in termen van netbelasting bij bepaalde 
+                                elektrificatiescenario's.
+                            """.trimIndent()
+                        )
+                    }
                 }
             },
             mediaContent = {
+                ImageContent(
+                    imageUrl = amersfoort.imageUrl
+                )
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth().gap(1.cssRem)
                 ) {
-                    P {
-                        LangText(
-                            en = "Select a model to explore:",
-                            nl = "Selecteer een model om te verkennen:",
-                        )
-                    }
+                    HorizontalLine()
+                    SubHeaderText(
+                        enText = "Select a model to explore:",
+                        nlText = "Selecteer een model om te verkennen:",
+                    )
                     AmersfoortModelsTabRow(
                         models = amersfoortModels,
                         selectedModel = selectedModel,

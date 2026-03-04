@@ -36,19 +36,18 @@ fun Tuinzigt() {
                         P {
                             LangText(
                                 en = """
-                            View the model of the neighborhood Tuinzigt in Breda below.
-                            The energy twin helps explore choices and policies toward a sustainable energy system.
-                            You can take control and explore scenarios yourself.
-                            We combine heat, mobility, and electricity, both in demand and generation.
-                            You can also explore the potential of smart energy systems with smart charging and smart buffer management.
-                        """,
+                                    This model of the neighborhood Tuinzigt in Breda was used to explore the value of 
+                                    shared grid batteries. It is a closed model as it contains grid-data for all 
+                                    transformer stations. Per transformer station the municipality explored how much 
+                                    battery capacity would be required in a variety of electrification scenarios.   
+                                """.trimIndent(),
                                 nl = """
-                            Bekijk hieronder het model van de wijk Tuinzigt in Breda. 
-                            De energy twin helpt bij het onderzoeken van keuzes en beleid richting een duurzaam energie systeem. 
-                            Je kan zelf aan de knoppen zitten en scenario’s onderzoeken. 
-                            Hierbij combineren we warmte, mobiliteit en elektriciteit, in zowel vraag als opwek. 
-                            Ook kun je de potentie van slimme energiesystemen met slim laden en slimme aansturing van buffers bekijken. 
-                        """,
+                                    Dit model van de wijk Tuinzigt in Breda is gebruikt om de waarde van gedeelde 
+                                    batterijopslag te onderzoeken. Het is een afgeschermd model omdat het netdata bevat 
+                                    voor alle transformatorstations. Per transformatorstation heeft de gemeente 
+                                    verkend hoeveel batterijcapaciteit er nodig zou zijn in verschillende 
+                                    elektrificatiescenario's.
+                                """.trimIndent(),
                             )
                         }
                     }
