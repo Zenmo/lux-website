@@ -25,17 +25,17 @@ object LanguageManager {
 
     private fun getLanguageFromLocalStorage(): Language? {
         val storedLang = window.localStorage.getItem(LANGUAGE_MODE_KEY)
-        return storedLang?.let { Language.fromCodeToLanguage(it) }
+        return storedLang?.let { Language.fromShortcodeToLanguage(it) }
     }
 
     private fun getLanguageFromPath(): Language? {
         val firstPathComponent = window.location.pathname.split("/").getOrNull(1)
-        return firstPathComponent?.let { Language.fromUrlPathCodeToLanguage(it) }
+        return firstPathComponent?.let { Language.fromShortcodeToLanguage(it) }
     }
 
     private fun getLanguageFromNavigator(): Language {
-        val navigatorLang = window.navigator.language
-        return Language.fromCodeToLanguage(navigatorLang)
+        val languageCodes = window.navigator.languages.toList()
+        return Language.fromNavigatorCodesToLanguage(languageCodes)
     }
 
     private fun getLanguage(): Language {
