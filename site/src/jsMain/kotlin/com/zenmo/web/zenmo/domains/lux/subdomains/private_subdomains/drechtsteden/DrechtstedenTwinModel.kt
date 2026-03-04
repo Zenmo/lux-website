@@ -9,18 +9,15 @@ import com.zenmo.web.zenmo.domains.lux.core.PrivateTwinModel
 import com.zenmo.web.zenmo.domains.lux.core.TwinModelCard
 import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.DrechtstedenProjectArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.pages.SiteGlobals
-import kotlinx.browser.window
 
 private val drechtstedenFullDomain = "${PrivateSubdomainModel.DRECHTSTEDEN.subdomain}.${SiteGlobals.LUX_DOMAIN}"
-
-private val isCurrentDomainDrechtsteden = window.location.host == drechtstedenFullDomain
 
 data class DrechtstedenTwinModel(
     val projectPath: String,
     override val applicationArea: LuxApplicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
-    override val path: String = "${applicationArea.path}$projectPath",
     override val label: LocalizedText,
     override val imageUrl: String,
     override val entryPoint: String,
@@ -28,6 +25,14 @@ data class DrechtstedenTwinModel(
 ) : Route, TwinModelCard, PrivateTwinModel {
     override val url: String
         get() = localizedUrl(drechtstedenFullDomain, path)
+
+    override val path: String
+        get() = when (applicationArea) {
+            LuxApplicationArea.LUX_ENERGY_HUB -> DrechtstedenProjectArea.BUSINESS_PARKS.path
+            LuxApplicationArea.LUX_REGION -> DrechtstedenProjectArea.RES_REGION.path
+            LuxApplicationArea.LUX_NEIGHBOURHOOD -> DrechtstedenProjectArea.RESIDENTIAL_AREAS.path
+            LuxApplicationArea.LUX_BUSINESS -> LuxApplicationArea.LUX_BUSINESS.path
+        } + projectPath
 }
 
 fun DrechtstedenTwinModel.asRoutedMenuItem() =
