@@ -1,6 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.pages
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.navigation.remove
@@ -15,22 +16,25 @@ import kotlinx.browser.window
 
 @Composable
 fun LuxRoutingComponent() {
-    val router = createLuxRouter()
-    router.registerLocalizedRoute("/") {
-        LuxEnergyLayout { HomePage() }
-    }
-    router.registerLocalizedRoute("/book-demo") {
-        BookADemoPage()
-    }
+    val router = remember {
+        createLuxRouter {
+            registerLocalizedRoute("/") {
+                LuxEnergyLayout { HomePage() }
+            }
+            registerLocalizedRoute("/book-demo") {
+                BookADemoPage()
+            }
 
-    router.registerRoutesOfMenu(
-        routes = luxNavMenu.asRoutes(),
-        layoutWrapper = { _, content -> LuxEnergyLayout { content() } }
-    )
+            registerRoutesOfMenu(
+                routes = luxNavMenu.asRoutes(),
+                layoutWrapper = { _, content -> LuxEnergyLayout { content() } }
+            )
 
-    if (window.location.host != "lux.energy") {
-        router.registerLocalizedRoute("/component-demo") {
-            ComponentDemoPage()
+            if (window.location.host != "lux.energy") {
+                registerLocalizedRoute("/component-demo") {
+                    ComponentDemoPage()
+                }
+            }
         }
     }
 

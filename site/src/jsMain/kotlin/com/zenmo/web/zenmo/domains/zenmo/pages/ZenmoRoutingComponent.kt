@@ -1,9 +1,11 @@
 package com.zenmo.web.zenmo.domains.zenmo.pages
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.navigation.*
+import androidx.compose.runtime.remember
+import com.varabyte.kobweb.navigation.BasePath
+import com.varabyte.kobweb.navigation.UpdateHistoryMode
+import com.varabyte.kobweb.navigation.remove
 import com.varabyte.kobweb.silk.defer.DeferringHost
-import com.zenmo.web.zenmo.components.widgets.CatchAllPage
 import com.zenmo.web.zenmo.core.models.asRoutes
 import com.zenmo.web.zenmo.core.registerLocalizedRoute
 import com.zenmo.web.zenmo.domains.lux.core.createLuxRouter
@@ -14,16 +16,18 @@ import kotlinx.browser.window
 
 @Composable
 fun ZenmoRoutingComponent() {
-    val router = createLuxRouter()
+    val router = remember {
+        createLuxRouter {
+            registerRoutesOfMenu(
+                routes = zenmoNavMenu.asRoutes()
+                    // remove component demo to avoid registering its route twice
+                    .dropLast(1),
+            )
 
-    router.registerRoutesOfMenu(
-        routes = zenmoNavMenu.asRoutes()
-            // remove component demo to avoid registering its route twice
-            .dropLast(1),
-        )
-
-    if (window.location.host != "zenmo.com") {
-        router.registerLocalizedRoute("/component-demo") { ComponentDemoPage() }
+            if (window.location.host != "zenmo.com") {
+                registerLocalizedRoute("/component-demo") { ComponentDemoPage() }
+            }
+        }
     }
 
     router.tryRoutingTo(
