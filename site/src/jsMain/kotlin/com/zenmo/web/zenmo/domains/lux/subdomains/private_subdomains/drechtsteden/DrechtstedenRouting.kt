@@ -1,6 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.navigation.UpdateHistoryMode
@@ -16,19 +17,22 @@ import kotlinx.browser.window
 
 @Composable
 fun DrechtstedenRouting() {
-    val router = createLuxRouter()
-    router.drechtstedenRouting(drechtstedenNavMenu.asRoutes())
-    router.drechtstedenRouting(
-        routes = drechtstedenModels
-            /*
-             * If a project's [projectPath] is blank, it means it uses the same path as the project area.
-             * This is possible when there is only one project in that area.
-             * In that case, we skip registering the route to avoid duplicate route registrations.
-             * For example, [drechtstedenRes] is the only project in RES_REGION area so its [projectPath] is blank.
-             * */
-            .filter { it.projectPath.isNotBlank() }
-            .map { it.asRoutedMenuItem() },
-    )
+    val router = remember {
+        createLuxRouter {
+            drechtstedenRouting(drechtstedenNavMenu.asRoutes())
+            drechtstedenRouting(
+                routes = drechtstedenModels
+                    /*
+                     * If a project's [projectPath] is blank, it means it uses the same path as the project area.
+                     * This is possible when there is only one project in that area.
+                     * In that case, we skip registering the route to avoid duplicate route registrations.
+                     * For example, [drechtstedenRes] is the only project in RES_REGION area so its [projectPath] is blank.
+                     * */
+                    .filter { it.projectPath.isNotBlank() }
+                    .map { it.asRoutedMenuItem() },
+            )
+        }
+    }
 
     router.tryRoutingTo(
         BasePath.remove(window.location.href.removePrefix(window.origin)),
