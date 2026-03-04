@@ -11,7 +11,7 @@ import org.jetbrains.compose.web.dom.P
 @Composable
 fun DrechtstedenRegioIndex() {
     DrechtstedenTwinModelPage(
-        twin = drechtstedenRes,
+        twin = drechtstedenResRegion,
         introContent = {
             Div {
                 P {

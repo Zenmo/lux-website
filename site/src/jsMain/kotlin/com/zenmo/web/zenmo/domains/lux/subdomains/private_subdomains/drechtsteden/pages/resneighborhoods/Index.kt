@@ -15,7 +15,7 @@ import org.jetbrains.compose.web.css.cssRem
 import kotlin.uuid.Uuid
 
 @Composable
-fun ResNeighborhoodsPage() {
+fun NeighbourhoodsPage() {
     SubdomainModelPage(
         modelId = Uuid.NIL,
         introContent = {
@@ -36,14 +36,14 @@ fun ResNeighborhoodsPage() {
                 enText = "Explore the Models",
                 nlText = "Verken de Modellen",
             )
-            ResNeighborhoodModels()
+            NeighbourhoodModels()
         }
     )
 }
 
 
 @Composable
-fun ResNeighborhoodModels() =
+fun NeighbourhoodModels() =
     TwinModelsGrid(
-        models = drechtstedenResNeighborhoodsModels.toTwinModelCardItems(),
+        models = drechtstedenNeighbourhoodsModels.toTwinModelCardItems(),
     )

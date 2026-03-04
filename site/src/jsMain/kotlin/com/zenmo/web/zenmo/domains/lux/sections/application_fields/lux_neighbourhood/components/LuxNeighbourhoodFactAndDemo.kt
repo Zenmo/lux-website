@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.components
+package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier

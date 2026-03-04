@@ -32,7 +32,7 @@ val kerkbuurt =
         pageComponent = { Kerkbuurt() }
     )
 
-val drechtstedenResNeighborhoodsModels = listOf(
+val drechtstedenNeighbourhoodsModels = listOf(
     overTSpoor,
     oostdonk,
     kerkbuurt
