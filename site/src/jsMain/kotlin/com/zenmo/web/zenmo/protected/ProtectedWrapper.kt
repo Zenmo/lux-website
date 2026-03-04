@@ -23,37 +23,44 @@ sealed class AccessStatus {
     data object NotLoggedIn : AccessStatus()
     data object NotEnoughPrivileges : AccessStatus()
     data class Error(val errorMessage: String) : AccessStatus()
-    data object Success : AccessStatus()
+    data class Success(val protectedComponent: @Composable () -> Unit) : AccessStatus()
+}
+
+typealias ProtectedDisplayComponent = @Composable (
+    status: AccessStatus,
+) -> Unit
+
+@Composable
+fun DefaultProtectedDisplay(status: AccessStatus) {
+    when (status) {
+        AccessStatus.Pending -> Pending()
+        AccessStatus.NotLoggedIn -> Login()
+        AccessStatus.NotEnoughPrivileges -> NotEnoughPrivileges()
+        is AccessStatus.Error -> {
+            ErrorWidget(errorMessage = status.errorMessage)
+        }
+        is AccessStatus.Success -> {
+            status.protectedComponent()
+        }
+    }
 }
 
 @Composable
 fun ProtectedWrapper(
     entryPoint: String,
-    fallbackContent: @Composable (AccessStatus) -> Unit = {
-        when (it) {
-            AccessStatus.Pending -> Pending()
-            AccessStatus.NotLoggedIn -> Login()
-            AccessStatus.NotEnoughPrivileges -> NotEnoughPrivileges()
-            is AccessStatus.Error -> {
-                ErrorWidget(errorMessage = it.errorMessage)
-            }
-
-            AccessStatus.Success -> {} // does not happen here, self-contained in the module
-        }
-    }
+    display: ProtectedDisplayComponent = { status -> DefaultProtectedDisplay(status) },
 ) {
-    var privateModule by remember { mutableStateOf<PrivateTextModule?>(null) }
     var status by remember { mutableStateOf<AccessStatus>(AccessStatus.Pending) }
 
     LaunchedEffect(Unit) {
         try {
             val entryPointParts = entryPoint.split("/")
-            privateModule =
+            val privateModule =
                 when (entryPointParts.size) {
                     3 -> importAsync<PrivateTextModule>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/${entryPointParts[2]}/ProtectedComponent.export.mjs").await()
                     else -> importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
                 }
-            status = AccessStatus.Success
+            status = AccessStatus.Success { privateModule.ProtectedComponent() }
         } catch (e: Throwable) {
             /**
              * We get no status code after import failure.
@@ -101,9 +108,6 @@ fun ProtectedWrapper(
         Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        when (status) {
-            AccessStatus.Success -> privateModule!!.ProtectedComponent()
-            else -> fallbackContent(status)
-        }
+        display(status)
     }
 }

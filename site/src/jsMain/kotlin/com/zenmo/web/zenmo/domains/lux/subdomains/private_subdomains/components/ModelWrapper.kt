@@ -1,6 +1,6 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.components
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.functions.blur
@@ -80,7 +80,6 @@ fun ModelWrapper(
     entryPoint: String,
     modifier: Modifier = Modifier.padding(topBottom = 3.cssRem)
 ) {
-    var wrapperStatus by remember { mutableStateOf<AccessStatus>(AccessStatus.Success) }
     Box(
         Modifier
             .fillMaxWidth()
@@ -88,40 +87,33 @@ fun ModelWrapper(
             .height(80.vh).then(modifier),
         contentAlignment = Alignment.Center
     ) {
-        if (wrapperStatus !is AccessStatus.Success) {
-            Image(
-                src = imgUrl,
-                alt = "$entryPoint model teaser",
-                modifier = BlurModelImageStyle.toModifier()
-            )
-        }
-        Div(
-            Modifier
-                .thenIf(wrapperStatus !is AccessStatus.Success, ProtectedWrapperStyle.toModifier())
-                .thenIf(wrapperStatus is AccessStatus.Success, ModelWrapperStyle.toModifier())
-                .toAttrs()
-        ) {
-            ProtectedWrapper(
-                entryPoint = entryPoint,
-                fallbackContent = { status ->
-                    // we don't need to recompose the content if the status hasn't changed
-                    if (wrapperStatus != status) {
-                        wrapperStatus = status
+        ProtectedWrapper(
+            entryPoint = entryPoint,
+            display = { status ->
+                if (status is AccessStatus.Success) {
+                    Div(ModelWrapperStyle.toModifier().toAttrs()) {
+                        status.protectedComponent()
                     }
-
-                    when (status) {
-                        AccessStatus.Pending -> Pending()
-                        AccessStatus.NotLoggedIn -> Login()
-                        AccessStatus.NotEnoughPrivileges -> NotEnoughPrivileges(actionContent = {})
-                        is AccessStatus.Error -> {
-                            ErrorWidget(errorMessage = status.errorMessage, actionContent = {
-                                // todo trigger a retry or something
-                            })
+                } else {
+                    Image(
+                        src = imgUrl,
+                        alt = "$entryPoint model teaser",
+                        modifier = BlurModelImageStyle.toModifier()
+                    )
+                    Div(ProtectedWrapperStyle.toModifier().toAttrs()) {
+                        when (status) {
+                            AccessStatus.Pending -> Pending()
+                            AccessStatus.NotLoggedIn -> Login()
+                            AccessStatus.NotEnoughPrivileges -> NotEnoughPrivileges(actionContent = {})
+                            is AccessStatus.Error -> {
+                                ErrorWidget(errorMessage = status.errorMessage, actionContent = {
+                                    // todo trigger a retry or something
+                                })
+                            }
                         }
-
-                        AccessStatus.Success -> {}
                     }
-                })
-        }
+                }
+            },
+        )
     }
 }
