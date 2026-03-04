@@ -10,12 +10,11 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
-import com.zenmo.web.zenmo.domains.zenmo.widgets.button.PrimaryButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.utils.PublicRes
-import kotlinx.browser.window
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.P
 
@@ -48,10 +47,14 @@ fun CatchAllPage() {
             }
         }
 
-        PrimaryButton(
-            enText = "GO BACK",
-            nlText = "GA TERUG",
-            onClick = { window.history.back() }
+        ApplicationAreaCTAButton(
+            path = "/",
+            content = {
+                LangText(
+                    en = "Go the the homepage",
+                    nl = "Ga naar de homepage",
+                )
+            }
         )
     }
 }
