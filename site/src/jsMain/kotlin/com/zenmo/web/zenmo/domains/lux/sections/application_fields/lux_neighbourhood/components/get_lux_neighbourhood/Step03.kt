@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.components.get_lux_neighbourhood
+package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.get_lux_neighbourhood
 
 import androidx.compose.runtime.Composable
 import com.zenmo.web.zenmo.components.widgets.LangText

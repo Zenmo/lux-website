@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.components
+package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -24,7 +24,7 @@ import org.jetbrains.compose.web.dom.P
 
 
 @Composable
-fun ResHero() {
+fun NeighbourhoodHero() {
     LuxSectionContainer {
         Div(
             ResponsiveFlexStyle.toModifier()

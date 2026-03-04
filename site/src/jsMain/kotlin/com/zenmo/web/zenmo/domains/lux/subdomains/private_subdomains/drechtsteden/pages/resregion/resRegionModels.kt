@@ -6,7 +6,7 @@ import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicatio
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenTwinModel
 
 
-val drechtstedenRes =
+val drechtstedenResRegion =
     DrechtstedenTwinModel(
         projectPath = DrechtstedenProjectArea.RES_REGION.path,
         label = LocalizedText(nl = "Energy Twin Drechtsteden"),
@@ -18,5 +18,5 @@ val drechtstedenRes =
 
 
 val resRegionModels = listOf(
-    drechtstedenRes
+    drechtstedenResRegion
 )

@@ -20,7 +20,7 @@ import com.zenmo.web.zenmo.domains.lux.subdomains.components.SubdomainModelPage
 import com.zenmo.web.zenmo.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.municipalities.dordrecht
 import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resneighborhoods.overTSpoor
-import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resregion.drechtstedenRes
+import com.zenmo.web.zenmo.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resregion.drechtstedenResRegion
 import com.zenmo.web.zenmo.domains.lux.widgets.ModelCard
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -133,10 +133,10 @@ private fun DrechtstedenAreas() {
                 ),
                 url = DrechtstedenProjectArea.RES_REGION.url,
                 applicationArea = DrechtstedenProjectArea.RES_REGION,
-                imageUrl = drechtstedenRes.imageUrl,
-                isPrivate = drechtstedenRes.isPrivate,
+                imageUrl = drechtstedenResRegion.imageUrl,
+                isPrivate = drechtstedenResRegion.isPrivate,
             ),
-            showLock = drechtstedenRes.isPrivate
+            showLock = drechtstedenResRegion.isPrivate
         )
 
         ModelCard(

@@ -8,8 +8,8 @@ import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.LuxCompany
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.LuxEnergyHub
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.LuxNeighbourhood
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_region.LuxRegion
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_res_area.LuxNeighbourhood
 
 enum class LuxApplicationArea(
     val shortDescription: LocalizedText,
