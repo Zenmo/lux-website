@@ -2,6 +2,7 @@ package com.zenmo.web.zenmo.domains.lux.sections.home.sections.application_areas
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.functions.clamp
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -29,12 +30,14 @@ import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.vw
 import org.jetbrains.compose.web.dom.P
 
 var ApplicationAreaCardStyle = CssStyle {
     base {
         Modifier
-            .padding(48.px)
+            .fillMaxWidth()
+            .padding(clamp(28.px, 5.vw, 48.px))
             .background(Colors.White)
             .luxBorderRadius(LuxCornerRadius.lg)
             .cursor(Cursor.Pointer)
