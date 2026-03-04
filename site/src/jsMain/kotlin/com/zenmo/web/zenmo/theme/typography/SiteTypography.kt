@@ -1,12 +1,10 @@
 package com.zenmo.web.zenmo.theme.typography
 
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.OverflowWrap
 import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
-import com.varabyte.kobweb.compose.ui.modifiers.fontSize
-import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
-import com.varabyte.kobweb.compose.ui.modifiers.textTransform
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.zenmo.web.zenmo.pages.SiteGlobals
@@ -45,4 +43,5 @@ private fun Modifier.luxTypography(role: TextRole, breakpoint: Breakpoint) =
         .thenIf(
             role == TextRole.HEADER,
             this.textTransform(TextTransform.Uppercase)
+                .overflowWrap(OverflowWrap.Anywhere),
         )
