@@ -26,14 +26,20 @@ sealed class Language {
             Dutch -> English
         }
 
-        fun fromCodeToLanguage(code: String): Language = when {
-            code.startsWith("en", ignoreCase = true) -> English
-            else -> Dutch
+        fun fromNavigatorCodesToLanguage(codes: List<String>): Language {
+            codes.forEach { code ->
+                when {
+                    code.startsWith(English.shortCode) -> return English
+                    code.startsWith(Dutch.shortCode) -> return Dutch
+                }
+            }
+
+            return Dutch
         }
 
-        fun fromUrlPathCodeToLanguage(code: String): Language? = when (code) {
-            "en" -> English
-            "nl" -> Dutch
+        fun fromShortcodeToLanguage(code: String): Language? = when (code) {
+            English.shortCode -> English
+            Dutch.shortCode -> Dutch
             else -> null
         }
     }
