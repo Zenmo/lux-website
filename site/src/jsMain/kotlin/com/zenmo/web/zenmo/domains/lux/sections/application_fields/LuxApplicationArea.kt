@@ -6,7 +6,7 @@ import com.zenmo.web.zenmo.core.models.SimpleMenuItem
 import com.zenmo.web.zenmo.core.models.asNavLinkPath
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.core.services.localization.localizedUrl
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.LuxCompany
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_business.LuxBusiness
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.LuxEnergyHub
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.LuxNeighbourhood
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_region.LuxRegion
@@ -49,7 +49,7 @@ enum class LuxApplicationArea(
             "Inzicht in batterijwaarde en energieflexibiliteit",
             "Insight into battery value and energy flexibility",
         ),
-        pageComponent = { LuxCompany() }
+        pageComponent = { LuxBusiness() }
     ),
 }
 

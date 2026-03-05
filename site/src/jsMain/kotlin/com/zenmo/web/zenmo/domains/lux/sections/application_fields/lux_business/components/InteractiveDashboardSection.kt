@@ -1,17 +1,15 @@
-package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.components
+package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_business.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiDescription
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiElectricBolt
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiInsights
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiTune
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
@@ -21,7 +19,6 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.styles.HoverBoxShadowStyle
-import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
@@ -41,29 +38,9 @@ fun InteractiveDashboardSection() {
             .alignItems(AlignItems.Start),
     ) {
         HeaderText(
-            enText = "Your Interactive Dashboard",
-            nlText = "Uw Interactieve Dashboard",
+            enText = "Your Interactive Model",
+            nlText = "Uw Interactieve Model",
         )
-
-        P(
-            Modifier.margin(0.cssRem).toAttrs()
-        ) {
-            LangText(
-                en = """
-                    The interactive dashboard allows you to define the scenario that is ideal for your unique 
-                    situation. Then, with a click of your mouse, you can export a report in PowerPoint or PDF to 
-                    present the scenario to your management or to request a quote from suppliers, where we offer the 
-                    most prominent suppliers as pre-selection options.
-                """.trimIndent(),
-                nl = """
-                    Het interactieve dashboard zorgt ervoor dat jij het scenario kan definiëren dat voor jouw unieke 
-                    situatie ideaal is. Vervolgens kan je met een klik van je muis een rapportage exporteren in 
-                    PowerPoint of PDF om het scenario te presenteren aan jouw management of om een offerte uit te 
-                    vragen bij toeleveranciers, waarbij wij de meest vooraanstaande leveranciers als voorkeuze-opties 
-                    aanbieden.
-                """.trimIndent()
-            )
-        }
 
         SimpleGrid(
             numColumns = numColumns(base = 1, sm = 1, md = 2, lg = 3, xl = 3),
@@ -103,28 +80,6 @@ fun InteractiveDashboardSection() {
                     en = "Request quotes from most prominent suppliers as pre-selection options",
                     nl = "Vraag offertes aan bij vooraf geselecteerde toonaangevende leveranciers"
                 )
-            )
-        }
-
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .gap(16.px)
-                .padding(32.px)
-                .luxBorderRadius(LuxCornerRadius.lg)
-                .verticalLinearBackground()
-                .color(Colors.White)
-        ) {
-            MdiInsights()
-            LangText(
-                en = """
-                    What used to cost many days and many thousands of euros has been reduced to a few hours and 
-                    hundreds of euros by LUX company.
-                """.trimIndent(),
-                nl = """
-                    Wat vroeger vele dagen en vele duizenden euro’s kostte is door LUX-bedrijf teruggebracht tot enkele 
-                    uren en honderden euro’s.
-                """.trimIndent()
             )
         }
     }

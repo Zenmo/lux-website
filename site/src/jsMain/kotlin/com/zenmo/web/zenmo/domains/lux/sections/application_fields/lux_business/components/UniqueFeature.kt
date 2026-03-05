@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.components
+package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_business.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.functions.clamp
