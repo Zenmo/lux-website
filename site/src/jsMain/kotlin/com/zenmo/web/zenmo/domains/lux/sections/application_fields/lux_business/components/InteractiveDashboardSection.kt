@@ -1,25 +1,25 @@
-package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.components
+package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_business.components
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiDescription
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiElectricBolt
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiInsights
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiTune
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.styles.HoverBoxShadowStyle
 import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -29,6 +29,7 @@ import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.H3
 import org.jetbrains.compose.web.dom.P
 
@@ -38,29 +39,35 @@ fun InteractiveDashboardSection() {
     LuxSectionContainer(
         modifier = Modifier
             .background(SitePalette.light.overlay)
-            .alignItems(AlignItems.Start),
+            .alignItems(AlignItems.Start)
+            .gap(1.cssRem),
     ) {
         HeaderText(
-            enText = "Your Interactive Dashboard",
-            nlText = "Uw Interactieve Dashboard",
+            enText = "Your Interactive Model",
+            nlText = "Uw Interactieve Model",
         )
-
-        P(
-            Modifier.margin(0.cssRem).toAttrs()
-        ) {
+        P {
             LangText(
                 en = """
-                    The interactive dashboard allows you to define the scenario that is ideal for your unique 
-                    situation. Then, with a click of your mouse, you can export a report in PowerPoint or PDF to 
-                    present the scenario to your management or to request a quote from suppliers, where we offer the 
-                    most prominent suppliers as pre-selection options.
+                    If you have developed a scenario yourself, you can export it as a PowerPoint or PDF to convince 
+                    others, for example your manager or the bank. This export option also makes LUX Business ideal 
+                    for energy experts who advise a company. 
                 """.trimIndent(),
                 nl = """
-                    Het interactieve dashboard zorgt ervoor dat jij het scenario kan definiëren dat voor jouw unieke 
-                    situatie ideaal is. Vervolgens kan je met een klik van je muis een rapportage exporteren in 
-                    PowerPoint of PDF om het scenario te presenteren aan jouw management of om een offerte uit te 
-                    vragen bij toeleveranciers, waarbij wij de meest vooraanstaande leveranciers als voorkeuze-opties 
-                    aanbieden.
+                    Heb je zelf een scenario ontwikkeld? Dan kun je het exporteren als PowerPoint of PDF om anderen 
+                    te overtuigen, bijvoorbeeld je manager of de bank. Deze exportoptie maakt LUX Bedrijf ook 
+                    ideaal voor energie-experts die een bedrijf adviseren.  
+                """.trimIndent()
+            )
+            Br {}
+            LangText(
+                en = """
+                    They can develop scenarios with LUX company and export the best scenarios and present them to 
+                    their business customer. 
+                """.trimIndent(),
+                nl = """
+                    Zij kunnen met LUX company scenario's ontwikkelen en de beste scenario's exporteren en 
+                    presenteren aan hun zakelijke klant.
                 """.trimIndent()
             )
         }
@@ -93,47 +100,53 @@ fun InteractiveDashboardSection() {
                 )
             )
 
-            FeatureCard(
-                icon = { MdiElectricBolt(Modifier.fontSize(40.px)) },
-                title = LocalizedText(
-                    en = "Request Supplier Quotes",
-                    nl = "Leveranciers Offertes"
-                ),
-                description = LocalizedText(
-                    en = "Request quotes from most prominent suppliers as pre-selection options",
-                    nl = "Vraag offertes aan bij vooraf geselecteerde toonaangevende leveranciers"
-                )
-            )
-        }
-
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .gap(16.px)
-                .padding(32.px)
-                .luxBorderRadius(LuxCornerRadius.lg)
-                .verticalLinearBackground()
-                .color(Colors.White)
-        ) {
-            MdiInsights()
-            LangText(
-                en = """
-                    What used to cost many days and many thousands of euros has been reduced to a few hours and 
-                    hundreds of euros by LUX company.
-                """.trimIndent(),
-                nl = """
-                    Wat vroeger vele dagen en vele duizenden euro’s kostte is door LUX-bedrijf teruggebracht tot enkele 
-                    uren en honderden euro’s.
-                """.trimIndent()
-            )
+            Column(
+                modifier = FeatureCardStyle.toModifier()
+                    .then(HoverBoxShadowStyle.toModifier())
+                    .verticalLinearBackground()
+                    .color(Colors.White),
+            ) {
+                MdiInsights(Modifier.fontSize(40.px))
+                P(
+                    Modifier
+                        .margin(0.cssRem)
+                        .toAttrs()
+                ) {
+                    LangText(
+                        en = """
+                            Often even more space is created on the electricity grid when you start working together 
+                            with other companies. That is why we also developed  
+                        """.trimIndent(),
+                        nl = """
+                            Vaak wordt er zelfs nog meer ruimte op het elektriciteitsnet gecreëerd wanneer je gaat 
+                            samenwerken met andere bedrijven. Daarom hebben we ook 
+                        """.trimIndent(),
+                    )
+                    InlineLink(
+                        destinationUrl = LuxApplicationArea.LUX_ENERGY_HUB.url,
+                        enLinkText = "LUX Energy Hub.",
+                        nlLinkText = "LUX Energie Hub",
+                        textColor = Colors.White,
+                    )
+                    LangText(
+                        en = "",
+                        nl = " ontwikkeld."
+                    )
+                }
+            }
         }
     }
 }
 
-val FeatureIconStyle = CssStyle {
-    cssRule(" .material-icons ") {
-        Modifier.fontSize(FontSize.XXLarge)
-    }
+val FeatureCardStyle = CssStyle.base {
+    Modifier
+        .fillMaxWidth()
+        .background(Colors.White)
+        .color(SitePalette.light.primary)
+        .padding(32.px)
+        .gap(1.cssRem)
+        .luxBorderRadius(LuxCornerRadius.lg)
+
 }
 
 @Composable
@@ -141,17 +154,12 @@ private fun FeatureCard(
     icon: @Composable () -> Unit,
     title: LocalizedText,
     description: LocalizedText,
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Colors.White)
-            .color(SitePalette.light.primary)
-            .padding(32.px)
-            .gap(1.cssRem)
-            .luxBorderRadius(LuxCornerRadius.lg)
-            .then(FeatureIconStyle.toModifier())
+        modifier = FeatureCardStyle.toModifier()
             .then(HoverBoxShadowStyle.toModifier())
+            .then(modifier),
     ) {
         icon()
         H3(
