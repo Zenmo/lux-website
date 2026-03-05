@@ -51,20 +51,20 @@ fun LuxNeighbourhoodFacts() {
             FactBlock(
                 LocalizedText(
                     en = """
-                        We are currently working on an integration between the LUX neighborhood model and TNO’s design 
-                        toolkit to make the dimensioning and cost analysis of district heating networks more accessible.
+                        A direct connection with TNO’s design toolkit is on the way! Making detailed cost analysis of 
+                        district heating networks possible. 
                     """.trimIndent(),
                     nl = """
-                        We werken momenteel aan een koppeling tussen het LUX buurtmodel en designtoolkit van TNO om 
-                        dimensionering en kostenanalyses van warmtenetten toegankelijk te maken.
+                        Een directe koppeling met de ontwerptoolkit van TNO is in aantocht! Dit maakt gedetailleerde 
+                        kostenanalyses van stadsverwarmingsnetwerken mogelijk.
                     """.trimIndent()
                 )
             )
 
             FactBlock(
                 LocalizedText(
-                    en = "We are currently developing integrations with GEO tools such as ArcGIS and Tygron.",
-                    nl = "We werken momenteel aan koppelingen met GEO-tools van ArcGIS en Tygron."
+                    en = "We are also working with ESRI on integration of LUX in ArcGIS.",
+                    nl = "We werken ook samen met ESRI aan de integratie van LUX in ArcGIS."
                 )
             )
         }
