@@ -13,7 +13,7 @@ import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.Ap
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.LuxNeighbourhoodFactAndDemo
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.NeighbourhoodHero
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.NeighbourhoodPersonalAdvice
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.QuestionsGrid
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.RealDataSimulation
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.get_lux_neighbourhood.GetLuxNeighbourhoodSection
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
@@ -23,7 +23,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 fun LuxNeighbourhood() {
     Column {
         NeighbourhoodHero()
-        QuestionsGrid()
+        RealDataSimulation()
         LuxNeighbourhoodFactAndDemo()
         GetLuxNeighbourhoodSection()
         NeighbourhoodPersonalAdvice()
