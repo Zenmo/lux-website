@@ -1,6 +1,5 @@
 package com.zenmo.web.zenmo.domains.lux.sections.nav_header.components
 
-import MenuItemParentStyle
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontSize
@@ -32,6 +31,7 @@ import com.zenmo.web.zenmo.domains.lux.styles.*
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.AnimatedIconStyle
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
 import com.zenmo.web.zenmo.theme.SitePalette
+import com.zenmo.web.zenmo.theme.styles.DropdownTriggerStyle
 import com.zenmo.web.zenmo.theme.styles.IconStyle
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
@@ -121,7 +121,7 @@ fun LuxMenuItemWithSubs(titleText: LocalizedText, subItems: List<MenuItem.Simple
     val isMenuActive = subItems.any { isPathActive(href = it.route.url) }
 
     Box(
-        modifier = MenuItemParentStyle.toModifier()
+        modifier = DropdownTriggerStyle.toModifier()
             .then(LuxSubMenuItemParentHoverStyle.toModifier())
     ) {
         Row(

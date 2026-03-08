@@ -1,6 +1,6 @@
 package com.zenmo.web.zenmo.domains.lux.sections.home.faqs
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -21,7 +21,6 @@ import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.AlignSelf
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
-import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
@@ -29,34 +28,41 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun Faqs(breakpoint: Breakpoint) {
+    var expandedIndex by remember { mutableStateOf<Int?>(null) }
     Div(
         CardGridStyle.toModifier()
-            .height(auto)
-            .alignSelf(AlignSelf.Companion.Stretch)
+            .fillMaxHeight()
+            .alignSelf(AlignSelf.Stretch)
             .thenIf(
                 breakpoint < Breakpoint.MD,
-                Modifier.Companion.display(DisplayStyle.Companion.Flex)
-                    .flexDirection(FlexDirection.Companion.Column)
+                Modifier.display(DisplayStyle.Flex)
+                    .flexDirection(FlexDirection.Column)
             )
             .toAttrs()
     ) {
-        FaqItem.Companion.faqs.forEach { faq ->
-            FaqsCardItem(faq.question)
+        FaqItem.faqs.forEachIndexed { index, faq ->
+            FaqsCardItem(
+                faq = faq,
+                isExpanded = expandedIndex == index,
+                onClick = {
+                    expandedIndex = if (expandedIndex == index) null else index
+                }
+            )
         }
     }
 }
 
 val FaqFallbackStyle = CssStyle {
     base {
-        Modifier.Companion
-            .background(SitePalette.Companion.light.primary)
+        Modifier
+            .background(SitePalette.light.primary)
             .color(Colors.White)
             .luxBorderRadius(LuxCornerRadius.lg)
             .padding(32.px)
-            .alignSelf(AlignSelf.Companion.Stretch)
+            .alignSelf(AlignSelf.Stretch)
     }
     cssRule(" .silk-link") {
-        Modifier.Companion.color(Colors.White)
+        Modifier.color(Colors.White)
     }
 }
 
@@ -67,8 +73,8 @@ fun FaqFallBack() {
         contentAlignment = Alignment.Center,
     ) {
         P(
-            Modifier.Companion.margin(0.px)
-                .display(DisplayStyle.Companion.InlineBlock)
+            Modifier.margin(0.px)
+                .display(DisplayStyle.InlineBlock)
                 .toAttrs()
         ) {
             LangBlock(
@@ -93,6 +99,7 @@ fun FaqFallBack() {
                         destinationUrl = localizedUrl("/book-demo"),
                         enLinkText = "",
                         nlLinkText = "Neem contact met ons op",
+                        textColor = Colors.White
                     )
                     Text(
                         " voor ondersteuning!"

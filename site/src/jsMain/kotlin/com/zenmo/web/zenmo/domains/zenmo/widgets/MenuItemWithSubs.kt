@@ -1,7 +1,5 @@
 package com.zenmo.web.zenmo.domains.zenmo.widgets
 
-import DropdownContainerStyle
-import MenuItemParentStyle
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -16,6 +14,8 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.core.models.MenuItem
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.NavBarLink
 import com.zenmo.web.zenmo.domains.zenmo.sections.nav_header.components.isPathActive
+import com.zenmo.web.zenmo.theme.styles.DropdownContentStyle
+import com.zenmo.web.zenmo.theme.styles.DropdownTriggerStyle
 
 
 val MainMenuItemHoverStyle = CssStyle {
@@ -30,7 +30,7 @@ fun MenuItemWithSubs(
 ) {
     val isMenuActive = menu.subItems.any { isPathActive(href = it.route.url) }
     Box(
-        modifier = MenuItemParentStyle.toModifier()
+        modifier = DropdownTriggerStyle.toModifier()
     ) {
         NavBarLink(
             href = "/",
@@ -40,7 +40,7 @@ fun MenuItemWithSubs(
         )
 
         Column(
-            modifier = DropdownContainerStyle.toModifier()
+            modifier = DropdownContentStyle.toModifier()
         ) {
             menu.subItems.forEach { sub ->
                 Box(

@@ -17,6 +17,7 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
+import com.zenmo.web.zenmo.domains.lux.sections.home.faqs.LUX_GITHUB_REPO_URL
 import com.zenmo.web.zenmo.domains.lux.styles.mutedWhite
 import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -86,7 +87,7 @@ fun GetStarted() {
                 },
                 bgColor = SitePalette.light.secondary,
                 textColor = Colors.Black,
-                path = "https://github.com/Zenmo/zero_engine"
+                path = LUX_GITHUB_REPO_URL
             )
 
             ApplicationAreaCTAButton(
