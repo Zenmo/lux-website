@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company
+package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_business
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -10,19 +10,21 @@ import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.FieldModels
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaContactPerson
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_company.components.*
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_business.components.*
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
 
 @Composable
-fun LuxCompany(
+fun LuxBusiness(
 ) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
-        LuxCompanyHero()
-        BatteryValueSection()
-        HowItWorks()
+        LuxBusinessHero()
+        GridCongestionExplanation()
+        CalculateYourEnergyFuture()
+        SmarterEnergyUse()
+        LuxBusinessDemoVideo()
         InteractiveDashboardSection()
         PersonalAdvice()
         UniqueFeature()
