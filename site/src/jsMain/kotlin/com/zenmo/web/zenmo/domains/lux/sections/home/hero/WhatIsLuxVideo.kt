@@ -32,7 +32,7 @@ fun WhatIsLuxVideo() {
             .fillMaxWidth()
             .luxBorderRadius(LuxCornerRadius.lg)
             .border(1.px, LineStyle.Solid, Colors.White.copyf(alpha = 0.1f))
-            .background(Colors.Black.copyf(alpha = 0.25f))
+            .background(Colors.White)
             .toAttrs()
     ) {
         Box(

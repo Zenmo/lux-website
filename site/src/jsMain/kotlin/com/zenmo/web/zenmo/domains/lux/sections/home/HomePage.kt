@@ -15,7 +15,7 @@ import com.zenmo.web.zenmo.domains.lux.sections.home.sections.application_areas.
 fun HomePage() {
     val breakpoint = rememberBreakpoint()
     Column(modifier = Modifier.fillMaxSize()) {
-        LuxHero(breakpoint)
+        LuxHero()
         StatsSection(breakpoint)
         LuxBasicsSection(breakpoint)
         ProblemAndSolutionSection()
