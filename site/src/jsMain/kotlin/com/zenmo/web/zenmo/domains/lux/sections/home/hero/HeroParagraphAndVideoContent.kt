@@ -22,8 +22,6 @@ val HeroFlexStyle = CssStyle {
         Modifier
             .fillMaxWidth()
             .display(DisplayStyle.Flex)
-            .alignItems(com.varabyte.kobweb.compose.css.AlignItems.Center)
-            .responsiveGap()
     }
 
     Breakpoint.ZERO {
@@ -50,11 +48,17 @@ val HeroFlexStyle = CssStyle {
     Breakpoint.LG {
         Modifier
             .flexDirection(FlexDirection.Row)
+            .fillMaxWidth()
+            .alignItems(AlignItems.Center)
+            .responsiveGap()
     }
 
     Breakpoint.XL {
         Modifier
             .flexDirection(FlexDirection.Row)
+            .fillMaxWidth()
+            .alignItems(AlignItems.Center)
+            .responsiveGap()
     }
 }
 
