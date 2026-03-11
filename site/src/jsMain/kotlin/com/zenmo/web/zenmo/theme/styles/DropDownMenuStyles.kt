@@ -1,3 +1,5 @@
+package com.zenmo.web.zenmo.theme.styles
+
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
@@ -9,7 +11,7 @@ import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
-val MenuItemParentStyle = CssStyle {
+val DropdownTriggerStyle = CssStyle {
     base {
         Modifier
             .position(Position.Relative)
@@ -23,7 +25,7 @@ val MenuItemParentStyle = CssStyle {
     }
 }
 
-val DropdownContainerStyle = CssStyle {
+val DropdownContentStyle = CssStyle {
     base {
         Modifier
             .position(Position.Absolute)
@@ -38,20 +40,5 @@ val DropdownContainerStyle = CssStyle {
             .styleModifier {
                 property("display", "var(--dropdown-visibility, none)")
             }
-
-    }
-}
-
-val DropdownItemStyle = CssStyle {
-    base {
-        Modifier
-            .fillMaxSize()
-            .display(DisplayStyle.Block)
-            .color(SitePalette.light.onBackground)
-    }
-    hover {
-        Modifier
-            .backgroundColor(SitePalette.light.primary)
-            .color(SitePalette.light.onPrimary)
     }
 }

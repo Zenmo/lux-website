@@ -44,7 +44,7 @@ fun InteractiveDashboardSection() {
     ) {
         HeaderText(
             enText = "Your Interactive Model",
-            nlText = "Uw Interactieve Model",
+            nlText = "Jouw Interactieve Model",
         )
         P {
             LangText(

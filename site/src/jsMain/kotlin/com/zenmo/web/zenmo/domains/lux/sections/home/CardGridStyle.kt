@@ -8,13 +8,12 @@ import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.css.px
 
-val CardGridStyle = CssStyle.Companion.base {
-    Modifier.Companion
-        .display(DisplayStyle.Companion.Grid)
+val CardGridStyle = CssStyle.base {
+    Modifier
+        .display(DisplayStyle.Grid)
         .height(460.px)
         .rowGap(24.px)
         .columnGap(24.px)
         .flexGrow(1)
-        .gridTemplateRows { repeat(2) { size(1.fr) } }
         .gridTemplateColumns { repeat(2) { size(1.fr) } }
 }
