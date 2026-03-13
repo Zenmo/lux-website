@@ -16,8 +16,8 @@ fun LuxNeighbourhoodFactAndDemo() {
     ) {
         LuxNeighbourhoodFacts()
         HeaderText(
-            enText = "See it in action",
-            nlText = "Bekijk het in actie"
+            enText = "LUX Neighbourhood in action",
+            nlText = "LUX Woonwijk in actie",
         )
         //todo use resdential area video
         ApplicationAreaVideo(
