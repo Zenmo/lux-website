@@ -14,7 +14,7 @@ import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.saveToLocalStorage
-import com.zenmo.web.zenmo.core.services.localization.LanguageProvider
+import com.zenmo.web.zenmo.core.services.AppProviders
 import org.jetbrains.compose.web.css.vh
 
 private const val COLOR_MODE_KEY = "zenmo:colorMode"
@@ -37,7 +37,7 @@ fun AppEntry(content: @Composable () -> Unit) {
                 .minHeight(100.vh)
                 .scrollBehavior(ScrollBehavior.Smooth)
         ) {
-            LanguageProvider {
+            AppProviders {
                 content()
             }
         }
