@@ -19,6 +19,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLock
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiOpenInNew
+import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
@@ -37,6 +38,7 @@ import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Span
+import kotlin.js.Date
 
 const val metaContentClassName = "meta-content"
 
@@ -94,6 +96,7 @@ val ModelCardLinkStyle = CssStyle {
 fun ModelCard(
     model: TwinModelCardItem,
     showLock: Boolean = false,
+    lastModifiedDate: Date? = null,
     modifier: Modifier = Modifier,
 ) {
     CardLink(
@@ -135,10 +138,21 @@ fun ModelCard(
             }
         },
         description = {
-            ApplicationFieldLabel(
-                label = model.applicationArea.areaTitle,
-                labelColor = getApplicationAreaColor(model.applicationArea)
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                ApplicationFieldLabel(
+                    label = model.applicationArea.areaTitle,
+                    labelColor = getApplicationAreaColor(model.applicationArea)
+                )
+                if (lastModifiedDate != null) {
+                    SpanText(
+                        text = "• ${lastModifiedDate.localizedDateText()}".uppercase(),
+                        modifier = DeEmphasizedTextStyle.toModifier()
+                            .padding(left = 8.px)
+                    )
+                }
+            }
         },
         metaContent = {
             Box(
