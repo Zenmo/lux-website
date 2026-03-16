@@ -15,12 +15,12 @@ import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicatio
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.Br
-import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.*
 
 
 @Composable
@@ -35,7 +35,7 @@ fun NeighbourhoodHero() {
             Box(Modifier.fillMaxWidth()) {
                 ImageContent(
                     imageUrl = "/lux/images/lux_neighbourhood.png",
-                    alt = "horizon",
+                    alt = "lux neighbourhood",
                 )
             }
         }
@@ -52,33 +52,87 @@ private fun TextContent() {
             enText = LuxApplicationArea.LUX_NEIGHBOURHOOD.areaTitle.en,
             nlText = LuxApplicationArea.LUX_NEIGHBOURHOOD.areaTitle.nl,
         )
-        P(
-            Modifier.margin(0.px)
-                .padding(left = 24.px)
-                .borderLeft(4.px, LineStyle.Solid, SitePalette.light.primary)
-                .toAttrs()
-        ) {
-            LangText(
-                en = """
-                    Municipalities, energy cooperatives, and residents face many challenges related to the energy 
-                    transition and grid congestion in residential neighborhoods.
-                """.trimIndent(),
-                nl = """
-                    Gemeenten, energiecooperaties, en bewoners zitten met veel vraagstukken over de verduurzaming en 
-                    netcongestie in woonwijken.
-                """.trimIndent()
-            )
-            Br { }
-            LangText(
-                en = """
-                    LUX Neighbourhood simulates real data from a neighborhood’s energy system, including homes, 
-                    schools, shops, district heating networks, and more.
-                """.trimIndent(),
-                nl = """
-                    LUX Woonwijk simuleert de echte data van het energiesysteem van een buurt met huizen, scholen, 
-                    winkels, warmtenetten, etcetera.
-                """.trimIndent()
-            )
+        Div {
+            P(
+                Modifier
+                    .margin(0.px)
+                    .padding(left = 18.px)
+                    .borderLeft(4.px, LineStyle.Solid, SitePalette.light.secondary)
+                    .toAttrs()
+            ) {
+                I {
+                    LangText(
+                        en = """
+                            Grid congestion and electrification pose significant challenges for stakeholders in 
+                            residential neighbourhoods, such as municipalities and energy cooperatives.
+                        """.trimIndent(),
+                        nl = """
+                            Netcongestie en elektrificatie vormen aanzienlijke uitdagingen voor belanghebbenden in 
+                            woonwijken, zoals gemeenten en energiecoöperaties. 
+                        """.trimIndent()
+                    )
+                }
+            }
+
+            P {
+                LangText(
+                    en = """
+                        LUX Neighbourhood enables these stakeholders to identify energy- and grid-related issues and 
+                        explore potential solutions. Examples of such solutions include: 
+                    """.trimIndent(),
+                    nl = """
+                        LUX Woonwijk stelt deze belanghebbenden in staat om energie- en netgerelateerde problemen te 
+                        identificeren en mogelijke oplossingen te onderzoeken. Voorbeelden van dergelijke oplossingen
+                        zijn: 
+                    """.trimIndent()
+                )
+            }
+            Ul(
+                Modifier
+                    .display(DisplayStyle.Flex)
+                    .flexDirection(FlexDirection.Column)
+                    .gap(8.px)
+                    .toAttrs()
+            ) {
+                Li {
+                    LangText(
+                        en = "grid reinforcement,",
+                        nl = "netverzwaring,"
+                    )
+                }
+                Li {
+                    LangText(
+                        en = "shared energy storage,",
+                        nl = "gedeelde energieopslag,"
+                    )
+                }
+                Li {
+                    LangText(
+                        en = "increasing self-consumption, and",
+                        nl = "het verhogen van het eigen verbruik en"
+                    )
+                }
+                Li {
+                    LangText(
+                        en = "the use of flexible assets.",
+                        nl = "het gebruik van flexibele activa."
+                    )
+                }
+            }
+            P {
+                LangText(
+                    en = """
+                        The main purpose for this application area of LUX is to arm stakeholders with quantified and 
+                        data-based insights that allow them to discuss and accelerate the energy transition of 
+                        neighborhoods.
+                    """.trimIndent(),
+                    nl = """
+                        Het belangrijkste doel van dit toepassingsgebied van LUX is om belanghebbenden te voorzien van 
+                        gekwantificeerde en op data gebaseerde inzichten waarmee ze de energietransitie in woonwijken 
+                        kunnen bespreken en versnellen.
+                    """.trimIndent()
+                )
+            }
         }
     }
 }
