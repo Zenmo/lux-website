@@ -6,6 +6,7 @@ kobweb = "0.24.0"
 kotlin = "2.3.10"
 kotlinx-serialization = "1.10.0"
 exposed = "0.59.0"
+viewmodel-compose = "2.10.0-beta01"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "compose-html" }
@@ -19,6 +20,8 @@ kobwebx-serialization-kotlinx = { module = "com.varabyte.kobwebx:kobwebx-seriali
 silk-foundation = { module = "com.varabyte.kobweb:silk-foundation", version.ref = "kobweb" }
 silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "kobweb" }
 silk-icons-mdi = { module = "com.varabyte.kobwebx:silk-icons-mdi", version.ref = "kobweb" }
+viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewmodel-compose" }
+
 
 [plugins]
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
