@@ -65,15 +65,13 @@ private fun PersonalAdviceText() {
         ) {
             LangText(
                 en = """
-                          If your situation is unique or if you just want personal advice, you can of course do that 
-                          too. Possibly as a next step. And because Zenmo is independent of selling parties, you can 
-                          expect reliable and impartial advice from us.  
-                        """.trimIndent(),
+                    If your situation is unique or if you just want personal advice, you can of course do that too. 
+                    Possibly as a next step.  
+                """.trimIndent(),
                 nl = """
-                            Als jouw situatie uniek is of als jij gewoon persoonlijk advies wilt kan dan natuurlijk ook.
-                            Eventueel als vervolgstap. En omdat Zenmo onafhankelijk is van verkopende partijen kan jij
-                            van ons betrouwbaar en onpartijdig advies verwachten.
-                        """.trimIndent()
+                    Als jouw situatie uniek is of als jij gewoon persoonlijk advies wilt kan dan natuurlijk ook.
+                    Eventueel als vervolgstap. 
+                """.trimIndent()
             )
         }
     }

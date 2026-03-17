@@ -2,7 +2,9 @@ package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hu
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -27,11 +29,19 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun EnergyHubExampleFeatures() {
-    SubHeaderText(
-        enText = "Example features to explore with LUX Energy Hub",
-        nlText = "Voorbeelden van wat je eenvoudig kunt verkennen met LUX Energy Hub",
-    )
-    EnergyCollaborationGrid()
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .textAlign(TextAlign.Center)
+            .gap(1.cssRem)
+    ) {
+        SubHeaderText(
+            enText = "Example features to explore with LUX Energy Hub",
+            nlText = "Voorbeelden van wat je eenvoudig kunt verkennen met LUX Energy Hub",
+        )
+        EnergyCollaborationGrid()
+    }
 }
 
 

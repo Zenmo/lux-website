@@ -12,6 +12,7 @@ import com.varabyte.kobweb.silk.components.icons.mdi.IconStyle
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiCheckCircle
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
@@ -25,48 +26,50 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun LuxNeighbourhoodFacts() {
-    Column(
-        modifier = Modifier.fillMaxWidth()
-            .padding(clamp(32.px, 5.vw, 64.px))
-            .gap(2.cssRem)
-            .background(Colors.White)
-            .luxBorderRadius(LuxCornerRadius.xl)
-            .borderLeft(4.px, LineStyle.Solid, SitePalette.light.secondary)
-    ) {
-        HeaderText(
-            enText = "Did you know?",
-            nlText = "Wist je dat?",
-            textColor = SitePalette.light.primary,
-        )
+    LuxSectionContainer {
         Column(
-            modifier = Modifier.gap(0.5.cssRem)
+            modifier = Modifier.fillMaxWidth()
+                .padding(clamp(32.px, 5.vw, 64.px))
+                .gap(2.cssRem)
+                .luxBorderRadius(LuxCornerRadius.xl)
+                .border(1.px, LineStyle.Solid, Colors.LightGrey)
+                .borderLeft(4.px, LineStyle.Solid, SitePalette.light.secondary)
         ) {
-            FactBlock(
-                LocalizedText(
-                    en = "Twelve municipalities are using LUX Neighbourhood for their analyses.",
-                    nl = "Twaalf gemeenten gebruiken LUX Woonbuurt voor hun analyses."
-                )
+            HeaderText(
+                enText = "Did you know?",
+                nlText = "Wist je dat?",
+                textColor = SitePalette.light.primary,
             )
+            Column(
+                modifier = Modifier.gap(0.5.cssRem)
+            ) {
+                FactBlock(
+                    LocalizedText(
+                        en = "Twelve municipalities are using LUX Neighbourhood for their analyses.",
+                        nl = "Twaalf gemeenten gebruiken LUX Woonbuurt voor hun analyses."
+                    )
+                )
 
-            FactBlock(
-                LocalizedText(
-                    en = """
-                        A direct connection with TNO’s design toolkit is on the way! Making detailed cost analysis of 
-                        district heating networks possible. 
-                    """.trimIndent(),
-                    nl = """
-                        Een directe koppeling met de ontwerptoolkit van TNO komt er aan! Dit maakt gedetailleerde 
-                        kostenanalyses van stadsverwarmingsnetwerken mogelijk.
-                    """.trimIndent()
+                FactBlock(
+                    LocalizedText(
+                        en = """
+                            A direct connection with TNO’s design toolkit is on the way! Making detailed cost analysis of 
+                            district heating networks possible. 
+                        """.trimIndent(),
+                        nl = """
+                            Een directe koppeling met de ontwerptoolkit van TNO komt er aan! Dit maakt gedetailleerde 
+                            kostenanalyses van stadsverwarmingsnetwerken mogelijk.
+                        """.trimIndent()
+                    )
                 )
-            )
 
-            FactBlock(
-                LocalizedText(
-                    en = "We are also working with ESRI on integration of LUX in ArcGIS.",
-                    nl = "We werken ook samen met ESRI aan de integratie van LUX in ArcGIS."
+                FactBlock(
+                    LocalizedText(
+                        en = "We are also working with ESRI on integration of LUX in ArcGIS.",
+                        nl = "We werken ook samen met ESRI aan de integratie van LUX in ArcGIS."
+                    )
                 )
-            )
+            }
         }
     }
 }
