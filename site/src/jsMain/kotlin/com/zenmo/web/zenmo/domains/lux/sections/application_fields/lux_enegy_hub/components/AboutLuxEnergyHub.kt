@@ -1,7 +1,6 @@
 package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.components
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.functions.clamp
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -19,57 +18,52 @@ import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaVideo
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.LuxPageDemoSection
 import com.zenmo.web.zenmo.domains.lux.styles.secondaryGradientBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
-import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
+import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
-import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.vw
+import org.jetbrains.compose.web.dom.Br
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Text
+import kotlin.uuid.Uuid
 
 
 @Composable
-fun DidYouKNowSection() {
+fun AboutLuxEnergyHub() {
     LuxSectionContainer(
         modifier = Modifier
             .background(SitePalette.light.overlay),
     ) {
         DidYouKnowBanner()
-        Column(
-            modifier = Modifier.gap(1.5.cssRem)
-                .textAlign(TextAlign.Center),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            SubHeaderText(
-                enText = "We can do much more with the existing capacity grid.",
-                nlText = "We kunnen veel meer met het bestaande elektriciteitsnet.",
-            )
-
-            Span(
-                Modifier
-                    .padding(5.px, 8.px)
-                    .justifyContent(JustifyContent.Center)
-                    .backgroundColor(SitePalette.light.primary)
-                    .color(Colors.White)
-                    .luxBorderRadius()
-                    .toAttrs()
-            ) {
-                LangText(
-                    en = "LUX Energy Hub shows how!",
-                    nl = "LUX Energy Hub laat zien hoe!"
+        LuxPageDemoSection(
+            modifier = Modifier.padding(0.px),
+            applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+            movieContent = {
+                ApplicationAreaVideo(
+                    src = "/lux/videos/EnergyHubDashboardMovie.mp4",
+                    poster = "/lux/images/energyHubMoviePoster.png",
+                    videoTitle = LocalizedText(
+                        en = "Energy Hub Dashboard",
+                        nl = "Energy Hub Dashboard"
+                    ),
                 )
-            }
-            ApplicationAreaVideo(
-                src = "/lux/videos/EnergyHubDashboardMovie.mp4",
-                poster = "/lux/images/energyHubMoviePoster.png",
-                videoTitle = LocalizedText(
-                    en = "Energy Hub Dashboard",
-                    nl = "Energy Hub Dashboard"
-                ),
-            )
-        }
+            },
+            modelContent = {
+                AnyLogicEmbed(
+                    modelId = Uuid.parse("834a212f-7e61-4f55-9b21-a4de5327aee1")
+                )
+            },
+        )
         EnergyHubExampleFeatures()
     }
 }

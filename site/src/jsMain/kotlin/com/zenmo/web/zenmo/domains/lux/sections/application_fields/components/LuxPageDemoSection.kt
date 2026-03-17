@@ -1,12 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.sections.application_fields.components
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -14,7 +9,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiLan
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiMovie
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
@@ -48,7 +42,7 @@ enum class DemoTab(
 @Composable
 fun LuxPageDemoSection(
     containerColor: CSSColorValue = SitePalette.light.overlay,
-    applicationArea: LuxApplicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
+    applicationArea: LuxApplicationArea,
     modelContent: @Composable () -> Unit = {
         VisualContentPlaceholder()
     },
@@ -63,11 +57,13 @@ fun LuxPageDemoSection(
             }
         )
     },
+    modifier: Modifier = Modifier
 ) {
     var selectedTab by remember { mutableStateOf(DemoTab.DEMO_MODEL) }
     LuxSectionContainer(
         modifier = Modifier.background(containerColor)
-            .gap(1.cssRem),
+            .gap(1.cssRem)
+            .then(modifier),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

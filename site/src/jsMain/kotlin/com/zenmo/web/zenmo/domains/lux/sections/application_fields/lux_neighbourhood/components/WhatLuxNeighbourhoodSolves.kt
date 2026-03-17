@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.functions.max
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.aspectRatio
+import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
@@ -16,6 +17,7 @@ import com.zenmo.web.zenmo.core.services.localization.Language
 import com.zenmo.web.zenmo.core.services.localization.LocalLanguage
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
+import com.zenmo.web.zenmo.theme.SitePalette
 import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vh
@@ -23,7 +25,9 @@ import org.jetbrains.compose.web.css.vh
 
 @Composable
 fun WhatLuxNeighbourhoodSolves() {
-    LuxSectionContainer {
+    LuxSectionContainer(
+        modifier = Modifier.background(SitePalette.light.overlay),
+    ) {
         HeaderText(
             enText = "What LUX Neighbourhood solves",
             nlText = "Wat LUX Woonwijk oplost",

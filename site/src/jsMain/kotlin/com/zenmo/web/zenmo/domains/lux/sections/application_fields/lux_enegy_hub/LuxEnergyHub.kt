@@ -8,7 +8,7 @@ import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.FieldModels
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaContactPerson
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.components.DidYouKNowSection
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.components.AboutLuxEnergyHub
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.components.LuxEnergyHubHero
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hub.components.energy_hub_process.EnergyHubProcessSection
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -19,7 +19,7 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 fun LuxEnergyHub() {
     Column {
         LuxEnergyHubHero()
-        DidYouKNowSection()
+        AboutLuxEnergyHub()
         EnergyHubProcessSection()
         FieldModels(
             applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,

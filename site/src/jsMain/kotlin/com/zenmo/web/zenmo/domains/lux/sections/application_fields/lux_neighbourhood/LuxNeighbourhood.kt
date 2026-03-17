@@ -10,6 +10,7 @@ import com.zenmo.web.zenmo.domains.lux.core.toTwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.FieldModels
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaContactPerson
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.LuxPageDemoSection
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.*
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.get_lux_neighbourhood.GetLuxNeighbourhoodSection
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
@@ -18,15 +19,19 @@ import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 @OptIn(DelicateApi::class)
 @Composable
 fun LuxNeighbourhood() {
+    val applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
     Column {
         NeighbourhoodHero()
         RealDataSimulation()
         WhatLuxNeighbourhoodSolves()
-        LuxNeighbourhoodFactAndDemo()
+        LuxNeighbourhoodFacts()
+        LuxPageDemoSection(
+            applicationArea = applicationArea
+        )
         GetLuxNeighbourhoodSection()
         NeighbourhoodPersonalAdvice()
         FieldModels(
-            applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
+            applicationArea = applicationArea,
             featuredModels = listOf(
                 bunderbuurten.toTwinModelCardItem(),
                 loenen.toTwinModelCardItem(),
