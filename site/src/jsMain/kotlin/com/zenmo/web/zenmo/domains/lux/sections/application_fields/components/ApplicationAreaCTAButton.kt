@@ -6,43 +6,44 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
-import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
-import com.zenmo.web.zenmo.core.services.localization.localizedUrl
+import com.zenmo.web.zenmo.domains.zenmo.widgets.button.PrimaryButton
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
+import kotlinx.browser.document
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.em
 
 @Composable
 fun ApplicationAreaCTAButton(
     modifier: Modifier = Modifier,
-    path: String = "/book-demo",
+    path: String? = null,
     bgColor: CSSColorValue = SitePalette.light.primary,
     textColor: CSSColorValue = Colors.White,
     text: LocalizedText = LocalizedText(
         en = "Contact us",
         nl = "Neem contact op",
     ),
-    content: @Composable () -> Unit = {
-        LangText(
-            en = text.en,
-            nl = text.nl,
-        )
-    },
+    icon: (@Composable () -> Unit)? = null,
 ) {
-    Link(
-        path = localizedUrl(path),
-        variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
+    PrimaryButton(
         modifier = Modifier
             .background(bgColor).color(textColor)
             .padding(leftRight = 2.25.em, topBottom = 1.1.em)
             .luxBorderRadius()
-            .then(modifier)
-    ) {
-        content()
-    }
+            .then(modifier),
+        enText = text.en,
+        nlText = text.nl,
+        icon = icon,
+        onClick = {
+            if (!path.isNullOrBlank()) {
+                window.open(path, "_self")
+            } else {
+                val element = document.getElementById(APPLICATION_AREA_CONTACT_PERSON_ID)
+                element?.scrollIntoView()
+            }
+        }
+    )
 }

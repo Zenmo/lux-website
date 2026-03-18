@@ -9,6 +9,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.modifiers.textTransform
+import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.core.services.localization.localizedUrl
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -48,13 +50,11 @@ fun CatchAllPage() {
         }
 
         ApplicationAreaCTAButton(
-            path = "/",
-            content = {
-                LangText(
-                    en = "Go the the homepage",
-                    nl = "Ga naar de homepage",
-                )
-            }
+            path = localizedUrl("/"),
+            text = LocalizedText(
+                en = "Go the the homepage",
+                nl = "Ga naar de homepage",
+            ),
         )
     }
 }
