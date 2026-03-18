@@ -14,12 +14,15 @@ import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.home.CardGridStyle
 import com.zenmo.web.zenmo.domains.lux.styles.mutedWhite
+import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.LuxSpecificColorHues
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Span
@@ -162,8 +165,8 @@ private fun EnergySystemFeatureCard(
     Column(
         Modifier
             .fillMaxWidth()
-            .background(Colors.White.copyf(alpha = 0.1f))
-            .mutedWhite()
+            .verticalLinearBackground()
+            .color(Colors.White)
             .padding(18.px)
             .luxBorderRadius(LuxCornerRadius.lg)
             .gap(8.px)
@@ -178,11 +181,11 @@ private fun EnergySystemFeatureCard(
         HeaderText(
             enText = title.en,
             nlText = title.nl,
-            textColor = Colors.White,
             modifier = Modifier.fontSize(1.25.cssRem)
         )
         P(
             Modifier
+                .mutedWhite()
                 .margin(0.cssRem)
                 .toAttrs()
         ) {

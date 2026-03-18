@@ -29,8 +29,8 @@ import org.jetbrains.compose.web.dom.P
 @Composable
 fun VisualContentPlaceholder(
     descriptionText: LocalizedText = LocalizedText(
-        en = "Come back soon to see the interactive AnyLogic model!",
-        nl = "Kom snel terug om het interactieve AnyLogic model te zien!"
+        en = "Come back soon to see the interactive model!",
+        nl = "Kom snel terug om het interactieve model te zien!"
     ),
     icon: @Composable () -> Unit = {
         MdiLan(Modifier.fontSize(32.px))

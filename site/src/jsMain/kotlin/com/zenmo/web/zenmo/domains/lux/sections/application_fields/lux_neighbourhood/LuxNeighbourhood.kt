@@ -11,7 +11,10 @@ import com.zenmo.web.zenmo.domains.lux.sections.application_fields.FieldModels
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.ApplicationAreaContactPerson
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.components.LuxPageDemoSection
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.*
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.LuxNeighbourhoodFacts
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.NeighbourhoodHero
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.RealDataSimulation
+import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.WhatLuxNeighbourhoodSolves
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.get_lux_neighbourhood.GetLuxNeighbourhoodSection
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
 
@@ -29,7 +32,6 @@ fun LuxNeighbourhood() {
             applicationArea = applicationArea
         )
         GetLuxNeighbourhoodSection()
-        NeighbourhoodPersonalAdvice()
         FieldModels(
             applicationArea = applicationArea,
             featuredModels = listOf(
