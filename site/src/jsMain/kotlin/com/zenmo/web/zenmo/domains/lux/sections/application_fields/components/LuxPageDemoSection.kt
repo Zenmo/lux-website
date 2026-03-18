@@ -25,18 +25,18 @@ import org.jetbrains.compose.web.dom.P
 enum class DemoTab(
     val title: LocalizedText,
 ) {
+    DEMO_MOVIE(
+        LocalizedText(
+            en = "Demo Movie",
+            nl = "Demo Movie"
+        )
+    ),
     DEMO_MODEL(
         LocalizedText(
             en = "Interactive Model",
             nl = "Interactief Model"
         )
     ),
-    DEMO_MOVIE(
-        LocalizedText(
-            en = "Demo Movie",
-            nl = "Demo Movie"
-        )
-    )
 }
 
 @Composable
@@ -59,7 +59,7 @@ fun LuxPageDemoSection(
     },
     modifier: Modifier = Modifier
 ) {
-    var selectedTab by remember { mutableStateOf(DemoTab.DEMO_MODEL) }
+    var selectedTab by remember { mutableStateOf(DemoTab.DEMO_MOVIE) }
     LuxSectionContainer(
         modifier = Modifier.background(containerColor)
             .gap(1.cssRem)

@@ -14,6 +14,7 @@ import com.zenmo.web.zenmo.components.widgets.ImageContent
 import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangBlock
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
+import com.zenmo.web.zenmo.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
@@ -31,9 +32,7 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun LuxEnergyHubHero() {
-    LuxSectionContainer(
-        modifier = Modifier.alignItems(AlignItems.FlexStart)
-    ) {
+    LuxSectionContainer {
         Div(
             ResponsiveFlexStyle.toModifier()
                 .alignItems(AlignItems.FlexStart)
@@ -42,8 +41,8 @@ fun LuxEnergyHubHero() {
             HeroTextContent()
             Box(Modifier.fillMaxWidth()) {
                 ImageContent(
-                    imageUrl = "/lux/images/nature_img.jpg",
-                    alt = "nature",
+                    imageUrl = PrivateSubdomainModel.VAANPARK.imageUrl,
+                    alt = "energy hub image",
                 )
             }
         }
