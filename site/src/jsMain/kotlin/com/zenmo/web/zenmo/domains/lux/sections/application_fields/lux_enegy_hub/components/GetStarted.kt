@@ -3,9 +3,7 @@ package com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_enegy_hu
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.functions.clamp
-import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
@@ -72,19 +70,11 @@ fun GetStarted() {
                 .toAttrs(),
         ) {
             ApplicationAreaCTAButton(
-                content = {
-                    Row(
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.gap(8.px)
-                    ) {
-                        LangText(
-                            en = "GitHub Repo",
-                            nl = "GitHub Repo"
-                        )
-                        FaGithub()
-                    }
-                },
+                icon = { FaGithub() },
+                text = LocalizedText(
+                    en = "GitHub Repo",
+                    nl = "GitHub Repo"
+                ),
                 bgColor = SitePalette.light.secondary,
                 textColor = Colors.Black,
                 path = LUX_GITHUB_REPO_URL
