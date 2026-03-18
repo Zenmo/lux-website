@@ -11,20 +11,19 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.zenmo.web.zenmo.components.widgets.LangText
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.SubHeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
 import com.zenmo.web.zenmo.utils.PublicRes
 import org.jetbrains.compose.web.css.AlignSelf
-import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.dom.P
@@ -55,7 +54,6 @@ val AboutUsHorizontalPaddingStyle = CssStyle {
 
 @Composable
 fun JourneyBlock(
-    breakpoint: Breakpoint,
     title: LocalizedText,
     textContent: @Composable () -> Unit,
     journeyDescription: LocalizedText,
@@ -64,10 +62,9 @@ fun JourneyBlock(
     yearBoxModifier: Modifier = Modifier,
 ) {
     Row(
-        modifier = AboutUsHorizontalPaddingStyle.toModifier()
+        modifier = Modifier
             .fillMaxWidth()
-            .gap(2.cssRem)
-            .thenIf(breakpoint >= Breakpoint.MD, Modifier.gap(4.cssRem))
+            .responsiveGap()
             .then(modifier),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Top
@@ -96,9 +93,7 @@ fun JourneyBlock(
         YearBox(
             description = journeyDescription,
             yearText = yearText,
-            breakpoint = breakpoint,
-            modifier = Modifier.width(35.percent)
-                .thenIf(breakpoint <= Breakpoint.LG, Modifier.width(40.percent))
+            modifier = Modifier
                 .then(yearBoxModifier)
         )
     }
@@ -109,14 +104,14 @@ private fun YearBox(
     description: LocalizedText,
     yearText: @Composable () -> Unit,
     modifier: Modifier = Modifier,
-    breakpoint: Breakpoint
 ) {
     Column(
         modifier = Modifier
             .alignSelf(AlignSelf.Stretch)
             .luxBorderRadius(LuxCornerRadius.xl)
             .padding(3.cssRem)
-            .thenIf(breakpoint < Breakpoint.MD, Modifier.display(DisplayStyle.None))
+            .width(35.percent)
+            .displayIfAtLeast(Breakpoint.MD)
             .then(modifier),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -125,7 +120,6 @@ private fun YearBox(
         P(
             Modifier
                 .textAlign(TextAlign.Center)
-                .thenIf(breakpoint > Breakpoint.MD, Modifier.width(90.percent))
                 .toAttrs()
         ) {
             LangText(

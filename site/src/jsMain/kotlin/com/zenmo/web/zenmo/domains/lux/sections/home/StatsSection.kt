@@ -10,29 +10,26 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.framework.annotations.DelicateApi
-import com.varabyte.kobweb.silk.style.addVariant
+import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.components.widgets.LangText
-import com.zenmo.web.zenmo.components.widgets.SectionContainer
-import com.zenmo.web.zenmo.components.widgets.SectionContainerStyle
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
+import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
+import com.zenmo.web.zenmo.domains.lux.sections.responsiveGap
 import com.zenmo.web.zenmo.domains.lux.styles.verticalLinearBackground
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.font.BodyTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
-import org.jetbrains.compose.web.css.FlexWrap
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
 
 
-val StatsSectionContainerStyleVariant = SectionContainerStyle.addVariant {
-
+val CustomPaddingStyle = CssStyle {
+    base { Modifier }
     Breakpoint.ZERO {
         Modifier.Companion.padding(leftRight = 15.px, topBottom = 30.px)
     }
@@ -52,20 +49,15 @@ val StatsSectionContainerStyleVariant = SectionContainerStyle.addVariant {
 
 @OptIn(DelicateApi::class)
 @Composable
-fun StatsSection(
-    breakpoint: Breakpoint
-) {
-    SectionContainer(
-        variant = StatsSectionContainerStyleVariant,
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.verticalLinearBackground()
+fun StatsSection() {
+    LuxSectionContainer(
+        modifier = CustomPaddingStyle.toModifier()
+            .verticalLinearBackground()
     ) {
         Row(
             Modifier
                 .fillMaxWidth()
-                .flexWrap(FlexWrap.Wrap)
-                .thenIf(breakpoint >= Breakpoint.MD, Modifier.gap(2.cssRem)),
+                .responsiveGap(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.Top
         ) {
@@ -122,7 +114,6 @@ fun StatsCard(statItem: StatItem) {
 
         Box(
             contentAlignment = Alignment.TopCenter,
-            modifier = Modifier.width(90.percent)
         ) {
             P(
                 TextStyle.toModifier(BodyTextStyle)

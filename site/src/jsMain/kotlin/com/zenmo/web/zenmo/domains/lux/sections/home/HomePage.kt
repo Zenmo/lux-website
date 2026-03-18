@@ -16,7 +16,7 @@ fun HomePage() {
     val breakpoint = rememberBreakpoint()
     Column(modifier = Modifier.fillMaxSize()) {
         LuxHero()
-        StatsSection(breakpoint)
+        StatsSection()
         LuxBasicsSection(breakpoint)
         ProblemAndSolutionSection()
         LuxApplicationsSection(breakpoint)
