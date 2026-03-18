@@ -1,26 +1,16 @@
-package energy.lux.frontend.domains.lux.sections.application_fields.lux_region.components
+package domains.lux.sections.application_fields.lux_region.components
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.functions.clamp
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiCategory
-import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.compose.ui.modifiers.alignItems
+import com.varabyte.kobweb.compose.ui.modifiers.background
+import com.varabyte.kobweb.compose.ui.modifiers.gap
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.domains.lux.components.LuxSectionContainer
-import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
-import energy.lux.frontend.domains.lux.styles.secondaryGradientBackground
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
 import energy.lux.frontend.theme.SitePalette
-import energy.lux.frontend.theme.styles.LuxCornerRadius
-import energy.lux.frontend.theme.styles.luxBorderRadius
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 
@@ -30,112 +20,47 @@ fun MoreThanAMap() {
     LuxSectionContainer(
         modifier = Modifier
             .background(SitePalette.light.overlay)
-            .alignItems(AlignItems.FlexStart),
+            .alignItems(AlignItems.FlexStart)
+            .gap(1.cssRem),
     ) {
         HeaderText(
             enText = "More than a map",
             nlText = "Meer dan een kaart",
         )
-        Div(
-            ResponsiveFlexStyle.toModifier()
-                .alignItems(AlignItems.FlexStart)
-                .toAttrs()
-        ) {
-            BeyondStaticMaps()
-            AgentBasedApproach()
-        }
-    }
-}
-
-
-@Composable
-private fun BeyondStaticMaps() {
-    Column(
-        modifier = Modifier.fillMaxWidth()
-            .gap(1.cssRem)
-    ) {
-        P {
-            LangText(
-                en = """
-                 LUX municipality, LUX-RES and LUX province is at first glance mainly a map comparable to the PBL start 
-                 analysis that indicates ....   
-                """.trimIndent()
-            )
-        }
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .padding(clamp(32.px, 5.vw, 64.px))
-                .gap(1.cssRem)
-                .luxBorderRadius(LuxCornerRadius.xl)
-                .secondaryGradientBackground()
-        ) {
-            HeaderText(
-                enText = "However, LUX goes much further",
-                nlText = "LUX gaat echter veel verder",
-                modifier = Modifier.fontSize(2.cssRem)
-            )
+        Div {
             P {
                 LangText(
                     en = """
-                        It is a dynamic simulation in which all these neighbourhoods are 'agents' with which 
-                        different scenarios can be calculated.
+                        LUX visualizes the energy system on a map, but in the background, it is much more than a map. 
+                        It is an interactive tool with a powerful computing core. This computing core can simulate 
+                        complex energy dynamics aimed at the smart control of local energy systems.
                     """.trimIndent(),
                     nl = """
-                        Het is een dynamische simulatie waarin al deze buurten ‘agents’ zijn waarmee verschillende wat 
-                        als scenario’s kunnen worden doorgerekend.
+                        LUX visualiseert het energiesysteem op een kaart, maar is op de achtergrond veel meer dan een
+                        kaart. Het is een interactieve tool met een krachtige rekenkern. Deze rekenkern kan complexe
+                        energiedynamieken simuleren gericht op slimme aansturing van lokale energiesystemen.
                     """.trimIndent()
                 )
             }
-        }
-    }
-}
 
-@Composable
-private fun AgentBasedApproach() {
-    Column(
-        Modifier.fillMaxWidth()
-            .luxBorderRadius(LuxCornerRadius.xl)
-            .background(Colors.White)
-            .border(1.px, LineStyle.Solid, Colors.LightGrey)
-            .padding(32.px)
-            .gap(1.cssRem)
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            MdiCategory(
-                Modifier.fontSize(48.px)
-                    .color(SitePalette.light.primary)
-            )
-
-            Column(
-                Modifier.margin(left = 16.px)
-            ) {
+            P {
                 LangText(
-                    en = "Approach",
-                    nl = "Aanpak"
-                )
-                SubHeaderText(
-                    enText = "Agent-Based",
-                    nlText = "Agent-Based",
-                    textColor = SitePalette.light.primary,
-                    modifier = Modifier.fontSize(1.5.cssRem)
+                    en = """
+                        Consider the deployment of neighborhood batteries, home batteries, and smart charging to combat 
+                        grid congestion. And the benefits of a district heating network compared to heat pumps for the 
+                        electricity grid. We do this by means of agent-based simulation models, in which every 
+                        household or neighborhood can control the flexibility options in the home or area based on its 
+                        own energy balance or price incentives.
+                    """.trimIndent(),
+                    nl = """
+                        Denk aan het inzetten van buurtbatterijen, thuisbatterijen en slim laden tegen netcongestie. 
+                        En de voordelen van een warmtenet ten opzichte van warmtepompen voor het elektriciteitsnet. Dit
+                        doen wij door middel van agent-based simulatie modellen, waarin ieder huishouden of buurt op
+                        haar eigen energiebalans of prijsprikkels de flexibiliteits-opties in het huis of gebied kan 
+                        aansturen.
+                    """.trimIndent()
                 )
             }
-        }
-
-        P {
-            LangText(
-                en = """
-                    Each neighborhood acts as an autonomous agent, allowing for realistic bottom-up modeling of 
-                    regional energy systems.
-                    """.trimIndent(),
-                nl = """
-                    Elke buurt fungeert als een autonome agent, wat realistische bottom-up modellering van regionale 
-                    energiesystemen mogelijk maakt.
-                    """.trimIndent()
-            )
         }
     }
 }
