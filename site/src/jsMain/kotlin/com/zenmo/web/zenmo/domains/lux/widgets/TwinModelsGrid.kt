@@ -6,6 +6,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
+import com.zenmo.web.zenmo.core.services.anyLogicModels.LocalModelsViewModel
 import com.zenmo.web.zenmo.domains.lux.core.TwinModelCardItem
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import org.jetbrains.compose.web.css.cssRem
@@ -15,6 +16,9 @@ import org.jetbrains.compose.web.css.percent
 fun TwinModelsGrid(
     models: List<TwinModelCardItem>,
 ) {
+    val modelsWithDate = LocalModelsViewModel.current
+        .addDateToTwinModels(models)
+
     if (models.isEmpty()) {
         HeaderText(
             enText = "No models available yet.",
@@ -31,10 +35,11 @@ fun TwinModelsGrid(
         ),
         modifier = Modifier.gap(2.cssRem)
     ) {
-        models.forEach { model ->
+        modelsWithDate.forEach { model ->
             ModelCard(
-                model = model,
-                showLock = model.isPrivate,
+                model = model.twinModel,
+                showLock = model.twinModel.isPrivate,
+                lastModifiedDate = model.lastModifiedDate,
                 modifier = Modifier.minHeight(100.percent)
             )
         }

@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.core.services
+package com.zenmo.web.zenmo.core.services.anyLogicModels
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -6,18 +6,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import energy.lux.site.shared.AnyLogicModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
+import com.zenmo.web.zenmo.domains.lux.core.PublicTwinModel
+import com.zenmo.web.zenmo.domains.lux.core.TwinModelCardItem
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-
-data class ModelsUiState(
-    val models: List<AnyLogicModel> = emptyList(),
-    val isLoading: Boolean = false,
-    val error: String? = null
-)
 
 class ModelsViewModel(
     private val service: ModelService = ModelService()
@@ -45,6 +38,23 @@ class ModelsViewModel(
                     )
                 }
             }
+        }
+    }
+
+    fun addDateToTwinModels(
+        twinModelCards: List<TwinModelCardItem>
+    ): List<TwinModelWithMetadata> {
+        val anyLogicModels = uiState.value.models
+
+        return twinModelCards.map { card ->
+            val modelDate = if (card is PublicTwinModel) {
+                anyLogicModels.getModelDateForUuid(card.modelId.toString())
+            } else null
+
+            TwinModelWithMetadata(
+                twinModel = card,
+                lastModifiedDate = modelDate
+            )
         }
     }
 }
