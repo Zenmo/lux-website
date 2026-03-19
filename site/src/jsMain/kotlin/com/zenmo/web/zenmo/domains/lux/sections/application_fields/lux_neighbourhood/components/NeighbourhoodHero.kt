@@ -14,13 +14,12 @@ import com.zenmo.web.zenmo.domains.lux.sections.ResponsiveFlexStyle
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
 import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.SitePalette
-import org.jetbrains.compose.web.css.AlignItems
-import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.I
+import org.jetbrains.compose.web.dom.P
 
 
 @Composable
@@ -28,7 +27,6 @@ fun NeighbourhoodHero() {
     LuxSectionContainer {
         Div(
             ResponsiveFlexStyle.toModifier()
-                .alignItems(AlignItems.FlexStart)
                 .toAttrs()
         ) {
             TextContent()
@@ -78,47 +76,18 @@ private fun TextContent() {
                 LangText(
                     en = """
                         LUX Neighbourhood enables these stakeholders to identify energy- and grid-related issues and 
-                        explore potential solutions. Examples of such solutions include: 
+                        explore potential solutions. Examples of such solutions include grid reinforcement, shared 
+                        energy storage, increasing self-consumption, and the use of flexible assets. 
                     """.trimIndent(),
                     nl = """
                         LUX Woonwijk stelt deze belanghebbenden in staat om energie- en netgerelateerde problemen te 
-                        identificeren en mogelijke oplossingen te onderzoeken. Voorbeelden van dergelijke oplossingen
-                        zijn: 
+                        identificeren en mogelijke oplossingen te onderzoeken. Voorbeelden van dergelijke oplossingen 
+                        zijn netversterking, gedeelde energieopslag, het verhogen van het eigen verbruik en het gebruik 
+                        van flexibele activa.
                     """.trimIndent()
                 )
             }
-            Ul(
-                Modifier
-                    .display(DisplayStyle.Flex)
-                    .flexDirection(FlexDirection.Column)
-                    .gap(8.px)
-                    .toAttrs()
-            ) {
-                Li {
-                    LangText(
-                        en = "grid reinforcement,",
-                        nl = "netverzwaring,"
-                    )
-                }
-                Li {
-                    LangText(
-                        en = "shared energy storage,",
-                        nl = "gedeelde energieopslag,"
-                    )
-                }
-                Li {
-                    LangText(
-                        en = "increasing self-consumption, and",
-                        nl = "het verhogen van het eigen verbruik en"
-                    )
-                }
-                Li {
-                    LangText(
-                        en = "the use of flexible assets.",
-                        nl = "het gebruik van flexibele activa."
-                    )
-                }
-            }
+
             P {
                 LangText(
                     en = """

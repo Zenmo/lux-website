@@ -21,7 +21,6 @@ import com.zenmo.web.zenmo.domains.lux.widgets.headings.HeaderText
 import com.zenmo.web.zenmo.theme.LuxSpecificColorHues
 import com.zenmo.web.zenmo.theme.styles.LuxCornerRadius
 import com.zenmo.web.zenmo.theme.styles.luxBorderRadius
-import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
@@ -35,7 +34,6 @@ fun LuxEnergyHubHero() {
     LuxSectionContainer {
         Div(
             ResponsiveFlexStyle.toModifier()
-                .alignItems(AlignItems.FlexStart)
                 .toAttrs()
         ) {
             HeroTextContent()
