@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.core.services
+package com.zenmo.web.zenmo.core.services.anyLogicModels
 
 import com.varabyte.kobweb.core.AppGlobals
 import energy.lux.site.shared.AnyLogicModel

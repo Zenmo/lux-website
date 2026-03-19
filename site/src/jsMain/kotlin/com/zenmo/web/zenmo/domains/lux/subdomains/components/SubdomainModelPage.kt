@@ -1,10 +1,14 @@
 package com.zenmo.web.zenmo.domains.lux.subdomains.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.zenmo.web.zenmo.core.services.anyLogicModels.LocalModelsViewModel
+import com.zenmo.web.zenmo.core.services.anyLogicModels.getModelDateForUuid
 import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.anyLogicPublicApiKey
@@ -32,7 +36,18 @@ fun SubdomainModelPage(
         LuxSectionContainer {
             introContent()
             mediaContent()
-            anylogicRender()
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                val modelsUiState by LocalModelsViewModel.current.uiState.collectAsState()
+                val lastModifiedDate = modelsUiState.models.getModelDateForUuid(modelId.toString())
+
+                if (lastModifiedDate != null) {
+                    ModelLastUpdatedLabel(lastModifiedDate)
+                }
+                anylogicRender()
+            }
             extraContent()
         }
         LuxSectionContainer(

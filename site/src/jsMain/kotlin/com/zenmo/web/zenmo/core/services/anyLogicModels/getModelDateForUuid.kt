@@ -1,4 +1,4 @@
-package com.zenmo.web.zenmo.core.services
+package com.zenmo.web.zenmo.core.services.anyLogicModels
 
 import energy.lux.site.shared.AnyLogicModel
 import kotlin.js.Date
