@@ -10,6 +10,7 @@ import com.zenmo.web.zenmo.domains.lux.core.PublicTwinModel
 import com.zenmo.web.zenmo.domains.lux.core.TwinModelCardItem
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlin.js.Date
 
 
 class ModelsViewModel(
@@ -44,11 +45,12 @@ class ModelsViewModel(
     fun addDateToTwinModels(
         twinModelCards: List<TwinModelCardItem>
     ): List<TwinModelWithMetadata> {
-        val anyLogicModels = uiState.value.models
+        val modelsByUuid = uiState.value.models.associateBy { it.uuid }
 
         return twinModelCards.map { card ->
             val modelDate = if (card is PublicTwinModel) {
-                anyLogicModels.getModelDateForUuid(card.modelId.toString())
+                modelsByUuid[card.modelId.toString()]
+                    ?.let { Date(it.lastModifiedDate) }
             } else null
 
             TwinModelWithMetadata(

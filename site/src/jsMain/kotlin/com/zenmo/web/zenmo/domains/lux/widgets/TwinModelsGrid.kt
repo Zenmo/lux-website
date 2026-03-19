@@ -1,6 +1,9 @@
 package com.zenmo.web.zenmo.domains.lux.widgets
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
@@ -16,8 +19,12 @@ import org.jetbrains.compose.web.css.percent
 fun TwinModelsGrid(
     models: List<TwinModelCardItem>,
 ) {
-    val modelsWithDate = LocalModelsViewModel.current
-        .addDateToTwinModels(models)
+    val viewModel = LocalModelsViewModel.current
+    val uiState by viewModel.uiState.collectAsState()
+
+    val modelsWithDate = remember(models, uiState.models) {
+        viewModel.addDateToTwinModels(models)
+    }
 
     if (models.isEmpty()) {
         HeaderText(
