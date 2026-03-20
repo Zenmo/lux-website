@@ -34,7 +34,7 @@ fun SmarterEnergyUse() {
                 .toAttrs(),
         ) {
             HeaderText(
-                enText = "Smarter use of energy",
+                enText = "Smarter energy usage",
                 nlText = "Slimmer gebruik van energie",
                 modifier = Modifier
                     .fillMaxWidth()
