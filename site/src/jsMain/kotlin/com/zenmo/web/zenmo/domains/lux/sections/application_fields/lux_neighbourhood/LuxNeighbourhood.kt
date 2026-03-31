@@ -17,6 +17,8 @@ import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbour
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.WhatLuxNeighbourhoodSolves
 import com.zenmo.web.zenmo.domains.lux.sections.application_fields.lux_neighbourhood.components.get_lux_neighbourhood.GetLuxNeighbourhoodSection
 import com.zenmo.web.zenmo.domains.zenmo.sections.team.ZenmoTeam
+import com.zenmo.web.zenmo.domains.zenmo.widgets.anylogic.AnyLogicEmbed
+import kotlin.uuid.Uuid
 
 
 @OptIn(DelicateApi::class)
@@ -29,7 +31,12 @@ fun LuxNeighbourhood() {
         WhatLuxNeighbourhoodSolves()
         LuxNeighbourhoodFacts()
         LuxPageDemoSection(
-            applicationArea = applicationArea
+            applicationArea = applicationArea,
+            modelContent = {
+                AnyLogicEmbed(
+                    modelId = Uuid.parse("ccbd35d7-98a8-4fb9-8161-dda239d7f049")
+                )
+            }
         )
         GetLuxNeighbourhoodSection()
         FieldModels(
