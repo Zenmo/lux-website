@@ -46,7 +46,7 @@ fun Veenendaal() {
             }
         }
         SubdomainModelPage(
-            modelId = Uuid.NIL,
+            modelId = veenendaal.modelId,
             introContent = {
                 Column(
                     modifier = Modifier.gap(1.cssRem),
@@ -133,10 +133,8 @@ fun Veenendaal() {
 
                     Box(
                         Modifier
-                            .fillMaxWidth()
-                            .position(Position.Relative)
-                            .height(80.vh)
-                            .margin(topBottom = 3.cssRem),
+                            .fillMaxSize()
+                            .position(Position.Relative),
                         contentAlignment = Alignment.Center
                     ) {
                         AnyLogicEmbed(

@@ -41,7 +41,7 @@ fun Amersfoort() {
         var runningModelId by remember { mutableStateOf<Uuid?>(null) }
 
         SubdomainModelPage(
-            modelId = Uuid.NIL,
+            modelId = selectedModel?.modelId ?: Uuid.NIL,
             introContent = {
                 Div {
                     HeaderText(
@@ -115,10 +115,8 @@ fun Amersfoort() {
 
                     Box(
                         Modifier
-                            .fillMaxWidth()
-                            .position(Position.Relative)
-                            .height(80.vh)
-                            .margin(topBottom = 3.cssRem),
+                            .fillMaxSize()
+                            .position(Position.Relative),
                         contentAlignment = Alignment.Center
                     ) {
                         AnyLogicEmbed(
