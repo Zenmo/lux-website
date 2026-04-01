@@ -1,0 +1,59 @@
+package energy.lux.frontend.domains.zenmo.widgets
+
+import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.foundation.layout.Box
+import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.selectors.hover
+import com.varabyte.kobweb.silk.style.toModifier
+import energy.lux.frontend.core.models.MenuItem
+import energy.lux.frontend.domains.zenmo.sections.nav_header.components.NavBarLink
+import energy.lux.frontend.domains.zenmo.sections.nav_header.components.isPathActive
+import energy.lux.frontend.theme.styles.DropdownContentStyle
+import energy.lux.frontend.theme.styles.DropdownTriggerStyle
+
+
+val MainMenuItemHoverStyle = CssStyle {
+    hover {
+        Modifier.cursor(cursor = Cursor.Auto)
+    }
+}
+
+@Composable
+fun MenuItemWithSubs(
+    menu: MenuItem.WithSubs,
+) {
+    val isMenuActive = menu.subItems.any { isPathActive(href = it.route.url) }
+    Box(
+        modifier = DropdownTriggerStyle.toModifier()
+    ) {
+        NavBarLink(
+            href = "/",
+            label = menu.title,
+            isActive = isMenuActive,
+            modifier = MainMenuItemHoverStyle.toModifier()
+        )
+
+        Column(
+            modifier = DropdownContentStyle.toModifier()
+        ) {
+            menu.subItems.forEach { sub ->
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    NavBarLink(
+                        href = sub.route.url,
+                        label = sub.route.label,
+                        isActive = isPathActive(href = sub.route.url),
+                    )
+                }
+            }
+        }
+    }
+}

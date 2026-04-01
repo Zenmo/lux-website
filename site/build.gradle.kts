@@ -15,7 +15,7 @@ plugins {
     //id("energy.lux.prerender") version "0.0.1"
 }
 
-group = "com.zenmo.web.zenmo"
+group = "energy.lux.frontend"
 version = "1.0.0"
 
 val BACKEND_URL = System.getenv("BACKEND_URL")

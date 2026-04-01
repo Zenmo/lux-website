@@ -1,10 +1,10 @@
 package com.zenmo.web.ModelSearch
 
-import com.zenmo.web.zenmo.core.services.localization.LocalizedText
-import com.zenmo.web.zenmo.domains.lux.core.TwinModelCardItem
-import com.zenmo.web.zenmo.domains.lux.sections.application_fields.LuxApplicationArea
-import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.FilterType
-import com.zenmo.web.zenmo.domains.lux.sections.luxmodels.components.filterAndSearchModels
+import energy.lux.frontend.core.services.localization.LocalizedText
+import energy.lux.frontend.domains.lux.core.TwinModelCardItem
+import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.sections.luxmodels.FilterType
+import energy.lux.frontend.domains.lux.sections.luxmodels.components.filterAndSearchModels
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
