@@ -1,0 +1,19 @@
+package energy.lux.frontend.protected.entrypoints.drechtsteden.municipalities.dordrecht
+
+import androidx.compose.runtime.Composable
+import energy.lux.frontend.domains.zenmo.widgets.anylogic.AnyLogicEmbed
+import energy.lux.frontend.protected.entrypoints.drechtsteden.drechtstedenApiKey
+import energy.lux.site.shared.AccessPolicy
+import kotlin.uuid.Uuid
+
+@JsExport
+val accessPolicy = AccessPolicy.RoleBased("Dordrecht")
+
+@JsExport
+@Composable
+fun ProtectedComponent() {
+    AnyLogicEmbed(
+        modelId = Uuid.parse("ccc42e85-3ae9-4025-bb98-a34a29adb18a"),
+        apiKey = drechtstedenApiKey,
+    )
+}

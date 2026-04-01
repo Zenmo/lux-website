@@ -1,0 +1,102 @@
+package energy.lux.frontend.domains.lux.sections.application_fields.components
+
+import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.background
+import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.textAlign
+import com.varabyte.kobweb.silk.components.icons.mdi.MdiMovie
+import energy.lux.frontend.components.widgets.LangText
+import energy.lux.frontend.core.services.localization.LocalizedText
+import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.widgets.VisualContentPlaceholder
+import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
+import energy.lux.frontend.theme.SitePalette
+import org.jetbrains.compose.web.css.CSSColorValue
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.P
+
+enum class DemoTab(
+    val title: LocalizedText,
+) {
+    DEMO_MOVIE(
+        LocalizedText(
+            en = "Demo Movie",
+            nl = "Demo Movie"
+        )
+    ),
+    DEMO_MODEL(
+        LocalizedText(
+            en = "Interactive Model",
+            nl = "Interactief Model"
+        )
+    ),
+}
+
+@Composable
+fun LuxPageDemoSection(
+    containerColor: CSSColorValue = SitePalette.light.overlay,
+    applicationArea: LuxApplicationArea,
+    modelContent: @Composable () -> Unit = {
+        VisualContentPlaceholder()
+    },
+    movieContent: @Composable () -> Unit = {
+        VisualContentPlaceholder(
+            descriptionText = LocalizedText(
+                en = "Come back soon to see the demo movie!",
+                nl = "Kom snel terug om de demo movie te zien!"
+            ),
+            icon = {
+                MdiMovie(Modifier.fontSize(32.px))
+            }
+        )
+    },
+    modifier: Modifier = Modifier
+) {
+    var selectedTab by remember { mutableStateOf(DemoTab.DEMO_MOVIE) }
+    LuxSectionContainer(
+        modifier = Modifier.background(containerColor)
+            .gap(1.cssRem)
+            .then(modifier),
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.textAlign(TextAlign.Center)
+        ) {
+            HeaderText(
+                enText = "See ${applicationArea.areaTitle.en} in action",
+                nlText = "Bekijk ${applicationArea.areaTitle.nl} in actie"
+            )
+            P {
+                LangText(
+                    en = """
+                        Explore interactive models and demo movies to get started with ${applicationArea.areaTitle.en}.
+                    """.trimIndent(),
+                    nl = """
+                        Bekijk interactieve modellen en demo's om te beginnen met ${applicationArea.areaTitle.nl}.
+                    """
+                )
+            }
+        }
+
+        DemoTabLayout(
+            selectedTab = selectedTab,
+            tabs = DemoTab.entries.associateWith { tab ->
+                TabContent(
+                    label = tab.title,
+                    content = when (tab) {
+                        DemoTab.DEMO_MODEL -> modelContent
+                        DemoTab.DEMO_MOVIE -> movieContent
+                    }
+                )
+            },
+            onChange = { selectedTab = it }
+        )
+    }
+}

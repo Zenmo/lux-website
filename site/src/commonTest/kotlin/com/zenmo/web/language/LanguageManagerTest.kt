@@ -1,7 +1,7 @@
 package com.zenmo.web.language
 
-import com.zenmo.web.zenmo.core.services.localization.Language
-import com.zenmo.web.zenmo.core.services.localization.LanguageManager
+import energy.lux.frontend.core.services.localization.Language
+import energy.lux.frontend.core.services.localization.LanguageManager
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
