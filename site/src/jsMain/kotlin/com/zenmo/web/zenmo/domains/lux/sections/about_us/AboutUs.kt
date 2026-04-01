@@ -1,9 +1,7 @@
 package com.zenmo.web.zenmo.domains.lux.sections.about_us
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.background
@@ -11,12 +9,10 @@ import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
 import com.varabyte.kobweb.framework.annotations.DelicateApi
-import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.zenmo.web.zenmo.components.widgets.InlineLink
 import com.zenmo.web.zenmo.components.widgets.LangBlock
-import com.zenmo.web.zenmo.components.widgets.SectionContainer
 import com.zenmo.web.zenmo.core.services.localization.LocalizedText
-import com.zenmo.web.zenmo.domains.lux.sections.LuxSectionContainerStyleVariant
+import com.zenmo.web.zenmo.domains.lux.components.LuxSectionContainer
 import com.zenmo.web.zenmo.domains.lux.sections.about_us.components.JourneyBlock
 import com.zenmo.web.zenmo.domains.lux.sections.about_us.sections.LuxStoryHeaderText
 import com.zenmo.web.zenmo.domains.lux.sections.about_us.sections.WhyLux
@@ -32,18 +28,12 @@ import org.jetbrains.compose.web.dom.Text
 @OptIn(DelicateApi::class)
 @Composable
 fun AboutUs() {
-    val breakpoint = rememberBreakpoint()
     Column(
         modifier = Modifier.fillMaxWidth(),
     ) {
-        LuxStoryHeaderText(breakpoint)
-        SectionContainer(
-            variant = LuxSectionContainerStyleVariant,
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
+        LuxStoryHeaderText()
+        LuxSectionContainer {
             JourneyBlock(
-                breakpoint = breakpoint,
                 title = LocalizedText(
                     en = "The Beginning",
                     nl = "Het Begin"
@@ -160,7 +150,6 @@ fun AboutUs() {
             )
 
             JourneyBlock(
-                breakpoint = breakpoint,
                 title = LocalizedText(
                     en = "Zenmo Simulations",
                     nl = "Zenmo Simulaties"
@@ -240,7 +229,6 @@ fun AboutUs() {
             )
 
             JourneyBlock(
-                breakpoint = breakpoint,
                 title = LocalizedText(
                     en = "The Holon Project",
                     nl = "Het Holon Project"
@@ -315,7 +303,7 @@ fun AboutUs() {
                 yearBoxModifier = Modifier.background(LuxSpecificColorHues().luxBlackRussian).color(Colors.White),
             )
 
-            WhyLux(breakpoint)
+            WhyLux()
         }
     }
 }
