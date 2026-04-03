@@ -6,7 +6,6 @@ import energy.lux.frontend.core.models.RoutedMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.core.services.localization.localizedUrl
 import energy.lux.frontend.domains.lux.core.PrivateTwinModel
-import energy.lux.frontend.domains.lux.core.PublicTwinModel
 import energy.lux.frontend.domains.lux.core.TwinModelCard
 import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import energy.lux.frontend.domains.lux.core.toTwinModelCardItem
@@ -40,7 +39,7 @@ data class PublicDrechtstedenTwinModel(
     override val label: LocalizedText,
     override val imageUrl: String,
     override val pageComponent: @Composable () -> Unit,
-) : DrechtstedenTwinModelBase, PublicTwinModel
+) : DrechtstedenTwinModelBase
 
 
 data class DrechtstedenTwinModel(
@@ -49,6 +48,7 @@ data class DrechtstedenTwinModel(
     override val label: LocalizedText,
     override val imageUrl: String,
     override val entryPoint: String,
+    override val modelId: Uuid = Uuid.NIL,
     override val pageComponent: @Composable () -> Unit,
 ) : DrechtstedenTwinModelBase, PrivateTwinModel
 

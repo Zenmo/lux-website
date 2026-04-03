@@ -2,7 +2,6 @@ package energy.lux.frontend.domains.lux.core.model.subdomain
 
 import androidx.compose.runtime.Composable
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.core.PublicTwinModel
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.amersfoort.Amersfoort
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.brabant.BrabantRouting
@@ -26,7 +25,7 @@ data class PublicSubdomainTwinModel(
     override val applicationArea: LuxApplicationArea,
     override val imageUrl: String,
     override val modelId: Uuid,
-) : SubdomainTwinModel, PublicTwinModel
+) : SubdomainTwinModel
 
 
 val empowered = PublicSubdomainTwinModel(

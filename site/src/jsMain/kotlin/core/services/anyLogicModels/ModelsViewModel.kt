@@ -6,9 +6,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import energy.lux.frontend.domains.lux.core.PublicTwinModel
 import energy.lux.frontend.domains.lux.core.TwinModelCardItem
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlin.js.Date
 
@@ -48,10 +49,8 @@ class ModelsViewModel(
         val modelsByUuid = uiState.value.models.associateBy { it.uuid }
 
         return twinModelCards.map { card ->
-            val modelDate = if (card is PublicTwinModel) {
-                modelsByUuid[card.modelId.toString()]
+            val modelDate = modelsByUuid[card.modelId.toString()]
                     ?.let { Date(it.lastModifiedDate) }
-            } else null
 
             TwinModelWithMetadata(
                 twinModel = card,

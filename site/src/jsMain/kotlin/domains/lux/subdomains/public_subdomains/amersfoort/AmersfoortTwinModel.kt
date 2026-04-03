@@ -1,7 +1,6 @@
 package energy.lux.frontend.domains.lux.subdomains.public_subdomains.amersfoort
 
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.core.PublicTwinModel
 import energy.lux.frontend.domains.lux.core.TwinModelCard
 import energy.lux.frontend.domains.lux.sections.application_fields.ApplicationArea
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
@@ -15,7 +14,7 @@ data class AmersfoortTwinModel(
     override val modelId: Uuid,
     override val applicationArea: ApplicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
     val modelApiKey: Uuid = anyLogicPublicApiKey,
-) : PublicTwinModel, TwinModelCard {
+) : TwinModelCard {
 
     companion object {
         val amersfoortTwinModels = listOf(
