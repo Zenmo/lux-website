@@ -150,6 +150,7 @@ fun ModelCard(
                         text = "• ${lastModifiedDate.localizedDateText()}".uppercase(),
                         modifier = DeEmphasizedTextStyle.toModifier()
                             .padding(left = 8.px)
+                            .fontSize(FontSize.Small)
                     )
                 }
             }

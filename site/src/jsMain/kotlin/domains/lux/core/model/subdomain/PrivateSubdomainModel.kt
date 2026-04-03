@@ -13,6 +13,7 @@ import energy.lux.frontend.domains.lux.subdomains.private_subdomains.Hessenpoort
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.KasAlsEnergiebron
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.PreZero
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.Vaanpark
+import kotlin.uuid.Uuid
 
 
 enum class PrivateSubdomainModel(
@@ -22,6 +23,7 @@ enum class PrivateSubdomainModel(
     override val applicationArea: LuxApplicationArea,
     override val imageUrl: String,
     override val entryPoint: String,
+    override val modelId: Uuid = Uuid.NIL,
 ) : SubdomainTwinModel, PrivateTwinModel {
     DRECHTSTEDEN(
         subdomain = "drechtsteden",
