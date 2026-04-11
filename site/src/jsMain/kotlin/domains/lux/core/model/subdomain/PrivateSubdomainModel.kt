@@ -4,15 +4,10 @@ import androidx.compose.runtime.Composable
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.PrivateTwinModel
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.*
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.Genius
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.Bijsterhuizen
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.Borchwerf
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.DeWieken
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.Hessenpoort
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.KasAlsEnergiebron
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.PreZero
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.Vaanpark
+import domains.lux.subdomains.private_subdomains.oss.OssRouting
 import kotlin.uuid.Uuid
 
 
@@ -95,6 +90,14 @@ enum class PrivateSubdomainModel(
         label = LocalizedText(nl = "Bijsterhuizen"),
         imageUrl = "/lux/images/model_thumbnails/bijsterhuizen.png",
         entryPoint = "bijsterhuizen",
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+    ),
+    OSS(
+        subdomain = "oss",
+        subdomainComponent = { OssRouting() },
+        label = LocalizedText(nl = "Oss"),
+        imageUrl = "/lux/images/model_thumbnails/oss.png",
+        entryPoint = "oss",
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
     ),
 }

@@ -11,18 +11,11 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.domains.lux.components.LuxSectionContainer
-import energy.lux.frontend.domains.lux.core.model.subdomain.subdomainModels
-import energy.lux.frontend.domains.lux.core.toTwinModelCardItem
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.drechtstedenModels
+import energy.lux.frontend.domains.lux.sections.luxmodels.components.*
 import energy.lux.frontend.domains.lux.widgets.TwinModelsGrid
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.SitePalette
-import energy.lux.frontend.domains.lux.sections.luxmodels.components.EmptyResults
-import energy.lux.frontend.domains.lux.sections.luxmodels.components.ModelAccessFilter
-import energy.lux.frontend.domains.lux.sections.luxmodels.components.ModelAreaFilter
-import energy.lux.frontend.domains.lux.sections.luxmodels.components.SearchBar
-import energy.lux.frontend.domains.lux.sections.luxmodels.components.filterAndSearchModels
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
@@ -33,7 +26,6 @@ enum class FilterType {
     PUBLIC,
     PRIVATE
 }
-
 
 @Composable
 fun LuxModels() {
@@ -53,13 +45,11 @@ fun LuxModels() {
                     ?: emptySet()
             )
         }
-        val allModels = (subdomainModels + drechtstedenModels)
-            .map { it.toTwinModelCardItem() }
         var filterType by remember { mutableStateOf(FilterType.ALL) }
 
         val luxModels = remember(query, filterType, selectedAreaOptions) {
             filterAndSearchModels(
-                models = allModels,
+                models = allLuxModels,
                 query = query,
                 filterType = filterType,
                 areas = selectedAreaOptions
