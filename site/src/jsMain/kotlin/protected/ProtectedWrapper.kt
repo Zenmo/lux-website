@@ -57,6 +57,7 @@ fun ProtectedWrapper(
             val entryPointParts = entryPoint.split("/")
             val privateModule =
                 when (entryPointParts.size) {
+                    2 -> importAsync<PrivateTextModule>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/ProtectedComponent.export.mjs").await()
                     3 -> importAsync<PrivateTextModule>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/${entryPointParts[2]}/ProtectedComponent.export.mjs").await()
                     else -> importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
                 }
