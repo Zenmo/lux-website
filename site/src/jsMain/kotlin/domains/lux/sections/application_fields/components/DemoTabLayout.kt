@@ -55,7 +55,8 @@ private fun <T> TabHeader(
     Row(
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
-            .width(450.px)
+            .width(100.percent)
+            .maxWidth(450.px)
             .padding(0.25.cssRem)
             .luxBorderRadius()
             .background(SitePalette.light.overlay.darkened(0.05f))
