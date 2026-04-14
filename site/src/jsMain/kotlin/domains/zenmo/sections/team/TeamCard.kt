@@ -17,11 +17,12 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
+import com.zenmo.web.zenmo.theme.font.*
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.domains.zenmo.widgets.button.IconButton
 import energy.lux.frontend.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.*
 import energy.lux.frontend.theme.styles.IconStyle
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -49,11 +50,9 @@ val TeamCardImageContainerStyle = CssStyle {
 
 val ProfileImageStyle = CssStyle.base {
     Modifier.fillMaxSize()
-        .borderRadius(
-            50.percent
-        )
         .padding(10.px)
-        .objectFit(ObjectFit.Cover).clip(Circle())
+        .objectFit(ObjectFit.Cover)
+        .clip(Circle())
 }
 
 
@@ -95,17 +94,6 @@ fun TeamCard(
                 nl = zenmoTeam.nlTitle,
             )
         }
-//        P(
-//            attrs = Modifier
-//                .textAlign(TextAlign.Center)
-//                .margin(0.cssRem)
-//                .toAttrs()
-//        ) {
-//            LangText(
-//                en = teamMember.enShortBio,
-//                nl = teamMember.nlShortBio,
-//            )
-//        }
         Spacer()
         TeamMemberSocials(
             email = zenmoTeam.email,
@@ -121,7 +109,7 @@ const val LINKEDIN_SVG = "/img/linkedin.svg"
 @Composable
 private fun TeamMemberSocials(
     email: String,
-    linkedin: String,
+    linkedin: String? = null,
     twitter: String? = null,
 ) {
     Row(
@@ -133,21 +121,23 @@ private fun TeamMemberSocials(
         IconButton(
             modifier = Modifier.background(SitePalette.light.onBackground),
             onClick = {
-
+                window.open("mailto:$email", "_blank")
             }) {
             MdiMail()
         }
 
-        IconButton(
-            modifier = Modifier
-                .background(SitePalette.light.onBackground),
-            onClick = {
-                // open linkedin link
-            }) {
-            Image(
-                modifier = IconStyle.toModifier(),
-                src = LINKEDIN_SVG
-            )
+        linkedin?.let {
+            IconButton(
+                modifier = Modifier
+                    .background(SitePalette.light.onBackground),
+                onClick = {
+                    window.open(linkedin, "_blank")
+                }) {
+                Image(
+                    modifier = IconStyle.toModifier(),
+                    src = LINKEDIN_SVG
+                )
+            }
         }
 
         twitter?.let {
@@ -155,7 +145,7 @@ private fun TeamMemberSocials(
                 modifier = Modifier
                     .background(SitePalette.light.onBackground),
                 onClick = {
-                    // open twitter link
+                    window.open(twitter, "_blank")
                 }) {
                 Image(
                     modifier = IconStyle.toModifier(),

@@ -19,7 +19,7 @@ fun DeGeerPage() {
         twin = deGeer,
         introContent = { BusinessParkModelPageText() },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.GILLIS)
+            ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
         }
     )
 }
