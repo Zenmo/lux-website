@@ -9,14 +9,13 @@ import energy.lux.frontend.domains.lux.core.model.subdomain.loenen
 import energy.lux.frontend.domains.lux.core.toTwinModelCardItem
 import energy.lux.frontend.domains.lux.sections.application_fields.FieldModels
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
-import energy.lux.frontend.domains.lux.sections.application_fields.components.ApplicationAreaContactPerson
 import energy.lux.frontend.domains.lux.sections.application_fields.components.LuxPageDemoSection
+import energy.lux.frontend.domains.lux.sections.application_fields.components.PeterContactCard
 import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbourhood.components.LuxNeighbourhoodFacts
 import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbourhood.components.NeighbourhoodHero
 import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbourhood.components.RealDataSimulation
 import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbourhood.components.WhatLuxNeighbourhoodSolves
 import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbourhood.components.get_lux_neighbourhood.GetLuxNeighbourhoodSection
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import kotlin.uuid.Uuid
 
@@ -48,6 +47,6 @@ fun LuxNeighbourhood() {
             ),
             showMoreModelsLink = true,
         )
-        ApplicationAreaContactPerson(ZenmoTeam.PETER_HOGEVEEN)
+        PeterContactCard()
     }
 }

@@ -14,12 +14,14 @@ const val APPLICATION_AREA_CONTACT_PERSON_ID = "application-area-contact-person"
 @Composable
 fun ApplicationAreaContactPerson(
     contactPerson: ZenmoTeam,
+    phoneNumberImageSrc: String = "",
 ) = LuxSectionContainer(
     modifier = Modifier.id(APPLICATION_AREA_CONTACT_PERSON_ID)
 ) {
     ProfileContactCard(
         name = contactPerson.memberName,
         imageUrl = contactPerson.image,
+        phoneNumberImageSrc = phoneNumberImageSrc,
         email = contactPerson.email,
         cardArrangementDirection = ProfileCardArrangementDirection.HORIZONTAL,
         captionText = LocalizedText(
@@ -28,3 +30,4 @@ fun ApplicationAreaContactPerson(
         ),
     )
 }
+

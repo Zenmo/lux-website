@@ -7,6 +7,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -41,6 +42,7 @@ fun ProfileContactCard(
     name: String,
     imageUrl: String,
     email: String,
+    phoneNumberImageSrc: String = "",
     captionText: LocalizedText = LocalizedText(
         en = "Website and model development",
         nl = "Website en model ontwikkeling"
@@ -89,13 +91,24 @@ fun ProfileContactCard(
                 nlText = name,
                 modifier = Modifier.fontSize(2.5.cssRem)
             )
-            if (email.isNotBlank()) {
-                Row {
-                    MdiMail(Modifier.padding(right = 0.25.cssRem))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                if (email.isNotBlank()) {
+                    MdiMail(Modifier.padding(right = 0.5.cssRem))
                     InlineLink(
                         destinationUrl = "mailto:$email",
                         enLinkText = email,
                         nlLinkText = email,
+                        textColor = Colors.Black,
+                    )
+                }
+
+                if (phoneNumberImageSrc.isNotBlank()) {
+                    Image(
+                        modifier = Modifier.padding(left = 0.75.cssRem),
+                        src = phoneNumberImageSrc,
+                        alt = "$name phone number",
                     )
                 }
             }
