@@ -13,6 +13,7 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.graphics.lightened
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiArrowForward
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
@@ -61,6 +62,7 @@ var ApplicationAreaCardStyle = CssStyle {
 fun ApplicationAreaCard(
     areaItem: ApplicationAreaItem,
 ) {
+    val ctx = rememberPageContext()
     val (
         applicationArea,
         description,
@@ -68,7 +70,11 @@ fun ApplicationAreaCard(
     ) = areaItem
 
     Column(
-        ApplicationAreaCardStyle.toModifier().then(HoverBoxShadowStyle.toModifier()),
+        modifier = ApplicationAreaCardStyle.toModifier()
+            .then(HoverBoxShadowStyle.toModifier())
+            .onClick {
+                ctx.router.navigateTo(applicationArea.url)
+            },
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(24.px)
     ) {
