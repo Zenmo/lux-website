@@ -15,7 +15,7 @@ fun DeStaartPage() {
         twin = deStaart,
         introContent = { BusinessParkModelPageText() },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.GILLIS)
+            ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
         }
     )
 }

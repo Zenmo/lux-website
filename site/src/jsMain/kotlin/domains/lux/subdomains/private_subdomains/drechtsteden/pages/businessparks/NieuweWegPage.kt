@@ -15,7 +15,7 @@ fun NieuweWegPage() {
         twin = nieuweWeg,
         introContent = { BusinessParkModelPageText() },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.GILLIS)
+            ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
         }
     )
 }

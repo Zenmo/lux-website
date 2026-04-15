@@ -16,7 +16,7 @@ fun LeerparkPage() {
         twin = leerpark,
         introContent = { BusinessParkModelPageText() },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.GILLIS)
+            ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
         }
     )
 }
