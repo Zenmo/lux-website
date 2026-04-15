@@ -15,7 +15,7 @@ fun LindtPage() {
         twin = grooteLindtV2,
         introContent = { BusinessParkModelPageText() },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.GILLIS)
+            ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
         }
     )
 }

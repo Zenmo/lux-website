@@ -51,7 +51,7 @@ fun Vaanpark() {
                 )
             },
             footerContent = {
-                ZenmoModellerProfileCard(ZenmoTeam.GILLIS)
+                ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
             },
         )
     }
