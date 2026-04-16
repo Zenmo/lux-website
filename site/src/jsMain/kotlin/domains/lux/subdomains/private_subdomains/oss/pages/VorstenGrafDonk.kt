@@ -13,6 +13,7 @@ fun VorstenGrafDonk() {
     PrivateTwinModelPage(
         entryPoint = vorstenGrafDonk.entryPoint,
         imageUrl = vorstenGrafDonk.imageUrl,
+        modelId = vorstenGrafDonk.modelId,
         introContent = {
             HeaderText(
                 enText = vorstenGrafDonk.label.en,

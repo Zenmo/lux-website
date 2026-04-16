@@ -35,6 +35,7 @@ val elzenburgDeGeer =
         label = LocalizedText("Elzenburg-De Geer"),
         imageUrl = "/lux/images/oss/elzenburgDeGeer.jpeg",
         entryPoint = "oss/elzenburgDeGeer",
+        modelId = Uuid.parse("8ca125d4-cc2c-4cbe-896a-6b49dd87016b"),
         pageComponent = { ElzenburgDeGeer() },
     )
 val vorstenGrafDonk =
@@ -42,6 +43,7 @@ val vorstenGrafDonk =
         label = LocalizedText("Vorstengrafdonk"),
         imageUrl = "/lux/images/oss/vorstengrafdonk.jpeg",
         entryPoint = "oss/vorstengrafdonk",
+        modelId = Uuid.parse("1b64c592-79b3-48dc-a10d-7b41136c2d71"),
         pageComponent = { VorstenGrafDonk() },
     )
 val moleneind =
@@ -49,6 +51,7 @@ val moleneind =
         label = LocalizedText("Moleneind"),
         imageUrl = "/lux/images/oss/moleneind.jpeg",
         entryPoint = "oss/moleneind",
+        modelId = Uuid.parse("5a23c46b-089b-4095-9364-083d6411e574"),
         pageComponent = { Moleneind() },
     )
 

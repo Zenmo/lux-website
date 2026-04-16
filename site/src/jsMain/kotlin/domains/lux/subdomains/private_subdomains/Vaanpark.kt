@@ -20,6 +20,7 @@ fun Vaanpark() {
     ) {
         PrivateTwinModelPage(
             entryPoint = vaanpark.entryPoint,
+            modelId = vaanpark.modelId,
             imageUrl = "/lux/images/vaanpark.png",
             introContent = {
                 MediaContentLayout(

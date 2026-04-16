@@ -27,6 +27,7 @@ fun Hessenpoort() {
     ) {
         PrivateTwinModelPage(
             entryPoint = hessenpoort.entryPoint,
+            modelId = hessenpoort.modelId,
             imageUrl = "/lux/images/models/hessenpoort.png",
             introContent = {
                 MediaContentLayout(

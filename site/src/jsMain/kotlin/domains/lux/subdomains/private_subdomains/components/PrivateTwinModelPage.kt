@@ -8,7 +8,7 @@ import kotlin.uuid.Uuid
 fun PrivateTwinModelPage(
     entryPoint: String,
     imageUrl: String,
-    modelId: Uuid = Uuid.NIL,
+    modelId: Uuid,
     introContent: @Composable () -> Unit = {},
     mediaContent: @Composable () -> Unit = {},
     extraContent: @Composable () -> Unit = {},

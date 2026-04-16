@@ -23,7 +23,7 @@ fun DrechtstedenTwinModelPage(
     mediaContent: @Composable () -> Unit = {},
     footerContent: @Composable () -> Unit,
 ) = SubdomainModelPage(
-    modelId = Uuid.NIL,
+    modelId = twin.modelId,
     introContent = {
         Column(
             Modifier.fillMaxWidth()

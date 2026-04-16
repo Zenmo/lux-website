@@ -22,6 +22,7 @@ fun Bijsterhuizen() {
         PrivateTwinModelPage(
             entryPoint = bijsterhuizen.entryPoint,
             imageUrl = "/lux/images/models/bijsterhuizen.png",
+            modelId = bijsterhuizen.modelId,
             introContent = {
                 MediaContentLayout(
                     imageUrl = bijsterhuizen.imageUrl,
