@@ -12,6 +12,7 @@ val overTSpoor =
         label = LocalizedText(nl = "Energy Twin Over 't Spoor"),
         applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
         entryPoint = "drechtsteden/resneighborhoods/overtspoor",
+        modelId = Uuid.parse("612143ff-eedc-4f36-8606-13d4c4d710a7"),
         imageUrl = "/lux/images/drechtsteden/resneighborhoods/over_t_spoor.png",
         pageComponent = { OverTSpoor() }
     )
@@ -21,6 +22,7 @@ val oostdonk =
         label = LocalizedText(nl = "Energy Twin Oostdonk"),
         applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
         entryPoint = "drechtsteden/resneighborhoods/oostdonk",
+        modelId = Uuid.parse("3b4289ea-d2b8-4887-95bf-bf293fc34263"),
         imageUrl = "/lux/images/drechtsteden/resneighborhoods/oostdonk.png",
         pageComponent = { Oostdonk() }
     )
@@ -30,6 +32,7 @@ val kerkbuurt =
         label = LocalizedText(nl = "Energy Twin Kerkbuurt"),
         applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
         entryPoint = "drechtsteden/resneighborhoods/kerkbuurt",
+        modelId = Uuid.parse("a8d6e6ae-8a4c-4685-9195-33b9cd986c48"),
         imageUrl = "/lux/images/drechtsteden/resneighborhoods/kerkbuurt.png",
         pageComponent = { Kerkbuurt() }
     )

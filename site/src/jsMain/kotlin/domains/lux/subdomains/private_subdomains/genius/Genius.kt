@@ -23,6 +23,7 @@ fun Genius() {
     ) {
         PrivateTwinModelPage(
             entryPoint = PrivateSubdomainModel.GENUIS.entryPoint,
+            modelId = PrivateSubdomainModel.GENUIS.modelId,
             imageUrl = "/lux/images/models/genius.png",
             introContent = { GeniusIntroTextBlock() },
             mediaContent = {

@@ -21,6 +21,7 @@ fun PreZero() {
     ) {
         PrivateTwinModelPage(
             entryPoint = prezero.entryPoint,
+            modelId = prezero.modelId,
             imageUrl = "/lux/images/models/prezero.png",
             introContent = {
                 MediaContentLayout(

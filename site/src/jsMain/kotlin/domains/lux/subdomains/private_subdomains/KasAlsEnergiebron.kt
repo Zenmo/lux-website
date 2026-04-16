@@ -27,6 +27,7 @@ fun KasAlsEnergiebron() {
     ) {
         PrivateTwinModelPage(
             entryPoint = kasAlsEnergiebron.entryPoint,
+            modelId = kasAlsEnergiebron.modelId,
             imageUrl = "/lux/images/models/kasals.png",
             introContent = {
                 MediaContentLayout(

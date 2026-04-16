@@ -13,6 +13,7 @@ fun ElzenburgDeGeer() {
     PrivateTwinModelPage(
         entryPoint = elzenburgDeGeer.entryPoint,
         imageUrl = elzenburgDeGeer.imageUrl,
+        modelId = elzenburgDeGeer.modelId,
         introContent = {
             HeaderText(
                 enText = elzenburgDeGeer.label.en,

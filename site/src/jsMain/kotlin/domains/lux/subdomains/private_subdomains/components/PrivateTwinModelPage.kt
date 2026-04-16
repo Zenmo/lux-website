@@ -8,18 +8,20 @@ import kotlin.uuid.Uuid
 fun PrivateTwinModelPage(
     entryPoint: String,
     imageUrl: String,
+    modelId: Uuid,
     introContent: @Composable () -> Unit = {},
     mediaContent: @Composable () -> Unit = {},
     extraContent: @Composable () -> Unit = {},
     footerContent: @Composable () -> Unit,
 ) = SubdomainModelPage(
-    modelId = Uuid.NIL,
+    modelId = modelId,
     introContent = introContent,
     mediaContent = mediaContent,
     anylogicRender = {
         ModelWrapper(
             imgUrl = imageUrl,
             entryPoint = entryPoint,
+            modelId = modelId,
         )
     },
     extraContent = extraContent,

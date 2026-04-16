@@ -20,6 +20,7 @@ fun Borchwerf() {
     ) {
         PrivateTwinModelPage(
             entryPoint = borchwerf.entryPoint,
+            modelId = borchwerf.modelId,
             imageUrl = "/lux/images/models/borchwerf.png",
             introContent = {
                 MediaContentLayout(

@@ -13,6 +13,7 @@ fun Moleneind() {
     PrivateTwinModelPage(
         entryPoint = moleneind.entryPoint,
         imageUrl = moleneind.imageUrl,
+        modelId = moleneind.modelId,
         introContent = {
             HeaderText(
                 enText = moleneind.label.en,
