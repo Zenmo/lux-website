@@ -13,25 +13,26 @@ import web.http.RequestCredentials
 import web.http.RequestInit
 import web.http.fetch
 
-external interface PrivateTextModule {
-    @Composable
-    fun ProtectedComponent()
+typealias ProtectedComponent<P> = @Composable (props: P) -> Unit
+
+external interface PrivateTextModule<P> {
+    val ProtectedComponent: ProtectedComponent<P>
 }
 
-sealed class AccessStatus {
-    data object Pending : AccessStatus()
-    data object NotLoggedIn : AccessStatus()
-    data object NotEnoughPrivileges : AccessStatus()
-    data class Error(val errorMessage: String) : AccessStatus()
-    data class Success(val protectedComponent: @Composable () -> Unit) : AccessStatus()
+sealed class AccessStatus<out P> {
+    data object Pending : AccessStatus<Nothing>()
+    data object NotLoggedIn : AccessStatus<Nothing>()
+    data object NotEnoughPrivileges : AccessStatus<Nothing>()
+    data class Error(val errorMessage: String) : AccessStatus<Nothing>()
+    data class Success<P>(val protectedComponent: ProtectedComponent<P>, val props: P) : AccessStatus<P>()
 }
 
-typealias ProtectedDisplayComponent = @Composable (
-    status: AccessStatus,
+typealias ProtectedDisplayComponent<P> = @Composable (
+    status: AccessStatus<P>
 ) -> Unit
 
 @Composable
-fun DefaultProtectedDisplay(status: AccessStatus) {
+fun <P> DefaultProtectedDisplay(status: AccessStatus<P>) {
     when (status) {
         AccessStatus.Pending -> Pending()
         AccessStatus.NotLoggedIn -> Login()
@@ -40,28 +41,32 @@ fun DefaultProtectedDisplay(status: AccessStatus) {
             ErrorWidget(errorMessage = status.errorMessage)
         }
         is AccessStatus.Success -> {
-            status.protectedComponent()
+            status.protectedComponent(status.props)
         }
     }
 }
 
 @Composable
-fun ProtectedWrapper(
+fun <P> ProtectedWrapper(
     entryPoint: String,
-    display: ProtectedDisplayComponent = { status -> DefaultProtectedDisplay(status) },
+    props: P,
+    display: ProtectedDisplayComponent<P> = { DefaultProtectedDisplay(it) }
 ) {
-    var status by remember { mutableStateOf<AccessStatus>(AccessStatus.Pending) }
+    var status by remember { mutableStateOf<AccessStatus<P>>(AccessStatus.Pending) }
 
     LaunchedEffect(Unit) {
         try {
             val entryPointParts = entryPoint.split("/")
             val privateModule =
                 when (entryPointParts.size) {
-                    2 -> importAsync<PrivateTextModule>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/ProtectedComponent.export.mjs").await()
-                    3 -> importAsync<PrivateTextModule>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/${entryPointParts[2]}/ProtectedComponent.export.mjs").await()
-                    else -> importAsync<PrivateTextModule>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
+                    2 -> importAsync<PrivateTextModule<P>>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/ProtectedComponent.export.mjs").await()
+                    3 -> importAsync<PrivateTextModule<P>>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/${entryPointParts[2]}/ProtectedComponent.export.mjs").await()
+                    else -> importAsync<PrivateTextModule<P>>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
                 }
-            status = AccessStatus.Success { privateModule.ProtectedComponent() }
+            status = AccessStatus.Success(
+                protectedComponent = privateModule.ProtectedComponent,
+                props = props
+            )
         } catch (e: Throwable) {
             /**
              * We get no status code after import failure.

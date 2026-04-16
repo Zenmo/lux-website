@@ -49,6 +49,7 @@ fun DrechtstedenTwinModelPage(
                 ModelWrapper(
                     imgUrl = twin.imageUrl,
                     entryPoint = twin.entryPoint,
+                    modelId = twin.modelId,
                 )
             }
         }

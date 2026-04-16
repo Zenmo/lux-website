@@ -14,16 +14,13 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.ErrorWidget
-import energy.lux.frontend.protected.AccessStatus
-import energy.lux.frontend.protected.Login
-import energy.lux.frontend.protected.NotEnoughPrivileges
-import energy.lux.frontend.protected.Pending
-import energy.lux.frontend.protected.ProtectedWrapper
+import energy.lux.frontend.protected.*
 import energy.lux.frontend.theme.isZenmoDomain
 import energy.lux.frontend.theme.styles.LuxCornerRadius
 import energy.lux.frontend.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
+import kotlin.uuid.Uuid
 
 val ProtectedWrapperStyle = CssStyle {
     base {
@@ -82,6 +79,7 @@ val ModelWrapperStyle = CssStyle.base {
 fun ModelWrapper(
     imgUrl: String,
     entryPoint: String,
+    modelId: Uuid,
     modifier: Modifier = Modifier.padding(topBottom = 3.cssRem)
 ) {
     Box(
@@ -93,10 +91,11 @@ fun ModelWrapper(
     ) {
         ProtectedWrapper(
             entryPoint = entryPoint,
+            props = modelId,
             display = { status ->
                 if (status is AccessStatus.Success) {
                     Div(ModelWrapperStyle.toModifier().toAttrs()) {
-                        status.protectedComponent()
+                        status.protectedComponent(status.props)
                     }
                 } else {
                     Image(
