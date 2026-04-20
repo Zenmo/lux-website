@@ -34,7 +34,7 @@ val empowered = PublicSubdomainTwinModel(
     label = LocalizedText(en = "EmPowerEd", nl = "EmPowerEd"),
     imageUrl = "/lux/images/model_thumbnails/Empowered.jpg",
     modelId = Uuid.parse("3801076e-44db-4b42-a27f-5be2b6c82a5c"),
-    applicationArea = LuxApplicationArea.LUX_REGION
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
 
 val brabant = PublicSubdomainTwinModel(
@@ -60,7 +60,7 @@ val hilversum = PublicSubdomainTwinModel(
     label = LocalizedText(en = "Hilversum", nl = "Hilversum"),
     imageUrl = "/lux/images/model_thumbnails/ModelThumbnailHilversum.jpg",
     modelId = Uuid.parse("00edc3d3-2942-486a-93ae-26f809872a54"),
-    applicationArea = LuxApplicationArea.LUX_REGION
+    applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD
 )
 val bunderbuurten = PublicSubdomainTwinModel(
     subdomain = "bunderbuurten",

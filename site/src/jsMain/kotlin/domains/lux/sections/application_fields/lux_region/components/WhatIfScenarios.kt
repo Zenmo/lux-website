@@ -1,4 +1,4 @@
-package energy.lux.frontend.domains.lux.sections.application_fields.lux_region.components
+package domains.lux.sections.application_fields.lux_region.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -42,38 +42,32 @@ fun WhatIfScenarios() {
 
 private val exampleScenarios = listOf(
     LocalizedText(
-        en = "What if we choose a heat network in this neighborhood and heat pumps in this neighborhood?",
-        nl = "Wat als we in deze buurt een warmtenet kiezen en in deze buurt warmtepompen?"
-    ),
-    LocalizedText(
         en = """
-            What if we provide this new housing estate with smartly controlled home or neighbourhood batteries so that 
-            3x as many houses fit on the existing electricity grid?
+            What if we implement small-scale low-temperature heat networks, will that result in a more balanced heat 
+            vision with less grid impact?
         """.trimIndent(),
         nl = """
-            Wat als we deze nieuwbouwwijk voorzien van slim aangestuurde thuis- of buurtbatterijen zodat er 3x zoveel 
-            huizen op het bestaande elektriciteitsnet passen?
+            Wat als we in deze wijken kleinschalige warmtenetten met WKO's toepassen, levert dat een robustere 
+            warmtevisie op?
         """.trimIndent()
     ),
     LocalizedText(
         en = """
-            What if we move this wind farm from here to there? To what extent does this relieve the electricity grid in 
-            such a way that more new construction and activity is possible?
+            What if we install neighborhood batteries alongside the existing transformers in these neighborhoods, how 
+            much can we reduce grid congestion?
         """.trimIndent(),
         nl = """
-            Wat als we dit windpark verplaatsen van hier naar daar? In hoeverre ontlast dit het elektriciteitsnet 
-            zodanig dat er meer nieuwbouw en bedrijvigheid mogelijk is?
+            Wat als we in deze buurten buurtbatterijen bij de bestaande trafo's plaatsen, kunnen we dan minder 
+            verzwaren?
         """.trimIndent()
     ),
     LocalizedText(
-        en = """
-            What if we transform this business park into an energy hub? To what extent is more activity possible on the 
-            existing network? Companies in this energy hub are massively installing batteries behind the meter?
-        """.trimIndent(),
-        nl = """
-            Wat als we dit bedrijventerrein omvormen tot energiehub? In hoeverre is er dan op het bestaande netwerk 
-            meer bedrijvigheid mogelijk? bedrijven in deze energiehub massaal batterijen achter de meter plaatsen?
-        """.trimIndent()
+        en = "What if business parks become energy hubs, and what is the effect on the regional energy vision?",
+        nl = "Wat als bedrijventerreinen energiehubs worden, wat is het effect op de regionale energievisie?"
+    ),
+    LocalizedText(
+        en = "What if we directly link large-scale generation, storage, and demand?",
+        nl = "Wat als we grootschalige opwek, opslag en vraag direct aan elkaar koppelen?"
     ),
 )
 
@@ -85,7 +79,7 @@ private fun ExampleScenariosList() {
     ) {
         LangText(
             en = "You can calculate, for example:",
-            nl = "Je kunt bijvoorbeeld doorrekenen:",
+            nl = "We zetten het model vaak in voor 'wat-als' scenario's",
         )
 
         for (scenario in exampleScenarios) {

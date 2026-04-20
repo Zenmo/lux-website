@@ -1,4 +1,4 @@
-package energy.lux.frontend.domains.lux.sections.application_fields.lux_region.components
+package domains.lux.sections.application_fields.lux_region.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.Background

@@ -1,4 +1,4 @@
-package energy.lux.frontend.domains.lux.sections.application_fields.lux_region.components
+package domains.lux.sections.application_fields.lux_region.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -91,7 +91,7 @@ fun ConsistentInterface() {
                         supplemented for you if desired
                     """.trimIndent(),
                     nl = """
-                        de output’s gebaseerd op een groot aantal kritieke prestatie indicatoren (KPI’s) die desgewenst 
+                        De output’s gebaseerd op een groot aantal kritieke prestatie indicatoren (KPI’s) die desgewenst 
                         voor jou aangevuld kunnen worden
                     """.trimIndent()
                 ),
