@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <line x1="228.883" y1="237.014" x2="228.883" y2="250.267" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <g>
+    <polygon points="216.524 156.385 126.074 156.385 144.493 121.56 198.105 121.56 216.524 156.385" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="152.106 250.267 207.748 250.267 207.748 156.385 134.851 156.385 134.851 217.739" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="177.57" y="164.476" width="17.637" height="14.312" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="147.392" y="164.476" width="17.637" height="14.312" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="177.57" y="190.92" width="17.637" height="14.312" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="147.392" y="190.92" width="17.637" height="14.312" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="177.57" y="217.739" width="17.637" height="31.935" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="147.392" y="217.739" width="17.637" height="14.312" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <line x1="66.927" y1="267.874" x2="273.971" y2="267.872" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="177.57" y1="249.674" x2="161.249" y2="267.872" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="195.168" y1="249.674" x2="211.488" y2="267.872" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="207.748" y1="250.267" x2="238.012" y2="250.267" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M65.726,267.874c-1.279-2.768-1.992-5.851-1.992-9.101,0-11.999,9.727-21.727,21.727-21.727,7.449,0,14.023,3.749,17.937,9.463" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M86.95,237.046c4.162-13.289,16.571-22.932,31.233-22.932,18.072,0,32.722,14.65,32.722,32.722,0,8.011-2.879,15.349-7.658,21.038" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M108.161,215.677c-2.544-3.584-4.04-7.964-4.04-12.693,0-12.124,9.829-98.491,21.953-98.491,4.547,0,8.77,12.145,12.274,27.966" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M206.834,138.064c5.489-33.357,13.336-65.938,22.049-65.938,16.598,0,30.053,118.237,30.053,134.835s-13.455,30.053-30.053,30.053c-8.241,0-15.707-3.317-21.136-8.688" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M273.971,267.872c1.46-2.779,2.296-5.938,2.296-9.295,0-11.062-8.967-20.029-20.029-20.029s-20.029,8.967-20.029,20.029c0,3.357.836,6.516,2.296,9.295" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

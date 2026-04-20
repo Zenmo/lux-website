@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <line x1="170" y1="200.419" x2="248.667" y2="185.987" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="132.333" y1="153.185" x2="170" y2="200.419" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polygon points="244.667 59.383 189 59.383 146.333 83.185 132.333 153.185 99.333 195.185 73 222.185 73 242.151 103 242.151 130.667 222.185 158.833 222.185 167 238.852 186.333 238.852 199 252.185 188.667 274.185 195 280.617 210.333 280.617 210.333 267.852 204.333 258.852 222.667 227.993 202.062 194.537 248.667 185.987 244.333 172.232 259.666 162.558 259.666 142.852 242.333 142.852 242.333 128.229 259.666 128.229 259.666 111.376 267 95.852 267 76.519 244.667 59.383" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="99.333" y1="195.185" x2="130.667" y2="222.185" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="212.858" y1="212.067" x2="186.333" y2="238.852" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="139.955 162.558 166.144 155.377 187.404 175.109" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="175.5 164.061 203.667 138.521 244.333 172.232" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="191.177 110.46 166.144 155.377 155.556 143.852 163.667 109.185 146.333 83.185" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="203.667" y1="138.521" x2="203.667" y2="111.74" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="215.333 112.936 175.5 108.852 179.833 79.519 244.667 59.383" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="215.333" y1="112.936" x2="242.333" y2="128.229" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="215.333 112.936 229.333 83.185 259.666 111.376" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="215.333" y1="68.493" x2="223.5" y2="95.582" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="117.054" y1="210.455" x2="187.404" y2="175.109" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

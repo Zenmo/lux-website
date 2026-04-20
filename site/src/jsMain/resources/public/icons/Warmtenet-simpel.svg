@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <g>
+    <polygon points="206.018 280.203 133.982 280.203 148.651 252.468 191.349 252.468 206.018 280.203" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <g>
+      <rect x="140.972" y="280.203" width="58.057" height="31.878" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <rect x="174.994" y="286.647" width="14.046" height="25.434" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <rect x="150.96" y="286.647" width="14.046" height="11.399" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    </g>
+  </g>
+  <g>
+    <rect x="244.21" y="122.275" width="59.144" height="95.451" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="254.385" y="189.913" width="14.31" height="27.812" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="254.385" y="135.799" width="14.31" height="12.464" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="278.87" y="135.799" width="14.31" height="12.464" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="254.385" y="163.588" width="14.31" height="12.464" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="278.87" y="163.588" width="14.31" height="12.464" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="278.87" y="190.342" width="14.31" height="12.464" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <polygon points="178.49 50.475 158.345 64.393 158.345 24.919 141.366 24.919 141.366 95.778 198.634 95.778 198.634 50.475 178.49 64.393 178.49 50.475" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <g>
+    <path d="M150.904,197.969s-6.759-6.261-6.759-13.984,6.759-13.984,6.759-13.984c0,0,6.759-6.261,6.759-13.984s-6.759-13.984-6.759-13.984" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <path d="M170,197.969s-6.759-6.261-6.759-13.984,6.759-13.984,6.759-13.984c0,0,6.759-6.261,6.759-13.984s-6.759-13.984-6.759-13.984" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <path d="M189.096,197.969s-6.759-6.261-6.759-13.984,6.759-13.984,6.759-13.984c0,0,6.759-6.261,6.759-13.984s-6.759-13.984-6.759-13.984" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <g>
+    <path d="M100.152,144.711c-3.967,0-7.183,3.529-7.183,3.529,0,0-3.216,3.529-7.183,3.529s-7.183-3.529-7.183-3.529h-.091s-3.216-3.529-7.183-3.529c-3.967,0-7.183,3.529-7.183,3.529,0,0-3.216,3.529-7.183,3.529s-7.183-3.529-7.183-3.529h0s-.091,0-.091,0c0,0-3.216-3.529-7.183-3.529" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <path d="M58.192,191.893c0,8.221,6.664,14.885,14.885,14.885s14.885-6.664,14.885-14.885c0-1.96-.389-3.827-1.077-5.541-1.282,2.091-3.582,3.491-6.214,3.491-4.027,0-7.292-3.265-7.292-7.292,0-2.092.886-3.973,2.297-5.303,8.295-8.295-7.191-17.834-7.191-17.834,3.843,13.357-10.292,18.16-10.292,32.478" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polygon points="101.193 122.275 101.193 218.456 42.049 218.456 42.745 122.319 101.193 122.275" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <path d="M201.458,138.475l-1.227-12.503,12.263,1.72-5.056,4.939c9.558,9.573,15.469,22.79,15.469,37.387,0,29.224-23.691,52.914-52.914,52.914s-52.914-23.691-52.914-52.914,23.691-52.914,52.914-52.914c4.655,0,9.169.601,13.47,1.73" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M139.293,270.221c-27.001-8.263-49.366-27.138-62.232-51.763" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M262.939,218.456c-12.793,24.487-34.98,43.289-61.778,51.624" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M199.029,69.281c28.021,8.062,51.225,27.5,64.289,52.993" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M76.683,122.274c13.125-25.612,36.486-45.113,64.683-53.105" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

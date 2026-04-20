@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <g>
+    <circle cx="238.151" cy="188.234" r="43.45" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="243.8 161.35 226.857 188.234 249.444 188.234 232.501 215.117" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <g>
+    <circle cx="137.677" cy="233.887" r="35.227" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="142.258 212.092 128.521 233.887 146.834 233.887 133.097 255.683" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <g>
+    <circle cx="137.677" cy="142.617" r="28.939" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="141.44 124.712 130.156 142.617 145.199 142.617 133.915 160.522" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <g>
+    <circle cx="185.126" cy="95.169" r="24.282" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="188.283 80.145 178.815 95.169 191.438 95.169 181.969 110.193" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <g>
+    <circle cx="76.182" cy="171.556" r="17.783" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="78.494 160.553 71.56 171.556 80.804 171.556 73.87 182.559" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <g>
+    <circle cx="92.083" cy="97.023" r="17.783" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="94.396 86.02 87.461 97.023 96.706 97.023 89.771 108.026" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <line x1="158.14" y1="122.155" x2="167.956" y2="112.339" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="117.215" y1="122.155" x2="104.658" y2="109.598" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="137.677" y1="171.556" x2="137.677" y2="198.661" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="112.768" y1="208.978" x2="88.329" y2="184.539" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="198.584" y1="170.281" x2="164.024" y2="154.584" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="169.753" y1="219.318" x2="198.584" y2="206.223" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

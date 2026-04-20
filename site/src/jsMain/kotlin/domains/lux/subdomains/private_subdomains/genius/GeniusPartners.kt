@@ -52,7 +52,7 @@ enum class GeniusPartners(
     ),
     ZENMO(
         "Zenmo Simulations",
-        "/logos/logo2.png",
+        "/icons/zenmo-logo.svg",
         "https://zenmo.com"
     ),
     VOLTGOED(
