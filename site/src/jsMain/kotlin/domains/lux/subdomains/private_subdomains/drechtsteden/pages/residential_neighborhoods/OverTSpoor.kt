@@ -1,4 +1,4 @@
-package energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resneighborhoods
+package energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_neighborhoods
 
 import androidx.compose.runtime.Composable
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
@@ -8,9 +8,9 @@ import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
 
 
 @Composable
-fun LandVanValk() {
+fun OverTSpoor() {
     DrechtstedenTwinModelPage(
-        twin = landVanValk,
+        twin = overTSpoor,
         introContent = { ResidentialAreaModelPageText() },
         footerContent = {
             ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)

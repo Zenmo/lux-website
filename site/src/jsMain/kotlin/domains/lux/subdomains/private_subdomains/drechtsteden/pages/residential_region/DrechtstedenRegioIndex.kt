@@ -1,4 +1,4 @@
-package energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resregion
+package energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_region
 
 import androidx.compose.runtime.Composable
 import energy.lux.frontend.components.widgets.LangText

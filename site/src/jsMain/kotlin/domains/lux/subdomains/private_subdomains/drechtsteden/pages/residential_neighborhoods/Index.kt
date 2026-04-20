@@ -1,4 +1,4 @@
-package energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resneighborhoods
+package energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_neighborhoods
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Column
