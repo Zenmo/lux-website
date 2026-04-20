@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <g>
+    <polygon points="156.566 239.825 190.66 197.112 171.992 197.112 183.436 165.425 183.434 165.425 149.34 208.139 168.008 208.139 156.564 239.825 168.008 208.139 168.009 208.139 156.566 239.825" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <path d="M186.079,149.664v-10.75c0-1.82-1.489-3.309-3.309-3.309h-25.54c-1.82,0-3.309,1.489-3.309,3.309v10.75h32.157Z" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="134.691" y="149.664" width="70.617" height="107.246" rx="3.309" ry="3.309" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <polyline points="269.796 174.981 170 83.091 70.204 174.981" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="96.702 150.61 96.702 256.909 243.298 256.909 243.298 150.61" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

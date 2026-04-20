@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <polyline points="170.491 207.715 158.788 226.283 174.389 226.283 162.687 244.851" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <circle cx="219.159" cy="254.113" r="16.924" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <circle cx="126.448" cy="254.113" r="16.924" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M109.524,170.439c-24.373,0-44.132,19.759-44.132,44.132s19.759,44.132,44.132,44.132" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <g>
+    <path d="M126.448,153.515h12.091v33.848h-12.091c-9.347,0-16.924-7.577-16.924-16.924s7.577-16.924,16.924-16.924Z" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <g>
+      <line x1="138.539" y1="161.812" x2="153.367" y2="161.627" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <line x1="138.539" y1="179.251" x2="153.367" y2="179.066" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    </g>
+  </g>
+  <g>
+    <path d="M219.159,153.515h-12.091v33.848h12.091c9.347,0,16.924-7.577,16.924-16.924s-7.577-16.924-16.924-16.924Z" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <g>
+      <line x1="207.069" y1="161.812" x2="192.24" y2="161.627" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <line x1="207.069" y1="179.251" x2="192.24" y2="179.066" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    </g>
+  </g>
+  <line x1="142.739" y1="258.703" x2="202.235" y2="258.703" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M236.083,258.703h17.86c6.941,0,12.618-2.795,9.853-15.058-4.369-19.38-8.503-23.567-41.816-28.3-25.643-17.609-34.632-20.279-52.427-20.279-10.392,0-16.533,0-18.932,0-13.471,0-27.551,9.967-39.685,22.1-17.844,0-17.84,6.553-17.84,10.922v10.558" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="202.235" y1="128.779" x2="142.409" y2="128.779" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="247.587 128.779 257.727 128.779 257.727 98.179 225.834 91.332 202.905 68.963 141.663 68.963 118.734 91.332 86.841 98.179 86.841 128.779 108.986 128.779" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="169.527 78.573 157.825 97.141 173.426 97.141 161.723 115.709" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <circle cx="219.159" cy="125.011" r="16.924" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <circle cx="125.485" cy="125.011" r="16.924" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="247.587" y1="158.946" x2="247.587" y2="128.779" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M236.094,170.439c6.347,0,11.492-5.145,11.492-11.492" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

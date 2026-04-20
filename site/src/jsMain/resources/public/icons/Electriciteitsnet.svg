@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <polygon points="238.139 261.963 193.654 261.963 203.726 78.037 228.066 78.037 238.139 261.963" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="174.27" y1="261.963" x2="257.523" y2="261.963" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="201.992 109.699 231.373 135.827 198.925 165.715 234.671 198.634 195.488 228.463 238.139 261.963" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="76.245" y1="261.963" x2="147.42" y2="261.963" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M244.656,123.018c-42.157,48.264-108.236,38.432-108.236,38.432v-13.414h-50.078v13.414s67.018,10.692,100.794-38.432v-13.319h57.52" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="244.656" y1="109.699" x2="244.656" y2="123.018" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polygon points="128.109 261.963 95.556 261.963 102.927 127.369 120.738 127.369 128.109 261.963" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <line x1="81.371" y1="261.963" x2="142.294" y2="261.963" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="122.574 160.894 99.996 180.885 124.937 204.028 97.272 230.62 128.109 261.963" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

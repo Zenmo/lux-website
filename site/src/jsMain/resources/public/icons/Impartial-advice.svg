@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <path d="M109.683,176.46c0,9.79-7.936,17.727-17.727,17.727s-17.727-7.936-17.727-17.727h35.453Z" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="74.23 176.418 91.957 128.733 109.683 176.418" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M265.77,176.763c0,9.79-7.936,17.727-17.727,17.727s-17.727-7.936-17.727-17.727h35.453Z" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <polyline points="230.317 176.763 248.043 129.079 265.77 176.763" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M248.151,115.549H91.849c-3.64,0-6.592,2.951-6.592,6.592s2.951,6.592,6.592,6.592h58.375v137.488c0,3.64,2.951,6.592,6.592,6.592s6.592-2.951,6.592-6.592v-77.245h13.184v77.245c0,3.64,2.951,6.592,6.592,6.592s6.592-2.951,6.592-6.592v-137.488h58.375c3.64,0,6.592-2.951,6.592-6.592s-2.951-6.592-6.592-6.592Z" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <circle cx="170" cy="86.209" r="19.022" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

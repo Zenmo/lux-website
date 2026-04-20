@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" width="340" height="340" viewBox="0 0 340 340">
+  <polyline points="113.464 150.31 113.464 226.99 268.459 226.99 268.459 131.662 144.247 131.662" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M205.039,229.497c0,12.934,15.458,23.418,15.458,23.418v11.366s-61.28,0-61.28,0v-11.366s15.458-10.485,15.458-23.418" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <g>
+    <polyline points="121.916 178.392 81.199 178.392 81.199 150.477" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="71.541 160.135 81.199 150.477 90.857 160.135" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <g>
+    <polyline points="157.551 89.842 190.311 89.842 190.311 117.757" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="199.969 108.099 190.311 117.757 180.653 108.099" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <g>
+    <polygon points="144.269 131.662 100.864 131.662 111.648 112.242 133.485 112.242 144.269 131.662" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polygon points="139.828 131.662 105.769 131.662 105.594 150.31 139.653 150.31 139.828 131.662" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="133.407 112.242 133.407 94.366 81.853 94.366 81.853 139.65 105.692 139.874" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polygon points="103.669 94.366 88.019 94.366 92.566 75.719 99.122 75.719 103.669 94.366" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <polyline points="144.247 131.662 144.247 85.043 122.567 85.043 122.567 94.366" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <rect x="128.745" y="75.719" width="9.324" height="9.324" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    <line x1="133.407" y1="103.69" x2="81.853" y2="103.69" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+  <polyline points="158.635 160.488 164.801 160.488 169.348 141.84 175.904 141.84 180.451 160.488 199.349 160.488 199.349 151.164 205.527 151.164 205.527 141.84 214.851 141.84 214.851 151.164 221.029 151.164 221.029 169.812 158.635 169.812 158.635 205.771 182.474 205.995 182.376 216.431 216.435 216.431 216.61 197.783 221.051 197.783 210.267 178.364 188.43 178.364 177.646 197.783 207.823 197.783" fill="none" stroke="#007e84" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

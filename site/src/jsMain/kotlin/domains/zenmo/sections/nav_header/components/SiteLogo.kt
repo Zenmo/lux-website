@@ -47,7 +47,7 @@ val SiteLogoStyle = CssStyle<SiteLogoKind> {
 fun SiteLogo() {
     Link("/") {
         Img(
-            src = ("/logos/logo2.png"),
+            src = ("/icons/zenmo-logo.svg"),
             attrs = SiteLogoStyle.toModifier().toAttrs()
         )
     }
