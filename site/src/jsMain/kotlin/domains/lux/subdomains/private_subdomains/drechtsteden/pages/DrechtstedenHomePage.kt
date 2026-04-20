@@ -19,8 +19,8 @@ import energy.lux.frontend.domains.lux.sections.application_fields.DrechtstedenP
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.municipalities.dordrecht
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resneighborhoods.overTSpoor
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resregion.drechtstedenResRegion
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_neighborhoods.overTSpoor
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_region.drechtstedenResRegion
 import energy.lux.frontend.domains.lux.widgets.ModelCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam

@@ -6,8 +6,8 @@ import energy.lux.frontend.core.models.SimpleMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.core.services.localization.localizedUrl
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.businessparks.BusinessParksPage
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resneighborhoods.NeighbourhoodsPage
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.resregion.DrechtstedenRegioIndex
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_neighborhoods.NeighbourhoodsPage
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_region.DrechtstedenRegioIndex
 
 enum class DrechtstedenProjectArea(
     override val label: LocalizedText,
