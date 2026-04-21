@@ -68,16 +68,16 @@ fun <P> ProtectedWrapper(
                 props = props
             )
         } catch (e: Throwable) {
+            val resolvedModule = getModuleNameFromException(e)
             /**
              * We get no status code after import failure.
              * To determine the status code, we do the same request again using AJAX.
              */
-            val fileName = e.message?.substringAfterLast('/')
-            if (fileName == null) {
+            if (resolvedModule == null) {
                 status = AccessStatus.Error(
                     LanguageManager.language.value.translate(
-                        en = "Failed to load module.",
-                        nl = "Kon de module niet laden."
+                        en = "Error when doing dynamic import of module. Details: ${e.message}",
+                        nl = "Fout bij dynamische import van de module. Details: ${e.message}"
                     )
                 )
                 return@LaunchedEffect
@@ -85,7 +85,7 @@ fun <P> ProtectedWrapper(
 
             try {
                 val response = fetch(
-                    AppGlobals.getValue("BACKEND_URL") + "/" + fileName, RequestInit(
+                    AppGlobals.getValue("BACKEND_URL") + "/" + resolvedModule, RequestInit(
                         credentials = RequestCredentials.include
                     )
                 )
@@ -94,9 +94,9 @@ fun <P> ProtectedWrapper(
                     403 -> AccessStatus.NotEnoughPrivileges
                     else -> AccessStatus.Error(
                         LanguageManager.language.value.translate(
-                            en = "An error occurred while accessing module.",
-                            nl = "Er is een fout opgetreden bij het openen van de module."
-                        )
+                            en = "An error occurred while doing dynamic import of $resolvedModule.",
+                            nl = "Er is een fout opgetreden bij de dynamic import $resolvedModule."
+                        ) + " HTTP status ${response.status}. Import message: ${e.message}"
                     )
                 }
             } catch (e: Throwable) {
@@ -116,4 +116,19 @@ fun <P> ProtectedWrapper(
     ) {
         display(status)
     }
+}
+
+fun getModuleNameFromException(e: Throwable): String? {
+    /**
+     * `resolvedModule` is the module name after bundling.
+     * It is set through rollup.config.mjs
+     */
+    var resolvedModule: String? = e.asDynamic().resolvedModule
+    if (resolvedModule == null && e.message != null) {
+        // Fallback to get the module name from the error message.
+        // Does not work in Safari.
+        val regex = Regex("[^/]*\\.mjs")
+        resolvedModule = regex.find(e.message ?: "")?.value
+    }
+    return resolvedModule
 }

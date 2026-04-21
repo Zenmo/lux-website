@@ -2,7 +2,7 @@ import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
 import nodeResolve from "@rollup/plugin-node-resolve";
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import { globSync } from 'glob';
+import {globSync} from 'glob';
 import "core-js/stable/array/to-sorted.js"
 
 const rootProjectDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..")
@@ -42,6 +42,29 @@ export default {
             ],
         }),
         dynamicImportVars(),
+        {
+            name: 'dynamic-import-meta',
+            renderDynamicImport({ targetModuleId }) {
+                if (targetModuleId) {
+                    // Wrap the default import() with a try-catch which stores the module name.
+                    // This is used in ProtectedWrapper.kt to figure out the cause of the failure
+                    // and redirect the user to the login page if applicable.
+                    return {
+                        left: `
+                            (function(p) {
+                                return import(p)
+                                    .catch(e => {
+                                        e.resolvedModule = p;
+                                        throw e;
+                                    })
+                            })(
+                        `.trim(),
+                        right: ')'
+                    };
+                }
+                return null;
+            }
+        },
     ]
 }
 
@@ -61,7 +84,7 @@ function getFirstImporterWithAccessPolicy(moduleId, getModuleInfo) {
         moduleId => getModuleInfo(moduleId).exports.includes("accessPolicy")
     )
 
-    if (!importersWithAccessPolicy.length === 0) {
+    if (importersWithAccessPolicy.length === 0) {
         throw Error(`accessPolicy not found in importers of ${moduleId}`)
     }
 
