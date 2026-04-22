@@ -56,15 +56,8 @@ fun <P> ProtectedWrapper(
 
     LaunchedEffect(Unit) {
         try {
-            val entryPointParts = entryPoint.split("/")
-            val privateModule =
-                when (entryPointParts.size) {
-                    2 -> importAsync<PrivateTextModule<P>>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/ProtectedComponent.export.mjs").await()
-                    3 -> importAsync<PrivateTextModule<P>>("./entrypoints/${entryPointParts[0]}/${entryPointParts[1]}/${entryPointParts[2]}/ProtectedComponent.export.mjs").await()
-                    else -> importAsync<PrivateTextModule<P>>("./entrypoints/$entryPoint/ProtectedComponent.export.mjs").await()
-                }
             status = AccessStatus.Success(
-                protectedComponent = privateModule.ProtectedComponent,
+                protectedComponent = dynamicallyImportProtectedComponent(entryPoint),
                 props = props
             )
         } catch (e: Throwable) {
@@ -131,4 +124,18 @@ fun getModuleNameFromException(e: Throwable): String? {
         resolvedModule = regex.find(e.message ?: "")?.value
     }
     return resolvedModule
+}
+
+suspend fun <P> dynamicallyImportProtectedComponent(entryPointPath: String): ProtectedComponent<P> {
+    val parts = entryPointPath.split("/")
+
+    // Split the path into parts so it is recognized by @rollup/plugin-dynamic-import-vars
+    val module = when (parts.size) {
+        1 -> importAsync<PrivateTextModule<P>>("./entrypoints/${parts[0]}/ProtectedComponent.export.mjs")
+        2 -> importAsync<PrivateTextModule<P>>("./entrypoints/${parts[0]}/${parts[1]}/ProtectedComponent.export.mjs")
+        3 -> importAsync<PrivateTextModule<P>>("./entrypoints/${parts[0]}/${parts[1]}/${parts[2]}/ProtectedComponent.export.mjs")
+        else -> throw Exception("Unsupported entrypoint: $entryPointPath")
+    }.await()
+
+    return module.ProtectedComponent
 }
