@@ -41,4 +41,16 @@ class UserService(
             else -> throw Exception("Unhandled status code ${response.status}")
         }
     }
+
+    suspend fun userIdToken(): String? {
+        val url = URL(backendUrl)
+        url.pathname = "/my-id-token"
+        val response = fetch(url, RequestInit(
+            credentials = RequestCredentials.include,
+        ))
+        return when (response.status) {
+            200.toShort() -> response.text()
+            else -> throw Exception("Unhandled status code ${response.status}")
+        }
+    }
 }
