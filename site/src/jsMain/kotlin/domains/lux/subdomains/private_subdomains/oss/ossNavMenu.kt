@@ -9,7 +9,7 @@ val ossNavMenu = listOf(
     MenuItem.Simple(
         RoutedMenuItem(
             path = "/",
-            label = LocalizedText(en = "Home", nl = "Thius"),
+            label = LocalizedText(en = "Home", nl = "Thuis"),
             pageComponent = { OssIndex() }
         )
     )
