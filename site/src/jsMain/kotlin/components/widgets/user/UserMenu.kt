@@ -1,7 +1,6 @@
 package energy.lux.frontend.components.widgets.user
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TextOverflow
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -12,18 +11,13 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
-import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.components.widgets.navbar_actions.SiteLanguageButton
 import energy.lux.frontend.core.services.auth.UserService
-import energy.lux.frontend.core.services.localization.localizedUrl
-import energy.lux.frontend.domains.lux.pages.user_profile.userProfileRoute
 import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
 import energy.lux.frontend.theme.SitePalette
+import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.theme.styles.LuxCornerRadius
 import energy.lux.frontend.theme.styles.luxBorderRadius
 import energy.lux.site.shared.UserInfo
@@ -71,29 +65,15 @@ fun UserMenu(
     }
 }
 
-val UserInfoStyle = CssStyle {
-    base {
-        Modifier
-            .fillMaxWidth()
-            .padding(1.25.cssRem)
-            .borderBottom(0.75.px, LineStyle.Solid, Colors.LightGrey)
-    }
-    hover {
-        Modifier.background(SitePalette.light.overlay)
-            .cursor(Cursor.Pointer)
-    }
-}
 
 @Composable
 private fun UserInfo(userInfo: UserInfo) {
-    val ctx = rememberPageContext()
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(0.75.cssRem),
-        modifier = UserInfoStyle.toModifier()
-            .onClick {
-                ctx.router.navigateTo(localizedUrl(userProfileRoute.path))
-            }
+        modifier = Modifier.fillMaxWidth()
+            .padding(1.25.cssRem)
+            .borderBottom(0.75.px, LineStyle.Solid, Colors.LightGrey)
     ) {
         Box(
             modifier = Modifier

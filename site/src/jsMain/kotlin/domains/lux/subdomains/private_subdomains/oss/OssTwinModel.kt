@@ -12,7 +12,6 @@ import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainMode
 import energy.lux.frontend.domains.lux.sections.application_fields.ApplicationArea
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.ElzenburgDeGeer
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.Euterpepark
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.Moleneind
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.VorstenGrafDonk
 import energy.lux.frontend.pages.SiteGlobals
@@ -55,14 +54,6 @@ val moleneind =
         modelId = Uuid.parse("5a23c46b-089b-4095-9364-083d6411e574"),
         pageComponent = { Moleneind() },
     )
-val euterpepark =
-    OssTwinModel(
-        label = LocalizedText("Euterpepark"),
-        imageUrl = "/lux/images/oss/euterpepark.jpeg",
-        entryPoint = "oss/euterpepark",
-        modelId = Uuid.NIL,
-        pageComponent = { Euterpepark() },
-    )
 
 
 fun OssTwinModel.asRoute() =
@@ -81,6 +72,5 @@ val ossTwinModels = listOf(
     elzenburgDeGeer,
     vorstenGrafDonk,
     moleneind,
-    euterpepark
 )
 
