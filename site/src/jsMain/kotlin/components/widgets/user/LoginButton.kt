@@ -18,8 +18,8 @@ import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
 
 @Composable
-fun LoginIconButton(userService: UserService) {
-    IconLink(href = userService.loginUrl()) {
+fun LoginIconButton(userService: UserService, modifier: Modifier = Modifier) {
+    IconLink(href = userService.loginUrl(), modifier = modifier) {
         MdiLogin(
             modifier = Modifier.position(Position.Relative).right(2.px)
         )
