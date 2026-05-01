@@ -10,6 +10,7 @@ import energy.lux.frontend.core.models.asRoutes
 import energy.lux.frontend.core.registerLocalizedRoute
 import energy.lux.frontend.domains.lux.components.layout.LuxEnergyLayout
 import energy.lux.frontend.domains.lux.core.createLuxRouter
+import energy.lux.frontend.domains.lux.pages.user_profile.userProfileRoute
 import energy.lux.frontend.domains.lux.sections.home.HomePage
 import energy.lux.frontend.domains.lux.sections.nav_header.luxNavMenu
 import kotlinx.browser.window
@@ -23,6 +24,10 @@ fun LuxRoutingComponent() {
             }
             registerLocalizedRoute("/book-demo") {
                 BookADemoPage()
+            }
+
+            registerLocalizedRoute(userProfileRoute.path) {
+                LuxEnergyLayout { userProfileRoute.pageComponent() }
             }
 
             registerRoutesOfMenu(
