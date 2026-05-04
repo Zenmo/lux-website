@@ -21,7 +21,7 @@ fun DeWieken() {
         PrivateTwinModelPage(
             entryPoint = deWieken.entryPoint,
             modelId = deWieken.modelId,
-            imageUrl = "/lux/images/dewieken.png",
+            imageUrl = "/lux/images/models/dewieken.png",
             introContent = {
                 MediaContentLayout(
                     imageUrl = deWieken.imageUrl,
