@@ -1,4 +1,4 @@
-@file:JsModule("anylogic-cloud-client")
+@file:JsModule("@zenmo/anylogic-cloud-client")
 
 package energy.lux.frontend.domains.zenmo.widgets.anylogic
 

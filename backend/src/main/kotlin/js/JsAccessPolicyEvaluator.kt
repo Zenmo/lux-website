@@ -4,7 +4,6 @@ import energy.lux.site.shared.AccessPolicy
 import org.graalvm.polyglot.Context
 import org.graalvm.polyglot.Source
 import org.graalvm.polyglot.io.IOAccess
-import java.io.Reader
 import java.net.URL
 
 fun interface JsAccessPolicyEvaluator {
@@ -17,6 +16,8 @@ val getScriptAccessPolicy = JsAccessPolicyEvaluator { url ->
         .allowIO(IOAccess.ALL) // allow imports
         .build()
 
+    addShims(context)
+
     val source = Source.newBuilder("js", url).build()
     val output = context.eval(source)
     val jsAccessPolicy = output.getMember("accessPolicy")
@@ -27,5 +28,28 @@ val getScriptAccessPolicy = JsAccessPolicyEvaluator { url ->
 
     println("JSON accessPolicy of $url: $jsonAccessPolicy")
 
-    AccessPolicy.Companion.fromJson(jsonAccessPolicy.asString())
+    AccessPolicy.fromJson(jsonAccessPolicy.asString())
+}
+
+/**
+ * There is, unfortunately, some top-level code that uses browser-specific APIs.
+ * We need to shim this to evaluate the access policy.
+ *
+ * This does not affect the served JavaScript.
+ */
+private fun addShims(context: Context) {
+    context.eval(
+        "js",
+        """
+            globalThis.TextDecoder = class {}
+            globalThis.crypto = {
+                getRandomValues: function(typedArray) { 
+                    return typedArray 
+                }
+            }
+            globalThis.CSSStyleSheet = class {
+                replaceSync() {}
+            }
+        """.trimIndent()
+    )
 }

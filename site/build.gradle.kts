@@ -101,7 +101,8 @@ kotlin {
             implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
             implementation(libs.viewmodel.compose)
-            implementation(npm(project.rootProject.file("anylogic-cloud-client/anylogic-cloud-client")))
+            implementation(npm(project.rootProject.file("js-libs/@zenmo/anylogic-cloud-client")))
+            implementation(npm(project.rootProject.file("js-libs/@zenmo/oss-gis-map")))
         }
 
         val commonTest by getting {

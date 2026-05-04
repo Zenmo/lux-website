@@ -1,5 +1,5 @@
 {
-    "name": "anylogic-cloud-client",
+    "name": "@zenmo/anylogic-cloud-client",
     "version": "8.5.0",
     "description": "AnyLogic Cloud Client API",
     "main": "index.js",

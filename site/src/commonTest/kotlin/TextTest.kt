@@ -8,6 +8,8 @@ import kotlin.test.assertEquals
 
 /**
  * Temporary test to check that we can render HTML when testing.
+ *
+ * https://github.com/JetBrains/compose-multiplatform/tree/master/tutorials/HTML/Using_Test_Utils
  */
 @OptIn(ComposeWebExperimentalTestsApi::class)
 class TextTest {
