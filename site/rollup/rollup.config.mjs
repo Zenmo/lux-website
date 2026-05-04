@@ -1,8 +1,10 @@
-import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
+import dynamicImportVars from "@rollup/plugin-dynamic-import-vars";
 import nodeResolve from "@rollup/plugin-node-resolve";
-import path from 'node:path';
-import {fileURLToPath} from 'node:url';
-import {globSync} from 'glob';
+import commonjs from "@rollup/plugin-commonjs";
+import css from "rollup-plugin-import-css";
+import path from "node:path";
+import {fileURLToPath} from "node:url";
+import {globSync} from "glob";
 import "core-js/stable/array/to-sorted.js"
 
 const rootProjectDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..")
@@ -37,10 +39,18 @@ export default {
     preserveEntrySignatures: "allow-extension",
     plugins: [
         nodeResolve({
+            // Load "event" polyfill from node_modules.
+            // Dependency of @maptiler/sdk.
+            preferBuiltins: false,
             modulePaths: [
                 path.resolve(rootProjectDir, "build/js")
             ],
         }),
+        // maplibre-gl uses commonjs.
+        // Dependency of by @maptiler/sdk.
+        commonjs(),
+        // To dynamically import styles in @zenmo/oss-gis-map
+        css(),
         dynamicImportVars(),
         {
             name: 'dynamic-import-meta',

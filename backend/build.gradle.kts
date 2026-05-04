@@ -14,8 +14,8 @@ dependencies {
     // to decode and validate Keycloak access tokens with user info.
     implementation("com.nimbusds:nimbus-jose-jwt:9.39.2")
 
-    implementation("org.graalvm.polyglot:js:24.2.1")
-    implementation("org.graalvm.polyglot:polyglot:24.2.1")
+    implementation("org.graalvm.polyglot:js:25.0.3")
+    implementation("org.graalvm.polyglot:polyglot:25.0.3")
 
     implementation(platform("org.http4k:http4k-bom:6.12.0.0"))
     implementation("org.http4k:http4k-core")

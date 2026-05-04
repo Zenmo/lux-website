@@ -26,8 +26,9 @@ RUN apt-get update && apt-get install -y \
 #WORKDIR /app/prerender
 #RUN ./gradlew publish
 
-# Create a cache layer with dependencies
-# Need to copy all the gradle subprojects
+# Create a cache layer with dependencies.
+# Need to copy all the gradle subprojects.
+# TODO: js-libs has the potential to change a lot, invalidating the cache layer.
 COPY --parents \
     gradle \
     gradlew \
@@ -38,7 +39,7 @@ COPY --parents \
     shared/build.gradle.kts \
     backend/build.gradle.kts \
     remotedev/build.gradle.kts \
-    anylogic-cloud-client \
+    js-libs \
     ./
 
 # Cache gradle dependencies in a docker layer

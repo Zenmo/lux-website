@@ -5,6 +5,9 @@ on:
 
 jobs:
     gradleJsTest:
+        # It's not working because it uses WebPack instead of Rollup
+        # https://youtrack.jetbrains.com/projects/KT/issues/KT-48308/KJS-Support-a-different-bundler-in-JS-in-addition-to-WebPack
+        if: false
         runs-on: ubuntu-latest
         steps:
             -   name: Install Chromium
