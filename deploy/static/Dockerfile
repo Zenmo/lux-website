@@ -38,6 +38,7 @@ COPY --parents \
     shared/build.gradle.kts \
     backend/build.gradle.kts \
     remotedev/build.gradle.kts \
+    anylogic-cloud-client \
     ./
 
 # Cache gradle dependencies in a docker layer
