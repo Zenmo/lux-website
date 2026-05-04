@@ -1,13 +1,11 @@
-package com.zenmo.web.ModelSearch
+package energy.lux.frontend.domains.lux.sections.luxmodels.components
 
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.TwinModelCardItem
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.sections.luxmodels.FilterType
-import energy.lux.frontend.domains.lux.sections.luxmodels.components.filterAndSearchModels
 import kotlin.test.Test
 import kotlin.test.assertEquals
-
 
 class ModelSearchTest {
     @Test
@@ -32,7 +30,8 @@ class ModelSearchTest {
         val result = filterAndSearchModels(
             models = models,
             query = "ams",
-            filterType = FilterType.ALL
+            filterType = FilterType.ALL,
+            areas = setOf(LuxApplicationArea.LUX_NEIGHBOURHOOD),
         )
 
         assertEquals(1, result.size)

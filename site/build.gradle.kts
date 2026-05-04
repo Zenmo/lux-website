@@ -2,6 +2,7 @@ import com.github.gradle.node.npm.task.NpmTask
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
 import org.gradle.api.internal.tasks.DefaultTaskContainer.TaskCreatingProvider
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
 
 plugins {
@@ -18,7 +19,9 @@ plugins {
 group = "energy.lux.frontend"
 version = "1.0.0"
 
-val BACKEND_URL = System.getenv("BACKEND_URL")
+val LUX_DOMAIN = System.getenv("LUX_DOMAIN") ?: "http://lux.localhost:8080"
+val ZENMO_DOMAIN = System.getenv("ZENMO_DOMAIN") ?: "http://zenmo.localhost:8080"
+val BACKEND_URL = System.getenv("BACKEND_URL") ?: "http://localhost:9000"
 val jsSrc = "$BACKEND_URL/main.export.mjs"
 
 kobweb {
@@ -35,8 +38,8 @@ kobweb {
             mapOf(
                 "version" to project.version.toString(),
                 "BACKEND_URL" to BACKEND_URL,
-                "LUX_DOMAIN" to System.getenv("LUX_DOMAIN"),
-                "ZENMO_DOMAIN" to System.getenv("ZENMO_DOMAIN"),
+                "LUX_DOMAIN" to LUX_DOMAIN,
+                "ZENMO_DOMAIN" to ZENMO_DOMAIN,
             )
         )
     }
@@ -54,7 +57,17 @@ kotlin {
     configAsKobwebApplication("zenmo-site" /*, includeServer = true*/)
 
     js {
-        browser()
+        browser {
+            testTask {
+                testLogging {
+                    showStandardStreams = true
+                    setEvents(TestLogEvent.entries - TestLogEvent.STARTED)
+                }
+                useKarma {
+                    useChromiumHeadless()
+                }
+            }
+        }
         // Use binaries.library() instead of binaries.exectable()
         // We will use Rollup to bundle instead of the default Webpack
         binaries.library()
@@ -88,6 +101,7 @@ kotlin {
             implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
             implementation(libs.viewmodel.compose)
+            implementation(npm(project.rootProject.file("anylogic-cloud-client/anylogic-cloud-client")))
         }
 
         val commonTest by getting {
@@ -95,6 +109,14 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
+
+        val jsTest by getting {
+            dependencies {
+                implementation(kotlin("test-js"))
+                implementation("org.jetbrains.compose.html:html-test-utils:${libs.versions.compose.html.get()}")
+            }
+        }
+
     }
 }
 
