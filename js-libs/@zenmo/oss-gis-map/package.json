@@ -8,7 +8,9 @@
         "test": "karma start karma.config.cjs"
     },
     "dependencies": {
-        "@maptiler/sdk": "4.0.1"
+        "@maptiler/sdk": "4.0.1",
+        "@turf/helpers": "^7.3.5",
+        "@turf/union": "^7.3.5"
     },
     "devDependencies": {
         "css-loader": "^7.1.2",
