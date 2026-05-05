@@ -21,9 +21,28 @@ export async function showOssMap(element) {
             style: `https://api.maptiler.com/maps/${OSS_MAP_STYLE_ID}/style.json?key=${API_KEY}`,
             center: OSS_CENTER,
             zoom: 12,
+            pitch: 60,
+            navigationControl: false,
+            geolocateControl: false,
+            attributionControl: false,
+            forceNoAttributionControl: true,
+            maptilerLogo: false,
         })
 
-        map.on("load", () => resolve(map))
+        map.on("load", () => {
+            let animationFrameId;
+            function rotate() {
+                map.setBearing((map.getBearing() + 0.1) % 360);
+                animationFrameId = requestAnimationFrame(rotate);
+            }
+            rotate();
+
+            map.on("remove", () => {
+                cancelAnimationFrame(animationFrameId);
+            });
+
+            resolve(map)
+        })
         map.on("error", (e) => reject(e.error ?? e))
     })
 
