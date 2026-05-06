@@ -31,4 +31,18 @@ describe('showOssMap', () => {
         expect(bearing2).toBeGreaterThan(bearing1);
         map.remove();
     });
+
+    it('adds the areas layers and registers click events', async () => {
+        const map = await showOssMap(container);
+
+        // Verify layers are added
+        expect(map.getLayer('areas-fill')).toBeTruthy();
+        expect(map.getLayer('areas-outline')).toBeTruthy();
+        expect(map.getLayer('areas-labels')).toBeTruthy();
+
+        // Verify source is added
+        expect(map.getSource('areas')).toBeTruthy();
+
+        map.remove();
+    });
 });

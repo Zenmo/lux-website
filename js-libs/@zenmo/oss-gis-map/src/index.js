@@ -15,6 +15,10 @@ config.apiKey = API_KEY;
  */
 export async function showOssMap(element) {
     loadStyles()
+
+    /**
+     * @type {Promise<Map>}
+     */
     const mapPromise = new Promise((resolve, reject) => {
         const map = new Map({
             container: element,
@@ -31,10 +35,12 @@ export async function showOssMap(element) {
 
         map.on("load", () => {
             let animationFrameId;
+
             function rotate() {
                 map.setBearing((map.getBearing() + 0.1) % 360);
                 animationFrameId = requestAnimationFrame(rotate);
             }
+
             rotate();
 
             map.on("remove", () => {
@@ -56,8 +62,9 @@ export async function showOssMap(element) {
         data: {
             type: "FeatureCollection",
             features: enriched
-                .map(a => ({
+                .map((a, i) => ({
                     ...a.geojson,
+                    id: i,
                     properties: {
                         ...a.geojson.properties,
                         name: a.name,
@@ -75,7 +82,7 @@ export async function showOssMap(element) {
         source: "areas",
         paint: {
             "fill-color": luxTeal,
-            "fill-opacity": 0.4
+            "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.6, 0.3]
         }
     })
 
@@ -89,6 +96,55 @@ export async function showOssMap(element) {
         }
     })
 
+    map.addLayer({
+        id: "areas-labels",
+        type: "symbol",
+        source: "areas",
+        layout: {
+            "text-field": ["get", "name"],
+            "text-size": 14,
+        },
+        paint: {
+            "text-color": luxTeal,
+            "text-halo-color": "white",
+            "text-halo-width": 2
+        }
+    })
+
+    addMapClick(map)
+    addMapHoover(map)
+
     return map
 }
 
+function addMapClick(map) {
+    map.on("click", "areas-fill", (e) => {
+        const url = e.features[0].properties.url
+        if (url) {
+            window.open(url, "_self")
+        }
+    })
+}
+
+function addMapHoover(map) {
+    let hoveredFeatureId = null
+
+    map.on("mouseenter", "areas-fill", event => {
+        map.getCanvas().style.cursor = "pointer"
+        if (event.features.length > 0) {
+            if (hoveredFeatureId !== null) {
+                map.setFeatureState({ source: "areas", id: hoveredFeatureId }, { hover: false })
+            }
+            hoveredFeatureId = event.features[0].id
+            map.setFeatureState({ source: "areas", id: hoveredFeatureId }, { hover: true })
+        }
+    })
+
+    map.on("mouseleave", "areas-fill", () => {
+        map.getCanvas().style.cursor = ""
+        if (hoveredFeatureId !== null) {
+            map.setFeatureState({ source: "areas", id: hoveredFeatureId }, { hover: false })
+            hoveredFeatureId = null
+        }
+    })
+}
