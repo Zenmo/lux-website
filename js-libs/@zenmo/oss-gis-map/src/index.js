@@ -1,4 +1,4 @@
-import {config, Map} from "@maptiler/sdk"
+import {config, Map, NavigationControl} from "@maptiler/sdk"
 import {loadStyles} from "./loadStyles.js"
 import {areas, enrichAreasWithGeometry} from "./areas.js"
 
@@ -28,10 +28,21 @@ export async function showOssMap(element) {
             pitch: 60,
             navigationControl: false,
             geolocateControl: false,
-            attributionControl: false,
-            forceNoAttributionControl: true,
-            maptilerLogo: false,
+            // attribution is mandatory.
+            attributionControl: true,
+            // logo is mandatory for the free version.
+            maptilerLogo: true,
+            scrollZoom: false,
         })
+
+        map.addControl(
+            // only show compass
+            new NavigationControl({
+                showCompass: true,
+                showZoom: false,
+                visualizePitch: true,
+            })
+        );
 
         addMapRotation(map)
 
@@ -143,9 +154,9 @@ function addMapRotation(map) {
 
         function rotate(time) {
             if (lastTime !== undefined) {
-                const delta = time - lastTime;
+                const deltaT = time - lastTime;
                 // 4 degrees per second = 0.004 degrees per millisecond
-                map.setBearing((map.getBearing() + (delta * 0.004)) % 360);
+                map.setBearing((map.getBearing() + (deltaT * 0.004)) % 360);
             }
             lastTime = time;
             animationFrameId = requestAnimationFrame(rotate);
