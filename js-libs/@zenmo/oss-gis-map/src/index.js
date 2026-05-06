@@ -33,23 +33,10 @@ export async function showOssMap(element) {
             maptilerLogo: false,
         })
 
-        map.on("load", () => {
-            let animationFrameId;
+        addMapRotation(map)
 
-            function rotate() {
-                map.setBearing((map.getBearing() + 0.1) % 360);
-                animationFrameId = requestAnimationFrame(rotate);
-            }
-
-            rotate();
-
-            map.on("remove", () => {
-                cancelAnimationFrame(animationFrameId);
-            });
-
-            resolve(map)
-        })
         map.on("error", (e) => reject(e.error ?? e))
+        map.on("load", () => resolve(map))
     })
 
     const [map, enriched] = await Promise.all([
@@ -146,5 +133,28 @@ function addMapHoover(map) {
             map.setFeatureState({ source: "areas", id: hoveredFeatureId }, { hover: false })
             hoveredFeatureId = null
         }
+    })
+}
+
+function addMapRotation(map) {
+    map.on("load", () => {
+        let animationFrameId;
+        let lastTime;
+
+        function rotate(time) {
+            if (lastTime !== undefined) {
+                const delta = time - lastTime;
+                // 4 degrees per second = 0.004 degrees per millisecond
+                map.setBearing((map.getBearing() + (delta * 0.004)) % 360);
+            }
+            lastTime = time;
+            animationFrameId = requestAnimationFrame(rotate);
+        }
+
+        animationFrameId = requestAnimationFrame(rotate);
+
+        map.on("remove", () => {
+            cancelAnimationFrame(animationFrameId);
+        });
     })
 }
