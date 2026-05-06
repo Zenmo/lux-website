@@ -8,6 +8,7 @@ WORKDIR /app
 
 # Create a cache layer with dependencies
 # Need to copy all the gradle subprojects
+# TODO: js-libs has the potential to change a lot, invalidating the cache layer.
 COPY --parents \
     gradle \
     gradlew \
@@ -18,21 +19,20 @@ COPY --parents \
     shared/build.gradle.kts \
     backend/build.gradle.kts \
     remotedev/build.gradle.kts \
+    js-libs \
     ./
 
 # Cache gradle dependencies in a docker layer
-RUN ./gradlew backend:dependencies
-
-COPY site/rollup site/rollup
+RUN ./gradlew kotlinNpmInstall && ./gradlew backend:dependencies
 
 # Cache Rollup dependencies in a docker layer
+COPY site/rollup site/rollup
 RUN ./gradlew site:npmInstall
 
 # Copy source code
 COPY shared shared
 COPY backend backend
 COPY site site
-COPY anylogic-cloud-client anylogic-cloud-client
 
 # these arguments will be included in the javascript artifact
 ARG BACKEND_URL=https://site-backend.lux.energy

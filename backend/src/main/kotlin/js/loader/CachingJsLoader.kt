@@ -1,6 +1,5 @@
 package com.zenmo.backend.js.loader
 
-import energy.lux.site.shared.AccessPolicy
 import org.http4k.routing.ResourceLoader
 import java.time.Instant
 

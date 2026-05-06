@@ -44,7 +44,7 @@ val vorstenGrafDonk =
         label = LocalizedText("Vorstengrafdonk"),
         imageUrl = "/lux/images/oss/vorstengrafdonk.jpeg",
         entryPoint = "oss/vorstengrafdonk",
-        modelId = Uuid.parse("1b64c592-79b3-48dc-a10d-7b41136c2d71"),
+        modelId = Uuid.parse("5a23c46b-089b-4095-9364-083d6411e574"),
         pageComponent = { VorstenGrafDonk() },
     )
 val moleneind =
@@ -52,7 +52,7 @@ val moleneind =
         label = LocalizedText("Moleneind"),
         imageUrl = "/lux/images/oss/moleneind.jpeg",
         entryPoint = "oss/moleneind",
-        modelId = Uuid.parse("5a23c46b-089b-4095-9364-083d6411e574"),
+        modelId = Uuid.parse("1b64c592-79b3-48dc-a10d-7b41136c2d71"),
         pageComponent = { Moleneind() },
     )
 val euterpepark =

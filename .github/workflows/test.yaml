@@ -1,0 +1,25 @@
+on:
+    workflow_dispatch:
+    pull_request:
+        types: [ opened, synchronize, reopened ]
+
+jobs:
+    gradleJsTest:
+        # It's not working because it uses WebPack instead of Rollup
+        # https://youtrack.jetbrains.com/projects/KT/issues/KT-48308/KJS-Support-a-different-bundler-in-JS-in-addition-to-WebPack
+        if: false
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Install Chromium
+                run: |
+                    sudo apt-get update
+                    sudo apt-get install -y chromium-browser
+            -   name: Setup Java
+                uses: actions/setup-java@v5
+                with:
+                    distribution: 'temurin'
+                    java-version: 25
+            -   uses: actions/checkout@v6
+            -   name: Setup Gradle
+                uses: gradle/actions/setup-gradle@v6
+            -   run: ./gradlew site:jsTest

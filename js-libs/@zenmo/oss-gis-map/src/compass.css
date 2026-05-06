@@ -1,0 +1,6 @@
+.maplibregl-ctrl-group:has(.maplibregl-ctrl-compass) {
+    transform: scale(2.5);
+    transform-origin: top right; /* match the control's position */
+    background: transparent;
+    box-shadow: none;
+}
