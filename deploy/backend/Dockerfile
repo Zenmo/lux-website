@@ -23,18 +23,16 @@ COPY --parents \
     ./
 
 # Cache gradle dependencies in a docker layer
-RUN ./gradlew backend:dependencies
-
-COPY site/rollup site/rollup
+RUN ./gradlew kotlinNpmInstall && ./gradlew backend:dependencies
 
 # Cache Rollup dependencies in a docker layer
+COPY site/rollup site/rollup
 RUN ./gradlew site:npmInstall
 
 # Copy source code
 COPY shared shared
 COPY backend backend
 COPY site site
-COPY js-libs js-libs
 
 # these arguments will be included in the javascript artifact
 ARG BACKEND_URL=https://site-backend.lux.energy
