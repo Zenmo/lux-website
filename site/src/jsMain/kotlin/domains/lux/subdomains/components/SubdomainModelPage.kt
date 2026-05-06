@@ -6,13 +6,17 @@ import androidx.compose.runtime.getValue
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.alignItems
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import energy.lux.frontend.core.services.anyLogicModels.LocalModelsViewModel
 import energy.lux.frontend.core.services.anyLogicModels.getModelDateForUuid
 import energy.lux.frontend.domains.lux.components.LuxSectionContainer
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.anyLogicPublicApiKey
 import energy.lux.frontend.theme.SitePalette
+import org.jetbrains.compose.web.css.AlignItems
 import kotlin.uuid.Uuid
 
 @Composable
@@ -31,7 +35,7 @@ fun SubdomainModelPage(
     footerContent: @Composable () -> Unit,
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().alignItems(AlignItems.Stretch),
     ) {
         LuxSectionContainer {
             introContent()
@@ -46,8 +50,12 @@ fun SubdomainModelPage(
                 if (lastModifiedDate != null) {
                     ModelLastUpdatedLabel(lastModifiedDate)
                 }
-                anylogicRender()
             }
+
+        }
+        anylogicRender()
+
+        LuxSectionContainer {
             extraContent()
         }
         LuxSectionContainer(
