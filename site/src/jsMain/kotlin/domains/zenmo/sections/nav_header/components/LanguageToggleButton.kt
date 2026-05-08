@@ -1,6 +1,7 @@
 package energy.lux.frontend.domains.zenmo.sections.nav_header.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -10,14 +11,15 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
+import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.core.services.localization.Language
 import energy.lux.frontend.core.services.localization.LanguageManager
 import energy.lux.frontend.core.services.localization.LocalLanguage
 import energy.lux.frontend.domains.lux.styles.verticalLinearBackground
 import energy.lux.frontend.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
-import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.theme.isZenmoDomain
 import energy.lux.frontend.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.attributes.ButtonType
@@ -27,29 +29,13 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 import web.window.window
-import kotlin.text.get
 
 typealias LanguageChangeHandler = (newLanguage: Language) -> Unit
 
 @Composable
-fun LanguageToggleButton() {
-    val router = rememberPageContext().router
-    val onChange: LanguageChangeHandler = { newLanguage ->
-        val previousLanguage = LanguageManager.language.value
-        LanguageManager.setLanguage(newLanguage)
-
-        val oldPath = window.location.pathname
-        val newPath = oldPath.replace(
-            Regex("^/${previousLanguage.shortCode}/(?<rest>.*)")
-        ) {
-            "/${newLanguage.shortCode}/${it.groups["rest"]?.value ?: ""}"
-        }
-
-        if (newPath != oldPath) {
-            router.tryRoutingTo(newPath)
-        }
-    }
-
+fun LanguageToggleButton(
+    onChange: LanguageChangeHandler = rememberLanguageChangeHandler()
+) {
     Row(
         modifier = Modifier
             .overflow(Overflow.Clip)
@@ -99,5 +85,27 @@ private fun LanguageOptionButton(
             .toAttrs()
     ) {
         Text(label)
+    }
+}
+
+
+@Composable
+fun rememberLanguageChangeHandler(
+    router: Router = rememberPageContext().router
+): LanguageChangeHandler = remember(router) {
+    { newLanguage: Language ->
+        val previousLanguage = LanguageManager.language.value
+        LanguageManager.setLanguage(newLanguage)
+
+        val oldPath = window.location.pathname
+        val newPath = oldPath.replace(
+            Regex("^/${previousLanguage.shortCode}/(?<rest>.*)")
+        ) {
+            "/${newLanguage.shortCode}/${it.groups["rest"]?.value ?: ""}"
+        }
+
+        if (newPath != oldPath) {
+            router.tryRoutingTo(newPath)
+        }
     }
 }
