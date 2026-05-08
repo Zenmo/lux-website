@@ -23,6 +23,7 @@ import energy.lux.frontend.core.services.auth.UserService
 import energy.lux.frontend.core.services.localization.localizedUrl
 import energy.lux.frontend.domains.lux.pages.user_profile.userProfileRoute
 import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
+import energy.lux.frontend.pages.SiteGlobals
 import energy.lux.frontend.theme.SitePalette
 import energy.lux.frontend.theme.styles.LuxCornerRadius
 import energy.lux.frontend.theme.styles.luxBorderRadius
@@ -92,7 +93,12 @@ private fun UserInfo(userInfo: UserInfo) {
         horizontalArrangement = Arrangement.spacedBy(0.75.cssRem),
         modifier = UserInfoStyle.toModifier()
             .onClick {
-                ctx.router.navigateTo(localizedUrl(userProfileRoute.path))
+                ctx.router.navigateTo(
+                    localizedUrl(
+                        SiteGlobals.LUX_DOMAIN,
+                        userProfileRoute.path
+                    )
+                )
             }
     ) {
         Box(
@@ -115,5 +121,3 @@ private fun UserInfo(userInfo: UserInfo) {
         }
     }
 }
-
-
