@@ -6,7 +6,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.scale
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.core.services.localization.rememberLanguageChangeHandler
-import energy.lux.frontend.domains.zenmo.sections.nav_header.components.LanguageToggleButton
 
 @Composable
 fun SiteLanguageButton() {
