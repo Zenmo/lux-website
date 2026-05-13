@@ -36,7 +36,9 @@ fun PageLayout(
         contentAlignment = Alignment.Center
     ) {
         Column(
-            Modifier.fillMaxSize().gridRow(1),
+            Modifier.fillMaxSize()
+                .gridRow(1)
+                .flexGrow(1),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             header()

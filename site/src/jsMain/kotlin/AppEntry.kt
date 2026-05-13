@@ -3,6 +3,8 @@ package energy.lux.frontend
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.varabyte.kobweb.compose.css.ScrollBehavior
+import com.varabyte.kobweb.compose.ui.modifiers.display
+import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.core.App
@@ -15,6 +17,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.saveToLocalStorage
 import energy.lux.frontend.core.services.AppProviders
+import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.vh
 
 private const val COLOR_MODE_KEY = "zenmo:colorMode"
@@ -36,6 +39,7 @@ fun AppEntry(content: @Composable () -> Unit) {
             SmoothColorStyle.toModifier()
                 .minHeight(100.vh)
                 .scrollBehavior(ScrollBehavior.Smooth)
+                .display(DisplayStyle.Flex)
         ) {
             AppProviders {
                 content()
