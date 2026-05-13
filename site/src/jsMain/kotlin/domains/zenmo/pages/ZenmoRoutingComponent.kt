@@ -10,23 +10,20 @@ import energy.lux.frontend.core.models.asRoutes
 import energy.lux.frontend.core.registerLocalizedRoute
 import energy.lux.frontend.domains.lux.core.createLuxRouter
 import energy.lux.frontend.domains.lux.pages.registerRoutesOfMenu
+import energy.lux.frontend.domains.zenmo.sections.nav_header.zenmoHomeMenuItem
 import energy.lux.frontend.domains.zenmo.sections.nav_header.zenmoNavMenu
-import energy.lux.frontend.domains.zenmo.widgets.ComponentDemoPage
 import kotlinx.browser.window
 
 @Composable
 fun ZenmoRoutingComponent() {
     val router = remember {
         createLuxRouter {
+            registerLocalizedRoute(zenmoHomeMenuItem.route.path) {
+                zenmoHomeMenuItem.route.pageComponent()
+            }
             registerRoutesOfMenu(
                 routes = zenmoNavMenu.asRoutes()
-                    // remove component demo to avoid registering its route twice
-                    .dropLast(1),
             )
-
-            if (window.location.host != "zenmo.com") {
-                registerLocalizedRoute("/component-demo") { ComponentDemoPage() }
-            }
         }
     }
 
