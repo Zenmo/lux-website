@@ -2,28 +2,26 @@ package energy.lux.frontend.domains.zenmo.sections.nav_header.components
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.AlignContent
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariant
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.palette.overlay
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.colors.shifted
+import com.zenmo.web.zenmo.theme.font.LabelTextStyle
+import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.LabelTextStyle
-import com.zenmo.web.zenmo.theme.font.TextStyle
 import org.jetbrains.compose.web.css.em
 import org.jetbrains.compose.web.css.px
 import web.window.window
@@ -31,39 +29,19 @@ import web.window.window
 val NavBarLinkVariant = LinkStyle.addVariant(
     extraModifier = { TextStyle.toModifier(LabelTextStyle) }
 ) {
-    val colorPalette = colorMode.toPalette()
     base {
         Modifier
+            .fontWeight(FontWeight.Medium)
             .alignContent(AlignContent.Center)
             .color(SitePalette.light.onBackground)
-            .background(colorPalette.overlay)
-            .borderRadius(r = 30.px)
+            .borderRadius(50.px)
+            .padding(leftRight = 1.em, topBottom = 0.5.em)
             .textDecorationLine(TextDecorationLine.None)
-            .transition(
-                Transition.of("0.2s"),
-            )
-
+            .transition(Transition.of("0.2s"))
     }
     hover {
-        Modifier.background(colorPalette.overlay.shifted(colorMode, 0.1f))
+        Modifier.background(SitePalette.light.overlay.shifted(colorMode, 0.1f))
     }
-    active {
-        Modifier.background(colorPalette.overlay.shifted(colorMode, 0.15f))
-    }
-    Breakpoint.LG {
-        Modifier
-            .size(width = 11.5.em, height = 3.8.em)
-    }
-
-    Breakpoint.MD {
-        Modifier
-            .size(width = 10.5.em, height = 3.2.em)
-    }
-
-    Breakpoint.XL {
-        Modifier.size(width = 13.8.em, height = 3.9.em)
-    }
-
 }
 
 val ActiveNavBarLinkVariant = CssStyle {
@@ -86,19 +64,15 @@ fun NavBarLink(
     modifier: Modifier = Modifier,
     isActive: Boolean,
 ) {
-    val finalModifier = if (isActive) {
-        ActiveNavBarLinkVariant.toModifier()
-    } else {
-        Modifier
-    }.then(modifier)
-
     Link(
         path = href,
         variant = NavBarLinkVariant,
-        modifier = finalModifier
+        modifier = Modifier
+            .thenIf(isActive, ActiveNavBarLinkVariant.toModifier())
+            .then(modifier)
     ) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
             LangText(en = label.en, nl = label.nl)
