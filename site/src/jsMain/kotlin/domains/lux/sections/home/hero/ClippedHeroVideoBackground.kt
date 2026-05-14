@@ -2,6 +2,7 @@ package energy.lux.frontend.domains.lux.sections.home.hero
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.ObjectFit
+import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -9,6 +10,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import energy.lux.frontend.theme.SitePalette
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Video
 
@@ -17,6 +19,7 @@ fun ClippedHeroVideoBackground() {
     Box(
         Modifier
             .fillMaxSize()
+            .overflow(Overflow.Clip)
             .styleModifier {
                 property(
                     "clip-path",
@@ -29,6 +32,7 @@ fun ClippedHeroVideoBackground() {
                 .fillMaxSize()
                 .objectFit(ObjectFit.Cover)
                 .pointerEvents(PointerEvents.None)
+                .transform { translateX(25.percent) }
                 .toAttrs {
                     ref {
                         it.muted = true
