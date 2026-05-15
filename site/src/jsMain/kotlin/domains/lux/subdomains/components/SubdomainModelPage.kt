@@ -40,20 +40,19 @@ fun SubdomainModelPage(
         LuxSectionContainer {
             introContent()
             mediaContent()
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                val modelsUiState by LocalModelsViewModel.current.uiState.collectAsState()
-                val lastModifiedDate = modelsUiState.models.getModelDateForUuid(modelId.toString())
-
-                if (lastModifiedDate != null) {
-                    ModelLastUpdatedLabel(lastModifiedDate)
-                }
-            }
-
         }
-        anylogicRender()
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            val modelsUiState by LocalModelsViewModel.current.uiState.collectAsState()
+            val lastModifiedDate = modelsUiState.models.getModelDateForUuid(modelId.toString())
+
+            if (lastModifiedDate != null) {
+                ModelLastUpdatedLabel(lastModifiedDate)
+            }
+            anylogicRender()
+        }
 
         LuxSectionContainer {
             extraContent()
