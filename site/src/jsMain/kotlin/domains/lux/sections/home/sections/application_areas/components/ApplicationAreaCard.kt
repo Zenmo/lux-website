@@ -29,6 +29,7 @@ import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.SitePalette
 import energy.lux.frontend.theme.styles.LuxCornerRadius
 import energy.lux.frontend.theme.styles.luxBorderRadius
+import energy.lux.frontend.utils.PublicRes
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vw
@@ -89,6 +90,8 @@ fun ApplicationAreaCard(
         HeaderText(
             enText = applicationArea.areaTitle.en,
             nlText = applicationArea.areaTitle.nl,
+            modifier = Modifier
+                .fontFamily(PublicRes.FontFamilies.HOLON_LINE),
         )
         P(
             DeEmphasizedTextStyle.toModifier()

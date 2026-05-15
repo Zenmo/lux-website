@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.getValue
 
 
 sealed class Language {
@@ -49,9 +50,9 @@ val LocalLanguage = compositionLocalOf<Language> { error("Unknown Language") }
 
 @Composable
 fun LanguageProvider(content: @Composable () -> Unit) {
-    val language = LanguageManager.language.collectAsState()
+    val language by LanguageManager.language.collectAsState()
 
-    CompositionLocalProvider(LocalLanguage provides language.value) {
+    CompositionLocalProvider(LocalLanguage provides language) {
         content()
     }
 }

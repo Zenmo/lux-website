@@ -67,8 +67,6 @@ val BlurModelImageStyle = CssStyle.base {
 
 val ModelWrapperStyle = CssStyle.base {
     Modifier
-        .fillMaxWidth()
-        .display(DisplayStyle.Flex)
         .justifyContent(JustifyContent.Center)
         .position(Position.Relative)
         .height(80.vh)
@@ -82,22 +80,20 @@ fun ModelWrapper(
     modelId: Uuid,
     modifier: Modifier = Modifier.padding(topBottom = 3.cssRem)
 ) {
-    Box(
-        Modifier
-            .fillMaxWidth()
-            .position(Position.Relative)
-            .height(80.vh).then(modifier),
-        contentAlignment = Alignment.Center
-    ) {
-        ProtectedWrapper(
-            entryPoint = entryPoint,
-            props = modelId,
-            display = { status ->
-                if (status is AccessStatus.Success) {
-                    Div(ModelWrapperStyle.toModifier().toAttrs()) {
-                        status.protectedComponent(status.props)
-                    }
-                } else {
+    ProtectedWrapper(
+        entryPoint = entryPoint,
+        props = modelId,
+        display = { status ->
+            if (status is AccessStatus.Success) {
+                status.protectedComponent(status.props)
+            } else {
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .position(Position.Relative)
+                        .height(80.vh).then(modifier),
+                    contentAlignment = Alignment.Center
+                ) {
                     Image(
                         src = imgUrl,
                         alt = "$entryPoint model teaser",
@@ -116,7 +112,7 @@ fun ModelWrapper(
                         }
                     }
                 }
-            },
-        )
-    }
+            }
+        },
+    )
 }

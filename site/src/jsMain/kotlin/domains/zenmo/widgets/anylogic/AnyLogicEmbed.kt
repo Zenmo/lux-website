@@ -21,6 +21,7 @@ import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.events.Event
 import kotlin.uuid.Uuid
@@ -36,19 +37,35 @@ val AnyLogicEmbedStyle = CssStyle {
             // AnyLogic elements use absolute positioning.
             // This makes those elements relative to this parent.
             .position(Position.Relative)
-            // Make sure it fits on the screen.
-            // Reserve space for site header.
-            .maxHeight(80.vh)
-            .width(100.percent)
             // 8:5 Approaches the default aspect ratio in AnyLogic.
             // It is possible to create a model for a different aspect ratio.
             .aspectRatio(8, 5)
+            // Make it as big as possible.
+            .maxWidth(100.percent)
+            // Reserve space for site header.
+            .maxHeight(80.vh)
+            // Center if it is less wide than the parent.
+            .margin(leftRight = auto as CSSNumericValue<CSSUnitLengthOrPercentage>)
             .boxShadow(
                 BoxShadow.of(0.px, 4.px, 8.px, 0.px, rgba(0, 0, 0, 0.2f)),
                 BoxShadow.of(0.px, 6.px, 20.px, 0.px, rgba(0, 0, 0, 0.19f))
             )
     }
 }
+
+/**
+ * Usually this does what you want.
+ * But perhaps it should be optional in case the caller wants a different wrapper.
+ */
+val AnyLogicWrapperStyle = CssStyle {
+    base {
+        Modifier
+            .width(100.percent)
+            .alignSelf(AlignSelf.Stretch)
+            .padding(leftRight = 0.5.cssRem)
+    }
+}
+
 
 enum class AnyLogicModelStatus {
     IDLE,
@@ -68,11 +85,12 @@ enum class AnyLogicModelStatus {
  */
 @Composable
 fun AnyLogicEmbed(
-    modifier: Modifier = Modifier.maxWidth(90.cssRem),
+    modifier: Modifier = Modifier,
     modelId: Uuid,
     apiKey: Uuid = anyLogicPublicApiKey,
     cloudUrl: String = "${AppGlobals.getValue("BACKEND_URL")}/anylogic-proxy",
-    inputs: Map<String, Any> = emptyMap()
+    inputs: Map<String, Any> = emptyMap(),
+    wrapperModifier: Modifier = Modifier,
 ) {
     val containerId = remember { "anylogic-embed-${randomString(4u)}" }
     var status by remember { mutableStateOf(AnyLogicModelStatus.IDLE) }
@@ -115,7 +133,7 @@ fun AnyLogicEmbed(
         }
     }
 
-    EmbedContent(status, containerId, modifier)
+    EmbedContent(status, containerId, modifier, wrapperModifier)
 }
 
 
@@ -143,28 +161,33 @@ private fun registerPageUnloadHandlers(onUnload: () -> Unit): () -> Unit {
 private fun EmbedContent(
     status: AnyLogicModelStatus,
     containerId: String,
-    modifier: Modifier
+    modifier: Modifier = Modifier,
+    wrapperModifier: Modifier = Modifier,
 ) {
-    Box(
-        modifier = AnyLogicEmbedStyle
-            .toModifier().then(modifier),
-        contentAlignment = Alignment.Center
+    AnyLogicImageOverride()
+    Div(
+        attrs = AnyLogicWrapperStyle
+            .toModifier()
+            .then(wrapperModifier)
+            .toAttrs()
     ) {
-        when (status) {
-            AnyLogicModelStatus.IDLE -> Unit
-            AnyLogicModelStatus.LOADING -> LoadingSpinner()
-            AnyLogicModelStatus.FAILED -> SubHeaderText(
-                enText = "Failed to load model",
-                nlText = "Laden van model mislukt",
-            )
-
-            AnyLogicModelStatus.RUNNING -> {
-                AnyLogicImageOverride()
-                Div(
-                    attrs = Modifier.fillMaxSize().toAttrs {
-                        id(containerId)
-                    }
+        Box(
+            modifier = AnyLogicEmbedStyle
+                .toModifier()
+                .id(containerId)
+                .then(modifier),
+            contentAlignment = Alignment.Center
+        ) {
+            when (status) {
+                AnyLogicModelStatus.IDLE -> Unit
+                AnyLogicModelStatus.LOADING -> LoadingSpinner()
+                AnyLogicModelStatus.FAILED -> SubHeaderText(
+                    enText = "Failed to load model",
+                    nlText = "Laden van model mislukt",
                 )
+                AnyLogicModelStatus.RUNNING -> {
+                    /* AnyLogic replaces this content */
+                }
             }
         }
     }
@@ -217,7 +240,7 @@ private fun blockBackspace() {
     val anyLogicKeyDownFn = document.onkeydown
 
     document.onkeydown = { event ->
-        if (event.key !== "Backspace") {
+        if (event.key != "Backspace") {
             anyLogicKeyDownFn?.invoke(event)
         }
     }

@@ -8,8 +8,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.palette.overlay
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import energy.lux.frontend.core.MenuFactory
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.domains.zenmo.widgets.MenuItemWithSubs
@@ -20,15 +18,13 @@ import org.jetbrains.compose.web.dom.Nav
 
 
 val NavBarStyle = CssStyle {
-    val colorPalette = colorMode.toPalette()
     base {
         Modifier
             .size(autoLength)
-            .background(colorPalette.overlay)
-            .borderRadius(30.px)
             .listStyle(ListStyleType.None)
             .display(DisplayStyle.Flex)
             .justifyContent(JustifyContent.Center)
+            .gap(12.px)
             .flex(1)
     }
 }
@@ -55,5 +51,3 @@ fun NavBar(
         }
     }
 }
-
-

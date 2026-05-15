@@ -5,10 +5,7 @@ import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.background
-import com.varabyte.kobweb.compose.ui.modifiers.fontSize
-import com.varabyte.kobweb.compose.ui.modifiers.gap
-import com.varabyte.kobweb.compose.ui.modifiers.textAlign
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiMovie
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
@@ -39,6 +36,8 @@ enum class DemoTab(
     ),
 }
 
+const val LUX_DEMO_SECTION_ID = "demo-section"
+
 @Composable
 fun LuxPageDemoSection(
     containerColor: CSSColorValue = SitePalette.light.overlay,
@@ -61,7 +60,9 @@ fun LuxPageDemoSection(
 ) {
     var selectedTab by remember { mutableStateOf(DemoTab.DEMO_MOVIE) }
     LuxSectionContainer(
-        modifier = Modifier.background(containerColor)
+        modifier = Modifier
+            .id(LUX_DEMO_SECTION_ID)
+            .background(containerColor)
             .gap(1.cssRem)
             .then(modifier),
     ) {

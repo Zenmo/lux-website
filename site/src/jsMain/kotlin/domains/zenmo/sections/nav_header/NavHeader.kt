@@ -23,7 +23,6 @@ import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.overlay
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import energy.lux.frontend.components.SideMenuState
-import energy.lux.frontend.domains.zenmo.sections.nav_header.components.LanguageToggleButton
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.NavBar
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.SideMenu
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.SiteLogo
@@ -90,7 +89,7 @@ fun NavHeader() {
             ) {
                 NavBar()
             }
-            LanguageToggleButton()
+            ZenmoLanguageToggleButton()
         }
 
 
@@ -103,17 +102,9 @@ fun NavHeader() {
         ) {
             var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
 
-            Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterStart) {
-                LanguageToggleButton()
-            }
-
-            Box(modifier = Modifier.flex(1), contentAlignment = Alignment.Center) {
-                SiteLogo()
-            }
-
-            Box(modifier = Modifier.flex(1), contentAlignment = Alignment.CenterEnd) {
-                HamburgerButton(onClick = { menuState = SideMenuState.OPEN })
-            }
+            ZenmoLanguageToggleButton()
+            SiteLogo()
+            HamburgerButton(onClick = { menuState = SideMenuState.OPEN })
 
             if (menuState != SideMenuState.CLOSED) {
                 SideMenu(

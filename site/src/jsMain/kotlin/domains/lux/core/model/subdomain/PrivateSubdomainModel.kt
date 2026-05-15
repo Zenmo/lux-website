@@ -1,13 +1,13 @@
 package energy.lux.frontend.domains.lux.core.model.subdomain
 
 import androidx.compose.runtime.Composable
+import domains.lux.subdomains.private_subdomains.oss.OssRouting
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.PrivateTwinModel
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.*
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.Genius
-import domains.lux.subdomains.private_subdomains.oss.OssRouting
 import kotlin.uuid.Uuid
 
 
@@ -108,4 +108,13 @@ enum class PrivateSubdomainModel(
         entryPoint = "oss",
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
     ),
+    SLOTERDIJK(
+        subdomain = "sloterdijk",
+        subdomainComponent = { Sloterdijk() },
+        label = LocalizedText(nl = "SloterdijkPoortNoord"),
+        imageUrl = "/lux/images/model_thumbnails/sloterdijk.jpg",
+        entryPoint = "sloterdijk",
+        modelId = Uuid.parse("e83a3d26-06ef-4623-94dc-f9776bf89367"),
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+    )
 }

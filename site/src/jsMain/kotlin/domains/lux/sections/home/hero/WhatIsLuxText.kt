@@ -1,18 +1,25 @@
 package energy.lux.frontend.domains.lux.sections.home.hero
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.graphics.lightened
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLanguage
 import energy.lux.frontend.components.widgets.LangText
+import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.sections.application_fields.components.LUX_DEMO_SECTION_ID
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
+import energy.lux.frontend.domains.zenmo.widgets.button.PrimaryButton
 import energy.lux.frontend.theme.SitePalette
 import energy.lux.frontend.theme.styles.luxBorderRadius
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
 
 @Composable
@@ -57,5 +64,41 @@ fun WhatIsLuxText() {
                 """.trimIndent()
             )
         }
+        HeroCTAButtons()
+    }
+}
+
+@Composable
+private fun HeroCTAButtons() {
+    val ctx = rememberPageContext()
+    Row(
+        Modifier.gap(1.cssRem),
+        horizontalArrangement = Arrangement.Center
+    ) {
+        PrimaryButton(
+            enText = "Demo Energy Hub",
+            nlText = "Demo Energy Hub",
+            onClick = {
+                ctx.router.navigateTo(
+                    "${LuxApplicationArea.LUX_ENERGY_HUB.url}#${LUX_DEMO_SECTION_ID}"
+                )
+            },
+            modifier = Modifier
+                .backgroundColor(SitePalette.light.secondary)
+                .color(Colors.Black),
+        )
+
+        PrimaryButton(
+            enText = "Demo Neighbourhood",
+            nlText = "Demo Woonwijk",
+            onClick = {
+                ctx.router.navigateTo(
+                    "${LuxApplicationArea.LUX_NEIGHBOURHOOD.url}#${LUX_DEMO_SECTION_ID}"
+                )
+            },
+            modifier = Modifier
+                .backgroundColor(SitePalette.light.overlay)
+                .color(Colors.Black),
+        )
     }
 }
