@@ -46,10 +46,43 @@ val landVanValk =
         pageComponent = { LandVanValk() }
     )
 
+val centrumHardinxveldGiessendam =
+    DrechtstedenTwinModel(
+        projectPath = "/centrumHardinxveldGiessendam",
+        label = LocalizedText(nl = "Energy Twin Centrum Hardinxveld-Giessendam"),
+        applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
+        entryPoint = "drechtsteden/residential_neighbourhoods/centrumHardinxveldGiessendam",
+        modelId = Uuid.parse("268571f0-fb0b-4936-bf75-6d13c285d092"),
+        imageUrl = "/lux/images/drechtsteden/residential_neighbourhoods/centrum_hardinxveld_giessendam.png",
+        pageComponent = { CentrumHardinxveldGiessendam() }
+    )
+val schildersbuurtZwijndrecht =
+    DrechtstedenTwinModel(
+        projectPath = "/schildersbuurtZwijndrecht",
+        label = LocalizedText(nl = "Energy Twin Schildersbuurt Zwijndrecht"),
+        applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
+        entryPoint = "drechtsteden/residential_neighbourhoods/schildersbuurtZwijndrecht",
+        modelId = Uuid.parse("d037ad34-4b73-484e-8981-33bde8281130"),
+        imageUrl = "/lux/images/drechtsteden/residential_neighbourhoods/schildersbuurt_zwijndrecht.png",
+        pageComponent = { SchildersbuurtZwijndrecht() }
+    )
+val kruiswielHendrikIdoAmbacht =
+    DrechtstedenTwinModel(
+        projectPath = "/kruiswielHendrikIdoAmbacht",
+        label = LocalizedText(nl = "Energy Twin Kruiswiel Hendrik-Ido-Ambacht"),
+        applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
+        entryPoint = "drechtsteden/residential_neighbourhoods/kruiswielHendrikIdoAmbacht",
+        modelId = Uuid.NIL,
+        imageUrl = "/lux/images/drechtsteden/residential_neighbourhoods/kruiswiel_hendrik_ido_ambacht.png",
+        pageComponent = { KruiswielHendrikIdoAmbacht() }
+    )
 
 val drechtstedenNeighbourhoodsModels = listOf(
     overTSpoor,
     oostdonk,
     kerkbuurt,
     landVanValk,
+    centrumHardinxveldGiessendam,
+    schildersbuurtZwijndrecht,
+    kruiswielHendrikIdoAmbacht,
 )
