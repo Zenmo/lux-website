@@ -72,7 +72,7 @@ val kruiswielHendrikIdoAmbacht =
         label = LocalizedText(nl = "Energy Twin Kruiswiel Hendrik-Ido-Ambacht"),
         applicationArea = LuxApplicationArea.LUX_NEIGHBOURHOOD,
         entryPoint = "drechtsteden/residential_neighbourhoods/kruiswielHendrikIdoAmbacht",
-        modelId = Uuid.NIL,
+        modelId = Uuid.parse("37907489-9a92-4888-8591-ea80dbe6225e"),
         imageUrl = "/lux/images/drechtsteden/residential_neighbourhoods/kruiswiel_hendrik_ido_ambacht.png",
         pageComponent = { KruiswielHendrikIdoAmbacht() }
     )
