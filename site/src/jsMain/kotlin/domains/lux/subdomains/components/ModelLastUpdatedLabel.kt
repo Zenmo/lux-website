@@ -1,6 +1,7 @@
 package energy.lux.frontend.domains.lux.subdomains.components
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -26,6 +27,7 @@ fun ModelLastUpdatedLabel(
             .gap(8.px)
             .backgroundColor(LuxSpecificColorHues().luxBlue.lightened(0.85f))
             .color(LuxSpecificColorHues().luxBlue)
+            .textTransform(TextTransform.Capitalize)
             .luxBorderRadius(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
