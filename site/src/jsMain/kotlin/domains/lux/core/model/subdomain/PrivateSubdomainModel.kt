@@ -116,5 +116,14 @@ enum class PrivateSubdomainModel(
         entryPoint = "sloterdijk",
         modelId = Uuid.parse("e83a3d26-06ef-4623-94dc-f9776bf89367"),
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
-    )
+    ),
+    BREDA_OOST(
+        subdomain = "3bo",
+        subdomainComponent = { BredaOost() },
+        label = LocalizedText("3B-O"),
+        imageUrl = "/lux/images/model_thumbnails/breda-oost.png",
+        entryPoint = "breda_oost",
+        modelId = Uuid.parse("c6c08529-f86c-4456-af10-703517bffe83"),
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+    ),
 }
