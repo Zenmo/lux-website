@@ -3,7 +3,7 @@ on:
     push:
         branches:
             - main
-            - gradle-docker-layer-cache
+            - move-server
             - production
     pull_request:
         types: [ opened, synchronize, reopened ]
@@ -21,6 +21,8 @@ jobs:
             TAG: ${{ fromJson(steps.variables.outputs.result).TAG }}
             TRAEFIK_PRIORITY: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_PRIORITY }}
             ZENMO_DOMAIN: ${{ fromJson(steps.variables.outputs.result).ZENMO_DOMAIN }}
+            SSH_HOST: ${{ fromJson(steps.variables.outputs.result).SSH_HOST }}
+            SSH_HOST_ED25519_PUBLIC_KEY: ${{ fromJson(steps.variables.outputs.result).SSH_HOST_ED25519_PUBLIC_KEY }}
         steps:
             -   uses: actions/checkout@v3
             -   name: Variables
@@ -108,7 +110,7 @@ jobs:
                 uses: shimataro/ssh-key-action@v2
                 with:
                     key: ${{ secrets.PODHOST_SSH_PRIVATE_KEY }}
-                    known_hosts: podhost.zenmo.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKVeen0rfyMwiAoQCpIUJ/a2tpM35D/BdEDUyfRTxiXm
+                    known_hosts: ${{ needs.variables.outputs.SSH_HOST }} ssh-ed25519 ${{ needs.variables.outputs.SSH_HOST_ED25519_PUBLIC_KEY }}
             -   run: ./deploy/quadlets/deploy.sh
                 env:
                     BACKEND_DOMAIN: ${{ needs.variables.outputs.BACKEND_DOMAIN }}
@@ -120,3 +122,4 @@ jobs:
                     TAG: ${{ needs.variables.outputs.TAG }}
                     TRAEFIK_PRIORITY: ${{ needs.variables.outputs.TRAEFIK_PRIORITY }}
                     ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
+                    SSH_HOST: ${{ needs.variables.outputs.SSH_HOST }}

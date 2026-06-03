@@ -1,9 +1,9 @@
 
 [Container]
-ContainerName=website-static-$ENVIRONMENT
+ContainerName=site-static-$ENVIRONMENT
 Image=ghcr.io/zenmo/zenmo-website-static:$TAG
 
-Network=main.network
+Network=traefik.network
 Label=traefik.enable=true
 Label=traefik.http.routers.website-static-$ENVIRONMENT.priority=$TRAEFIK_PRIORITY
 Label="traefik.http.routers.website-static-$ENVIRONMENT.rule=Host(`$ZENMO_DOMAIN`) || Host(`$LUX_DOMAIN`) || HostRegexp(`$LUX_HOST_REGEXP`)"

@@ -17,10 +17,10 @@ for filename in *.container *.env; do
 done
 
 # Copy files to the Podman host
-scp -r $OUTPUT_DIR podman@podhost.zenmo.com:~/.config/containers/systemd/
+scp -r $OUTPUT_DIR root@$SSH_HOST:/etc/containers/systemd/
 
 # Restart services
-ssh podman@podhost.zenmo.com "\
-    systemctl --user daemon-reload \
-    && systemctl --user restart site-static-$ENVIRONMENT \
-    && systemctl --user restart site-backend-$ENVIRONMENT"
+ssh root@$SSH_HOST "\
+    systemctl daemon-reload \
+    && systemctl restart site-static-$ENVIRONMENT \
+    && systemctl restart site-backend-$ENVIRONMENT"
