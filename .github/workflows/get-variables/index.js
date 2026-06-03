@@ -10,6 +10,8 @@ const configPerBranch = {
         // without explicitly setting priority
         TRAEFIK_PRIORITY: -2000,
         ZENMO_DOMAIN: "nieuw.zenmo.com",
+        SSH_HOST: "prodpods.zenmo.com",
+        SSH_HOST_ED25519_PUBLIC_KEY: "AAAAC3NzaC1lZDI1NTE5AAAAIB9QSQTFJtC1QzZ/iBdR6QfIQ8IFFw9ow14PN68fulC7",
     },
     main: {
         BACKEND_DOMAIN: "site-backend.test.lux.energy",
@@ -21,6 +23,8 @@ const configPerBranch = {
         // Higher priority for test because productions *.lux.energy shadows test.lux.energy
         TRAEFIK_PRIORITY: -1000,
         ZENMO_DOMAIN: "test.zenmo.com",
+        SSH_HOST: "testpods.zenmo.com",
+        SSH_HOST_ED25519_PUBLIC_KEY: "AAAAC3NzaC1lZDI1NTE5AAAAIHdaAqGEO3FCNQf9o7ButP6fnnssixPOm24Z3OoLByoK",
     },
     pull_request: {
         BACKEND_DOMAIN: "localhost",
@@ -31,6 +35,8 @@ const configPerBranch = {
         LUX_HOST_REGEXP: "",
         TRAEFIK_PRIORITY: -10_000,
         ZENMO_DOMAIN: "zenmo.localhost:8080",
+        SSH_HOST: "testpods.zenmo.com",
+        SSH_HOST_ED25519_PUBLIC_KEY: "AAAAC3NzaC1lZDI1NTE5AAAAIHdaAqGEO3FCNQf9o7ButP6fnnssixPOm24Z3OoLByoK",
     }
 }
 
@@ -41,10 +47,9 @@ const configPerBranch = {
  */
 module.exports = (context) => {
     // const branch = context.payload.pull_request?.head?.ref ?? context.ref.match(/refs\/heads\/(.+)/)[1]
-
     let configKey = context.eventName === "pull_request" ? "pull_request" : context.ref.match(/refs\/heads\/(.+)/)[1]
 
-    if (configKey === "gradle-docker-layer-cache") {
+    if (configKey === "move-server") {
         configKey = "main"
     }
 
