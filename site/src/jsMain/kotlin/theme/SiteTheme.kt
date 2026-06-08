@@ -50,8 +50,8 @@ data class SitePalette(
             onPrimary = Color.rgb(0xFFFFFF),
             secondary = Color.rgb(0xa7382f),
             overlay = Color.rgb(0xfff0ee),
-            background = Color.rgb(0xfff8f7),
-            onBackground = Color.rgb(0x3f2c29),
+            background = Colors.White,
+            onBackground = Colors.Black,
         )
 
         private val luxColorPalette = SitePalette(
