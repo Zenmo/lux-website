@@ -8,6 +8,7 @@ import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicatio
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.*
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.Genius
+import energy.lux.frontend.domains.lux.subdomains.public_subdomains.PureEnergie
 import kotlin.uuid.Uuid
 
 
@@ -124,6 +125,15 @@ enum class PrivateSubdomainModel(
         imageUrl = "/lux/images/model_thumbnails/breda-oost.png",
         entryPoint = "breda_oost",
         modelId = Uuid.parse("c6c08529-f86c-4456-af10-703517bffe83"),
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
+    ),
+    PURE_ENERGIE(
+        subdomain = "pureenergie",
+        subdomainComponent = { PureEnergie() },
+        label = LocalizedText(nl = "PureEnergie"),
+        imageUrl = "/lux/images/models/pureEnergie.png",
+        entryPoint = "pure_energie",
+        modelId = Uuid.parse("74a84d14-6351-499a-af7e-08d9064836cc"),
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
     ),
 }
