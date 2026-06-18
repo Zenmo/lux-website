@@ -3,12 +3,14 @@ package energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbou
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.framework.annotations.DelicateApi
+import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.model.subdomain.bunderbuurten
 import energy.lux.frontend.domains.lux.core.model.subdomain.kronenberg
 import energy.lux.frontend.domains.lux.core.model.subdomain.loenen
 import energy.lux.frontend.domains.lux.core.toTwinModelCardItem
 import energy.lux.frontend.domains.lux.sections.application_fields.FieldModels
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.sections.application_fields.components.ApplicationAreaVideo
 import energy.lux.frontend.domains.lux.sections.application_fields.components.LuxPageDemoSection
 import energy.lux.frontend.domains.lux.sections.application_fields.components.PeterContactCard
 import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbourhood.components.LuxNeighbourhoodFacts
@@ -35,7 +37,17 @@ fun LuxNeighbourhood() {
                 AnyLogicEmbed(
                     modelId = Uuid.parse("ccbd35d7-98a8-4fb9-8161-dda239d7f049")
                 )
-            }
+            },
+            movieContent = {
+                ApplicationAreaVideo(
+                    src = "/lux/videos/neighborhoodDemoMovie.mp4",
+                    poster = "/lux/images/neighborhoodDemoMoviePoster.png",
+                    videoTitle = LocalizedText(
+                        en = "Neighbourhood Dashboard",
+                        nl = "Woonwijk Dashboard"
+                    ),
+                )
+            },
         )
         GetLuxNeighbourhoodSection()
         FieldModels(
