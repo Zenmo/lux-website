@@ -36,7 +36,7 @@ fun BookADemoPage() {
             H2 {
                 LangText(
                     en = "Mail us at ",
-                    nl = "Mail ons naar ",
+                    nl = "Mail ons op ",
                 )
                 InlineLink(
                     destinationUrl = "mailto:hallo@zenmo.com",
