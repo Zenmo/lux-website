@@ -23,7 +23,8 @@ class InMemorySessionOAuthPersistence(
     private val csrfName = "securityServerCsrf"
     private val originalUriName = "securityServerUri"
     private val clientAuthCookie = "securityServerAuth"
-    private val sessionToAccessToken = mutableMapOf<String, AccessToken>()
+    private data class TimedAccessToken(val token: AccessToken, val storedAt: java.time.Instant)
+    private val sessionToAccessToken = mutableMapOf<String, TimedAccessToken>()
     private val sessionToIdToken = mutableMapOf<String, IdToken>()
 
     override fun retrieveCsrf(request: Request) = request.cookie(csrfName)?.value?.let(::CrossSiteRequestForgeryToken)
@@ -39,8 +40,15 @@ class InMemorySessionOAuthPersistence(
         ?.takeIf(tokenChecker::check)
 
     fun retrieveIdToken(request: Request): IdToken? {
-        val sessionId = request.cookie(clientAuthCookie)?.value
-        return sessionToIdToken[sessionId]
+        val sessionId = request.cookie(clientAuthCookie)?.value ?: return null
+        val idToken = sessionToIdToken[sessionId] ?: return null
+        return if (idToken.isExpired()) null else idToken
+    }
+
+    private fun IdToken.isExpired(): Boolean {
+        val now = clock.instant()
+        val expiresAt = decode().exp
+        return now.epochSecond >= expiresAt.epochSeconds
     }
 
     fun clearSession(request: Request) {
@@ -68,7 +76,7 @@ class InMemorySessionOAuthPersistence(
         idToken: IdToken?
     ): Response {
         val sessionId = generateSessionId()
-        sessionToAccessToken[sessionId] = accessToken
+        sessionToAccessToken[sessionId] = TimedAccessToken(accessToken, clock.instant())
         if (idToken == null) {
             throw RuntimeException("Got no ID token from Keycloak")
         }
@@ -86,8 +94,18 @@ class InMemorySessionOAuthPersistence(
         .invalidateCookie(originalUriName)
         .invalidateCookie(clientAuthCookie)
 
-    private fun tryCookieToken(request: Request) =
-        request.cookie(clientAuthCookie)?.value?.let { sessionToAccessToken[it] }
+    private fun tryCookieToken(request: Request): AccessToken? {
+        val sessionId = request.cookie(clientAuthCookie)?.value ?: return null
+        val timedToken = sessionToAccessToken[sessionId] ?: return null
+        return if (timedToken.isExpired()) null else timedToken.token
+    }
+
+    private fun TimedAccessToken.isExpired(): Boolean {
+        val expiresIn = token.expiresIn ?: return true
+        val now = clock.instant()
+        val expiresAt = storedAt.plusSeconds(expiresIn)
+        return now.isAfter(expiresAt)
+    }
 
     private fun tryBearerToken(request: Request) = request.header("Authorization")
         ?.removePrefix("Bearer ")
@@ -112,7 +130,6 @@ fun generateSessionId(): String {
 
 object TokenChecker {
     fun check(accessToken: AccessToken): Boolean {
-        // TODO check the actual expiry
         return (accessToken.expiresIn ?: 0) > 0
     }
 }
