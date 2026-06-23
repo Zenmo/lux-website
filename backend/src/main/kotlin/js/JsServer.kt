@@ -77,12 +77,11 @@ class JsServer(
             return Response(NOT_FOUND).header("Content-Type", "text/javascript")
         }
 
-        if (request.header("If-None-Match") == jsResult.eTag) {
-            return Response(NOT_MODIFIED)
-        }
-
         return when (jsResult.accessPolicy) {
-            is AccessPolicy.Public -> serveAllowedFile(jsResult, path)
+            is AccessPolicy.Public -> {
+                if (request.header("If-None-Match") == jsResult.eTag) Response(NOT_MODIFIED)
+                else serveAllowedFile(jsResult, path)
+            }
             is AccessPolicy.RoleBased -> serveProtectedFile(request, jsResult as JsResultGeneric<AccessPolicy.RoleBased>)
         }
     }
@@ -95,11 +94,15 @@ class JsServer(
 
         val userRoles = idToken.decode().getRoles(clientId)
         println("User roles: $userRoles")
-        return if (jsResult.accessPolicy.requiredRole in userRoles) {
-            serveAllowedFile(jsResult, request.uri.path)
-        } else {
-            Response(FORBIDDEN).header("Content-Type", "text/javascript")
+        if (jsResult.accessPolicy.requiredRole !in userRoles) {
+            return Response(FORBIDDEN).header("Content-Type", "text/javascript")
         }
+
+        if (request.header("If-None-Match") == jsResult.eTag) {
+            return Response(NOT_MODIFIED)
+        }
+
+        return serveAllowedFile(jsResult, request.uri.path)
     }
 
     private fun serveAllowedFile(jsResult: JsResult, path: String): Response {
