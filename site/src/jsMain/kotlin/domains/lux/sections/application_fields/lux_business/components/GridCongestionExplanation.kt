@@ -19,7 +19,7 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.BatteryRotationStyle
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.LuxSpecificColorHues
@@ -34,7 +34,7 @@ import org.jetbrains.compose.web.dom.Span
 
 @Composable
 fun GridCongestionExplanation() {
-    LuxSectionContainer(
+    SectionContainer(
         Modifier
             .background(LuxSpecificColorHues().luxBlackRussian)
             .color(Colors.White)

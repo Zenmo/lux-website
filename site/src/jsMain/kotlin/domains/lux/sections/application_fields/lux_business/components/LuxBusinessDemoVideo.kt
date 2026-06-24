@@ -5,14 +5,14 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiMovie
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.widgets.VisualContentPlaceholder
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import org.jetbrains.compose.web.css.px
 
 @Composable
 fun LuxBusinessDemoVideo() {
-    LuxSectionContainer {
+    SectionContainer {
         HeaderText(
             enText = "LUX Business In Action",
             nlText = "LUX Bedrijf In Actie",

@@ -10,7 +10,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import energy.lux.frontend.components.widgets.LangText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.sections.luxmodels.components.*
 import energy.lux.frontend.domains.lux.widgets.TwinModelsGrid
@@ -32,7 +32,7 @@ enum class FilterType {
 
 @Composable
 fun LuxModels() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier =
             Modifier
                 .background(SitePalette.light.overlay)

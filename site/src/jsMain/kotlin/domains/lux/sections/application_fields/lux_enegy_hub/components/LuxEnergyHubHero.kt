@@ -13,7 +13,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.ImageContent
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangBlock
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
@@ -31,7 +31,7 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun LuxEnergyHubHero() {
-    LuxSectionContainer {
+    SectionContainer {
         Div(
             ResponsiveFlexStyle.toModifier()
                 .toAttrs()

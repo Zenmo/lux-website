@@ -9,7 +9,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.ImageContent
 import energy.lux.frontend.components.widgets.LangText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
@@ -24,7 +24,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun NeighbourhoodHero() {
-    LuxSectionContainer {
+    SectionContainer {
         Div(
             ResponsiveFlexStyle.toModifier()
                 .toAttrs()

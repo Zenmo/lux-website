@@ -18,7 +18,7 @@ import com.varabyte.kobweb.silk.theme.shapes.clip
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.components.widgets.user.LoginIconButton
 import energy.lux.frontend.core.services.auth.UserService
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
@@ -44,7 +44,7 @@ fun UserProfilePage() {
     LaunchedEffect(Unit) {
         userInfo = userService.userInfo()
     }
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .gap(1.cssRem)
     ) {

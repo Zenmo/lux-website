@@ -9,7 +9,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiMovie
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.widgets.VisualContentPlaceholder
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
@@ -59,7 +59,7 @@ fun LuxPageDemoSection(
     modifier: Modifier = Modifier
 ) {
     var selectedTab by remember { mutableStateOf(DemoTab.DEMO_MOVIE) }
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .id(LUX_DEMO_SECTION_ID)
             .background(containerColor)

@@ -12,7 +12,6 @@ import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.components.widgets.SectionContainer
-import energy.lux.frontend.domains.lux.sections.LuxSectionContainerStyleVariant
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.LuxSpecificColorHues
 import org.jetbrains.compose.web.css.FlexWrap
@@ -26,7 +25,6 @@ fun LuxBasicsSection(
     breakpoint: Breakpoint
 ) {
     SectionContainer(
-        variant = LuxSectionContainerStyleVariant,
         modifier = Modifier.background(LuxSpecificColorHues().luxBlackRussian)
     ) {
         Row(
@@ -62,5 +60,3 @@ fun LuxBasicsSection(
         }
     }
 }
-
-

@@ -18,7 +18,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.styles.HoverBoxShadowStyle
 import energy.lux.frontend.domains.lux.styles.verticalLinearBackground
@@ -36,7 +36,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun InteractiveDashboardSection() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .background(SitePalette.light.overlay)
             .alignItems(AlignItems.Start)

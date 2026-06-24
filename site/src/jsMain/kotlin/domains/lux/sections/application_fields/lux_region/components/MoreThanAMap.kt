@@ -6,7 +6,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import energy.lux.frontend.components.widgets.LangText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.AlignItems
@@ -17,7 +17,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun MoreThanAMap() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .background(SitePalette.light.overlay)
             .alignItems(AlignItems.FlexStart)
