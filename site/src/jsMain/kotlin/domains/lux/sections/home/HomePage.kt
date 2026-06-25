@@ -17,9 +17,9 @@ fun HomePage() {
     Column(modifier = Modifier.fillMaxSize()) {
         LuxHero()
         StatsSection(breakpoint)
-        LuxBasicsSection(breakpoint)
         ProblemAndSolutionSection()
         LuxApplicationsSection(breakpoint)
+        LuxBasicsSection(breakpoint)
         WorkWithUs()
         FaqsSection(breakpoint)
     }
