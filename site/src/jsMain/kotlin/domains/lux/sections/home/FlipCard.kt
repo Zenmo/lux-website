@@ -40,8 +40,14 @@ data class LuxFlipCardItem(
                     nl = "Integrale energiesimulaties"
                 ),
                 description = LocalizedText(
-                    en = "LUX is multi-level (from company to country) and multi-commodity (from electricity to heat and hydrogen).",
-                    nl = "LUX kent meerdere niveaus (van bedrijf naar land) en meerdere soorten energie (van elektriciteit naar warmte en waterstof)"
+                    en = """
+                        LUX is applicable at the building, neighborhood, municipality, and regional levels, and can 
+                        include all energy carriers (such as electricity, gas, hydrogen, and heat).
+                    """.trimIndent(),
+                    nl = """
+                        LUX is toepasbaar op pand, buurt, gemeente en regio-niveau, en kan alle energiedragers (zoals 
+                        elektra, gas, waterstof en warmte) meenemen.
+                    """.trimIndent()
                 ),
                 icon = {
                     MdiLightbulb(it)
@@ -53,8 +59,13 @@ data class LuxFlipCardItem(
                     nl = "Interactieve digitale tweeling"
                 ),
                 description = LocalizedText(
-                    en = "LUX loads all GIS and energy data of your area and lets you run a variety of what-if simulations.",
-                    nl = "LUX laadt alle GIS- en energiedata van jouw gebied en laat je verschillende wat-als scenario’s uitproberen."
+                    en = """
+                        LUX loads energy and GIS data from your system to then explore various what-if scenarios itself.
+                    """.trimIndent(),
+                    nl = """
+                        LUX laadt energie- en GIS-data van jou systeem in om vervolgens zelf verschillende wat-als 
+                        scenario's te verkennen
+                    """.trimIndent()
                 ),
                 icon = {
                     MdiElectricBolt(it)
@@ -66,8 +77,14 @@ data class LuxFlipCardItem(
                     nl = "Besluitvorming ondersteunen"
                 ),
                 description = LocalizedText(
-                    en = "LUX makes the hard calculations within seconds, so your discussions can focus on the hard decisions.",
-                    nl = "LUX doet het rekenwerk in een paar seconden, zodat jouw discussie zich kan richten op de besluitvorming."
+                    en = """
+                        LUX visually and dynamically simulates the energy system, thereby guiding your discussion 
+                        regarding decision-making.
+                    """.trimIndent(),
+                    nl = """
+                        LUX speelt het energiesysteem visueel en dynamisch na, daarmee begeleidt het jou discussie 
+                        rondom besluitvorming.
+                    """.trimIndent()
                 ),
                 icon = {
                     MdiDiversity2(it)
