@@ -11,7 +11,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.core.services.localization.localizedUrl
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
 import energy.lux.frontend.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
@@ -22,7 +21,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun CatchAllPage() {
-    LuxSectionContainer {
+    SectionContainer {
         HeaderText(
             enText = "404",
             nlText = "404",

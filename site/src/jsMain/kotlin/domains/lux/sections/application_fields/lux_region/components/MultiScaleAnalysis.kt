@@ -23,7 +23,7 @@ import com.varabyte.kobweb.silk.style.selectors.before
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.styles.TopDividerLineStyle
 import energy.lux.frontend.domains.lux.styles.verticalLinearBackground
@@ -37,7 +37,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun MultiScaleAnalysis() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .alignItems(AlignItems.FlexStart),
     ) {

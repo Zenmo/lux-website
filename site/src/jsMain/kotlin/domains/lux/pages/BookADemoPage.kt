@@ -13,7 +13,6 @@ import energy.lux.frontend.components.layouts.PageLayout
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.components.widgets.SectionContainer
-import energy.lux.frontend.domains.lux.sections.LuxSectionContainerStyleVariant
 import energy.lux.frontend.domains.zenmo.widgets.button.IconButton
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.cssRem
@@ -31,7 +30,6 @@ fun BookADemoPage() {
         SectionContainer(
             modifier = Modifier.gap(1.cssRem).textAlign(TextAlign.Center),
             verticalArrangement = Arrangement.Center,
-            variant = LuxSectionContainerStyleVariant
         ) {
             H2 {
                 LangText(

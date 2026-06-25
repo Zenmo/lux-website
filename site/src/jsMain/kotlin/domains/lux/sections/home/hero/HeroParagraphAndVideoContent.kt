@@ -7,7 +7,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.responsiveGap
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -64,7 +64,7 @@ val HeroFlexStyle = CssStyle {
 
 @Composable
 fun HeroParagraphAndVideoContent() {
-    LuxSectionContainer(
+    SectionContainer(
         Modifier
             .position(Position.Relative)
             .alignItems(AlignItems.FlexStart)

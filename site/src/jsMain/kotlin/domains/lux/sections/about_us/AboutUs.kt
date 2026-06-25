@@ -3,7 +3,6 @@ package energy.lux.frontend.domains.lux.sections.about_us
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.background
@@ -16,7 +15,6 @@ import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangBlock
 import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.LuxSectionContainerStyleVariant
 import energy.lux.frontend.domains.lux.sections.about_us.components.JourneyBlock
 import energy.lux.frontend.domains.lux.sections.about_us.sections.LuxStoryHeaderText
 import energy.lux.frontend.domains.lux.sections.about_us.sections.WhyLux
@@ -38,9 +36,7 @@ fun AboutUs() {
     ) {
         LuxStoryHeaderText(breakpoint)
         SectionContainer(
-            variant = LuxSectionContainerStyleVariant,
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             JourneyBlock(
                 breakpoint = breakpoint,
@@ -319,4 +315,3 @@ fun AboutUs() {
         }
     }
 }
-

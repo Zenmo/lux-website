@@ -6,7 +6,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.components.widgets.SectionContainer
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
 import energy.lux.frontend.domains.lux.core.toTwinModelCardItem
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.OssGisMap
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.ossTwinModels
@@ -37,7 +36,7 @@ fun OssIndex() {
 
     OssGisMap()
 
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier.backgroundColor(SitePalette.light.overlay)
     ) {
         TwinModelsGrid(

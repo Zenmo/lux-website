@@ -15,7 +15,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import energy.lux.frontend.components.widgets.ImageContent
 import energy.lux.frontend.core.services.localization.Language
 import energy.lux.frontend.core.services.localization.LocalLanguage
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.keywords.auto
@@ -25,7 +25,7 @@ import org.jetbrains.compose.web.css.vh
 
 @Composable
 fun WhatLuxNeighbourhoodSolves() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier.background(SitePalette.light.overlay),
     ) {
         HeaderText(

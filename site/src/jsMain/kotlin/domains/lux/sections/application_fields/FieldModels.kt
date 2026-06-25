@@ -17,7 +17,7 @@ import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.LangText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.core.TwinModelCardItem
 import energy.lux.frontend.domains.lux.sections.nav_header.luxModelsMenuItem
 import energy.lux.frontend.domains.lux.styles.TopDividerLineStyle
@@ -38,7 +38,7 @@ fun FieldModels(
     featuredModels: List<TwinModelCardItem>,
     showMoreModelsLink: Boolean,
 ) {
-    LuxSectionContainer(
+    SectionContainer(
         modifier =
             Modifier
                 .then(TopDividerLineStyle.toModifier())

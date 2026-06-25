@@ -13,7 +13,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangBlock
 import energy.lux.frontend.components.widgets.LangText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.styles.secondaryGradientBackground
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
@@ -30,7 +30,7 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun UniqueFeature() {
-    LuxSectionContainer {
+    SectionContainer {
         Column(
             modifier = Modifier.fillMaxWidth()
                 .luxBorderRadius(LuxCornerRadius.xl)

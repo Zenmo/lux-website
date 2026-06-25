@@ -15,8 +15,8 @@ import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangText
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
 import energy.lux.frontend.domains.lux.core.model.subdomain.demoEnergyHubModel
 import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
@@ -40,7 +40,7 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun AboutLuxEnergyHub() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .background(SitePalette.light.overlay),
     ) {
