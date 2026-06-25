@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.framework.annotations.DelicateApi
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.model.subdomain.bunderbuurten
+import energy.lux.frontend.domains.lux.core.model.subdomain.demoNeighbourhoodModel
 import energy.lux.frontend.domains.lux.core.model.subdomain.kronenberg
 import energy.lux.frontend.domains.lux.core.model.subdomain.loenen
 import energy.lux.frontend.domains.lux.core.toTwinModelCardItem
@@ -19,7 +20,6 @@ import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbour
 import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbourhood.components.WhatLuxNeighbourhoodSolves
 import energy.lux.frontend.domains.lux.sections.application_fields.lux_neighbourhood.components.get_lux_neighbourhood.GetLuxNeighbourhoodSection
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.AnyLogicEmbed
-import kotlin.uuid.Uuid
 
 
 @OptIn(DelicateApi::class)
@@ -35,7 +35,7 @@ fun LuxNeighbourhood() {
             applicationArea = applicationArea,
             modelContent = {
                 AnyLogicEmbed(
-                    modelId = Uuid.parse("ccbd35d7-98a8-4fb9-8161-dda239d7f049")
+                    modelId = demoNeighbourhoodModel.modelId
                 )
             },
             movieContent = {

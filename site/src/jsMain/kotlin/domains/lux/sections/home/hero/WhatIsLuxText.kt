@@ -12,8 +12,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLanguage
 import energy.lux.frontend.components.widgets.LangText
-import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
-import energy.lux.frontend.domains.lux.sections.application_fields.components.LUX_DEMO_SECTION_ID
+import energy.lux.frontend.domains.lux.core.model.subdomain.demoEnergyHubModel
+import energy.lux.frontend.domains.lux.core.model.subdomain.demoNeighbourhoodModel
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.zenmo.widgets.button.PrimaryButton
 import energy.lux.frontend.theme.SitePalette
@@ -79,9 +79,7 @@ private fun HeroCTAButtons() {
             enText = "Demo Energy Hub",
             nlText = "Demo Energy Hub",
             onClick = {
-                ctx.router.navigateTo(
-                    "${LuxApplicationArea.LUX_ENERGY_HUB.url}#${LUX_DEMO_SECTION_ID}"
-                )
+                ctx.router.navigateTo(demoEnergyHubModel.url)
             },
             modifier = Modifier
                 .backgroundColor(SitePalette.light.secondary)
@@ -92,9 +90,7 @@ private fun HeroCTAButtons() {
             enText = "Demo Neighbourhood",
             nlText = "Demo Woonwijk",
             onClick = {
-                ctx.router.navigateTo(
-                    "${LuxApplicationArea.LUX_NEIGHBOURHOOD.url}#${LUX_DEMO_SECTION_ID}"
-                )
+                ctx.router.navigateTo(demoNeighbourhoodModel.url)
             },
             modifier = Modifier
                 .backgroundColor(SitePalette.light.overlay)
