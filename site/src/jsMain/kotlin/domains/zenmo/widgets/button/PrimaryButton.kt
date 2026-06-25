@@ -43,8 +43,8 @@ val PrimaryButtonWithIconPadding = ButtonStyle.addVariant {
 @Composable
 fun PrimaryButton(
     modifier: Modifier = Modifier,
-    enText: String? = null,
-    nlText: String? = null,
+    nlText: String,
+    enText: String = nlText,
     icon: (@Composable () -> Unit)? = null,
     type: ButtonType = ButtonType.Button,
     enabled: Boolean = true,
