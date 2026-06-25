@@ -6,11 +6,9 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun LangText(
-    en: String? = null,
-    nl: String? = null,
+    nl: String,
+    en: String = nl,
 ) {
     val language = LocalLanguage.current
     Text(language.translate(en = en, nl = nl))
 }
-
-
