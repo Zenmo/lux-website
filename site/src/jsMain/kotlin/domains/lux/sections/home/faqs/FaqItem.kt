@@ -499,6 +499,7 @@ data class FaqItem(
                                     enLinkText = "zero.docs",
                                     nlLinkText = "zero.docs",
                                 )
+                                Text(" ")
                                 Text(
                                     """
                                     kunt u de bestaande documentatie vinden. Er staat daar uitgelegd hoe je het LUX 
