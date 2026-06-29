@@ -85,7 +85,8 @@ fun FaqFallBack() {
                     InlineLink(
                         destinationUrl = localizedUrl("/book-demo"),
                         enLinkText = "Contact us",
-                        nlLinkText = "",
+                        nlLinkText = "Contact us",
+                        textColor = Colors.White
                     )
                     Text(
                         " for support!"

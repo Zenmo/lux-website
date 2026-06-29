@@ -15,16 +15,15 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiTaskAlt
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiTrendingDown
 import com.varabyte.kobweb.silk.style.toModifier
+import com.zenmo.web.zenmo.theme.font.BodyTextStyle
+import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.LuxSectionContainerStyleVariant
 import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.LuxSpecificColorHues
 import energy.lux.frontend.theme.SitePalette
-import com.zenmo.web.zenmo.theme.font.BodyTextStyle
-import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.theme.styles.luxBorderRadius
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
@@ -32,10 +31,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun ProblemAndSolutionSection() {
-    SectionContainer(
-        variant = LuxSectionContainerStyleVariant,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    SectionContainer {
         Div(
             ResponsiveFlexStyle
                 .toModifier()
@@ -212,7 +208,3 @@ fun Modifier.featureIcon(
     size: CSSLengthValue = 24.px
 ) = this.fontSize(size)
     .color(color)
-
-
-
-

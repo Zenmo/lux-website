@@ -11,7 +11,7 @@ import com.varabyte.kobweb.silk.components.icons.mdi.MdiHelp
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.styles.HoverBoxShadowStyle
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.SitePalette
@@ -26,7 +26,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun WhatIfScenarios() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .background(SitePalette.light.overlay)
             .alignItems(AlignItems.FlexStart),

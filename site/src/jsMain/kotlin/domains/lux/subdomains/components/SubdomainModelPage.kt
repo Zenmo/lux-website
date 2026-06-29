@@ -6,15 +6,13 @@ import androidx.compose.runtime.getValue
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.alignItems
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import energy.lux.frontend.core.services.anyLogicModels.LocalModelsViewModel
 import energy.lux.frontend.core.services.anyLogicModels.getModelDateForUuid
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.anyLogicPublicApiKey
+import energy.lux.frontend.theme.SiteFluidSpacing
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.AlignItems
 import kotlin.uuid.Uuid
@@ -31,33 +29,44 @@ fun SubdomainModelPage(
             apiKey = apiKey,
         )
     },
-    extraContent: @Composable () -> Unit = {},
+    extraContent: (@Composable () -> Unit)? = null,
     footerContent: @Composable () -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxSize().alignItems(AlignItems.Stretch),
     ) {
-        LuxSectionContainer {
-            introContent()
-            mediaContent()
-        }
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(topBottom = SiteFluidSpacing.current.verticalPadding)
+                .gap(SiteFluidSpacing.current.gap)
+                .alignItems(AlignItems.Center),
         ) {
-            val modelsUiState by LocalModelsViewModel.current.uiState.collectAsState()
-            val lastModifiedDate = modelsUiState.models.getModelDateForUuid(modelId.toString())
-
-            if (lastModifiedDate != null) {
-                ModelLastUpdatedLabel(lastModifiedDate)
+            SectionContainer(
+                modifier = Modifier.padding(leftRight = SiteFluidSpacing.current.horizontalPadding),
+            ) {
+                introContent()
+                mediaContent()
             }
-            anylogicRender()
-        }
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                val modelsUiState by LocalModelsViewModel.current.uiState.collectAsState()
+                val lastModifiedDate = modelsUiState.models.getModelDateForUuid(modelId.toString())
 
-        LuxSectionContainer {
-            extraContent()
+                if (lastModifiedDate != null) {
+                    ModelLastUpdatedLabel(lastModifiedDate)
+                }
+                anylogicRender()
+            }
+            if (extraContent != null) {
+                SectionContainer(
+                    modifier = Modifier.padding(leftRight = SiteFluidSpacing.current.horizontalPadding),
+                ) {
+                    extraContent()
+                }
+            }
         }
-        LuxSectionContainer(
+        SectionContainer(
             modifier = Modifier.backgroundColor(SitePalette.light.overlay)
         ) {
             footerContent()

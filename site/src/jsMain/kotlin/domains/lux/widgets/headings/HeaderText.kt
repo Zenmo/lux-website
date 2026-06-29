@@ -8,9 +8,9 @@ import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import energy.lux.frontend.components.widgets.LangText
 import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
+import energy.lux.frontend.components.widgets.LangText
 import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -21,8 +21,8 @@ fun HeaderText(
     modifier: Modifier = Modifier,
     textColor: CSSColorValue = Color.currentColor,
     fontWeight: FontWeight = FontWeight.Normal,
-    enText: String,
     nlText: String,
+    enText: String = nlText,
 ) {
     H1(
         TextStyle.toModifier(HeaderTextStyle)

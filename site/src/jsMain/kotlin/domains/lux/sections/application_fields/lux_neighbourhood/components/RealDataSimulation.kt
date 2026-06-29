@@ -10,7 +10,7 @@ import com.varabyte.kobweb.silk.components.icons.mdi.*
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.sections.home.CardGridStyle
 import energy.lux.frontend.domains.lux.styles.mutedWhite
@@ -29,7 +29,7 @@ import org.jetbrains.compose.web.dom.Span
 
 @Composable
 fun RealDataSimulation() {
-    LuxSectionContainer(
+    SectionContainer(
         Modifier
             .background(LuxSpecificColorHues().luxBlackRussian)
             .color(Colors.White),

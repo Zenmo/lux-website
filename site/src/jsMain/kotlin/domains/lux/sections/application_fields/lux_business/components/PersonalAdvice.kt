@@ -9,7 +9,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.LuxSpecificColorHues
@@ -21,7 +21,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun PersonalAdvice() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .background(LuxSpecificColorHues().luxBlackRussian)
             .color(Colors.White)

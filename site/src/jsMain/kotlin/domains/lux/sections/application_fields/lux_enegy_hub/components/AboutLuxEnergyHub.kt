@@ -15,8 +15,9 @@ import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangText
+import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.components.LuxSectionContainer
+import energy.lux.frontend.domains.lux.core.model.subdomain.demoEnergyHubModel
 import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.sections.application_fields.components.ApplicationAreaVideo
@@ -35,12 +36,11 @@ import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
-import kotlin.uuid.Uuid
 
 
 @Composable
 fun AboutLuxEnergyHub() {
-    LuxSectionContainer(
+    SectionContainer(
         modifier = Modifier
             .background(SitePalette.light.overlay),
     ) {
@@ -60,7 +60,7 @@ fun AboutLuxEnergyHub() {
             },
             modelContent = {
                 AnyLogicEmbed(
-                    modelId = Uuid.parse("834a212f-7e61-4f55-9b21-a4de5327aee1")
+                    modelId = demoEnergyHubModel.modelId
                 )
             },
         )

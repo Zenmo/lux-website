@@ -147,12 +147,91 @@ data class FaqItem(
                     en = "How do I apply LUX as a energy cooperation?",
                     nl = "Hoe pas ik LUX toe als energiecoöperatie?"
                 ),
+                answerBlock = {
+                    P {
+                        LangText(
+                            en = """
+                                As an energy cooperative, you can use LUX to explore your cooperative's local 
+                                generation, storage, consumption, and flexibility within an interactive energy system 
+                                model. Investigate, for example, how solar, heat, charging, and smart consumption 
+                                interact, or which scenarios are suitable for member growth, new assets, or changing 
+                                energy prices. This helps cooperatives make plans more concrete, conduct better 
+                                discussions with the municipality, grid operator, and members, and substantiate 
+                                investments.
+                            """.trimIndent(),
+                            nl = """
+                                Als energiecoöperatie kunt u LUX gebruiken om de lokale opwek, opslag, verbruik en 
+                                flexibiliteit van uw coöperatie te verkennen in een interactief energiesysteemmodel. 
+                                Onderzoek bijvoorbeeld hoe zon, warmte, laden en slim verbruik op elkaar inwerken of 
+                                welke scenario's passen bij groei van leden, nieuwe assets of veranderende 
+                                energieprijzen. Dat helpt coöperaties om plannen concreter te maken, gesprekken met 
+                                gemeente, netbeheerder en leden beter te voeren, en investeringen te onderbouwen.
+                            """.trimIndent()
+                        )
+                    }
+                    P {
+                        LangText(
+                            en = """
+                              LUX is particularly valuable when you want to understand the entire local energy system. 
+                              This allows you to work step-by-step towards a cooperative energy system that is 
+                              technically feasible, financially smarter, and locally supported.  
+                            """.trimIndent(),
+                            nl = """
+                              LUX is vooral waardevol wanneer u het totale lokale energiesysteem wilt begrijpen. Zo 
+                              kunt u stapsgewijs toewerken naar een coöperatief energiesysteem dat technisch 
+                              haalbaar, financieel slimmer en lokaal gedragen is.
+                            """.trimIndent()
+                        )
+                        Br { }
+                        Br { }
+                        LangBlock(
+                            en = {
+                                Text("You can get started with LUX yourself via our ")
+                                InlineLink(
+                                    destinationUrl = LUX_GITHUB_REPO_URL,
+                                    enLinkText = "GitHub Repo",
+                                    nlLinkText = "GitHub Repo",
+                                )
+                                Text(" or you can request a quote from ")
+                                ZenmoLink()
+                            },
+                            nl = {
+                                Text("U kunt zelf via onze ")
+                                InlineLink(
+                                    destinationUrl = LUX_GITHUB_REPO_URL,
+                                    enLinkText = "GitHub Repo",
+                                    nlLinkText = "GitHub Repo",
+                                )
+                                Text("aan de gang met LUX of u kunt een offerte opvragen bij ")
+                                ZenmoLink()
+                            }
+                        )
+                    }
+                }
             ),
             FaqItem(
                 question = LocalizedText(
                     en = "How do I apply LUX as a researcher/consultant?",
                     nl = "Hoe pas ik LUX toe als onderzoeker/adviseur?"
                 ),
+                answerBlock = {
+                    P {
+                        LangText(
+                            en = """
+                                With LUX, you can perform in-depth scenario analyses for local energy systems, from 
+                                grid congestion to storage, flexibility, and sector integration. Because LUX is open 
+                                source, you can download the model yourself and further develop it to suit your own 
+                                research, data, and approach.
+                            """.trimIndent(),
+                            nl = """
+                                Met LUX kunt u diepgaande scenarioanalyses uitvoeren voor lokale energiesystemen, van 
+                                netcongestie tot opslag, flexibiliteit en sectorintegratie. Omdat LUX open source is, 
+                                kunt u het model zelf downloaden en verder uitbouwen, zodat het past bij uw eigen 
+                                onderzoek, data en aanpak.
+                            """.trimIndent()
+                        )
+                    }
+                }
             ),
             FaqItem(
                 question = LocalizedText(
@@ -181,8 +260,8 @@ data class FaqItem(
             ),
             FaqItem(
                 question = LocalizedText(
-                    en = "Where can I find the code base?",
-                    nl = "Waar kan ik de codebase vinden?"
+                    en = "Where can I find the source base?",
+                    nl = "Waar kan ik de bron code vinden?"
                 ),
                 answerBlock = {
                     P {
@@ -285,8 +364,8 @@ data class FaqItem(
             ),
             FaqItem(
                 question = LocalizedText(
-                    en = "What data goes into LUX?",
-                    nl = "Welke gegevens worden in LUX verwerkt?"
+                    en = "What data is processed LUX?",
+                    nl = "Welke data wordt er in LUX verwerkt?"
                 ),
                 answerBlock = {
                     P {
@@ -361,7 +440,6 @@ data class FaqItem(
                     }
                 }
             ),
-
             FaqItem(
                 question = LocalizedText(
                     en = "How is the electricity grid implemented in LUX?",
@@ -386,6 +464,50 @@ data class FaqItem(
                                 omdat de netbeheerder erbij betrokken is), kunnen ze worden toegevoegd. Zo niet, dan 
                                 kan je zelf kiezen welke gebouwen op welk deel van het net worden aangesloten.
                             """.trimIndent()
+                        )
+                    }
+                }
+            ),
+            FaqItem(
+                question = LocalizedText(
+                    en = "Where can i find the documentation?",
+                    nl = "Waar kan ik documentatie vinden?"
+                ),
+                answerBlock = {
+                    P {
+                        LangBlock(
+                            en = {
+                                Text("You can find the existing documentation at ")
+                                InlineLink(
+                                    destinationUrl = "",
+                                    enLinkText = "zero.docs",
+                                    nlLinkText = "zero.docs",
+                                )
+                                Text(". ")
+                                Text(
+                                    """
+                                    It explains how to start the LUX model with Anylogic and contains descriptions 
+                                    of how the model works. We are currently working on further developing the 
+                                    documentation.
+                                """.trimIndent()
+                                )
+                            },
+                            nl = {
+                                Text("Op ")
+                                InlineLink(
+                                    destinationUrl = "",
+                                    enLinkText = "zero.docs",
+                                    nlLinkText = "zero.docs",
+                                )
+                                Text(" ")
+                                Text(
+                                    """
+                                    kunt u de bestaande documentatie vinden. Er staat daar uitgelegd hoe je het LUX 
+                                    model met Anylogic kunt starten en er staan beschrijvingen van hoe het model werkt. 
+                                    We zijn bezig de documentatie verder uit te werken.
+                                """.trimIndent()
+                                )
+                            }
                         )
                     }
                 }

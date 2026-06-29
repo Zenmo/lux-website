@@ -4,9 +4,11 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import energy.lux.frontend.components.widgets.LangText
+import energy.lux.frontend.components.widgets.LangBlock
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
+import org.jetbrains.compose.web.dom.B
 import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun EmpoweredHeader() {
@@ -18,17 +20,35 @@ fun EmpoweredHeader() {
             nlText = "EmPowerED",
         )
         P {
-            LangText(
-                en = """
-               EmPowerED is a research project on Positive Energy Districts led by Eindhoven University of Technology, 
-               aiming to accelerate socially supported, affordable, and locally appropriate energy transitions in Dutch 
-               neighborhoods. 
-            """.trimIndent(),
-                nl = """
-                EmPowerED is een onderzoeksproject naar ‘Positive Energy Districts’, geleid door de Technische 
-                Universiteit Eindhoven, met als doel om sociaal gedragen, betaalbare en lokaal passende oplossingen 
-                voor duurzame energie in Nederlandse wijken en buurten te ontwikkelen. 
-            """.trimIndent()
+            LangBlock(
+                en = {
+                    Text("EmPowerED is a research project on ")
+                    B { Text("Positive Energy Districts") }
+                    Text(", led by ")
+                    B { Text("Eindhoven University of Technology. ") }
+                    Text(
+                        """
+                        The goal of the project is to develop socially supported, affordable, and locally appropriate solutions and
+                        tools for the heat transition of Dutch neighborhoods.
+                    """.trimIndent()
+                    )
+                },
+                nl = {
+                    Text("EmPowerED is een onderzoeksproject naar ")
+                    B {
+                        Text("Positive Energy Districts")
+                    }
+                    Text(",  geleid door de ")
+                    B {
+                        Text("Technische Universiteit Eindhoven. ")
+                    }
+                    Text(
+                        """
+                        Het doel van het project is om sociaal gedragen, betaalbare en lokaal passende oplossingen en 
+                        tools voor de warmtetransitie van Nederlandse buurten te ontwikkelen.
+                    """.trimIndent()
+                    )
+                }
             )
         }
     }
