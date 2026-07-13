@@ -130,10 +130,12 @@ val PartnerLogosImageContainerStyle = CssStyle {
 }
 
 @Composable
-private fun PartnerLogoImage(
+fun PartnerLogoImage(
     partner: GeniusPartners,
+    modifier: Modifier = Modifier,
 ) = Box(
-    PartnerLogosImageContainerStyle.toModifier(),
+    PartnerLogosImageContainerStyle.toModifier()
+        .then(modifier),
     contentAlignment = Alignment.Center
 ) {
     Image(

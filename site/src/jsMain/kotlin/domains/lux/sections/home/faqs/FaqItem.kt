@@ -12,6 +12,7 @@ import org.jetbrains.compose.web.dom.Text
 
 
 const val LUX_GITHUB_REPO_URL = "https://github.com/Zenmo/zero_engine.git"
+const val ZERO_DOCS_URL = "https://docs.lux.energy"
 
 data class FaqItem(
     val question: LocalizedText,
@@ -479,7 +480,7 @@ data class FaqItem(
                             en = {
                                 Text("You can find the existing documentation at ")
                                 InlineLink(
-                                    destinationUrl = "",
+                                    destinationUrl = ZERO_DOCS_URL,
                                     enLinkText = "zero.docs",
                                     nlLinkText = "zero.docs",
                                 )
@@ -495,7 +496,7 @@ data class FaqItem(
                             nl = {
                                 Text("Op ")
                                 InlineLink(
-                                    destinationUrl = "",
+                                    destinationUrl = ZERO_DOCS_URL,
                                     enLinkText = "zero.docs",
                                     nlLinkText = "zero.docs",
                                 )
