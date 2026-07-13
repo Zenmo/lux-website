@@ -136,4 +136,13 @@ enum class PrivateSubdomainModel(
         modelId = Uuid.parse("74a84d14-6351-499a-af7e-08d9064836cc"),
         applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
     ),
+    H4B(
+        subdomain = "h4b",
+        subdomainComponent = { H4B() },
+        label = LocalizedText(nl = "Heat4Buildings"),
+        imageUrl = "/lux/images/model_thumbnails/h4b.jpeg",
+        entryPoint = "h4b",
+        modelId = Uuid.NIL,
+        applicationArea = LuxApplicationArea.LUX_ENERGY_HUB
+    ),
 }

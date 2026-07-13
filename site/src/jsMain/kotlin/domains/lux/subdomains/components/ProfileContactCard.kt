@@ -75,7 +75,7 @@ fun ProfileContactCard(
         ) {
             Image(
                 modifier = ProfileImageStyle.toModifier(),
-                src = imageUrl,
+                src = imageUrl.ifBlank { "/avatars/blank.png" },
                 alt = "$name photo",
             )
         }

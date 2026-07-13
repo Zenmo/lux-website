@@ -84,7 +84,7 @@ enum class ZenmoTeam(
         memberName = "Bas Dekker",
         enTitle = "Modeller",
         nlTitle = "Modelleur",
-        image = "/avatars/bas.jpeg",
+        image = "",
         email = "bas@zenmo.com",
         linkedIn = "",
         twitter = "",
