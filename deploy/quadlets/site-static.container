@@ -6,10 +6,11 @@ Image=ghcr.io/zenmo/zenmo-website-static:$TAG
 Network=traefik.network
 Label=traefik.enable=true
 Label=traefik.http.routers.website-static-$ENVIRONMENT.priority=$TRAEFIK_PRIORITY
-Label="traefik.http.routers.website-static-$ENVIRONMENT.rule=Host(`$ZENMO_DOMAIN`) || Host(`$LUX_DOMAIN`) || HostRegexp(`$LUX_HOST_REGEXP`)"
+Label="traefik.http.routers.website-static-$ENVIRONMENT.rule=Host(`$ZENMO_DOMAIN`) || Host(`$LUX_DOMAIN`) || HostRegexp(`$TRAEFIK_LUX_HOST_REGEXP`)"
 Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.certResolver=DNSimpleChallenge
-Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.domains[0].main=$ZENMO_DOMAIN
-Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.domains[0].sans=*.$ZENMO_DOMAIN,*.$LUX_DOMAIN,$LUX_DOMAIN
+Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.domains[0].main=$TRAEFIK_ZENMO_MAIN_CERT
+Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.domains[1].main=$TRAEFIK_LUX_MAIN_CERT
+Label=traefik.http.routers.website-static-$ENVIRONMENT.tls.domains[1].sans=$TRAEFIK_LUX_SANS_CERT
 
 [Service]
 Restart=always

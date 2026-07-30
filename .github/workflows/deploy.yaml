@@ -3,8 +3,8 @@ on:
     push:
         branches:
             - main
-            - move-server
             - production
+            - deploy-pull-request
     pull_request:
         types: [ opened, synchronize, reopened ]
 
@@ -12,21 +12,33 @@ jobs:
     variables:
         runs-on: ubuntu-latest
         outputs:
+            ENVIRONMENT: ${{ fromJson(steps.variables.outputs.result).ENVIRONMENT }}
+            TAG: ${{ fromJson(steps.variables.outputs.result).TAG }}
+
+            # backend
             BACKEND_DOMAIN: ${{ fromJson(steps.variables.outputs.result).BACKEND_DOMAIN }}
             BACKEND_URL: ${{ fromJson(steps.variables.outputs.result).BACKEND_URL }}
-            ENVIRONMENT: ${{ fromJson(steps.variables.outputs.result).ENVIRONMENT }}
+            TRAEFIK_BACKEND_CERT: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_BACKEND_CERT }}
             CORS_ORIGIN_PATTERN: ${{ fromJson(steps.variables.outputs.result).CORS_ORIGIN_PATTERN }}
-            LUX_DOMAIN: ${{ fromJson(steps.variables.outputs.result).LUX_DOMAIN }}
-            LUX_HOST_REGEXP: ${{ fromJson(steps.variables.outputs.result).LUX_HOST_REGEXP }}
-            TAG: ${{ fromJson(steps.variables.outputs.result).TAG }}
-            TRAEFIK_PRIORITY: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_PRIORITY }}
+
+            # static site
             ZENMO_DOMAIN: ${{ fromJson(steps.variables.outputs.result).ZENMO_DOMAIN }}
+            LUX_DOMAIN: ${{ fromJson(steps.variables.outputs.result).LUX_DOMAIN }}
+            SUBDOMAIN_SEPARATOR: ${{ fromJson(steps.variables.outputs.result).SUBDOMAIN_SEPARATOR }}
+
+            # traefik
+            TRAEFIK_ZENMO_MAIN_CERT: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_ZENMO_MAIN_CERT }}
+            TRAEFIK_LUX_MAIN_CERT: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_LUX_MAIN_CERT }}
+            TRAEFIK_LUX_SANS_CERT: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_LUX_SANS_CERT }}
+            TRAEFIK_LUX_HOST_REGEXP: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_LUX_HOST_REGEXP }}
+            TRAEFIK_PRIORITY: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_PRIORITY }}
+
             SSH_HOST: ${{ fromJson(steps.variables.outputs.result).SSH_HOST }}
             SSH_HOST_ED25519_PUBLIC_KEY: ${{ fromJson(steps.variables.outputs.result).SSH_HOST_ED25519_PUBLIC_KEY }}
         steps:
             -   uses: actions/checkout@v3
             -   name: Variables
-                uses: actions/github-script@v6
+                uses: actions/github-script@v7
                 id: variables
                 with:
                     script: |
@@ -56,11 +68,9 @@ jobs:
             -   name: Expose
                 uses: crazy-max/ghaction-github-runtime@v3
 
-            -   run: ./deploy/static/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
+            -   run: ./deploy/static/build.sh --push
                 env:
                     BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
-                    ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
-                    LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
                     TAG: ${{ needs.variables.outputs.TAG }}
 
 
@@ -90,15 +100,15 @@ jobs:
             -   name: Expose
                 uses: crazy-max/ghaction-github-runtime@v3
 
-            -   run: ./deploy/backend/build.sh ${{ github.event_name != 'pull_request' && '--push' || '' }}
+            -   run: ./deploy/backend/build.sh --push
                 env:
                     BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
                     ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
                     LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
+                    SUBDOMAIN_SEPARATOR: ${{ needs.variables.outputs.SUBDOMAIN_SEPARATOR }}
                     TAG: ${{ needs.variables.outputs.TAG }}
 
     deploy:
-        if: github.event_name != 'pull_request'
         needs:
             - build-backend
             - build-static
@@ -113,13 +123,43 @@ jobs:
                     known_hosts: ${{ needs.variables.outputs.SSH_HOST }} ssh-ed25519 ${{ needs.variables.outputs.SSH_HOST_ED25519_PUBLIC_KEY }}
             -   run: ./deploy/quadlets/deploy.sh
                 env:
+                    ENVIRONMENT: ${{ needs.variables.outputs.ENVIRONMENT }}
+                    TAG: ${{ needs.variables.outputs.TAG }}
+
+                    # Backend
                     BACKEND_DOMAIN: ${{ needs.variables.outputs.BACKEND_DOMAIN }}
                     BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
+                    TRAEFIK_BACKEND_CERT: ${{ needs.variables.outputs.TRAEFIK_BACKEND_CERT }}
                     CORS_ORIGIN_PATTERN: ${{ needs.variables.outputs.CORS_ORIGIN_PATTERN }}
-                    ENVIRONMENT: ${{ needs.variables.outputs.ENVIRONMENT }}
+
+                    # Traefik
                     LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
-                    LUX_HOST_REGEXP: ${{ needs.variables.outputs.LUX_HOST_REGEXP }}
-                    TAG: ${{ needs.variables.outputs.TAG }}
-                    TRAEFIK_PRIORITY: ${{ needs.variables.outputs.TRAEFIK_PRIORITY }}
                     ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
+                    TRAEFIK_ZENMO_MAIN_CERT: ${{ needs.variables.outputs.TRAEFIK_ZENMO_MAIN_CERT }}
+                    TRAEFIK_LUX_MAIN_CERT: ${{ needs.variables.outputs.TRAEFIK_LUX_MAIN_CERT }}
+                    TRAEFIK_LUX_SANS_CERT: ${{ needs.variables.outputs.TRAEFIK_LUX_SANS_CERT }}
+                    TRAEFIK_LUX_HOST_REGEXP: ${{ needs.variables.outputs.TRAEFIK_LUX_HOST_REGEXP }}
+                    TRAEFIK_PRIORITY: ${{ needs.variables.outputs.TRAEFIK_PRIORITY }}
+
                     SSH_HOST: ${{ needs.variables.outputs.SSH_HOST }}
+            -   name: Comment on PR
+                if: ${{ github.event_name == 'pull_request' }}
+                uses: actions/github-script@v7
+                env:
+                    ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
+                    LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
+                with:
+                    script: |
+                        const body = [
+                          'The site has been deployed:',
+                          '',
+                          `- https://${process.env.ZENMO_DOMAIN}`,
+                          `- https://${process.env.LUX_DOMAIN}`,
+                        ].join('\n')
+                        
+                        await github.rest.issues.createComment({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: context.issue.number,
+                          body,
+                        })
