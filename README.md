@@ -10,3 +10,16 @@ and [nieuw.zenmo.com](https://nieuw.zenmo.com)
 It is built using [Kobweb](https://github.com/varabyte/kobweb).
 
 A manual for editors is at [wiki.zenmo.com](https://wiki.zenmo.com/books)
+
+Development
+===
+
+Troubleshooting
+---
+
+If you ever see imports from `@zenmo/...` left in the bundle:
+
+- delete ./build
+- run ./gradlew kotlinNpmInstall
+
+These imports end up in the bundle because Rollup couldn't find them.

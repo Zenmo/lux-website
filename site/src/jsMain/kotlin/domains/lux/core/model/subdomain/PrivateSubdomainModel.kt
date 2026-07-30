@@ -1,13 +1,13 @@
 package energy.lux.frontend.domains.lux.core.model.subdomain
 
 import androidx.compose.runtime.Composable
-import domains.lux.subdomains.private_subdomains.oss.OssRouting
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.PrivateTwinModel
 import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.*
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.Genius
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.OssRouting
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.PureEnergie
 import kotlin.uuid.Uuid
 
