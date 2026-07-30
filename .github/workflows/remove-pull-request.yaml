@@ -1,0 +1,36 @@
+on:
+    pull_request:
+        # A merged pull request also emits the closed event.
+        types: [ closed ]
+
+jobs:
+    variables:
+        runs-on: ubuntu-latest
+        outputs:
+            SSH_HOST: ${{ fromJson(steps.variables.outputs.result).SSH_HOST }}
+            SSH_HOST_ED25519_PUBLIC_KEY: ${{ fromJson(steps.variables.outputs.result).SSH_HOST_ED25519_PUBLIC_KEY }}
+        steps:
+            -   uses: actions/checkout@v4
+            -   name: Variables
+                uses: actions/github-script@v7
+                id: variables
+                with:
+                    script: |
+                        const getVariables = require('./.github/workflows/get-variables/index.js')
+                        return getVariables(context)
+
+    remove:
+        needs: variables
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v4
+            -   name: Install SSH key
+                uses: shimataro/ssh-key-action@v2
+                with:
+                    key: ${{ secrets.PODHOST_SSH_PRIVATE_KEY }}
+                    known_hosts: ${{ needs.variables.outputs.SSH_HOST }} ssh-ed25519 ${{ needs.variables.outputs.SSH_HOST_ED25519_PUBLIC_KEY }}
+            -   name: Remove pull request environment
+                run: ./deploy/quadlets/remove-pull-request.sh
+                env:
+                    PR_NUMBER: ${{ github.event.pull_request.number }}
+                    SSH_HOST: ${{ needs.variables.outputs.SSH_HOST }}

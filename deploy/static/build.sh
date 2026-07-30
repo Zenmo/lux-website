@@ -12,8 +12,6 @@ docker buildx build \
     --file Dockerfile \
     --tag ghcr.io/zenmo/zenmo-website-static:$TAG \
     --build-arg BACKEND_URL=$BACKEND_URL \
-    --build-arg ZENMO_DOMAIN=$ZENMO_DOMAIN \
-    --build-arg LUX_DOMAIN=$LUX_DOMAIN \
     --progress=plain \
     --cache-to type=gha,mode=max,scope=static \
     --cache-from type=gha,scope=static \
