@@ -1,5 +1,5 @@
 const configPerBranch = {
-    production: {
+    production: (runNumber) => ({
         BACKEND_DOMAIN: "site-backend.lux.energy",
         BACKEND_URL: "https://site-backend.lux.energy",
         CORS_ORIGIN_PATTERN: "https:\\/\\/((.*\\.)?lux\\.energy|(.*\\.)?zenmo\\.com)",
@@ -12,8 +12,9 @@ const configPerBranch = {
         ZENMO_DOMAIN: "nieuw.zenmo.com",
         SSH_HOST: "prodpods.zenmo.com",
         SSH_HOST_ED25519_PUBLIC_KEY: "AAAAC3NzaC1lZDI1NTE5AAAAIB9QSQTFJtC1QzZ/iBdR6QfIQ8IFFw9ow14PN68fulC7",
-    },
-    main: {
+        TAG: `production-${runNumber}`
+    }),
+    main: (runNumber) => ({
         BACKEND_DOMAIN: "site-backend.test.lux.energy",
         BACKEND_URL: "https://site-backend.test.lux.energy",
         ENVIRONMENT: "test",
@@ -25,19 +26,21 @@ const configPerBranch = {
         ZENMO_DOMAIN: "test.zenmo.com",
         SSH_HOST: "testpods.zenmo.com",
         SSH_HOST_ED25519_PUBLIC_KEY: "AAAAC3NzaC1lZDI1NTE5AAAAIHdaAqGEO3FCNQf9o7ButP6fnnssixPOm24Z3OoLByoK",
-    },
-    pull_request: {
-        BACKEND_DOMAIN: "localhost",
-        BACKEND_URL: "http://localhost:9000",
+        TAG: `main-${runNumber}`
+    }),
+    pull_request: (runNumber) => ({
+        BACKEND_DOMAIN: `site-backend-${runNumber}.pr.lux.energy`,
+        BACKEND_URL: `http://site-backend-${runNumber}.pr.lux.energy`,
         ENVIRONMENT: "pull_request",
         CORS_ORIGIN_PATTERN: "https:\\/\\/((.*\\.)?lux\\.energy|(.*\\.)?zenmo\\.com)",
-        LUX_DOMAIN: "lux.localhost:8080",
-        LUX_HOST_REGEXP: "",
-        TRAEFIK_PRIORITY: -10_000,
-        ZENMO_DOMAIN: "zenmo.localhost:8080",
+        LUX_DOMAIN: `${runNumber}.pr.lux.energy`,
+        LUX_HOST_REGEXP: "^[\\\\w-]+\\\\.test\\\\.lux\\\\.energy",
+        TRAEFIK_PRIORITY: -1500,
+        ZENMO_DOMAIN: `pr-${runNumber}.zenmo.com`,
         SSH_HOST: "testpods.zenmo.com",
         SSH_HOST_ED25519_PUBLIC_KEY: "AAAAC3NzaC1lZDI1NTE5AAAAIHdaAqGEO3FCNQf9o7ButP6fnnssixPOm24Z3OoLByoK",
-    }
+        TAG: `pr-${runNumber}`
+    })
 }
 
 /**
@@ -56,9 +59,8 @@ module.exports = (context) => {
     if (!Object.keys(configPerBranch).includes(configKey)) {
         throw Error(`No config for branch ${configKey}`)
     }
+    
+    let configFactory = configPerBranch[configKey]
 
-    return {
-        ...configPerBranch[configKey],
-        TAG: `${configKey}-${context.runNumber}`
-    }
+    return configFactory()(context.runNumber, context.payload.pull_request?.number)
 }
