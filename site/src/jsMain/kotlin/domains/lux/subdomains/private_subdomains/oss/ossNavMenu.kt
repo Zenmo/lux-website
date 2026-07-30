@@ -1,4 +1,4 @@
-package domains.lux.subdomains.private_subdomains.oss
+package energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss
 
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.models.RoutedMenuItem
