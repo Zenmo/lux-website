@@ -19,7 +19,7 @@ import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.components.HorizontalLine
-import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
+import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Span

@@ -12,7 +12,7 @@ import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.toAttrs
 import energy.lux.frontend.components.widgets.LangText
-import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
+import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.H4

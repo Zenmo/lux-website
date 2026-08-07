@@ -1,0 +1,26 @@
+package energy.lux.frontend.domains.lux.pages.home
+
+import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.framework.annotations.DelicateApi
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import energy.lux.frontend.domains.lux.pages.home.faqs.FaqsSection
+import energy.lux.frontend.domains.lux.pages.home.hero.LuxHero
+import energy.lux.frontend.domains.lux.pages.home.sections.application_areas.LuxApplicationsSection
+
+@OptIn(DelicateApi::class)
+@Composable
+fun HomePage() {
+    val breakpoint = rememberBreakpoint()
+    Column(modifier = Modifier.fillMaxSize()) {
+        LuxHero()
+        StatsSection(breakpoint)
+        ProblemAndSolutionSection()
+        LuxApplicationsSection(breakpoint)
+        LuxBasicsSection(breakpoint)
+        WorkWithUs()
+        FaqsSection(breakpoint)
+    }
+}

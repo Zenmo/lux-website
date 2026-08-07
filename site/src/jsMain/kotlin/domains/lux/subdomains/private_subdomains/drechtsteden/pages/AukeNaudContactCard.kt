@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
-import energy.lux.frontend.domains.lux.sections.responsiveGap
+import energy.lux.frontend.domains.lux.styles.responsiveGap
 import energy.lux.frontend.domains.lux.subdomains.components.ProfileCardArrangementDirection
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam

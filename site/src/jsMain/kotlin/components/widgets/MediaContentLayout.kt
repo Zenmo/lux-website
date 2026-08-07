@@ -15,8 +15,8 @@ import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
-import energy.lux.frontend.domains.lux.sections.responsiveGap
+import energy.lux.frontend.domains.lux.styles.ResponsiveFlexStyle
+import energy.lux.frontend.domains.lux.styles.responsiveGap
 import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Div

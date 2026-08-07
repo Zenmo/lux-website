@@ -23,7 +23,7 @@ import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.components.widgets.SectionContainer
 import energy.lux.frontend.components.widgets.SectionContainerStyle
 import energy.lux.frontend.domains.lux.components.HorizontalLine
-import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
+import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.cssRem

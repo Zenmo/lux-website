@@ -19,7 +19,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.ResponsiveFlexStyle
+import energy.lux.frontend.domains.lux.styles.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
 import energy.lux.frontend.domains.zenmo.sections.team.ProfileImageStyle

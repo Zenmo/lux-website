@@ -1,7 +1,7 @@
 package energy.lux.frontend.domains.lux.core
 
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.application_fields.ApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.ApplicationArea
 import kotlin.uuid.Uuid
 
 data class TwinModelCardItem(

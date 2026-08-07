@@ -9,8 +9,8 @@ import energy.lux.frontend.core.services.localization.localizedUrl
 import energy.lux.frontend.domains.lux.core.PrivateTwinModel
 import energy.lux.frontend.domains.lux.core.TwinModelCard
 import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainModel
-import energy.lux.frontend.domains.lux.sections.application_fields.ApplicationArea
-import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.ApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.ElzenburgDeGeer
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.Euterpepark
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.Moleneind

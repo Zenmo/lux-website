@@ -3,7 +3,7 @@ package energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodv
 import androidx.compose.runtime.Composable
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainModel
-import energy.lux.frontend.domains.lux.sections.application_fields.components.PeterContactCard
+import energy.lux.frontend.domains.lux.pages.application_fields.components.PeterContactCard
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
