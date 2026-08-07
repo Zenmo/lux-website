@@ -26,7 +26,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
+import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.AnimatedIconStyle
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.isPathActive
 import energy.lux.frontend.theme.SitePalette

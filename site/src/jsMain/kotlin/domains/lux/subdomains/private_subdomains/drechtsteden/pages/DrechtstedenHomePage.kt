@@ -15,7 +15,7 @@ import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.components.HorizontalLine
 import energy.lux.frontend.domains.lux.core.TwinModelCardItem
 import energy.lux.frontend.domains.lux.core.isPrivate
-import energy.lux.frontend.domains.lux.sections.application_fields.DrechtstedenProjectArea
+import energy.lux.frontend.domains.lux.pages.application_fields.DrechtstedenProjectArea
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.municipalities.dordrecht

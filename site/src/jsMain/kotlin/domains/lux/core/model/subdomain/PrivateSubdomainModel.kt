@@ -3,7 +3,7 @@ package energy.lux.frontend.domains.lux.core.model.subdomain
 import androidx.compose.runtime.Composable
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.PrivateTwinModel
-import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.*
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.Genius
