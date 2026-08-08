@@ -17,29 +17,11 @@ val ResponsiveFlexStyle = CssStyle {
             .fillMaxWidth()
             .display(DisplayStyle.Flex)
             .alignItems(AlignItems.Center)
+            .flexDirection(FlexDirection.Column)
             .responsiveGap()
     }
 
-    Breakpoint.ZERO {
-        Modifier
-            .flexDirection(FlexDirection.Column)
-    }
-
-    Breakpoint.SM {
-        Modifier
-            .flexDirection(FlexDirection.Column)
-    }
-    Breakpoint.MD {
-        Modifier
-            .flexDirection(FlexDirection.Column)
-    }
-
     Breakpoint.LG {
-        Modifier
-            .flexDirection(FlexDirection.Row)
-    }
-
-    Breakpoint.XL {
         Modifier
             .flexDirection(FlexDirection.Row)
     }
