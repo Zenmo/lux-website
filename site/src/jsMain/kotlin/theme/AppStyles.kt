@@ -31,7 +31,7 @@ val defaultFonts = Modifier.fontFamily(
     PublicRes.FontFamilies.POPPINS_REGULAR,
     PublicRes.FontFamilies.POPPINS_MEDIUM,
     PublicRes.FontFamilies.MONTSERRAT_REGULAR,
-    PublicRes.FontFamilies.MONTSERRAT_MEDIUM,
+    PublicRes.FontFamilies.MONTSERRAT_BOLD,
 )
 
 val luxDefaultFonts = Modifier.fontFamily(

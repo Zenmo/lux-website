@@ -23,11 +23,12 @@ fun Modifier.typography(role: TextRole, breakpoint: Breakpoint) =
 private fun Modifier.zenmoTypography(role: TextRole, breakpoint: Breakpoint) =
     this.fontFamily(
         when (role) {
-            TextRole.HEADER, TextRole.TITLE -> PublicRes.FontFamilies.MONTSERRAT_MEDIUM
+            TextRole.HEADER -> PublicRes.FontFamilies.MONTSERRAT_BLACK
+            TextRole.TITLE -> PublicRes.FontFamilies.MONTSERRAT_BOLD
             else -> PublicRes.FontFamilies.POPPINS_REGULAR
         }
     )
-        .fontSize(DefaultScales.forRole(role).at(breakpoint))
+        .fontSize(ZenmoScales.forRole(role).at(breakpoint))
         .fontWeight(FontWeight.Normal)
 
 
