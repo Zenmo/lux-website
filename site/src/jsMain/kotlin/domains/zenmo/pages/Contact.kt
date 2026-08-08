@@ -12,7 +12,6 @@ import energy.lux.frontend.domains.zenmo.widgets.ContactForm
 fun ContactPage() {
     PageLayout("Contact") {
         Column(
-            modifier = HeroContainerStyle.toModifier(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
