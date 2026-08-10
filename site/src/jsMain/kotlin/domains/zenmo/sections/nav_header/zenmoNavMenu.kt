@@ -6,8 +6,8 @@ import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.pages.ComponentDemoPage
 import energy.lux.frontend.domains.zenmo.pages.ComingSoon
 import energy.lux.frontend.domains.zenmo.pages.ContactPage
-import energy.lux.frontend.domains.zenmo.pages.HomePage
 import energy.lux.frontend.domains.zenmo.pages.aboutUs.OurTeamPage
+import energy.lux.frontend.domains.zenmo.pages.home.HomePage
 import energy.lux.frontend.pages.isLocalOrPreviewEnvironment
 
 
