@@ -8,6 +8,7 @@ import energy.lux.frontend.domains.zenmo.pages.ComingSoon
 import energy.lux.frontend.domains.zenmo.pages.ContactPage
 import energy.lux.frontend.domains.zenmo.pages.aboutUs.OurTeamPage
 import energy.lux.frontend.domains.zenmo.pages.home.HomePage
+import energy.lux.frontend.domains.zenmo.pages.models.ModelsPage
 import energy.lux.frontend.domains.zenmo.pages.projects.ProjectsPage
 import energy.lux.frontend.pages.isLocalOrPreviewEnvironment
 
@@ -29,10 +30,10 @@ val zenmoProjectsMenuItem = MenuItem.Simple(
         pageComponent = { ProjectsPage() }
     )
 )
-val zenmoClientsMenuItem = MenuItem.Simple(
+val zenmoModelsMenuItem = MenuItem.Simple(
     route = RoutedMenuItem(
-        label = LocalizedText(en = "Our Clients", nl = "Onz Klanten"),
-        pageComponent = { ComingSoon() }
+        label = LocalizedText(en = "Models", nl = "Modellen"),
+        pageComponent = { ModelsPage() }
     )
 )
 
@@ -77,7 +78,7 @@ val componentDemoMenuItem = MenuItem.Simple(
 
 val zenmoNavMenu = buildList {
     add(zenmoProjectsMenuItem)
-    add(zenmoClientsMenuItem)
+    add(zenmoModelsMenuItem)
     add(zenmoAboutUsMenuItem)
     add(contactZenmoMenuItem)
 
