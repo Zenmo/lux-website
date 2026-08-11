@@ -11,7 +11,7 @@ import energy.lux.frontend.domains.lux.core.toTwinModelCardItem
 import energy.lux.frontend.domains.lux.pages.application_fields.FieldModels
 import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.pages.application_fields.components.ApplicationAreaContactPerson
-import energy.lux.frontend.core.models.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import domains.lux.pages.application_fields.lux_region.components.ConsistentInterface
 import domains.lux.pages.application_fields.lux_region.components.WhatIfScenarios
 
@@ -33,6 +33,6 @@ fun LuxRegion() {
             ),
             showMoreModelsLink = true,
         )
-        ApplicationAreaContactPerson(ZenmoTeam.NAUD_LOOMANS)
+        ApplicationAreaContactPerson(ZenmoTeamMember.NAUD_LOOMANS)
     }
 }

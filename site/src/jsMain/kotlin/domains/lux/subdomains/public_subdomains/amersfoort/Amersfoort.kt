@@ -21,7 +21,7 @@ import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfil
 import energy.lux.frontend.domains.lux.widgets.ModelCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
-import energy.lux.frontend.core.models.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.*
@@ -134,7 +134,7 @@ fun Amersfoort() {
                     }
                 }
             },
-            footerContent = { ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN) }
+            footerContent = { ZenmoModellerProfileCard(ZenmoTeamMember.PETER_HOGEVEEN) }
         )
     }
 }

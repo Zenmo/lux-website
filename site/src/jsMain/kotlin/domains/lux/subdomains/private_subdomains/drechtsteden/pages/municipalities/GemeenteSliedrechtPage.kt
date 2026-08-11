@@ -5,7 +5,7 @@ import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfil
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.BusinessParkModelPageText
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.DrechtstedenTwinModelPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
-import energy.lux.frontend.core.models.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 
 
 @Composable
@@ -15,7 +15,7 @@ fun GemeenteSliedrechtPage() {
         twin = sliedrechtMunicipality,
         introContent = { BusinessParkModelPageText() },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.ATE)
+            ZenmoModellerProfileCard(ZenmoTeamMember.ATE)
         }
     )
 }

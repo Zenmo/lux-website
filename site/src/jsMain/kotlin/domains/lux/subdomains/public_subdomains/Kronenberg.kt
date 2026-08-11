@@ -19,7 +19,7 @@ import energy.lux.frontend.domains.lux.components.layout.LuxSubdomainPageLayout
 import energy.lux.frontend.domains.lux.core.model.subdomain.kronenberg
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
-import energy.lux.frontend.core.models.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.dom.Img
@@ -65,7 +65,7 @@ fun KronenbergIndex() {
                     }
                 }
             },
-            footerContent = { ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS) }
+            footerContent = { ZenmoModellerProfileCard(ZenmoTeamMember.NAUD_LOOMANS) }
         )
     }
 }

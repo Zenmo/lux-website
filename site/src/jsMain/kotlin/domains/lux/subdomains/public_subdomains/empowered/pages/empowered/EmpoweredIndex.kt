@@ -13,7 +13,7 @@ import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pa
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pages.empowered.components.LearnMoreAboutEmpowered
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pages.nijmegenHengstdalModel
 import energy.lux.frontend.domains.lux.widgets.TwinModelsGrid
-import energy.lux.frontend.core.models.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import kotlin.uuid.Uuid
 
 @Composable
@@ -35,7 +35,7 @@ fun EmpoweredIndex() {
             EmpoweredModels()
         },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)
+            ZenmoModellerProfileCard(ZenmoTeamMember.NAUD_LOOMANS)
         },
     )
 }

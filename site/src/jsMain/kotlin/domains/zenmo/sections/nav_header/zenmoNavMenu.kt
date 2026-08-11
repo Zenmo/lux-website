@@ -6,7 +6,7 @@ import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.pages.ComponentDemoPage
 import energy.lux.frontend.domains.zenmo.pages.ComingSoon
 import energy.lux.frontend.domains.zenmo.pages.ContactPage
-import energy.lux.frontend.domains.zenmo.pages.aboutUs.OurTeamPage
+import energy.lux.frontend.domains.zenmo.pages.aboutUs.our_team.OurTeamPage
 import energy.lux.frontend.domains.zenmo.pages.home.HomePage
 import energy.lux.frontend.domains.zenmo.pages.models.ModelsPage
 import energy.lux.frontend.domains.zenmo.pages.projects.ProjectsPage
@@ -37,27 +37,33 @@ val zenmoModelsMenuItem = MenuItem.Simple(
     )
 )
 
+val zenmoStoryMenuItem = MenuItem.Simple(
+    route = RoutedMenuItem(
+        label = LocalizedText(en = "Our Story", nl = "Ons Verhaal"),
+        pageComponent = { ComingSoon() }
+    )
+)
+
+val workingAtZenmoMenuItem = MenuItem.Simple(
+    route = RoutedMenuItem(
+        label = LocalizedText(en = "Working at", nl = "Werken bij"),
+        pageComponent = { ComingSoon() }
+    )
+)
+
+val zenmoTeamMenuItem = MenuItem.Simple(
+    route = RoutedMenuItem(
+        label = LocalizedText(en = "Our Team", nl = "Ons Team"),
+        pageComponent = { OurTeamPage() }
+    )
+)
+
 val zenmoAboutUsMenuItem = MenuItem.WithSubs(
     title = LocalizedText(en = "About us", nl = "Over ons"),
     subItems = listOf(
-        MenuItem.Simple(
-            route = RoutedMenuItem(
-                label = LocalizedText(en = "Our Story", nl = "Ons Verhaal"),
-                pageComponent = { ComingSoon() }
-            )
-        ),
-        MenuItem.Simple(
-            route = RoutedMenuItem(
-                label = LocalizedText(en = "Our Team", nl = "Ons Team"),
-                pageComponent = { OurTeamPage() }
-            )
-        ),
-        MenuItem.Simple(
-            route = RoutedMenuItem(
-                label = LocalizedText(en = "Working at", nl = "Banen"),
-                pageComponent = { ComingSoon() }
-            )
-        ),
+        zenmoStoryMenuItem,
+        workingAtZenmoMenuItem,
+        zenmoTeamMenuItem
     )
 )
 

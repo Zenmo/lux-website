@@ -8,7 +8,7 @@ import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainMode
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.components.PrivateTwinModelPage
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.core.models.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.dom.P
 
@@ -53,7 +53,7 @@ fun DeWieken() {
                 )
             },
             footerContent = {
-                ZenmoModellerProfileCard(ZenmoTeam.LUC)
+                ZenmoModellerProfileCard(ZenmoTeamMember.LUC)
             }
         )
     }

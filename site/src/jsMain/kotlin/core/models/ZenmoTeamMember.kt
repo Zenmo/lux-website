@@ -1,6 +1,6 @@
 package energy.lux.frontend.core.models
 
-enum class ZenmoTeam(
+enum class ZenmoTeamMember(
     val memberName: String,
     val enTitle: String,
     val nlTitle: String,
