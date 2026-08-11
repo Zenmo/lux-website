@@ -2,7 +2,6 @@ package energy.lux.frontend.domains.lux.core.model.subdomain
 
 import energy.lux.frontend.core.services.localization.localizedUrl
 import energy.lux.frontend.domains.lux.core.TwinModelCard
-import energy.lux.frontend.pages.SiteGlobals
 
 
 /**
@@ -11,5 +10,5 @@ import energy.lux.frontend.pages.SiteGlobals
  */
 sealed interface SubdomainTwinModel : Subdomain, TwinModelCard {
     override val url: String
-        get() = localizedUrl("${subdomain}.${SiteGlobals.LUX_DOMAIN}", "/")
+        get() = localizedUrl(fullDomain, "/")
 }

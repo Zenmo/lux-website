@@ -19,8 +19,11 @@ plugins {
 group = "energy.lux.frontend"
 version = "1.0.0"
 
-val LUX_DOMAIN = System.getenv("LUX_DOMAIN") ?: "http://lux.localhost:8080"
-val ZENMO_DOMAIN = System.getenv("ZENMO_DOMAIN") ?: "http://zenmo.localhost:8080"
+val LUX_DOMAIN = System.getenv("LUX_DOMAIN") ?: "lux.localhost:8080"
+val ZENMO_DOMAIN = System.getenv("ZENMO_DOMAIN") ?: "zenmo.localhost:8080"
+/** @see [SiteGlobals.SUBDOMAIN_SEPARATOR] */
+val SUBDOMAIN_SEPARATOR = System.getenv("SUBDOMAIN_SEPARATOR") ?: "."
+
 val BACKEND_URL = System.getenv("BACKEND_URL") ?: "http://localhost:9000"
 val jsSrc = "$BACKEND_URL/main.export.mjs"
 
@@ -40,6 +43,7 @@ kobweb {
                 "BACKEND_URL" to BACKEND_URL,
                 "LUX_DOMAIN" to LUX_DOMAIN,
                 "ZENMO_DOMAIN" to ZENMO_DOMAIN,
+                "SUBDOMAIN_SEPARATOR" to SUBDOMAIN_SEPARATOR,
             )
         )
     }

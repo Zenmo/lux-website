@@ -80,7 +80,7 @@ data class SitePalette(
         private val domain = window.location.host
         val light = when (domain) {
             SiteGlobals.ZENMO_DOMAIN -> zenmoColorPalette
-            "${brabant.subdomain}.${SiteGlobals.LUX_DOMAIN}" -> brabantColorPalette
+            brabant.fullDomain -> brabantColorPalette
             else -> luxColorPalette
         }
     }
