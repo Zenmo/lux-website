@@ -3,14 +3,10 @@ package energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodv
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.models.RoutedMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.RegioFoodValleyBusinessParksPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.RegioFoodValleyHomePage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.RegioFoodValleyNeighbourhoodsPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.RegioFoodValleyRegioPage
-import energy.lux.frontend.pages.SiteGlobals
-
-val regiofoodvalleyDomain = "${PrivateSubdomainModel.REGIOFOODVALLEY}.${SiteGlobals.LUX_DOMAIN}"
 
 val regiofoodvalleyHomeMenuItem = MenuItem.Simple(
     RoutedMenuItem(

@@ -7,9 +7,8 @@ import energy.lux.frontend.domains.lux.core.model.subdomain.empowered
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pages.Bronckhorst
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pages.NijmegenHengstdal
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pages.empowered.EmpoweredIndex
-import energy.lux.frontend.pages.SiteGlobals
 
-val empoweredDomain = "${empowered.subdomain}.${SiteGlobals.LUX_DOMAIN}"
+val empoweredDomain = empowered.fullDomain
 val empoweredHomeMenuItem = MenuItem.Simple(
     RoutedMenuItem(
         path = "/", label = LocalizedText("EmPowerED", "EmPowerED"),

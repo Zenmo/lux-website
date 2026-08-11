@@ -12,13 +12,31 @@ import kotlinx.browser.window
 object SiteGlobals {
     val LUX_DOMAIN: String = AppGlobals.getValue("LUX_DOMAIN")
     val ZENMO_DOMAIN: String = AppGlobals.getValue("ZENMO_DOMAIN")
+
+    /**
+     * In the production and test environments the LUX project-specific
+     * subdomains are separated using a dot (.).
+     * The projects go under [project].lux.energy.
+     *
+     * For pull requests, however, we use a dash (-).
+     * The projects go under [project]-[build-number].pr.lux.energy.
+     * This is so that we can use the *.pr.lux.energy. wildcard certificate
+     * for all pull requests.
+     *
+     * Example settings to deploy a pull request:
+     *
+     * LUX_DOMAIN=123.pr.lux.energy
+     * SUBDOMAIN_SEPARATOR=-
+     */
+    val SUBDOMAIN_SEPARATOR: String = AppGlobals.getValue("SUBDOMAIN_SEPARATOR")
+    val luxSubdomainSuffix = SUBDOMAIN_SEPARATOR + LUX_DOMAIN
 }
 
 @Page("{...catch-all}")
 @Composable
 fun DomainRoutes() {
     val domain = window.location.host
-    val luxSubdomainSuffix = ".${SiteGlobals.LUX_DOMAIN}"
+    val luxSubdomainSuffix = SiteGlobals.luxSubdomainSuffix
 
     when {
         domain == SiteGlobals.LUX_DOMAIN -> LuxDomainLoader()

@@ -15,10 +15,9 @@ import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.E
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.Euterpepark
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.Moleneind
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.pages.VorstenGrafDonk
-import energy.lux.frontend.pages.SiteGlobals
 import kotlin.uuid.Uuid
 
-private val ossDomain = "${PrivateSubdomainModel.OSS.subdomain}.${SiteGlobals.LUX_DOMAIN}"
+private val ossDomain = PrivateSubdomainModel.OSS.fullDomain
 
 data class OssTwinModel(
     override val label: LocalizedText,

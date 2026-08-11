@@ -21,8 +21,8 @@ object MenuFactory {
             domain == SiteGlobals.LUX_DOMAIN -> luxNavMenu
             domain == SiteGlobals.ZENMO_DOMAIN -> zenmoNavMenu
 
-            domain.endsWith(".${SiteGlobals.LUX_DOMAIN}") -> {
-                val subdomain = domain.substringBefore(".${SiteGlobals.LUX_DOMAIN}")
+            domain.endsWith(SiteGlobals.luxSubdomainSuffix) -> {
+                val subdomain = domain.substringBefore(SiteGlobals.luxSubdomainSuffix)
                 val model = subdomains.find {
                     it.subdomain.equals(subdomain, ignoreCase = true)
                 }
