@@ -189,10 +189,7 @@ private fun EnergySystemFeatureCard(
                 .margin(0.cssRem)
                 .toAttrs()
         ) {
-            LangText(
-                en = description.en,
-                nl = description.nl
-            )
+            LangText(description)
         }
     }
 }

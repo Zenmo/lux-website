@@ -32,10 +32,7 @@ fun ModelFilter(
                 .padding(bottom = 8.px)
                 .toAttrs()
         ) {
-            LangText(
-                en = filterLabel.en,
-                nl = filterLabel.nl
-            )
+            LangText(filterLabel)
         }
         Div(
             ResponsiveFlexStyle.toModifier()

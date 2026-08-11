@@ -154,10 +154,7 @@ private fun ScenarioInputsCard(
                     .textAlign(TextAlign.Center)
                     .toAttrs()
             ) {
-                LangText(
-                    en = description.en,
-                    nl = description.nl
-                )
+                LangText(description)
             }
         }
     }

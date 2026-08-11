@@ -129,9 +129,6 @@ private fun IconTextItem(
         ) {
             icon()
         }
-        LangText(
-            en = text.en,
-            nl = text.nl,
-        )
+        LangText(text)
     }
 }

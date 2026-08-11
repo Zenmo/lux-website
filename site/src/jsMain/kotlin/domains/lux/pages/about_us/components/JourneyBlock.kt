@@ -128,10 +128,7 @@ private fun YearBox(
                 .thenIf(breakpoint > Breakpoint.MD, Modifier.width(90.percent))
                 .toAttrs()
         ) {
-            LangText(
-                en = description.en,
-                nl = description.nl
-            )
+            LangText(description)
         }
     }
 }

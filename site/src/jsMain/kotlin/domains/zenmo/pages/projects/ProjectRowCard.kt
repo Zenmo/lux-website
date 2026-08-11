@@ -73,10 +73,7 @@ private fun ProjectContent(item: ZenmoProject) {
             nlText = item.titleText.nl,
         )
         P {
-            LangText(
-                en = item.descriptionText.en,
-                nl = item.descriptionText.nl,
-            )
+            LangText(item.descriptionText)
         }
         ProjectLink(item)
     }

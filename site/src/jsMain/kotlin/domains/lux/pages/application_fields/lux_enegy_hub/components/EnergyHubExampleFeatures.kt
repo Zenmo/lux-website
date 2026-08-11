@@ -120,16 +120,10 @@ private fun EnergyCollaborationCard(
                 .fontWeight(FontWeight.Normal)
                 .toAttrs()
         ) {
-            LangText(
-                en = title.en,
-                nl = title.nl
-            )
+            LangText(title)
         }
         P {
-            LangText(
-                en = description.en,
-                nl = description.nl
-            )
+            LangText(description)
         }
     }
 }

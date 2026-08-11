@@ -167,20 +167,14 @@ private fun FeatureCard(
                 .fontWeight(FontWeight.Normal)
                 .toAttrs()
         ) {
-            LangText(
-                en = title.en,
-                nl = title.nl,
-            )
+            LangText(title)
         }
         P(
             Modifier
                 .margin(0.cssRem)
                 .color(Colors.Black).toAttrs()
         ) {
-            LangText(
-                en = description.en,
-                nl = description.nl,
-            )
+            LangText(description)
         }
     }
 }

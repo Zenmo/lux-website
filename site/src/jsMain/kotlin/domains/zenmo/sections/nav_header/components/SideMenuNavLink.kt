@@ -46,7 +46,7 @@ fun SideMenuNavLink(
                             .thenIf(isActive, Modifier.color(SitePalette.light.primary))
                     )
             }
-            LangText(en = label.en, nl = label.nl)
+            LangText(label)
         }
     }
 }

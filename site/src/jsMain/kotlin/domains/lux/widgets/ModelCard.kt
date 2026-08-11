@@ -120,7 +120,7 @@ fun ModelCard(
                         .width(80.percent)
                         .toAttrs()
                 ) {
-                    LangText(model.label.en, model.label.nl)
+                    LangText(model.label)
                 }
 
                 if (showLock) {
@@ -185,10 +185,7 @@ private fun ApplicationFieldLabel(
             .fontSize(FontSize.Small)
             .toAttrs()
     ) {
-        LangText(
-            en = label.en,
-            nl = label.nl
-        )
+        LangText(label)
     }
 }
 

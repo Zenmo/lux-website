@@ -21,10 +21,7 @@ fun TextBlock(
                 .color(SitePalette.light.primary)
                 .toAttrs()
         ) {
-            LangText(
-                en = title.en,
-                nl = title.nl,
-            )
+            LangText(title)
         }
         descriptionContent()
     }

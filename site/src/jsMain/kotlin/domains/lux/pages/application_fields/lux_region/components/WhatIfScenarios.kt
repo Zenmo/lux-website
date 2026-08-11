@@ -106,10 +106,7 @@ private fun ScenarioExampleItem(
             Modifier.margin(0.px)
                 .toAttrs()
         ) {
-            LangText(
-                en = scenarioText.en,
-                nl = scenarioText.nl
-            )
+            LangText(scenarioText)
         }
     }
 }
