@@ -10,7 +10,7 @@ import org.jetbrains.compose.web.dom.P
 @Composable
 fun RegioFoodValleyRegioPage() {
     SectionContainer {
-        SubHeaderText(nlText = regiofoodvalleyRegioMenuItem.route.label.nl)
+        SubHeaderText(regiofoodvalleyRegioMenuItem.route.label)
         P {
             LangText(
                 nl = "Kom binnenkort terug om meer te zien.",

@@ -68,10 +68,7 @@ private fun ProjectContent(item: ZenmoProject) {
                 nl = item.categoryText.nl.uppercase(),
             )
         }
-        SubHeaderText(
-            enText = item.titleText.en,
-            nlText = item.titleText.nl,
-        )
+        SubHeaderText(item.titleText)
         P {
             LangText(item.descriptionText)
         }

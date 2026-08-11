@@ -24,7 +24,7 @@ val bronckhorstModel = TwinModelCardItem(
 @Composable
 fun Bronckhorst() {
     SectionContainer {
-        SubHeaderText(nlText = bronckhorstModel.label.nl)
+        SubHeaderText(bronckhorstModel.label)
         P {
             LangText(
                 nl = "Kom binnenkort terug om meer te zien.",

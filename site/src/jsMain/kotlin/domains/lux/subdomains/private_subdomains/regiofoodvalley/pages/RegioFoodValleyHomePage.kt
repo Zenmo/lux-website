@@ -15,7 +15,7 @@ import kotlin.uuid.Uuid
 fun RegioFoodValleyHomePage() {
     SubdomainModelPage(
         introContent = {
-            HeaderText(nlText = PrivateSubdomainModel.REGIOFOODVALLEY.label.nl)
+            HeaderText(PrivateSubdomainModel.REGIOFOODVALLEY.label)
             P {
                 LangText(
                     nl = "Kom binnenkort terug om meer te zien.",

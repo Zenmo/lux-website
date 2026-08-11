@@ -11,10 +11,27 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.zenmo.web.zenmo.theme.font.HeaderTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.components.widgets.LangText
+import energy.lux.frontend.core.services.localization.LocalizedText
 import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.dom.H1
+
+@Composable
+fun HeaderText(
+    text: LocalizedText,
+    modifier: Modifier = Modifier,
+    textColor: CSSColorValue = Color.currentColor,
+    fontWeight: FontWeight = FontWeight.Normal,
+) {
+    HeaderText(
+        nlText = text.nl,
+        enText = text.en,
+        modifier = modifier,
+        textColor = textColor,
+        fontWeight = fontWeight,
+    )
+}
 
 @Composable
 fun HeaderText(

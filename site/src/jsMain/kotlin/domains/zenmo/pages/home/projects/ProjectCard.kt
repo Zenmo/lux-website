@@ -70,7 +70,7 @@ fun ProjectCard(item: ZenmoProject) {
         Column(
             modifier = Modifier.padding(top = 1.cssRem),
         ) {
-            SubHeaderText(enText = item.titleText.en, nlText = item.titleText.nl)
+            SubHeaderText(item.titleText)
             P(
                 Modifier.padding(right = 0.5.cssRem)
                     .toAttrs()
