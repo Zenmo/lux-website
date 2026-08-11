@@ -8,6 +8,7 @@ import energy.lux.frontend.domains.zenmo.pages.ComingSoon
 import energy.lux.frontend.domains.zenmo.pages.ContactPage
 import energy.lux.frontend.domains.zenmo.pages.aboutUs.OurTeamPage
 import energy.lux.frontend.domains.zenmo.pages.home.HomePage
+import energy.lux.frontend.domains.zenmo.pages.projects.ProjectsPage
 import energy.lux.frontend.pages.isLocalOrPreviewEnvironment
 
 
@@ -25,7 +26,7 @@ val zenmoProjectsMenuItem = MenuItem.Simple(
             en = "Projects",
             nl = "Projecten"
         ),
-        pageComponent = { ComingSoon() }
+        pageComponent = { ProjectsPage() }
     )
 )
 val zenmoClientsMenuItem = MenuItem.Simple(
