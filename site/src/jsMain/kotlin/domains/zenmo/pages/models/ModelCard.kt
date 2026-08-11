@@ -36,7 +36,7 @@ fun ModelCard(showcased: ShowcasedModel) {
                     .borderRadius(14.px)
                     .margin(bottom = 1.cssRem),
             )
-            SubHeaderText(enText = showcased.model.label.en, nlText = showcased.model.label.nl)
+            SubHeaderText(showcased.model.label)
             P { LangText(showcased.description) }
         }
     }

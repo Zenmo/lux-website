@@ -28,7 +28,7 @@ fun NijmegenHengstdal() {
     SubdomainModelPage(
         modelId = nijmegenHengstdalModel.modelId,
         introContent = {
-            SubHeaderText(nlText = nijmegenHengstdalModel.label.nl)
+            SubHeaderText(nijmegenHengstdalModel.label)
         },
         footerContent = {
             ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)
