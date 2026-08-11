@@ -29,7 +29,7 @@ import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.Geni
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.components.PartnerLogoImage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.majorGeniusPartners
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeam
 import energy.lux.frontend.theme.SitePalette
 import energy.lux.frontend.utils.PublicRes
 import org.jetbrains.compose.web.css.*

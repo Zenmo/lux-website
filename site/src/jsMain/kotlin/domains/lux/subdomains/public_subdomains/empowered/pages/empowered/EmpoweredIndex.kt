@@ -13,7 +13,7 @@ import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pa
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pages.empowered.components.LearnMoreAboutEmpowered
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.pages.nijmegenHengstdalModel
 import energy.lux.frontend.domains.lux.widgets.TwinModelsGrid
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeam
 import kotlin.uuid.Uuid
 
 @Composable

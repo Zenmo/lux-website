@@ -19,16 +19,14 @@ import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfil
 import energy.lux.frontend.domains.lux.widgets.RadioItem
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeam
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
-import kotlin.uuid.Uuid
 
 
 @Composable

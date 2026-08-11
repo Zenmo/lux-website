@@ -12,7 +12,7 @@ import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.comp
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.components.GeniusIntroTextBlock
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.components.GeniusTextGrid
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.components.PartnerLogos
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeam
 
 @Composable
 fun Genius() {

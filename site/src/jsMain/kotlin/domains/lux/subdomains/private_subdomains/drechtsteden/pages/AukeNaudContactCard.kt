@@ -7,7 +7,7 @@ import com.varabyte.kobweb.silk.components.layout.numColumns
 import energy.lux.frontend.domains.lux.styles.responsiveGap
 import energy.lux.frontend.domains.lux.subdomains.components.ProfileCardArrangementDirection
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeam
 
 @Composable
 fun AukeNaudContactCard() {

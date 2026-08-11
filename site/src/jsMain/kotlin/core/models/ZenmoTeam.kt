@@ -1,4 +1,4 @@
-package energy.lux.frontend.domains.zenmo.sections.team
+package energy.lux.frontend.core.models
 
 enum class ZenmoTeam(
     val memberName: String,
@@ -6,8 +6,16 @@ enum class ZenmoTeam(
     val nlTitle: String,
     val image: String,
     val email: String,
-    val linkedIn: String,
-    val twitter: String? = null,
+    val linkedIn: String = "",
+    val twitter: String = "",
+    val enBio: String = """
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+        magna aliqua.
+    """.trimIndent(),
+    val nlBio: String = """
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+        magna aliqua.
+    """.trimIndent(),
 ) {
     AUKE(
         memberName = "Auke Hoekstra",
@@ -15,8 +23,6 @@ enum class ZenmoTeam(
         nlTitle = "Directeur & oprichter",
         image = "/avatars/Auke_Hoekstra.jpg",
         email = "auke@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
     PETER_HOGEVEEN(
         memberName = "Peter Hogeveen",
@@ -24,8 +30,6 @@ enum class ZenmoTeam(
         nlTitle = "Technisch Directeur & Co-Founder",
         image = "/avatars/peter-hoogeveen.jpg",
         email = "peter@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
     NAUD_LOOMANS(
         memberName = "Naud Loomans",
@@ -33,8 +37,6 @@ enum class ZenmoTeam(
         nlTitle = "Modeller, marketing & website",
         image = "/avatars/Loomans_Naud.jpg",
         email = "naud@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
     MAARTEN(
         memberName = "Maarten Steinbuch",
@@ -42,7 +44,6 @@ enum class ZenmoTeam(
         nlTitle = "Professor slimme mobiliteit & co-founder",
         image = "/avatars/Maarten-Steinbuch.jpg",
         email = "",
-        linkedIn = "",
     ),
     PETER_MOLENGRAAF(
         memberName = "Peter Molengraaf",
@@ -50,8 +51,6 @@ enum class ZenmoTeam(
         nlTitle = "Energietransitie-expert & co-founder",
         image = "/avatars/Peter_molengraaf.jpg",
         email = "",
-        linkedIn = "",
-        twitter = "",
     ),
     IRIS(
         memberName = "Iris Hoekstra",
@@ -59,8 +58,6 @@ enum class ZenmoTeam(
         nlTitle = "Assistent",
         image = "/avatars/Iris-Hoekstra.jpg",
         email = "iris@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
     ATE(
         memberName = "Ate Hempenius",
@@ -68,8 +65,6 @@ enum class ZenmoTeam(
         nlTitle = "Modelleur",
         image = "/avatars/Ate.png",
         email = "ate@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
     LUC(
         memberName = "Luc-Sol",
@@ -77,8 +72,6 @@ enum class ZenmoTeam(
         nlTitle = "Modelleur",
         image = "/avatars/Luc-Sol.jpg",
         email = "luc@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
     BAS(
         memberName = "Bas Dekker",
@@ -86,8 +79,6 @@ enum class ZenmoTeam(
         nlTitle = "Modelleur",
         image = "",
         email = "bas@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
     ERIK(
         memberName = "Erik van Velzen",
@@ -95,8 +86,6 @@ enum class ZenmoTeam(
         nlTitle = "Software ontwikkelaar",
         image = "/avatars/Erik.jpg",
         email = "erik@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
     KOFI(
         memberName = "Vincent Kofi K.",
@@ -104,7 +93,5 @@ enum class ZenmoTeam(
         nlTitle = "Software ontwikkelaar",
         image = "/avatars/kofi.jpg",
         email = "kofi@zenmo.com",
-        linkedIn = "",
-        twitter = "",
     ),
 }

@@ -23,7 +23,7 @@ import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtstede
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_region.drechtstedenResRegion
 import energy.lux.frontend.domains.lux.widgets.ModelCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeam
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Div

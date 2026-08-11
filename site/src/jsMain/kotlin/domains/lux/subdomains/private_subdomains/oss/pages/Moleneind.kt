@@ -5,7 +5,7 @@ import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfil
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.components.PrivateTwinModelPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.moleneind
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeam
 
 
 @Composable

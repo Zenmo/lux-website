@@ -14,7 +14,7 @@ import energy.lux.frontend.domains.lux.subdomains.components.ProfileContactCard
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeam
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.dom.P
 
