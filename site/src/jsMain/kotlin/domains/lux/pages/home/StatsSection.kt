@@ -130,10 +130,7 @@ fun StatsCard(statItem: StatItem) {
                     .textAlign(TextAlign.Center)
                     .toAttrs()
             ) {
-                LangText(
-                    en = statItem.description.en,
-                    nl = statItem.description.nl
-                )
+                LangText(statItem.description)
             }
         }
     }

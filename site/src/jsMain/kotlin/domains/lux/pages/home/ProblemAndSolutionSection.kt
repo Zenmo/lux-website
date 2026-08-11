@@ -113,10 +113,7 @@ fun FeatureBadge(
             .color(badgeColor)
             .toAttrs()
     ) {
-        LangText(
-            en = text.en,
-            nl = text.nl
-        )
+        LangText(text)
     }
 }
 
@@ -133,10 +130,7 @@ private fun FeatureItem(
         P(
             TextStyle.toModifier(BodyTextStyle).margin(0.cssRem).toAttrs()
         ) {
-            LangText(
-                en = feature.text.en,
-                nl = feature.text.nl
-            )
+            LangText(feature.text)
         }
     }
 }

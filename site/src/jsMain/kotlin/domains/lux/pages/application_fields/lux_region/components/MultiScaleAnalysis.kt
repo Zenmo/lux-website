@@ -180,9 +180,6 @@ private fun LevelOfAnalysisRow(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         icon()
-        LangText(
-            en = level.en,
-            nl = level.nl
-        )
+        LangText(level)
     }
 }

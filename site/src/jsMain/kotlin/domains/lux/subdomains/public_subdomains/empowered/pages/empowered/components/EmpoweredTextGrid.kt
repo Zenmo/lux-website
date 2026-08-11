@@ -155,10 +155,7 @@ private fun EmpoweredTextBlock(
                 .textTransform(TextTransform.Uppercase)
                 .toAttrs()
         ) {
-            LangText(
-                en = blockLabel.en,
-                nl = blockLabel.nl,
-            )
+            LangText(blockLabel)
         }
         textContent()
     }

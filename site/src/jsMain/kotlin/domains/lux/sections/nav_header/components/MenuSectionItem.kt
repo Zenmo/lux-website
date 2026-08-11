@@ -74,20 +74,14 @@ fun LuxMenuItem(
             Column(
                 Modifier.gap(0.25.cssRem)
             ) {
-                LangText(
-                    en = menuTitle.en,
-                    nl = menuTitle.nl,
-                )
+                LangText(menuTitle)
                 if (showSubText && subText != null) {
                     P(
                         Modifier.margin(0.px)
                             .then(DeEmphasizedTextStyle.toModifier())
                             .toAttrs()
                     ) {
-                        LangText(
-                            en = subText.en,
-                            nl = subText.nl,
-                        )
+                        LangText(subText)
                     }
                 }
             }

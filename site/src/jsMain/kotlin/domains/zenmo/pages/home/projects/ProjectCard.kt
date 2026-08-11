@@ -64,7 +64,7 @@ fun ProjectCard(item: ZenmoProject) {
                     .margin(1.cssRem)
                     .toAttrs()
             ) {
-                LangText(en = item.categoryText.en, nl = item.categoryText.nl)
+                LangText(item.categoryText)
             }
         }
         Column(
@@ -74,7 +74,7 @@ fun ProjectCard(item: ZenmoProject) {
             P(
                 Modifier.padding(right = 0.5.cssRem)
                     .toAttrs()
-            ) { LangText(en = item.descriptionText.en, nl = item.descriptionText.nl) }
+            ) { LangText(item.descriptionText) }
         }
     }
 }

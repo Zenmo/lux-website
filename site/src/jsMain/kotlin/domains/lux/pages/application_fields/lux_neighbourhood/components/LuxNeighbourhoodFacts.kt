@@ -86,10 +86,7 @@ private fun FactBlock(
             style = IconStyle.OUTLINED
         )
         P(Modifier.margin(0.px).toAttrs()) {
-            LangText(
-                en = text.en,
-                nl = text.nl,
-            )
+            LangText(text)
         }
     }
 }

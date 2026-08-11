@@ -37,7 +37,7 @@ fun ModelCard(showcased: ShowcasedModel) {
                     .margin(bottom = 1.cssRem),
             )
             SubHeaderText(enText = showcased.model.label.en, nlText = showcased.model.label.nl)
-            P { LangText(nl = showcased.description.nl, en = showcased.description.en) }
+            P { LangText(showcased.description) }
         }
     }
 }

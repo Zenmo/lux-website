@@ -44,10 +44,7 @@ fun ServiceCard(item: ServiceItem) {
                 .padding(top = 1.cssRem)
         )
         P {
-            LangText(
-                en = item.descriptionText.en,
-                nl = item.descriptionText.nl,
-            )
+            LangText(item.descriptionText)
         }
     }
 }

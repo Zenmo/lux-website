@@ -147,10 +147,7 @@ fun FlipCard(
                         .overflowWrap(OverflowWrap.BreakWord)
                         .toAttrs()
                 ) {
-                    LangText(
-                        en = item.title.en,
-                        nl = item.title.nl
-                    )
+                    LangText(item.title)
                 }
             }
 
@@ -163,10 +160,7 @@ fun FlipCard(
                         .width(90.percent)
                         .fontSize(FontSize.Large).toAttrs()
                 ) {
-                    LangText(
-                        en = item.description.en,
-                        nl = item.description.nl
-                    )
+                    LangText(item.description)
                 }
             }
         }

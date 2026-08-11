@@ -75,7 +75,7 @@ fun NavBarLink(
             modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
-            LangText(en = label.en, nl = label.nl)
+            LangText(label)
         }
     }
 }

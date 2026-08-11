@@ -65,10 +65,7 @@ fun FaqsCardItem(
                     )
                 }
 
-                LangText(
-                    en = faq.question.en,
-                    nl = faq.question.nl
-                )
+                LangText(faq.question)
             }
             FaqAnswerBlock { faq.answerBlock() }
         }

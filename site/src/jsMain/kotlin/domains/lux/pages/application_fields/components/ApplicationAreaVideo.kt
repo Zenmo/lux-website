@@ -145,10 +145,7 @@ private fun VideoOverlay(
                 .color(Colors.White)
         ) {
             Span {
-                LangText(
-                    en = videoCaption.en,
-                    nl = videoCaption.nl,
-                )
+                LangText(videoCaption)
             }
             SubHeaderText(
                 enText = videoTitle.en,

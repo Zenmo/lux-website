@@ -94,9 +94,6 @@ private fun TabItem(
             .onClick { onClick() }
             .toAttrs()
     ) {
-        LangText(
-            en = label.en,
-            nl = label.nl
-        )
+        LangText(label)
     }
 }

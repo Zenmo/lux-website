@@ -111,7 +111,7 @@ private fun ContactInfoRow(
             Span(
                 Modifier.fontWeight(FontWeight.Bold).toAttrs()
             ) {
-                LangText(en = infoTitleText.en, nl = infoTitleText.nl)
+                LangText(infoTitleText)
             }
             info()
         }

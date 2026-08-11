@@ -70,10 +70,7 @@ fun VisualContentPlaceholder(
                     .textAlign(TextAlign.Center)
                     .toAttrs()
             ) {
-                LangText(
-                    en = descriptionText.en,
-                    nl = descriptionText.nl
-                )
+                LangText(descriptionText)
             }
         }
     }

@@ -45,10 +45,7 @@ fun NavBarActionsMenuItem(
             .onClick { onClick() }
             .then(modifier)
     ) {
-        LangText(
-            en = title.en,
-            nl = title.nl,
-        )
+        LangText(title)
         trailingContent()
     }
 }
