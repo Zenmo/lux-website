@@ -8,7 +8,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiNorthEast
@@ -31,12 +30,10 @@ import org.jetbrains.compose.web.dom.Span
 
 @Composable
 fun ProjectRowCard(item: ZenmoProject, reversed: Boolean = false) {
+    val projectRowStyle = if (reversed) ProjectRowReverseStyle else ResponsiveFlexStyle
     Div(
-        ResponsiveFlexStyle.toModifier()
+        projectRowStyle.toModifier()
             .gap(2.cssRem)
-            .thenIf(
-                reversed, ProjectRowReverseStyle.toModifier()
-            )
             .toAttrs()
     ) {
         Image(
