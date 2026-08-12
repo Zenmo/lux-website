@@ -14,6 +14,7 @@ import energy.lux.frontend.core.services.localization.LocalLanguage
 import energy.lux.frontend.domains.lux.core.createLuxRouter
 import energy.lux.frontend.domains.lux.pages.registerRoutesOfMenu
 import energy.lux.frontend.domains.lux.sections.nav_header.LuxHeader
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.regio.regioFoodValleyModels
 import kotlinx.browser.window
 
 @Composable
@@ -21,6 +22,11 @@ fun RegioFoodValleyRouting() {
     val router = remember {
         createLuxRouter {
             regioFoodValleyRouting(regiofoodvalleyMenu.asRoutes())
+            regioFoodValleyRouting(
+                regioFoodValleyModels
+                    .filter { it.projectPath.isNotBlank() }
+                    .map { it.asRoutedMenuItem() }
+            )
         }
     }
 
