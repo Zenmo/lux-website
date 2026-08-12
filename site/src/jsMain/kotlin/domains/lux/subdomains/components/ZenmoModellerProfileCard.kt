@@ -1,11 +1,11 @@
 package energy.lux.frontend.domains.lux.subdomains.components
 
 import androidx.compose.runtime.Composable
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 
 @Composable
 fun ZenmoModellerProfileCard(
-    modeller: ZenmoTeam,
+    modeller: ZenmoTeamMember,
     cardArrangementDirection: ProfileCardArrangementDirection = ProfileCardArrangementDirection.HORIZONTAL,
 ) = ProfileContactCard(
     name = modeller.memberName,

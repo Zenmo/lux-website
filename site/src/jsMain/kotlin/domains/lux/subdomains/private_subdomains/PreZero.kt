@@ -14,7 +14,7 @@ import energy.lux.frontend.domains.lux.subdomains.components.TextBlock
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.components.PrivateTwinModelPage
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.P
@@ -132,7 +132,7 @@ fun PreZero() {
                 }
             },
             footerContent = {
-                ZenmoModellerProfileCard(ZenmoTeam.LUC)
+                ZenmoModellerProfileCard(ZenmoTeamMember.LUC)
             }
         )
     }

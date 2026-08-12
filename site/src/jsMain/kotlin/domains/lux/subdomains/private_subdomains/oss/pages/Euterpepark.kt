@@ -5,9 +5,8 @@ import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.components.PrivateTwinModelPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.euterpepark
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.moleneind
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import org.jetbrains.compose.web.dom.P
 
 @Composable
@@ -30,7 +29,7 @@ fun Euterpepark() {
             }
         },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.ATE)
+            ZenmoModellerProfileCard(ZenmoTeamMember.ATE)
         }
     )
 }

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.DrechtstedenTwinModelPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.ResidentialAreaModelPageText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 
 
 @Composable
@@ -13,7 +13,7 @@ fun OverTSpoor() {
         twin = overTSpoor,
         introContent = { ResidentialAreaModelPageText() },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)
+            ZenmoModellerProfileCard(ZenmoTeamMember.NAUD_LOOMANS)
         }
     )
 }

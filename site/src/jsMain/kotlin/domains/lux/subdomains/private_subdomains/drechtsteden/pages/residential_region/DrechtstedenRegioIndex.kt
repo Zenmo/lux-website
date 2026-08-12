@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.DrechtstedenTwinModelPage
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.P
 
@@ -59,6 +59,6 @@ fun DrechtstedenRegioIndex() {
                 }
             }
         },
-        footerContent = { ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS) }
+        footerContent = { ZenmoModellerProfileCard(ZenmoTeamMember.NAUD_LOOMANS) }
     )
 }

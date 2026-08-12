@@ -9,7 +9,7 @@ import energy.lux.frontend.domains.lux.core.model.subdomain.bunderbuurten
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import org.jetbrains.compose.web.dom.P
 
 
@@ -55,7 +55,7 @@ fun BunderbuurtenIndex() {
                 )
             },
             footerContent = {
-                ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)
+                ZenmoModellerProfileCard(ZenmoTeamMember.NAUD_LOOMANS)
             }
         )
     }

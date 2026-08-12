@@ -5,7 +5,7 @@ import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfil
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.BusinessParkModelPageText
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.DrechtstedenTwinModelPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.ModelInDevelopmentInfoWidget
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 
 
 @Composable
@@ -19,7 +19,7 @@ fun DeGeerPage() {
         twin = deGeer,
         introContent = { BusinessParkModelPageText() },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
+            ZenmoModellerProfileCard(ZenmoTeamMember.PETER_HOGEVEEN)
         }
     )
 }
