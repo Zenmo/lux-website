@@ -6,7 +6,7 @@ import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.RegioFoodValleyBusinessParksPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.RegioFoodValleyHomePage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.RegioFoodValleyNeighbourhoodsPage
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.RegioFoodValleyRegioPage
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.pages.regio.RegioFoodValleyRegioPage
 
 val regiofoodvalleyHomeMenuItem = MenuItem.Simple(
     RoutedMenuItem(
