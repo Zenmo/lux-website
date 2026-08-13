@@ -8,15 +8,11 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.color
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
-import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiEmail
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiLocationOn
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiPhone
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
@@ -32,7 +28,9 @@ fun ZenmoContactDetails(
 ) {
     Column(
         horizontalAlignment = Alignment.Start,
-        modifier = Modifier.gap(1.cssRem)
+        modifier = Modifier
+            .gap(1.cssRem)
+            .flexShrink(0)
             .then(modifier),
     ) {
         Row(
@@ -40,7 +38,10 @@ fun ZenmoContactDetails(
         ) {
             ContactInfoRow(
                 icon = { MdiLocationOn() },
-                infoTitleText = LocalizedText("Herpt (municipality of Heusden)"),
+                infoTitleText = LocalizedText(
+                    en = "Herpt (municipality of Heusden)",
+                    nl = "Herpt (gemeente Heusden)",
+                ),
                 info = {
                     Text("Hoefstraat 1A")
                     Br { }
@@ -66,8 +67,7 @@ fun ZenmoContactDetails(
             }
         )
         ContactInfoRow(
-            icon = { MdiPhone() },
-            infoTitleText = LocalizedText(en = "Phone", nl = "Telefoon"),
+            icon = {},
             info = {
                 Image(
                     src = "/lux/images/peter_phone.png",
@@ -80,8 +80,8 @@ fun ZenmoContactDetails(
 
 @Composable
 private fun ContactInfoRow(
+    infoTitleText: LocalizedText? = null,
     icon: @Composable () -> Unit,
-    infoTitleText: LocalizedText,
     info: @Composable () -> Unit,
 ) {
     Row(
@@ -95,10 +95,12 @@ private fun ContactInfoRow(
             icon()
         }
         Column {
-            Span(
-                Modifier.fontWeight(FontWeight.Bold).toAttrs()
-            ) {
-                LangText(infoTitleText)
+            infoTitleText?.let {
+                Span(
+                    Modifier.fontWeight(FontWeight.Bold).toAttrs()
+                ) {
+                    LangText(it)
+                }
             }
             info()
         }

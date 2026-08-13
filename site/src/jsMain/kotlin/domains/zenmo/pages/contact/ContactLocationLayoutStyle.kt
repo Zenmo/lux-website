@@ -1,6 +1,8 @@
 package energy.lux.frontend.domains.zenmo.pages.contact
 
+import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -14,6 +16,7 @@ val ContactLocationLayoutStyle = CssStyle {
         Modifier
             .display(DisplayStyle.Flex)
             .flexDirection(FlexDirection.Column)
+            .alignItems(AlignItems.FlexStart)
             .responsiveGap()
     }
 
