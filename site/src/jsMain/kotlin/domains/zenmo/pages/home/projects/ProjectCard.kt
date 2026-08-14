@@ -29,12 +29,8 @@ import org.jetbrains.compose.web.dom.Span
 
 @Composable
 fun ProjectCard(item: ZenmoProject) {
-    val path = when (item) {
-        is ZenmoProject.External -> item.url
-        is ZenmoProject.Internal -> item.path
-    }
     Link(
-        path = path,
+        path = item.url,
         variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
         modifier = Modifier.fillMaxWidth()
             .display(DisplayStyle.Flex)
