@@ -12,18 +12,18 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
-import energy.lux.frontend.components.widgets.LangText
 import com.zenmo.web.zenmo.theme.font.LabelTextStyle
 import com.zenmo.web.zenmo.theme.font.TextStyle
 import com.zenmo.web.zenmo.theme.font.TextStylePrimaryColor
+import energy.lux.frontend.components.widgets.LangText
+import energy.lux.frontend.domains.zenmo.sections.nav_header.contactZenmoMenuItem
 import energy.lux.frontend.theme.toSitePalette
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 
-const val COPY_RIGHT = "©2018-2025 ZEnMo Simulations BV"
-const val DISCLAIMER_URL = "#"
+const val COPY_RIGHT = "©2018 Zenmo simulations"
 
 val FooterStyle = CssStyle.base {
     Modifier
@@ -42,13 +42,10 @@ fun Footer(modifier: Modifier = Modifier) {
             Text(value = COPY_RIGHT)
         }
         Link(
-            path = DISCLAIMER_URL,
+            path = contactZenmoMenuItem.route.path,
             modifier = TextStyle.toModifier(LabelTextStyle, TextStylePrimaryColor)
         ) {
-            LangText(
-                en = "Disclaimer",
-                nl = "Disclaimer",
-            )
+            LangText(contactZenmoMenuItem.route.label)
         }
     }
 }
