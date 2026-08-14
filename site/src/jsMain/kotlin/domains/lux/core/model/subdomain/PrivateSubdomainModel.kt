@@ -30,7 +30,7 @@ enum class PrivateSubdomainModel(
         entryPoint = "drechtsteden",
         applicationArea = LuxApplicationArea.LUX_REGION
     ),
-    GENUIS(
+    GENIUS(
         subdomain = "genius",
         subdomainComponent = { Genius() },
         label = LocalizedText(nl = "Genius"),
