@@ -20,7 +20,7 @@ fun ApplicationAreaContactPerson(
 ) {
     ProfileContactCard(
         name = contactPerson.memberName,
-        imageUrl = contactPerson.image,
+        imageUrl = contactPerson.imageSrc,
         phoneNumberImageSrc = phoneNumberImageSrc,
         email = contactPerson.email,
         cardArrangementDirection = ProfileCardArrangementDirection.HORIZONTAL,

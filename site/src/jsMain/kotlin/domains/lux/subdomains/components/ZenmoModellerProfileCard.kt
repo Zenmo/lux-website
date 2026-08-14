@@ -9,7 +9,7 @@ fun ZenmoModellerProfileCard(
     cardArrangementDirection: ProfileCardArrangementDirection = ProfileCardArrangementDirection.HORIZONTAL,
 ) = ProfileContactCard(
     name = modeller.memberName,
-    imageUrl = modeller.image,
+    imageUrl = modeller.imageSrc,
     email = modeller.email,
     cardArrangementDirection = cardArrangementDirection,
 )
