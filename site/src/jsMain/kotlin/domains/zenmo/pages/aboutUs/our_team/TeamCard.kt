@@ -44,7 +44,7 @@ fun TeamMemberCard(zenmoTeam: ZenmoTeamMember) {
                 .position(Position.Relative),
         ) {
             Image(
-                src = zenmoTeam.image.takeIf { it.isNotBlank() } ?: "/avatars/blank.png",
+                src = zenmoTeam.imageSrc.takeIf { it.isNotBlank() } ?: "/avatars/blank.png",
                 alt = "${zenmoTeam.memberName} photo",
                 modifier = Modifier
                     .classNames("team-card-image")
@@ -81,7 +81,7 @@ fun TeamMemberCard(zenmoTeam: ZenmoTeamMember) {
                     .color(SitePalette.light.primary)
                     .toAttrs()
             ) {
-                LangText(en = zenmoTeam.enTitle, nl = zenmoTeam.nlTitle)
+                LangText(en = zenmoTeam.enRole, nl = zenmoTeam.nlRole)
             }
             TeamMemberSocials(
                 email = zenmoTeam.email,
@@ -104,7 +104,7 @@ private fun TeamMemberSocials(
     ) {
         SocialIconLink(iconSrc = "/img/linkedin.svg", linkUrl = linkedin)
         SocialIconLink(iconSrc = "/img/mail.svg", linkUrl = "mailto:$email")
-        SocialIconLink(iconSrc = "/img/x.svg", linkUrl = twitter)
+        SocialIconLink(iconSrc = "/img/x.svg", linkUrl = "https://x.com/$twitter")
     }
 }
 
