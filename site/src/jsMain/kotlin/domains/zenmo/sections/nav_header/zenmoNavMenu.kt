@@ -5,7 +5,7 @@ import energy.lux.frontend.core.models.RoutedMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.pages.ComponentDemoPage
 import energy.lux.frontend.domains.zenmo.pages.ComingSoon
-import energy.lux.frontend.domains.zenmo.pages.ContactPage
+import energy.lux.frontend.domains.zenmo.pages.contact.ContactPage
 import energy.lux.frontend.domains.zenmo.pages.aboutUs.our_team.OurTeamPage
 import energy.lux.frontend.domains.zenmo.pages.home.HomePage
 import energy.lux.frontend.domains.zenmo.pages.models.ModelsPage
