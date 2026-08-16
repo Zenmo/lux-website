@@ -101,7 +101,7 @@ fun DrechtstedenHomePage() {
                     Br { }
                     LangText(
                         en = "If you want access send an email to ",
-                        nl = "als je toegang wilt stuur dan een email to "
+                        nl = "als je toegang wilt sturen dan een email naar "
                     )
                     InlineLink(
                         destinationUrl = "mailto:${modeller.email}",
