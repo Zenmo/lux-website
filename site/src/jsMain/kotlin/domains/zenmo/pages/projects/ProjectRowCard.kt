@@ -3,6 +3,7 @@ package energy.lux.frontend.domains.zenmo.pages.projects
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.functions.clamp
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -20,6 +21,7 @@ import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.domains.lux.styles.ResponsiveFlexStyle
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
+import energy.lux.frontend.domains.zenmo.pages.models.constrainedWidth
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
@@ -47,40 +49,42 @@ fun ProjectRowCard(item: ZenmoProject, reversed: Boolean = false) {
 
 @Composable
 private fun ProjectContent(item: ZenmoProject) {
-    Column(
-        modifier = Modifier
-            .flex(1)
-            .fillMaxWidth()
-            .padding(clamp(32.px, 5.vw, 60.px)),
-        verticalArrangement = Arrangement.spacedBy(0.5.cssRem),
-        horizontalAlignment = Alignment.Start,
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.constrainedWidth()
     ) {
-        Span(
-            TextStyle.toModifier(LabelTextStyle)
-                .color(SitePalette.light.primary)
-                .toAttrs()
+        Column(
+            modifier = Modifier
+                .flex(1)
+                .fillMaxWidth()
+                .padding(clamp(12.px, 5.vw, 32.px)),
+            verticalArrangement = Arrangement.spacedBy(0.5.cssRem),
+            horizontalAlignment = Alignment.Start,
         ) {
-            LangText(
-                en = item.categoryText.en.uppercase(),
-                nl = item.categoryText.nl.uppercase(),
-            )
+
+            Span(
+                TextStyle.toModifier(LabelTextStyle)
+                    .color(SitePalette.light.primary)
+                    .toAttrs()
+            ) {
+                LangText(
+                    en = item.categoryText.en.uppercase(),
+                    nl = item.categoryText.nl.uppercase(),
+                )
+            }
+            SubHeaderText(item.titleText)
+            P {
+                LangText(item.descriptionText)
+            }
+            ProjectLink(item)
         }
-        SubHeaderText(item.titleText)
-        P {
-            LangText(item.descriptionText)
-        }
-        ProjectLink(item)
     }
 }
 
 @Composable
 private fun ProjectLink(item: ZenmoProject) {
-    val path = when (item) {
-        is ZenmoProject.External -> item.url
-        is ZenmoProject.Internal -> item.path
-    }
     Link(
-        path = path,
+        path = item.url,
         variant = UncoloredLinkVariant.then(UndecoratedLinkVariant),
         modifier = Modifier.color(SitePalette.light.primary),
     ) {
@@ -88,7 +92,7 @@ private fun ProjectLink(item: ZenmoProject) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(0.25.cssRem),
         ) {
-            LangText(en = "View Case Study", nl = "Bekijk Case Study")
+            LangText(en = "Learn more", nl = "Meer informatie")
             MdiNorthEast(modifier = Modifier.fontSize(16.px))
         }
     }
