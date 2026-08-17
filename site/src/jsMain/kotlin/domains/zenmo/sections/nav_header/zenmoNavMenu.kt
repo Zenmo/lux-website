@@ -4,8 +4,8 @@ import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.models.RoutedMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.pages.ComponentDemoPage
-import energy.lux.frontend.domains.zenmo.pages.ComingSoon
 import energy.lux.frontend.domains.zenmo.pages.aboutUs.our_story.OurStoryPage
+import energy.lux.frontend.domains.zenmo.pages.aboutUs.working_at_zenmo.WorkingAtZenmoPage
 import energy.lux.frontend.domains.zenmo.pages.aboutUs.our_team.OurTeamPage
 import energy.lux.frontend.domains.zenmo.pages.contact.ContactPage
 import energy.lux.frontend.domains.zenmo.pages.home.HomePage
@@ -48,7 +48,7 @@ val zenmoStoryMenuItem = MenuItem.Simple(
 val workingAtZenmoMenuItem = MenuItem.Simple(
     route = RoutedMenuItem(
         label = LocalizedText(en = "Working at", nl = "Werken bij"),
-        pageComponent = { ComingSoon() }
+        pageComponent = { WorkingAtZenmoPage() }
     )
 )
 
