@@ -1,32 +1,56 @@
 package energy.lux.frontend.domains.zenmo.pages.home.what_we_do
 
-import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.BoxShadow
+import com.varabyte.kobweb.compose.css.Transition
+import com.varabyte.kobweb.compose.css.TransitionProperty
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.selectors.hover
 import energy.lux.frontend.theme.SitePalette
-import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.px
-
-val ServicesGridStyle = CssStyle {
-    base { Modifier.fillMaxWidth() }
-    Breakpoint.LG { Modifier.width(80.percent) }
-}
 
 val ServiceCardStyle = CssStyle {
     base {
         Modifier
-            .padding(1.5.cssRem)
-            .borderRadius(16.px)
-            .border(1.px, LineStyle.Solid, Colors.Black.copyf(alpha = 0.1f))
-            .cursor(Cursor.Pointer)
+            .fillMaxWidth()
+            .padding(topBottom = 1.25.cssRem)
     }
-    hover {
-        Modifier.border(1.px, LineStyle.Solid, SitePalette.light.primary)
+    cssRule(" .service-icon-box") {
+        Modifier
+            .size(48.px)
+            .borderRadius(12.px)
+            .color(SitePalette.light.primary)
+            .backgroundColor(Colors.White)
+            .boxShadow(
+                BoxShadow.of(
+                    0.px,
+                    2.px,
+                    8.px,
+                    0.px,
+                    Colors.Black.copyf(alpha = 0.08f)
+                )
+            )
+            .flexShrink(0)
+            .transition(
+                Transition.of(TransitionProperty.All, 200.ms),
+            )
+    }
+    cssRule(":hover .service-icon-box") {
+        Modifier
+            .backgroundColor(SitePalette.light.primary)
+            .color(Colors.White)
+    }
+    cssRule(" .service-chevron") {
+        Modifier
+            .opacity(0.3)
+            .transition(Transition.of(TransitionProperty.All, 200.ms))
+    }
+    cssRule(":hover .service-chevron") {
+        Modifier
+            .opacity(1)
+            .transform { translateX(2.px) }
     }
 }

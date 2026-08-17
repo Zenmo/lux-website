@@ -14,6 +14,7 @@ import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.SectionContainer
+import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.css.cssRem
@@ -25,36 +26,60 @@ data class ClientItem(
 )
 
 private val zenmoClients = listOf(
-
     ClientItem(
-        logoSrc = "https://energiesamen.nu/wp-content/uploads/2025/08/Logo-wit.svg",
+        logoSrc = "/zenmo/clients/TUe.png",
+        clientName = "TU/e",
+        siteUrl = "http://tue.nl/",
+
+    ),
+    ClientItem(
+        logoSrc = "/zenmo/clients/Drechtsteden.jpeg",
+        clientName = "Drechtsteden",
+        siteUrl = PrivateSubdomainModel.DRECHTSTEDEN.url,
+
+    ),
+    ClientItem(
+        logoSrc = "/zenmo/clients/energy-innovation-nl-light.svg",
+        clientName = "Energie Innovation",
+        siteUrl = "https://energy-innovation.nl/nl/",
+    ),
+    ClientItem(
+        logoSrc = "/zenmo/clients/energie_samen.svg",
         clientName = "Energie Samen",
         siteUrl = "https://energiesamen.nu/",
     ),
     ClientItem(
-        logoSrc = "https://genius.lux.energy/lux/logos/genius/tu_e.jpg",
-        clientName = "TU/e",
-        siteUrl = "http://www.tue.nl/",
+        logoSrc = "/zenmo/clients/hollands_kroon.svg",
+        clientName = "Hollands Kroon",
+        siteUrl = "https://hollandskroon.nl/",
     ),
     ClientItem(
-        logoSrc = "https://www.regiofoodvalley.nl/fileadmin/regiofoodvalley.nl/assets/foodvalley-desktop.svg",
-        clientName = "Regio Food Valley",
-        siteUrl = "https://www.regiofoodvalley.nl/",
+        logoSrc = "/zenmo/clients/Genius.png",
+        clientName = "Genius",
+        siteUrl = PrivateSubdomainModel.GENIUS.url,
     ),
     ClientItem(
-        logoSrc = "https://drechtsteden.lux.energy/lux/logos/lux-energy-twin.png",
-        clientName = "Drechtsteden",
-        siteUrl = "https://drechtsteden.lux.energy/",
+        logoSrc = "/zenmo/clients/roosendaal.png",
+        clientName = "Roosendaal",
+        siteUrl = "https://roosendaal.nl/",
     ),
     ClientItem(
-        logoSrc = "",
-        clientName = "Energie Innovation",
-        siteUrl = "https://www.energy-innovation.nl/nl/",
+        logoSrc = "/zenmo/clients/oss.png",
+        clientName = "OSS",
+        siteUrl = PrivateSubdomainModel.OSS.url,
     ),
-    ClientItem(),
-    ClientItem(),
-    ClientItem(),
-)
+    ClientItem(
+        logoSrc = "/zenmo/clients/amersfoort.png",
+        clientName = "Amersfoort",
+        siteUrl = "https://amersfoort.nl/",
+    ),
+    ClientItem(
+        logoSrc = "/zenmo/clients/Energieke-Regio-150.png",
+        clientName = "Energieke Regio",
+        siteUrl = "https://energiekeregio.nl/",
+    ),
+
+    )
 
 @Composable
 fun ClientsSection() {

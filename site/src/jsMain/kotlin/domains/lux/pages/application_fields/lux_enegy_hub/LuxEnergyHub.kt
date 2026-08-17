@@ -24,7 +24,7 @@ fun LuxEnergyHub() {
             applicationArea = LuxApplicationArea.LUX_ENERGY_HUB,
             featuredModels = listOf(
                 PrivateSubdomainModel.HESSENPOORT.toTwinModelCardItem(),
-                PrivateSubdomainModel.GENUIS.toTwinModelCardItem(),
+                PrivateSubdomainModel.GENIUS.toTwinModelCardItem(),
                 PrivateSubdomainModel.KAS_ALS_ENERGIEBRON.toTwinModelCardItem(),
             ),
             showMoreModelsLink = true,
