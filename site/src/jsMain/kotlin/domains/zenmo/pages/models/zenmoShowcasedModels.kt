@@ -22,7 +22,7 @@ val zenmoShowcasedModels: List<ShowcasedModel> = listOf(
                 management. This means: connecting more houses with the same grid capacity. 
             """.trimIndent(),
             nl = """
-                In woonwijken kan de piekbelasting van het electriciteitsnet sterk afnemen als daar gericht op wordt 
+                In woonwijken kan de piekbelasting van het elekctriciteitsnet sterk afnemen als daar gericht op wordt 
                 gestuurd. Dat betekent: met dezelfde netcapaciteit meer huizen aansluiten. 
             """.trimIndent()
         ),
@@ -37,7 +37,7 @@ val zenmoShowcasedModels: List<ShowcasedModel> = listOf(
                solution. LUX Energy Hub lets you explore different scenario’s. 
            """.trimIndent(),
             nl = """
-             Op bedrijventerreinen zorgt netcongestie voor grote problemen. Samen een energie hub vormen kan de 
+             Op bedrijventerreinen zorgt netcongestie voor grote problemen. Samen een energiehub vormen kan de 
              oplossing zijn. LUX Energy Hub biedt je de mogelijkheid om verschillende scenario’s te verkennen.    
             """.trimIndent()
         )
