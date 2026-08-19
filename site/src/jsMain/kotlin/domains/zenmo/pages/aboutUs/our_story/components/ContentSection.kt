@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.mdi.IconStyle
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiBolt
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiNavigation
@@ -90,30 +89,6 @@ private fun OurModelsColumn() {
             )
         }
         WhatWeDoFeatureCards()
-        P {
-            LangText(
-                en = """
-                    Every year, organizations like the International Energy Agency (IEA) publish reports about the
-                    future of renewable energy. The models that they use are static top-down models that are not able
-                    to make good predictions about systems in transition. The predictions are often too conservative.
-                    Thus, the IEA publishes their predictions on the cumulative installed capacity of solar panels
-                    every year and is not able to capture the exponential growth.
-                """.trimIndent(),
-                nl = """
-                    Jaarlijks worden er voorspellingen gedaan door organisaties als de International Energy Agency
-                    (IEA) over de toekomst van duurzame energie. De modellen die ze gebruiken zijn statische top-down
-                    modellen die geen rekening houden met de onderliggende afhankelijkheden die we waarnemen in een
-                    energie transitie. De resultaten zijn dan ook vaak veel te conservatief. Zo maakt de IEA elk jaar
-                    een voorspelling van de hoeveelheid geïnstalleerd vermogen PV in de wereld en zit er elke keer
-                    drastisch naast, zoals in het figuur hieronder te zien is.
-                """.trimIndent(),
-            )
-        }
-        Image(
-            src = "/zenmo/images/iea-prediction-2017-update4.png",
-            alt = "IEA renewable energy predictions chart",
-            modifier = Modifier.fillMaxWidth().margin(top = 0.5.cssRem),
-        )
     }
 }
 
