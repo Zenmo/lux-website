@@ -3,9 +3,9 @@ package energy.lux.frontend.domains.lux.sections.nav_header
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.models.RoutedMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.about_us.AboutUs
-import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
-import energy.lux.frontend.domains.lux.sections.luxmodels.LuxModels
+import energy.lux.frontend.domains.lux.pages.about_us.AboutUs
+import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.pages.luxmodels.LuxModels
 
 private val applicationAreasMenuItem = MenuItem.WithSubs(
     title = LocalizedText(en = "Application Areas", nl = "Toepassingsgebieden"),

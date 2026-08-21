@@ -1,4 +1,4 @@
-package domains.lux.subdomains.private_subdomains.oss
+package energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -12,8 +12,6 @@ import energy.lux.frontend.core.models.asRoutes
 import energy.lux.frontend.core.services.localization.LocalLanguage
 import energy.lux.frontend.domains.lux.core.createLuxRouter
 import energy.lux.frontend.domains.lux.pages.registerRoutesOfMenu
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.asRoutes
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.ossTwinModels
 import kotlinx.browser.window
 
 @Composable

@@ -1,4 +1,4 @@
-package domains.lux.subdomains.private_subdomains.oss
+package energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss
 
 import androidx.compose.runtime.Composable
 import energy.lux.frontend.components.layouts.PageLayout

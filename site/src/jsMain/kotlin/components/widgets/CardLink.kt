@@ -17,7 +17,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
+import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
 import energy.lux.frontend.theme.SitePalette
 import energy.lux.frontend.theme.isZenmoDomain

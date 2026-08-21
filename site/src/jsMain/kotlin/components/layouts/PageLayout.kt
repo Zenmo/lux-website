@@ -57,7 +57,7 @@ private fun documentTitleByDomain(extraTitle: String): String {
     return when {
         domain == SiteGlobals.ZENMO_DOMAIN -> "${previewText}Zenmo - $extraTitle"
         domain == SiteGlobals.LUX_DOMAIN -> "${previewText}LUX Energy"
-        domain.endsWith(".${SiteGlobals.LUX_DOMAIN}") -> "$extraTitle | LUX Energy"
+        domain.endsWith(SiteGlobals.luxSubdomainSuffix) -> "$extraTitle | LUX Energy"
         else -> "Unknown"
     }
 }

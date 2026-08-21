@@ -85,7 +85,7 @@ fun ExpandableSideMenuItem(
                             rotate(if (isExpanded) 90.deg else 0.deg)
                         }
                 )
-                LangText(en = menu.title.en, nl = menu.title.nl)
+                LangText(menu.title)
             }
 
             MdiExpandMore(

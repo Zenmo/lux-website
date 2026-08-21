@@ -2,8 +2,8 @@ package energy.lux.frontend.domains.lux.subdomains.public_subdomains.amersfoort
 
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.TwinModelCard
-import energy.lux.frontend.domains.lux.sections.application_fields.ApplicationArea
-import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.ApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.anyLogicPublicApiKey
 import kotlin.uuid.Uuid
 

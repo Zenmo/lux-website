@@ -10,7 +10,7 @@ import energy.lux.frontend.domains.lux.components.layout.LuxSubdomainPageLayout
 import energy.lux.frontend.domains.lux.core.model.subdomain.cognizant
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.P
 
@@ -69,7 +69,7 @@ fun Cognizant() {
                 }
             },
             footerContent = {
-                ZenmoModellerProfileCard(ZenmoTeam.PETER_HOGEVEEN)
+                ZenmoModellerProfileCard(ZenmoTeamMember.PETER_HOGEVEEN)
             }
         )
     }

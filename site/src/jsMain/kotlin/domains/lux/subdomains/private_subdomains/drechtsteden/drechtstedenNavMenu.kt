@@ -3,7 +3,7 @@ package energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsted
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.models.RoutedMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.application_fields.DrechtstedenProjectArea
+import energy.lux.frontend.domains.lux.pages.application_fields.DrechtstedenProjectArea
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.DrechtstedenHomePage
 
 val drechtstedenNavMenu = buildList {

@@ -6,7 +6,8 @@ import energy.lux.frontend.domains.lux.core.model.subdomain.empowered
 import energy.lux.frontend.domains.lux.core.model.subdomain.subdomains
 import energy.lux.frontend.domains.lux.sections.nav_header.luxNavMenu
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.drechtstedenNavMenu
-import domains.lux.subdomains.private_subdomains.oss.ossNavMenu
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.ossNavMenu
+import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.regiofoodvalleyMenu
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.empoweredMenuItems
 import energy.lux.frontend.domains.zenmo.sections.nav_header.zenmoNavMenu
 import energy.lux.frontend.pages.SiteGlobals
@@ -20,14 +21,15 @@ object MenuFactory {
             domain == SiteGlobals.LUX_DOMAIN -> luxNavMenu
             domain == SiteGlobals.ZENMO_DOMAIN -> zenmoNavMenu
 
-            domain.endsWith(".${SiteGlobals.LUX_DOMAIN}") -> {
-                val subdomain = domain.substringBefore(".${SiteGlobals.LUX_DOMAIN}")
+            domain.endsWith(SiteGlobals.luxSubdomainSuffix) -> {
+                val subdomain = domain.substringBefore(SiteGlobals.luxSubdomainSuffix)
                 val model = subdomains.find {
                     it.subdomain.equals(subdomain, ignoreCase = true)
                 }
                 when (model) {
                     PrivateSubdomainModel.DRECHTSTEDEN -> drechtstedenNavMenu
                     PrivateSubdomainModel.OSS -> ossNavMenu
+                    PrivateSubdomainModel.REGIOFOODVALLEY -> regiofoodvalleyMenu
                     empowered -> empoweredMenuItems
                     else -> emptyList()
                 }

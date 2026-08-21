@@ -15,7 +15,7 @@ import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.components.HorizontalLine
 import energy.lux.frontend.domains.lux.core.TwinModelCardItem
 import energy.lux.frontend.domains.lux.core.isPrivate
-import energy.lux.frontend.domains.lux.sections.application_fields.DrechtstedenProjectArea
+import energy.lux.frontend.domains.lux.pages.application_fields.DrechtstedenProjectArea
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.municipalities.dordrecht
@@ -23,7 +23,7 @@ import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtstede
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_region.drechtstedenResRegion
 import energy.lux.frontend.domains.lux.widgets.ModelCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Div
@@ -33,7 +33,7 @@ import kotlin.uuid.Uuid
 @OptIn(DelicateApi::class)
 @Composable
 fun DrechtstedenHomePage() {
-    val modeller = ZenmoTeam.NAUD_LOOMANS
+    val modeller = ZenmoTeamMember.NAUD_LOOMANS
     SubdomainModelPage(
         modelId = Uuid.NIL,
         introContent = {
@@ -101,7 +101,7 @@ fun DrechtstedenHomePage() {
                     Br { }
                     LangText(
                         en = "If you want access send an email to ",
-                        nl = "als je toegang wilt stuur dan een email to "
+                        nl = "als je toegang wilt sturen dan een email naar "
                     )
                     InlineLink(
                         destinationUrl = "mailto:${modeller.email}",

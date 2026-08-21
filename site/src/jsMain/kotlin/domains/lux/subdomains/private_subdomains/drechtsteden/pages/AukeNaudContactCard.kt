@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
-import energy.lux.frontend.domains.lux.sections.responsiveGap
+import energy.lux.frontend.domains.lux.styles.responsiveGap
 import energy.lux.frontend.domains.lux.subdomains.components.ProfileCardArrangementDirection
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 
 @Composable
 fun AukeNaudContactCard() {
@@ -16,11 +16,11 @@ fun AukeNaudContactCard() {
         modifier = Modifier.responsiveGap()
     ) {
         ZenmoModellerProfileCard(
-            ZenmoTeam.NAUD_LOOMANS,
+            ZenmoTeamMember.NAUD_LOOMANS,
             ProfileCardArrangementDirection.VERTICAL
         )
         ZenmoModellerProfileCard(
-            ZenmoTeam.AUKE,
+            ZenmoTeamMember.AUKE,
             ProfileCardArrangementDirection.VERTICAL
         )
     }

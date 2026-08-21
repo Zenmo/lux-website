@@ -1,8 +1,8 @@
 package energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.pages.residential_region
 
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.application_fields.DrechtstedenProjectArea
-import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.DrechtstedenProjectArea
+import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenTwinModel
 import kotlin.uuid.Uuid
 

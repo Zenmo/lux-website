@@ -27,8 +27,8 @@ import energy.lux.frontend.components.widgets.CardLink
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.TwinModelCardItem
-import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
-import energy.lux.frontend.domains.lux.sections.application_fields.getApplicationAreaColor
+import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
+import energy.lux.frontend.domains.lux.pages.application_fields.getApplicationAreaColor
 import energy.lux.frontend.domains.lux.styles.HoverBoxShadowStyle
 import energy.lux.frontend.domains.lux.styles.cubicBezierTransition
 import energy.lux.frontend.theme.SitePalette
@@ -120,7 +120,7 @@ fun ModelCard(
                         .width(80.percent)
                         .toAttrs()
                 ) {
-                    LangText(model.label.en, model.label.nl)
+                    LangText(model.label)
                 }
 
                 if (showLock) {
@@ -185,10 +185,7 @@ private fun ApplicationFieldLabel(
             .fontSize(FontSize.Small)
             .toAttrs()
     ) {
-        LangText(
-            en = label.en,
-            nl = label.nl
-        )
+        LangText(label)
     }
 }
 

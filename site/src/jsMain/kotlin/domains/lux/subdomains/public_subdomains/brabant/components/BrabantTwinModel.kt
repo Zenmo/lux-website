@@ -8,14 +8,10 @@ import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.core.services.localization.localizedUrl
 import energy.lux.frontend.domains.lux.core.TwinModelCard
 import energy.lux.frontend.domains.lux.core.model.subdomain.brabant
-import energy.lux.frontend.domains.lux.sections.application_fields.ApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.ApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.brabant.pages.BrabantNeighbourhood
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.brabant.pages.BrabantProvince
-import energy.lux.frontend.pages.SiteGlobals
 import kotlin.uuid.Uuid
-
-
-private val brabantDomain = "${brabant.subdomain}.${SiteGlobals.LUX_DOMAIN}"
 
 data class BrabantTwinModel(
     override val applicationArea: ApplicationArea = brabant.applicationArea,
@@ -23,7 +19,7 @@ data class BrabantTwinModel(
     override val label: LocalizedText,
     override val modelId: Uuid,
     override val path: String = label.en.asNavLinkPath(),
-    override val url: String = localizedUrl(brabantDomain, path),
+    override val url: String = localizedUrl(brabant.fullDomain, path),
     override val pageComponent: PageComponent,
 ) : TwinModelCard, Route
 

@@ -26,7 +26,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
+import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.AnimatedIconStyle
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.isPathActive
 import energy.lux.frontend.theme.SitePalette
@@ -74,20 +74,14 @@ fun LuxMenuItem(
             Column(
                 Modifier.gap(0.25.cssRem)
             ) {
-                LangText(
-                    en = menuTitle.en,
-                    nl = menuTitle.nl,
-                )
+                LangText(menuTitle)
                 if (showSubText && subText != null) {
                     P(
                         Modifier.margin(0.px)
                             .then(DeEmphasizedTextStyle.toModifier())
                             .toAttrs()
                     ) {
-                        LangText(
-                            en = subText.en,
-                            nl = subText.nl,
-                        )
+                        LangText(subText)
                     }
                 }
             }

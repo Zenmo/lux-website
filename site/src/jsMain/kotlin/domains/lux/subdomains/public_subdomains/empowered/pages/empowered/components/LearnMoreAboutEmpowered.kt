@@ -15,7 +15,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.InlineLink
 import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.domains.lux.components.HorizontalLine
-import energy.lux.frontend.domains.lux.sections.DeEmphasizedTextStyle
+import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
 import energy.lux.frontend.domains.lux.styles.cubicBezierTransition
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
 import energy.lux.frontend.theme.SitePalette

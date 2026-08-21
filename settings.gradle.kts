@@ -19,6 +19,7 @@ plugins {
     // can't read from toml file, must hardcode
     kotlin("multiplatform") version "2.3.10" apply false
     kotlin("plugin.serialization") version "2.3.10" apply false
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
 // The following block registers dependencies to enable Kobweb snapshot support. It is safe to delete or comment out

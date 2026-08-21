@@ -11,7 +11,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.modifiers.textTransform
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.core.services.localization.localizedUrl
-import energy.lux.frontend.domains.lux.sections.application_fields.components.ApplicationAreaCTAButton
+import energy.lux.frontend.domains.lux.pages.application_fields.components.ApplicationAreaCTAButton
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
 import energy.lux.frontend.theme.SitePalette

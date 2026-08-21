@@ -2,7 +2,7 @@ package energy.lux.frontend.domains.lux.core.model.subdomain
 
 import androidx.compose.runtime.Composable
 import energy.lux.frontend.core.services.localization.LocalizedText
-import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.amersfoort.Amersfoort
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.brabant.BrabantRouting
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.EmpoweredRouting

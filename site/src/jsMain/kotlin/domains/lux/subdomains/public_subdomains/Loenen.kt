@@ -8,13 +8,13 @@ import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.components.widgets.MediaContentLayout
 import energy.lux.frontend.domains.lux.components.layout.LuxSubdomainPageLayout
 import energy.lux.frontend.domains.lux.core.model.subdomain.loenen
-import energy.lux.frontend.domains.lux.sections.responsiveGap
+import energy.lux.frontend.domains.lux.styles.responsiveGap
 import energy.lux.frontend.domains.lux.subdomains.components.ProfileCardArrangementDirection
 import energy.lux.frontend.domains.lux.subdomains.components.ProfileContactCard
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfileCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import energy.lux.frontend.theme.SitePalette
 import org.jetbrains.compose.web.dom.P
 
@@ -61,7 +61,7 @@ fun LoenenIndex() {
                     modifier = Modifier.responsiveGap()
                 ) {
                     ZenmoModellerProfileCard(
-                        ZenmoTeam.NAUD_LOOMANS,
+                        ZenmoTeamMember.NAUD_LOOMANS,
                         ProfileCardArrangementDirection.VERTICAL
                     )
                     ProfileContactCard(

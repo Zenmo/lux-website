@@ -28,6 +28,7 @@ import org.jetbrains.compose.web.dom.P
 
 @Composable
 fun VisualContentPlaceholder(
+    modifier: Modifier = Modifier,
     descriptionText: LocalizedText = LocalizedText(
         en = "Come back soon to see the interactive model!",
         nl = "Kom snel terug om het interactieve model te zien!"
@@ -44,7 +45,8 @@ fun VisualContentPlaceholder(
             .boxShadow(
                 BoxShadow.of(0.px, 6.px, 20.px, 0.px, rgba(0, 0, 0, 0.19f))
             )
-            .luxBorderRadius(LuxCornerRadius.xl),
+            .luxBorderRadius(LuxCornerRadius.xl)
+            .then(modifier),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -68,10 +70,7 @@ fun VisualContentPlaceholder(
                     .textAlign(TextAlign.Center)
                     .toAttrs()
             ) {
-                LangText(
-                    en = descriptionText.en,
-                    nl = descriptionText.nl
-                )
+                LangText(descriptionText)
             }
         }
     }

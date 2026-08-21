@@ -5,7 +5,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
-import energy.lux.frontend.domains.lux.sections.application_fields.DrechtstedenProjectArea
+import energy.lux.frontend.domains.lux.pages.application_fields.DrechtstedenProjectArea
 import energy.lux.frontend.domains.lux.subdomains.components.SubdomainModelPage
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.components.ResidentialAreaModelPageText
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.toTwinModelCardItems

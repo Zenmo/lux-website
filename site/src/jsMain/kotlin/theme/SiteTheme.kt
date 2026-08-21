@@ -26,8 +26,8 @@ data class SitePalette(
     val primary: Color = Color.rgb(0xb6084e),
     val onPrimary: Color = Color.rgb(0xFFFFFF),
     val secondary: Color = Color.rgb(0x3d2c2f),
-    val overlay: Color = Color.rgb(0xFFF0F1),
-    val background: Color = Color.rgb(0xFFF8F7),
+    val overlay: Color = Color.rgb(0xF9FAFB),
+    val background: Color = Color.rgb(0xFFFFFF),
     val onBackground: Color = Color.rgb(0x26181A),
 
     // Lux data visualization Colors for map legends and charts.
@@ -80,7 +80,7 @@ data class SitePalette(
         private val domain = window.location.host
         val light = when (domain) {
             SiteGlobals.ZENMO_DOMAIN -> zenmoColorPalette
-            "${brabant.subdomain}.${SiteGlobals.LUX_DOMAIN}" -> brabantColorPalette
+            brabant.fullDomain -> brabantColorPalette
             else -> luxColorPalette
         }
     }

@@ -10,10 +10,12 @@ export TAG
 OUTPUT_DIR=website-$ENVIRONMENT
 mkdir -p $OUTPUT_DIR
 
+
 # Prepare Quadlet files
 for filename in *.container *.env; do
     newfilename=${filename%.*}-$ENVIRONMENT.${filename##*.}
-    envsubst < "$filename" > "$OUTPUT_DIR/$newfilename"
+    # replace variables and remove empty traefik labels
+    envsubst < "$filename" | sed '/^Label=traefik.*=$/d' > "$OUTPUT_DIR/$newfilename"
 done
 
 # Copy files to the Podman host

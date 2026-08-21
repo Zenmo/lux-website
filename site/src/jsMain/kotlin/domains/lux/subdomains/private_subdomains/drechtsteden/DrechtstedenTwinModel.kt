@@ -9,12 +9,11 @@ import energy.lux.frontend.domains.lux.core.PrivateTwinModel
 import energy.lux.frontend.domains.lux.core.TwinModelCard
 import energy.lux.frontend.domains.lux.core.model.subdomain.PrivateSubdomainModel
 import energy.lux.frontend.domains.lux.core.toTwinModelCardItem
-import energy.lux.frontend.domains.lux.sections.application_fields.DrechtstedenProjectArea
-import energy.lux.frontend.domains.lux.sections.application_fields.LuxApplicationArea
-import energy.lux.frontend.pages.SiteGlobals
+import energy.lux.frontend.domains.lux.pages.application_fields.DrechtstedenProjectArea
+import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
 import kotlin.uuid.Uuid
 
-private val drechtstedenFullDomain = "${PrivateSubdomainModel.DRECHTSTEDEN.subdomain}.${SiteGlobals.LUX_DOMAIN}"
+private val drechtstedenFullDomain = PrivateSubdomainModel.DRECHTSTEDEN.fullDomain
 
 sealed interface DrechtstedenTwinModelBase : Route, TwinModelCard {
     val projectPath: String

@@ -4,10 +4,13 @@ import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.models.RoutedMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.pages.ComponentDemoPage
-import energy.lux.frontend.domains.zenmo.pages.ComingSoon
-import energy.lux.frontend.domains.zenmo.pages.ContactPage
-import energy.lux.frontend.domains.zenmo.pages.HomePage
-import energy.lux.frontend.domains.zenmo.pages.aboutUs.OurTeamPage
+import energy.lux.frontend.domains.zenmo.pages.aboutUs.our_story.OurStoryPage
+import energy.lux.frontend.domains.zenmo.pages.aboutUs.working_at_zenmo.WorkingAtZenmoPage
+import energy.lux.frontend.domains.zenmo.pages.aboutUs.our_team.OurTeamPage
+import energy.lux.frontend.domains.zenmo.pages.contact.ContactPage
+import energy.lux.frontend.domains.zenmo.pages.home.HomePage
+import energy.lux.frontend.domains.zenmo.pages.models.ModelsPage
+import energy.lux.frontend.domains.zenmo.pages.projects.ProjectsPage
 import energy.lux.frontend.pages.isLocalOrPreviewEnvironment
 
 
@@ -25,37 +28,43 @@ val zenmoProjectsMenuItem = MenuItem.Simple(
             en = "Projects",
             nl = "Projecten"
         ),
-        pageComponent = { ComingSoon() }
+        pageComponent = { ProjectsPage() }
     )
 )
-val zenmoClientsMenuItem = MenuItem.Simple(
+val zenmoModelsMenuItem = MenuItem.Simple(
     route = RoutedMenuItem(
-        label = LocalizedText(en = "Our Clients", nl = "Onz Klanten"),
-        pageComponent = { ComingSoon() }
+        label = LocalizedText(en = "Models", nl = "Modellen"),
+        pageComponent = { ModelsPage() }
+    )
+)
+
+val zenmoStoryMenuItem = MenuItem.Simple(
+    route = RoutedMenuItem(
+        label = LocalizedText(en = "Our Story", nl = "Ons Verhaal"),
+        pageComponent = { OurStoryPage() }
+    )
+)
+
+val workingAtZenmoMenuItem = MenuItem.Simple(
+    route = RoutedMenuItem(
+        label = LocalizedText(en = "Working at", nl = "Werken bij"),
+        pageComponent = { WorkingAtZenmoPage() }
+    )
+)
+
+val zenmoTeamMenuItem = MenuItem.Simple(
+    route = RoutedMenuItem(
+        label = LocalizedText(en = "Our Team", nl = "Ons Team"),
+        pageComponent = { OurTeamPage() }
     )
 )
 
 val zenmoAboutUsMenuItem = MenuItem.WithSubs(
     title = LocalizedText(en = "About us", nl = "Over ons"),
     subItems = listOf(
-        MenuItem.Simple(
-            route = RoutedMenuItem(
-                label = LocalizedText(en = "Our Story", nl = "Ons Verhaal"),
-                pageComponent = { ComingSoon() }
-            )
-        ),
-        MenuItem.Simple(
-            route = RoutedMenuItem(
-                label = LocalizedText(en = "Our Team", nl = "Ons Team"),
-                pageComponent = { OurTeamPage() }
-            )
-        ),
-        MenuItem.Simple(
-            route = RoutedMenuItem(
-                label = LocalizedText(en = "Working at", nl = "Banen"),
-                pageComponent = { ComingSoon() }
-            )
-        ),
+        zenmoStoryMenuItem,
+        workingAtZenmoMenuItem,
+        zenmoTeamMenuItem
     )
 )
 
@@ -76,7 +85,7 @@ val componentDemoMenuItem = MenuItem.Simple(
 
 val zenmoNavMenu = buildList {
     add(zenmoProjectsMenuItem)
-    add(zenmoClientsMenuItem)
+    add(zenmoModelsMenuItem)
     add(zenmoAboutUsMenuItem)
     add(contactZenmoMenuItem)
 

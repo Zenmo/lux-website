@@ -10,7 +10,7 @@ import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfil
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.empoweredDomain
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.nijmegenHengstdalMenuItem
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 import kotlin.uuid.Uuid
 
 
@@ -28,10 +28,10 @@ fun NijmegenHengstdal() {
     SubdomainModelPage(
         modelId = nijmegenHengstdalModel.modelId,
         introContent = {
-            SubHeaderText(nlText = nijmegenHengstdalModel.label.nl)
+            SubHeaderText(nijmegenHengstdalModel.label)
         },
         footerContent = {
-            ZenmoModellerProfileCard(ZenmoTeam.NAUD_LOOMANS)
+            ZenmoModellerProfileCard(ZenmoTeamMember.NAUD_LOOMANS)
         },
     )
 }

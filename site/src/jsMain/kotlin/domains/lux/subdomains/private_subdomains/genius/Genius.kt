@@ -12,7 +12,7 @@ import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.comp
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.components.GeniusIntroTextBlock
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.components.GeniusTextGrid
 import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.components.PartnerLogos
-import energy.lux.frontend.domains.zenmo.sections.team.ZenmoTeam
+import energy.lux.frontend.core.models.ZenmoTeamMember
 
 @Composable
 fun Genius() {
@@ -22,8 +22,8 @@ fun Genius() {
         title = "Genius"
     ) {
         PrivateTwinModelPage(
-            entryPoint = PrivateSubdomainModel.GENUIS.entryPoint,
-            modelId = PrivateSubdomainModel.GENUIS.modelId,
+            entryPoint = PrivateSubdomainModel.GENIUS.entryPoint,
+            modelId = PrivateSubdomainModel.GENIUS.modelId,
             imageUrl = "/lux/images/models/genius.png",
             introContent = { GeniusIntroTextBlock() },
             mediaContent = {
@@ -35,7 +35,7 @@ fun Genius() {
                 GeniusTextGrid()
             },
             extraContent = { PartnerLogos() },
-            footerContent = { ZenmoModellerProfileCard(ZenmoTeam.ATE) },
+            footerContent = { ZenmoModellerProfileCard(ZenmoTeamMember.ATE) },
         )
     }
 }
