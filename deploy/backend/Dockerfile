@@ -36,7 +36,7 @@ COPY site site
 
 # these arguments will be included in the javascript artifact
 ARG BACKEND_URL=https://site-backend.lux.energy
-ARG ZENMO_DOMAIN=nieuw.zenmo.com
+ARG ZENMO_DOMAIN=zenmo.com
 ARG LUX_DOMAIN=lux.energy
 ARG SUBDOMAIN_SEPARATOR=.
 # -PkobwebBuildTarget=RELEASE removes hot reload code from the JavaScript

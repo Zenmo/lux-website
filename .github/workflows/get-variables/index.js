@@ -14,12 +14,12 @@ const configPerBranch = {
             CORS_ORIGIN_PATTERN: "https:\\/\\/((.*\\.)?lux\\.energy|(.*\\.)?zenmo\\.com)",
 
             // settings for static site compilation
-            ZENMO_DOMAIN: "nieuw.zenmo.com",
+            ZENMO_DOMAIN: "zenmo.com",
             LUX_DOMAIN,
             SUBDOMAIN_SEPARATOR: ".",
 
             // settings for Traefik
-            TRAEFIK_ZENMO_MAIN_CERT: "*.zenmo.com",
+            TRAEFIK_ZENMO_MAIN_CERT: "zenmo.com",
             TRAEFIK_LUX_MAIN_CERT: LUX_DOMAIN,
             TRAEFIK_LUX_SANS_CERT: `*.${LUX_DOMAIN}`,
             TRAEFIK_LUX_HOST_REGEXP: "^[\\\\w-]+\\\\.lux\\\\.energy",
