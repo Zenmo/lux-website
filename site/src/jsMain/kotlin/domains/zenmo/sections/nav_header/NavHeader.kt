@@ -9,6 +9,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.HamburgerIcon
@@ -27,8 +28,6 @@ import energy.lux.frontend.domains.zenmo.sections.nav_header.components.NavBar
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.SideMenu
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.SiteLogo
 import energy.lux.frontend.domains.zenmo.widgets.button.IconButton
-import energy.lux.frontend.theme.SitePalette
-import energy.lux.frontend.theme.styles.IconStyle
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Header
 
@@ -57,12 +56,11 @@ val NavHeaderStyle = CssStyle<NavHeaderKind>(extraModifier = {
 @Composable
 private fun HamburgerButton(onClick: () -> Unit) {
     IconButton(
+        modifier = Modifier.background(Colors.Transparent)
+            .color(Colors.Black),
         onClick = onClick
     ) {
-        HamburgerIcon(
-            modifier = IconStyle.toModifier()
-                .color(SitePalette.light.onPrimary)
-        )
+        HamburgerIcon()
     }
 }
 
@@ -101,8 +99,6 @@ fun NavHeader() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
-
-            ZenmoLanguageToggleButton()
             SiteLogo()
             HamburgerButton(onClick = { menuState = SideMenuState.OPEN })
 
