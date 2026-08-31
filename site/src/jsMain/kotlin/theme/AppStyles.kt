@@ -4,6 +4,7 @@ import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
+import com.varabyte.kobweb.compose.css.autoLength
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -17,7 +18,9 @@ import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariantBase
 import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.BreakpointSizes
+import com.varabyte.kobweb.silk.theme.breakpoint.toWidth
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.modifyStyle
@@ -58,6 +61,9 @@ fun initSiteStyles(ctx: InitSilkContext) {
                 true -> defaultFonts
                 else -> luxDefaultFonts.fontSize(FontSize.Large)
             }
+                // caps the whole page so it doesn't stretch awkwardly on ultra-wide monitors.
+                .maxWidth(Breakpoint.XXL.toWidth())
+                .margin(leftRight = autoLength)
         }
 
         registerStyleBase("h1, h2, h3, h4, h5, h6") {
@@ -75,6 +81,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
             md = 48.cssRem, // 768 px
             lg = 81.25.cssRem, // 1300 px
             xl = 100.cssRem, // 1600 px
+            xxl = 120.cssRem, // 1920 px
         )
         modifyStyle(ButtonStyle) {
             base {
