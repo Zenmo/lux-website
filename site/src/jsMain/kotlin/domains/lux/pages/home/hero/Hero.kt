@@ -3,23 +3,15 @@ package energy.lux.frontend.domains.lux.pages.home.hero
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
-import org.jetbrains.compose.web.css.Position
-import org.jetbrains.compose.web.css.vh
-
+import com.varabyte.kobweb.silk.style.toModifier
 
 @Composable
 fun LuxHero() {
     Box(
-        Modifier
-            .fillMaxWidth()
-            .position(Position.Relative)
-            .height(100.vh),
+        LuxHeroStyle.toModifier(),
         contentAlignment = Alignment.Center
     ) {
         ClippedHeroVideoBackground()
         HeroParagraphAndVideoContent()
     }
 }
-
