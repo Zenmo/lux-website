@@ -1,6 +1,7 @@
 import com.github.gradle.node.npm.task.NpmTask
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
+import kotlinx.html.meta
 import org.gradle.api.internal.tasks.DefaultTaskContainer.TaskCreatingProvider
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.JsModuleKind
@@ -27,11 +28,68 @@ val SUBDOMAIN_SEPARATOR = System.getenv("SUBDOMAIN_SEPARATOR") ?: "."
 val BACKEND_URL = System.getenv("BACKEND_URL") ?: "http://localhost:9000"
 val jsSrc = "$BACKEND_URL/main.export.mjs"
 
+/**
+ * The site is served from zenmo.com, lux.energy, and lux.energy's ~20 subdomains, but Kobweb only generates
+ * a single index.html. We inject placeholder tokens here and [generateDomainBasedIndexFiles] substitutes them
+ * once per entry in [domainOgs], writing index.html for the [DomainOg.slug]-less (default/zenmo) entry and
+ * index-[DomainOg.slug].html for every other one. deploy/static/Caddyfile picks the right file per request: an
+ * exact $ZENMO_DOMAIN match gets index.html; everything else captures the subdomain from the Host header and
+ * tries index-<subdomain>.html, falling back to index-lux.html if that subdomain has no dedicated entry yet.
+ */
+data class DomainOg(
+    val slug: String?,
+    val title: String,
+    val description: String,
+    val domain: String,
+    val imagePath: String,
+)
+
+val domainOgs = listOf(
+    DomainOg(
+        slug = null,
+        title = "Zenmo simulations – Zero-emission Energy & Mobility simulations",
+        description = "De energietransitie versnellen",
+        domain = ZENMO_DOMAIN,
+        imagePath = "/img/zenmo-open-graph-image.png",
+    ),
+    DomainOg(
+        slug = "lux",
+        title = "LUX Energy Twin - Lokale energie, wereldwijde impact!",
+        description = "De open-source LUX-tool ondersteunt lokale gemeenschappen of bedrijventerreinen met interactieve digital twins.",
+        domain = LUX_DOMAIN,
+        imagePath = "/img/lux-open-graph-image.png",
+    ),
+)
+
+
+val ogTitlePlaceholder = "@@OG_TITLE@@"
+val ogDescriptionPlaceholder = "@@OG_DESCRIPTION@@"
+val ogUrlPlaceholder = "@@OG_URL@@"
+val ogImagePlaceholder = "@@OG_IMAGE@@"
+val canonicalUrlPlaceholder = "@@CANONICAL_URL@@"
+
 kobweb {
     app {
         index {
             head.add {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
+
+                link(rel = "canonical", href = canonicalUrlPlaceholder)
+
+                // Open Graph - Global
+                meta(name = "description", content = ogDescriptionPlaceholder)
+
+                meta { attributes["property"] = "og:type"; attributes["content"] = "website" }
+                meta { attributes["property"] = "og:url"; attributes["content"] = ogUrlPlaceholder }
+                meta { attributes["property"] = "og:title"; attributes["content"] = ogTitlePlaceholder }
+                meta { attributes["property"] = "og:description"; attributes["content"] = ogDescriptionPlaceholder }
+                meta { attributes["property"] = "og:image"; attributes["content"] = ogImagePlaceholder }
+
+                // Twitter
+                meta(name = "twitter:card", content = "summary_large_image")
+                meta(name = "twitter:title", content = ogTitlePlaceholder)
+                meta(name = "twitter:description", content = ogDescriptionPlaceholder)
+                meta(name = "twitter:image", content = ogImagePlaceholder)
             }
             scriptAttributes.put("type", "module")
             scriptAttributes.put("src", jsSrc)
@@ -187,6 +245,37 @@ tasks.register("replaceScriptTag") {
             )
 
         file.writeText(newContent)
+    }
+}
+
+tasks.register("generateDomainBasedIndexFiles") {
+    notCompatibleWithConfigurationCache("Looks like gradle can't serialize the callback")
+    dependsOn("jsProcessResources")
+    tasks.named<DefaultTask>("jsProcessResources").get().finalizedBy(this)
+
+    doLast {
+        val publicDir = project.layout.buildDirectory.dir("processedResources/js/main/public").get().asFile
+        val indexFile = File(publicDir, "index.html")
+        val baseContent = indexFile.readText()
+
+        fun escape(text: String) = text
+            .replace("&", "&amp;")
+            .replace("\"", "&quot;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+
+        fun render(og: DomainOg) = baseContent
+            .replace(ogTitlePlaceholder, escape(og.title))
+            .replace(ogDescriptionPlaceholder, escape(og.description))
+            .replace(ogUrlPlaceholder, escape("https://${og.domain}"))
+            .replace(ogImagePlaceholder, escape("https://${og.domain}${og.imagePath}"))
+
+        // render every brand before writing anything, since the null-slug (default) entry overwrites index.html,
+        // which is also the source `baseContent` was read from
+        domainOgs.map { it to render(it) }.forEach { (og, html) ->
+            val filename = if (og.slug == null) "index.html" else "index-${og.slug}.html"
+            File(publicDir, filename).writeText(html)
+        }
     }
 }
 
