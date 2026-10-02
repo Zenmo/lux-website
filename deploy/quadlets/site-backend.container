@@ -8,6 +8,7 @@ Network=traefik.network
 # in order to fetch model last modified dates.
 Network=external6.network
 Label=traefik.enable=true
+Label=traefik.docker.network=traefik
 Label=traefik.http.routers.site-backend-$ENVIRONMENT.rule=Host(`$BACKEND_DOMAIN`)
 Label=traefik.http.routers.site-backend-$ENVIRONMENT.tls.certResolver=DNSimpleChallenge
 Label=traefik.http.routers.site-backend-$ENVIRONMENT.tls.domains[0].main=$TRAEFIK_BACKEND_CERT

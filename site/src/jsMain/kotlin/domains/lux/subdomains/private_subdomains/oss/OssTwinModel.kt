@@ -57,9 +57,9 @@ val moleneind =
 val euterpepark =
     OssTwinModel(
         label = LocalizedText("Euterpepark"),
-        imageUrl = "/lux/images/oss/euterpepark.jpeg",
+        imageUrl = "/lux/images/oss/euterpepark.png",
         entryPoint = "oss/euterpepark",
-        modelId = Uuid.NIL,
+        modelId = Uuid.parse("439273b0-2e18-49f3-8abb-562abed0893d"),
         pageComponent = { Euterpepark() },
     )
 
@@ -82,4 +82,3 @@ val ossTwinModels = listOf(
     moleneind,
     euterpepark
 )
-
