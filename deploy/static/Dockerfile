@@ -54,8 +54,10 @@ RUN ./gradlew site:npmInstall
 COPY shared shared
 COPY site site
 
-# BACKEND_URL is used in index.html
+# BACKEND_URL, ZENMO_DOMAIN and LUX_DOMAIN are used in index.html
 ARG BACKEND_URL=https://site-backend.lux.energy
+ARG ZENMO_DOMAIN=zenmo.com
+ARG LUX_DOMAIN=lux.energy
 # -PkobwebBuildTarget=RELEASE removes hot reload elements and styles from index.html
 RUN ./gradlew site:jsProcessResources -PkobwebBuildTarget=RELEASE
 
