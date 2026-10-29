@@ -8,7 +8,6 @@ import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import energy.lux.frontend.domains.zenmo.sections.Footer
 import energy.lux.frontend.domains.zenmo.sections.nav_header.NavHeader
 import energy.lux.frontend.pages.SiteGlobals
 import energy.lux.frontend.pages.isLocalOrPreviewEnvironment
@@ -22,7 +21,7 @@ import org.jetbrains.compose.web.css.percent
 fun PageLayout(
     title: String,
     header: @Composable () -> Unit = { NavHeader() },
-    footer: @Composable () -> Unit = { Footer(Modifier.fillMaxWidth().gridRow(2)) },
+    footer: @Composable () -> Unit = {},
     content: @Composable ColumnScope.() -> Unit,
 ) {
     LaunchedEffect(title) {
