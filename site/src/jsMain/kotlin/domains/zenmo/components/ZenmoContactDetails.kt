@@ -22,6 +22,7 @@ import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 
+const val ZENMO_EMAIL = "hallo@zenmo.com"
 @Composable
 fun ZenmoContactDetails(
     modifier: Modifier = Modifier.fillMaxWidth(),
@@ -59,9 +60,9 @@ fun ZenmoContactDetails(
             infoTitleText = LocalizedText(en = "General", nl = "Algemeen"),
             info = {
                 InlineLink(
-                    destinationUrl = "mailto:hallo@zenmo.com",
-                    enLinkText = "hallo@zenmo.com",
-                    nlLinkText = "hallo@zenmo.com",
+                    destinationUrl = "mailto:$ZENMO_EMAIL",
+                    enLinkText = ZENMO_EMAIL,
+                    nlLinkText = ZENMO_EMAIL,
                     textColor = Colors.Black
                 )
             }
