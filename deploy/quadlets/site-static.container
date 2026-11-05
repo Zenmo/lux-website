@@ -2,6 +2,7 @@
 [Container]
 ContainerName=site-static-$ENVIRONMENT
 Image=ghcr.io/zenmo/zenmo-website-static:$TAG
+Environment=ZENMO_DOMAIN=$ZENMO_DOMAIN
 
 Network=traefik.network
 Label=traefik.enable=true

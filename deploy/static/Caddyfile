@@ -1,7 +1,29 @@
 :80 {
     root * /srv
 
-    file_server
+    # An exact match on the zenmo domain gets the zenmo index.html.
+    @zenmo {
+        host {$ZENMO_DOMAIN}
+    }
 
-    try_files {path} {path}.html index.html
+    handle @zenmo {
+        file_server
+        try_files {path} {path}.html index.html
+    }
+
+    # Everything else is a lux.energy-family host (see deploy/quadlets/site-static.container, whose Traefik
+    # rule only ever sends non-$ZENMO_DOMAIN traffic here)
+    @subdomain {
+        header_regexp sub Host ^(?P<slug>[a-z0-9-]+)\.
+    }
+
+    handle @subdomain {
+        file_server
+        try_files {path} {path}.html index-{re.sub.slug}.html index-lux.html
+    }
+
+    handle {
+        file_server
+        try_files {path} {path}.html index-lux.html
+    }
 }
