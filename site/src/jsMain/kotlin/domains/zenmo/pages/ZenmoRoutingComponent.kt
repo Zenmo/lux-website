@@ -14,6 +14,7 @@ import energy.lux.frontend.domains.zenmo.sections.nav_header.zenmoHomeMenuItem
 import energy.lux.frontend.domains.zenmo.sections.nav_header.zenmoNavMenu
 import kotlinx.browser.window
 
+/** Keep the public pages in sync with zenmoPaths() in PrerenderUrls.kt, which lists the pages to pre-render. */
 @Composable
 fun ZenmoRoutingComponent() {
     val router = remember {

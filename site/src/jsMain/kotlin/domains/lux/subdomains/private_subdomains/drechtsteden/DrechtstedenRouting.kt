@@ -19,18 +19,7 @@ import kotlinx.browser.window
 fun DrechtstedenRouting() {
     val router = remember {
         createLuxRouter {
-            drechtstedenRouting(drechtstedenNavMenu.asRoutes())
-            drechtstedenRouting(
-                routes = drechtstedenModels
-                    /*
-                     * If a project's [projectPath] is blank, it means it uses the same path as the project area.
-                     * This is possible when there is only one project in that area.
-                     * In that case, we skip registering the route to avoid duplicate route registrations.
-                     * For example, [drechtstedenRes] is the only project in RES_REGION area so its [projectPath] is blank.
-                     * */
-                    .filter { it.projectPath.isNotBlank() }
-                    .map { it.asRoutedMenuItem() },
-            )
+            drechtstedenRouting(drechtstedenRoutes())
         }
     }
 
@@ -40,6 +29,12 @@ fun DrechtstedenRouting() {
     )
     router.renderActivePage { DeferringHost { it() } }
 }
+
+/** All pages of the Drechtsteden subdomain. Also used to list the pages to pre-render. */
+fun drechtstedenRoutes(): List<RoutedMenuItem> =
+    (drechtstedenNavMenu.asRoutes() + drechtstedenModels.map { it.asRoutedMenuItem() })
+        // A project that is the only one in its area can have the area's path. Keep the menu's route.
+        .distinctBy { it.path }
 
 private fun Router.drechtstedenRouting(
     routes: List<RoutedMenuItem>

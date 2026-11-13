@@ -19,8 +19,7 @@ fun OssRouting() {
 
     val router = remember {
         createLuxRouter {
-            ossRouting(ossNavMenu.asRoutes())
-            ossRouting(ossTwinModels.asRoutes())
+            ossRouting(ossRoutes())
         }
     }
 
@@ -31,6 +30,9 @@ fun OssRouting() {
     router.renderActivePage { DeferringHost { it() } }
 }
 
+
+/** All pages of the Oss subdomain. Also used to list the pages to pre-render. */
+fun ossRoutes(): List<RoutedMenuItem> = ossNavMenu.asRoutes() + ossTwinModels.asRoutes()
 
 private fun Router.ossRouting(
     routes: List<RoutedMenuItem>
