@@ -12,8 +12,7 @@ plugins {
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
     id("com.github.node-gradle.node") version "7.1.0"
-    // Disabled, does not work yet
-    //id("energy.lux.prerender") version "0.0.1"
+    id("energy.lux.prerender")
 }
 
 group = "energy.lux.frontend"
@@ -223,7 +222,18 @@ project.afterEvaluate {
     }
 }
 
-// Disabled, does not work yet
-//tasks.getByName<energy.lux.prerender.PreRenderTask>("preRender") {
-//    entryPointUrl.set("http://${System.getenv("LUX_DOMAIN")}")
-//}
+/**
+ * Pre-render pages to static HTML.
+ * Run after a release build: ./gradlew site:preRender -PkobwebBuildTarget=RELEASE
+ *
+ * Pages are visited under their real host name (DomainRoutes picks the site from it).
+ * The task answers those requests from the build output, so no server or backend has to run.
+ */
+tasks.named<energy.lux.prerender.PreRenderTask>("preRender") {
+    dependsOn("npmRollup", "jsProcessResources")
+    urls.set(listOf("http://$LUX_DOMAIN/nl/"))
+    followLinks.set(false)
+    staticDir.set(layout.buildDirectory.dir("processedResources/js/main/public"))
+    jsDir.set(layout.buildDirectory.dir("rollup"))
+    jsBaseUrl.set(BACKEND_URL)
+}

@@ -19,6 +19,9 @@ COPY --parents \
     shared/build.gradle.kts \
     backend/build.gradle.kts \
     remotedev/build.gradle.kts \
+    prerender/build.gradle.kts \
+    prerender/settings.gradle.kts \
+    prerender/src/main \
     js-libs \
     ./
 

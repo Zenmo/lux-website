@@ -18,9 +18,10 @@ data class PerDomainDiskPagePersistence(
     }
 
     fun toOutputFilePath(pageUri: Uri): String {
-        val path = pageUri.path
-        val filePath = if (path.isEmpty()) {
-            "index.html"
+        val path = pageUri.path.removePrefix("/")
+        // "" -> index.html, "nl/" -> nl/index.html, "en/about" -> en/about.html
+        val filePath = if (path.isEmpty() || path.endsWith("/")) {
+            "${path}index.html"
         } else {
             "$path.html"
         }

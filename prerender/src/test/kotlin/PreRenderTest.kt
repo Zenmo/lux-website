@@ -9,7 +9,6 @@ import org.http4k.server.Http4kServer
 import org.http4k.server.asServer
 import org.http4k.server.Undertow
 import kotlin.test.Test
-import org.gradle.kotlin.dsl.register
 import org.http4k.core.Uri
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
@@ -37,12 +36,12 @@ class PreRenderTest {
 
         startFrontEndServer(port).use {
             val project = ProjectBuilder.builder().build()
-            val task = project.tasks.register<PreRenderTask>("preRender")
+            val task = project.tasks.register("preRender", PreRenderTask::class.java)
             var persistence = InMemoryPagePersistence()
             task.configure {
-                entryPointUrl.set("http://localhost:$port")
-                outputDir.set(project.layout.buildDirectory.dir("preRender"))
-                this.persistence.set(persistence)
+                it.urls.set(listOf("http://localhost:$port"))
+                it.outputDir.set(project.layout.buildDirectory.dir("preRender"))
+                it.persistence.set(persistence)
             }
 
             task.get().action()
@@ -50,7 +49,7 @@ class PreRenderTest {
             val pages = persistence.getPages()
             assertEquals(2, pages.size)
 
-            val homePage = pages[Uri.of("http://localhost:$port")]
+            val homePage = pages[Uri.of("http://localhost:$port/")]
             assertNotNull(homePage)
             assertContains(homePage, "<h1>Home page</h1>")
 
