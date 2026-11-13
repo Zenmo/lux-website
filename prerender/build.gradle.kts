@@ -1,5 +1,4 @@
 plugins {
-    `kotlin-dsl`
     kotlin("jvm")
     id("java-gradle-plugin")
     id("maven-publish")
@@ -24,6 +23,7 @@ dependencies {
 
     testImplementation("org.http4k:http4k-server-undertow")
     testImplementation(kotlin("test"))
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.test {
