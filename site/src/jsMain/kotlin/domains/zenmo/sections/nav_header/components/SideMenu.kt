@@ -23,7 +23,6 @@ import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.components.SideMenuSlideInAnim
 import energy.lux.frontend.components.SideMenuState
 import energy.lux.frontend.components.widgets.LangText
-import energy.lux.frontend.core.MenuFactory
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.domains.lux.components.HorizontalLine
 import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
@@ -35,6 +34,7 @@ import org.jetbrains.compose.web.dom.Span
 
 @Composable
 fun SideMenu(
+    menuItems: List<MenuItem>,
     menuState: SideMenuState,
     close: () -> Unit,
     onAnimationEnd: () -> Unit,
@@ -79,7 +79,7 @@ fun SideMenu(
                 HorizontalLine(
                     modifier = Modifier.margin(0.px)
                 )
-                NavItems(close = { close() })
+                NavItems(menuItems, close = { close() })
                 Box(modifier = Modifier.fillMaxWidth().flexGrow(1))
                 Row {
                     SiteLogo()
@@ -91,6 +91,7 @@ fun SideMenu(
 
 @Composable
 private fun NavItems(
+    menuItems: List<MenuItem>,
     close: () -> Unit,
 ) {
     Column(
@@ -112,7 +113,7 @@ private fun NavItems(
                 en = "Navigation"
             )
         }
-        MenuFactory.menuItems().forEach { item ->
+        menuItems.forEach { item ->
             when (item) {
                 is MenuItem.Simple -> {
                     SideMenuNavLink(

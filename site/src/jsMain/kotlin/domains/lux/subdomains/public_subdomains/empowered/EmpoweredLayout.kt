@@ -9,7 +9,7 @@ fun EmpoweredLayout(
     content: @Composable () -> Unit,
 ) {
     PageLayout(
-        header = { LuxHeader() },
+        header = { LuxHeader(empoweredMenuItems) },
         footer = {},
         title = "EmPowerED",
     ) {

@@ -47,7 +47,7 @@ private fun Router.regioFoodValleyRouting(
             title.nl
         )
         PageLayout(
-            header = { LuxHeader() },
+            header = { LuxHeader(regiofoodvalleyMenu) },
             footer = {},
             title = "RegioFoodValley - $pageTitle",
         ) {

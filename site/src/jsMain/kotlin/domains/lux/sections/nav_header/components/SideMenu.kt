@@ -26,7 +26,6 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.SideMenuSlideInAnim
 import energy.lux.frontend.components.SideMenuState
-import energy.lux.frontend.core.MenuFactory
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.styles.ActiveLinkStyleVariant
@@ -64,6 +63,7 @@ val MobileNavStyle = CssStyle {
 
 @Composable
 fun SideMenu(
+    menuItems: List<MenuItem>,
     menuState: SideMenuState,
     close: () -> Unit,
     onAnimationEnd: () -> Unit
@@ -109,7 +109,7 @@ fun SideMenu(
                         .fillMaxWidth()
                         .toAttrs()
                 ) {
-                    MenuFactory.menuItems().forEach { item ->
+                    menuItems.forEach { item ->
                         when (item) {
                             is MenuItem.Simple ->
                                 SideMenuItem(

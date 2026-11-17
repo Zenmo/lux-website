@@ -8,10 +8,10 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.navbar_actions.NavBarActionsMenuWidget
+import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.domains.lux.sections.nav_header.components.NarrowScreenHeaderComponents
 import energy.lux.frontend.domains.lux.sections.nav_header.components.WideScreenHeaderComponents
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -33,9 +33,8 @@ val HeaderInnerStyle = CssStyle {
 }
 
 
-@OptIn(DelicateApi::class)
 @Composable
-fun LuxHeader() {
+fun LuxHeader(menuItems: List<MenuItem>) {
     WideScreenHeaderComponents {
         Row(
             HeaderInnerStyle.toModifier()
@@ -45,10 +44,10 @@ fun LuxHeader() {
             Row(
                 verticalAlignment = Alignment.CenterVertically, modifier = Modifier.gap(1.cssRem)
             ) {
-                NavBar()
+                NavBar(menuItems)
                 NavBarActionsMenuWidget()
             }
         }
     }
-    NarrowScreenHeaderComponents()
+    NarrowScreenHeaderComponents(menuItems)
 }

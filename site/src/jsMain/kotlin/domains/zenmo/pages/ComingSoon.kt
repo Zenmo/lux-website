@@ -45,7 +45,8 @@ val ComingSoonPageVariant = SectionContainerStyle.addVariant {
 @Composable
 fun ComingSoon() {
     PageLayout(
-        title = "Coming Soon"
+        title = "Coming Soon",
+        header = {},
     ) {
         SectionContainer(
             variant = ComingSoonPageVariant,
