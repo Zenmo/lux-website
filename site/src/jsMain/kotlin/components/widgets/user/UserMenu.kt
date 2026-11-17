@@ -21,7 +21,7 @@ import com.zenmo.web.zenmo.theme.font.TextStyle
 import energy.lux.frontend.components.widgets.navbar_actions.SiteLanguageButton
 import energy.lux.frontend.core.services.auth.UserService
 import energy.lux.frontend.core.services.localization.localizedUrl
-import energy.lux.frontend.domains.lux.pages.user_profile.userProfileRoute
+import energy.lux.frontend.domains.lux.pages.user_profile.USER_PROFILE_PATH
 import energy.lux.frontend.domains.lux.styles.DeEmphasizedTextStyle
 import energy.lux.frontend.pages.SiteGlobals
 import energy.lux.frontend.theme.SitePalette
@@ -96,7 +96,7 @@ private fun UserInfo(userInfo: UserInfo) {
                 ctx.router.navigateTo(
                     localizedUrl(
                         SiteGlobals.LUX_DOMAIN,
-                        userProfileRoute.path
+                        USER_PROFILE_PATH
                     )
                 )
             }

@@ -1,21 +1,13 @@
 package energy.lux.frontend.domains.lux.core.model.subdomain
 
-import androidx.compose.runtime.Composable
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.core.PrivateTwinModel
 import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.*
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.drechtsteden.DrechtstedenRouting
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.genius.Genius
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.oss.OssRouting
-import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodvalley.RegioFoodValleyRouting
-import energy.lux.frontend.domains.lux.subdomains.public_subdomains.PureEnergie
 import kotlin.uuid.Uuid
 
 
 enum class PrivateSubdomainModel(
     override val subdomain: String,
-    override val subdomainComponent: @Composable () -> Unit,
     override val label: LocalizedText,
     override val applicationArea: LuxApplicationArea,
     override val imageUrl: String,
@@ -24,7 +16,6 @@ enum class PrivateSubdomainModel(
 ) : SubdomainTwinModel, PrivateTwinModel {
     DRECHTSTEDEN(
         subdomain = "drechtsteden",
-        subdomainComponent = { DrechtstedenRouting() },
         label = LocalizedText(nl = "Drechtsteden"),
         imageUrl = "/lux/images/model_thumbnails/drechtsteden-rivier.jpg",
         entryPoint = "drechtsteden",
@@ -32,7 +23,6 @@ enum class PrivateSubdomainModel(
     ),
     GENIUS(
         subdomain = "genius",
-        subdomainComponent = { Genius() },
         label = LocalizedText(nl = "Genius"),
         imageUrl = "/lux/images/model_thumbnails/GENIUS5.jpg",
         entryPoint = "genius",
@@ -41,7 +31,6 @@ enum class PrivateSubdomainModel(
     ),
     HESSENPOORT(
         subdomain = "hessenpoort",
-        subdomainComponent = { Hessenpoort() },
         label = LocalizedText(nl = "Hessenpoort"),
         imageUrl = "/lux/images/model_thumbnails/Hessenpoort2.jpg",
         entryPoint = "hessenpoort",
@@ -50,7 +39,6 @@ enum class PrivateSubdomainModel(
     ),
     KAS_ALS_ENERGIEBRON(
         subdomain = "kasalsenergiebron",
-        subdomainComponent = { KasAlsEnergiebron() },
         label = LocalizedText(nl = "Kas Als Energiebron"),
         imageUrl = "/lux/images/model_thumbnails/kasalsenergiebron6.jpg",
         entryPoint = "kasalsenergiebron",
@@ -59,7 +47,6 @@ enum class PrivateSubdomainModel(
     ),
     PREZERO(
         subdomain = "prezero",
-        subdomainComponent = { PreZero() },
         label = LocalizedText(nl = "PreZero"),
         imageUrl = "/lux/images/model_thumbnails/ModelThumbnailPreZero.png",
         entryPoint = "prezero",
@@ -68,7 +55,6 @@ enum class PrivateSubdomainModel(
     ),
     BORCHWERF(
         subdomain = "borchwerf",
-        subdomainComponent = { Borchwerf() },
         label = LocalizedText(nl = "Borchwerf"),
         imageUrl = "/lux/images/model_thumbnails/borchwerf.png",
         entryPoint = "borchwerf",
@@ -77,7 +63,6 @@ enum class PrivateSubdomainModel(
     ),
     DE_WIEKEN(
         subdomain = "dewieken",
-        subdomainComponent = { DeWieken() },
         label = LocalizedText(nl = "De Wieken"),
         imageUrl = "/lux/images/model_thumbnails/dewieken.png",
         entryPoint = "dewieken",
@@ -86,7 +71,6 @@ enum class PrivateSubdomainModel(
     ),
     VAANPARK(
         subdomain = "vaanpark",
-        subdomainComponent = { Vaanpark() },
         label = LocalizedText(nl = "Vaanpark"),
         imageUrl = "/lux/images/model_thumbnails/vaanpark.png",
         entryPoint = "vaanpark",
@@ -95,7 +79,6 @@ enum class PrivateSubdomainModel(
     ),
     BIJSTERHUIZEN(
         subdomain = "bijsterhuizen",
-        subdomainComponent = { Bijsterhuizen() },
         label = LocalizedText(nl = "Bijsterhuizen"),
         imageUrl = "/lux/images/model_thumbnails/bijsterhuizen.png",
         entryPoint = "bijsterhuizen",
@@ -104,7 +87,6 @@ enum class PrivateSubdomainModel(
     ),
     OSS(
         subdomain = "oss",
-        subdomainComponent = { OssRouting() },
         label = LocalizedText(nl = "Oss"),
         imageUrl = "/lux/images/model_thumbnails/oss.png",
         entryPoint = "oss",
@@ -112,7 +94,6 @@ enum class PrivateSubdomainModel(
     ),
     SLOTERDIJK(
         subdomain = "sloterdijk",
-        subdomainComponent = { Sloterdijk() },
         label = LocalizedText(nl = "SloterdijkPoortNoord"),
         imageUrl = "/lux/images/model_thumbnails/sloterdijk.jpg",
         entryPoint = "sloterdijk",
@@ -121,7 +102,6 @@ enum class PrivateSubdomainModel(
     ),
     BREDA_OOST(
         subdomain = "3bo",
-        subdomainComponent = { BredaOost() },
         label = LocalizedText("3B-O"),
         imageUrl = "/lux/images/model_thumbnails/breda-oost.png",
         entryPoint = "breda_oost",
@@ -130,7 +110,6 @@ enum class PrivateSubdomainModel(
     ),
     PURE_ENERGIE(
         subdomain = "pureenergie",
-        subdomainComponent = { PureEnergie() },
         label = LocalizedText(nl = "PureEnergie"),
         imageUrl = "/lux/images/models/pureEnergie.png",
         entryPoint = "pure_energie",
@@ -139,7 +118,6 @@ enum class PrivateSubdomainModel(
     ),
     H4B(
         subdomain = "h4b",
-        subdomainComponent = { H4B() },
         label = LocalizedText(nl = "Heat4Buildings"),
         imageUrl = "/lux/images/model_thumbnails/h4b.jpeg",
         entryPoint = "h4b",
@@ -148,7 +126,6 @@ enum class PrivateSubdomainModel(
     ),
     REGIOFOODVALLEY(
         subdomain = "regiofoodvalley",
-        subdomainComponent = { RegioFoodValleyRouting() },
         label = LocalizedText(nl = "RegioFoodValley"),
         imageUrl = "/lux/images/model_thumbnails/regiofoodvalley.jpg",
         entryPoint = "regiofoodvalley",
