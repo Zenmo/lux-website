@@ -1,10 +1,15 @@
 package energy.lux.frontend.domains.lux.sections.nav_header
 
+import androidx.compose.runtime.Composable
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.core.models.RoutedMenuItem
 import energy.lux.frontend.core.services.localization.LocalizedText
 import energy.lux.frontend.domains.lux.pages.about_us.AboutUs
 import energy.lux.frontend.domains.lux.pages.application_fields.LuxApplicationArea
+import energy.lux.frontend.domains.lux.pages.application_fields.lux_business.LuxBusiness
+import energy.lux.frontend.domains.lux.pages.application_fields.lux_enegy_hub.LuxEnergyHub
+import energy.lux.frontend.domains.lux.pages.application_fields.lux_neighbourhood.LuxNeighbourhood
+import energy.lux.frontend.domains.lux.pages.application_fields.lux_region.LuxRegion
 import energy.lux.frontend.domains.lux.pages.luxmodels.LuxModels
 
 private val applicationAreasMenuItem = MenuItem.WithSubs(
@@ -15,12 +20,20 @@ private val applicationAreasMenuItem = MenuItem.WithSubs(
                 path = field.path,
                 url = field.url,
                 label = field.label,
-                pageComponent = field.pageComponent,
+                pageComponent = { ApplicationAreaPage(field) },
             ),
             descriptionParagraph = field.shortDescription
         )
     }
 )
+
+@Composable
+private fun ApplicationAreaPage(area: LuxApplicationArea) = when (area) {
+    LuxApplicationArea.LUX_ENERGY_HUB -> LuxEnergyHub()
+    LuxApplicationArea.LUX_REGION -> LuxRegion()
+    LuxApplicationArea.LUX_NEIGHBOURHOOD -> LuxNeighbourhood()
+    LuxApplicationArea.LUX_BUSINESS -> LuxBusiness()
+}
 
 private val aboutUsMenuItem = MenuItem.Simple(
     route = RoutedMenuItem(
