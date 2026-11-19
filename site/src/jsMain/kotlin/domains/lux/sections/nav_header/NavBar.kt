@@ -9,7 +9,6 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
-import energy.lux.frontend.core.MenuFactory
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.domains.lux.sections.nav_header.components.LuxMenuItem
 import energy.lux.frontend.domains.lux.sections.nav_header.components.LuxMenuItemWithSubs
@@ -32,7 +31,7 @@ val NavListStyle = CssStyle.base {
 
 
 @Composable
-fun NavBar() {
+fun NavBar(menuItems: List<MenuItem>) {
     Nav(
         Modifier
             .fillMaxHeight()
@@ -41,7 +40,7 @@ fun NavBar() {
         Ul(
             NavListStyle.toModifier().toAttrs()
         ) {
-            MenuFactory.menuItems().forEach { menuItem ->
+            menuItems.forEach { menuItem ->
                 when (menuItem) {
                     is MenuItem.Simple -> {
                         LuxMenuItem(

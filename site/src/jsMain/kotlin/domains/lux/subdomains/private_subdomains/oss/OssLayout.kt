@@ -10,7 +10,7 @@ fun OssLayout(
     content: @Composable () -> Unit,
 ) {
     PageLayout(
-        header = { LuxHeader() },
+        header = { LuxHeader(ossNavMenu) },
         footer = {},
         title = "Oss - $title",
     ) {

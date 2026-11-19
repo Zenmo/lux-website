@@ -28,6 +28,7 @@ import energy.lux.frontend.domains.zenmo.sections.nav_header.components.NavBar
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.SideMenu
 import energy.lux.frontend.domains.zenmo.sections.nav_header.components.SiteLogo
 import energy.lux.frontend.domains.zenmo.widgets.button.IconButton
+import energy.lux.frontend.core.models.MenuItem
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Header
 
@@ -66,7 +67,7 @@ private fun HamburgerButton(onClick: () -> Unit) {
 
 
 @Composable
-fun NavHeader() {
+fun NavHeader(menuItems: List<MenuItem>) {
     Header(
         attrs = NavHeaderStyle.toModifier()
             .then(HeaderPaddingStyle.toModifier())
@@ -85,7 +86,7 @@ fun NavHeader() {
                 modifier = Modifier
                     .flex(1), contentAlignment = Alignment.Center
             ) {
-                NavBar()
+                NavBar(menuItems)
             }
             ZenmoLanguageToggleButton()
         }
@@ -104,6 +105,7 @@ fun NavHeader() {
 
             if (menuState != SideMenuState.CLOSED) {
                 SideMenu(
+                    menuItems,
                     menuState,
                     close = { menuState = menuState.close() },
                     onAnimationEnd = { if (menuState == SideMenuState.CLOSING) menuState = SideMenuState.CLOSED }

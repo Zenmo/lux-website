@@ -8,7 +8,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
-import energy.lux.frontend.core.MenuFactory
 import energy.lux.frontend.core.models.MenuItem
 import energy.lux.frontend.domains.zenmo.widgets.MenuItemWithSubs
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -31,12 +30,13 @@ val NavBarStyle = CssStyle {
 
 @Composable
 fun NavBar(
+    menuItems: List<MenuItem>,
     modifier: Modifier = NavBarStyle.toModifier(),
 ) {
     Nav(
         attrs = modifier.toAttrs()
     ) {
-        MenuFactory.menuItems().forEach { item ->
+        menuItems.forEach { item ->
             when (item) {
                 is MenuItem.Simple -> {
                     NavBarLink(

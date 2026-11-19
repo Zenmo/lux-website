@@ -3,15 +3,14 @@ package energy.lux.frontend.domains.lux.sections.nav_header.components
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.height
-import com.varabyte.kobweb.framework.annotations.DelicateApi
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import energy.lux.frontend.components.SideMenuState
+import energy.lux.frontend.core.models.MenuItem
 import org.jetbrains.compose.web.css.px
 
-@OptIn(DelicateApi::class)
 @Composable
-fun NarrowScreenHeaderComponents() {
+fun NarrowScreenHeaderComponents(menuItems: List<MenuItem>) {
     var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
 
     LuxHeaderComponent(
@@ -29,6 +28,7 @@ fun NarrowScreenHeaderComponents() {
 
     if (menuState != SideMenuState.CLOSED) {
         SideMenu(
+            menuItems = menuItems,
             menuState = menuState,
             close = { menuState = menuState.close() },
             onAnimationEnd = {
