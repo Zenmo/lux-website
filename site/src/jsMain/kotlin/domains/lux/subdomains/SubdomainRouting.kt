@@ -41,6 +41,8 @@ import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.Em
 /**
  * The page of each subdomain lives here and not in the subdomain models,
  * so code that only needs a model's data (label, url) does not pull in every subdomain's pages.
+ *
+ * Keep in sync with subdomainPaths() in PrerenderUrls.kt, which lists the pages to pre-render.
  */
 @Composable
 fun LuxSubdomainRoutingComponent(subdomain: String) {

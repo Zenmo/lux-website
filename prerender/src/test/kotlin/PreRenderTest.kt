@@ -9,7 +9,6 @@ import org.http4k.server.Http4kServer
 import org.http4k.server.asServer
 import org.http4k.server.Undertow
 import kotlin.test.Test
-import org.gradle.kotlin.dsl.register
 import org.http4k.core.Uri
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
@@ -17,16 +16,20 @@ import kotlin.test.assertNotNull
 
 class PreRenderTest {
     /**
-     * Serves the same HTML for every path
+     * Serves the same HTML for every path, like a single-page app,
+     * and a page list module that lists one more page.
      */
-    fun startFrontEndServer(port: Int = 8080): Http4kServer {
-        // app which returns the same html for every path
-        val app: HttpHandler = {
-            val resourceUri = this.javaClass.getResource("/spa.html")
-
-            Response(OK)
-                .header("Content-Type", "text/html")
-                .body(resourceUri!!.openStream())
+    fun startFrontEndServer(port: Int): Http4kServer {
+        val app: HttpHandler = { request ->
+            if (request.uri.path == "/pages.mjs") {
+                Response(OK)
+                    .header("Content-Type", "text/javascript")
+                    .body("""export function prerenderUrls() { return ["http://localhost:$port/sub/page"] }""")
+            } else {
+                Response(OK)
+                    .header("Content-Type", "text/html")
+                    .body(javaClass.getResource("/spa.html")!!.openStream())
+            }
         }
         return app.asServer(Undertow(port)).start()
     }
@@ -37,12 +40,13 @@ class PreRenderTest {
 
         startFrontEndServer(port).use {
             val project = ProjectBuilder.builder().build()
-            val task = project.tasks.register<PreRenderTask>("preRender")
+            val task = project.tasks.register("preRender", PreRenderTask::class.java)
             var persistence = InMemoryPagePersistence()
             task.configure {
-                entryPointUrl.set("http://localhost:$port")
-                outputDir.set(project.layout.buildDirectory.dir("preRender"))
-                this.persistence.set(persistence)
+                it.startUrls.set(listOf("http://localhost:$port"))
+                it.pageListModuleUrl.set("http://localhost:$port/pages.mjs")
+                it.outputDir.set(project.layout.buildDirectory.dir("preRender"))
+                it.persistence.set(persistence)
             }
 
             task.get().action()
@@ -50,7 +54,7 @@ class PreRenderTest {
             val pages = persistence.getPages()
             assertEquals(2, pages.size)
 
-            val homePage = pages[Uri.of("http://localhost:$port")]
+            val homePage = pages[Uri.of("http://localhost:$port/")]
             assertNotNull(homePage)
             assertContains(homePage, "<h1>Home page</h1>")
 

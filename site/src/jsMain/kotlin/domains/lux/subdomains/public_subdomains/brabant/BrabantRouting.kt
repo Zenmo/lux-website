@@ -21,8 +21,7 @@ import kotlinx.browser.window
 fun BrabantRouting() {
     val router = remember {
         createLuxRouter {
-            brabantRouting(brabantNavMenu.asRoutes())
-            brabantRouting(brabantModels.asRoutes())
+            brabantRouting(brabantRoutes())
         }
     }
 
@@ -32,6 +31,9 @@ fun BrabantRouting() {
     )
     router.renderActivePage { DeferringHost { it() } }
 }
+
+/** All pages of the Brabant subdomain. Also used to list the pages to pre-render. */
+fun brabantRoutes(): List<RoutedMenuItem> = brabantNavMenu.asRoutes() + brabantModels.asRoutes()
 
 private fun Router.brabantRouting(
     routes: List<RoutedMenuItem>

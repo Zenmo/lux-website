@@ -16,6 +16,7 @@ import energy.lux.frontend.domains.lux.pages.home.HomePage
 import energy.lux.frontend.domains.lux.sections.nav_header.luxNavMenu
 import kotlinx.browser.window
 
+/** Keep the public pages in sync with luxPaths() in PrerenderUrls.kt, which lists the pages to pre-render. */
 @Composable
 fun LuxRoutingComponent() {
     val router = remember {

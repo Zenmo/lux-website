@@ -21,12 +21,7 @@ import kotlinx.browser.window
 fun RegioFoodValleyRouting() {
     val router = remember {
         createLuxRouter {
-            regioFoodValleyRouting(regiofoodvalleyMenu.asRoutes())
-            regioFoodValleyRouting(
-                regioFoodValleyModels
-                    .filter { it.projectPath.isNotBlank() }
-                    .map { it.asRoutedMenuItem() }
-            )
+            regioFoodValleyRouting(regioFoodValleyRoutes())
         }
     }
 
@@ -36,6 +31,12 @@ fun RegioFoodValleyRouting() {
     )
     router.renderActivePage { DeferringHost { it() } }
 }
+
+/** All pages of the RegioFoodValley subdomain. Also used to list the pages to pre-render. */
+fun regioFoodValleyRoutes(): List<RoutedMenuItem> =
+    (regiofoodvalleyMenu.asRoutes() + regioFoodValleyModels.map { it.asRoutedMenuItem() })
+        // A project that is the only one in its area can have the area's path. Keep the menu's route.
+        .distinctBy { it.path }
 
 private fun Router.regioFoodValleyRouting(
     routes: List<RoutedMenuItem>

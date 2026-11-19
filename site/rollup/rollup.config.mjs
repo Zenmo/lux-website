@@ -7,6 +7,9 @@ import {fileURLToPath} from "node:url";
 import {globSync} from "glob";
 import "core-js/stable/array/to-sorted.js"
 
+/** The prerender task loads this file, so it gets a fixed name instead of a hashed one. */
+const PRERENDER_ENTRY = "PrerenderUrls.export.mjs"
+
 const rootProjectDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..")
 
 /**
@@ -23,6 +26,9 @@ export default {
         entryFileNames: chunkInfo => {
             if (chunkInfo.facadeModuleId.endsWith("main.export.mjs")) {
                 return "main.export.mjs"
+            }
+            if (isPrerenderEntry(chunkInfo.facadeModuleId)) {
+                return PRERENDER_ENTRY
             }
             return moduleIdToChunkName(chunkInfo.facadeModuleId) + "-[hash].mjs"
         },
@@ -98,10 +104,25 @@ function getFirstImporterWithAccessPolicy(moduleId, getModuleInfo) {
         throw Error(`accessPolicy not found in importers of ${moduleId}`)
     }
 
+    // The prerender entry imports every domain's routes.
+    // Never put shared code in its chunk, or visitors of a domain would load the prerender chunk.
+    const siteImporters = importersWithAccessPolicy.filter(it => !isPrerenderEntry(it))
+    if (siteImporters.length > 0) {
+        return shortest(siteImporters)
+    }
+
     // Selecting the shortest module ensures that we prefer the public main.export.mjs entrypoint
     // rather than an entrypoint which is protected by role-based access control.
     // It would be more reliable to inspect the accessPolicy variable content but this is more complicated.
     return shortest(importersWithAccessPolicy)
+}
+
+/**
+ * @param {string} moduleId
+ * @returns boolean
+ */
+function isPrerenderEntry(moduleId) {
+    return moduleId.endsWith(`/prerender/${PRERENDER_ENTRY}`)
 }
 
 /**
