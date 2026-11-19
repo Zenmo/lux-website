@@ -3,5 +3,10 @@
 
     file_server
 
-    try_files {path} {path}.html index.html
+    # Prerendered pages live in a folder per host (see prerender/ and the Dockerfile):
+    #   /lux.energy/nl/index.html     for lux.energy/nl/ and lux.energy/nl
+    #   /lux.energy/nl/about-us.html  for lux.energy/nl/about-us
+    # Pages that were not prerendered fall back to the files of the static site,
+    # and otherwise to index.html, which renders the page in the browser.
+    try_files /{host}{path}.html /{host}{path}/index.html {path} {path}.html /index.html
 }

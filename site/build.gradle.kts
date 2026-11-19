@@ -231,8 +231,11 @@ project.afterEvaluate {
  */
 tasks.named<energy.lux.prerender.PreRenderTask>("preRender") {
     dependsOn("npmRollup", "jsProcessResources")
+    // Render with the protocol the site is served on (https when deployed), because some pages
+    // put window.location.protocol into links. Requests to the site and BACKEND_URL are answered by the task.
+    val siteProtocol = BACKEND_URL.substringBefore("://")
     // The first page to render. The list of all pages comes from PrerenderUrls.kt.
-    startUrls.set(listOf("http://$LUX_DOMAIN/nl/"))
+    startUrls.set(listOf("$siteProtocol://$LUX_DOMAIN/nl/"))
     pageListModuleUrl.set("$BACKEND_URL/PrerenderUrls.export.mjs")
     staticDir.set(layout.buildDirectory.dir("processedResources/js/main/public"))
     jsDir.set(layout.buildDirectory.dir("rollup"))
