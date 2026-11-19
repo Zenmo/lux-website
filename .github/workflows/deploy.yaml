@@ -71,6 +71,8 @@ jobs:
             -   run: ./deploy/static/build.sh --push
                 env:
                     BACKEND_URL: ${{ needs.variables.outputs.BACKEND_URL }}
+                    ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
+                    LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
                     TAG: ${{ needs.variables.outputs.TAG }}
 
 
