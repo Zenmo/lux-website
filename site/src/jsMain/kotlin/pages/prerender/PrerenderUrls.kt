@@ -70,8 +70,9 @@ private fun subdomainPaths(model: SubdomainTwinModel): List<String> = when (mode
     PrivateSubdomainModel.REGIOFOODVALLEY -> localized(regioFoodValleyRoutes().paths())
     empowered -> localized(empoweredMenuItems.asRoutes().paths())
     brabant -> localized(brabantRoutes().paths())
-    // Subdomains without a router show the same page on every path
-    else -> listOf("/")
+    // Subdomains without a router show the same page on every path.
+    // Links point to /nl/ and /en/, so render those too, not only "/".
+    else -> listOf("/") + localizedPaths("/")
 }
 
 private fun List<RoutedMenuItem>.paths() = map { it.path }

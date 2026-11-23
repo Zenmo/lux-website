@@ -5,26 +5,11 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     npm
 
-# pre-rendering disabled until it's useful
-#    libglib2.0-0t64 \
-#    libnss3 \
-#    libnspr4 \
-#    libdbus-1-3 \
-#    libatk1.0-0t64 \
-#    libatk-bridge2.0-0t64 \
-#    libatspi2.0-0t64 \
-#    libx11-6 \
-#    libxcomposite1 \
-#    libxdamage1 \
-#    libxext6 \
-#    libxfixes3 \
-#    libxrandr2 \
-#    libgbm1 \
-#    libxkbcommon0 \
-#    libasound2t64
-#
-#WORKDIR /app/prerender
-#RUN ./gradlew publish
+# Firefox and its system libraries for prerendering, in their own cached layer.
+# Keep the version equal to the Playwright the site build resolves (the Kobweb plugin brings it):
+#   ./gradlew site:buildEnvironment | grep playwright
+# Then the prerender task finds this browser. If they differ, it downloads its own, which also works.
+RUN npx --yes playwright@1.58.0 install --with-deps firefox
 
 # Create a cache layer with dependencies.
 # Need to copy all the gradle subprojects.
@@ -45,8 +30,9 @@ COPY --parents \
     js-libs \
     ./
 
-# Cache gradle dependencies in a docker layer
-RUN ./gradlew site:dependencies
+# Cache gradle and npm dependencies in a docker layer.
+# kotlinNpmInstall also installs our own js-libs, which Rollup bundles into the JavaScript.
+RUN ./gradlew kotlinNpmInstall && ./gradlew site:dependencies
 
 COPY site/rollup site/rollup
 
@@ -57,16 +43,24 @@ RUN ./gradlew site:npmInstall
 COPY shared shared
 COPY site site
 
-# BACKEND_URL is used in index.html
+# BACKEND_URL is used in index.html.
+# The domains decide which pages are prerendered and the folder each one is saved in,
+# so they must match the backend build (deploy/backend/Dockerfile).
 ARG BACKEND_URL=https://site-backend.lux.energy
-# -PkobwebBuildTarget=RELEASE removes hot reload elements and styles from index.html
-RUN ./gradlew site:jsProcessResources -PkobwebBuildTarget=RELEASE
+ARG ZENMO_DOMAIN=zenmo.com
+ARG LUX_DOMAIN=lux.energy
+ARG SUBDOMAIN_SEPARATOR=.
+# -PkobwebBuildTarget=RELEASE removes hot reload elements and styles from index.html.
+# preRender also builds the static site (jsProcessResources) and the JavaScript it renders with.
+RUN ./gradlew site:preRender -PkobwebBuildTarget=RELEASE
 
 # Use Caddy to serve static files
 FROM caddy:2.8.4
 WORKDIR /srv
 
 COPY --from=builder /app/site/build/processedResources/js/main/public /srv/
+# One folder per host, e.g. /srv/lux.energy/nl/index.html. The Caddyfile looks there first.
+COPY --from=builder /app/site/build/preRender /srv/
 COPY deploy/static/Caddyfile /etc/caddy/Caddyfile
 EXPOSE 80
 
