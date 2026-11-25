@@ -15,6 +15,7 @@ docker buildx build \
     --build-arg ZENMO_DOMAIN=$ZENMO_DOMAIN \
     --build-arg LUX_DOMAIN=$LUX_DOMAIN \
     --build-arg SUBDOMAIN_SEPARATOR=$SUBDOMAIN_SEPARATOR \
+    --build-arg ORCHESTRATOR_URL=$ORCHESTRATOR_URL \
     --progress=plain \
     --cache-to type=gha,mode=max,scope=backend \
     --cache-from type=gha,scope=backend \

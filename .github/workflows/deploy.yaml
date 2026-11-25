@@ -25,6 +25,7 @@ jobs:
             ZENMO_DOMAIN: ${{ fromJson(steps.variables.outputs.result).ZENMO_DOMAIN }}
             LUX_DOMAIN: ${{ fromJson(steps.variables.outputs.result).LUX_DOMAIN }}
             SUBDOMAIN_SEPARATOR: ${{ fromJson(steps.variables.outputs.result).SUBDOMAIN_SEPARATOR }}
+            ORCHESTRATOR_URL: ${{ fromJson(steps.variables.outputs.result).ORCHESTRATOR_URL }}
 
             # traefik
             TRAEFIK_ZENMO_MAIN_CERT: ${{ fromJson(steps.variables.outputs.result).TRAEFIK_ZENMO_MAIN_CERT }}
@@ -106,6 +107,7 @@ jobs:
                     ZENMO_DOMAIN: ${{ needs.variables.outputs.ZENMO_DOMAIN }}
                     LUX_DOMAIN: ${{ needs.variables.outputs.LUX_DOMAIN }}
                     SUBDOMAIN_SEPARATOR: ${{ needs.variables.outputs.SUBDOMAIN_SEPARATOR }}
+                    ORCHESTRATOR_URL: ${{ needs.variables.outputs.ORCHESTRATOR_URL }}
                     TAG: ${{ needs.variables.outputs.TAG }}
 
     deploy:
