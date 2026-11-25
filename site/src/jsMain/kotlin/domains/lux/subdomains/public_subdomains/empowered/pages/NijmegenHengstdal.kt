@@ -10,6 +10,7 @@ import energy.lux.frontend.domains.lux.subdomains.components.ZenmoModellerProfil
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.empoweredDomain
 import energy.lux.frontend.domains.lux.subdomains.public_subdomains.empowered.nijmegenHengstdalMenuItem
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
+import energy.lux.frontend.domains.zenmo.widgets.orchestrator.OrchestratorModelEmbed
 import energy.lux.frontend.core.models.ZenmoTeamMember
 import kotlin.uuid.Uuid
 
@@ -23,12 +24,22 @@ val nijmegenHengstdalModel = TwinModelCardItem(
     isPrivate = empowered.isPrivate
 )
 
+/** EmPowerED model as configured in the LUX Orchestrator: container image name and tag */
+private const val EMPOWERED_ORCHESTRATOR_MODEL_ID = "ghcr.io/zenmo/empowered"
+private const val EMPOWERED_ORCHESTRATOR_VERSION_ID = "main-latest"
+
 @Composable
 fun NijmegenHengstdal() {
     SubdomainModelPage(
         modelId = nijmegenHengstdalModel.modelId,
         introContent = {
             SubHeaderText(nijmegenHengstdalModel.label)
+        },
+        modelContent = {
+            OrchestratorModelEmbed(
+                modelId = EMPOWERED_ORCHESTRATOR_MODEL_ID,
+                versionId = EMPOWERED_ORCHESTRATOR_VERSION_ID,
+            )
         },
         footerContent = {
             ZenmoModellerProfileCard(ZenmoTeamMember.NAUD_LOOMANS)
