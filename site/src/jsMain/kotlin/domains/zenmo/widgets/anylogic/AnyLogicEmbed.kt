@@ -15,6 +15,7 @@ import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import energy.lux.frontend.components.widgets.LoadingSpinner
+import energy.lux.frontend.components.widgets.registerPageUnloadHandlers
 import energy.lux.frontend.domains.lux.widgets.headings.SubHeaderText
 import energy.lux.frontend.pages.SiteGlobals
 import kotlinx.browser.document
@@ -23,7 +24,6 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.dom.Div
-import org.w3c.dom.events.Event
 import kotlin.uuid.Uuid
 
 /**
@@ -136,26 +136,6 @@ fun AnyLogicEmbed(
     EmbedContent(status, containerId, modifier, wrapperModifier)
 }
 
-
-/**
- * Registers event listeners to handle page unload events (tab close, navigation, refresh)
- * Returns a cleanup function to remove the listeners
- */
-private fun registerPageUnloadHandlers(onUnload: () -> Unit): () -> Unit {
-    val unloadEvents = listOf("beforeunload", "pagehide")
-    val handlers = unloadEvents.map { event ->
-        val handler: (Event) -> Unit = { onUnload() }
-        window.addEventListener(event, handler)
-        event to handler
-    }
-
-    // return cleanup function
-    return {
-        handlers.forEach { (event, handler) ->
-            window.removeEventListener(event, handler)
-        }
-    }
-}
 
 @Composable
 private fun EmbedContent(
