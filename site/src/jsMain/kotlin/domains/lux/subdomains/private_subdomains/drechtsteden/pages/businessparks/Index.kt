@@ -31,7 +31,7 @@ fun BusinessParksPage() {
                 BusinessParksText()
             }
         },
-        anylogicRender = {},
+        modelContent = {},
         footerContent = {
             HeaderText(
                 enText = "Business parks per municipality",

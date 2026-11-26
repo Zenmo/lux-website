@@ -21,7 +21,7 @@ import kotlin.uuid.Uuid
 fun Brabant() {
     SubdomainModelPage(
         modelId = Uuid.NIL,
-        anylogicRender = {},
+        modelContent = {},
         introContent = {
             Div {
                 LangText(

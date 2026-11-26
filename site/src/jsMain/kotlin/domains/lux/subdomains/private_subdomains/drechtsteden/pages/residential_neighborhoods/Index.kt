@@ -30,7 +30,7 @@ fun NeighbourhoodsPage() {
                 ResidentialAreaModelPageText()
             }
         },
-        anylogicRender = {},
+        modelContent = {},
         footerContent = {
             HeaderText(
                 enText = "Explore the Models",

@@ -23,7 +23,7 @@ fun SubdomainModelPage(
     apiKey: Uuid = anyLogicPublicApiKey,
     introContent: @Composable () -> Unit = {},
     mediaContent: @Composable () -> Unit = {},
-    anylogicRender: @Composable () -> Unit = {
+    modelContent: @Composable () -> Unit = {
         AnyLogicEmbed(
             modelId = modelId,
             apiKey = apiKey,
@@ -56,7 +56,7 @@ fun SubdomainModelPage(
                 if (lastModifiedDate != null) {
                     ModelLastUpdatedLabel(lastModifiedDate)
                 }
-                anylogicRender()
+                modelContent()
             }
             if (extraContent != null) {
                 SectionContainer(

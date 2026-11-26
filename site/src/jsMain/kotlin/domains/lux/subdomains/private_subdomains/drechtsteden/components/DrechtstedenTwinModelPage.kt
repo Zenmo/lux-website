@@ -14,7 +14,6 @@ import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.AnyLogicEmbed
 import energy.lux.frontend.domains.zenmo.widgets.anylogic.anyLogicPublicApiKey
 import org.jetbrains.compose.web.css.cssRem
-import kotlin.uuid.Uuid
 
 @Composable
 fun DrechtstedenTwinModelPage(
@@ -36,7 +35,7 @@ fun DrechtstedenTwinModelPage(
             introContent()
         }
     },
-    anylogicRender = {
+    modelContent = {
         when (twin) {
             is PublicDrechtstedenTwinModel -> {
                 AnyLogicEmbed(

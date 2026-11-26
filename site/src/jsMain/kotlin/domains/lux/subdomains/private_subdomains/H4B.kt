@@ -72,7 +72,7 @@ fun H4B() {
                         .objectFit(ObjectFit.Contain)
                 )
             },
-            anylogicRender = {
+            modelContent = {
                 Box(
                     modifier = Modifier
                         .position(Position.Relative)

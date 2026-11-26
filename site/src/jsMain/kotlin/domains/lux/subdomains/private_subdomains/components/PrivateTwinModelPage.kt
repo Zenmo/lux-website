@@ -17,7 +17,7 @@ fun PrivateTwinModelPage(
     modelId = modelId,
     introContent = introContent,
     mediaContent = mediaContent,
-    anylogicRender = {
+    modelContent = {
         ModelWrapper(
             imgUrl = imageUrl,
             entryPoint = entryPoint,

@@ -20,7 +20,7 @@ import kotlin.uuid.Uuid
 fun EmpoweredIndex() {
     SubdomainModelPage(
         modelId = Uuid.NIL,
-        anylogicRender = {},
+        modelContent = {},
         introContent = {
             EmpoweredHeader()
         },

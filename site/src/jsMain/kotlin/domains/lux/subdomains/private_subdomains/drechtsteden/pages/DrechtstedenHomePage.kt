@@ -83,7 +83,7 @@ fun DrechtstedenHomePage() {
             }
         },
         mediaContent = { DrechtstedenAreas() },
-        anylogicRender = {},
+        modelContent = {},
         extraContent = {
             Column(
                 modifier = Modifier.fillMaxWidth()
