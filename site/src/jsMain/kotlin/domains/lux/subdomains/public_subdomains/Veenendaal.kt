@@ -103,7 +103,7 @@ fun Veenendaal() {
             },
             mediaContent = {
             },
-            anylogicRender = {
+            modelContent = {
                 Column(
                     modifier = Modifier.fillMaxWidth().gap(1.cssRem),
                     horizontalAlignment = Alignment.CenterHorizontally,

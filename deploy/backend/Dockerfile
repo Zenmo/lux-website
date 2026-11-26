@@ -42,6 +42,7 @@ ARG BACKEND_URL=https://site-backend.lux.energy
 ARG ZENMO_DOMAIN=zenmo.com
 ARG LUX_DOMAIN=lux.energy
 ARG SUBDOMAIN_SEPARATOR=.
+ARG ORCHESTRATOR_URL=https://orchestrator.lux.energy
 # -PkobwebBuildTarget=RELEASE removes hot reload code from the JavaScript
 RUN ./gradlew backend:build -PkobwebBuildTarget=RELEASE
 

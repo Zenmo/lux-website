@@ -57,7 +57,11 @@ export default {
         commonjs(),
         // To dynamically import styles in @zenmo/oss-gis-map
         css(),
-        dynamicImportVars(),
+        dynamicImportVars({
+            // The orchestrator client imports a model's frontend from a URL that is only known at runtime.
+            // That import must be left to the browser instead of being resolved to files at build time.
+            exclude: ["**/@zenmo/lux-orchestrator-client/**"],
+        }),
         {
             name: 'dynamic-import-meta',
             renderDynamicImport({ targetModuleId }) {

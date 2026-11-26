@@ -16,6 +16,7 @@ const configPerBranch = {
             // settings for static site compilation
             ZENMO_DOMAIN: "zenmo.com",
             LUX_DOMAIN,
+            ORCHESTRATOR_URL: "https://orchestrator.lux.energy",
             SUBDOMAIN_SEPARATOR: ".",
 
             // settings for Traefik
@@ -48,6 +49,7 @@ const configPerBranch = {
             // settings for static site compilation
             ZENMO_DOMAIN: "test.zenmo.com",
             LUX_DOMAIN: LUX_DOMAIN,
+            ORCHESTRATOR_URL: "https://orchestrator.test.lux.energy",
             SUBDOMAIN_SEPARATOR: ".",
 
             // settings for Traefik
@@ -84,6 +86,7 @@ const configPerBranch = {
             // settings for static site compilation
             ZENMO_DOMAIN: `${compoundNumber}.${zenmoPrdomain}`,
             LUX_DOMAIN,
+            ORCHESTRATOR_URL: "https://orchestrator.test.lux.energy",
             SUBDOMAIN_SEPARATOR: "-",
 
             // settings for Traefik

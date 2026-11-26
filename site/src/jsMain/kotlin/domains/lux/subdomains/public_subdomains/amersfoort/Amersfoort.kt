@@ -109,7 +109,7 @@ fun Amersfoort() {
                     )
                 }
             },
-            anylogicRender = {
+            modelContent = {
                 selectedModel?.let { model ->
                     val isOutOfSync = runningModelId != null && runningModelId != model.modelId
 

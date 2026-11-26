@@ -24,6 +24,8 @@ val ZENMO_DOMAIN = System.getenv("ZENMO_DOMAIN") ?: "zenmo.localhost:8080"
 val SUBDOMAIN_SEPARATOR = System.getenv("SUBDOMAIN_SEPARATOR") ?: "."
 
 val BACKEND_URL = System.getenv("BACKEND_URL") ?: "http://localhost:9000"
+/** LUX Orchestrator that runs containerised models. Defaults to the test environment, because a local one would clash with port 8080 of this site. */
+val ORCHESTRATOR_URL = System.getenv("ORCHESTRATOR_URL") ?: "https://orchestrator.test.lux.energy"
 val jsSrc = "$BACKEND_URL/main.export.mjs"
 
 kobweb {
@@ -40,6 +42,7 @@ kobweb {
             mapOf(
                 "version" to project.version.toString(),
                 "BACKEND_URL" to BACKEND_URL,
+                "ORCHESTRATOR_URL" to ORCHESTRATOR_URL,
                 "LUX_DOMAIN" to LUX_DOMAIN,
                 "ZENMO_DOMAIN" to ZENMO_DOMAIN,
                 "SUBDOMAIN_SEPARATOR" to SUBDOMAIN_SEPARATOR,
@@ -106,6 +109,7 @@ kotlin {
             implementation(libs.viewmodel.compose)
             implementation(npm(project.rootProject.file("js-libs/@zenmo/anylogic-cloud-client")))
             implementation(npm(project.rootProject.file("js-libs/@zenmo/oss-gis-map")))
+            implementation(npm("@zenmo/lux-orchestrator-client", "0.2.0"))
         }
 
         val commonTest by getting {

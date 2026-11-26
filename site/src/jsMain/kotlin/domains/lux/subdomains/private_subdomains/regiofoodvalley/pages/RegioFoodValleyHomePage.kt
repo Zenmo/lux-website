@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
-import energy.lux.frontend.components.widgets.LangText
 import energy.lux.frontend.core.models.ZenmoTeamMember
 import energy.lux.frontend.domains.lux.core.TwinModelCardItem
 import energy.lux.frontend.domains.lux.core.isPrivate
@@ -20,7 +19,6 @@ import energy.lux.frontend.domains.lux.subdomains.private_subdomains.regiofoodva
 import energy.lux.frontend.domains.lux.widgets.ModelCard
 import energy.lux.frontend.domains.lux.widgets.headings.HeaderText
 import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.dom.P
 import kotlin.uuid.Uuid
 
 @Composable
@@ -31,7 +29,7 @@ fun RegioFoodValleyHomePage() {
         },
         mediaContent = { RegioFoodValleyAreas() },
         modelId = Uuid.NIL,
-        anylogicRender = {},
+        modelContent = {},
         footerContent = { ZenmoModellerProfileCard(ZenmoTeamMember.PETER_HOGEVEEN) }
     )
 }
