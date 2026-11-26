@@ -109,7 +109,7 @@ kotlin {
             implementation(libs.viewmodel.compose)
             implementation(npm(project.rootProject.file("js-libs/@zenmo/anylogic-cloud-client")))
             implementation(npm(project.rootProject.file("js-libs/@zenmo/oss-gis-map")))
-            implementation(npm("@zenmo/lux-orchestrator-client", "0.1.0"))
+            implementation(npm("@zenmo/lux-orchestrator-client", "0.2.0"))
         }
 
         val commonTest by getting {
