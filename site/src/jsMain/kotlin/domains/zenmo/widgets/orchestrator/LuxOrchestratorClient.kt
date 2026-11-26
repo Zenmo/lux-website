@@ -15,7 +15,24 @@ import org.w3c.dom.HTMLElement
  *
  * See https://github.com/Zenmo/lux-orchestrator/tree/main/client-library
  */
-external fun startModelSession(options: StartModelSessionOptions): Promise<ActiveModelSession>
+/**
+ * Start a session for a model and mount its user interface.
+ *
+ * When the model needs a login, or the user may not run it, this resolves with that [StartModelSessionResult.status]
+ * instead of failing. The promise is only rejected for other errors.
+ */
+external fun startModelSession(options: StartModelSessionOptions): Promise<StartModelSessionResult>
+
+external interface StartModelSessionResult {
+    /** "started", "login_required" or "forbidden" */
+    val status: String
+
+    /** Only set when the status is "started" */
+    val session: ActiveModelSession?
+
+    /** Explanation from the orchestrator, only set when the status is "login_required" or "forbidden" */
+    val message: String?
+}
 
 external interface StartModelSessionOptions {
     /** Base URL of the orchestrator, for example https://orchestrator.lux.energy */

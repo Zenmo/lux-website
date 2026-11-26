@@ -127,22 +127,27 @@ fun OrchestratorModelEmbed(
             this.versionId = versionId
             this.element = element
             onSessionEnded = { status = OrchestratorModelStatus.ENDED }
-        }).then { startedSession ->
-            if (isDisposed) {
-                startedSession.endSession()
-            } else {
-                activeSession = startedSession
-                status = OrchestratorModelStatus.RUNNING
+        }).then { result ->
+            val startedSession = result.session
+            when {
+                result.status == STARTED && startedSession != null -> if (isDisposed) {
+                    startedSession.endSession()
+                } else {
+                    activeSession = startedSession
+                    status = OrchestratorModelStatus.RUNNING
+                }
+                isDisposed -> Unit
+                result.status == LOGIN_REQUIRED -> status = OrchestratorModelStatus.LOGIN_REQUIRED
+                result.status == FORBIDDEN -> status = OrchestratorModelStatus.FORBIDDEN
+                else -> {
+                    console.error("Unexpected result when starting model $modelId $versionId on the orchestrator", result)
+                    status = OrchestratorModelStatus.FAILED
+                }
             }
         }.catch { error ->
-            if (isDisposed) return@catch
-            status = when (httpStatusOf(error)) {
-                401 -> OrchestratorModelStatus.LOGIN_REQUIRED
-                403 -> OrchestratorModelStatus.FORBIDDEN
-                else -> {
-                    console.error("Failed to start model $modelId $versionId on the orchestrator", error)
-                    OrchestratorModelStatus.FAILED
-                }
+            console.error("Failed to start model $modelId $versionId on the orchestrator", error)
+            if (!isDisposed) {
+                status = OrchestratorModelStatus.FAILED
             }
         }
 
@@ -220,13 +225,7 @@ private fun LoginPrompt(isLoggingIn: Boolean, onLoginClick: () -> Unit) {
     }
 }
 
-/**
- * The HTTP status of a failed [startModelSession], or null when it failed for another reason.
- *
- * The client library only puts the status in the error message, as "(HTTP 401)".
- * Replace this when the library exposes the status itself.
- */
-private fun httpStatusOf(error: Any?): Int? {
-    val message = error?.asDynamic()?.message as? String ?: return null
-    return Regex("""\(HTTP (\d{3})\)""").find(message)?.groupValues?.get(1)?.toInt()
-}
+// Values of StartModelSessionResult.status
+private const val STARTED = "started"
+private const val LOGIN_REQUIRED = "login_required"
+private const val FORBIDDEN = "forbidden"
